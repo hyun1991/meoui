@@ -47,7 +47,7 @@
 					</div>
 				</form>
 				<h3>&nbsp</h3>
-				<h3>카테고리 별 제주 관광명소 노출</h3>
+				<h3>카테고리 별 제주 숙박업소 노출</h3>
 				<br>
 				<div class="col-md-8">
 					<div id="myCarousel" class="carousel slide" data-ride="carousel">

@@ -82,42 +82,52 @@
 			<div id="allCategory" class="tab-pane fade in active">
 				<h3>카테고리</h3>
 				<p>Some content.</p>
+				<p id="attractionList" align="center"></p>
 			</div>
 			<div id="leisure" class="tab-pane fade">
 				<h3>westJeju 1</h3>
 				<p>Some content in westJeju 1.</p>
+				<p id="attractionList" align="center"></p>
 			</div>
 			<div id="theater" class="tab-pane fade">
 				<h3>westJeju 2</h3>
 				<p>Some content in westJeju 2.</p>
+				<p id="attractionList" align="center"></p>
 			</div>
 			<div id="musuem" class="tab-pane fade">
 				<h3>westJeju 3</h3>
 				<p>Some content in westJeju 2.</p>
+				<p id="attractionList" align="center"></p>
 			</div>
 			<div id="restaurant" class="tab-pane fade">
 				<h3>westJeju 4</h3>
 				<p>Some content in westJeju 2.</p>
+				<p id="attractionList" align="center"></p>
 			</div>
 			<div id="allRegion" class="tab-pane fade">
 				<h3>westJeju 5</h3>
 				<p>Some content in westJeju 2.</p>
+				<p id="attractionList" align="center"></p>
 			</div>
 			<div id="jejuCity" class="tab-pane fade">
 				<h3>westJeju 2</h3>
 				<p>Some content in westJeju 2.</p>
+				<p id="attractionList" align="center"></p>
 			</div>
 			<div id="seogwipo" class="tab-pane fade">
 				<h3>westJeju 2</h3>
 				<p>Some content in westJeju 2.</p>
+				<p id="attractionList" align="center"></p>
 			</div>
 			<div id="eastJeju" class="tab-pane fade">
 				<h3>westJeju 2</h3>
 				<p>Some content in westJeju 2.</p>
+				<p id="attractionList" align="center"></p>
 			</div>
 			<div id="westJeju" class="tab-pane fade">
 				<h3>westJeju 2</h3>
 				<p>Some content in westJeju 2.</p>
+				<p id="attractionList" align="center"></p>
 			</div>
 		</div>
 	</div>
@@ -143,4 +153,13 @@
 </script>
 <script
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQhKWycyWtScR72Jxc_E-FKHq4-F2b4CM&callback=myMap"></script>
+
+<script>
+	var text = "";
+	for (var i = 0; i < 12; i++) {
+		text += '<div class="col-md-4"> <a href="/meoui/accomodationinfo.jsp">'
+				+ '<img class="img-responsive" src="/meoui/jeju.jpg" alt="attraction" width="250" height="170"> <div class="caption"> <p>Lorem ipsum...</p></div></a></div>';
+	}
+	document.getElementById("attractionList").innerHTML = text;
+</script>
 </html>
