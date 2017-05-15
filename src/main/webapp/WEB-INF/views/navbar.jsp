@@ -51,7 +51,6 @@
 			<li class="col-md-2"><a href="/meoui/mypage.jsp">마이페이지</a></li>
 		</ul>
 	</nav>
-	
-	
+
 </body>
 </html>
