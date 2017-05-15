@@ -131,11 +131,13 @@
 							</div>
 							<div class="form-group step2">
 								<label for="pwd">주소</label><input type="button"
-									class="btn btn-default" onclick="sample4_execDaumPostcode()"
-									value="우편번호 찾기"><br> <input type="text"
-									class="form-control" id="postcode" name="memberAddress"
-									placeholder="우편번호"> <span id="guide"
+									class="btn btn-default pull-right" onclick="sample4_execDaumPostcode()"
+									value="우편 번호 찾기"><br> <input type="text"
+									class="form-control" id="postcode" name="memberAddress1"
+									placeholder="우편 번호"> <span id="guide"
 									style="color: #999"></span>
+									<input type="text"
+									class="form-control" id="address" name="memberAddress2" placeholder="상세 주소">
 							</div>
 							<div class="form-group step3">
 								<label for="pwd">이메일</label><br> <input type="email"
