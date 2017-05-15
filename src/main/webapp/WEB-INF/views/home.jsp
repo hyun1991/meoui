@@ -29,7 +29,7 @@
 }
 </style>
 <body>
-	<%@include file="/WEB-INF/views/navbar.jsp"%>
+	<%@include file="/navbar.jsp"%>
 	<div class="container-fluid text-center">
 		<div class="row">
 			<ul class="nav nav-tabs" id="menu">
