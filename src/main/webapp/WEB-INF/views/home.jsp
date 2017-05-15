@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,16 +22,14 @@
 #googleMapBackground {
 	background-color: #51b0ff;
 }
-
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
 
 .container-fluid {
 	font-family: 'Jeju Gothic', serif;
 }
 </style>
-
 <body>
-	<%@include file="/WEB-INF/views/navbar.jsp"%>
+	<%@include file="/navbar.jsp"%>
 	<div class="container-fluid text-center">
 		<div class="row">
 			<ul class="nav nav-tabs" id="menu">
