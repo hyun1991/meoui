@@ -47,7 +47,7 @@
 	</select>
 			
 	<!-- 모임 인원수별 리스트 보기 -->			
-	<select id = "selectMemberTotal" parameterType="String" resultType="MemberMeeting">
+	<select id = "selectMeetingTotal" parameterType="int" resultType="MemberMeeting">
 	<![CDATA[
 		select member_meeting_no, member_meeting_name, member_meeting_total_number 
 			from member_meeting order by member_total_number =#{meetingTotalNumber}	
