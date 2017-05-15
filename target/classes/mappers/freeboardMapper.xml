@@ -49,3 +49,4 @@
 			update freeboard set cnt=cnt+1 where freeboard_no=#{freeboardNo}
 		]]>
 	</update>
+</mapper>
