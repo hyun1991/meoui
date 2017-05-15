@@ -34,9 +34,7 @@
 </style>
 
 <body>
-
 	<%@include file="/WEB-INF/views/navbar.jsp"%>
-
 	<div class="container-fluid text-center">
 		<div class="row">
 			<ul class="nav nav-tabs" id="menu">
@@ -110,7 +108,6 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
 
 </body>
@@ -150,7 +147,7 @@
 	var text = "";
 	for (var i = 0; i < 12; i++) {
 		text += '<div class="col-md-3"> <a href="/meoui/accomodationinfo.jsp">'
-				+ '<img class="img-responsive" src="/meoui/images/jeju.jpg" alt="attraction" width="250" height="170"> <div class="caption"> <p>Lorem ipsum...</p></div></a></div>';
+				+ '<img class="img-responsive" src="/meoui/images/jeju.jpg" alt="attraction" width="300" height="550"> <div class="caption"> <p>Lorem ipsum...</p></div></a></div>';
 	}
 	document.getElementById("attractionList").innerHTML = text;
 </script>
