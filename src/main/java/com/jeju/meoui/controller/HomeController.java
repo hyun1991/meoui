@@ -1,4 +1,4 @@
-package com.jeju.meoui;
+package com.jeju.meoui.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
