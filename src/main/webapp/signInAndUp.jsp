@@ -33,17 +33,13 @@
 				<div class="modal-body">
 					<div class="form-group">
 						<label for="usr">아이디</label><br> <input type="text"
-							class="form-control" id="usr">
+							class="form-control" id="memberId" name="memberId">
 					</div>
 					<div class="form-group">
 						<label for="pwd">비밀번호</label><br> <input type="password"
-							class="form-control" id="pwd">
+							class="form-control" id="memberPassword" name="memberPassword">
 					</div>
-					<div class="form-group">
-						<label for="pwd">주민번호</label><br> <input type="password"
-							class="form-control" id="pwd">
-					</div>
-
+					
 					<a href="/meoui/findid.jsp" class="btn btn-default">아이디 찾기</a> <a
 						href="/meoui/findpwd.jsp" class="btn btn-default">비밀번호 찾기</a>
 				</div>
@@ -56,6 +52,7 @@
 	</div>
 
 	<!-- 회원가입 -->
+	<form action="/meoui/member/join" method="post">
 	<div id="signUpForm" class="modal fade" role="dialog">
 		<div class="modal-dialog">
 			<!-- Modal content-->
@@ -67,27 +64,27 @@
 				<div class="modal-body">
 					<div class="form-group step1">
 						<label for="usr">아이디</label><br> <input type="text"
-							class="form-control" id="usr">
+							class="form-control" id="memberId" name="memberId">
 					</div>
 					<div class="form-group step1">
 						<label for="pwd">비밀번호</label><br> <input type="password"
-							class="form-control" id="pwd">
+							class="form-control" id="memberPassword" name="memberPassword">
 					</div>
 					<div class="form-group step1">
-						<label for="pwd">이름</label><br> <input type="password"
-							class="form-control" id="pwd">
+						<label for="pwd">이름</label><br> <input type="text"
+							class="form-control" id="memberName" name="memberName">
 					</div>
 					<div class="form-group step1">
-						<label for="pwd">생년월일</label><br> <input type="number"
-							class="form-control" id="pwd">
+						<label for="pwd">연락처</label><br> <input type="number"
+							class="form-control" id="memberPhone" name="memberPhone">
 					</div>
 					<div class="form-group step2">
-						<label for="pwd">주소</label><br> <input type="password"
-							class="form-control" id="pwd">
+						<label for="pwd">주소</label><br> <input type="text"
+							class="form-control" id="memberAddress" name="memberAddress">
 					</div>
 					<div class="form-group step3">
-						<label for="pwd">연락처</label><br> <input type="password"
-							class="form-control" id="pwd">
+						<label for="pwd">이메일</label><br> <input type="email"
+							class="form-control" id="memberMail" name="memberMail">
 					</div>
 					<div class="form-group step3">
 						<label for="pwd">성별</label><br>
@@ -96,12 +93,12 @@
 								class="btn btn-primary">여자</a>
 						</div>
 						<div class="form-group step3">
-							<label for="pwd">계좌번호</label><br> <input type="password"
-								class="form-control" id="pwd">
+							<label for="pwd">직업</label><br> <input type="text"
+								class="form-control" id="memberJob" name="memberJob">
 						</div>
 						<div class="form-group step3">
-							<label for="pwd">직업</label><br> <input type="password"
-								class="form-control" id="pwd">
+							<label for="pwd">취미</label><br> <input type="text"
+								class="form-control" id="memberHobby" name="memberHobby">
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -113,6 +110,7 @@
 			</div>
 		</div>
 	</div>
+	</form>
 </body>
 
 <script>

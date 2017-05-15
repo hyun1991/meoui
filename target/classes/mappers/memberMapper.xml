@@ -10,7 +10,7 @@
 	</selectKey>
 		<![CDATA[
 			insert into member(member_no, member_id, member_password, member_name, member_phone, member_address, member_mail, member_job, member_gender, member_startdate, member_hobby)
-			values(#{memberNo}, #{memberId}, #{memberPassword}, #{memberName}, #{memberPhone}, #{memberAddress}, #{memberMail}, #{memberJob}, #{memberGender}, sysdate, #{memberHobby})
+			values(#{memberNo}, #{memberId}, #{memberPassword}, #{memberName}, #{memberPhone}, #{memberAddress}, #{memberMail}, #{memberJob}, '남자', sysdate, #{memberHobby})
 		]]>
 	</insert>
 	
