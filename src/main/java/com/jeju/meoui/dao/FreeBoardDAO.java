@@ -30,14 +30,18 @@ public class FreeBoardDAO {
 	}
 	// 4. 자유게시판 수정
 	public void updateFreeboard(FreeBoard freeBoard) {
-		template.update("FreeboardMapper.updateFreeboard", freeBoard);
+		template.update("FreeBoardMapper.updateFreeboard", freeBoard);
 	}
 	// 5. 자유게시판 삭제
 	public int deleteFreeboard(int freeboardNo) {
-		return template.delete("FreeboardMapper.deleteFreeboard", freeboardNo);
+		return template.delete("FreeBoardMapper.deleteFreeboard", freeboardNo);
 	}
 	// 6. 자유게시판 DB개수조회
-	
+	public int findByMax() {
+		return 0;
+	}
 	// 7. 자유게시판 조회수 증가
-
+	public void incrementCnt(int freeboardNo) {
+		template.update("FreeBoardMapper.incrementCnt", freeboardNo);
+	}
 }

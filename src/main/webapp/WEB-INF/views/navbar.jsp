@@ -19,22 +19,24 @@
 .navbar{
 	font-family: 'Jeju Gothic', serif;
 }
-#logo {
+#brand {
 	font-family: 'Jeju Hallasan', serif;
 }
 </style>
 </head>
 <body>
+	
+	<%@include file="/signInAndUp.jsp"%>
+	
 	<nav class="navbar navbar-default row text-center">
-
-		<div class="navbar-header col-md-11">
+		<div class="navbar-header col-md-12">
 			<div class="col-md-1"></div>
-			<a class="navbar-brand" href="http://localhost:8087/meoui/" id="logo">제주를
+			<a class="navbar-brand navbar-left" href="http://localhost:8087/meoui/" id="brand">제주를
 				부탁해</a>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#" data-toggle="modal" data-target="#joinForm">회원가입</a></li>
+			<ul class="nav navbar-nav navbar-right col-md-3">
+				<li><a href="#" data-toggle="modal" data-target="#signUpForm">회원가입</a></li>
 				<li class="col-md-1"></li>
-				<li><a href="#" data-toggle="modal" data-target="#loginForm">로그인</a></li>
+				<li><a href="#" data-toggle="modal" data-target="#signInForm">로그인</a></li>
 			</ul>
 		</div>
 		<ul class="nav navbar-nav col-md-12">
@@ -49,6 +51,7 @@
 			<li class="col-md-2"><a href="/meoui/mypage.jsp">마이페이지</a></li>
 		</ul>
 	</nav>
+<<<<<<< HEAD
 
 	<div id="joinForm" class="modal fade" role="dialog">
 		<div class="modal-dialog">
@@ -140,5 +143,8 @@
 			</div>
 		</div>
 	</div>
+=======
+
+>>>>>>> branch 'master' of https://github.com/hyun1991/meoui.git
 </body>
 </html>
