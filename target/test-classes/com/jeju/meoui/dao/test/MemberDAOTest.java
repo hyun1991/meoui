@@ -18,26 +18,35 @@ import static org.junit.Assert.*;
 public class MemberDAOTest {
 	@Autowired
 	private MemberDAO dao;
-	/*
-	 * 
-	1. 회원 추가하기(완료: 테스트 필요)
-	2. 회원정보 수정하기(완료: 테스트 필요)
-	3. 회원탈퇴(완료: 테스트 필요)
-	4. 회원 아이디 조회하기(완료: 테스트 필요)
-	5. 회원 비밀번호 조회하기(완료: 테스트 필요)
-	6. 회원 별 정보조회(완료: 테스트 필요)
-	7. 회원 아이디별 회원번호 조회하기(완료: 테스트 필요)
-	8. 회원 로그인(완료: 테스트 필요)
-	9. 회원 아이디 중복체크(완료: 테스트 필요)
-	 * */
-	//	회원 추가하기 테스트
+	//	회원 추가하기 테스트(성공)
 	//	@Test
 	public void insertTest(){
 		dao.insertMember(new Member("admin", "1234", "임제현", "010", "인천", "test@naver.com", "백수", "남자", "운동"));
 	}
-	@Test
+	//	@Test
+	//	회원 리스트 조회하기(성공)
 	public void selectAllTest(){
 		List<Member>list= dao.selectAllMember();
 		assertThat(list.size(), is(0));
+	}
+	//	@Test
+	//	회원 아이디 탈퇴(성공)
+	public void delete(){
+		dao.deleteMember("admin");
+		List<Member>list= dao.selectAllMember();
+		assertThat(list.size(), is(0));
+	}
+	//	@Test
+	public void selectList(){
+		dao.insertMember(new Member("admin", "1234", "임제현", "010", "인천", "test@naver.com", "백수", "남자", "운동"));
+		String memberId= "admin";
+		dao.selectByMember(memberId);
+	}
+	@Test
+	public void idcheck(){
+		dao.selectAllMember();
+		String id= "admin";
+		int result= dao.checkId(id);
+		assertThat(result, is(1));
 	}
 }
