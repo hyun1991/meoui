@@ -27,7 +27,7 @@
 	
 	<!-- 3. 회원탈퇴 -->
 	<!-- 조건: 회원번호 -->
-	<delete id="deleteMember" parameterType="int">
+	<delete id="deleteMember" parameterType="String">
 		<![CDATA[
 			delete from member where member_id=#{memberId}
 		]]>

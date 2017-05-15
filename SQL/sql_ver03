@@ -236,6 +236,46 @@ message_no number(10),
 constraint message_box_pk primary key(member_no , message_no)
 );
 
+create sequence room_seq start with 0 minvalue 0 maxvalue 999999;
+create sequence accommodation_seq start with 0 minvalue 0 maxvalue 999999;
+create sequence owner_seq start with 0 minvalue 0 maxvalue 999999;
+create sequence accommodation_comment_seq start with 0 minvalue 0 maxvalue 999999;
+create sequence reserve_seq start with 0 minvalue 0 maxvalue 999999;
+create sequence agegroup_seq start with 0 minvalue 0 maxvalue 999999;
+create sequence users_seq start with 0 minvalue 0 maxvalue 999999;
+create sequence site_seq start with 0 minvalue 0 maxvalue 999999;
+create sequence site_comment_seq start with 0 minvalue 0 maxvalue 999999;
+create sequence travelschedule_seq start with 0 minvalue 0 maxvalue 999999;
+create sequence notice_seq start with 0 minvalue 0 maxvalue 999999;
+create sequence notice_comment_seq start with 0 minvalue 0 maxvalue 999999;
+create sequence member_seq start with 0 minvalue 0 maxvalue 999999;
+create sequence message_seq start with 0 minvalue 0 maxvalue 999999;
+create sequence freeboard_seq start with 0 minvalue 0 maxvalue 999999;
+create sequence freeboard_comment_seq start with 0 minvalue 0 maxvalue 999999;
+create sequence member_meeting_seq start with 0 minvalue 0 maxvalue 999999;
+create sequence meetingboard_seq start with 0 minvalue 0 maxvalue 999999;
+create sequence meetingboard_comment_seq start with 0 minvalue 0 maxvalue 999999;
+
+select room_seq.nextval from dual;
+select accommodation_seq.nextval from dual;
+select owner_seq.nextval from dual;
+select accommodation_comment_seq.nextval from dual;
+select reserve_seq.nextval from dual;
+select agegroup_seq.nextval from dual;
+select users_seq.nextval from dual;
+select site_seq.nextval from dual;
+select site_comment_seq.nextval from dual;
+select travelschedule_seq.nextval from dual;
+select notice_seq.nextval from dual;
+select notice_comment_seq.nextval from dual;
+select member_seq.nextval from dual;
+select message_seq.nextval from dual;
+select freeboard_seq.nextval from dual;
+select freeboard_comment_seq.nextval from dual;
+select member_meeting_seq.nextval from dual;
+select meetingboard_seq.nextval from dual;
+select meetingboard_comment_seq.nextval from dual;
+
 
 drop table message_box;
 drop table message;
