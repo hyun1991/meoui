@@ -20,20 +20,7 @@
 	<div class="container-fluid text-center">
 		<div class="row">
 			<div class="col-md-2">
-				<ul class="nav nav-pills nav-stacked">
-					<li>카테고리별 조회</li>
-					<li>&nbsp</li>
-					<li class="active"><a href="#">카테고리1</a></li>
-					<li><a href="#">카테고리2</a></li>
-					<li><a href="#">카테고리3</a></li>
-					<li><a href="#">카테고리4</a></li>
-					<li>&nbsp</li>
-					<li>지역별 조회</li>
-					<li>&nbsp</li>
-					<li><a href="#">지역 1</a></li>
-					<li><a href="#">지역 2</a></li>
-					<li><a href="#">지역 3</a></li>
-				</ul>
+				<%@include file="/sideNavigation.jsp"%>
 			</div>
 			<div class="col-md-10">
 				<form class="form-inline pull-right">
@@ -61,7 +48,7 @@
 		var text = "";
 		for (var i = 0; i < 12; i++) {
 			text += '<div class="col-md-4"> <a href="/meoui/accomodationinfo.jsp">'
-					+ '<img class="img-responsive" src="/meoui/jeju.jpg" alt="attraction" width="250" height="170"> <div class="caption"> <p>Lorem ipsum...</p></div></a></div>';
+					+ '<img class="img-responsive" src="/meoui/images/jeju.jpg" alt="숙박업소" width="250" height="170"> <div class="caption"> <p>Lorem ipsum...</p></div></a></div>';
 		}
 		document.getElementById("accomodationList").innerHTML = text;
 	</script>

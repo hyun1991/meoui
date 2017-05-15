@@ -20,20 +20,7 @@
 	<div class="container-fluid text-center">
 		<div class="row">
 			<div class="col-md-2">
-				<ul class="nav nav-pills nav-stacked">
-					<li>카테고리별 조회</li>
-					<li>&nbsp</li>
-					<li class="active"><a href="#">카테고리1</a></li>
-					<li><a href="#">카테고리2</a></li>
-					<li><a href="#">카테고리3</a></li>
-					<li><a href="#">카테고리4</a></li>
-					<li>&nbsp</li>
-					<li>지역별 조회</li>
-					<li>&nbsp</li>
-					<li><a href="#">지역 1</a></li>
-					<li><a href="#">지역 2</a></li>
-					<li><a href="#">지역 3</a></li>
-				</ul>
+				<%@include file="/sideNavigation.jsp"%>
 			</div>
 
 			<div class="col-md-10">
@@ -98,7 +85,7 @@
 						</a>
 					</div>
 					<br>
-	
+
 					<div class="col-md-2">
 						<label for="usr">변은지</label>
 					</div>
@@ -114,14 +101,14 @@
 					</div>
 					<br>
 					<div class="form-group col-md-12 text-left">
-					<div class="form-group">
-						<label for="usr">댓글</label>
+						<div class="form-group">
+							<label for="usr">댓글</label>
+						</div>
+						<div class="form-group">
+							<textarea class="form-control" rows="4" id="comment"></textarea>
+						</div>
+						<a href="#" class="btn btn-success pull-right">댓글 작성</a>
 					</div>
-					<div class="form-group">
-						<textarea class="form-control" rows="4" id="comment"></textarea>
-					</div>
-					<a href="#" class="btn btn-success pull-right">댓글 작성</a>
-				</div>
 				</div>
 
 				<div class="col-md-3 text-left">
@@ -141,11 +128,11 @@
 						<a href="#" class="btn btn-success">객실 보기</a> <a href="#"
 							class="btn btn-success">예약</a>
 					</div>
-					<br>
-					<img class="img-responsive" src="/meoui/jeju.jpg" alt="Chicago"><br>
-					<img class="img-responsive" src="/meoui/jeju.jpg" alt="Chicago"><br>
-					<img class="img-responsive" src="/meoui/jeju.jpg" alt="Chicago"><br>
-					<img class="img-responsive" src="/meoui/jeju.jpg" alt="Chicago">
+					<br> <img class="img-responsive" src="/meoui/images/jeju.jpg"
+						alt="Chicago"><br> <img class="img-responsive"
+						src="/meoui/images/jeju.jpg" alt="Chicago"><br> <img
+						class="img-responsive" src="/meoui/images/jeju.jpg" alt="Chicago"><br>
+					<img class="img-responsive" src="/meoui/imgaes/jeju.jpg" alt="Chicago">
 				</div>
 				<br>
 			</div>

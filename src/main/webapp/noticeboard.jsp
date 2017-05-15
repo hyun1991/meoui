@@ -64,6 +64,7 @@
 				</tbody>
 			</table>
 			<div class="row text-center">
+			
 				<ul class="pagination pagination-md">
 					<li><a href="#">1</a></li>
 					<li><a href="#">2</a></li>

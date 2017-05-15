@@ -36,6 +36,7 @@
 			<li class="col-md-2"><a href="/meoui/mypage.jsp">마이페이지</a></li>
 		</ul>
 	</nav>
+	
 	<div id="joinForm" class="modal fade" role="dialog">
 		<div class="modal-dialog">
 			<!-- Modal content-->
