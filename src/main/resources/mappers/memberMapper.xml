@@ -82,4 +82,11 @@
 			select 1 from member where member_id=#{memberId}
 		]]>
 	</select>
+	
+	<!-- 10. 회원 전체리스트 조회하기 -->
+	<select id="selectAllMember" resultType="Member">
+		<![CDATA[
+			select * from member
+		]]>
+	</select>
 </mapper>

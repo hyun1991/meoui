@@ -4,6 +4,8 @@ import java.util.*;
 
 import lombok.*;
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Member {
 	
 	private int memberNo;					//	회원번호(PK)
@@ -17,4 +19,18 @@ public class Member {
 	private String memberGender;			//	성별
 	private Date memberStartdate;			//	가입일
 	private String memberHobby;				//	취미
+	public Member(String memberId, String memberPassword, String memberName, String memberPhone, String memberAddress,
+			String memberEmail, String memberJob, String memberGender, String memberHobby) {
+		super();
+		this.memberId = memberId;
+		this.memberPassword = memberPassword;
+		this.memberName = memberName;
+		this.memberPhone = memberPhone;
+		this.memberAddress = memberAddress;
+		this.memberEmail = memberEmail;
+		this.memberJob = memberJob;
+		this.memberGender = memberGender;
+		this.memberHobby = memberHobby;
+	}
+	
 }

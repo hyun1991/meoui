@@ -71,4 +71,9 @@ public class MemberDAO {
 		return template.selectOne("MemberMapper.checkId", memberId);
 	}
 
+	//	10. 회원 전체리스트 조회하기(완료: 테스트 필요)
+	public List<Member> selectAllMember(){
+		return template.selectList("MemberMapper.selectAllMember");
+	}
+	
 }
