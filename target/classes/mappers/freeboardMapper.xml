@@ -4,7 +4,7 @@
 <mapper namespace="FreeboardMapper">
 
 <!-- 1. 자유게시판 작성 -->
-	<insert id="insertFreeboard" parameterType="Freeboard">
+	<insert id="insertFreeboard" parameterType="FreeBoard">
 	<selectKey keyProperty="freeboardNo" resultType="int" order="BEFORE">
 		select freeboard_seq.nextval from dual
 	</selectKey>
