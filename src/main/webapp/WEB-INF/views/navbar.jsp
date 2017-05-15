@@ -12,6 +12,10 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link rel="stylesheet" type="text/css" href="css/hanjoon.css">
+	<link rel="stylesheet" type="text/css" href="css/sejin.css">
 <title>Navigation Bar</title>
 <style>
 @import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
@@ -24,6 +28,16 @@
 }
 </style>
 </head>
+<style>
+#colornavbar{
+	background-color: #c7ed52;
+}
+#hob:hover {
+    background-color: #d6fa45;
+}
+	
+}
+</style>
 <body>
 	
 	<%@include file="/signInAndUp.jsp"%>
@@ -52,5 +66,6 @@
 		</ul>
 	</nav>
 
+	
 </body>
 </html>
