@@ -14,7 +14,7 @@
 		]]>
 	</insert>
 <!-- 2. 자유게시판 상세조회 -->
-	<select id="selectFreeboard">
+	<select id="selectFreeboard" parameterType="int">
 		<![CDATA[
 			select * from freeboard where freeboard_no=#{freeboardNo}
 		]]>
