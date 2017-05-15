@@ -43,7 +43,12 @@
 		]]>
 	</delete>
 <!-- 6. 자유게시판 db개수 조회 -->
-<!-- 7. 자유게시판 조회수 증가 -->
+	<select id="findByMax" parameterType="int">
+		<![CDATA[
+			
+		]]>
+	</select>
+	<!-- 7. 자유게시판 조회수 증가 -->
 	<update id="incrementCnt" parameterType="int">
 		<![CDATA[
 			update freeboard set cnt=cnt+1 where freeboard_no=#{freeboardNo}
