@@ -38,12 +38,12 @@ public class MemberMeetingDAO {
 	}
 	
 	//모임명 검색
-	public MemberMeeting selectMemberName(String meetingName){
-		return template.selectOne("MemberMeetingMapper.selectMemberName",meetingName);
+	public MemberMeeting selectMeetingName(String meetingName){
+		return template.selectOne("MemberMeetingMapper.selectMeetingName",meetingName);
 	}
 	
 	//모임인원수별 리스트 조회
-	public List<MemberMeeting> selectmemberTotal(int meetintTotal){
-		return template.selectList("MembermeetingMapper.selectMeetingTotal",meetintTotal);	}
+	public List<MemberMeeting> selectMeetingTotal(int meetingTotal){
+		return template.selectList("MembermeetingMapper.selectMeetingTotal",meetingTotal);	}
 	
 }
