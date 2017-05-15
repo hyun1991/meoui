@@ -15,7 +15,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@include file="/WEB-INF/views/navbar.jsp"%>
+	<%@include file="/navbar.jsp"%>
 	<div class="container">
 		<h2>마이페이지</h2>
 		<br>
