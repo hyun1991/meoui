@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias type="com.icia.bbs.vo.Member" alias="Member"/>
+		<typeAlias type="com.jeju.meoui.vo.Member" alias="Member"/>
 
 	</typeAliases>
 </configuration>
