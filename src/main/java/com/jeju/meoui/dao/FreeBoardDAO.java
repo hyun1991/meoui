@@ -18,7 +18,7 @@ public class FreeBoardDAO {
 		return template.insert("FreeBoardMapper.insertFreeboard", freeboard);
 	}
 	// 2. 자유게시판 상세조회
-	public int selectFreeboard(int freeboardNo) {
+	public FreeBoard selectFreeboard(int freeboardNo) {
 		return template.selectOne("FreeBoardMapper.selectFreeboard", freeboardNo);
 	}
 	// 3. 자유게시판 리스트 조회

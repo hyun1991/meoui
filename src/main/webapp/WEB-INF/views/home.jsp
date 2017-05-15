@@ -13,8 +13,6 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/hanjoon.css">
-	<link rel="stylesheet" type="text/css" href="css/sejin.css">
 <title>제주를 부탁해</title>
 </head>
 <style>
@@ -34,9 +32,7 @@
 </style>
 
 <body>
-
 	<%@include file="/WEB-INF/views/navbar.jsp"%>
-
 	<div class="container-fluid text-center">
 		<div class="row">
 			<ul class="nav nav-tabs" id="menu">
@@ -110,7 +106,6 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
 
 </body>
@@ -150,7 +145,7 @@
 	var text = "";
 	for (var i = 0; i < 12; i++) {
 		text += '<div class="col-md-3"> <a href="/meoui/accomodationinfo.jsp">'
-				+ '<img class="img-responsive" src="/meoui/images/jeju.jpg" alt="attraction" width="250" height="170"> <div class="caption"> <p>Lorem ipsum...</p></div></a></div>';
+				+ '<img class="img-responsive" src="/meoui/images/jeju.jpg" alt="attraction" width="300" height="550"> <div class="caption"> <p>Lorem ipsum...</p></div></a></div>';
 	}
 	document.getElementById("attractionList").innerHTML = text;
 </script>
