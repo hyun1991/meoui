@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +19,6 @@ body, html, div.container-fluid, div.row {
 	width: 100%;
 	height: 100%;
 }
-
 #mapContainer {
 	width: 75%;
 	height: 100%;
@@ -28,7 +26,6 @@ body, html, div.container-fluid, div.row {
 </style>
 <body>
 	<%@include file="/WEB-INF/views/navbar.jsp"%>
-	<div class="container-fluid">
 		<div class="row">
 			<div id=mapContainer class="col-md-10">
 				<div id="googleMap" style="width: 100%; height: 100%;"></div>
@@ -68,9 +65,6 @@ body, html, div.container-fluid, div.row {
 				</div>
 			</div>
 		</div>
-	</div>
-
-
 
 </body>
 <script>

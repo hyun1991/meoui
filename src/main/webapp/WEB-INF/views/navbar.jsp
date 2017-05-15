@@ -27,22 +27,9 @@
 }
 </style>
 </head>
-<style>
-#colornavbar {
-	background-color: #c7ed52;
-}
-
-#hob:hover {
-	background-color: #d6fa45;
-}
-
-</style>
 <body>
-
 	<%@include file="/signInAndUp.jsp"%>
-
 	<div class="container-fluid">
-
 		<nav class="navbar navbar-default row text-center">
 			<div class="navbar-header col-md-12">
 				<div class="col-md-1"></div>
@@ -67,6 +54,5 @@
 			</ul>
 		</nav>
 	</div>
-
 </body>
 </html>
