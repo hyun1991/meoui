@@ -4,6 +4,6 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.jeju.meoui.vo.Member" alias="Member"/>
-
+		<typeAlias type="com.jeju.meoui.vo.FreeBoard" alias="FreeBoard"/>
 	</typeAliases>
 </configuration>

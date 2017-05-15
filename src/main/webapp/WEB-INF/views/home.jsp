@@ -13,7 +13,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>Main Page</title>
+<title>제주를 부탁해</title>
 </head>
 <style>
 #menu {
@@ -22,6 +22,12 @@
 
 #googleMapBackground {
 	background-color: #51b0ff;
+}
+
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+.container-fluid {
+	font-family: 'Jeju Gothic', serif;
 }
 </style>
 
@@ -35,38 +41,30 @@
 				<li class="col-md-1">
 					<p>&nbsp</p>
 				</li>
-				<li class="col-md-2"><a data-toggle="tab"
-					href="#allCategory">카테고리 전체&nbsp<span class="badge">5</span></a></li>
+				<li class="col-md-2"><a data-toggle="tab" href="#allCategory">카테고리
+						전체&nbsp<span class="badge">5</span>
+				</a></li>
 				<li class="col-md-2"><a data-toggle="tab" href="#leisure"
 					alt="잠수함/유람선/레저" id="레저">잠수함/유람선/레저&nbsp<span class="badge">5</span></a></li>
-				<li class="col-md-2"><a data-toggle="tab" href="#theater">공연장/상영관/기타&nbsp<span class="badge">5</span></a></li>
-				<li class="col-md-2"><a data-toggle="tab" href="#musuem">테마공원/박물관&nbsp<span class="badge">5</span></a></li>
-				<li class="col-md-2"><a data-toggle="tab" href="#restaurant">음식점&nbsp<span class="badge">5</span></a></li>
+				<li class="col-md-2"><a data-toggle="tab" href="#theater">공연장/상영관/기타&nbsp<span
+						class="badge">5</span></a></li>
+				<li class="col-md-2"><a data-toggle="tab" href="#musuem">테마공원/박물관&nbsp<span
+						class="badge">5</span></a></li>
+				<li class="col-md-2"><a data-toggle="tab" href="#restaurant">음식점&nbsp<span
+						class="badge">5</span></a></li>
 				<li class="col-md-1">
 					<p>&nbsp</p>
 				</li>
 				<li class="col-md-1">
 					<p>&nbsp</p>
 				</li>
-				<li class="col-md-1">
-					<p>&nbsp</p>
-				</li>
-				<li class="col-md-2"><a data-toggle="tab" href="#allRegion">지역별
-						전체&nbsp<span class="badge">5</span></a></li>
-				<li class="col-md-2"><a data-toggle="tab" href="#jejuCity">제주시&nbsp<span class="badge">5</span></a></li>
-				<li class="col-md-2"><a data-toggle="tab" href="#seogwipo">서귀포시/중문&nbsp<span class="badge">5</span></a></li>
-				<li class="col-md-2"><a data-toggle="tab" href="#seogwipo">제주
-						동부&nbsp<span class="badge">5</span></a></li>
-				<li class="col-md-2"><a data-toggle="tab" href="#seogwipo">제주
-						서부&nbsp<span class="badge">5</span></a></li>
-
 			</ul>
 		</div>
 
 		<div class="row">
 			<form class="form-inline">
 				<div class="input-group">
-					<input type="search" class="form-control input-lg" size="50"
+					<input type="search" class="form-control input-lg" size="40"
 						placeholder="목적지" required style="margin: 50px;">
 					<div class="input-group-btn">
 						<button type="button" class="btn btn-info btn-lg">검색</button>
@@ -105,31 +103,6 @@
 				</div>
 				<div id="restaurant" class="tab-pane fade">
 					<h3>westJeju 4</h3>
-					<p>Some content in westJeju 2.</p>
-					<p id="attractionList" align="center"></p>
-				</div>
-				<div id="allRegion" class="tab-pane fade">
-					<h3>westJeju 5</h3>
-					<p>Some content in westJeju 2.</p>
-					<p id="attractionList" align="center"></p>
-				</div>
-				<div id="jejuCity" class="tab-pane fade">
-					<h3>westJeju 2</h3>
-					<p>Some content in westJeju 2.</p>
-					<p id="attractionList" align="center"></p>
-				</div>
-				<div id="seogwipo" class="tab-pane fade">
-					<h3>westJeju 2</h3>
-					<p>Some content in westJeju 2.</p>
-					<p id="attractionList" align="center"></p>
-				</div>
-				<div id="eastJeju" class="tab-pane fade">
-					<h3>westJeju 2</h3>
-					<p>Some content in westJeju 2.</p>
-					<p id="attractionList" align="center"></p>
-				</div>
-				<div id="westJeju" class="tab-pane fade">
-					<h3>westJeju 2</h3>
 					<p>Some content in westJeju 2.</p>
 					<p id="attractionList" align="center"></p>
 				</div>

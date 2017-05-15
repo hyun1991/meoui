@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="FreeboardMapper">
+
+<!-- 1. 자유게시판 작성 -->
+	<insert id="insertFreeboard" parameterType="FreeBoard">
+	<selectKey keyProperty="freeboardNo" resultType="int" order="BEFORE">
+		select freeboard_seq.nextval from dual
+	</selectKey>
+		<![CDATA[
+			insert into freeboard(freeboard_no, freeboard_title, freeboard_content, freeboard_date, freeboard_cnt, freeboard_img)
+			values(#{freeboardNo}, #{freeboardTitle}, #{freeboardContent}, sysdate, #{freeboardCnt}, #{freeboardImg})
+		]]>
+	</insert>
+<!-- 2. 자유게시판 상세조회 -->
+	<select id="selectFreeboard">
+		<![CDATA[
+			select * from freeboard where freeboard_no=#{freeboardNo}
+		]]>
+	</select>
+<!-- 3. 자유게시판 리스트 조회-->
+	<select id="selectAllFreeboard" parameterType="int">
+		<![CDATA[
+			select * from 
+				(select rownum rnum, b.* from
+					(select freeboardNo, freeboardTitle, freeboardContent, sysdate, freeboardCnt, freeboardImg from freeboard order
+					by freeboardNo desc) b where rownum<=#{end})
+				where rnum>=#{start}
+		]]>
+	</select>
+<!-- 4. 자유게시판 수정 -->
+	<update id="updateFreeboard" parameterType="FreeBoaard">
+		<![CDATA[
+			update freeboard set freeboard_title=#{freeboardTitle}, freeboard_content=#{freeboardContent}, freeboard_img=#{freeboardImg}
+			where member_no=#{memberNo}
+		]]>
+	</update>
+<!-- 5. 자유게시판 삭제 -->
+	<delete id="deleteFreeboard" parameterType="int">
+		<![CDATA[
+			delete from freeboard where member_no=#{memberNo}
+		]]>
+	</delete>
+<!-- 6. 자유게시판 db개수 조회 -->
+<!-- 7. 자유게시판 조회수 증가 -->
+	<update id="incrementCnt" parameterType="int">
+		<![CDATA[
+			update freeboard set cnt=cnt+1 where freeboard_no=#{freeboardNo}
+		]]>
+	</update>
+</mapper>

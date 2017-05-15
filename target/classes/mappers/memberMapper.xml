@@ -9,8 +9,8 @@
 	    	select member_seq.nextval from dual
 	</selectKey>
 		<![CDATA[
-			insert into member(member_no, member_id, member_password, member_name, member_phone, member_address, member_email, member_job, member_gender, member_startdate, member_hobby)
-			values(#{memberNo}, #{memberId}, #{memberPassword}, #{memberName}, #{memberPhone}, #{memberAddress}, #{memberEmail}, #{memberJob}, #{memberGender}, sysdate, #{memberHobby})
+			insert into member(member_no, member_id, member_password, member_name, member_phone, member_address, member_mail, member_job, member_gender, member_startdate, member_hobby)
+			values(#{memberNo}, #{memberId}, #{memberPassword}, #{memberName}, #{memberPhone}, #{memberAddress}, #{memberMail}, #{memberJob}, #{memberGender}, sysdate, #{memberHobby})
 		]]>
 	</insert>
 	
@@ -78,8 +78,11 @@
 		아이디 중복조회 시 1값 반환, 사용가능할시 0값 반환.
 	-->
 	<select id="checkId" parameterType="String" resultType="int">
-		<![CDATA[
 			select 1 from member where member_id=#{memberId}
-		]]>
+	</select>
+	
+	<!-- 10. 회원 전체리스트 조회하기 -->
+	<select id="selectAllMember" resultType="Member">
+			select * from member
 	</select>
 </mapper>

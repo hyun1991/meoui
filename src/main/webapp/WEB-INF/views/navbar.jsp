@@ -13,13 +13,23 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Navigation Bar</title>
+<style>
+@import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+.navbar{
+	font-family: 'Jeju Gothic', serif;
+}
+#logo {
+	font-family: 'Jeju Hallasan', serif;
+}
+</style>
 </head>
 <body>
 	<nav class="navbar navbar-default row text-center">
 
 		<div class="navbar-header col-md-11">
 			<div class="col-md-1"></div>
-			<a class="navbar-brand" href="http://localhost:8087/meoui/">제주를
+			<a class="navbar-brand" href="http://localhost:8087/meoui/" id="logo">제주를
 				부탁해</a>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#" data-toggle="modal" data-target="#joinForm">회원가입</a></li>
@@ -28,15 +38,18 @@
 			</ul>
 		</div>
 		<ul class="nav navbar-nav col-md-12">
-			<li class="col-md-2"><a href="/meoui/attractionlist.jsp">제주 관광명소 소개</a></li>
+			<li class="col-md-2"><a href="/meoui/attractionlist.jsp">제주
+					관광명소 소개</a></li>
 			<li class="col-md-2"><a href="/meoui/directions.jsp">길 찾기</a></li>
-			<li class="col-md-2"><a href="/meoui/accomodationlist.jsp">숙박 시설</a></li>
-			<li class="col-md-2"><a href="/meoui/meetingboard.jsp">모임 게시판</a></li>
+			<li class="col-md-2"><a href="/meoui/accomodationlist.jsp">숙박
+					시설</a></li>
+			<li class="col-md-2"><a href="/meoui/meetingboard.jsp">모임
+					게시판</a></li>
 			<li class="col-md-2"><a href="/meoui/noticeboard.jsp">공지사항</a></li>
 			<li class="col-md-2"><a href="/meoui/mypage.jsp">마이페이지</a></li>
 		</ul>
 	</nav>
-	
+
 	<div id="joinForm" class="modal fade" role="dialog">
 		<div class="modal-dialog">
 			<!-- Modal content-->
