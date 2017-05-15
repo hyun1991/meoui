@@ -27,9 +27,7 @@ body, html, div.container-fluid, div.row {
 }
 </style>
 <body>
-
 	<%@include file="/WEB-INF/views/navbar.jsp"%>
-
 	<div class="container-fluid">
 		<div class="row">
 			<div id=mapContainer class="col-md-10">
