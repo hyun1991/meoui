@@ -30,7 +30,7 @@
 		]]>
 	</select>
 <!-- 4. 자유게시판 수정 -->
-	<update id="updateFreeboard" parameterType="FreeBoaard">
+	<update id="updateFreeboard" parameterType="FreeBoard">
 		<![CDATA[
 			update freeboard set freeboard_title=#{freeboardTitle}, freeboard_content=#{freeboardContent}, freeboard_img=#{freeboardImg}
 			where member_no=#{memberNo}
