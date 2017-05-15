@@ -18,10 +18,12 @@ public class MemberController {
 	private MemberService service;
 	private static final Logger logger= LoggerFactory.getLogger(MemberController.class);
 	
-	//	1. 회원가입
+	//	1. 회원가입(뷰단 연결완료)
 	@RequestMapping(value="/member/join", method=RequestMethod.POST)
-	public String joinMember(@ModelAttribute Member member){
+	public String joinMember(@ModelAttribute Member member, @RequestParam String memberAddress1, @RequestParam String memberAddress2){
 		logger.info("회원가입 vo:{}", member);
+		String memberAddress= memberAddress1+memberAddress2;
+		member.setMemberAddress(memberAddress);
 		service.createMember(member);
 		return "redirect:/";
 	}
