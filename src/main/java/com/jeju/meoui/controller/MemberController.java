@@ -1,5 +1,7 @@
 package com.jeju.meoui.controller;
 
+import javax.servlet.http.*;
+
 import org.slf4j.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
@@ -20,5 +22,16 @@ public class MemberController {
 		logger.info("회원가입 vo:{}", member);
 		service.createMember(member);
 		return "redirect:/";
+	}
+	//	2-1. 회원수정 폼뷰
+	@RequestMapping(value="/member/update", method=RequestMethod.GET)
+	public String updateMember(){
+		return "member/update";
+	}
+	//	2-2. 회원수정 완료.
+	public String updateMember(@ModelAttribute Member member, HttpSession session){
+		logger.info("회원수정 vo:{}", member);
+		service.modifyMember(member);
+		return "";
 	}
 }
