@@ -13,7 +13,42 @@ insert into noticeComment
 values(#{noticeCommentNo},#{noticeCommentContent},sysdate,#{memberNo},#{noticeNo})
 ]]>
 </insert>
-<!-- 2. 공지게시판 상세조회 및 달린 댓글 조회 -->
+ <!-- 2. 공지게시판 상세조회-->
+<select id="selectNotice" parameterType="int">
+<![CDATA[
+select * from notice where noticeNo=#{noticeNo}
+]]>
+</select>
 
-
+<!-- 3. 공지게시판 리스트 조회 -->
+<select id="selectNoticeList" parameterType="hashmap" resultType="Notice">
+<![CDATA[
+select * from
+(select rownum rnum, b.*from
+(select noticeNo,noticeTitle,noticeDate,noticeCnt,usersNo from notice order by noticeNo desc) b
+ where ROWNUM<=#{end})
+ where rnum>=#{start}
+]]>
+</select>
+<!-- 4. 공지게시글 갱신 (글제목 과 글내용 수정 가능) -->
+<!-- 조건: 게시글 번호 -->
+<update id="updateNotice" parameterType="Notice">
+update notice set noticeTitle=#{noticeTitle},noticeContent=#{noticeContent} where noticeNo=#{noticeNo}
+</update>
+<!-- 5. 공지게시글 삭제 -->
+<!-- 조건: 게시글 번호 -->
+<delete id="deleteNotice" parameterType="int">
+delete from notice where noticeNo=#{noticeNo}
+</delete>
+<!-- 6. 공지게시글 전체 개수 조회 -->
+<select id="findByMax" resultType="int">
+   <![CDATA[
+   select count(*) from notice
+   ]]>
+ </select>
+ <!-- 7. 공지게시글 조회수 증가 -->
+ <update id="incrementCnt" parameterType="int">
+ update notice set noticeCnt=noticeCnt+1 where noticeNo=#{noticeNo}
+ </update>  
+ 
 </mapper>
