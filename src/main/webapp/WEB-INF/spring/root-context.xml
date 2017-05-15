@@ -15,14 +15,22 @@
 	</bean>
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="mapperLocations" value="classpath:/mappers/*.xml" />
 		<property name="configLocation" value="classpath:/mybatis-config.xml" />
+		<property name="mapperLocations" value="classpath:/mappers/*.xml" />
 	</bean>
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 	<context:annotation-config/>
 	<context:component-scan base-package="com.jeju.meoui"/>
+	<!-- 
+		트랜잭션: 일련의 작업을 한꺼번에 저장하거나 취소하는 일
+		트랜잭션이 동작하려면 작업들이 서버 연결(DataSource)을 공유해야 한다.
+		트랜잭션을 관리하는 클래스는 스프링이 제공
+			그 클래스에서 사용할 서버 연결을 주입
+			애노테이션으로 트랜잭션을 관리하겠다 →(옵션지정)	tx:annotaion-driven
+			트랜잭션을 적용대상을 인터페이스에서 클래스로 변경 →(옵션지정)	proxy-target-class="true"	
+	 -->
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
@@ -33,5 +41,5 @@
 	</bean>
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="10000000"/>
-	</bean>		
+	</bean>
 </beans>
