@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="FreeboardCommentMapper">
 <!-- 1. 댓글 작성 -->
-	<insert id="insertComment" parameterType="FreeboardComment">
+	<insert id="insertComment" parameterType="FreeBoardComment">
 		<selectKey keyProperty="freeboardCommentNo" resultType="int" order="BEFORE">
 			<![CDATA[
 				insert into freeboardComment(freeboardComment_no, freeboardComment_content, freeboard_date)
@@ -12,13 +12,13 @@
 		</selectKey>
 	</insert>
 <!-- 2. 자유게시판 번호 별 댓글 조회 -->
-	<select id="selectCommentList" parameterType="int" resultType="freeboard">
+	<select id="selectCommentList" parameterType="int" resultType="FreeBoard">
 		<![CDATA[
 			select * from freeboardComment where freeboard_no=#{freeboardNo}
 		]]>
 	</select>
 <!-- 3. 댓글 수정 -->
-	<update id="updateComment" parameterType="FreeboardComment">
+	<update id="updateComment" parameterType="FreeBoardComment">
 		<![CDATA[
 			update freeboardComment set freeboard_content=#{freeboardCommentTitle} where member_no=#{memberNo}
 		]]>
