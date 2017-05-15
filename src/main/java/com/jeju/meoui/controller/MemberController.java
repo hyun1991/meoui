@@ -29,9 +29,18 @@ public class MemberController {
 		return "member/update";
 	}
 	//	2-2. 회원수정 완료.
+	@RequestMapping(value="/member/update", method=RequestMethod.POST)
 	public String updateMember(@ModelAttribute Member member, HttpSession session){
 		logger.info("회원수정 vo:{}", member);
 		service.modifyMember(member);
-		return "";
+		return "redirect:/";
 	}
+	//	3. 회원탈퇴
+	@RequestMapping(value="/member/delete", method=RequestMethod.POST)
+	public String deleteMember(HttpSession session){
+		String memberId= (String)session.getAttribute("memberId");
+		service.removeMember(memberId);
+		return "redirect:/";
+	}
+	
 }
