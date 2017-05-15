@@ -1,0 +1,267 @@
+create table users (  
+users_no number(10) primary key, 
+username NVARCHAR2(50),
+password NVARCHAR2(50),
+enabled CHARACTER(10)
+);
+
+create table authorities(
+authority nvarchar2(100),
+users_no number(10) references users(users_no)
+);
+
+create table owner (
+owner_no number(10) primary key,
+owner_id NVARCHAR2(50),
+owner_password NVARCHAR2(50),
+owner_name NVARCHAR2(50),
+owner_phone NVARCHAR2(50),
+owner_mail NVARCHAR2(50),
+owner_address NVARCHAR2(100),
+owner_btn NVARCHAR2(100),
+owner_startdate date
+);
+
+create table member (
+member_no number(10) primary key,
+member_id NVARCHAR2(50),
+member_password NVARCHAR2(50),
+member_name NVARCHAR2(50),
+member_phone NVARCHAR2(50),
+member_mail NVARCHAR2(50),
+member_address NVARCHAR2(100),
+member_job NVARCHAR2(20),
+member_gender NVARCHAR2(10),
+member_startdate date,
+member_hobby NVARCHAR2(50)
+);
+
+create table site(
+site_no number(10) primary key,
+site_name NVARCHAR2(100),
+site_park number(10),
+site_object NVARCHAR2(50),
+site_img NVARCHAR2(100),
+site_introduce NVARCHAR2(1333),
+site_homepage NVARCHAR2(100),
+site_open_time NVARCHAR2(100),
+site_close_time NVARCHAR2(100),
+site_phone NVARCHAR2(100),
+site_night_open NVARCHAR2(100),
+site_night_close_time NVARCHAR2(100),
+users_no number(10) references users(users_no)
+);
+
+
+create table site_comment(
+site_comment_no number(10) primary key,
+site_comment_content NVARCHAR2(1333),
+site_comment_date date,
+member_no number(10) references member(member_no),
+site_no number(10) references site(site_no)
+);
+
+create table agegroup(
+agegroup_no number(10) primary key,
+agegroup_standard NVARCHAR2(20)
+);
+
+create table ticket(
+agegroup_no number(10),
+site_no number(10),
+ticket_price number(10),
+constraint ticket_pk primary key(agegroup_no , site_no)
+);
+
+create table seogwipo(
+seogwipo_detail_address NVARCHAR2(100),
+site_no number(10) references site(site_no)
+);
+
+create table jeju(
+jeju_details_adderss NVARCHAR2(100),
+site_no number(10) references site(site_no)
+);
+
+create table accommodation(
+accommodation_no number(10) primary key,
+accommodation_name NVARCHAR2(100),
+accommodation_address NVARCHAR2(100),
+accommodation_img NVARCHAR2(100),
+accommodation_phone NVARCHAR2(100),
+accommodation_directions NVARCHAR2(100),
+site_no number(10) references site(site_no),
+owner_no number(10) references owner(owner_no)
+);
+
+create table accommodation_comment(
+accommodation_comment_no number(10) primary key , 
+accommodation_comment_content NVARCHAR2(1333),
+accommodation_comment_date date,
+accommodation_comment_avg number(10),
+accommodation_no number(10) references accommodation(accommodation_no),
+member_no number(10) references member(member_no)
+);
+
+create table notice(
+notice_no number(10) primary key,
+notice_title nvarchar2(100),
+notice_content nvarchar2(1333),
+notice_date date,
+notice_cnt number(10),
+users_no number(10) references users(users_no)
+);
+
+create table notice_comment(
+notice_comment_no number(10) primary key,
+notice_comment_content nvarchar2(1333),
+notice_comment_date date,
+member_no number(10) references member(member_no),
+notice_no number(10) references notice(notice_no)
+);
+
+create table travleschedule(
+travleschedule_no number(10) ,
+member_no number(10),
+travleschedule_date date,
+schedule nvarchar2(100),
+constraint travleschedule_pk primary key(travleschedule_no , member_no)
+);
+
+create table travleschedule_details(
+site_no number(10),
+travleschedule_no number(10),
+member_no number(10),
+constraint travleschedule_details FOREIGN key(travleschedule_no, member_no) references travleschedule(travleschedule_no, member_no),
+constraint travleschedule_details_pk primary key(site_no)
+);
+
+
+create table member_meeting(
+meeting_no number(10) primary key,
+meeting_name nvarchar2(50),
+meeting_total_number number(10)
+);
+
+create table meeting_join(
+member_no number(10),
+meeting_no number(10),
+constraint meeting_join_pk primary key(member_no , meeting_no)
+);
+
+create table meetingboard(
+meetingboard_no number(10) primary key,
+meetingboard_title nvarchar2(100),
+meetingboard_content nvarchar2(1333),
+meetingboard_date date,
+meetingboard_cnt number(10),
+meetingboard_img nvarchar2(100),
+member_no number(10) references member(member_no),
+meeting_no number(10) references member_meeting(meeting_no)
+);
+
+create table meetingboard_comment(
+meetingboard_comment_no number(10) primary key,
+meetingboard_comment_content nvarchar2(1333),
+meetingboard_comment_date date,
+meetingboard_no number(10) references meetingboard(meetingboard_no)
+);
+
+create table freeboard(
+freeboard_no number(10) primary key,
+freeboard_title nvarchar2(100),
+freeboard_content nvarchar2(1333),
+freeboard_date date,
+freeboard_cnt number(10),
+freeboard_img nvarchar2(100),
+member_no number(10) references member(member_no)
+);
+
+create table freeboard_comment(
+freeboard_comment_no number(10) primary key,
+freeboard_comment_content nvarchar2(1333),
+freeboard_comment_date date,
+freeboard_no number(10) references freeboard(freeboard_no)
+);
+
+create table room(
+accommodation_no number(10),
+room_no number(10),
+room_name nvarchar2(50),
+room_price number(10),
+room_use_number number(10),
+constraint room_pk primary key(accommodation_no , room_no)
+);
+
+create table room_img(
+room_no number(10),
+accommodation_no number(10),
+room_img nvarchar2(100),
+constraint room_img_pk primary key(accommodation_no , room_no)
+);
+
+create table reserve(
+reserve_no number(10) primary key,
+stay_people number(10),
+reserve_price number(10),
+check_in date,
+check_out date,
+member_no number(10) references member(member_no),
+owner_no number(10) references owner(owner_no)
+);
+
+create table reserve_details(
+reserve_date date,
+reserve_total_price number(10),
+reserve_no number(10),
+room_no number(10),
+accommodation_no number(10),
+constraint reserve_details_pk primary key(reserve_no, room_no , accommodation_no)
+);
+
+create table message(
+message_no number(10) primary key,
+message_receive_id nvarchar2(50),
+message_send_id nvarchar2(50),
+message_title nvarchar2(100),
+message_content nvarchar2(1333),
+message_date date,
+message_receive_date date,
+message_receive_check number(5)
+);
+
+create table message_box(
+member_no number(10),
+message_no number(10),
+constraint message_box_pk primary key(member_no , message_no)
+);
+
+
+drop table message_box;
+drop table message;
+drop table freeboard_comment;
+drop table freeboard;
+drop table notice_comment;
+drop table notice;
+drop table meetingboard_comment;
+drop table meetingboard;
+drop table meeting_join;
+drop table users_meeting;
+drop table room_img;
+drop table room;
+drop table reserve_details;
+drop table reserve;
+drop table accommodation_comment;
+drop table accommodation;
+drop table travleschedule_details;
+drop table travleschedule;
+drop table site_comment;
+drop table agegroup;
+drop table ticket;
+drop table jeju;
+drop table seogwipo;
+drop table site;
+drop table owner;
+drop table member;
+drop table authorities;
+drop table users;
