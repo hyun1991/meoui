@@ -7,6 +7,6 @@
 		<typeAlias type="com.jeju.meoui.vo.FreeBoard" alias="FreeBoard"/>
 		<typeAlias type="com.jeju.meoui.vo.FreeBoardComment" alias="FreeBoardComment"/>
 	    <typeAlias type="com.jeju.meoui.vo.Notice" alias="Notice"/>
-	    <typeAlias type="com.jeju.meoui.vo.FreeboardComment" alias="FreeboardComment"/>
+	    <typeAlias type="com.jeju.meoui.vo.FreeBoardComment" alias="FreeboardComment"/>
 	</typeAliases>
 </configuration>
