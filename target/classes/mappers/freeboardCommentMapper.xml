@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="FreeboardCommentMapper">
+<!-- 1. 댓글 작성 -->
+	<insert id="insertComment" parameterType="FreeboardComment">
+		<selectKey keyProperty="freeboardCommentNo" resultType="int" order="BEFORE">
+			<![CDATA[
+				insert into freeboardComment(freeboardComment_no, freeboardComment_content, freeboard_date)
+				valus(#{freeboardCommentNo}, #{freeboardCommentContent}, sysdate)
+			]]>
+		</selectKey>
+	</insert>
+<!-- 2. 자유게시판 번호 별 댓글 조회 -->
+	<select id="selectCommentList" parameterType="int" resultType="freeboard">
+		<![CDATA[
+			select * from freeboardComment where freeboard_no=#{freeboardNo}
+		]]>
+	</select>
+<!-- 3. 댓글 수정 -->
+	<update id="updateComment" parameterType="FreeboardComment">
+		<![CDATA[
+			update freeboardComment set freeboard_content=#{freeboardCommentTitle} where member_no=#{memberNo}
+		]]>
+	</update>
+<!-- 4. 댓글 삭제(단일 삭제) -->
+	<delete id="deleteComment" parameterType="int">
+		<![CDATA[
+			delete from freeboardComment where member_no=#{memberNo}
+		]]>
+	</delete>
+<!-- 5. 자유게시판 번호 별 댓글 전체 삭제하기(전체삭제) -->
+	<delete id="deleteAllComment" parameterType="int">
+		<![CDATA[
+			delete from freeboardComment where freeboard_no=#{freeboardNo}
+		]]>
+	</delete>
+<!-- 6. 자유게시판 댓글 번호별 자유게시판 번호 조회 -->
+	<select id="selectfreeboardCommentNo">
+		<![CDATA[
+			select freeboardNo from freeboardComment where freeboardComment_no=#{freeboardCommentNo}
+		]]>
+	</select>
+</mapper>

@@ -4,7 +4,7 @@
 <mapper namespace="FreeboardMapper">
 
 <!-- 1. 자유게시판 작성 -->
-	<insert id="insertFreeboard" parameterType="FreeBoard">
+	<insert id="insertFreeboard" parameterType="Freeboard">
 	<selectKey keyProperty="freeboardNo" resultType="int" order="BEFORE">
 		select freeboard_seq.nextval from dual
 	</selectKey>
@@ -30,7 +30,7 @@
 		]]>
 	</select>
 <!-- 4. 자유게시판 수정 -->
-	<update id="updateFreeboard" parameterType="FreeBoaard">
+	<update id="updateFreeboard" parameterType="Freeboard">
 		<![CDATA[
 			update freeboard set freeboard_title=#{freeboardTitle}, freeboard_content=#{freeboardContent}, freeboard_img=#{freeboardImg}
 			where member_no=#{memberNo}

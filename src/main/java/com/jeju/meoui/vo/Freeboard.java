@@ -5,7 +5,7 @@ import java.util.Date;
 import lombok.*;
 
 @Data
-public class FreeBoard {
+public class Freeboard {
 	private int freeboardNo;			// 자유게시판 번호
 	private String freeboardTitle;		// 자유게시판 제목
 	private String freeboardContent;	// 자유게시판 내용
