@@ -13,7 +13,60 @@ insert into noticeComment
 values(#{noticeCommentNo},#{noticeCommentContent},sysdate,#{memberNo},#{noticeNo})
 ]]>
 </insert>
-<!-- 2. 공지게시판 상세조회 및 달린 댓글 조회 -->
-
-
+<!-- 2. 공지게시판 리스트 조회 -->
+<select id="selectNoticeList" parameterType="hashmap" resultType="Notice">
+<![CDATA[
+select * from
+(select rownum rnum, b.*from
+(select noticeNo,noticeTitle,noticeDate,noticeCnt,usersNo from notice order by noticeNo desc) b
+ where ROWNUM<=#{end})
+ where rnum>=#{start}
+]]>
+</select>
+<!-- 3. 공지게시글 갱신 (글제목 과 글내용 수정 가능) -->
+<!-- 조건: 게시글 번호 -->
+<update id="updateNotice" parameterType="Notice">
+update notice set noticeTitle=#{noticeTitle},noticeContent=#{noticeContent} where noticeNo=#{noticeNo}
+</update>
+<!-- 4. 공지게시글 삭제 -->
+<!-- 조건: 게시글 번호 -->
+<delete id="deleteNotice" parameterType="int">
+delete from notice where noticeNo=#{noticeNo}
+</delete>
+<!-- 5. 공지게시글 전체 개수 조회 -->
+<select id="findByMax" resultType="int">
+   <![CDATA[
+   select count(*) from notice
+   ]]>
+ </select>
+ <!-- 6. 공지게시글 조회수 증가 -->
+ <update id="incrementCnt" parameterType="int">
+ update notice set noticeCnt=noticeCnt+1 where noticeNo=#{noticeNo}
+ </update>  
+  <!-- 7. 공지게시판 상세조회 및 달린 댓글 조회 -->
+<select id="selectNotice" parameterType="hashmap" resultMap="noticeMap">
+<![CDATA[
+ select n.noticeNo noticeNo, n.noticeTitle noticeTitle, n.noticeContent noticeContent, 
+ n.noticeDate noticeDate, n.noticeCnt noticeCnt, n.usersNo, usersNo, c.noticeCommentNo noticeCommentNo,
+ c.noticeCommentContent noticeCommentContent, c.noticeCommentDate,noticeCommentDate, c.memberNo memberNo,
+ c.noticeNo cnoticeNo  
+ from notice n, noticeComment c
+ where n.noticeNo=c.noticeNo(+) and n.noticeNo=#{noticeNo};
+]]>
+</select>
+<resultMap type="Notice" id="noticeMap">
+       <result property="noticeNo" column="noticeNo" />
+       <result property="noticeTitle" column="noticeTitle" />
+        <result property="noticeContent" column="noticeContent" />
+        <result property="noticeDate" column="noticeDate" />
+        <result property="noticeCnt" column="noticeCnt" />
+        <result property="usersNo" column="usersNo" />
+        <collection property="noticeComment" ofType="NoticeComment">
+        <result property="noticeCommentNo" column="noticeCommentNo" />
+        <result property="noticeCommentContent" column="noticeCommentContent" />
+        <result property="noticeCommentDate" column="noticeCommentDate" />
+        <result property="memberNo" column="memberNo" />
+        <result property="noticeNo" column="cnoticeNo" />
+        </collection>
+</resultMap>
 </mapper>
