@@ -12,10 +12,17 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>Insert title here</title>
+<title>사이드 네비게이션</title>
+<style>
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+#sideNavigation{
+	font-family: 'Jeju Gothic', serif;
+	margin: 20px;
+}
+</style>
 </head>
 <body>
-	<ul class="nav nav-pills nav-stacked">
+	<ul class="nav nav-pills nav-stacked" id="sideNavigation">
 		<li>카테고리별 조회</li>
 		<li>&nbsp</li>
 		<li class="active"><a href="#">카테고리11</a></li>
@@ -23,7 +30,7 @@
 		<li><a href="#">카테고리3</a></li>
 		<li><a href="#">카테고리4</a></li>
 		<li>&nbsp</li>
-		<li>지역별 조회</li>
+		<li>가격별 조회</li>
 		<li>&nbsp</li>
 		<li><a href="#">지역 1</a></li>
 		<li><a href="#">지역 2</a></li>
