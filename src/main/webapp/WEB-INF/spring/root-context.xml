@@ -22,7 +22,7 @@
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 	<context:annotation-config/>
-	<context:component-scan base-package="com.jeju.meoui.dao.test"/>
+	<context:component-scan base-package="com.jeju.meoui"/>
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
