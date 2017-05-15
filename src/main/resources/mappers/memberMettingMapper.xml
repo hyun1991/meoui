@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mapper namespace="MemberMeetingMapper">
+
+	<!-- 모임생성 -->
+
+	<insert id="insertMemberMeeting" parameterType="MemberMeeting">
+		<selectKey keyProperty="meetingNo" resultType="int" order="BEFORE">
+			select member_seq.nextval from dual
+		</selectKey>
+		<![CDATA[
+			insert into member_meeting(member_meeting_no, member_meeting_Name 
+			meetingTotalNumber)
+			values(#{meetingNo}, #{meetingName}, #{meetingTotalNumber})
+		]]>
+	</insert>
+	
+	<!-- 모임수정 -->
+	<update id="updateMeetingName" parameterType="MemberMeeting">	
+		<![CDATA[
+		update member_meeting set member_meeting_name=#{meetingName}
+		 where meeting_name={meetingName}		
+		]]>
+	</update>
+	
+	<!-- 모임삭제 -->
+	<delete id="deleteMemberMeeting" parameterType="Int">
+		<![CDATA[
+			delete from member_meeting where member_meeting_no=#{meetingNo}
+		]]>	
+	</delete>
+	<!-- 모임 리스트 출력 -->
+	<select id = "selectAllMemberMeetingList" resultType="MemberMeeting">
+		<![CDATA[
+			select member_meeting_no, member_meeting_name, member_meeting_total_number 
+			from member_meeting
+		]]>		
+	</select>	
+	
+	<!-- 모임명으로 검색  -->
+	<select id = "selectMeetingName" parameterType="String" resultType="MemberMeeting">
+	<![CDATA[
+		select member_meeting_no, member_meeting_name, member_meeting_total_number 
+		from member_meeting where member_meeting = #{meetingName} desc
+	]]>
+	</select>
+			
+	<!-- 모임 인원수별 리스트 보기 -->			
+	<select id = "selectMemberTotal" parameterType="String" resultType="MemberMeeting">
+	<![CDATA[
+		select member_meeting_no, member_meeting_name, member_meeting_total_number 
+			from member_meeting order by member_total_number =#{meetingTotalNumber}	
+	]]>
+	
+	
+	</select>
+	
+	
+				
+</mapper>
