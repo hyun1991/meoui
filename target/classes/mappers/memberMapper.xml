@@ -45,7 +45,7 @@
 	<!-- 조건: 회원아이디, 회원이름, 회원이메일-->
 	<select id="findByMemberPassword" parameterType="HashMap" resultType="String">
 		<![CDATA[
-			select member_password from member where member_name=#{memberName} and member_email=#{memberEmail} and member_id=#{memberId}
+			select member_password from member where member_name=#{memberName} and member_mail=#{memberMail} and member_id=#{memberId}
 		]]>
 	</select>
 	

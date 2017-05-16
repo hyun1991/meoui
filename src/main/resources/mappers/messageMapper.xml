@@ -31,9 +31,5 @@
  </insert>
  
  <!-- 2. 수신인 읽은날짜, 확인여부 적용수정 -->
- <update id="updateMessage">
- 	<![CDATA[
- 		update message set message_receive_date=
- 	]]>
- </update>
+
 </mapper>

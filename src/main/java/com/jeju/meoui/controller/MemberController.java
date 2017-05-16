@@ -47,17 +47,7 @@ public class MemberController {
 		service.removeMember(memberId);
 		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}
-	//	4-1. 회원 비밀번호 찾기 폼뷰(미구현)
-	@RequestMapping(value="/member/pwsearch", method=RequestMethod.GET)
-	public String selectByMemberPassword(){
-		return "/member/pwsearch";
-	}
-	//	4-2. 회원 비밀번호 찾기 완료(미구현)
-	@RequestMapping(value="/member/pwsearch", method=RequestMethod.POST)
-	public String selectByMemberPassword(String memberName, String memberMail, String memberId, Model model){
-		model.addAttribute("result", service.searchByMemberPassword(memberName, memberId, memberMail));
-		return "결과폼 필요합니다.";
-	}
+	
 	//	5. 회원별 정보조회하기(미구현)
 	@RequestMapping(value="/member/view/{memberId}", method=RequestMethod.GET)
 	public String viewMember(@PathVariable String memberId, Model model){
@@ -92,12 +82,5 @@ public class MemberController {
 			return new ResponseEntity<String>("success", HttpStatus.OK);
 		else 
 			return new ResponseEntity<String>("fail", HttpStatus.OK);
-	}
-	//	9. 회원 아이디 찾기(미구현)
-	@RequestMapping(value="/member/idsearch", method=RequestMethod.POST)
-	public String selectByMemberId(String memberName, String memberMail, Model model){
-		logger.info("아이디찾기{}", service.searchByMemberId(memberName, memberMail));
-		model.addAttribute("result", service.searchByMemberId(memberName, memberMail));
-		return "#";
 	}
 }
