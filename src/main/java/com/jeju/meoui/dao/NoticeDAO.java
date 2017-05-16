@@ -24,8 +24,8 @@ public class NoticeDAO {
 	//3.공지게시판 리스트 조회
 	public List<Notice> selectNoticeList(int startRow, int lastRow){
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("startRow", startRow);
-		map.put("lastRow", lastRow);
+		map.put("start", startRow);
+		map.put("end", lastRow);
 		return template.selectList("NoticeMapper.selectNoticeList",map);
 	}
 	//4. 공지게시글 갱신 (글제목 과 글내용 수정 가능)
