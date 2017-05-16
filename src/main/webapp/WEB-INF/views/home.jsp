@@ -98,9 +98,8 @@
 			</div>
 		</div>
 	</div>
-
+	<%@include file="/websocket.jsp"%>
 </body>
-
 <script>
 	$(window).bind('scroll', function() {
 		if ($(window).scrollTop() > 50) {
