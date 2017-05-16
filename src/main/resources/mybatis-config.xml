@@ -24,5 +24,6 @@
 	    <typeAlias type="com.jeju.meoui.vo.FreeBoardComment" alias="FreeboardComment"/>
 	    <typeAlias type="com.jeju.meoui.vo.MemberMeeting" alias="MemberMeeting"/>
 	    <typeAlias type="com.jeju.meoui.vo.Message" alias="Message"/>
+	    <typeAlias type="com.jeju.meoui.vo.Owner" alias="Owner"/>
 	</typeAliases>
 </configuration>

@@ -2,6 +2,8 @@ package com.jeju.meoui.service;
 
 import java.util.*;
 
+import javax.servlet.http.*;
+
 import org.slf4j.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
@@ -41,7 +43,9 @@ public class MemberService {
 		return dao.selectByMember(memberId);
 	}
 	//	7. 로그인
-	public int memberLogin(String memberId, String memberPassword){
+	public int memberLogin(String memberId, String memberPassword, HttpSession session){
+		int memberNo= dao.selectByMemberNo(memberId);
+		session.setAttribute("memberNo", memberNo);
 		return dao.memberLogin(memberId, memberPassword);
 	}
 	//	8. 회원 아이디 중복체크
