@@ -31,17 +31,17 @@
 			<br>
 			<div class="tab-content">
 				<div id="findId" class="tab-pane fade in active">
-					<form>
+					<form action="/meoui//member/idsearch" method="post">
 						<div class="form-group row">
 							<div class="form-group col-md-6">
 								<label for="email">이름</label> <input type="email"
-									class="form-control" id="email">
+									class="form-control" id="email" name="memberName">
 							</div>
 						</div>
 						<div class="form-group row">
 							<div class="form-group col-md-6">
 								<label for="email">이메일</label> <input type="email"
-									class="form-control" id="email">
+									class="form-control" id="email" name="memberMail">
 
 							</div>
 							<div class="form-group">
@@ -75,9 +75,5 @@
 			</div>
 		</div>
 	</div>
-
-
-
-
 </body>
 </html>

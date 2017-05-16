@@ -18,7 +18,7 @@ public class MemberController {
 	private MemberService service;
 	private static final Logger logger= LoggerFactory.getLogger(MemberController.class);
 	
-	//	1. 회원가입(뷰단 연결완료)
+	//	1. 회원가입(완료)
 	@RequestMapping(value="/member/join", method=RequestMethod.POST)
 	public String joinMember(@ModelAttribute Member member, @RequestParam String memberAddress1, @RequestParam String memberAddress2){
 		logger.info("회원가입 vo:{}", member);
@@ -63,40 +63,45 @@ public class MemberController {
 		model.addAttribute("result", service.getByMember(memberId));
 		return "결과폼 필요합니다.";
 	}
-	//	6. 회원 로그인처리
-	@RequestMapping(value="/member/login", method=RequestMethod.GET)
+	//	6. 회원 로그인처리(완료)
+	@RequestMapping(value="/member/login", method=RequestMethod.POST)
 	public String memberLogin(@RequestParam String memberId, @RequestParam String memberPassword, HttpSession session){
 		int result= service.memberLogin(memberId, memberPassword);
 		//	세션값 저장한다. 
-		if(result==1)
+		if(result==1){
 			session.setAttribute("memberId", memberId);
-		return "redirect:/";
+			logger.info("로그인 아이디:{}", session.getAttribute("memberId"));
+			return "redirect:/";
+		}
+		else
+			return "redirect:/";
 	}
-	//	7. 회원 로그아웃
+	//	7. 회원 로그아웃(완료)
 	@RequestMapping(value="/member/logout", method=RequestMethod.GET)
 	public String memberLogout(HttpSession session){
 		session.removeAttribute("memberId");
 		return "redirect:/";
 	}
-	//	8. 아이디 중복체크
+	//	8. 아이디 중복체크(완료)
 	@RequestMapping(value="/member/check", method=RequestMethod.POST)
 	public ResponseEntity<String> checkId(@RequestParam String memberId){
+		logger.info("중복체크 아이디값:{}", memberId);
 		int result= service.checkId(memberId);
 		if(result==0)
-			return new ResponseEntity<String>("suuccess", HttpStatus.OK);
-		else
+			return new ResponseEntity<String>("success", HttpStatus.OK);
+		else 
 			return new ResponseEntity<String>("fail", HttpStatus.OK);
 	}
-	//	9-1. 회원 비밀번호 찾기 폼뷰
+	//	9-1. 회원 아이디 찾기 폼뷰
 	@RequestMapping(value="/member/idsearch", method=RequestMethod.GET)
 	public String selectByMemberId(){
-		return "/member/pwsearch";
+		return "findid";
 	}
-	//	9-2. 회원 비밀번호 찾기 완료.
+	//	9-2. 회원 아이디 찾기 완료.
 	@RequestMapping(value="/member/idsearch", method=RequestMethod.POST)
 	public String selectByMemberId(String memberName, String memberMail, Model model){
 		model.addAttribute("result", service.searchByMemberId(memberName, memberMail));
-		return "결과폼 필요합니다.";
+		return "idsearch";
 	}
 	
 }
