@@ -34,7 +34,7 @@
 					<form action="/meoui//member/idsearch" method="post">
 						<div class="form-group row">
 							<div class="form-group col-md-6">
-								<label for="email">이름</label> <input type="email"
+								<label for="usr">이름</label> <input type="text"
 									class="form-control" id="email" name="memberName">
 							</div>
 						</div>
@@ -44,8 +44,7 @@
 									class="form-control" id="email" name="memberMail">
 
 							</div>
-							<div class="form-group">
-								<label for="email"></label>
+							<div class="modal-footer">
 								<button type="submit" class="btn btn-default">조회</button>
 							</div>
 						</div>

@@ -11,7 +11,7 @@ import org.springframework.web.servlet.*;
 import com.jeju.meoui.service.*;
 import com.jeju.meoui.vo.*;
 
-@Controller
+@RestController
 public class FreeBoardCommentController {
 	@Autowired
 	private FreeBoardCommentService commentService;

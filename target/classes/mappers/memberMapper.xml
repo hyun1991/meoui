@@ -37,7 +37,7 @@
 	<!-- 조건: 회원이름, 회원이메일 -->
 	<select id="findByMemberId" parameterType="HashMap" resultType="String">
 		<![CDATA[
-			select member_id from member where member_name=#{memberName} and member_email=#{memberEmail}
+			select member_id from member where member_name=#{memberName} and member_mail=#{memberMail}
 		]]>
 	</select>
 	

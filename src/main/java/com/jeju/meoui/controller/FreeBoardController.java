@@ -24,7 +24,7 @@ public class FreeBoardController {
 		return "redirect:/freeboard/list?pageNo=1";
 	}
 	//2. 자유게시판 수정하기(작성폼)
-	@RequestMapping(value="/freeboard/update", method=RequestMethod.POST)
+	@RequestMapping(value="/freeboard/update", method=RequestMethod.GET)
 	public String updateFreeboardForm() {
 		return "freeboard/updatejsp";
 	}
@@ -32,11 +32,6 @@ public class FreeBoardController {
 	@RequestMapping(value="/freeboard/update", method=RequestMethod.POST)
 	public String updateFreeboardSuccess(ModelAndView model) {
 		return "redirect:/freeboard/list?pageNo=1";
-	}
-	//2-2. 자유게시판 수정하기 수정 실패
-	@RequestMapping(value="/freeboard/udate", method=RequestMethod.POST)
-	public String updateFreeboardFail(ModelAndView model) {
-		return "freeboard/update.jsp";
 	}
 	//3. 자유게시판 삭제하기
 	@RequestMapping(value="/freeboard/delete/{freeboardNo}", method=RequestMethod.DELETE)
