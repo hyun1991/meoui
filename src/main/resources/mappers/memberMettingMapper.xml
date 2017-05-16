@@ -52,10 +52,14 @@
 		select member_meeting_no, member_meeting_name, member_meeting_total_number 
 			from member_meeting order by member_total_number =#{meetingTotalNumber}	
 	]]>
-	
-	
 	</select>
-	
-	
+	<!-- 내가 가입한 모임 보기 -->
+	<select id ="selectMyMeeting" parameterType="int" resultType="MemberMeeting">
+	<![CDATA[
+		select m.meeting_no, m.meeting_name, m.meeting_total_number
+		from member_meeting m, users u, meeting_join j
+		where j.member_no = #{u.users_no} and j.meeting_no = #{m.meeting_no}
+	]]>	
+	</select>	
 				
 </mapper>
