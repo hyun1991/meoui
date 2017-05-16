@@ -30,9 +30,10 @@ public class MemberController {
 		return "redirect:/";
 	}
 	//	2-1. 회원수정 폼뷰(미구현)
-	@RequestMapping(value="/member/update", method=RequestMethod.GET)
-	public String updateMember(){
-		return "member/update";
+	@RequestMapping(value="/member/update/{memberId}", method=RequestMethod.GET)
+	public String updateMember(@PathVariable String memberId, Model model){
+		model.addAttribute("result", service.getByMember(memberId));
+		return "수정폼 페이지 필요";
 	}
 	//	2-2. 회원수정 완료(미구현)
 	@RequestMapping(value="/member/update", method=RequestMethod.POST)
@@ -51,7 +52,7 @@ public class MemberController {
 		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}
 	
-	//	5. 회원별 정보조회하기(미구현)
+	//	5. 회원별 정보조회하기(미완료)
 	@RequestMapping(value="/member/view/{memberId}", method=RequestMethod.GET)
 	public String viewMember(@PathVariable String memberId, Model model){
 		model.addAttribute("result", service.getByMember(memberId));

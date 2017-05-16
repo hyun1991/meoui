@@ -57,13 +57,13 @@ public class OwnerController {
 		service.removeOwner(ownerId);
 		return new ResponseEntity<String>("success", HttpStatus.OK);
 	} 
-	//	업주 상세뷰
+	//	업주 상세뷰(미완료)
 	@RequestMapping(value="/owner/view/{ownerId}", method=RequestMethod.GET)
 	public String viewOwner(@PathVariable String ownerId, Model model){
 		model.addAttribute("result", service.getByOwner(ownerId));
 		return "상세조회 뷰페이지";
 	}
-	//	업주리스트조회
+	//	업주리스트조회(미완료)
 	@RequestMapping(value="/owner/list", method=RequestMethod.GET)
 	public String ownerList(Model model){
 		model.addAttribute("result", service.getAllOwner());
