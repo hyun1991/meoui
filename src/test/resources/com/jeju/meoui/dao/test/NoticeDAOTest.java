@@ -19,10 +19,13 @@ public class NoticeDAOTest {
 	private NoticeDAO dao;
 	
 	@Test
-	public void insertNoticeTest() throws ParseException{
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		Date date2 =  (Date) sdf.parse("sysdate");
-		dao.insertNotice(new Notice(2,"test2","test",date2,0,1));
-	}
+	public void insertNoticeTest(){
+		Notice notice = new Notice();
+		notice.setNoticeTitle("test2");
+		notice.setNoticeContent("test");
+		notice.setNoticeCnt(0);
+		notice.setUsersNo(1);
+		dao.insertNotice(notice);
+		}
 
 }
