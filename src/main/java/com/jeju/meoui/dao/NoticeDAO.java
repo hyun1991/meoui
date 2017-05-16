@@ -18,8 +18,8 @@ public class NoticeDAO {
 		template.insert("NoticeMapper.insertNotice", notice);
 	}
 	//2.공지게시판 상세조회
-	public int selectNoticeList(int noticeNo){
-		return template.selectOne("NoticeMapper.selectNoticeList", noticeNo);
+	public Notice selectNotice(int noticeNo){
+		return template.selectOne("NoticeMapper.selectNotice", noticeNo);
 	}
 	//3.공지게시판 리스트 조회
 	public List<Notice> selectNoticeList(int startRow, int lastRow){
