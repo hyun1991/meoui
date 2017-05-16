@@ -17,28 +17,39 @@
 @import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
 
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
-
 .navbar {
-	font-family: 'Jeju Gothic', serif;
+	font-family: 'Jeju Gothic', serif; #
+	color: #0061ff;
 }
-
 #brand {
 	font-family: 'Jeju Hallasan', serif;
+	color: black;
+}
+#signUp, #signIn, #menu{
+  color:black;
+}
+#navbar {
+	background-color:  #f7ff14;
 }
 </style>
 </head>
 <body>
 	<%@include file="/signInAndUp.jsp"%>
-	<div class="container-fluid">
-		<nav class="navbar navbar-default row text-center">
+		<nav class="navbar navbar-default row text-center" id="navbar">
 			<div class="navbar-header col-md-12">
 				<div class="col-md-1"></div>
 				<a class="navbar-brand navbar-left"
-					href="http://localhost:8087/meoui/" id="brand">제주를 부탁해</a>
-				<ul class="nav navbar-nav navbar-right col-md-3">
-					<li id="joinMenu"><a href="#" data-toggle="modal" data-target="#signUpForm">회원가입</a></li>
+					href="http://localhost:8087/meoui/" id="brand"><p>제주를</p><p>부탁해</p></a>
+				<ul class="nav navbar-nav navbar-right col-md-7">
+				<li><a href=""><img src="icons/facebook_circle.svg"
+						style="width: 25px; height: 25px;" /></a></li>
+				<li><a href=""><img src="icons/twitter_circle.svg"
+						style="width: 25px; height: 25px;" /></a></li>
+				<li><a href=""><img src="icons/instagram-round-flat.svg"
+						style="width: 25px; height: 25px;" /></a></li>
+					<li class="pull-right" id="joinMenu"><a href="#" data-toggle="modal" data-target="#signUpForm" id="signUp">회원가입</a></li>
 					<li class="col-md-1"></li>
-					<li id="loginMenu"><a href="#" data-toggle="modal" data-target="#signInForm">로그인</a></li>
+					<li class="pull-right" id="loginMenu"><a href="#" data-toggle="modal" data-target="#signInForm" id="signIn">로그인</a></li>
 					<li id="loginCheck"><%=session.getAttribute("memberId") %>님 환영합니다</li>
 					<li>
 						<a href="/meoui/member/logout"><button type="button" class="btn btn-default" id="logoutBtn">로그아웃</button></a>
@@ -47,18 +58,17 @@
 				</ul>
 			</div>
 			<ul class="nav navbar-nav col-md-12">
-				<li class="col-md-2"><a href="/meoui/attractionlist.jsp">제주
+				<li class="col-md-2"><a href="/meoui/attractionlist.jsp" id="menu">제주
 						관광명소 소개</a></li>
-				<li class="col-md-2"><a href="/meoui/directions.jsp">길 찾기</a></li>
-				<li class="col-md-2"><a href="/meoui/accomodationlist.jsp">숙박
+				<li class="col-md-2"><a href="/meoui/directions.jsp" id="menu">길 찾기</a></li>
+				<li class="col-md-2"><a href="/meoui/accomodationlist.jsp" id="menu">숙박
 						시설</a></li>
-				<li class="col-md-2"><a href="/meoui/meetingboard.jsp">모임
+				<li class="col-md-2"><a href="/meoui/meetingboard.jsp" id="menu">모임
 						게시판</a></li>
-				<li class="col-md-2"><a href="/meoui/noticeboard.jsp">공지사항</a></li>
-				<li class="col-md-2"><a href="/meoui/mypage.jsp">마이페이지</a></li>
+				<li class="col-md-2"><a href="/meoui/noticeboard.jsp" id="menu">공지사항</a></li>
+				<li class="col-md-2"><a href="/meoui/mypage.jsp" id="menu">마이페이지</a></li>
 			</ul>
 		</nav>
-	</div>
 </body>
 <script>
 	$(document).ready(function() {

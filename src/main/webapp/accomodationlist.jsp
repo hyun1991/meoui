@@ -28,15 +28,16 @@
 						<input type="search" class="form-control" size="50"
 							placeholder="검색" required>
 						<div class="input-group-btn">
-							<button type="button" class="btn btn-success">검색</button>
+							<button type="button" class="btn btn-default" style="background-color: #f7ff14;">검색</button>
 						</div>
 					</div>
 				</form>
 			</div>
 			<div class="col-md-9">
-				<br>
-				<h3>카테고리 별 제주 숙박업소 노출</h3>
-				<br>	
+				<hgroup style="margin: 50px;">
+				<h1>카테고리 별 제주 숙박업소 노출</h1>	
+				<h2>카테고리별로 조회해보세요.</h2>
+				</hgroup>
 				<p id="accomodationList" align="center"></p>
 			</div>
 		</div>
