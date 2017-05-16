@@ -10,6 +10,6 @@
 	    <typeAlias type="com.jeju.meoui.vo.NoticeComment" alias="NoticeComment"/>
 	    <typeAlias type="com.jeju.meoui.vo.FreeBoardComment" alias="FreeboardComment"/>
 	    <typeAlias type="com.jeju.meoui.vo.MemberMeeting" alias="MemberMeeting"/>
-	    <typeAlias type="com.jeju.meoui.vo.Message" alias="MemberMeeting"/>
+	    <typeAlias type="com.jeju.meoui.vo.Message" alias="Message"/>
 	</typeAliases>
 </configuration>
