@@ -10,13 +10,24 @@
 </head>
 <style>
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+
 body {
 	background-image: url(/meoui/images/sky.jpg);
 	background-repeat: no-repeat;
 }
+
 #menu {
-	background-color: #f2f5f7;
+	background-color: #f7ff14;
 	font-family: 'Jeju Gothic', serif;
+}
+
+#text, p {
+	color: black;
+}
+
+p {
+	border-style: solid 1px;
+	border-color: red;
 }
 </style>
 <body>
@@ -32,12 +43,12 @@ body {
 				</a></li>
 				<li class="col-md-2"><a data-toggle="tab" href="#leisure"
 					alt="잠수함/유람선/레저" id="text">잠수함/유람선/레저&nbsp<span class="badge">5</span></a></li>
-				<li class="col-md-2"><a data-toggle="tab" href="#theater">공연장/상영관/기타&nbsp<span
-						class="badge">5</span></a></li>
-				<li class="col-md-2"><a data-toggle="tab" href="#musuem">테마공원/박물관&nbsp<span
-						class="badge">5</span></a></li>
-				<li class="col-md-2"><a data-toggle="tab" href="#restaurant">음식점&nbsp<span
-						class="badge">5</span></a></li>
+				<li class="col-md-2"><a data-toggle="tab" href="#theater"
+					id="text">공연장/상영관/기타&nbsp<span class="badge">5</span></a></li>
+				<li class="col-md-2"><a data-toggle="tab" href="#musuem"
+					id="text">테마공원/박물관&nbsp<span class="badge">5</span></a></li>
+				<li class="col-md-2"><a data-toggle="tab" href="#restaurant"
+					id="text">음식점&nbsp<span class="badge">5</span></a></li>
 				<li class="col-md-1">
 					<p>&nbsp</p>
 				</li>
@@ -47,10 +58,11 @@ body {
 			<div class="row text-left">
 				<form class="form-inline">
 					<div class="input-group">
-						<input type="search" class="form-control input-lg" size="40"
+						<input type="search" class="form-control input-lg" size="30"
 							placeholder="목적지" required style="margin: 50px;">
 						<div class="input-group-btn">
-							<button type="button" class="btn btn-info btn-lg">검색</button>
+							<button type="button" class="btn btn-default btn-lg"
+								style="margin-left: 50px; background-color: #f7ff14;">검색</button>
 						</div>
 					</div>
 				</form>
@@ -82,9 +94,11 @@ body {
 				</div>
 			</div>
 		</div>
+		<div id="framewrap">
+			<iframe src="/meoui/websocket.jsp" height="200" width="300"
+				style="border: none;"></iframe>
+		</div>
 	</div>
-
-	<%@include file="/websocket.jsp"%>
 
 </body>
 <script>
@@ -97,10 +111,15 @@ body {
 	});
 </script>
 <script>
+	$(function() {
+		$("#framewrap").resizable().draggable();
+	});
+</script>
+<script>
 	var text = "";
-	for (var i = 0; i < 12; i++) {
+	for (var i = 0; i < 16; i++) {
 		text += '<div class="col-md-3"> <a href="/meoui/accomodationinfo.jsp">'
-				+ '<img class="img-responsive" src="/meoui/images/jeju.jpg" alt="attraction" width="300" height="550"> <div class="caption"> <p>Lorem ipsum...</p></div></a></div>';
+				+ '<img class="img-responsive" src="/meoui/images/jeju.jpg" alt="attraction" width="300px" height="450px"> <div class="caption"> <p>Lorem ipsum...</p></div></a></div>';
 	}
 	document.getElementById("attractionList").innerHTML = text;
 </script>
