@@ -37,14 +37,15 @@ public class MemberController {
 	public String updateMember(@ModelAttribute Member member, HttpSession session){
 		logger.info("회원수정 vo:{}", member);
 		service.modifyMember(member);
-		return "redirect:/";
+		return "redirect:/logout";
 	}
-	//	3. 회원탈퇴(미구현)
+	//	3. 회원탈퇴(완료)
 	@RequestMapping(value="/member/delete", method=RequestMethod.POST)
-	public String deleteMember(HttpSession session){
+	public ResponseEntity<String> deleteMember(HttpSession session){
 		String memberId= (String)session.getAttribute("memberId");
+		session.removeAttribute("memberId");
 		service.removeMember(memberId);
-		return "redirect:/";
+		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}
 	//	4-1. 회원 비밀번호 찾기 폼뷰(미구현)
 	@RequestMapping(value="/member/pwsearch", method=RequestMethod.GET)
