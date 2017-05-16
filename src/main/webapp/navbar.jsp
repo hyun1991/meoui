@@ -36,9 +36,14 @@
 				<a class="navbar-brand navbar-left"
 					href="http://localhost:8087/meoui/" id="brand">제주를 부탁해</a>
 				<ul class="nav navbar-nav navbar-right col-md-3">
-					<li><a href="#" data-toggle="modal" data-target="#signUpForm">회원가입</a></li>
+					<li id="joinMenu"><a href="#" data-toggle="modal" data-target="#signUpForm">회원가입</a></li>
 					<li class="col-md-1"></li>
-					<li><a href="#" data-toggle="modal" data-target="#signInForm">로그인</a></li>
+					<li id="loginMenu"><a href="#" data-toggle="modal" data-target="#signInForm">로그인</a></li>
+					<li id="loginCheck"><%=session.getAttribute("memberId") %>님 환영합니다</li>
+					<li>
+						<a href="/meoui/member/logout"><button type="button" class="btn btn-default" id="logoutBtn">로그아웃</button></a>
+						<button type="button" class="btn btn-default" id="deleteBtn">회원탈퇴</button>
+					</li>
 				</ul>
 			</div>
 			<ul class="nav navbar-nav col-md-12">
@@ -55,4 +60,42 @@
 		</nav>
 	</div>
 </body>
+<script>
+	$(document).ready(function() {
+		var userId="<%=session.getAttribute("memberId")%>"
+		$("#loginCheck").hide();
+		$("#logoutBtn").hide();
+		$("#deleteBtn").hide();
+		if(userId=="null"){
+			$("#joinMenu").show();
+			$("#loginMenu").show();
+		}
+		else{
+			$("#joinMenu").hide();
+			$("#loginMenu").hide();
+			$("#loginCheck").show();
+			$("#logoutBtn").show();
+			$("#deleteBtn").show();
+		}
+	})
+	$(document).ready(function(){
+		$("#deleteBtn").on("click", function() {
+			$.ajax({
+				type:"post",
+				url: "/meoui/member/delete",
+				success: function(result){
+					console.log(result)
+					if(result=="success"){
+						alert("회원탈퇴 되었습니다.")
+						$("#loginCheck").hide();
+						$("#logoutBtn").hide();
+						$("#deleteBtn").hide();
+						$("#joinMenu").show();
+						$("#loginMenu").show();
+					}
+				}
+			})
+		})
+	})
+</script>
 </html>

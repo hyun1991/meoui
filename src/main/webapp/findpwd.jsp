@@ -21,33 +21,30 @@
 		<div class="row">
 			<h2>계정정보찾기(아이디/비밀번호)</h2>
 			<br>
-		</div>
-
-		<div class="row">
+			</div>
+				<div class="row">
 			<ul class="nav nav-pills">
-				<li><a data-toggle="pill" href="#findId">아이디찾기</a></li>
-				<li class="active"><a data-toggle="pill" href="#findPwd">비밀번호
-						찾기</a></li>
+				<li class="active"><a data-toggle="pill" href="#findId">아이디찾기</a></li>
+				<li><a data-toggle="pill" href="#findPwd">비밀번호 찾기</a></li>
 			</ul>
 			<br>
 			<div class="tab-content">
 				<div id="findId" class="tab-pane fade in active">
-					<form>
+					<form action="/meoui//member/idsearch" method="post">
 						<div class="form-group row">
 							<div class="form-group col-md-6">
-								<label for="email">이름</label> <input type="email"
-									class="form-control" id="email">
+								<label for="usr">이름</label> <input type="text"
+									class="form-control" id="idSearchName">
 							</div>
 						</div>
 						<div class="form-group row">
 							<div class="form-group col-md-6">
 								<label for="email">이메일</label> <input type="email"
-									class="form-control" id="email">
+									class="form-control" id="idSearchMail">
 
 							</div>
-							<div class="form-group">
-								<label for="email"></label>
-								<button type="submit" class="btn btn-default">조회</button>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" id="idBtn">조회</button>
 							</div>
 						</div>
 					</form>
@@ -56,19 +53,25 @@
 					<form>
 						<div class="form-group row">
 							<div class="form-group col-md-6">
-								<label for="email">이름</label> <input type="email"
-									class="form-control" id="email">
+								<label for="email">아이디</label> <input type="text"
+									class="form-control" id="pwSearchId" name="memberId">
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="form-group col-md-6">
+								<label for="usr">이름</label> <input type="text"
+									class="form-control" id="pwSearchName" name="garaName">
 							</div>
 						</div>
 						<div class="form-group row">
 							<div class="form-group col-md-6">
 								<label for="email">이메일</label> <input type="email"
-									class="form-control" id="email">
+									class="form-control" id="pwSearchMail" name="garaMail">
 
 							</div>
 							<div class="form-group">
 								<label for="email"></label>
-								<button type="submit" class="btn btn-default">조회</button>
+								<button type="submit" class="btn btn-default" id="pwBtn">조회</button>
 							</div>
 						</div>
 					</form>
@@ -76,9 +79,22 @@
 			</div>
 		</div>
 	</div>
-
-
-
-
 </body>
+<script>
+	$(document).ready(function() {
+		$("#pwBtn").on("click", function() {
+			var memberId= $("#pwSearchId").val()
+			var garaName= $("#idSearchName").val()
+			var garaMail= $("#idSearchMail").val()
+			$.ajax({
+				type:"post",
+				url:"/meoui/member/pwsearch",
+				data:{memberId:memberId, garaName: garaName, garaMail:garaMail},
+				success:function(reulst){
+					alert("찾으신 비밀번호는"+result+"입니다.")
+				}
+			})
+		})
+	})	
+</script>
 </html>

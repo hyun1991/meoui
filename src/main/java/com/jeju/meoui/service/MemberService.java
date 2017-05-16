@@ -2,9 +2,11 @@ package com.jeju.meoui.service;
 
 import java.util.*;
 
+import org.slf4j.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 
+import com.jeju.meoui.controller.*;
 import com.jeju.meoui.dao.*;
 import com.jeju.meoui.vo.*;
 
@@ -12,7 +14,7 @@ import com.jeju.meoui.vo.*;
 public class MemberService {
 	@Autowired
 	private MemberDAO dao;
-	
+	private static final Logger logger= LoggerFactory.getLogger(MemberService.class);
 	//	1. 회원 추가하기
 	public void createMember(Member member){
 		dao.insertMember(member);
@@ -26,8 +28,9 @@ public class MemberService {
 		dao.deleteMember(memberId);
 	}
 	//	4. 회원 아이디 조회하기
-	public String searchByMemberId(String memberName, String memberMail){
-		return dao.findByMemberId(memberName, memberMail);
+	public List<String> searchByMemberId(String memberName, String memberMail){
+		List<String> list= dao.findByMemberId(memberName, memberMail);
+		return list;
 	}
 	//	5. 회원 비밀번호 조회하기
 	public String searchByMemberPassword(String memberName, String memberId, String memberMail){

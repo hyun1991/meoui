@@ -37,7 +37,7 @@
 	<!-- 조건: 회원이름, 회원이메일 -->
 	<select id="findByMemberId" parameterType="HashMap" resultType="String">
 		<![CDATA[
-			select member_id from member where member_name=#{memberName} and member_email=#{memberEmail}
+			select member_id from member where member_name=#{memberName} and member_mail=#{memberMail}
 		]]>
 	</select>
 	
@@ -45,7 +45,7 @@
 	<!-- 조건: 회원아이디, 회원이름, 회원이메일-->
 	<select id="findByMemberPassword" parameterType="HashMap" resultType="String">
 		<![CDATA[
-			select member_password from member where member_name=#{memberName} and member_email=#{memberEmail} and member_id=#{memberId}
+			select member_password from member where member_name=#{memberName} and member_mail=#{memberMail} and member_id=#{memberId}
 		]]>
 	</select>
 	
@@ -69,7 +69,7 @@
 	<!-- 조건: 아이디, 비밀번호 -->
 	<select id="memberLogin" parameterType="HashMap" resultType="int">
 		<![CDATA[
-			select 1 from member where member_id=#{memberId} and member_password=#{memberPassword}
+			select count(*) from member where member_id=#{memberId} and member_password=#{memberPassword}
 		]]>
 	</select>
 	
@@ -78,7 +78,7 @@
 		아이디 중복조회 시 1값 반환, 사용가능할시 0값 반환.
 	-->
 	<select id="checkId" parameterType="String" resultType="int">
-			select 1 from member where member_id=#{memberId}
+			select count(*) from member where member_id=#{memberId}
 	</select>
 	
 	<!-- 10. 회원 전체리스트 조회하기 -->
