@@ -14,6 +14,8 @@ import com.jeju.meoui.vo.*;
 
 @Controller
 public class MemberController {
+	//	회원 로그인시에 회원번호, 회원아이디 session값에 저장완료 됩니다.
+	//	단, 로그아웃 할시에는 둘다 사라집니다.
 	@Autowired
 	private MemberService service;
 	private static final Logger logger= LoggerFactory.getLogger(MemberController.class);
@@ -44,6 +46,7 @@ public class MemberController {
 	public ResponseEntity<String> deleteMember(HttpSession session){
 		String memberId= (String)session.getAttribute("memberId");
 		session.removeAttribute("memberId");
+		session.removeAttribute("memberNo");
 		service.removeMember(memberId);
 		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}
@@ -57,7 +60,7 @@ public class MemberController {
 	//	6. 회원 로그인처리(완료)
 	@RequestMapping(value="/member/login", method=RequestMethod.POST)
 	public String memberLogin(@RequestParam String memberId, @RequestParam String memberPassword, HttpSession session){
-		int result= service.memberLogin(memberId, memberPassword);
+		int result= service.memberLogin(memberId, memberPassword, session);
 		//	세션값 저장한다. 
 		if(result==1){
 			session.setAttribute("memberId", memberId);
