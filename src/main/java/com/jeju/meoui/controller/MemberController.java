@@ -74,6 +74,7 @@ public class MemberController {
 	@RequestMapping(value="/member/logout", method=RequestMethod.GET)
 	public String memberLogout(HttpSession session){
 		session.removeAttribute("memberId");
+		session.removeAttribute("memberNo");
 		return "redirect:/";
 	}
 	//	8. 아이디 중복체크(완료)
