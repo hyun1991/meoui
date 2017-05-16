@@ -39,7 +39,7 @@
 								class="form-control" id="memberPassword" name="memberPassword">
 						</div>
 
-						<a href="/meoui/member/idsearch" class="btn btn-default">아이디 찾기</a> <a
+						<a href="/meoui/findid.jsp" class="btn btn-default">아이디 찾기</a> <a
 							href="/meoui/findpwd.jsp" class="btn btn-default">비밀번호 찾기</a>
 					</div>
 					<div class="modal-footer">

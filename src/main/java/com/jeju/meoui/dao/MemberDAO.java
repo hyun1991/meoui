@@ -29,11 +29,11 @@ public class MemberDAO {
 	}
 	
 	//	4. 회원 아이디 조회하기(완료)
-	public String findByMemberId(String memberName, String memberMail){
+	public List<String> findByMemberId(String memberName, String memberMail){
 		HashMap<String, Object>map= new HashMap<String, Object>();
 		map.put("memberName", memberName);
 		map.put("memberMail", memberMail);
-		return template.selectOne("MemberMapper.findByMemberId", map);
+		return template.selectList("MemberMapper.findByMemberId", map);
 	}
 	
 	//	5. 회원 비밀번호 조회하기(완료)

@@ -28,8 +28,9 @@ public class MemberService {
 		dao.deleteMember(memberId);
 	}
 	//	4. 회원 아이디 조회하기
-	public String searchByMemberId(String memberName, String memberMail){
-		return dao.findByMemberId(memberName, memberMail);
+	public List<String> searchByMemberId(String memberName, String memberMail){
+		List<String> list= dao.findByMemberId(memberName, memberMail);
+		return list;
 	}
 	//	5. 회원 비밀번호 조회하기
 	public String searchByMemberPassword(String memberName, String memberId, String memberMail){

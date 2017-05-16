@@ -27,37 +27,37 @@ public class MemberController {
 		service.createMember(member);
 		return "redirect:/";
 	}
-	//	2-1. 회원수정 폼뷰
+	//	2-1. 회원수정 폼뷰(미구현)
 	@RequestMapping(value="/member/update", method=RequestMethod.GET)
 	public String updateMember(){
 		return "member/update";
 	}
-	//	2-2. 회원수정 완료.
+	//	2-2. 회원수정 완료(미구현)
 	@RequestMapping(value="/member/update", method=RequestMethod.POST)
 	public String updateMember(@ModelAttribute Member member, HttpSession session){
 		logger.info("회원수정 vo:{}", member);
 		service.modifyMember(member);
 		return "redirect:/";
 	}
-	//	3. 회원탈퇴
+	//	3. 회원탈퇴(미구현)
 	@RequestMapping(value="/member/delete", method=RequestMethod.POST)
 	public String deleteMember(HttpSession session){
 		String memberId= (String)session.getAttribute("memberId");
 		service.removeMember(memberId);
 		return "redirect:/";
 	}
-	//	4-1. 회원 비밀번호 찾기 폼뷰
+	//	4-1. 회원 비밀번호 찾기 폼뷰(미구현)
 	@RequestMapping(value="/member/pwsearch", method=RequestMethod.GET)
 	public String selectByMemberPassword(){
 		return "/member/pwsearch";
 	}
-	//	4-2. 회원 비밀번호 찾기 완료.
+	//	4-2. 회원 비밀번호 찾기 완료(미구현)
 	@RequestMapping(value="/member/pwsearch", method=RequestMethod.POST)
 	public String selectByMemberPassword(String memberName, String memberMail, String memberId, Model model){
 		model.addAttribute("result", service.searchByMemberPassword(memberName, memberId, memberMail));
 		return "결과폼 필요합니다.";
 	}
-	//	5. 회원별 정보조회하기
+	//	5. 회원별 정보조회하기(미구현)
 	@RequestMapping(value="/member/view/{memberId}", method=RequestMethod.GET)
 	public String viewMember(@PathVariable String memberId, Model model){
 		model.addAttribute("result", service.getByMember(memberId));
@@ -92,16 +92,11 @@ public class MemberController {
 		else 
 			return new ResponseEntity<String>("fail", HttpStatus.OK);
 	}
-	//	9-1. 회원 아이디 찾기 폼뷰
-	@RequestMapping(value="/member/idsearch", method=RequestMethod.GET)
-	public String selectByMemberId(){
-		return "findid";
-	}
-	//	9-2. 회원 아이디 찾기 완료.
+	//	9. 회원 아이디 찾기(미구현)
 	@RequestMapping(value="/member/idsearch", method=RequestMethod.POST)
 	public String selectByMemberId(String memberName, String memberMail, Model model){
+		logger.info("아이디찾기{}", service.searchByMemberId(memberName, memberMail));
 		model.addAttribute("result", service.searchByMemberId(memberName, memberMail));
-		return "idsearch";
+		return "#";
 	}
-	
 }

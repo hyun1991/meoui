@@ -13,7 +13,11 @@
 	<div id="findId" class="tab-pane fade in active">
 		<div class="form-group row">
 			<div class="form-group col-md-6">
-				아이디:${result.memberId }입니다.
+				아이디:
+				<c:forEach items="${result.list }" var="member">
+					${member.memberId }
+				</c:forEach>
+				입니다.
 			</div>
 		</div>
 	</div>	
