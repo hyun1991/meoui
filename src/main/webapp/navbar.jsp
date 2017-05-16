@@ -17,28 +17,35 @@
 @import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
 
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
-
 .navbar {
 	font-family: 'Jeju Gothic', serif;
 }
-
 #brand {
 	font-family: 'Jeju Hallasan', serif;
+}
+#navbar {
+	background-color: #f2f5f7;
 }
 </style>
 </head>
 <body>
 	<%@include file="/signInAndUp.jsp"%>
-	<div class="container-fluid">
-		<nav class="navbar navbar-default row text-center">
+	
+		<nav class="navbar navbar-default row text-center" id="navbar">
 			<div class="navbar-header col-md-12">
 				<div class="col-md-1"></div>
 				<a class="navbar-brand navbar-left"
 					href="http://localhost:8087/meoui/" id="brand">제주를 부탁해</a>
-				<ul class="nav navbar-nav navbar-right col-md-3">
-					<li id="joinMenu"><a href="#" data-toggle="modal" data-target="#signUpForm">회원가입</a></li>
+				<ul class="nav navbar-nav navbar-right col-md-7">
+				<li><a href=""><img src="icons/facebook_circle.svg"
+						style="width: 25px; height: 25px;" /></a></li>
+				<li><a href=""><img src="icons/twitter_circle.svg"
+						style="width: 25px; height: 25px;" /></a></li>
+				<li><a href=""><img src="icons/instagram-round-flat.svg"
+						style="width: 25px; height: 25px;" /></a></li>
+					<li class="pull-right" id="joinMenu"><a href="#" data-toggle="modal" data-target="#signUpForm">회원가입</a></li>
 					<li class="col-md-1"></li>
-					<li id="loginMenu"><a href="#" data-toggle="modal" data-target="#signInForm">로그인</a></li>
+					<li class="pull-right" id="loginMenu"><a href="#" data-toggle="modal" data-target="#signInForm">로그인</a></li>
 					<li id="loginCheck"><%=session.getAttribute("memberId") %>님 환영합니다</li>
 					<li>
 						<a href="/meoui/member/logout"><button type="button" class="btn btn-default" id="logoutBtn">로그아웃</button></a>
@@ -58,7 +65,6 @@
 				<li class="col-md-2"><a href="/meoui/mypage.jsp">마이페이지</a></li>
 			</ul>
 		</nav>
-	</div>
 </body>
 <script>
 	$(document).ready(function() {

@@ -12,29 +12,28 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <style>
-#signInForm, #signUpForm {
+label, .btn {
 	font-family: 'Jeju Gothic', serif;
 }
 </style>
 </head>
 <body>
-	<div class="container-fluid">
 		<!-- 로그인 -->
-		<form action="/meoui/member/login" method="post">
+		<form class="text-left" action="/meoui/member/login" method="post">
 		<div id="signInForm" class="modal fade" role="dialog">
 			<div class="modal-dialog">
 				<!-- Modal content-->
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">회원가입</h4>
+						<label class="modal-title">로그인</label>
 					</div>
 					<div class="modal-body">
 						<div class="form-group">
 							<label for="usr">아이디</label><br> <input type="text"
 								class="form-control" id="memberId" name="memberId">
 						</div>
-						<div class="form-group">
+						<div class="form-group" id="ex">
 							<label for="pwd">비밀번호</label><br> <input type="password"
 								class="form-control" id="memberPassword" name="memberPassword">
 						</div>
@@ -43,7 +42,6 @@
 							href="/meoui/findpwd.jsp" class="btn btn-default">비밀번호 찾기</a>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-default">회원가입</button>
 						<button type="submit" class="btn btn-default">로그인</button>
 					</div>
 				</div>
@@ -51,14 +49,15 @@
 		</div>
 		</form>
 		<!-- 회원가입 -->
-		<form action="/meoui/member/join" method="post">
+	
+		<form class="text-left" action="/meoui/member/join" method="post">
 			<div id="signUpForm" class="modal fade" role="dialog">
 				<div class="modal-dialog">
 					<!-- Modal content-->
 					<div class="modal-content">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal">&times;</button>
-							<h4 class="modal-title">회원 가입</h4>
+								<label class="modal-title">회원 가입</label>
 						</div>
 						<div class="modal-body">
 							<div class="form-group step1">
@@ -77,7 +76,7 @@
 									class="form-control" id="memberName" name="memberName">
 							</div>
 							<div class="form-group step1">
-								<label for="pwd">연락처</label><br> <input type="number"
+								<label for="pwd">연락처</label><br> <input type="tel"
 									class="form-control" id="memberPhone" name="memberPhone">
 							</div>
 							<div class="form-group step2">
@@ -110,6 +109,7 @@
 							</div>
 						</div>
 						<div class="modal-footer">
+						<button type="button" class="btn btn-default" id="prevBtn1">이전</button>
 							<button type="button" class="btn btn-default" id="prevBtn2">이전</button>
 							<button type="button" class="btn btn-default" id="prevBtn3">이전</button>
 							<button type="button" class="btn btn-default" id="nextBtn1">다음</button>
@@ -120,7 +120,7 @@
 				</div>
 			</div>
 		</form>
-	</div>
+
 </body>
 
 <script>
@@ -142,6 +142,8 @@
 	});
 
 	$("#prevBtn3").click(function() {
+		$(".step1").hide();
+		$("#nextBtn1").hide();
 		$(".step3").hide();
 		$("#nextBtn3").hide();
 		$(".step2").show();
