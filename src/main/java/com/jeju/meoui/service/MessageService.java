@@ -21,8 +21,9 @@ public class MessageService {
 		dao.insertMessage(message);
 	}
 	//	쪽지수정하기
-	public void modifyMessage(int memberId, int messageNo){
-		dao.updateMessage(memberId, messageNo);
+	public void modifyMessage(String memberId, int messageNo){
+		int memberNo= memberDao.selectByMemberNo(memberId);
+		dao.updateMessage(memberNo, messageNo);
 	}
 	//	쪽지리스트 조회하기
 	public List<Message> getAllMessage(String memberId){

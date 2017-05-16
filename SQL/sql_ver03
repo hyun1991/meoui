@@ -18,7 +18,7 @@ owner_name NVARCHAR2(50),
 owner_phone NVARCHAR2(50),
 owner_mail NVARCHAR2(50),
 owner_address NVARCHAR2(100),
-owner_btn NVARCHAR2(100),
+owner_brn NVARCHAR2(100),
 owner_startdate date
 );
 
