@@ -14,7 +14,7 @@ values(#{noticeCommentNo},#{noticeCommentContent},sysdate,#{memberNo},#{noticeNo
 ]]>
 </insert>
 <!-- 2. 공지게시글에 달린 댓글 조회 -->
-<select id="selectCommentList" parameterType="int" resultType="Notice">
+<select id="selectCommentList" parameterType="int" resultType="NoticeComment">
 <![CDATA[
 select * from noticeComment where noticeNo=#{noticeNo}
 ]]>
