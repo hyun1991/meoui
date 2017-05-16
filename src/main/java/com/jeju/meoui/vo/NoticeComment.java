@@ -5,6 +5,8 @@ import java.sql.*;
 import lombok.*;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class NoticeComment {
 	private int noticeCommentNo;
 	private String noticeCommentContent;

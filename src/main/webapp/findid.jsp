@@ -35,17 +35,17 @@
 						<div class="form-group row">
 							<div class="form-group col-md-6">
 								<label for="usr">이름</label> <input type="text"
-									class="form-control" id="email" name="memberName">
+									class="form-control" id="idSearchName" name="memberName">
 							</div>
 						</div>
 						<div class="form-group row">
 							<div class="form-group col-md-6">
 								<label for="email">이메일</label> <input type="email"
-									class="form-control" id="email" name="memberMail">
+									class="form-control" id="idSearchMail" name="memberMail">
 
 							</div>
 							<div class="modal-footer">
-								<button type="submit" class="btn btn-default">조회</button>
+								<button type="button" class="btn btn-default" id="idBtn">조회</button>
 							</div>
 						</div>
 					</form>
@@ -54,19 +54,25 @@
 					<form>
 						<div class="form-group row">
 							<div class="form-group col-md-6">
-								<label for="email">이름</label> <input type="email"
-									class="form-control" id="email">
+								<label for="email">아이디</label> <input type="text"
+									class="form-control">
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="form-group col-md-6">
+								<label for="usr">이름</label> <input type="text"
+									class="form-control">
 							</div>
 						</div>
 						<div class="form-group row">
 							<div class="form-group col-md-6">
 								<label for="email">이메일</label> <input type="email"
-									class="form-control" id="email">
+									class="form-control">
 
 							</div>
 							<div class="form-group">
 								<label for="email"></label>
-								<button type="submit" class="btn btn-default">조회</button>
+								<button type="submit" class="btn btn-default" id="pwBtn">조회</button>
 							</div>
 						</div>
 					</form>
@@ -75,4 +81,20 @@
 		</div>
 	</div>
 </body>
+<script>
+	$(document).ready(function() {
+		$("#idBtn").on("click", function() {
+			var memberName= $("#idSearchName").val()
+			var memberMail= $("#idSearchMail").val()
+			$.ajax({
+				type:"post",
+				url: "/meoui/member/idsearch",
+				data:{memberName: memberName, memberMail:memberMail},
+				success: function(result){
+					alert("찾으신 아이디는"+result+"입니다.")
+				}
+			})
+		})
+	})
+</script>
 </html>

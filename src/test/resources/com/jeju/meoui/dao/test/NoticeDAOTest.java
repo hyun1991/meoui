@@ -28,9 +28,23 @@ public class NoticeDAOTest {
 		notice.setUsersNo(1);
 		dao.insertNotice(notice);
 		}
-	@Test //상세 조회 성공
-	public void selectNotice(){
-		System.out.println(dao.selectNotice(1));
+	//@Test //상세 조회 성공
+	public void selectNoticeTest(){
+		System.out.println(dao.selectNotice(46));
 	}
+	//@Test //공지사항 리스트 조회 성공
+	public void selectNoticeListTest(){
+		System.out.println(dao.selectNoticeList(1, 2));
+	}
+	//@Test//공지사항 글개수 조회 성공
+	public void findByMaxTest(){
+		System.out.println(dao.findByMax());
+	}
+	//@Test//공지사항 조회수 증가 성공
+	public void incrementCnt(){
+		dao.incrementCnt(46);
+		System.out.println(dao.selectNotice(46));
+	}
+	
 
 }

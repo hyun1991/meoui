@@ -24,6 +24,10 @@
 	    <typeAlias type="com.jeju.meoui.vo.FreeBoardComment" alias="FreeboardComment"/>
 	    <typeAlias type="com.jeju.meoui.vo.MemberMeeting" alias="MemberMeeting"/>
 	    <typeAlias type="com.jeju.meoui.vo.Message" alias="Message"/>
+<<<<<<< HEAD
 	    <typeAlias type="com.jeju.meoui.vo.MeetingJoin" alias="MeetingJoin"/>
+=======
+	    <typeAlias type="com.jeju.meoui.vo.Owner" alias="Owner"/>
+>>>>>>> branch 'master' of https://github.com/hyun1991/meoui.git
 	</typeAliases>
 </configuration>

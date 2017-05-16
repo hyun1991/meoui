@@ -14,6 +14,8 @@ import com.jeju.meoui.vo.*;
 
 @Controller
 public class MemberController {
+	//	회원 로그인시에 회원번호, 회원아이디 session값에 저장완료 됩니다.
+	//	단, 로그아웃 할시에는 둘다 사라집니다.
 	@Autowired
 	private MemberService service;
 	private static final Logger logger= LoggerFactory.getLogger(MemberController.class);
@@ -28,9 +30,10 @@ public class MemberController {
 		return "redirect:/";
 	}
 	//	2-1. 회원수정 폼뷰(미구현)
-	@RequestMapping(value="/member/update", method=RequestMethod.GET)
-	public String updateMember(){
-		return "member/update";
+	@RequestMapping(value="/member/update/{memberId}", method=RequestMethod.GET)
+	public String updateMember(@PathVariable String memberId, Model model){
+		model.addAttribute("result", service.getByMember(memberId));
+		return "수정폼 페이지 필요";
 	}
 	//	2-2. 회원수정 완료(미구현)
 	@RequestMapping(value="/member/update", method=RequestMethod.POST)
@@ -44,21 +47,12 @@ public class MemberController {
 	public ResponseEntity<String> deleteMember(HttpSession session){
 		String memberId= (String)session.getAttribute("memberId");
 		session.removeAttribute("memberId");
+		session.removeAttribute("memberNo");
 		service.removeMember(memberId);
 		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}
-	//	4-1. 회원 비밀번호 찾기 폼뷰(미구현)
-	@RequestMapping(value="/member/pwsearch", method=RequestMethod.GET)
-	public String selectByMemberPassword(){
-		return "/member/pwsearch";
-	}
-	//	4-2. 회원 비밀번호 찾기 완료(미구현)
-	@RequestMapping(value="/member/pwsearch", method=RequestMethod.POST)
-	public String selectByMemberPassword(String memberName, String memberMail, String memberId, Model model){
-		model.addAttribute("result", service.searchByMemberPassword(memberName, memberId, memberMail));
-		return "결과폼 필요합니다.";
-	}
-	//	5. 회원별 정보조회하기(미구현)
+	
+	//	5. 회원별 정보조회하기(미완료)
 	@RequestMapping(value="/member/view/{memberId}", method=RequestMethod.GET)
 	public String viewMember(@PathVariable String memberId, Model model){
 		model.addAttribute("result", service.getByMember(memberId));
@@ -67,7 +61,7 @@ public class MemberController {
 	//	6. 회원 로그인처리(완료)
 	@RequestMapping(value="/member/login", method=RequestMethod.POST)
 	public String memberLogin(@RequestParam String memberId, @RequestParam String memberPassword, HttpSession session){
-		int result= service.memberLogin(memberId, memberPassword);
+		int result= service.memberLogin(memberId, memberPassword, session);
 		//	세션값 저장한다. 
 		if(result==1){
 			session.setAttribute("memberId", memberId);
@@ -81,6 +75,7 @@ public class MemberController {
 	@RequestMapping(value="/member/logout", method=RequestMethod.GET)
 	public String memberLogout(HttpSession session){
 		session.removeAttribute("memberId");
+		session.removeAttribute("memberNo");
 		return "redirect:/";
 	}
 	//	8. 아이디 중복체크(완료)
@@ -92,12 +87,5 @@ public class MemberController {
 			return new ResponseEntity<String>("success", HttpStatus.OK);
 		else 
 			return new ResponseEntity<String>("fail", HttpStatus.OK);
-	}
-	//	9. 회원 아이디 찾기(미구현)
-	@RequestMapping(value="/member/idsearch", method=RequestMethod.POST)
-	public String selectByMemberId(String memberName, String memberMail, Model model){
-		logger.info("아이디찾기{}", service.searchByMemberId(memberName, memberMail));
-		model.addAttribute("result", service.searchByMemberId(memberName, memberMail));
-		return "#";
 	}
 }

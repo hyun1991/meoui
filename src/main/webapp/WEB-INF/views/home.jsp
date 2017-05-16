@@ -9,70 +9,67 @@
 <title>제주를 부탁해</title>
 </head>
 <style>
-#menu {
-	background-color: white;
-}
-
-#googleMapBackground {
-	background-color: #51b0ff;
-}
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
 
-.container-fluid {
+body {
+	background-image: url(/meoui/images/sky.jpg);
+	background-repeat: no-repeat;
+}
+
+#menu {
+	background-color: #f7ff14;
 	font-family: 'Jeju Gothic', serif;
+}
+
+#text, p {
+	color: black;
+}
+
+p {
+	border-style: solid 1px;
+	border-color: red;
 }
 </style>
 <body>
-	<%@include file="/navbar.jsp"%>
 	<div class="container-fluid text-center">
+		<%@include file="/navbar.jsp"%>
 		<div class="row">
 			<ul class="nav nav-tabs" id="menu">
 				<li class="col-md-1">
 					<p>&nbsp</p>
 				</li>
-				<li class="col-md-2"><a data-toggle="tab" href="#allCategory">카테고리
-						전체&nbsp<span class="badge">5</span>
+				<li class="col-md-2"><a data-toggle="tab" href="#allCategory"
+					id="text">카테고리 전체&nbsp<span class="badge">5</span>
 				</a></li>
 				<li class="col-md-2"><a data-toggle="tab" href="#leisure"
-					alt="잠수함/유람선/레저" id="레저">잠수함/유람선/레저&nbsp<span class="badge">5</span></a></li>
-				<li class="col-md-2"><a data-toggle="tab" href="#theater">공연장/상영관/기타&nbsp<span
-						class="badge">5</span></a></li>
-				<li class="col-md-2"><a data-toggle="tab" href="#musuem">테마공원/박물관&nbsp<span
-						class="badge">5</span></a></li>
-				<li class="col-md-2"><a data-toggle="tab" href="#restaurant">음식점&nbsp<span
-						class="badge">5</span></a></li>
-				<li class="col-md-1">
-					<p>&nbsp</p>
-				</li>
+					alt="잠수함/유람선/레저" id="text">잠수함/유람선/레저&nbsp<span class="badge">5</span></a></li>
+				<li class="col-md-2"><a data-toggle="tab" href="#theater"
+					id="text">공연장/상영관/기타&nbsp<span class="badge">5</span></a></li>
+				<li class="col-md-2"><a data-toggle="tab" href="#musuem"
+					id="text">테마공원/박물관&nbsp<span class="badge">5</span></a></li>
+				<li class="col-md-2"><a data-toggle="tab" href="#restaurant"
+					id="text">음식점&nbsp<span class="badge">5</span></a></li>
 				<li class="col-md-1">
 					<p>&nbsp</p>
 				</li>
 			</ul>
 		</div>
-
-		<div class="row">
-			<form class="form-inline">
-				<div class="input-group">
-					<input type="search" class="form-control input-lg" size="40"
-						placeholder="목적지" required style="margin: 50px;">
-					<div class="input-group-btn">
-						<button type="button" class="btn btn-info btn-lg">검색</button>
+		<div class="container">
+			<div class="row text-left">
+				<form class="form-inline">
+					<div class="input-group">
+						<input type="search" class="form-control input-lg" size="30"
+							placeholder="목적지" required style="margin: 50px;">
+						<div class="input-group-btn">
+							<button type="button" class="btn btn-default btn-lg"
+								style="margin-left: 50px; background-color: #f7ff14;">검색</button>
+						</div>
 					</div>
-				</div>
-			</form>
-		</div>
-
-		<div class="container text-center">
-			<div class="row" id="googleMapBackground">
-				<div class="col-md-2"></div>
-				<div class="col-md-8">
-					<div id="googleMap" style="height: 400px; width: 100%;" alt="구글 지도"></div>
-				</div>
+				</form>
 			</div>
-
 			<div class="tab-content">
 				<div id="allCategory" class="tab-pane fade in active">
-					<h3 class="text-left" style="margin: 50px;">카테고리</h3>
+					<h3 class="text-left" style="margin: 50px;" style="color: white;">카테고리</h3>
 					<p id="attractionList" align="center"></p>
 				</div>
 				<div id="leisure" class="tab-pane fade">
@@ -97,10 +94,13 @@
 				</div>
 			</div>
 		</div>
+		<div id="framewrap">
+			<iframe src="/meoui/websocket.jsp" height="200" width="300"
+				style="border: none;"></iframe>
+		</div>
 	</div>
 
 </body>
-
 <script>
 	$(window).bind('scroll', function() {
 		if ($(window).scrollTop() > 50) {
@@ -110,33 +110,16 @@
 		}
 	});
 </script>
-
 <script>
-	function myMap() {
-		var myCenter = new google.maps.LatLng(33.386581, 126.558209);
-		var mapProp = {
-			center : myCenter,
-			zoom : 10,
-			scrollwheel : false,
-			draggable : false,
-			mapTypeId : google.maps.MapTypeId.ROADMAP
-		};
-		var map = new google.maps.Map(document.getElementById("googleMap"),
-				mapProp);
-		var marker = new google.maps.Marker({
-			position : myCenter
-		});
-		marker.setMap(map);
-	}
+	$(function() {
+		$("#framewrap").resizable().draggable();
+	});
 </script>
-<script
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQhKWycyWtScR72Jxc_E-FKHq4-F2b4CM&callback=myMap"></script>
-
 <script>
 	var text = "";
-	for (var i = 0; i < 12; i++) {
+	for (var i = 0; i < 16; i++) {
 		text += '<div class="col-md-3"> <a href="/meoui/accomodationinfo.jsp">'
-				+ '<img class="img-responsive" src="/meoui/images/jeju.jpg" alt="attraction" width="300" height="550"> <div class="caption"> <p>Lorem ipsum...</p></div></a></div>';
+				+ '<img class="img-responsive" src="/meoui/images/jeju.jpg" alt="attraction" width="300px" height="450px"> <div class="caption"> <p>Lorem ipsum...</p></div></a></div>';
 	}
 	document.getElementById("attractionList").innerHTML = text;
 </script>

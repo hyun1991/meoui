@@ -2,17 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="MessageMapper">
-<!-- 
-	private	int	messageNo;					//	쪽지번호	
-	private	String messageReceiveId	;		//	수신인아이디
-	private	String messageSendId;			//	발신인아이디
-	private	String messageTitle	;			//	쪽지제목
-	private	String messageContent;			//	쪽지내용
-	private	Date messageDate;				//	보낸날짜
-	private	Date messageReceiveDate;		//	수신인 읽은날짜
-	private	int	messageReceiveCheck;		//	수신인 쪽지 확인여부
-	private	int	memberId;					//	회원번호
- -->
+
  <!-- 1. 쪽지 발송하기(추가하기) -->
  <!-- 
  	수신인 읽은날짜: 0일때 (안읽음)=> insert때 강제지정
@@ -24,16 +14,37 @@
 	</selectKey>
 	<![CDATA[
 		insert into message(message_no, message_receive_id, message_send_id, message_title, message_content,
-		message_date, message_receive_date, message_receive_check, member_id)values
+		message_date, message_receive_date, message_receive_check, member_no)values
 		(#{messageNo}, #{messageReceiveId}, #{messageSendId}, #{messageTitle}, #{messageContent},
-		sysdate, #{messageReceiveDate, jdbcType=DATE}, 0, #{memberId})
+		sysdate, #{messageReceiveDate, jdbcType=DATE}, 0, #{memberNo})
 	]]>	
  </insert>
  
  <!-- 2. 수신인 읽은날짜, 확인여부 적용수정 -->
- <update id="updateMessage">
+ <update id="updateMessage" parameterType="HashMap">
  	<![CDATA[
- 		update message set message_receive_date=
- 	]]>
+ 		update message set message_receive_date=sysdate, message_receive_check=1
+ 		where member_no=#{memberNo} and message_no=#{messageNo}
+ 	]]>	
  </update>
+ 
+ <!-- 3. 쪽지삭제하기-->
+ <delete id="deleteMessage" parameterType="HashMap">
+ 	<![CDATA[
+ 		delete from message where member_no=#{memberNo} and message_no=#{messageNo}
+ 	]]>
+ </delete>
+ 
+ <!-- 4. 회원번호별 쪽지리스트 조회하기 -->
+ <select id="selectAllMessage" parameterType="int" resultType="Message">
+ 	<![CDATA[
+ 		select * from message where member_no=#{memberNo}	
+ 	]]>
+ </select>
+ <!-- 5. 쪽지상세보기 -->
+ <select id="selectByMessage" parameterType="HashMap" resultType="Message">
+ 	<![CDATA[
+ 		select * from message where member_no=#{membern} and message_no=#{messageNo}
+ 	]]>
+ </select>
 </mapper>

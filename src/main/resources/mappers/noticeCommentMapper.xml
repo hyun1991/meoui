@@ -5,10 +5,10 @@
 <!-- 1. 공지게시판 댓글 작성 -->
 <insert id="insertComment" parameterType="NoticeComment">
 <selectKey keyProperty="noticeCommentNo" resultType="int" order="BEFORE">
-select noticeComment_seq.nextval from dual
+select notice_Comment_seq.nextval from dual
 </selectKey>
 <![CDATA[
-insert into noticeComment
+insert into notice_Comment
 (notice_Comment_No,notice_Comment_Content,notice_Comment_Date,member_No,notice_No)
 values(#{noticeCommentNo},#{noticeCommentContent},sysdate,#{memberNo},#{noticeNo})
 ]]>
@@ -33,7 +33,9 @@ delete from notice_Comment where notice_No=#{noticeNo}
 </delete>
 <!-- 6. 공지사항 댓글 번호로 공지사항 게시글 번호 조회 -->
 <select id="selectNoticeCommentNo" parameterType="int" resultType="int">
-select from notice_No where notice_Comment_No=#{noticeCommentNo}
+<![CDATA[
+select notice_No from notice_Comment where notice_Comment_No=#{noticeCommentNo}
+]]>
 </select>
 
 </mapper>
