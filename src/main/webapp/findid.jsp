@@ -16,7 +16,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@include file="/WEB-INF/views/navbar.jsp"%>
+	<%@include file="/navbar.jsp"%>
 	<div class="container">
 		<div class="row">
 			<h2>계정정보찾기(아이디/비밀번호)</h2>
@@ -31,21 +31,20 @@
 			<br>
 			<div class="tab-content">
 				<div id="findId" class="tab-pane fade in active">
-					<form>
+					<form action="/meoui//member/idsearch" method="post">
 						<div class="form-group row">
 							<div class="form-group col-md-6">
-								<label for="email">이름</label> <input type="email"
-									class="form-control" id="email">
+								<label for="usr">이름</label> <input type="text"
+									class="form-control" id="email" name="memberName">
 							</div>
 						</div>
 						<div class="form-group row">
 							<div class="form-group col-md-6">
 								<label for="email">이메일</label> <input type="email"
-									class="form-control" id="email">
+									class="form-control" id="email" name="memberMail">
 
 							</div>
-							<div class="form-group">
-								<label for="email"></label>
+							<div class="modal-footer">
 								<button type="submit" class="btn btn-default">조회</button>
 							</div>
 						</div>
@@ -75,9 +74,5 @@
 			</div>
 		</div>
 	</div>
-
-
-
-
 </body>
 </html>

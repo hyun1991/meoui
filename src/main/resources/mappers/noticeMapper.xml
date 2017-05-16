@@ -3,21 +3,22 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="NoticeMapper">
 <!-- 1. 공지게시판 작성 -->
+
 <insert id="insertNotice" parameterType="Notice">
 <selectKey keyProperty="noticeNo" resultType="int" order="BEFORE">
-select noticeComment_seq.nextval from dual
+select notice_seq.nextval from dual
 </selectKey>
 <![CDATA[
-insert into noticeComment
-(noticeCommentNo,noticeCommentContent,noticeCommentDate,memberNo,noticeNo)
-values(#{noticeCommentNo},#{noticeCommentContent},sysdate,#{memberNo},#{noticeNo})
+ insert into notice
+(notice_No,notice_Title,notice_Content,notice_Date,notice_Cnt,users_No)
+ values(#{noticeNo},#{noticeTitle},#{noticeContent},sysdate,0,#{usersNo})
 ]]>
 </insert>
  <!-- 2. 공지게시판 상세조회-->
 <select id="selectNotice" parameterType="int" resultType="Notice">
-<![CDATA[
-select * from notice where noticeNo=#{noticeNo}
-]]>
+
+select * from notice where notice_no=#{noticeNo}
+
 </select>
 
 <!-- 3. 공지게시판 리스트 조회 -->
@@ -25,7 +26,7 @@ select * from notice where noticeNo=#{noticeNo}
 <![CDATA[
 select * from
 (select rownum rnum, b.*from
-(select noticeNo,noticeTitle,noticeDate,noticeCnt,usersNo from notice order by noticeNo desc) b
+(select notice_No,notice_Title,notice_Date,notice_Cnt,users_No from notice order by noticeNo desc) b
  where ROWNUM<=#{end})
  where rnum>=#{start}
 ]]>
@@ -33,12 +34,12 @@ select * from
 <!-- 4. 공지게시글 갱신 (글제목 과 글내용 수정 가능) -->
 <!-- 조건: 게시글 번호 -->
 <update id="updateNotice" parameterType="Notice">
-update notice set noticeTitle=#{noticeTitle},noticeContent=#{noticeContent} where noticeNo=#{noticeNo}
+update notice set notice_Title=#{noticeTitle},notice_Content=#{noticeContent} where notice_No=#{noticeNo}
 </update>
 <!-- 5. 공지게시글 삭제 -->
 <!-- 조건: 게시글 번호 -->
 <delete id="deleteNotice" parameterType="int">
-delete from notice where noticeNo=#{noticeNo}
+delete from notice where notice_No=#{noticeNo}
 </delete>
 <!-- 6. 공지게시글 전체 개수 조회 -->
 <select id="findByMax" resultType="int">
@@ -48,7 +49,7 @@ delete from notice where noticeNo=#{noticeNo}
  </select>
  <!-- 7. 공지게시글 조회수 증가 -->
  <update id="incrementCnt" parameterType="int">
- update notice set noticeCnt=noticeCnt+1 where noticeNo=#{noticeNo}
+ update notice set notice_Cnt=notice_Cnt+1 where notice_No=#{noticeNo}
  </update>  
  
 </mapper>
