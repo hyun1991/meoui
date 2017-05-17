@@ -34,7 +34,7 @@ public class AccommodationController {
 	//	숙박시설 추가하기 완료
 	@RequestMapping(value="/accommodation/join", method=RequestMethod.POST)
 	public String joinAccommodation(HttpSession session,@ModelAttribute Accommodation accommodation, @RequestParam String accommodationAddress1, @RequestParam String accommodationAddress2, @RequestParam("img") MultipartFile accommodationImg, @RequestParam("file")MultipartFile accommodationDirections, @RequestParam(defaultValue="40") int siteNo){
-		int ownerNo= Integer.parseInt((String)session.getAttribute("ownerNo"));
+		int ownerNo= (Integer)session.getAttribute("ownerNo");
 		String accommodationAddress= accommodationAddress1+accommodationAddress2;
 		accommodation.setSiteNo(siteNo);
 		accommodation.setOwnerNo(ownerNo);

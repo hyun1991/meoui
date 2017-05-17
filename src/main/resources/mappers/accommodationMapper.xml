@@ -9,7 +9,7 @@
 	</selectKey>
 		<![CDATA[
 			insert into accommodation values(#{accommodationNo}, #{accommodationName}, #{accommodationAddress}, 
-			#{accommodationImg}, #{accommodationPhone}, #{accommodationDirections}, #{siteNo}, 
+			#{accommodationImg}, #{accommodationPhone}, #{accommodationDirections}, sysdate, #{siteNo}, 
 			#{ownerNo})
 		]]>
 	</insert>
