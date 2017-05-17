@@ -9,8 +9,7 @@
 	</selectKey>
 		<![CDATA[
 			insert into accommodation values(#{accommodationNo}, #{accommodationName}, #{accommodationAddress}, 
-			#{accommodationImg}, #{accommodationPhone}, #{accommodationDirections}, sysdate, #{siteNo}, 
-			#{ownerNo})
+			#{accommodationImg}, #{accommodationPhone}, #{accommodationDirections}, #{siteNo}, #{ownerNo})
 		]]>
 	</insert>
 	<!-- 숙박시설 수정하기 -->

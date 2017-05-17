@@ -2,6 +2,8 @@ package com.jeju.meoui.service;
 
 import java.util.*;
 
+import javax.servlet.http.*;
+
 import org.slf4j.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
@@ -20,8 +22,13 @@ public class AccommodationService {
 	private AccommodationCommentDAO commentDao;
 	
 	//	숙박시설 추가하기
-	public void createAccommodation(Accommodation accommodation){
+	@Transactional
+	public void createAccommodation(Accommodation accommodation, HttpSession session){
 		dao.insertAccommodation(accommodation);
+		int accommodationNo= dao.selectByAccommodationNo(accommodation.getAccommodationName());
+		session.setAttribute("accommodationNo", accommodationNo);
+		//	객실이미지 추가를 위해 세션에 저장해 놓았습니다.
+		//	객실이미지 추가후에는 바로 삭제해야 합니다.
 	}
 	//	숙박시설 수정하기
 	public void modifyAccommodation(Accommodation accommodation){

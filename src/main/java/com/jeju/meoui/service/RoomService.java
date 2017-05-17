@@ -1,6 +1,29 @@
 package com.jeju.meoui.service;
 
+import org.slf4j.*;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.stereotype.*;
+import org.springframework.transaction.annotation.*;
+
+import com.jeju.meoui.dao.*;
+import com.jeju.meoui.vo.*;
+
+@Service
 public class RoomService {
+	@Autowired
+	private RoomDAO dao;
+	@Autowired
+	private RoomImgDAO roomImgDao;
+	private static final Logger logger= LoggerFactory.getLogger(RoomService.class);
+	//	객실, 객실이미지 추가하기 
+	@Transactional
+	public void createRoom(Room room, RoomImg roomImg){
+		dao.insertRoom(room);
+		int roomNo= dao.selectByRoomNo(room.getAccommodationNo(), room.getRoomName());
+		logger.info("객실번호:{}", roomNo);
+		roomImg.setRoomNo(roomNo);
+		roomImgDao.insertRoomImg(roomImg);
+	}
 /*
  * 
 	//	객실추가하기

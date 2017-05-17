@@ -16,7 +16,6 @@ import com.jeju.meoui.util.*;
 import com.jeju.meoui.vo.*;
 
 @Controller
-@RequestMapping("/manage")
 public class AccommodationController {
 	private static final Logger logger= LoggerFactory.getLogger(AccommodationController.class);
 	@Autowired
@@ -27,13 +26,13 @@ public class AccommodationController {
 	private String path;
 	
 	//	숙박시설 추가하기 폼뷰
-	@RequestMapping(value="/accommodation/join", method=RequestMethod.GET)
+	@RequestMapping(value="/manage/accommodation/join", method=RequestMethod.GET)
 	public String joinAccommodation(){
 		return "accommodation/insert";
 	}
 	//	숙박시설 추가하기 완료
-	@RequestMapping(value="/accommodation/join", method=RequestMethod.POST)
-	public String joinAccommodation(HttpSession session,@ModelAttribute Accommodation accommodation, @RequestParam String accommodationAddress1, @RequestParam String accommodationAddress2, @RequestParam("img") MultipartFile accommodationImg, @RequestParam("file")MultipartFile accommodationDirections, @RequestParam(defaultValue="40") int siteNo){
+	@RequestMapping(value="/manage/accommodation/join", method=RequestMethod.POST)
+	public String joinAccommodation(HttpSession session, Accommodation accommodation, @RequestParam String accommodationAddress1, @RequestParam String accommodationAddress2, @RequestParam("img") MultipartFile accommodationImg, @RequestParam("file")MultipartFile accommodationDirections, @RequestParam(defaultValue="40") int siteNo){
 		int ownerNo= (Integer)session.getAttribute("ownerNo");
 		String accommodationAddress= accommodationAddress1+accommodationAddress2;
 		accommodation.setSiteNo(siteNo);
@@ -47,10 +46,15 @@ public class AccommodationController {
 		logger.info("오시는길 파일명(변경):{}", fileName2);
 		accommodation.setAccommodationImg(fileName1);
 		accommodation.setAccommodationDirections(fileName2);
-		service.createAccommodation(accommodation);
-		return "객실추가 페이지";
+		service.createAccommodation(accommodation, session);
+		return "redirect:/manage/room/join";
 	}
 	/*
+	 * 
+	 * 서비스단
+	 * 
+	 * 
+	 * 
 	//	숙박시설 수정하기
 	public void modifyAccommodation(Accommodation accommodation){
 		dao.updateAccommodation(accommodation);
