@@ -44,7 +44,6 @@ public class NoticeController {
 	@RequestMapping(value="/notice/list", method=RequestMethod.GET)
 	public String getAllNotice(@RequestParam int pageNo,Model model){
 		model.addAttribute("result",service.getByNotice(pageNo));
-		System.out.println("모델은 " + model);
 		return "notice/list";
 	}
 	//5. 공지게시판 상세보기

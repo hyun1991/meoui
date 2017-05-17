@@ -17,7 +17,6 @@
 				<td>${notice.usersNo }</td>
 				<td>${notice.noticeTitle }</td>
 				<td><fmt:formatDate value="${notice.noticeDate }"  pattern="yyyy년MM월dd일" /></td>
-				
 			</tr>
 		</c:forEach>
 	</table>
