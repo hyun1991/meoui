@@ -21,20 +21,17 @@
 
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
 
+.navbar-header {
+	margin-left: 5%; margin-right:2.5%
+}
 .navbar {
 	font-family: 'Jeju Gothic', serif; #
-	color: #0061ff;
-}
 
+}
 #brand {
 	font-family: 'Jeju Hallasan', serif;
 	color: black;
 }
-
-#signUp, #signIn, #menu {
-	color: black;
-}
-
 #navbar {
 	background-color: #f7ff14;
 }
@@ -42,77 +39,33 @@
 </head>
 <body>
 	<%@include file="/signInAndUp.jsp"%>
-	<nav class="navbar navbar-default row text-center" id="navbar">
-		<div class="navbar-header col-md-12">
-			<div class="col-md-1"></div>
+	<nav class="navbar navbar-default text-center" id="navbar">
+		<div class="navbar-header">
 			<a class="navbar-brand navbar-left"
-				href="http://localhost:8087/meoui/" id="brand"><p>제주를</p>
-				<p>부탁해</p></a>
-			<ul class="nav navbar-nav navbar-right col-md-7">
-				<li><a href=""><i class="fa fa-facebook"
-						style="font-size: 24px"></i></a></li>
-				<li><a href=""><i class="fa fa-twitter"
-						style="font-size: 24px"></i></a></li>
-				<li><a href=""><i class="fa fa-instagram"
-						style="font-size: 24px"></i></a></li>
-				<li class="col-md-4"></li>
+				href="http://localhost:8087/meoui/" id="brand">제주를 부탁해</a>
+		</div>
+		<div class="row">
+			<ul class="nav navbar-nav">
+				<li class="navMenu"><a href="/meoui/attractionlist.jsp">제주 관광명소
+						소개</a></li>
+				<li class="navMenu"><a href="/meoui/directions.jsp">길 찾기</a></li>
+				<li class="navMenu"><a href="/meoui/accomodationlist.jsp">숙박 시설</a></li>
+				<li class="navMenu"><a href="/meoui/meetingboard.jsp">모임 게시판</a></li>
+				<li class="navMenu"><a href="/meoui/noticeboard.jsp">공지사항</a></li>
 				<li><a href="#" data-toggle="modal" data-target="#signUpForm"
-					id="signUp"></a>회원가입</li>
-				<li id="loginCheck"><%=session.getAttribute("memberId")%></li>
-				<li class="col-md-1"></li>
+					id="signUp">회원가입</a></li>
 				<li><a href="#" data-toggle="modal" data-target="#signInForm"
 					id="signIn">로그인</a></li>
-				<li><a href="/meoui/member/logout" id="logoutBtn">로그아웃</a></li>
-				<li><a href="#" data-toggle="modal" data-target="#signInForm"
-					id="deleteBtn">회원탈퇴</a></li>
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#" id="loginCheck"><%=session.getAttribute("memberId")%><span
+						class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="/meoui/mypage.jsp" id="menu">마이페이지</a></li>
+						<li><a href="/meoui/member/logout" id="logout">로그아웃</a></li>
+						<li><a href="#" id="deleteId">회원탈퇴</a></li>
+					</ul></li>
 			</ul>
-
 		</div>
-		<ul class="nav navbar-nav col-md-12">
-			<li class="col-md-2"><a href="/meoui/attractionlist.jsp"
-				id="menu">제주 관광명소 소개</a></li>
-			<li class="col-md-2"><a href="/meoui/directions.jsp" id="menu">길
-					찾기</a></li>
-			<li class="col-md-2"><a href="/meoui/accomodationlist.jsp"
-				id="menu">숙박 시설</a></li>
-			<li class="col-md-2"><a href="/meoui/meetingboard.jsp" id="menu">모임
-					게시판</a></li>
-			<li class="col-md-2"><a href="/meoui/noticeboard.jsp" id="menu">공지사항</a></li>
-			<li class="col-md-2"><a href="/meoui/mypage.jsp" id="menu">마이페이지</a></li>
-		</ul>
 	</nav>
 </body>
-<script>
-	$(document).ready(function() {
-		var userId='<%=session.getAttribute("memberId")%>';
-		if (userId == "null") {
-		$("#loginCheck").remove();
-		$("#logoutBtn").remove();
-		$("#deleteBtn").remove();
-		}
-		else{
-			$("#signUp").remove();
-			$("#singIn").remove();
-		}
-	})
-	$(document).ready(function() {
-		$("#deleteBtn").on("click", function() {
-			$.ajax({
-				type : "post",
-				url : "/meoui/member/delete",
-				success : function(result) {
-					console.log(result)
-					if (result == "success") {
-						alert("회원탈퇴 되었습니다.")
-						$("#loginCheck").hide();
-						$("#logoutBtn").hide();
-						$("#deleteBtn").hide();
-						$("#joinMenu").show();
-						$("#loginMenu").show();
-					}
-				}
-			})
-		})
-	})
-</script>
 </html>

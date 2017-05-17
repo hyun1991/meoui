@@ -44,9 +44,9 @@ label, .btn {
 						<div class="form-group">
 							<a href="/meoui/findid.jsp" class="btn btn-default">아이디 찾기</a> <a
 								href="/meoui/findpwd.jsp" class="btn btn-default">비밀번호 찾기</a>
+								<a
+								href="/meoui/manage/login" class="btn btn-default">사업주 로그인</a>		
 						</div>
-
-
 					</div>
 				</div>
 			</div>

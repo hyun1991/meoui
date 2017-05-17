@@ -23,7 +23,8 @@ header {
 #text, p, header {
 	color: black;
 }
-footer{
+
+footer {
 	background-color: grey;
 }
 </style>
@@ -104,9 +105,17 @@ footer{
 			style="border: none;"></iframe>
 	</div>
 	<footer>
-<h1>1 Follow Us Canada's New Passenger Bill of Rights Bans
-		Removal in Cases of Overbooking https://t.co/K2aizs9IKo
-		https://t.co/lb8fklloIp Twitter | 29 mins ago </h1>
+		<ul class="nav navbar-nav">
+			<li><a href=""><i class="fa fa-facebook"
+					style="font-size: 50px"></i></a></li>
+			<li><a href=""><i class="fa fa-twitter"
+					style="font-size: 50px"></i></a></li>
+			<li><a href=""><i class="fa fa-instagram"
+					style="font-size: 50px"></i></a></li>
+		</ul>
+		<h1>1 Follow Us Canada's New Passenger Bill of Rights Bans
+			Removal in Cases of Overbooking https://t.co/K2aizs9IKo
+			https://t.co/lb8fklloIp Twitter | 29 mins ago</h1>
 	</footer>
 
 
