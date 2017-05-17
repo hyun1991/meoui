@@ -5,7 +5,7 @@
 
 	<!-- 1. 펜션업주 추가하기 -->
 	<insert id="insertOwner" parameterType="Owner">
-	<selectKey keyProperty="OwnerNo" resultType="int" order="BEFORE">
+	<selectKey keyProperty="ownerNo" resultType="int" order="BEFORE">
 	    	select owner_seq.nextval from dual
 	</selectKey>
 		<![CDATA[
@@ -41,7 +41,7 @@
 	<!-- 조건: 아이디, 비밀번호 -->
 	<select id="ownerLogin" parameterType="HashMap" resultType="int">
 		<![CDATA[
-			select count(*) from member where owner_id=#{ownerId} and owner_password=#{ownerPassword}
+			select count(*) from owner where owner_id=#{ownerId} and owner_password=#{ownerPassword}
 		]]>
 	</select>
 
