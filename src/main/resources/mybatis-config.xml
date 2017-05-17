@@ -25,6 +25,9 @@
 	    <typeAlias type="com.jeju.meoui.vo.MemberMeeting" alias="MemberMeeting"/>
 	    <typeAlias type="com.jeju.meoui.vo.Message" alias="Message"/>
 	    <typeAlias type="com.jeju.meoui.vo.Owner" alias="Owner"/>
-	    <typeAlias type="com.jeju.meoui.vo.Owner" alias="Accommodation"/>
+	    <typeAlias type="com.jeju.meoui.vo.Accommodation" alias="Accommodation"/>
+	    <typeAlias type="com.jeju.meoui.vo.AccommodationComment" alias="AccommodationComment"/>
+	    <typeAlias type="com.jeju.meoui.vo.Room" alias="Room"/>
+	    <typeAlias type="com.jeju.meoui.vo.RoomImg" alias="RoomImg"/>
 	</typeAliases>
 </configuration>

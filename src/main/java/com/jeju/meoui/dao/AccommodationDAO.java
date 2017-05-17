@@ -1,5 +1,7 @@
 package com.jeju.meoui.dao;
 
+import java.util.*;
+
 import org.mybatis.spring.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
@@ -22,52 +24,35 @@ public class AccommodationDAO {
 	public void deleteAccommodation(int accommodationNo){
 		template.delete("AccommodationMapper.deleteAccommodation", accommodationNo);
 	}
-	//	
-/*
-	<!-- 시설명별 시설번호 조회하기 -->
-	<select id="selectByAccommodationNo" parameterType="String" resultType="int">
-		<![CDATA[
-			select accommodation_no from accommodation where accommodation_name=#{accommodationName}
-		]]>
-	</select>
-	<!-- 시설번호별 관광명소번호 조회하기 -->
-	<select id="selectBySiteNo" parameterType="int" resultType="int">
-		<![CDATA[
-			select site_no from accommodation where accommodation_no=#{accommodationNo}
-		]]>
-	</select>
-	<!-- 시설번호별 업주번호 조회하기 -->
-	<select id="selectByOwnerNo" parameterType="int" resultType="int">
-		<![CDATA[
-			select owner_no from accommodation where accommodation_no=#{accommodationNo}
-		]]>
-	</select>
-	<!-- 숙박시설 페이지별 조회하기 -->
-	<select id="selectAllAccommodation" parameterType="HashMap" resultType="Accommodation">
-		<![CDATA[
-			select t2.* from(select rownum rnum, t1.* from
-			(select accommodation_no, accommodation_name, accommodation_address, accommodation_img, 
-			accommodation_phone, accommodation_directions, site_no, owner_no 
-			from accommodation order by accommodation_no desc)t1)t2 where rnum between #{startRow} and #{lastRow};
-		]]>
-	</select>
-	<!-- 숙박시설 번호별 조회 -->
-	<select id="findByAccommodation" parameterType="int" resultType="Accommodation">
-		<![CDATA[
-			select*from accommodation where accommodation_no=#{accommodationNo}
-		]]>
-	</select>
-	<!-- 숙박시설DB개수 조회하기 -->
-	<select id="findByAccommodationMax" resultType="int">
-		<![CDATA[
-			select count(accommodation_no)from accommodation
-		]]>
-	</select>
-	<!-- 숙박명별 조회하기 -->
-	<select id="selectByAccommodation" parameterType="String" resultType="Accommodation">
-		<![CDATA[
-			select * from accommodation where accommodation_name=#{accommodationName}
-		]]>
-	</select>
- * */
+	//	시설명별 시설번호 조회하기
+	public int selectByAccommodationNo(String accommodationName){
+		return template.selectOne("AccommodationMapper.selectByAccommodationNo", accommodationName);
+	}
+	//	시설번호별 관광명소번호 조회하기
+	public int selectBySiteNo(int accommodationNo){
+		return template.selectOne("AccommodationMapper.selectBySiteNo", accommodationNo);
+	}
+	//	시설번호별 업주번호 조회하기
+	public int selectByOwnerNo(int accommodationNo){
+		return template.selectOne("AccommodationMapper.selectByOwnerNo", accommodationNo);
+	}
+	//	숙박시설 페이지별 조회하기
+	public List<Accommodation> selectAllAccommodation(int startRow, int lastRow){
+		HashMap<String, Object>map= new HashMap<String, Object>();
+		map.put("startRow", startRow);
+		map.put("lastRow", lastRow);
+		return template.selectList("AccommodationMapper.selectAllAccommodation", map);
+	}
+	//	숙박시설 번호별 조회하기
+	public Accommodation findByAccommodation(int accommodationNo){
+		return template.selectOne("AccommodationMapper.findByAccommodation", accommodationNo);
+	}
+	//	숙박시설DB개수 조회하기
+	public int findByAccommodationMax(){
+		return template.selectOne("AccommodationMapper.findByAccommodationMax");
+	}
+	//	숙박명별 조회하기
+	public Accommodation selectByAccommodation(String accommodationName){
+		return template.selectOne("AccommodationMapper.selectByAccommodation", accommodationName);
+	}
 }
