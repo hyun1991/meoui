@@ -13,41 +13,40 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 </head>
+</head>
 <body>
+	<%@include file="/nav/ownernav.jsp" %>
 	<h1>숙박업주 추가페이지</h1>
 	<hr>
-	<form action="/meoui/manage/join" method="post" >
+	<form action="/meoui/manage/accommodation/join" method="post" enctype="multipart/form-data">
 		<div>
 			<div class="form-group">
-				<label>아이디</label><input type="text" id="ownerId" name="ownerId" class="form-control">
+				<label>숙박시설이름</label><input type="text" id="accommodationName" name="accommodationName" class="form-control">
 				<span id="idcheck"></span>
 			</div>
 			<div class="form-group">
-				<label>비밀번호</label><input type="password" name="ownerPassword" id="ownerPassword" class="form-control">
-			</div>
-			<div class="form-group">
-				<label>이름</label><input type="text" name="ownerName" id="ownerName" class="form-control">
-			</div>
-			<div class="form-group">
-				<label>연락처</label><input type="text" name="ownerPhone" id="ownerPhone" class="form-control">
+				<label>대표전화</label><input type="password" name="accommodationPhone" id="accommodationPhone" class="form-control">
 			</div>
 			<div class="form-group step2">
 				<label for="address">주소</label><input type="button" class="btn btn-default pull-right" onclick="sample4_execDaumPostcode()" value="우편 번호 찾기"><br>
-				<input type="text" class="form-control" id="postcode" name="ownerAddress1" placeholder="우편 번호"> 
+				<input type="text" class="form-control" id="postcode" name="accommodationAddress1" placeholder="우편 번호"> 
 				<span id="guide" 
 				style="color: #999"></span> 
-				<input type="text" class="form-control" id="address" name="ownerAddress2"
+				<input type="text" class="form-control" id="address" name="accommodationAddress2"
 				placeholder="상세 주소">
 				</div>
 			<div class="form-group">
-				<label>이메일</label><input type="email" name="ownerMail" id="ownerMail" class="form-control">
+				<label>대표 이미지</label><input type="file" name="img" id="accommodationImg" class="form-control">
 			</div>
 			<div class="form-group">
-				<label>사업자번호</label><input type="text" name="ownerBrn" id="ownerBrn" class="form-control">
+				<label>오시는길 이미지</label><input type="file" name="file" id="accommodationDirectons" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>관광명소</label><input type="text" name="siteNo" id="siteNo" class="form-control">
 			</div>
 			<br>
 			<div class="btn-group">
-				<input type="submit" value="숙박업주 추가하기" class="btn btn-primary">
+				<input type="submit" value="객실추가" id="confirmBtn" class="btn btn-primary">
 			</div>
 		</div>
 	</form>

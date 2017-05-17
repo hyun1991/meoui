@@ -18,13 +18,8 @@ public class AccommodationService {
 	private AccommodationDAO dao;
 	@Autowired
 	private AccommodationCommentDAO commentDao;
-	@Autowired
-	private RoomDAO roomDao;
-	@Autowired
-	private RoomImgDAO roomImgDao;
 	
 	//	숙박시설 추가하기
-	@Transactional
 	public void createAccommodation(Accommodation accommodation){
 		dao.insertAccommodation(accommodation);
 	}
@@ -38,6 +33,7 @@ public class AccommodationService {
 		dao.deleteAccommodation(accommodationNo);
 		commentDao.deleteAllAccommodationComment(accommodationNo);
 	}
+	//	숙박시설 페이지별 조회하기
 	public HashMap<String, Object> getAllAccommodation(int pageNo){
 		int cnt= dao.findByAccommodationMax();
 		Pagination pagination= PagingUtil.getPagination(pageNo, cnt);
@@ -46,48 +42,15 @@ public class AccommodationService {
 		map.put("list", dao.selectAllAccommodation(pagination.getStartRow(), pagination.getLastRow()));
 		return map;
 	}
-	/*
-
-	//	숙박시설 번호별 조회하기
-	public Accommodation findByAccommodation(int accommodationNo){
-		return template.selectOne("AccommodationMapper.findByAccommodation", accommodationNo);
-	}
-	//	숙박시설DB개수 조회하기
-	public int findByAccommodationMax(){
-		return template.selectOne("AccommodationMapper.findByAccommodationMax");
-	}
-	//	숙박명별 조회하기
-	public Accommodation selectByAccommodation(String accommodationName){
-		return template.selectOne("AccommodationMapper.selectByAccommodation", accommodationName);
-	}
-	==============================================================================================
-		//	댓글 추가하기
-	public void insertAccommodationComment(AccommodationComment accommodationComment){
-		template.insert("AccommodationCommentMapper.insertAccommodationComment", accommodationComment);
-	}
-	//	댓글 수정하기
-	public void updateAccommodationComment(AccommodationComment accommodationComment){
-		template.update("AccommodationCommentMapper.updateAccommodationComment", accommodationComment);
-	}
-	//	댓글 삭제하기
-	public void deleteAccommodationComment(int accommodationCommentNo, int memberNo){
+	//	숙박시설 번호별 조회하기(상세보기)
+	@Transactional
+	public HashMap<String, Object> getByAccommodation(int accommodationNo){
 		HashMap<String, Object>map= new HashMap<String, Object>();
-		map.put("accommodationCommentNo", accommodationCommentNo);
-		map.put("memberNo", memberNo);
-		template.delete("AccommodationCommentMapper.deleteAccommodationComment", map);
+		Accommodation accommodation= dao.findByAccommodation(accommodationNo);
+		List<AccommodationComment> comment= commentDao.selectByAccommodationNo(accommodationNo);
+		map.put("accommodation", accommodation);
+		map.put("comment", comment);
+		return map;
 	}
-	//	숙박시설 번호별 댓글 전체삭제하기
-	public void deleteAllAccommodationComment(int accommodationNo){
-		template.delete("AccommodationCommentMapper.deleteAllAccommodationComment", accommodationNo);
-	}
-	//	숙박시설번호별 댓글 전체조회하기
-	public List<AccommodationComment> selectByAccommodationNo(int accommodationNo){
-		return template.selectList("AccommodationCommentMapper.selectByAccommodationNo", accommodationNo);
-	}
-	//	댓글번호별 회원번호 조회하기
-	public int selectByMemberNo(int accommodationCommentNo){
-		return template.selectOne("AccommodationCommentMapper.selectByMemberNo", accommodationCommentNo);
-	}
-	=================================================================================================
- * */
+
 }
