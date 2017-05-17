@@ -31,7 +31,7 @@
 			<div class="form-group">
 				<label>관광명소</label><input type="text" name="siteNo" id="siteNo" class="form-control">
 			</div>
-			<div class="form-group step2">
+			<div class="form-group">
 				<label for="address">주소</label><input type="button" class="btn btn-default pull-right" onclick="sample4_execDaumPostcode()" value="우편 번호 찾기"><br>
 				<input type="text" class="form-control" id="postcode" name="accommodationAddress1" placeholder="우편 번호"> 
 				<span id="guide" 

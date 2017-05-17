@@ -14,6 +14,7 @@
 header {
 	background-image: url(/meoui/images/sky.jpg);
 	background-repeat: no-repeat;
+	 filter: grayscale(100%);
 }
 
 #menu {
@@ -22,10 +23,6 @@ header {
 
 #text, p, header {
 	color: black;
-}
-
-#navline {
-	background-color: red;
 }
 
 footer {
@@ -83,46 +80,70 @@ footer {
 				<div id="leisure" class="tab-pane fade">
 					<h3>westJeju 1</h3>
 					<p>Some content in westJeju 1.</p>
-					<p id="attractionList" align="center"></p>
+
+					<div id="framewrap">
+						<iframe src="/meoui/websocket.jsp" height="200" width="300"
+							style="border: none;"></iframe>
+					</div>
 				</div>
 				<div id="theater" class="tab-pane fade">
 					<h3>westJeju 2</h3>
 					<p>Some content in westJeju 2.</p>
-					<p id="attractionList" align="center"></p>
 				</div>
 				<div id="musuem" class="tab-pane fade">
 					<h3>westJeju 3</h3>
 					<p>Some content in westJeju 2.</p>
-					<p id="attractionList" align="center"></p>
 				</div>
 				<div id="restaurant" class="tab-pane fade">
 					<h3>westJeju 4</h3>
 					<p>Some content in westJeju 2.</p>
-					<p id="attractionList" align="center"></p>
 				</div>
 			</div>
 		</div>
 	</section>
-
-	<div id="framewrap">
-		<iframe src="/meoui/websocket.jsp" height="200" width="300"
-			style="border: none;"></iframe>
-	</div>
 	<footer>
-		<ul class="nav navbar-nav">
-			<li><a href=""><i class="fa fa-facebook"
-					style="font-size: 50px"></i></a></li>
-			<li><a href=""><i class="fa fa-twitter"
-					style="font-size: 50px"></i></a></li>
-			<li><a href=""><i class="fa fa-instagram"
-					style="font-size: 50px"></i></a></li>
-		</ul>
-		<h1>1 Follow Us Canada's New Passenger Bill of Rights Bans
-			Removal in Cases of Overbooking https://t.co/K2aizs9IKo
-			https://t.co/lb8fklloIp Twitter | 29 mins ago</h1>
+		<div id="contact" class="container">
+			<div class="row">
+				<div class="col-md-3">
+					<p>Fan? Drop a note.</p>
+					<p>
+						<span class="glyphicon glyphicon-map-marker"></span>Chicago, US
+					</p>
+					<p>
+						<span class="glyphicon glyphicon-phone"></span>Phone: +00
+						1515151515
+					</p>
+					<p>
+						<span class="glyphicon glyphicon-envelope"></span>Email:
+						mail@mail.com
+					</p>
+				</div>
+				<div class="col-md-3">
+					<ul class="nav navbar-nav">
+						<li><a href=""><i class="fa fa-facebook"
+								style="font-size: 50px"></i></a></li>
+						<li><a href=""><i class="fa fa-twitter"
+								style="font-size: 50px"></i></a></li>
+						<li><a href=""><i class="fa fa-instagram"
+								style="font-size: 50px"></i></a></li>
+					</ul>
+				</div>
+				<div class="col-md-6">
+					<h2>1 Follow Us Canada's New Passenger Bill of Rights Bans
+						Removal in Cases of Overbooking https://t.co/K2aizs9IKo
+						https://t.co/lb8fklloIp Twitter | 29 mins ago</h2>
+				</div>
+			</div>
+			<div class="row text-center">
+				<h4>트래포트(주) Travelhow.com은 통신판매중개자로서 통신판매의 당사자가 아니며, 상품주문, 배송 및
+					환불의 의무와 책임은 각각의 판매업체에 있습니다. 사업자등록번호 : 211-88-19164통신판매업 :
+					제2011-서울금천-0150호대표이사 : 안경열개인정보관리책임자 : 김영권 사업자정보확인 주소 : 서울특별시 금천구
+					가산디지털1로 145 에이스하이엔드타워 3차 604호 [08506]대표전화 : 1644-8668팩스번호 :
+					02-2178-9393 Traport. Copyright (c) 2015 Traport..com Inc. All
+					Rights Reserved.</h4>
+			</div>
+		</div>
 	</footer>
-
-
 </body>
 <script>
 	$(window).bind('scroll', function() {
@@ -140,7 +161,7 @@ footer {
 </script>
 <script>
 	var text = "";
-	for (var i = 0; i < 12; i++) {
+	for (var i = 0; i < 3; i++) {
 		text += '<div class="col-md-4"> <a href="/meoui/accomodationinfo.jsp">'
 				+ '	<video loop width="300" height="auto" autoplay> <source src="/meoui/videos/live1.mp4" type="video/mp4"> </video> <div class="caption"> <p>Lorem ipsum...</p></div></a></div>';
 	}

@@ -41,10 +41,6 @@ span {
 	font-family: 'Jeju Hallasan', serif;
 	color: black;
 }
-
-#navbar {
-	background-color:#ffff00;
-}
 </style>
 </head>
 <body>
@@ -55,7 +51,7 @@ span {
 				<span class="glyphicon glyphicon-sunglasses"
 					style="font-size: 24px; margin-right: 70px;"></span> <a
 					class="navbar-brand navbar-left"
-					href="http://localhost:8087/meoui/" id="brand">제주를 부탁해</a>
+					href="http://localhost:8087/meoui/" id="brand" style="margin-left: 70px;">제주를 부탁해</a>
 			</div>
 			<div class="row">
 				<ul class="nav navbar-nav">
