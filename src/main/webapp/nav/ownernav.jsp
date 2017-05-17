@@ -4,9 +4,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-<script src="http://dmaps.daum.net/map_js_init/postcode.js"></script>
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet"
@@ -14,7 +13,6 @@
 <title>Navigation Bar</title>
 </head>
 <body>
-	<%@include file="/signInAndUp.jsp"%>
 	<nav class="navbar navbar-default row text-center" id="navbar">
 		<ul class="nav navbar-nav col-md-12">
 			<li class="col-md-2"><a href="#" id="menu">숙박시설관리</a></li>

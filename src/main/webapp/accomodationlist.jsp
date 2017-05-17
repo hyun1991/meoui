@@ -54,9 +54,9 @@ footer {
 </body>
 <script>
 	var text = "";
-	for (var i = 0; i < 4; i++) {
+	for (var i = 0; i < 12; i++) {
 		text += '<div class="col-md-3" style="padding: 5;"> <a href="/meoui/accomodationinfo.jsp">'
-				+ '<img src="/meoui/images/jeju.jpg" alt="숙박업소" width="200" height="170"">' 
+				+ '<img src="/meoui/images/harubang.jpg" alt="숙박업소" width="200" height="300"">' 
 				+' <div class="caption"><p class="text-left">50000</p><p>Lorem ipsum...</p></div></a></div>';
 	}
 	document.getElementById("accomodationList").innerHTML = text;
