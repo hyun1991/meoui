@@ -12,7 +12,6 @@
 	<div class="form-group">
     	<textarea class="form-control" id="content" rows="20" cols="30"></textarea>
     	<input type="text" class="form-control" id="msg">
-    	
   	</div>
 	<div class="modal-footer">
 		<button type="button" class="btn btn-default" id="connect">연결</button>
@@ -29,13 +28,19 @@
 			$("#exit").show();
 			$("#connect").hide();
 		})
+		$("#exit").on("click", function() {
+			$("#connect").show();
+			$("#send").hide();
+			$("#exit").hide();
+		})
 	})
 </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <script>
 	var wsocket;
 	$(document).ready(function() {
 		$("#connect").on("click", function() {
-			wsocket= new WebSocket("ws:/localhost:8087/web/chat");
+			wsocket= new WebSocket("ws://localhost:8087/web/chat");
 			wsocket.onmessage= function(event){
 				console.log(event.data)
 				$("#content").append(event.data+"\r\n");
@@ -50,11 +55,6 @@
 			wsocket.send($("#msg").val());
 			$("#msg").val("");
 		})
-		$(document).keypress(function(e) {
-		    if(e.which == 13) {
-		    	
-		    }
-		});
 	})
 </script>
 </html>
