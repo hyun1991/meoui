@@ -19,7 +19,7 @@ public class MemberMeetingService {
 		dao.insertMemberMeeting(memberMeeting);
 	}
 	//모임수정
-	public void updataMeetingName(String meetingName){
+	public void updataMeetingName(MemberMeeting meetingName){
 		dao.updateMeetingName(meetingName);
 	}
 	//모임삭제
@@ -38,4 +38,10 @@ public class MemberMeetingService {
 	public List<MemberMeeting> selectMeetingTotal(int meetingTotal){
 		return dao.selectMeetingTotal(meetingTotal);
 	}
+	//내가 가입한 모임 보기
+	public MemberMeeting selectMyMeeting(int memberNo){
+		return dao.selectMyMeeting(memberNo);
+	}
+	
+	
 }

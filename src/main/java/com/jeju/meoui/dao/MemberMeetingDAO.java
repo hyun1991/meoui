@@ -17,12 +17,12 @@ public class MemberMeetingDAO {
 	
 	// 모임 생성하기
 	public void insertMemberMeeting(MemberMeeting memberMeeting){
-		template.insert("MemberMeetingMapper.insetMemberMeeting", memberMeeting);		
+		template.insert("MemberMeetingMapper.insertMemberMeeting", memberMeeting);		
 	}
 	
 	//모임 수정하기	
 	//이름으로 가지고 와서 이름만 수정
-	public void updateMeetingName(String meetingName){
+	public void updateMeetingName(MemberMeeting meetingName){
 		template.update("MemberMeetingMapper.updateMeetingName", meetingName);		
 	}
 	
@@ -45,5 +45,13 @@ public class MemberMeetingDAO {
 	//모임인원수별 리스트 조회
 	public List<MemberMeeting> selectMeetingTotal(int meetingTotal){
 		return template.selectList("MembermeetingMapper.selectMeetingTotal",meetingTotal);	}
+	
+	//내가 가입한 모임 보기
+	public MemberMeeting selectMyMeeting(int memberNo){
+		return template.selectOne("MemberMeetingMapper.selectMyMeeting",memberNo);
+	}
+	
+	
+	
 	
 }

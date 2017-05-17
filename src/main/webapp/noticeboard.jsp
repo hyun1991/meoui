@@ -16,8 +16,15 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 </head>
+<style>
+footer {
+	background-color: grey;
+}
+</style>
 <body>
-	<%@include file="/navbar.jsp"%>
+	<header>
+		<%@include file="/navbar.jsp"%>
+	</header>
 	<div class="container">
 		<h2>공지사항</h2>
 		<br>
@@ -74,7 +81,7 @@
 				</tbody>
 			</table>
 			<div class="row text-center">
-			
+
 				<ul class="pagination pagination-md">
 					<li><a href="#">1</a></li>
 					<li><a href="#">2</a></li>
@@ -88,5 +95,10 @@
 			</div>
 		</div>
 	</div>
+	<footer>
+		<h1>1 Follow Us Canada's New Passenger Bill of Rights Bans
+			Removal in Cases of Overbooking https://t.co/K2aizs9IKo
+			https://t.co/lb8fklloIp Twitter | 29 mins ago</h1>
+	</footer>
 </body>
 </html>

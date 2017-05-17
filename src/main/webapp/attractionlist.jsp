@@ -5,18 +5,17 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Main Page</title>
+<style>
+footer{
+	background-color: grey;
+}
+</style>
 </head>
 <body>
-	<%@include file="/navbar.jsp"%>
+	<header>
+		<%@include file="/navbar.jsp"%>
+	</header>
 	<div class="container-fluid text-center">
 		<div class="row">
 			<div class="col-md-2">
@@ -44,16 +43,18 @@
 		</div>
 
 	</div>
-
-
-	<script>
-		var text = "";
-		for (var i = 0; i < 20; i++) {
-			text += '<div class="col-md-3"> <a href="/meoui/attractioninfo.jsp">'
-					+ '<img class="img-responsive" src="/meoui/images/jeju.jpg" alt="attraction" width="250" height="170"> <div class="caption"> <p>Lorem ipsum...</p></div></a></div>';
-		}
-		document.getElementById("attractionList").innerHTML = text;
-	</script>
-
+	<footer>
+		<h1>1 Follow Us Canada's New Passenger Bill of Rights Bans
+			Removal in Cases of Overbooking https://t.co/K2aizs9IKo
+			https://t.co/lb8fklloIp Twitter | 29 mins ago</h1>
+	</footer>
 </body>
+<script>
+	var text = "";
+	for (var i = 0; i < 20; i++) {
+		text += '<div class="col-md-3"> <a href="/meoui/attractioninfo.jsp">'
+				+ '<img class="img-responsive" src="/meoui/images/jeju.jpg" alt="attraction" width="250" height="170"> <div class="caption"> <p>Lorem ipsum...</p></div></a></div>';
+	}
+	document.getElementById("attractionList").innerHTML = text;
+</script>
 </html>
