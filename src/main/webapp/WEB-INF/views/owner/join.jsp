@@ -38,7 +38,7 @@
 				style="color: #999"></span> 
 				<input type="text" class="form-control" id="address" name="ownerAddress2"
 				placeholder="상세 주소">
-				</div>
+			</div>
 			<div class="form-group">
 				<label>이메일</label><input type="email" name="ownerMail" id="ownerMail" class="form-control">
 			</div>

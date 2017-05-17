@@ -5,13 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 </head>
 </head>
 <body>
@@ -27,14 +22,6 @@
 			<div class="form-group">
 				<label>대표전화</label><input type="password" name="accommodationPhone" id="accommodationPhone" class="form-control">
 			</div>
-			<div class="form-group step2">
-				<label for="address">주소</label><input type="button" class="btn btn-default pull-right" onclick="sample4_execDaumPostcode()" value="우편 번호 찾기"><br>
-				<input type="text" class="form-control" id="postcode" name="accommodationAddress1" placeholder="우편 번호"> 
-				<span id="guide" 
-				style="color: #999"></span> 
-				<input type="text" class="form-control" id="address" name="accommodationAddress2"
-				placeholder="상세 주소">
-				</div>
 			<div class="form-group">
 				<label>대표 이미지</label><input type="file" name="img" id="accommodationImg" class="form-control">
 			</div>
@@ -43,6 +30,14 @@
 			</div>
 			<div class="form-group">
 				<label>관광명소</label><input type="text" name="siteNo" id="siteNo" class="form-control">
+			</div>
+			<div class="form-group step2">
+				<label for="address">주소</label><input type="button" class="btn btn-default pull-right" onclick="sample4_execDaumPostcode()" value="우편 번호 찾기"><br>
+				<input type="text" class="form-control" id="postcode" name="accommodationAddress1" placeholder="우편 번호"> 
+				<span id="guide" 
+				style="color: #999"></span> 
+				<input type="text" class="form-control" id="address" name="accommodationAddress2"
+				placeholder="상세 주소">
 			</div>
 			<br>
 			<div class="btn-group">

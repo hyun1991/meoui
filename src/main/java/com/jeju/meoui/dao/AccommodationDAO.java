@@ -20,7 +20,7 @@ public class AccommodationDAO {
 	public void updateAccommodation(Accommodation accommodation){
 		template.update("AccommodationMapper.updateAccommodation", accommodation);
 	}
-	//	숙박시설 삭제하
+	//	숙박시설 삭제하기
 	public void deleteAccommodation(int accommodationNo){
 		template.delete("AccommodationMapper.deleteAccommodation", accommodationNo);
 	}
