@@ -51,9 +51,4 @@ public class MemberMeetingController {
 			return "*";		
 	}
 	
-	@RequestMapping(value="", method=RequestMethod.POST)
-	public String 
-	
-		
-	
 }
