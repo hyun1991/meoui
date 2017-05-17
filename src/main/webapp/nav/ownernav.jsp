@@ -16,31 +16,33 @@
 </head>
 <body>
 	<%@include file="/signInAndUp.jsp"%>
-		<nav class="navbar navbar-default row text-center" id="navbar">
-			<ul class="nav navbar-nav col-md-12">
-				<li class="col-md-2"><a href="#" id="menu">숙박시설관리</a></li>
-				<li class="col-md-2"><a href="#" id="menu">예약관리</a></li>
-				<li class="col-md-2"><a href="#" id="menu">회원관리</a></li>
-				<li class="col-md-2"><a href="#" id="menu">통계</a></li>
-				<li id="loginCheck"><%=session.getAttribute("ownerId") %>님 환영합니다</li>
-				<li>
-					<a href="/meoui/manage/logout"><button type="button" class="btn btn-default" id="logoutBtn">로그아웃</button></a>
-				</li>
-				<li><button type="button" class="btn btn-default" id="deleteBtn">회원탈퇴</button></li>
+	<nav class="navbar navbar-default row text-center" id="navbar">
+		<ul class="nav navbar-nav col-md-12">
+			<li class="col-md-2"><a href="#" id="menu">숙박시설관리</a></li>
+			<li class="col-md-2"><a href="#" id="menu">예약관리</a></li>
+			<li class="col-md-2"><a href="#" id="menu">회원관리</a></li>
+			<li class="col-md-2"><a href="#" id="menu">통계</a></li>
+			<li class="dropdown pull-right"><a class="dropdown-toggle"
+				data-toggle="dropdown" href="#" id="loginCheck"><%=session.getAttribute("ownerId")%>님
+					환영합니다<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+						<li><a href="/meoui/manage/logout" id="logoutBtn">로그아웃</a></li>
+			<li><a id="deleteBtn">회원탈퇴</a></li>
+				</ul></li>
 			</ul>
-		</nav>
+	</nav>
 </body>
 <script>
-	$(document).ready(function(){
+	$(document).ready(function() {
 		$("#deleteBtn").on("click", function() {
 			$.ajax({
-				type:"post",
-				url: "/meoui/manage/delete",
-				success: function(result){
+				type : "post",
+				url : "/meoui/manage/delete",
+				success : function(result) {
 					console.log(result)
-					if(result=="success"){
+					if (result == "success") {
 						alert("회원탈퇴 되었습니다.")
-						window.location.href="/meoui/manage/login";
+						window.location.href = "/meoui/manage/login";
 					}
 				}
 			})

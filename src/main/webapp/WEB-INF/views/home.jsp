@@ -11,28 +11,45 @@
 <style>
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
 
-body {
+header {
 	background-image: url(/meoui/images/sky.jpg);
 	background-repeat: no-repeat;
 }
 
 #menu {
-	background-color: #f7ff14;
 	font-family: 'Jeju Gothic', serif;
 }
 
-#text, p {
+#text, p, header {
 	color: black;
 }
 
-p {
-	border-style: solid 1px;
-	border-color: red;
+footer {
+	background-color: grey;
 }
 </style>
 <body>
-	<div class="container-fluid text-center">
+	<header>
 		<%@include file="/navbar.jsp"%>
+		<form class="form-inline">
+			<div class="input-group">
+				<input type="search" class="form-control input-lg" size="30"
+					placeholder="목적지" required style="margin: 50px;">
+				<div class="input-group-btn">
+					<button type="button" class="btn btn-default btn-lg"
+						style="margin-left: 50px; background-color: #f7ff14;">검색</button>
+				</div>
+			</div>
+		</form>
+		<h1 style="margin-left: 800px;">뭐라도 써보자</h1>
+		<h1 style="margin-left: 800px;">뭐라도 써보자</h1>
+		<h1 style="margin-left: 800px;">뭐라도 써보자</h1>
+		<h1 style="margin-left: 800px;">뭐라도 써보자</h1>
+		<h1 style="margin-left: 800px;">뭐라도 써보자</h1>
+		<h1 style="margin-left: 800px;">canvas자리</h1>
+
+	</header>
+	<div class="container-fluid text-center">
 		<div class="row">
 			<ul class="nav nav-tabs" id="menu">
 				<li class="col-md-1">
@@ -55,21 +72,9 @@ p {
 			</ul>
 		</div>
 		<div class="container">
-			<div class="row text-left">
-				<form class="form-inline">
-					<div class="input-group">
-						<input type="search" class="form-control input-lg" size="30"
-							placeholder="목적지" required style="margin: 50px;">
-						<div class="input-group-btn">
-							<button type="button" class="btn btn-default btn-lg"
-								style="margin-left: 50px; background-color: #f7ff14;">검색</button>
-						</div>
-					</div>
-				</form>
-			</div>
 			<div class="tab-content">
 				<div id="allCategory" class="tab-pane fade in active">
-					<h3 class="text-left" style="margin: 50px;" style="color: white;">카테고리</h3>
+					<h4 class="text-left" style="margin: 50px;" style="color: white;">카테고리</h4>
 					<p id="attractionList" align="center"></p>
 				</div>
 				<div id="leisure" class="tab-pane fade">
@@ -94,11 +99,25 @@ p {
 				</div>
 			</div>
 		</div>
-		<div id="framewrap">
-			<iframe src="/meoui/websocket.jsp" height="200" width="300"
-				style="border: none;"></iframe>
-		</div>
 	</div>
+	<div id="framewrap">
+		<iframe src="/meoui/websocket.jsp" height="200" width="300"
+			style="border: none;"></iframe>
+	</div>
+	<footer>
+		<ul class="nav navbar-nav">
+			<li><a href=""><i class="fa fa-facebook"
+					style="font-size: 50px"></i></a></li>
+			<li><a href=""><i class="fa fa-twitter"
+					style="font-size: 50px"></i></a></li>
+			<li><a href=""><i class="fa fa-instagram"
+					style="font-size: 50px"></i></a></li>
+		</ul>
+		<h1>1 Follow Us Canada's New Passenger Bill of Rights Bans
+			Removal in Cases of Overbooking https://t.co/K2aizs9IKo
+			https://t.co/lb8fklloIp Twitter | 29 mins ago</h1>
+	</footer>
+
 
 </body>
 <script>

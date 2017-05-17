@@ -10,8 +10,8 @@
 			select member_seq.nextval from dual
 		</selectKey>
 		<![CDATA[
-			insert into member_meeting(member_meeting_no, member_meeting_Name 
-			meetingTotalNumber)
+			insert into member_meeting(member_meeting_no, member_meeting_name 
+			meeting_total_number)
 			values(#{meetingNo}, #{meetingName}, #{meetingTotalNumber})
 		]]>
 	</insert>
