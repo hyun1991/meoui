@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,8 +16,15 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 </head>
+<style>
+footer {
+	background-color: grey;
+}
+</style>
 <body>
-	<%@include file="/navbar.jsp"%>
+	<header>
+		<%@include file="/navbar.jsp"%>
+	</header>
 	<div class="container">
 		<h2>공지사항</h2>
 		<br>
@@ -27,9 +36,17 @@
 						<th>작성자</th>
 						<th>글 제목</th>
 						<th>작성 날짜/시간</th>
-					</tr>
+						</tr>
 				</thead>
 				<tbody>
+				<c:forEach items="${result.list }" var="notice">
+					<tr>
+						<td><a href="/meoui/notice.jsp">${notice.noticeNo }</a></td>
+						<td>${notice.usersNo }</td>
+				        <td>${notice.noticeTitle }</td>
+						<td><td><fmt:formatDate value="${notic.noticeDate }" pattern="yyyy년 MM월 dd일"/></td></td>
+					</tr>
+					</c:forEach>
 					<tr>
 						<td><a href="/meoui/notice.jsp">John</a></td>
 						<td>Doe</td>
@@ -64,7 +81,7 @@
 				</tbody>
 			</table>
 			<div class="row text-center">
-			
+
 				<ul class="pagination pagination-md">
 					<li><a href="#">1</a></li>
 					<li><a href="#">2</a></li>
@@ -78,5 +95,10 @@
 			</div>
 		</div>
 	</div>
+	<footer>
+		<h1>1 Follow Us Canada's New Passenger Bill of Rights Bans
+			Removal in Cases of Overbooking https://t.co/K2aizs9IKo
+			https://t.co/lb8fklloIp Twitter | 29 mins ago</h1>
+	</footer>
 </body>
 </html>

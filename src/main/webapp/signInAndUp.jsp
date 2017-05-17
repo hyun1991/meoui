@@ -38,15 +38,15 @@ label, .btn {
 								class="form-control" id="memberPassword" name="memberPassword">
 						</div>
 						<div class="form-group justified">
-							<button type="submit" class="btn btn-default btn-block"
-								style="background-color: #f7ff14;">로그인</button>
+							<button type="submit" class="w3-button w3-block w3-white w3-border w3-border-yellow"
+								>로그인</button>
 						</div>
 						<div class="form-group">
 							<a href="/meoui/findid.jsp" class="btn btn-default">아이디 찾기</a> <a
 								href="/meoui/findpwd.jsp" class="btn btn-default">비밀번호 찾기</a>
+								<a
+								href="/meoui/manage/login" class="btn btn-default">사업주 로그인</a>		
 						</div>
-
-
 					</div>
 				</div>
 			</div>

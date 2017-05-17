@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +9,11 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <title>Insert title here</title>
+<style>
+footer {
+	background-color: grey;
+}
+</style>
 </head>
 <body>
 	<%@include file="/navbar.jsp"%>
@@ -17,9 +22,7 @@
 		<br>
 		<div class="row">
 			<div class="col-md-4">
-				<label for="usr">아이디</label>
-				<br>
-				<label for="usr">이름</label>
+				<label for="usr">아이디</label> <br> <label for="usr">이름</label>
 			</div>
 			<a href="#" class="btn btn-success">쪽지함</a>
 		</div>
@@ -62,5 +65,10 @@
 			</div>
 		</div>
 	</div>
+	<footer>
+		<h1>1 Follow Us Canada's New Passenger Bill of Rights Bans
+			Removal in Cases of Overbooking https://t.co/K2aizs9IKo
+			https://t.co/lb8fklloIp Twitter | 29 mins ago</h1>
+	</footer>
 </body>
 </html>

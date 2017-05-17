@@ -16,7 +16,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@include file="/navbar.jsp"%>
+		<header>
+		<%@include file="/navbar.jsp"%>
+	</header>
 	<div class="container">
 		<div class="row">
 			<h2>계정정보찾기(아이디/비밀번호)</h2>

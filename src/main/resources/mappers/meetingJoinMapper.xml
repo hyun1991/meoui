@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="MeetingJoin">
+	<!-- 1. 모임 가입하기-->
+	<insert id="insertMeetingJoin" parameterType="MeetingJoin">
+		<![CDATA[
+		insert into meeting_join(member_no, meeting_no)
+		values(#{memberNo}, #{meetingNo})
+		]]>
+	</insert>
+
+	<!-- 2. 모임탈퇴 -->
+	<delete id="deleteMeetingJoin" parameterType="int">
+		<![CDATA[
+			delete from meeting_join where member_no=#{memberNo})
+		]]>
+	</delete>	
+
+</mapper>
+	
