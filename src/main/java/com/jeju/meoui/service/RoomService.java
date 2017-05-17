@@ -25,11 +25,7 @@ public class RoomService {
 		roomImgDao.insertRoomImg(roomImg);
 	}
 /*
- * 
-	//	객실추가하기
-	public void insertRoom(Room room){
-		template.insert("RoomMapper.insertRoom", room);
-	}
+ 
 	//	객실수정하기
 	public void updateRoom(Room room){
 		template.update("RoomMapper.updateRoom", room);
@@ -46,10 +42,7 @@ public class RoomService {
 		return template.selectList("RoomMapper.selectByAccommodationNo", accommodationNo);
 	}
 	=========================================================================================
-	//	객실 이미지 추가하기
-	public void insertRoomImg(RoomImg roomImg){
-		template.insert("RoomImgMapper.insertRoomImg", roomImg);
-	}
+
 	//	객실 이미지 삭제하기
 	public void deleteRoomImg(RoomImg roomImg){
 		template.delete("RoomImgMapper.deleteRoomImg", roomImg);
