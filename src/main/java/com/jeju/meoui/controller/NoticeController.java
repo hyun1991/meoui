@@ -8,14 +8,13 @@ import org.springframework.web.bind.annotation.*;
 import com.jeju.meoui.service.*;
 import com.jeju.meoui.vo.*;
 @Controller
-@RequestMapping("notice")
 public class NoticeController {
 	@Autowired
 	private NoticeService service;
 	//1. 공지게시판 추가하기(작성폼)
 	@RequestMapping(value="/notice/join", method=RequestMethod.GET)
 	public String insertNoticeForm(){
-		return "notice/insert.jsp";
+		return "notice/insert";
 	}
 	//1. 공지게시판 추가하기(추가 성공)
 	@RequestMapping(value="/notice/join", method=RequestMethod.POST)
@@ -27,7 +26,7 @@ public class NoticeController {
 	@RequestMapping(value="/notice/update", method=RequestMethod.GET)
 	public String updateNoticeForm(@RequestParam int noticeNo,Model model){
 		model.addAttribute(service.findByNotice(noticeNo));
-		return "notice/update.jsp";
+		return "notice/update";
 	}
 	//2. 공지게시판 갱신하기(갱신 성공)
 	@RequestMapping(value="/notice/update", method=RequestMethod.POST)
@@ -45,13 +44,13 @@ public class NoticeController {
 	@RequestMapping(value="/notice/list", method=RequestMethod.GET)
 	public String getAllNotice(@RequestParam int pageNo,Model model){
 		model.addAttribute("result",service.getByNotice(pageNo));
-		return "notice/list.jsp";
+		return "notice/list";
 	}
 	//5. 공지게시판 상세보기
 	@RequestMapping(value="/notice/view/{noticeNo}", method=RequestMethod.GET)
 	public String selectByNoticeNo(@RequestParam int noticeNo, Model model){
 	     model.addAttribute("notice", service.findByNotice(noticeNo));
-	     return "notice/view.jsp";
+	     return "notice/view";
 	}
 	
 	

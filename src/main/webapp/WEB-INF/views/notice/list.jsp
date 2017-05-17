@@ -5,17 +5,31 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-<meta charset=UTF-8">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-	<c:forEach items="${result.list }" var="notice">
-		<tr>
-			<td><a href="/meoui/notice.jsp">${notice.noticeNo }</a></td>
-			<td>${notice.usersNo }</td>
-			<td>${notice.noticeTitle }</td>
-			<td><fmt:formatDate value="${notic.noticeDate }" pattern="yyyy년 MM월 dd일"/></td>
-		</tr>
-	</c:forEach>
+   <table>
+   		<tr><th>번호</th><th>작성자</th><th>제목</th><th>작성일</th></tr>
+		<c:forEach items="${result.list }" var="notice">
+			<tr>
+				<td><a href="">${notice.noticeNo }</a></td>
+				<td>${notice.usersNo }</td>
+				<td>${notice.noticeTitle }</td>
+				<td><fmt:formatDate value="${notice.noticeDate }"  pattern="yyyy년MM월dd일" /></td>
+			</tr>
+		</c:forEach>
+	</table>
+	<div>
+		<c:if test="${result.pagination.prev>0 }">
+			<a href="/meoui/notice/list?pageNo=${result.pagination.prev }">이전으로</a>
+		</c:if>
+		<c:forEach begin="${result.pagination.startPaging }" end="${result.pagination.lastPaging }" var="i" >
+			<a href="/meoui/notice/list?pageNo=${i }">${i }</a>
+		</c:forEach>
+		<c:if test="${result.pagination.next>0 }">
+			<a href="/meoui/notice/list?pageNo=${result.pagination.next }">다음으로</a>
+		</c:if>
+	</div>
 </body>
 </html>
