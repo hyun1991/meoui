@@ -37,11 +37,11 @@ public class FreeBoardCommentDAO {
 	public int selectfreeboardCommentNo(int freeboardCommentNo) {
 		return template.selectOne("FreeBoardCommentMapper.selectfreeboardCommentNo",freeboardCommentNo);
 	}
-	//7. 자유게시판 댓글수 증가
+	//7. 자유게시판 댓글수 증가(임시추가)
 	public void incrementComments(int freeboardNo) {
 		template.update("FreeBoard.incrementComments", freeboardNo);
 	}
-	//8. 자유게시판 댓글 갯수
+	//8. 자유게시판 댓글 갯수(임시추가)
 	public int selectCommentsCnt(int freeboardNo) {
 		return template.selectOne("FreeBoard.selectCommentsCnt", freeboardNo);
 	}

@@ -13,7 +13,7 @@ public class FreeBoardCommentService {
 	@Autowired
 	private FreeBoardCommentDAO commentDAO;
 	
-	//1. 댓글 추가하기
+	//1. 댓글 추가하기(미완료)
 	public void createFreeboardComment(FreeBoardComment freeBoardComment) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		commentDAO.insertComment(freeBoardComment);
@@ -26,7 +26,7 @@ public class FreeBoardCommentService {
 	public void modifyFreeboardComment(FreeBoardComment freeBoardComment) {
 		commentDAO.updateComment(freeBoardComment);
 	}
-	//3. 댓글 삭제하기
+	//3. 댓글 삭제하기(미완료)
 	public void removeFreeboardComment(int freeboardCommentNo, int memberNo, int freeboardNo) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		commentDAO.deleteComment(freeboardCommentNo, memberNo);
