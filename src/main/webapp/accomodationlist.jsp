@@ -20,18 +20,6 @@ footer{
 			<div class="col-md-2">
 				<%@include file="/sideNavigation.jsp"%>
 			</div>
-			<div class="col-md-10">
-				<form class="form-inline pull-right">
-					<div class="input-group">
-						<input type="search" class="form-control" size="50"
-							placeholder="검색" required>
-						<div class="input-group-btn">
-							<button type="button" class="btn btn-default"
-								style="background-color: #f7ff14;">검색</button>
-						</div>
-					</div>
-				</form>
-			</div>
 			<div class="col-md-9">
 				<hgroup style="margin: 50px;">
 					<h1>카테고리 별 제주 숙박업소 노출</h1>

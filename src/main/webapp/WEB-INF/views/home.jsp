@@ -24,6 +24,10 @@ header {
 	color: black;
 }
 
+#navline {
+	background-color: red;
+}
+
 footer {
 	background-color: grey;
 }
@@ -32,7 +36,7 @@ footer {
 	<header>
 		<%@include file="/navbar.jsp"%>
 		<form class="form-inline">
-			<div class="input-group">
+			<div class="input-group" style="margin-bottom: 0;">
 				<input type="search" class="form-control input-lg" size="30"
 					placeholder="목적지" required style="margin: 50px;">
 				<div class="input-group-btn">
@@ -46,35 +50,34 @@ footer {
 		<h1 style="margin-left: 800px;">뭐라도 써보자</h1>
 		<h1 style="margin-left: 800px;">뭐라도 써보자</h1>
 		<h1 style="margin-left: 800px;">뭐라도 써보자</h1>
-		<h1 style="margin-left: 800px;">canvas자리</h1>
-
+		<h1 style="margin-left: 800px; margin-bottom: 0;">canvas자리</h1>
 	</header>
-	<div class="container-fluid text-center">
+	<div class="container-fluid text-center" id="navline">
 		<div class="row">
 			<ul class="nav nav-tabs" id="menu">
-				<li class="col-md-1">
-					<p>&nbsp</p>
-				</li>
-				<li class="col-md-2"><a data-toggle="tab" href="#allCategory"
-					id="text">카테고리 전체&nbsp<span class="badge">5</span>
+				<li style="margin-left: 13%; margin-right: 3%"><a
+					data-toggle="tab" href="#allCategory" id="text">전체&nbsp<span
+						class="badge">5</span>
 				</a></li>
-				<li class="col-md-2"><a data-toggle="tab" href="#leisure"
-					alt="잠수함/유람선/레저" id="text">잠수함/유람선/레저&nbsp<span class="badge">5</span></a></li>
-				<li class="col-md-2"><a data-toggle="tab" href="#theater"
-					id="text">공연장/상영관/기타&nbsp<span class="badge">5</span></a></li>
-				<li class="col-md-2"><a data-toggle="tab" href="#musuem"
-					id="text">테마공원/박물관&nbsp<span class="badge">5</span></a></li>
-				<li class="col-md-2"><a data-toggle="tab" href="#restaurant"
-					id="text">음식점&nbsp<span class="badge">5</span></a></li>
-				<li class="col-md-1">
-					<p>&nbsp</p>
-				</li>
+				<li style="margin-right: 3%"><a data-toggle="tab"
+					href="#leisure" alt="잠수함/유람선/레저" id="text">잠수함/유람선/레저&nbsp<span
+						class="badge">5</span></a></li>
+				<li style="margin-right: 3%"><a data-toggle="tab"
+					href="#theater" id="text">공연장/상영관/기타&nbsp<span class="badge">5</span></a></li>
+				<li style="margin-right: 3%"><a data-toggle="tab"
+					href="#musuem" id="text">테마공원/박물관&nbsp<span class="badge">5</span></a></li>
+				<li style="margin-right: 3%"><a data-toggle="tab"
+					href="#restaurant" id="text">음식점&nbsp<span class="badge">5</span></a></li>
 			</ul>
 		</div>
+	</div>
+	<section>
 		<div class="container">
 			<div class="tab-content">
 				<div id="allCategory" class="tab-pane fade in active">
-					<h4 class="text-left" style="margin: 50px;" style="color: white;">카테고리</h4>
+					<h4 class="text-left" style="margin: 50px;">
+						<i class="fa fa-map" style="font-size: 24px; margin-right: 10px;"></i>카테고리
+					</h4>
 					<p id="attractionList" align="center"></p>
 				</div>
 				<div id="leisure" class="tab-pane fade">
@@ -99,7 +102,8 @@ footer {
 				</div>
 			</div>
 		</div>
-	</div>
+	</section>
+
 	<div id="framewrap">
 		<iframe src="/meoui/websocket.jsp" height="200" width="300"
 			style="border: none;"></iframe>
@@ -136,9 +140,9 @@ footer {
 </script>
 <script>
 	var text = "";
-	for (var i = 0; i < 16; i++) {
-		text += '<div class="col-md-3"> <a href="/meoui/accomodationinfo.jsp">'
-				+ '<img class="img-responsive" src="/meoui/images/jeju.jpg" alt="attraction" width="300px" height="450px"> <div class="caption"> <p>Lorem ipsum...</p></div></a></div>';
+	for (var i = 0; i < 12; i++) {
+		text += '<div class="col-md-4"> <a href="/meoui/accomodationinfo.jsp">'
+				+ '	<video loop width="300" height="auto" autoplay> <source src="/meoui/videos/live1.mp4" type="video/mp4"> </video> <div class="caption"> <p>Lorem ipsum...</p></div></a></div>';
 	}
 	document.getElementById("attractionList").innerHTML = text;
 </script>

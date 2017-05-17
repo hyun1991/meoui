@@ -26,10 +26,10 @@
 				data-toggle="dropdown" href="#" id="loginCheck"><%=session.getAttribute("ownerId")%>님
 					환영합니다<span class="caret"></span></a>
 				<ul class="dropdown-menu">
-						<li><a href="/meoui/manage/logout" id="logoutBtn">로그아웃</a></li>
-			<li><a id="deleteBtn">회원탈퇴</a></li>
+					<li><a href="/meoui/manage/logout" id="logoutBtn">로그아웃</a></li>
+					<li><a id="deleteBtn">회원탈퇴</a></li>
 				</ul></li>
-			</ul>
+		</ul>
 	</nav>
 </body>
 <script>
