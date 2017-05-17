@@ -13,10 +13,10 @@ public class MeetingJoinController {
 	@Autowired
 	private MeetingJoinService service;
 	
-	@RequestMapping(value="*", method=RequestMethod.POST)
+	@RequestMapping(value="/meeting/test", method=RequestMethod.POST)
 	public String insertMeetingJoin(@ModelAttribute MeetingJoin meetingJoin){
 		service.createMeetingJoin(meetingJoin);
-		return "*/";
+		return "/";
 	}
 	
 	
