@@ -39,19 +39,21 @@ public class MemberMeetingController {
 	}
 	
 	//모임 삭제
-	@RequestMapping(value="", method=RequestMethod.Get)
+	@RequestMapping(value="", method=RequestMethod.GET)
 	public String deleteMemberMeeting(){
 		return "*";
 	}
 	
 	//모임 삭제 완료	
-	@RequestMapping(value="*". method=RequestMethod.Post)
+	@RequestMapping(value="", method=RequestMethod.POST)
 		public String deleteMemberMeeting(int meetingNo){
 			service.deleteMemberMeeting(meetingNo);
 			return "*";		
 	}
 	
+	@RequestMapping(value="", method=RequestMethod.POST)
+	public String 
 	
-	
+		
 	
 }
