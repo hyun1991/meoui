@@ -38,8 +38,8 @@ label, .btn {
 								class="form-control" id="memberPassword" name="memberPassword">
 						</div>
 						<div class="form-group justified">
-							<button type="submit" class="btn btn-default btn-block"
-								style="background-color: #f7ff14;">로그인</button>
+							<button type="submit" class="w3-button w3-block w3-white w3-border w3-border-yellow"
+								>로그인</button>
 						</div>
 						<div class="form-group">
 							<a href="/meoui/findid.jsp" class="btn btn-default">아이디 찾기</a> <a
