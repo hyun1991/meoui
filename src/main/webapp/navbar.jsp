@@ -19,13 +19,12 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <title>Navigation Bar</title>
 <style>
-@import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
-
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
 
 .navbar-header {
 	margin-left: 5%;
-	margin-right: 2.5%
+	margin-right: 2.5%;
+	color: black;
 }
 
 span {
@@ -33,12 +32,12 @@ span {
 }
 
 .navbar {
+	background-color: white;
+	margin-bottom: 0;
 	font-family: 'Jeju Gothic', serif;
-	#
 }
 
 #brand {
-	font-family: 'Jeju Hallasan', serif;
 	color: black;
 }
 </style>
@@ -46,33 +45,46 @@ span {
 <body>
 	<%@include file="/signInAndUp.jsp"%>
 	<nav class="navbar navbar-default text-center" id="navbar">
-		<div class="container-fluid">
+		<div class="container">
 			<div class="navbar-header">
 				<span class="glyphicon glyphicon-sunglasses"
 					style="font-size: 24px; margin-right: 70px;"></span> <a
 					class="navbar-brand navbar-left"
-					href="http://localhost:8087/meoui/" id="brand" style="margin-left: 70px;">제주를 부탁해</a>
+					href="http://localhost:8087/meoui/" id="brand">제주를 부탁해</a>
 			</div>
 			<div class="row">
 				<ul class="nav navbar-nav">
-					<li class="navMenu"><a href="/meoui/attractionlist.jsp"><span
-							class="glyphicon glyphicon glyphicon-grain"></span> 관광 명소</a></li>
-					<li class="navMenu"><a href="/meoui/directions.jsp"> <span
-							class="glyphicon glyphicon-road"></span> 길 찾기
+					<li class="navMenu"><a href="/meoui/attractionlist.jsp"
+						style="color: black;"><span
+							class="glyphicon glyphicon glyphicon-grain" style="color: green;"></span>
+							관광 명소</a></li>
+					<li class="navMenu"><a href="/meoui/directions.jsp"
+						style="color: black;"> <span class="glyphicon glyphicon-road"
+							style="color: blue;"></span> 길 찾기
 					</a></li>
-					<li class="navMenu"><a href="/meoui/accomodationlist.jsp"><span
-							class="glyphicon glyphicon-home"></span>숙박 시설</a></li>
-					<li class="navMenu"><a href="/meoui/meetingboard.jsp"><span
-							class="glyphicon glyphicon-pencil"></span>모임 게시판</a></li>
+					<li class="navMenu"><a href="/meoui/accomodationlist.jsp"
+						style="color: black;"><span class="glyphicon glyphicon-home"
+							style="color: orange;"></span> 숙박 시설</a></li>
+					<li class="navMenu"><a href="/meoui/meetingboard.jsp"
+						style="color: black;"><span class="glyphicon glyphicon-heart"
+							style="color: #f76ce4;"></span> 모임 </a></li>
 					<li class="navMenu"><a href="/meoui/noticeboard.jsp"
-						style="margin-right: 70px;"><span
-							class="glyphicon glyphicon-bullhorn"></span>공지사항</a></li>
+						style="color: black;"><span
+							class="glyphicon glyphicon-bullhorn" style="color: red;"></span>
+							공지사항</a></li>
+					<li class="navMenu"><a href="/meoui/noticeboard.jsp"
+						style="color: black;"><span
+							class="glyphicon glyphicon-pencil" style="color: purple;"></span>
+							게시판</a></li>
+				</ul>
+				<ul class="nav navbar-nav pull-right">
 					<li><a href="#" data-toggle="modal" data-target="#signUpForm"
-						id="signUp"><span class="glyphicon glyphicon-road"></span>회원가입</a></li>
+						id="signUp" style="color: black;">회원가입</a></li>
 					<li><a href="#" data-toggle="modal" data-target="#signInForm"
-						id="signIn">로그인</a></li>
+						id="signIn" style="color: black;">로그인</a></li>
 					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#" id="loginCheck"><%=session.getAttribute("memberId")%><span
+						data-toggle="dropdown" href="#" id="loginCheck"
+						style="color: black;"><%=session.getAttribute("memberId")%><span
 							class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="/meoui/mypage.jsp" id="menu">마이페이지</a></li>
