@@ -23,17 +23,6 @@ footer{
 			</div>
 			<div class="col-md-10">
 				<div class="row">
-					<form class="form-inline pull-right">
-						<div class="input-group">
-							<input type="search" class="form-control" size="50"
-								placeholder="검색" required>
-							<div class="input-group-btn">
-								<button type="button" class="btn btn-success">검색</button>
-							</div>
-						</div>
-					</form>
-				</div>
-				<div class="row">
 					<br>
 					<h3>카테고리 별 제주 관광명소 노출</h3>
 					<br>
