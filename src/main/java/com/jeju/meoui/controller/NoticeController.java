@@ -41,10 +41,10 @@ public class NoticeController {
 		return "redirect:/home";
 	}
 	//4. 공지사항 페이지별 조회하기
-	@RequestMapping(value="/notice/list", method=RequestMethod.GET)
+	@RequestMapping(value="/meoui/noticeboard.jsp", method=RequestMethod.GET)
 	public String getAllNotice(@RequestParam int pageNo,Model model){
 		model.addAttribute("result",service.getByNotice(pageNo));
-		return "notice/list.jsp";
+		return "meoui/noticeboard.jsp";
 	}
 	//5. 공지게시판 상세보기
 	@RequestMapping(value="/notice/view/{noticeNo}", method=RequestMethod.GET)
@@ -52,5 +52,6 @@ public class NoticeController {
 	     model.addAttribute("notice", service.findByNotice(noticeNo));
 	     return "notice/view.jsp";
 	}
+	
 	
 }

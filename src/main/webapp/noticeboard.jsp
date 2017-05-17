@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,9 +29,17 @@
 						<th>작성자</th>
 						<th>글 제목</th>
 						<th>작성 날짜/시간</th>
-					</tr>
+						</tr>
 				</thead>
 				<tbody>
+				<c:forEach items="${result.list }" var="notice">
+					<tr>
+						<td><a href="/meoui/notice.jsp">${notice.noticeNo }</a></td>
+						<td>${notice.usersNo }</td>
+				        <td>${notice.noticeTitle }</td>
+						<td><td><fmt:formatDate value="${notic.noticeDate }" pattern="yyyy년 MM월 dd일"/></td></td>
+					</tr>
+					</c:forEach>
 					<tr>
 						<td><a href="/meoui/notice.jsp">John</a></td>
 						<td>Doe</td>
