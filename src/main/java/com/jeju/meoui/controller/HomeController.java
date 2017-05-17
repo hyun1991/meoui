@@ -36,4 +36,8 @@ public class HomeController {
 		return "home";
 	}
 	
+	@RequestMapping("/manage/home")
+	public String home(){
+		return "/owner/main";
+	}
 }

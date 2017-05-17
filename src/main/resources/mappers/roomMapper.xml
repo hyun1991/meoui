@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="RoomMapper">
+	<!-- 객실추가하기 -->
+	<insert id="insertRoom" parameterType="Room">
+	<selectKey keyProperty="roomNo" resultType="int" order="BEFORE">
+	    	select room_seq.nextval from dual
+	</selectKey>
+		<![CDATA[
+			insert into room values(#{accommodationNo}, #{roomNo}, #{roomName}, #{roomPrice}, #{roomUseNumber})
+		]]>
+	</insert>
+	<!-- 객실수정하기 -->
+	<update id="updateRoom" parameterType="Room">
+		<![CDATA[
+			update room set room_name=#{roomName}, room_price=#{roomPrice}, room_use_number=#{roomUseNumber} where accommodation_no=#{accommodationNo} and room_no=#{roomNo}
+		]]>
+	</update>
+	<!-- 객실삭제하기 -->
+	<delete id="deleteRoom" parameterType="HashMap">
+		<![CDATA[
+			delete from room where accommodation_no=#{accommodationNo} and room_no=#{roomNo}
+		]]>
+	</delete>
+	<!-- 숙박시설번호별 객실조회하기 -->
+	<select id="selectByAccommodationNo" parameterType="int" resultType="Room">
+		<![CDATA[
+			select * from room where accommodation_no=#{accommodationNo}
+		]]>
+	</select>
+	<!-- 객실종류명별 객실종류번호 조회하기 -->
+	<select id="selectByRoomNo" parameterType="HashMap" resultType="int">
+		<![CDATA[
+			select room_no from room where room_name=#{roomName} and accommodation_no=#{accommodationNo}
+		]]>
+	</select>
+</mapper>

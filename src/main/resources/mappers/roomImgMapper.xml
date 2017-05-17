@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="RoomImgMapper">
+	<!-- 객실 이미지 추가하기 -->
+	<insert id="insertRoomImg" parameterType="RoomImg">
+		<![CDATA[
+			insert into room_img values(#{roomNo}, #{accommodationNo}, #{roomImg})
+		]]>
+	</insert>
+	<!-- 객실 이미지 삭제하기 -->
+	<delete id="deleteRoomImg" parameterType="RoomImg">
+		<![CDATA[
+			delete from room_img where room_no=#{roomNo} and accommodation_no=#{accommodationNo} and room_img=#{roomImg}
+		]]>
+	</delete>
+	<!-- 객실종류별 객실이미지 전체삭제 -->
+	<delete id="deleteAllRoomImg" parameterType="RoomImg">
+		<![CDATA[
+			delte from room_img where room_no=#{roomNo}
+		]]>
+	</delete>
+	<!-- 숙박시설번호별 객실이미지 전체조회 -->
+	<select id="selectByAccommodationNo" parameterType="int" resultType="RoomImg">
+		<![CDATA[
+			select * from room_img where accommodation_no=#{accommodationNo}
+		]]>
+	</select>
+</mapper>

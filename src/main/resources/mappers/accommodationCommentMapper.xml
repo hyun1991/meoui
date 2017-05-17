@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="AccommodationCommentMapper">
+	 <!-- 댓글 추가하기 -->
+	<insert id="insertAccommodationComment" parameterType="AccommodationComment">
+	<selectKey keyProperty="accommodationCommentNo" resultType="int" order="BEFORE">
+	    	select accommodation_comment_seq.nextval from dual
+	</selectKey>
+		<![CDATA[
+			insert into accommodation_comment(accommodation_comment_no, accommodation_comment_content, accommodation_comment_date,
+			accommodation_comment_avg, accommodation_no, member_no)
+			values(#{accommodationCommentNo}, #{accommodationCommentContent}, sysdate, 
+			#{accommodationCommentAvg}, #{accommodationNo}, #{memberNo})
+		]]>
+	</insert>
+	<!-- 댓글 수정하기 -->
+	<update id="updateAccommodationComment" parameterType="AccommodationComment">
+		<![CDATA[
+			update accommodation_comment set accommodation_comment_content=#{accommodationContent}, accommodation_comment_avg=#{accommodationCommentAvg}
+			where accommodation_comment_no=#{accommodationCommentNo} and accommodation_no=#{accommodationNo} and member_no=#{memberNo}
+		]]>
+	</update>
+	<!-- 댓글 삭제하기 -->
+	<delete id="deleteAccommodationComment" parameterType="HashMap">
+		<![CDATA[
+			delete from accommodation_comment where accommodation_comment_no=#{accommodationCommentNo} and member_no=#{memberNo} 
+		]]>
+	</delete>
+	<!-- 숙박시설 번호별 댓글 전체삭제하기 -->
+	<delete id="deleteAllAccommodationComment" parameterType="int">
+		<![CDATA[
+			delete from accommodation_comment where accommodation_no=#{accommodationNo}
+		]]>
+	</delete>
+	<!-- 숙박시설번호별 댓글 전체조회하기 -->
+	<select id="selectByAccommodationNo" parameterType="int" resultType="AccommodationComment">
+		<![CDATA[
+			select * from accommodation_comment where accommodation_no=#{accommodationNo}
+		]]>
+	</select>
+	<!-- 댓글번호별 회원번호 조회하기 -->
+	<select id="selectByMemberNo" parameterType="int" resultType="int">
+		<![CDATA[
+			select member_no from accommodation_comment where accommodation_comment_no=#{accommodationCommentNo}
+		]]>
+	</select>	
+</mapper>
