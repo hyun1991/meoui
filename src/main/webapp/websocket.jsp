@@ -11,10 +11,8 @@
 <body>
 	<div class="form-group">
     	<textarea class="form-control" id="content" rows="20" cols="30"></textarea>
+    	<input type="text" class="form-control" id="msg">
   	</div>
-  	<div class="form-group">
-		<label for="usr">메세지</label><br> <input type="text" class="form-control" id="msg">
-	</div>
 	<div class="modal-footer">
 		<button type="button" class="btn btn-default" id="connect">연결</button>
 		<button type="button" class="btn btn-default" id="send">전송</button>
@@ -30,8 +28,14 @@
 			$("#exit").show();
 			$("#connect").hide();
 		})
+		$("#exit").on("click", function() {
+			$("#connect").show();
+			$("#send").hide();
+			$("#exit").hide();
+		})
 	})
 </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <script>
 	var wsocket;
 	$(document).ready(function() {
