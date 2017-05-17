@@ -26,12 +26,12 @@ public class MemberMeetingController {
 	}
 	
 	//모임수정 폼
-	@RequestMapping(value="*", method=RequestMethod.GET)
+	@RequestMapping(value="/membermeeting/update", method=RequestMethod.GET)
 	public String updateMemberMeeting(){
 		return "*";
 	}
 	//모임수정 완료
-	@RequestMapping(value="*", method=RequestMethod.POST)
+	@RequestMapping(value="/membermeeting/update", method=RequestMethod.POST)
 	public String updateMemberMeeting(@ModelAttribute MemberMeeting meetingName, HttpSession session)
 	{
 		service.updataMeetingName(meetingName);
@@ -39,13 +39,13 @@ public class MemberMeetingController {
 	}
 	
 	//모임 삭제
-	@RequestMapping(value="", method=RequestMethod.GET)
+	@RequestMapping(value="/membermeeting/delete", method=RequestMethod.GET)
 	public String deleteMemberMeeting(){
 		return "*";
 	}
 	
 	//모임 삭제 완료	
-	@RequestMapping(value="", method=RequestMethod.POST)
+	@RequestMapping(value="/membermeeting/delete", method=RequestMethod.POST)
 		public String deleteMemberMeeting(int meetingNo){
 			service.deleteMemberMeeting(meetingNo);
 			return "*";		
