@@ -40,7 +40,7 @@
 	var wsocket;
 	$(document).ready(function() {
 		$("#connect").on("click", function() {
-			wsocket= new WebSocket("ws://localhost:8087/web/chat");
+			wsocket= new WebSocket("ws://192.168.0.180:8087/web/chat");
 			wsocket.onmessage= function(event){
 				console.log(event.data)
 				$("#content").append(event.data+"\r\n");
