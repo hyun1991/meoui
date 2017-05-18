@@ -16,6 +16,7 @@
 	<div><h3>대표전화:</h3>${result.accommodation.accommodationPhone }</div>
 	<div><h3>시설위치:</h3>${result.accommodation.accommodationAddress }</div>
 	<div><button>수정하기</button></div>
+	<div><a href="/meoui/menage/room/view/${result.accommodation.accommodationNo}"><button>객실정보</button></a></div>
 	<hr>
 	<div><h2>오시는길</h2></div><br>
 	<div><img src="/meoui/images/${result.accommodation.accommodationDirections}"></div><br>

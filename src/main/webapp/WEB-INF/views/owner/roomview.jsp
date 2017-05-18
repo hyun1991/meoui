@@ -5,13 +5,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset=UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
-<header>
-	<%@include file="/navbar.jsp"%>
-	</header>
+<body>	
+	<%@include file="/nav/ownernav.jsp" %>
 		<div class="container">
 			<c:forEach items="${result.room }" var="room">
 				<div>객실이름:${room.roomName}</div><br>
@@ -23,12 +21,6 @@
 				<div><img src="/meoui/images/${roomImg.roomImg}"></div>
 			</c:forEach>
 		</div>
-		<div><button>예약하기</button></div>
-		<div><a href="#"><button>펜션정보</button></a></div>
-	<footer>
-		<h1>1 Follow Us Canada's New Passenger Bill of Rights Bans
-			Removal in Cases of Overbooking https://t.co/K2aizs9IKo
-			https://t.co/lb8fklloIp Twitter | 29 mins ago</h1>
-	</footer>
+		<div><button>수정하기</button></div>
 </body>
 </html>

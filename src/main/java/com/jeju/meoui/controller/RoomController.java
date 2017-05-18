@@ -43,21 +43,16 @@ public class RoomController {
 		service.createRoom(room, ri);
 		return "redirect:/manage/home";
 	}
-	//	객실, 객실이미지 정보 조회하기(accommodationNo받는다)
+	//	객실, 객실이미지 정보 조회하기(accommodationNo받는다)(완료, 사용자단)
 	@RequestMapping(value="/room/view/{accommodationNo}", method=RequestMethod.GET)
 	public String viewRoom(@PathVariable int accommodationNo, Model model){
 		model.addAttribute("result", service.getByRoom(accommodationNo));
 		return "room/view";
 	}
-	/*
-	 * //	숙박시설번호별 객실정보 및 객실이미지 정보 조회하기
-	public HashMap<String, Object>getByRoom(int accommodationNo){
-		List<Room>room= dao.selectByAccommodationNo(accommodationNo);
-		List<RoomImg>roomImg= roomImgDao.selectByAccommodationNo(accommodationNo);
-		HashMap<String, Object>map= new HashMap<String, Object>();
-		map.put("room", room);
-		map.put("roomImg", roomImg);
-		return map;
+	//	객실, 객실이미지 정보 조회하기(accommodationNo받는다)(완료, 관리자단)
+	@RequestMapping(value="/menage/room/view/{accommodationNo}", method=RequestMethod.GET)
+	public String ownerViewRoom(@PathVariable int accommodationNo, Model model){
+		model.addAttribute("result", service.getByRoom(accommodationNo));
+		return "room/view";
 	}
-	 * */
 }
