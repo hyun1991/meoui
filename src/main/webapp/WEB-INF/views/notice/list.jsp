@@ -11,7 +11,7 @@
 <body>
    <table>
    		<tr><th>번호</th><th>작성자</th><th>제목</th><th>작성일</th></tr>
-		<c:forEach items="${result.list }" var="notice">
+		<c:forEach items="${result.list }" var ="notice">
 			<tr>
 				<td><a href="/meoui/notice/view/{noticeNo}">${notice.noticeNo }</a></td>
 				<td>${notice.usersNo }</td>
