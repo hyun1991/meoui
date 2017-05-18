@@ -13,7 +13,7 @@
    		<tr><th>번호</th><th>작성자</th><th>제목</th><th>작성일</th></tr>
 		<c:forEach items="${result.list }" var="notice">
 			<tr>
-				<td><a href="">${notice.noticeNo }</a></td>
+				<td><a href="/meoui/notice/view/{noticeNo}">${notice.noticeNo }</a></td>
 				<td>${notice.usersNo }</td>
 				<td>${notice.noticeTitle }</td>
 				<td><fmt:formatDate value="${notice.noticeDate }"  pattern="yyyy년MM월dd일" /></td>
