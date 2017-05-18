@@ -1,5 +1,7 @@
 package com.jeju.meoui.vo;
 
+import java.util.*;
+
 import lombok.*;
 
 @Data

@@ -1,5 +1,7 @@
 package com.jeju.meoui.service;
 
+import java.util.*;
+
 import org.slf4j.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
@@ -23,6 +25,16 @@ public class RoomService {
 		logger.info("객실번호:{}", roomNo);
 		roomImg.setRoomNo(roomNo);
 		roomImgDao.insertRoomImg(roomImg);
+	}
+	//	숙박시설번호별 객실정보 및 객실이미지 정보 조회하기
+	@Transactional
+	public HashMap<String, Object>getByRoom(int accommodationNo){
+		List<Room>room= dao.selectByAccommodationNo(accommodationNo);
+		List<RoomImg>roomImg= roomImgDao.selectByAccommodationNo(accommodationNo);
+		HashMap<String, Object>map= new HashMap<String, Object>();
+		map.put("room", room);
+		map.put("roomImg", roomImg);
+		return map;
 	}
 /*
  

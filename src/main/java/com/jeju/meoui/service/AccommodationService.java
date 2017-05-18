@@ -38,7 +38,10 @@ public class AccommodationService {
 	@Transactional
 	public void deleteAccommodation(int accommodationNo){
 		dao.deleteAccommodation(accommodationNo);
+		logger.info("숙박시설 삭제");
 		commentDao.deleteAllAccommodationComment(accommodationNo);
+		logger.info("숙박시설 댓글 전체삭제");
+
 	}
 	//	숙박시설 페이지별 조회하기
 	public HashMap<String, Object> getAllAccommodation(int pageNo){
@@ -52,7 +55,9 @@ public class AccommodationService {
 	//	숙박시설 오너별 페이지별 조회하기
 	public HashMap<String, Object> getByOwnerNoAccommodation(int pageNo, int ownerNo){
 		int cnt= dao.findByAccommodationMax();
+		logger.info("페이지 시작");
 		Pagination pagination= PagingUtil.getPagination(pageNo, cnt);
+		logger.info("페이지:{}", pagination);
 		HashMap<String, Object>map= new HashMap<String, Object>();
 		map.put("pagination", pagination);
 		map.put("list", dao.selectByOwnerNoAccommodation(pagination.getStartRow(), pagination.getLastRow(), ownerNo));

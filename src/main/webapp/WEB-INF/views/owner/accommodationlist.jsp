@@ -12,8 +12,10 @@
 	<%@include file="/nav/ownernav.jsp" %>
 		<div class="container">
 			<c:forEach items="${result.list }" var="accommodation">
-				<div><a href="/meoui/accommodation/view${accommodation.accommodationNo}"><img src="/meoui/images/${accommodation.accommodationImg}"></a></div>
-				<div><a href="/meoui/accommodation/view${accommodation.accommodationNo}">${accommodation.accommodationName}</a></div><br>
+				<div><a href="/meoui/manage/accommodation/view/${accommodation.accommodationNo}"><img src="/meoui/images/${accommodation.accommodationImg}"></a></div>
+				<div><a href="/meoui/manage/accommodation/view/${accommodation.accommodationNo}">${accommodation.accommodationName}</a></div><br>
+				<div><a href="/meoui/manage/accommodation/delete/${accommodation.accommodationNo}">
+				<button>삭제</button></a></div><br>
 			</c:forEach>
 		</div>
 		<div style="width:300px; margin:0 auto;">
