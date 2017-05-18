@@ -3,6 +3,8 @@ package com.jeju.meoui.vo;
 import lombok.*;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class MemberMeeting {
 	
 	private int meetingNo;				//모임번호

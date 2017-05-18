@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="OwnerMapper">
+
+	<!-- 1. 펜션업주 추가하기 -->
+	<insert id="insertOwner" parameterType="Owner">
+	<selectKey keyProperty="ownerNo" resultType="int" order="BEFORE">
+	    	select owner_seq.nextval from dual
+	</selectKey>
+		<![CDATA[
+			insert into owner(owner_no, owner_id, owner_password, owner_name, owner_phone, owner_brn, owner_address, owner_mail, owner_startdate)
+			values(#{ownerNo}, #{ownerId}, #{ownerPassword}, #{ownerName}, #{ownerPhone}, #{ownerBrn}, #{ownerAddress}, #{ownerMail}, sysdate)
+		]]>
+	</insert>
+
+	<!-- 2. 펜션업주탈퇴 -->
+	<!-- 조건: 업주번호 -->
+	<delete id="deleteOwner" parameterType="String">
+		<![CDATA[
+			delete from owner where owner_id=#{ownerId}
+		]]>
+	</delete>
+
+	<!-- 3. 펜션업주 정보조회 -->
+	<!-- 조건: 업주 아이디 -->
+	<select id="selectByOwner" parameterType="String" resultType="Owner">
+		<![CDATA[
+			select * from owner where owner_id=#{ownerId}
+		]]>
+	</select>
+	
+	<!-- 4. 펜션업주 업주번호 조회하기 -->
+	<select id="selectByOwnerNo" parameterType="String" resultType="int">
+		<![CDATA[
+			select owner_no from owner where owner_id=#{ownerId}
+		]]>
+	</select>
+	
+	<!-- 5. 펜션업주 로그인 -->
+	<!-- 조건: 아이디, 비밀번호 -->
+	<select id="ownerLogin" parameterType="HashMap" resultType="int">
+		<![CDATA[
+			select count(*) from owner where owner_id=#{ownerId} and owner_password=#{ownerPassword}
+		]]>
+	</select>
+
+	<!-- 6. 펜션업주 전체리스트 조회하기 -->
+	<select id="selectAllOwner" resultType="Owner">
+			select * from owner
+	</select>
+</mapper>

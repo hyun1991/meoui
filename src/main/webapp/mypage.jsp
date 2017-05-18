@@ -1,31 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewpoert" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/hanjoon.css">
-	<link rel="stylesheet" type="text/css" href="css/sejin.css">
 <title>Insert title here</title>
+<style>
+footer {
+	background-color: grey;
+}
+</style>
 </head>
 <body>
-	<%@include file="/WEB-INF/views/navbar.jsp"%>
+	<%@include file="/navbar.jsp"%>
 	<div class="container">
 		<h2>마이페이지</h2>
 		<br>
 		<div class="row">
 			<div class="col-md-4">
-				<label for="usr">아이디</label>
-				<br>
-				<label for="usr">이름</label>
+				<label for="usr">아이디</label> <br> <label for="usr">이름</label>
 			</div>
 			<a href="#" class="btn btn-success">쪽지함</a>
 		</div>
@@ -68,5 +65,10 @@
 			</div>
 		</div>
 	</div>
+	<footer>
+		<h1>1 Follow Us Canada's New Passenger Bill of Rights Bans
+			Removal in Cases of Overbooking https://t.co/K2aizs9IKo
+			https://t.co/lb8fklloIp Twitter | 29 mins ago</h1>
+	</footer>
 </body>
 </html>

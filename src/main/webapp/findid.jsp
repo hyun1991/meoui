@@ -5,20 +5,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewpoert" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/hanjoon.css">
-	<link rel="stylesheet" type="text/css" href="css/sejin.css">
 <title>Insert title here</title>
 </head>
 <body>
-	<%@include file="/WEB-INF/views/navbar.jsp"%>
+	<header>
+		<%@include file="/navbar.jsp"%>
+	</header>
 	<div class="container">
 		<div class="row">
 			<h2>계정정보찾기(아이디/비밀번호)</h2>
@@ -33,22 +25,21 @@
 			<br>
 			<div class="tab-content">
 				<div id="findId" class="tab-pane fade in active">
-					<form>
+					<form action="/meoui//member/idsearch" method="post">
 						<div class="form-group row">
 							<div class="form-group col-md-6">
-								<label for="email">이름</label> <input type="email"
-									class="form-control" id="email">
+								<label for="usr">이름</label> <input type="text"
+									class="form-control" id="idSearchName" name="memberName">
 							</div>
 						</div>
 						<div class="form-group row">
 							<div class="form-group col-md-6">
 								<label for="email">이메일</label> <input type="email"
-									class="form-control" id="email">
+									class="form-control" id="idSearchMail" name="memberMail">
 
 							</div>
-							<div class="form-group">
-								<label for="email"></label>
-								<button type="submit" class="btn btn-default">조회</button>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" id="idBtn">조회</button>
 							</div>
 						</div>
 					</form>
@@ -57,19 +48,25 @@
 					<form>
 						<div class="form-group row">
 							<div class="form-group col-md-6">
-								<label for="email">이름</label> <input type="email"
-									class="form-control" id="email">
+								<label for="email">아이디</label> <input type="text"
+									class="form-control">
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="form-group col-md-6">
+								<label for="usr">이름</label> <input type="text"
+									class="form-control">
 							</div>
 						</div>
 						<div class="form-group row">
 							<div class="form-group col-md-6">
 								<label for="email">이메일</label> <input type="email"
-									class="form-control" id="email">
+									class="form-control">
 
 							</div>
 							<div class="form-group">
 								<label for="email"></label>
-								<button type="submit" class="btn btn-default">조회</button>
+								<button type="submit" class="btn btn-default" id="pwBtn">조회</button>
 							</div>
 						</div>
 					</form>
@@ -77,9 +74,21 @@
 			</div>
 		</div>
 	</div>
-
-
-
-
 </body>
+<script>
+	$(document).ready(function() {
+		$("#idBtn").on("click", function() {
+			var memberName= $("#idSearchName").val()
+			var memberMail= $("#idSearchMail").val()
+			$.ajax({
+				type:"post",
+				url: "/meoui/member/idsearch",
+				data:{memberName: memberName, memberMail:memberMail},
+				success: function(result){
+					alert("찾으신 아이디는"+result+"입니다.")
+				}
+			})
+		})
+	})
+</script>
 </html>

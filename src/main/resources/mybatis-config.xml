@@ -2,12 +2,33 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org/DTD config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+    <settings>
+        <!-- http://www.mybatis.org/mybatis-3/ko/configuration.html -->
+        <setting name="cacheEnabled" value="true"/>
+        <setting name="lazyLoadingEnabled" value="false"/>
+        <setting name="multipleResultSetsEnabled" value="true"/>
+        <setting name="useColumnLabel" value="true"/>
+        <setting name="useGeneratedKeys" value="false"/>
+        <setting name="defaultExecutorType" value="SIMPLE"/>
+        <setting name="defaultStatementTimeout" value="25000"/>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="jdbcTypeForNull" value="VARCHAR"/>
+        <!-- setting name="callSettersOnNulls" value="true" / -->
+    </settings>
 	<typeAliases>
 		<typeAlias type="com.jeju.meoui.vo.Member" alias="Member"/>
 		<typeAlias type="com.jeju.meoui.vo.FreeBoard" alias="FreeBoard"/>
 		<typeAlias type="com.jeju.meoui.vo.FreeBoardComment" alias="FreeBoardComment"/>
 	    <typeAlias type="com.jeju.meoui.vo.Notice" alias="Notice"/>
+	    <typeAlias type="com.jeju.meoui.vo.NoticeComment" alias="NoticeComment"/>
 	    <typeAlias type="com.jeju.meoui.vo.FreeBoardComment" alias="FreeboardComment"/>
 	    <typeAlias type="com.jeju.meoui.vo.MemberMeeting" alias="MemberMeeting"/>
+	    <typeAlias type="com.jeju.meoui.vo.Message" alias="Message"/>
+	    <typeAlias type="com.jeju.meoui.vo.MeetingJoin" alias="MeetingJoin"/>
+	    <typeAlias type="com.jeju.meoui.vo.Owner" alias="Owner"/>
+	    <typeAlias type="com.jeju.meoui.vo.Accommodation" alias="Accommodation"/>
+	    <typeAlias type="com.jeju.meoui.vo.AccommodationComment" alias="AccommodationComment"/>
+	    <typeAlias type="com.jeju.meoui.vo.Room" alias="Room"/>
+	    <typeAlias type="com.jeju.meoui.vo.RoomImg" alias="RoomImg"/>
 	</typeAliases>
 </configuration>

@@ -12,12 +12,17 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/hanjoon.css">
-	<link rel="stylesheet" type="text/css" href="css/sejin.css">
 <title>Insert title here</title>
 </head>
+<style>
+footer{
+	background-color: grey;
+}
+</style>
 <body>
-	<%@include file="/WEB-INF/views/navbar.jsp"%>
+	<header>
+		<%@include file="/navbar.jsp"%>
+	</header>
 	<div class="container">
 		<h2>모임 게시판</h2>
 		<br>
@@ -79,5 +84,10 @@
 			</div>
 		</div>
 	</div>
+	<footer>
+		<h1>1 Follow Us Canada's New Passenger Bill of Rights Bans
+			Removal in Cases of Overbooking https://t.co/K2aizs9IKo
+			https://t.co/lb8fklloIp Twitter | 29 mins ago</h1>
+	</footer>
 </body>
 </html>

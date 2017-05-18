@@ -22,11 +22,11 @@
 <!-- 3. 자유게시판 리스트 조회-->
 	<select id="selectAllFreeboard" parameterType="int">
 		<![CDATA[
-			select * from 
-				(select rownum rnum, b.* from
-					(select freeboardNo, freeboardTitle, freeboardContent, sysdate, freeboardCnt, freeboardImg from freeboard order
-					by freeboardNo desc) b where rownum<=#{end})
-				where rnum>=#{start}
+			select * from (
+			select rownum rnum, a1.* from 
+				(select freeboard_no, freeboard_title, freeboard_content, sysdate, freeboard_cnt, freeboard_img from freeboard order by ano desc) a1
+			where rownum<=#{end}
+		) where rnum>=#{start}
 		]]>
 	</select>
 <!-- 4. 자유게시판 수정 -->
@@ -43,7 +43,12 @@
 		]]>
 	</delete>
 <!-- 6. 자유게시판 db개수 조회 -->
-<!-- 7. 자유게시판 조회수 증가 -->
+	<select id="findByMax" parameterType="int">
+		<![CDATA[
+			select count(*) from freeboard
+		]]>
+	</select>
+	<!-- 7. 자유게시판 조회수 증가 -->
 	<update id="incrementCnt" parameterType="int">
 		<![CDATA[
 			update freeboard set cnt=cnt+1 where freeboard_no=#{freeboardNo}
