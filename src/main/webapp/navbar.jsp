@@ -12,90 +12,97 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <title>Navigation Bar</title>
 <style>
-@import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
-
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
 
+.navbar-header {
+	margin-left: 5%;
+	margin-right: 2.5%;
+	color: black;
+}
+
+span {
+	margin-right: 5px;
+}
+
 .navbar {
+	background-color: white;
+	margin-bottom: 0;
 	font-family: 'Jeju Gothic', serif;
 }
 
 #brand {
-	font-family: 'Jeju Hallasan', serif;
+	color: black;
 }
 </style>
 </head>
 <body>
 	<%@include file="/signInAndUp.jsp"%>
-	<div class="container-fluid">
-		<nav class="navbar navbar-default row text-center">
-			<div class="navbar-header col-md-12">
-				<div class="col-md-1"></div>
-				<a class="navbar-brand navbar-left"
+	<nav class="navbar navbar-default text-center" id="navbar">
+		<div class="container">
+			<div class="navbar-header">
+				<span class="glyphicon glyphicon-sunglasses"
+					style="font-size: 24px; margin-right: 70px;"></span> <a
+					class="navbar-brand navbar-left"
 					href="http://localhost:8087/meoui/" id="brand">제주를 부탁해</a>
-				<ul class="nav navbar-nav navbar-right col-md-3">
-					<li id="joinMenu"><a href="#" data-toggle="modal" data-target="#signUpForm">회원가입</a></li>
-					<li class="col-md-1"></li>
-					<li id="loginMenu"><a href="#" data-toggle="modal" data-target="#signInForm">로그인</a></li>
-					<li id="loginCheck"><%=session.getAttribute("memberId") %>님 환영합니다</li>
-					<li>
-						<a href="/meoui/member/logout"><button type="button" class="btn btn-default" id="logoutBtn">로그아웃</button></a>
-						<button type="button" class="btn btn-default" id="deleteBtn">회원탈퇴</button>
-					</li>
+			</div>
+			<div class="row">
+				<ul class="nav navbar-nav">
+					<li class="navMenu"><a href="/meoui/attractionlist.jsp"
+						style="color: black;"><span
+							class="glyphicon glyphicon glyphicon-grain" style="color: green;"></span>
+							관광 명소</a></li>
+					<li class="navMenu"><a href="/meoui/directions.jsp"
+						style="color: black;"> <span class="glyphicon glyphicon-road"
+							style="color: blue;"></span> 길 찾기
+					</a></li>
+					<li class="navMenu"><a href="/meoui/accomodationlist.jsp"
+						style="color: black;"><span class="glyphicon glyphicon-home"
+							style="color: orange;"></span> 숙박 시설</a></li>
+					<li class="navMenu"><a href="/meoui/meetingboard.jsp"
+						style="color: black;"><span class="glyphicon glyphicon-heart"
+							style="color: #f76ce4;"></span> 모임 </a></li>
+					<li class="navMenu"><a href="/meoui/noticeboard.jsp"
+						style="color: black;"><span
+							class="glyphicon glyphicon-bullhorn" style="color: red;"></span>
+							공지사항</a></li>
+					<li class="navMenu"><a href="/meoui/noticeboard.jsp"
+						style="color: black;"><span
+							class="glyphicon glyphicon-pencil" style="color: purple;"></span>
+							게시판</a></li>
+				</ul>
+				<ul class="nav navbar-nav pull-right">
+					<li><a href="#" data-toggle="modal" data-target="#signUpForm"
+						id="signUp" style="color: black;">회원가입</a></li>
+					<li><a href="#" data-toggle="modal" data-target="#signInForm"
+						id="signIn" style="color: black;">로그인</a></li>
+					<li class="dropdown" id="loginCheck"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#" style="color: black;">
+						<%=session.getAttribute("memberId")%><span
+							class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="/meoui/mypage.jsp" id="menu">마이페이지</a></li>
+							<li><a href="/meoui/member/logout" id="logout">로그아웃</a></li>
+							<li><a href="#" id="deleteId">회원탈퇴</a></li>
+						</ul></li>
 				</ul>
 			</div>
-			<ul class="nav navbar-nav col-md-12">
-				<li class="col-md-2"><a href="/meoui/attractionlist.jsp">제주
-						관광명소 소개</a></li>
-				<li class="col-md-2"><a href="/meoui/directions.jsp">길 찾기</a></li>
-				<li class="col-md-2"><a href="/meoui/accomodationlist.jsp">숙박
-						시설</a></li>
-				<li class="col-md-2"><a href="/meoui/meetingboard.jsp">모임
-						게시판</a></li>
-				<li class="col-md-2"><a href="/meoui/noticeboard.jsp">공지사항</a></li>
-				<li class="col-md-2"><a href="/meoui/mypage.jsp">마이페이지</a></li>
-			</ul>
-		</nav>
-	</div>
+		</div>
+	</nav>
 </body>
 <script>
 	$(document).ready(function() {
-		var userId="<%=session.getAttribute("memberId")%>"
-		$("#loginCheck").hide();
-		$("#logoutBtn").hide();
-		$("#deleteBtn").hide();
-		if(userId=="null"){
-			$("#joinMenu").show();
-			$("#loginMenu").show();
-		}
-		else{
-			$("#joinMenu").hide();
-			$("#loginMenu").hide();
+		var memberId= "<%=session.getAttribute("memberId")%>"
+		if(memberId=="null")
+			$("#loginCheck").hide();
+		else
 			$("#loginCheck").show();
-			$("#logoutBtn").show();
-			$("#deleteBtn").show();
-		}
-	})
-	$(document).ready(function(){
-		$("#deleteBtn").on("click", function() {
-			$.ajax({
-				type:"post",
-				url: "/meoui/member/delete",
-				success: function(result){
-					console.log(result)
-					if(result=="success"){
-						alert("회원탈퇴 되었습니다.")
-						$("#loginCheck").hide();
-						$("#logoutBtn").hide();
-						$("#deleteBtn").hide();
-						$("#joinMenu").show();
-						$("#loginMenu").show();
-					}
-				}
-			})
-		})
 	})
 </script>
 </html>

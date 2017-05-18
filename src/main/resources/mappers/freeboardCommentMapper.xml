@@ -7,7 +7,7 @@
 		<selectKey keyProperty="freeboardCommentNo" resultType="int" order="BEFORE">
 			<![CDATA[
 				insert into freeboardComment(freeboardComment_no, freeboardComment_content, freeboard_date)
-				valus(#{freeboardCommentNo}, #{freeboardCommentContent}, sysdate)
+				values(#{freeboardCommentNo}, #{freeboardCommentContent}, sysdate)
 			]]>
 		</selectKey>
 	</insert>
