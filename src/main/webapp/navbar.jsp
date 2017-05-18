@@ -82,9 +82,9 @@ span {
 						id="signUp" style="color: black;">회원가입</a></li>
 					<li><a href="#" data-toggle="modal" data-target="#signInForm"
 						id="signIn" style="color: black;">로그인</a></li>
-					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#" id="loginCheck"
-						style="color: black;"><%=session.getAttribute("memberId")%><span
+					<li class="dropdown" id="loginCheck"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#" style="color: black;">
+						<%=session.getAttribute("memberId")%><span
 							class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="/meoui/mypage.jsp" id="menu">마이페이지</a></li>
@@ -96,4 +96,13 @@ span {
 		</div>
 	</nav>
 </body>
+<script>
+	$(document).ready(function() {
+		var memberId= "<%=session.getAttribute("memberId")%>"
+		if(memberId=="null")
+			$("#loginCheck").hide();
+		else
+			$("#loginCheck").show();
+	})
+</script>
 </html>
