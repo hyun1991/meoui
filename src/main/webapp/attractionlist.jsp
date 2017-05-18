@@ -16,8 +16,7 @@ footer {
 	<header>
 		<%@include file="/navbar.jsp"%>
 	</header>
-	<div class="container-fluid">
-			<div class="col-md-12"  style="margin-right: 5%; margin-left: 5%;">
+	<div class="container">
 				<div class="row">
 					<hgroup style="margin-bottom: 50px;">
 						<h1>카테고리 별 제주 숙박업소 노출</h1>
@@ -25,20 +24,14 @@ footer {
 					</hgroup>
 				</div>
 				<div class="row">
-					<h3 class="text-left" style="margin: 3%;">카테고리1</h3>
+					<h3 class="text-left">카테고리1</h3>
 					<p id="accomodationList" align="center"></p>
 				</div>
 				<div class="row">
-					<h3 class="text-left" style="margin: 3%;">카테고리1</h3>
+					<h3 class="text-left">카테고리1</h3>
 					<p id="accomodationList" align="center"></p>
 				</div>
 			</div>
-			<div class="col-md-1">
-				<aside></aside>
-			</div>
-		</div>
-
-	</div>
 	<footer>
 		<h1>1 Follow Us Canada's New Passenger Bill of Rights Bans
 			Removal in Cases of Overbooking https://t.co/K2aizs9IKo
@@ -48,8 +41,8 @@ footer {
 <script>
 	var text = "";
 	for (var i = 0; i < 12; i++) {
-		text += '<div class="col-md-2" style="padding: 5;"> <a href="/meoui/accomodationinfo.jsp">'
-				+ '<img src="/meoui/images/harubang.jpg" alt="숙박업소" width="180" height="300"">'
+		text += '<div class="col-md-2" style="padding:14;"> <a href="/meoui/accomodationinfo.jsp">'
+				+ '<img src="/meoui/images/harubang.jpg" alt="숙박업소" width="200" height="300"">'
 				+ ' <div class="caption"><p class="text-left">50000</p><p>Lorem ipsum...</p></div></a></div>';
 	}
 	document.getElementById("accomodationList").innerHTML = text;

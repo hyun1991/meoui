@@ -15,7 +15,7 @@
 <title>Main Page</title>
 </head>
 <style>
-body, div.container-fluid, div.row {
+body,div.row {
 	width: 100%;
 	height: 100%;
 }
@@ -29,14 +29,13 @@ footer {
 	background-color: grey;
 }
 </style>
-
 <body>
+	<%@include file="/navbar.jsp"%>
 	<header>
-		<%@include file="/navbar.jsp"%>
 	</header>
 	<div class="row">
-		<div id=mapContainer class="col-md-10">
-			<div id="googleMap" style="width: 100%; height: 100%;"></div>
+		<div class="col-md-9" id=mapContainer>
+			<div id="googleMap" style="width: 100%; height: 800px;"></div>
 		</div>
 		<div class="col-md-3">
 			<div class="row text-center">

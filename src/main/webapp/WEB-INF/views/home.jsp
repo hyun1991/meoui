@@ -10,11 +10,13 @@
 </head>
 <style>
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
-
+nav{
+	margin-bottom:0;
+}
 header {
 	background-image: url(/meoui/images/sky.jpg);
+	background-size: 100%;
 	background-repeat: no-repeat;
-	 filter: grayscale(100%);
 }
 
 #menu {
@@ -26,19 +28,19 @@ header {
 }
 
 footer {
-	background-color: grey;
+	background-color: #008769;
 }
 </style>
 <body>
+	<%@include file="/navbar.jsp"%>
 	<header>
-		<%@include file="/navbar.jsp"%>
 		<form class="form-inline">
 			<div class="input-group" style="margin-bottom: 0;">
-				<input type="search" class="form-control input-lg" size="30"
+				<input type="search" class="form-control input-md" size="30"
 					placeholder="목적지" required style="margin: 50px;">
 				<div class="input-group-btn">
-					<button type="button" class="btn btn-default btn-lg"
-						style="margin-left: 50px; background-color: #f7ff14;">검색</button>
+					<button type="button" class="btn btn-default btn-md"
+						style="margin-left: 50px; color:white; background-color:#008769">검색</button>
 				</div>
 			</div>
 		</form>
@@ -46,24 +48,25 @@ footer {
 		<h1 style="margin-left: 800px;">뭐라도 써보자</h1>
 		<h1 style="margin-left: 800px;">뭐라도 써보자</h1>
 		<h1 style="margin-left: 800px;">뭐라도 써보자</h1>
-		<h1 style="margin-left: 800px;">뭐라도 써보자</h1>
-		<h1 style="margin-left: 800px; margin-bottom: 0;">canvas자리</h1>
+		<h1 style="margin-left: 800px;">canvas자리</h1>
 	</header>
 	<div class="container-fluid text-center" id="navline">
 		<div class="row">
-			<ul class="nav nav-tabs" id="menu">
-				<li style="margin-left: 13%; margin-right: 3%"><a
+			<ul class="nav nav-tabs" id="menu" style="display: inline-block;">
+				<li><a
 					data-toggle="tab" href="#allCategory" id="text">전체&nbsp<span
 						class="badge">5</span>
 				</a></li>
-				<li style="margin-right: 3%"><a data-toggle="tab"
+				<li><a data-toggle="tab"
 					href="#leisure" alt="잠수함/유람선/레저" id="text">잠수함/유람선/레저&nbsp<span
 						class="badge">5</span></a></li>
-				<li style="margin-right: 3%"><a data-toggle="tab"
-					href="#theater" id="text">공연장/상영관/기타&nbsp<span class="badge">5</span></a></li>
-				<li style="margin-right: 3%"><a data-toggle="tab"
+				<li><a data-toggle="tab"
+					href="#theater" id="text">공연장/상영관/기타&nbsp<span class="badge" >5</span></a></li>
+				<li><a data-toggle="tab"
 					href="#musuem" id="text">테마공원/박물관&nbsp<span class="badge">5</span></a></li>
-				<li style="margin-right: 3%"><a data-toggle="tab"
+					<li><a data-toggle="tab"
+					href="#spa" id="text">온천/스파&nbsp<span class="badge">5</span></a></li>
+				<li><a data-toggle="tab"
 					href="#restaurant" id="text">음식점&nbsp<span class="badge">5</span></a></li>
 			</ul>
 		</div>
@@ -92,6 +95,10 @@ footer {
 				</div>
 				<div id="musuem" class="tab-pane fade">
 					<h3>westJeju 3</h3>
+					<p>Some content in westJeju 2.</p>
+				</div>
+					<div id="spa" class="tab-pane fade">
+					<h3>westJeju 4</h3>
 					<p>Some content in westJeju 2.</p>
 				</div>
 				<div id="restaurant" class="tab-pane fade">
@@ -135,12 +142,12 @@ footer {
 				</div>
 			</div>
 			<div class="row text-center">
-				<h4>트래포트(주) Travelhow.com은 통신판매중개자로서 통신판매의 당사자가 아니며, 상품주문, 배송 및
+				<p>트래포트(주) Travelhow.com은 통신판매중개자로서 통신판매의 당사자가 아니며, 상품주문, 배송 및
 					환불의 의무와 책임은 각각의 판매업체에 있습니다. 사업자등록번호 : 211-88-19164통신판매업 :
 					제2011-서울금천-0150호대표이사 : 안경열개인정보관리책임자 : 김영권 사업자정보확인 주소 : 서울특별시 금천구
 					가산디지털1로 145 에이스하이엔드타워 3차 604호 [08506]대표전화 : 1644-8668팩스번호 :
 					02-2178-9393 Traport. Copyright (c) 2015 Traport..com Inc. All
-					Rights Reserved.</h4>
+					Rights Reserved.</p>
 			</div>
 		</div>
 	</footer>
@@ -161,7 +168,7 @@ footer {
 </script>
 <script>
 	var text = "";
-	for (var i = 0; i < 3; i++) {
+	for (var i = 0; i < 6; i++) {
 		text += '<div class="col-md-4"> <a href="/meoui/accomodationinfo.jsp">'
 				+ '	<video loop width="300" height="auto" autoplay> <source src="/meoui/videos/live1.mp4" type="video/mp4"> </video> <div class="caption"> <p>Lorem ipsum...</p></div></a></div>';
 	}

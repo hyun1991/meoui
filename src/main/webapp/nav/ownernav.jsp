@@ -14,13 +14,13 @@
 </head>
 <body>
 	<nav class="navbar navbar-default row text-center" id="navbar">
-		<ul class="nav navbar-nav col-md-12">
-			<li class="col-md-2"><a href="#" id="menu">숙박시설관리</a></li>
-			<li class="col-md-2"><a href="#" id="menu">예약관리</a></li>
-			<li class="col-md-2"><a href="#" id="menu">회원관리</a></li>
-			<li class="col-md-2"><a href="#" id="menu">통계</a></li>
-			<li class="dropdown pull-right"><a class="dropdown-toggle"
-				data-toggle="dropdown" href="#" id="loginCheck"><%=session.getAttribute("ownerId")%>님
+		<ul class="nav navbar-nav">
+			<li><a href="#" id="menu">숙박시설관리</a></li>
+			<li><a href="#" id="menu">예약관리</a></li>
+			<li><a href="#" id="menu">회원관리</a></li>
+			<li><a href="#" id="menu">통계</a></li>
+			<li><a class="dropdown-toggle"
+				data-toggle="dropdown" href="#"><%=session.getAttribute("ownerId")%>님
 					환영합니다<span class="caret"></span></a>
 				<ul class="dropdown-menu">
 					<li><a href="/meoui/manage/logout" id="logoutBtn">로그아웃</a></li>
