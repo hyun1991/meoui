@@ -6,8 +6,8 @@ import javax.servlet.http.*;
 
 import org.slf4j.*;
 import org.springframework.beans.factory.annotation.*;
-import org.springframework.http.*;
 import org.springframework.stereotype.*;
+import org.springframework.ui.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.*;
 
@@ -48,6 +48,20 @@ public class AccommodationController {
 		accommodation.setAccommodationDirections(fileName2);
 		service.createAccommodation(accommodation, session);
 		return "redirect:/manage/room/join";
+	}
+	//	숙박시설 페이지별 조회하기
+	@RequestMapping(value="/accommodaion/list", method=RequestMethod.GET)
+	public String selectAllAccommodation(Model model, @RequestParam(defaultValue="1") int pageNo){
+		logger.info("숙박시설정보:{}", service.getAllAccommodation(pageNo));
+		model.addAttribute("result", service.getAllAccommodation(pageNo));
+		return "accommodation/attractionlist";
+	}
+	//	숙박시설 페이지별 오너번호별 조회하기getByOwnerNoAccommodation(int pageNo, int ownerNo)
+	@RequestMapping(value="/manage/accommodaion/list", method=RequestMethod.GET)
+	public String selectByOwnerNoAccommodaion(Model model, @RequestParam(defaultValue="1") int pageNo, HttpSession session){
+		int ownerNo= (Integer)session.getAttribute("ownerNo");
+		model.addAttribute("result", service.getByOwnerNoAccommodation(pageNo, ownerNo));
+		return "owner/accommodationlist";
 	}
 	/*
 	 * 

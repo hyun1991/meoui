@@ -55,4 +55,12 @@ public class AccommodationDAO {
 	public Accommodation selectByAccommodation(String accommodationName){
 		return template.selectOne("AccommodationMapper.selectByAccommodation", accommodationName);
 	}
+	//	숙박시설 오너별 페이지별 조회하기
+	public List<Accommodation> selectByOwnerNoAccommodation(int startRow, int lastRow, int ownerNo){
+		HashMap<String, Object>map= new HashMap<String, Object>();
+		map.put("startRow", startRow);
+		map.put("lastRow", lastRow);
+		map.put("ownerNo", ownerNo);
+		return template.selectList("AccommodationMapper.selectByOwnerNoAccommodation", map);
+	}
 }

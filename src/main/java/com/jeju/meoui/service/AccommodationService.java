@@ -49,6 +49,16 @@ public class AccommodationService {
 		map.put("list", dao.selectAllAccommodation(pagination.getStartRow(), pagination.getLastRow()));
 		return map;
 	}
+	//	숙박시설 오너별 페이지별 조회하기
+	public HashMap<String, Object> getByOwnerNoAccommodation(int pageNo, int ownerNo){
+		int cnt= dao.findByAccommodationMax();
+		Pagination pagination= PagingUtil.getPagination(pageNo, cnt);
+		HashMap<String, Object>map= new HashMap<String, Object>();
+		map.put("pagination", pagination);
+		map.put("list", dao.selectByOwnerNoAccommodation(pagination.getStartRow(), pagination.getLastRow(), ownerNo));
+		return map;
+	}
+
 	//	숙박시설 번호별 조회하기(상세보기)
 	@Transactional
 	public HashMap<String, Object> getByAccommodation(int accommodationNo){
