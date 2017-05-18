@@ -54,15 +54,16 @@
 			</ul>
 		</div>
 		<ul class="nav navbar-nav col-md-12">
-			<li class="col-md-2"><a href="/meoui/adminHome.jsp">제주
-					관광명소 소개</a></li>
-			<li class="col-md-2"><a href="/meoui/directions.jsp">길 찾기</a></li>
-			<li class="col-md-2"><a href="/meoui/accomodationlist.jsp">숙박
-					시설</a></li>
-			<li class="col-md-2"><a href="/meoui/meetingboard.jsp">모임
-					게시판</a></li>
-			<li class="col-md-2"><a href="/meoui/noticeboard.jsp">공지사항</a></li>
-			<li class="col-md-2"><a href="/meoui/mypage.jsp">마이페이지</a></li>
+			<li class="col-md-2" ><a href="/meoui/admin_aboutUser.jsp"> 회원관리</a>
+			<li class="col-md-2"><a href="/meoui/admin_aboutUserInfo.jsp"> 사업주관리</a></li>
+			<li class="col-md-2"><a href="/meoui/adminHome.jsp"> 숙박관리</a></li>
+			<li class="col-md-2"><a href="/meoui/adminHome.jsp"> 관광정보관리</a></li>
+			<li class="col-md-2"><a href="/meoui/adminhome.jsp"> 예약관리</a></li>
+			<li class="col-md-2"><a href="/meoui/adminhome.jsp"> 자유게시판관리</a></li>
+			<li class="col-md-2"><a href="/meoui/adminhome.jsp"> 공지게시판관리</a></li>
+			<li class="col-md-2"><a href="/meoui/adminhome.jsp"> 회원모임관리</a></li>
+			<li class="col-md-2"><a href="/meoui/adminhome.jsp"> 쪽지함관리</a></li>
+			
 		</ul>
 	</nav>
 
