@@ -73,6 +73,7 @@ public class AccommodationController {
 	@RequestMapping(value="/accommodation/view/{accommodationNo}", method=RequestMethod.GET)
 	public String viewAccommodation(Model model, @PathVariable int accommodationNo, HttpSession session){
 		session.setAttribute("accommodationNo", accommodationNo);
+		int memberNo= (Integer)session.getAttribute("memberNo");
 		model.addAttribute("result", service.getByAccommodation(accommodationNo));
 		return "accommodation/view";
 	}

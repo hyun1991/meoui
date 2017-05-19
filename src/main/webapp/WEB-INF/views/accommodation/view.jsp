@@ -29,7 +29,9 @@
 	</form>
 	<hr>
 	<c:forEach items="${result.comment }" var="comment">
+			<div>${comment.accommodationCommentNo }</div>
 			<div>${comment.accommodationCommentContent}</div><br>	
+			<a href="/meoui/accommodationComment/delete/${comment.accommodationCommentNo }"><button>댓글 삭제하기</button></a>
 			<div><fmt:formatDate value="${comment.accommodationCommentDate}" pattern="yyyy년 MM월 dd일" /></div><br>
 			<hr>
 	</c:forEach>
@@ -39,7 +41,4 @@
 			https://t.co/lb8fklloIp Twitter | 29 mins ago</h1>
 	</footer>
 </body>
-<script>
-
-</script>
 </html>
