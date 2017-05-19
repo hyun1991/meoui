@@ -50,7 +50,16 @@
 			select t2.* from(select rownum rnum, t1.* from
 			(select accommodation_no, accommodation_name, accommodation_address, accommodation_img, 
 			accommodation_phone, accommodation_directions, site_no, owner_no 
-			from accommodation order by accommodation_no desc)t1)t2 where rnum between #{startRow} and #{lastRow};
+			from accommodation order by accommodation_no desc)t1)t2 where rnum between #{startRow} and #{lastRow}
+		]]>
+	</select>
+	<!-- 숙박시설 오너별 페이지별 조회하기 -->
+	<select id="selectByOwnerNoAccommodation" parameterType="HashMap" resultType="Accommodation">
+		<![CDATA[
+			select t2.* from(select rownum rnum, t1.* from
+			(select accommodation_no, accommodation_name, accommodation_address, accommodation_img, 
+			accommodation_phone, accommodation_directions, site_no, owner_no 
+			from accommodation where owner_no=#{ownerNo} order by accommodation_no desc)t1)t2 where rnum between #{startRow} and #{lastRow}
 		]]>
 	</select>
 	<!-- 숙박시설 번호별 조회 -->

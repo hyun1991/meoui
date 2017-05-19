@@ -50,7 +50,7 @@ span {
 				<span class="glyphicon glyphicon-sunglasses"
 					style="font-size: 24px; margin-right: 70px;"></span> <a
 					class="navbar-brand navbar-left"
-					href="http://localhost:8087/meoui/" id="brand">제주를 부탁해</a>
+					href="http://192.168.0.180:8087/meoui/" id="brand">제주를 부탁해</a>
 			</div>
 			<div class="row">
 				<ul class="nav navbar-nav">
@@ -62,7 +62,7 @@ span {
 						style="color: black;"> <span class="glyphicon glyphicon-road"
 							style="color: blue;"></span> 길 찾기
 					</a></li>
-					<li class="navMenu"><a href="/meoui/accomodationlist.jsp"
+					<li class="navMenu"><a href="/meoui/accommodaion/list?pageNo=1"
 						style="color: black;"><span class="glyphicon glyphicon-home"
 							style="color: orange;"></span> 숙박 시설</a></li>
 					<li class="navMenu"><a href="/meoui/meetingboard.jsp"
