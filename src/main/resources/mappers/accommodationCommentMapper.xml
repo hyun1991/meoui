@@ -39,6 +39,12 @@
 			select * from accommodation_comment where accommodation_no=#{accommodationNo}
 		]]>
 	</select>
+	<!-- 숙박시설번호별 회원번호별 댓글 전체조회하기 -->
+	<select id="selectByMemberNoAccommodationNo" parameterType="HashMap" resultType="AccommodationComment">
+		<![CDATA[
+			select * from accommodation_comment where accommodation_no=#{accommodationNo} and member_no=#{memberNo}
+		]]>
+	</select>
 	<!-- 댓글번호별 회원번호 조회하기 -->
 	<select id="selectByMemberNo" parameterType="int" resultType="int">
 		<![CDATA[

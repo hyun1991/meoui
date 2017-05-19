@@ -70,6 +70,7 @@ public class AccommodationService {
 		HashMap<String, Object>map= new HashMap<String, Object>();
 		Accommodation accommodation= dao.findByAccommodation(accommodationNo);
 		List<AccommodationComment> comment= commentDao.selectByAccommodationNo(accommodationNo);
+		List<AccommodationComment> memberComment= commentDao.selectByMemberNoAccommodationNo(accommodationNo, memberNo);
 		map.put("accommodation", accommodation);
 		map.put("comment", comment);
 		return map;

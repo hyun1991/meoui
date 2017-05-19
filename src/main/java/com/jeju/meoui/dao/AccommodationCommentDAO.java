@@ -36,6 +36,13 @@ public class AccommodationCommentDAO {
 	public List<AccommodationComment> selectByAccommodationNo(int accommodationNo){
 		return template.selectList("AccommodationCommentMapper.selectByAccommodationNo", accommodationNo);
 	}
+	//	숙박시설번호별 회원번호별 댓글 전체조회하기
+	public List<AccommodationComment> selectByMemberNoAccommodationNo(int accommodationNo, int memberNo){
+		HashMap<String, Object> map= new HashMap<String, Object>();
+		map.put("accommodationNo", accommodationNo);
+		map.put("memberNo", memberNo);
+		return template.selectList("AccommodationCommentMapper.selectByMemberNoAccommodationNo", map);
+	}
 	//	댓글번호별 회원번호 조회하기
 	public int selectByMemberNo(int accommodationCommentNo){
 		return template.selectOne("AccommodationCommentMapper.selectByMemberNo", accommodationCommentNo);
