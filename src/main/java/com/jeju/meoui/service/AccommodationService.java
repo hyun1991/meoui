@@ -64,13 +64,24 @@ public class AccommodationService {
 		return map;
 	}
 
-	//	숙박시설 번호별 조회하기(상세보기)
+	//	숙박시설 번호별 조회하기(상세보기, 사용자꺼)
 	@Transactional
-	public HashMap<String, Object> getByAccommodation(int accommodationNo){
+	public HashMap<String, Object> getByAccommodation(int accommodationNo, int memberNo){
 		HashMap<String, Object>map= new HashMap<String, Object>();
 		Accommodation accommodation= dao.findByAccommodation(accommodationNo);
 		List<AccommodationComment> comment= commentDao.selectByAccommodationNo(accommodationNo);
 		List<AccommodationComment> memberComment= commentDao.selectByMemberNoAccommodationNo(accommodationNo, memberNo);
+		map.put("accommodation", accommodation);
+		map.put("comment", comment);
+		map.put("memberComment", memberComment);
+		return map;
+	}
+	//	숙박시설 번호별 조회하기(상세보기, 숙박업주꺼)
+	@Transactional
+	public HashMap<String, Object> getByOwnerAccommodation(int accommodationNo){
+		HashMap<String, Object>map= new HashMap<String, Object>();
+		Accommodation accommodation= dao.findByAccommodation(accommodationNo);
+		List<AccommodationComment> comment= commentDao.selectByAccommodationNo(accommodationNo);
 		map.put("accommodation", accommodation);
 		map.put("comment", comment);
 		return map;

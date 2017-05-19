@@ -74,20 +74,15 @@ public class AccommodationController {
 	public String viewAccommodation(Model model, @PathVariable int accommodationNo, HttpSession session){
 		session.setAttribute("accommodationNo", accommodationNo);
 		int memberNo= (Integer)session.getAttribute("memberNo");
-		model.addAttribute("result", service.getByAccommodation(accommodationNo));
+		model.addAttribute("result", service.getByAccommodation(accommodationNo, memberNo));
 		return "accommodation/view";
 	}
 	//	숙박시설 번호별 조회하기(숙박업주)(완료)
 	@RequestMapping(value="/manage/accommodation/view/{accommodationNo}", method=RequestMethod.GET)
 	public String viewOwnerAccommodation(Model model, @PathVariable int accommodationNo, HttpSession session){
 		session.setAttribute("accommodationNo", accommodationNo);
-		model.addAttribute("result", service.getByAccommodation(accommodationNo));
+		model.addAttribute("result", service.getByOwnerAccommodation(accommodationNo));
 		return "owner/view";
-	}
-	@RequestMapping(value="/meoui/accommodation/sessionout", method=RequestMethod.GET)
-	public String sessionOut(HttpSession session){
-		session.removeAttribute("accommodationNo");
-		return "accommodaion/list?pageNo=1";
 	}
 	//	숙박시설 수정하기(미완료)
 	//	구현 필요합니다.

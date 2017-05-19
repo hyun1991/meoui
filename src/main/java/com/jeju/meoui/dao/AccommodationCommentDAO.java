@@ -28,6 +28,10 @@ public class AccommodationCommentDAO {
 		map.put("memberNo", memberNo);
 		template.delete("AccommodationCommentMapper.deleteAccommodationComment", map);
 	}
+	//	댓글 오너가 삭제하기
+	public void deleteOwnerAccommodationComment(int accommodationCommentNo){
+		template.delete("AccommodationCommentMapper.deleteOwnerAccommodationComment", accommodationCommentNo);
+	}
 	//	숙박시설 번호별 댓글 전체삭제하기
 	public void deleteAllAccommodationComment(int accommodationNo){
 		template.delete("AccommodationCommentMapper.deleteAllAccommodationComment", accommodationNo);

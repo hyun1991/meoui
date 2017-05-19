@@ -22,8 +22,13 @@
 	<div><img src="/meoui/images/${result.accommodation.accommodationDirections}"></div><br>
 	<hr>
 	<c:forEach items="${result.comment }" var="comment">
-			<div>${comment.accommodationCommentContent}</div><br>	
-			<div><fmt:formatDate value="${comment.accommodationCommentDate}" pattern="yyyy년 MM월 dd일" /></div><br>
+			<input type="hidden" id="memberNo" value="${comment.memberNo }">
+			<div>댓글번호: ${comment.accommodationCommentNo }</div>
+			<div>댓글내용: ${comment.accommodationCommentContent}</div>	
+			<div>평점: ${comment.accommodationCommentAvg}점</div>
+			<div>작성일: <fmt:formatDate value="${comment.accommodationCommentDate}" pattern="yyyy년 MM월 dd일" /></div>
+			<a href="/meoui/manage/accommodationComment/delete/${comment.accommodationCommentNo }"><button id="deleteBtn">댓글 삭제하기</button></a>
+			<hr>
 	</c:forEach>
 </body>
 </html>

@@ -28,6 +28,7 @@ public class AccommodationCommentController {
 		service.createAccommodationComment(comment);
 		return "redirect:/accommodation/view/"+accommodationNo;
 	}
+	//	댓글 삭제하기
 	@RequestMapping(value="/accommodationComment/delete/{accommodationCommentNo}", method=RequestMethod.GET)
 	public String deleteAccommodationComment(@PathVariable int accommodationCommentNo, HttpSession session){
 		int memberNo= (Integer)session.getAttribute("memberNo");
@@ -35,6 +36,14 @@ public class AccommodationCommentController {
 		service.removeAccommodationComment(accommodationCommentNo, memberNo);
 		return "redirect:/accommodation/view/"+accommodationNo;
 	}
+	//	오너가 댓글삭제하기
+	@RequestMapping(value="/manage/accommodationComment/delete/{accommodationCommentNo}", method=RequestMethod.GET)
+	public String deleteOwnerAccommodationComment(@PathVariable int accommodationCommentNo, HttpSession session){
+		int accommodationNo= (Integer)session.getAttribute("accommodationNo");
+		service.removeOwnerAccommodationComment(accommodationCommentNo);
+		return "redirect:/manage/accommodation/view/"+accommodationNo;
+	}
+
 /*
 	//	숙박시설 댓글 수정하기
 	public void modifyAccommodationComment(AccommodationComment accommodationComment){

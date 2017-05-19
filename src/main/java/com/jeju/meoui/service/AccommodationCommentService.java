@@ -23,4 +23,8 @@ public class AccommodationCommentService {
 	public void removeAccommodationComment(int accommodationCommentNo, int memberNo){
 		dao.deleteAccommodationComment(accommodationCommentNo, memberNo);
 	}
+	//	숙박시설 댓글 오너가 삭제하기
+	public void removeOwnerAccommodationComment(int accommodationCommentNo){
+		dao.deleteOwnerAccommodationComment(accommodationCommentNo);
+	}
 }

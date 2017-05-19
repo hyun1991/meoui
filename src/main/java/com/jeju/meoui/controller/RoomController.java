@@ -44,8 +44,10 @@ public class RoomController {
 		return "redirect:/manage/home";
 	}
 	//	객실, 객실이미지 정보 조회하기(accommodationNo받는다)(완료, 사용자단)
-	@RequestMapping(value="/room/view/{accommodationNo}", method=RequestMethod.GET)
-	public String viewRoom(@PathVariable int accommodationNo, Model model){
+	@RequestMapping(value="/room/view/{accommodationNo}&{ownerNo}", method=RequestMethod.GET)
+	public String viewRoom(@PathVariable int accommodationNo, Model model, HttpSession session, @PathVariable int ownerNo){
+		session.setAttribute("ownerNo", ownerNo);
+		//	예약완료후 ownerNo세션에서 제거한다.
 		model.addAttribute("result", service.getByRoom(accommodationNo));
 		return "room/view";
 	}
