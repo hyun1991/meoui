@@ -30,7 +30,7 @@ public class UploadUtil {
 		BufferedImage dest= Scalr.resize(src, Scalr.Method.AUTOMATIC, Scalr.Mode.FIT_TO_HEIGHT, 100);
 		//	file이름 변경: s-20170331112233-img.jpg
 		String thumnailName= "s-"+fileName;
-		File newFile= new File(thumnailName);
+		File newFile= new File(realPath, thumnailName);
 		ImageIO.write(dest, "JPG", newFile);
 		return thumnailName;
 	}

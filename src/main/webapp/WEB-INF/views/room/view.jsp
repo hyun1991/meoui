@@ -24,7 +24,7 @@
 			</c:forEach>
 		</div>
 		<div><button>예약하기</button></div>
-		<div><a href="#"><button>펜션정보</button></a></div>
+		<div><a href="/meoui/accommodation/view/<%=session.getAttribute("accommodationNo")%>"><button>펜션정보</button></a></div>
 	<footer>
 		<h1>1 Follow Us Canada's New Passenger Bill of Rights Bans
 			Removal in Cases of Overbooking https://t.co/K2aizs9IKo
