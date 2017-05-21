@@ -14,13 +14,6 @@ public class Notice {
      private Date noticeDate;
      private int noticeCnt;
      private int usersNo;
-	public Notice(String noticeTitle, String noticeContent, Date noticeDate, int noticeCnt, int usersNo) {
-		super();
-		this.noticeTitle = noticeTitle;
-		this.noticeContent = noticeContent;
-		this.noticeDate = noticeDate;
-		this.noticeCnt = noticeCnt;
-		this.usersNo = usersNo;
-	}
+
      
 }

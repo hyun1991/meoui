@@ -4,14 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<title>객실 추가페이지</title>
 </head>
 <body>
+	<%@include file="/nav/ownernav.jsp" %>
 	<h1>객실 추가페이지</h1>
 	<hr>
 	<form action="/meoui/manage/room/join" method="post" enctype="multipart/form-data">

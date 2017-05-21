@@ -56,7 +56,7 @@ public class MemberController {
 	@RequestMapping(value="/member/view/{memberId}", method=RequestMethod.GET)
 	public String viewMember(@PathVariable String memberId, Model model){
 		model.addAttribute("result", service.getByMember(memberId));
-		return "결과폼 필요합니다.";
+		return "member/myPage";
 	}
 	//	6. 회원 로그인처리(완료)
 	@RequestMapping(value="/member/login", method=RequestMethod.POST)

@@ -6,8 +6,8 @@ import javax.servlet.http.*;
 
 import org.slf4j.*;
 import org.springframework.beans.factory.annotation.*;
-import org.springframework.http.*;
 import org.springframework.stereotype.*;
+import org.springframework.ui.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.*;
 
@@ -25,12 +25,12 @@ public class AccommodationController {
 	@Resource(name="path")
 	private String path;
 	
-	//	숙박시설 추가하기 폼뷰
+	//	숙박시설 추가하기 폼뷰(완료)
 	@RequestMapping(value="/manage/accommodation/join", method=RequestMethod.GET)
 	public String joinAccommodation(){
 		return "accommodation/insert";
 	}
-	//	숙박시설 추가하기 완료
+	//	숙박시설 추가하기 완료(완료)
 	@RequestMapping(value="/manage/accommodation/join", method=RequestMethod.POST)
 	public String joinAccommodation(HttpSession session, Accommodation accommodation, @RequestParam String accommodationAddress1, @RequestParam String accommodationAddress2, @RequestParam("img") MultipartFile accommodationImg, @RequestParam("file")MultipartFile accommodationDirections, @RequestParam(defaultValue="40") int siteNo){
 		int ownerNo= (Integer)session.getAttribute("ownerNo");
@@ -49,40 +49,50 @@ public class AccommodationController {
 		service.createAccommodation(accommodation, session);
 		return "redirect:/manage/room/join";
 	}
-	/*
-	 * 
-	 * 서비스단
-	 * 
-	 * 
-	 * 
-	//	숙박시설 수정하기
-	public void modifyAccommodation(Accommodation accommodation){
-		dao.updateAccommodation(accommodation);
+	//	숙박시설 페이지별 조회하기(완료)
+	@RequestMapping(value="/accommodaion/list", method=RequestMethod.GET)
+	public String selectAllAccommodation(Model model, @RequestParam(defaultValue="1") int pageNo){
+		logger.info("숙박시설정보:{}", service.getAllAccommodation(pageNo));
+		model.addAttribute("result", service.getAllAccommodation(pageNo));
+		return "accommodation/list";
 	}
-	//	숙박시설 삭제하기
-	@Transactional
-	public void deleteAccommodation(int accommodationNo){
-		dao.deleteAccommodation(accommodationNo);
-		commentDao.deleteAllAccommodationComment(accommodationNo);
+	
+	//숙박시설 페이지별 조회하기(완료)<테스트용>
+	@RequestMapping(value="/accommodaion/listTest", method=RequestMethod.GET)
+	public String selectAllAccommodationTest(Model model, @RequestParam(defaultValue="1") int pageNo){
+		logger.info("숙박시설정보:{}", service.getAllAccommodation(pageNo));
+		model.addAttribute("result", service.getAllAccommodation(pageNo));
+		return "accommodation/listTest";
 	}
-	//	숙박시설 페이지별 조회하기
-	public HashMap<String, Object> getAllAccommodation(int pageNo){
-		int cnt= dao.findByAccommodationMax();
-		Pagination pagination= PagingUtil.getPagination(pageNo, cnt);
-		HashMap<String, Object>map= new HashMap<String, Object>();
-		map.put("pagination", pagination);
-		map.put("list", dao.selectAllAccommodation(pagination.getStartRow(), pagination.getLastRow()));
-		return map;
+		
+	//	숙박시설 페이지별 오너번호별 조회하기(완료)
+	@RequestMapping(value="/manage/accommodation/list", method=RequestMethod.GET)
+	public String selectByOwnerNoAccommodaion(Model model, @RequestParam(defaultValue="1") int pageNo, HttpSession session){
+		int ownerNo= (Integer)session.getAttribute("ownerNo");
+		model.addAttribute("result", service.getByOwnerNoAccommodation(pageNo, ownerNo));
+		return "owner/accommodationlist";
 	}
-	//	숙박시설 번호별 조회하기(상세보기)
-	@Transactional
-	public HashMap<String, Object> getByAccommodation(int accommodationNo){
-		HashMap<String, Object>map= new HashMap<String, Object>();
-		Accommodation accommodation= dao.findByAccommodation(accommodationNo);
-		List<AccommodationComment> comment= commentDao.selectByAccommodationNo(accommodationNo);
-		map.put("accommodation", accommodation);
-		map.put("comment", comment);
-		return map;
+	//	숙박시설 삭제하기(완료)
+	@RequestMapping(value="/manage/accommodation/delete/{accommodationNo}", method=RequestMethod.GET)
+	public String deleteAccommodation(@PathVariable int accommodationNo){
+		service.deleteAccommodation(accommodationNo);
+		return "owner/main";
 	}
-	 * */
+	//	숙박시설 번호별 조회하기(사용자)(완료)
+	@RequestMapping(value="/accommodation/view/{accommodationNo}", method=RequestMethod.GET)
+	public String viewAccommodation(Model model, @PathVariable int accommodationNo, HttpSession session){
+		session.setAttribute("accommodationNo", accommodationNo);
+		int memberNo= (Integer)session.getAttribute("memberNo");
+		model.addAttribute("result", service.getByAccommodation(accommodationNo, memberNo));
+		return "accommodation/view";
+	}
+	//	숙박시설 번호별 조회하기(숙박업주)(완료)
+	@RequestMapping(value="/manage/accommodation/view/{accommodationNo}", method=RequestMethod.GET)
+	public String viewOwnerAccommodation(Model model, @PathVariable int accommodationNo, HttpSession session){
+		session.setAttribute("accommodationNo", accommodationNo);
+		model.addAttribute("result", service.getByOwnerAccommodation(accommodationNo));
+		return "owner/view";
+	}
+	//	숙박시설 수정하기(미완료)
+	//	구현 필요합니다.
 }

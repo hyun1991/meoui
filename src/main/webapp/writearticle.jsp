@@ -20,8 +20,7 @@
 		<h2>게시글 작성</h2>
 		<br>
 		<div class="form-group row">
-			<div class="form-group col-md-3"></div>
-			<div class="form-group col-md-6">
+			<div class="form-group col-md-6 col-md-offset-3">
 				<div class="form-group">
 					<label for="usr">아이디</label>
 				</div>
