@@ -19,8 +19,8 @@ public class MemberMeetingService {
 		dao.insertMemberMeeting(memberMeeting);
 	}
 	//모임수정
-	public void updataMeetingName(MemberMeeting meetingName){
-		dao.updateMeetingName(meetingName);
+	public void updataMeetingName(MemberMeeting memberMeeting){
+		dao.updateMeetingName(memberMeeting);
 	}
 	//모임삭제
 	public void deleteMemberMeeting(int meetingNo){

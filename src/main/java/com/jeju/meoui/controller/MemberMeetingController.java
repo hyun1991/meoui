@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -29,19 +30,17 @@ public class MemberMeetingController {
 		service.createMemberMeeting(memberMeeting);
 		return "membermeeting/create";
 	}
+
 	
-	//모임수정 폼
-	@RequestMapping(value="/membermeeting/update", method=RequestMethod.GET)
-	public String updateMemberMeeting(){
-		return "*";
-	}
 	//모임수정 완료
-	@RequestMapping(value="/membermeeting/update", method=RequestMethod.POST)
-	public String updateMemberMeeting(@ModelAttribute MemberMeeting meetingName, HttpSession session)
-	{
-		service.updataMeetingName(meetingName);
-		return "*";		
-	}
+		@RequestMapping(value="/membermeeting/update/{meetingNo}", method=RequestMethod.GET)
+		public String updateMemberMeeting(@PathVariable int meetingNo, @ModelAttribute MemberMeeting memberMeeting, 
+				HttpSession session, Model model)
+		{
+			session.setAttribute("meetingNo", meetingNo);
+		model.addAttribute("result", service.selectAllmemberMeetingList());
+			return "membermeeting/update";		
+		}
 	
 	//모임 삭제
 	@RequestMapping(value="/membermeeting/delete", method=RequestMethod.GET)
@@ -53,14 +52,14 @@ public class MemberMeetingController {
 	@RequestMapping(value="/membermeeting/delete", method=RequestMethod.POST)
 		public String deleteMemberMeeting(int meetingNo){
 			service.deleteMemberMeeting(meetingNo);
-			return "*";		
+			return "membermeeting/update";		
 	}
 	// 리스트 출력
 	@RequestMapping(value="/membermeeting/list", method=RequestMethod.GET)
 	public String AllMemberMeeting(Model model){
-		 System.out.println("여기까지 가나?");
-		 logger.info("리스트출력1 vo:{}", model);
+		 System.out.println("여기까지 가나?");		
 		model.addAttribute("result", service.selectAllmemberMeetingList());
+		 logger.info("리스트출력1 vo:{}", model);
 		return "membermeeting/list";
 	}
 	

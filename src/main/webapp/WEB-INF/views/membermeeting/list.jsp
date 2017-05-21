@@ -24,11 +24,11 @@ footer{
 		<table>
    		<tr><th>번호</th><th>모임명</th><th>인원</th></tr>
 
-		<c:forEach items="${result.list }" var ="result">
+		<c:forEach items="${result.list }" var ="memberMeeting">
 			<tr>	
-				<td>${result.meetingNo }</td>
-				<td>${result.meetingName }</td>
-				<td>${result.meetingTotalNumber }</td>
+				<td>${memberMeeting.meetingNo }</td>
+				<td>${memberMeeting.meetingName }</td>
+				<td>${memberMeeting.meetingTotalNumber }</td>
 			</tr>
 		</c:forEach>
 		</table>			

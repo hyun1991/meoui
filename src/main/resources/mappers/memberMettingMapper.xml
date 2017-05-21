@@ -17,8 +17,8 @@
 	<!-- 모임수정 -->
 	<update id="updateMeetingName" parameterType="MemberMeeting">	
 		<![CDATA[
-		update member_meeting set member_meeting_name=#{meetingName}
-		 where meeting_name={meetingName}		
+		update member_meeting set meeting_name=#{meetingName}
+		 where meeting_no=#{meetingNo}		
 		]]>
 	</update>
 	
@@ -31,7 +31,7 @@
 	<!-- 모임 리스트 출력 -->
 	<select id = "selectAllMemberMeetingList" resultType="MemberMeeting">
 		<![CDATA[
-			select * from member_meeting
+			select meeting_no, meeting_name, meeting_total_number from member_meeting
 		]]>		
 	</select>	
 	
