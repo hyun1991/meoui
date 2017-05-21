@@ -17,13 +17,14 @@ public class MemberMeetingDAO {
 	
 	// 모임 생성하기
 	public void insertMemberMeeting(MemberMeeting memberMeeting){
-		template.insert("MemberMeetingMapper.insertMemberMeeting", memberMeeting);		
+		template.insert("MemberMeetingMapper.insertMemberMeeting", memberMeeting);	
+		
 	}
 	
 	//모임 수정하기	
-	//이름으로 가지고 와서 이름만 수정
-	public void updateMeetingName(MemberMeeting meetingName){
-		template.update("MemberMeetingMapper.updateMeetingName", meetingName);		
+	//번호로 가지고 와서이름 수정
+	public void updateMeetingName(MemberMeeting memberMeeting){
+		template.update("MemberMeetingMapper.updateMeetingName", memberMeeting);		
 	}
 	
 	//모임삭제하기 
