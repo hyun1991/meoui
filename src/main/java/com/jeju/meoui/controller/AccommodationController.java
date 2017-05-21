@@ -54,8 +54,17 @@ public class AccommodationController {
 	public String selectAllAccommodation(Model model, @RequestParam(defaultValue="1") int pageNo){
 		logger.info("숙박시설정보:{}", service.getAllAccommodation(pageNo));
 		model.addAttribute("result", service.getAllAccommodation(pageNo));
-		return "accommodation/attractionlist";
+		return "accommodation/list";
 	}
+	
+	//숙박시설 페이지별 조회하기(완료)<테스트용>
+	@RequestMapping(value="/accommodaion/listTest", method=RequestMethod.GET)
+	public String selectAllAccommodationTest(Model model, @RequestParam(defaultValue="1") int pageNo){
+		logger.info("숙박시설정보:{}", service.getAllAccommodation(pageNo));
+		model.addAttribute("result", service.getAllAccommodation(pageNo));
+		return "accommodation/listTest";
+	}
+		
 	//	숙박시설 페이지별 오너번호별 조회하기(완료)
 	@RequestMapping(value="/manage/accommodation/list", method=RequestMethod.GET)
 	public String selectByOwnerNoAccommodaion(Model model, @RequestParam(defaultValue="1") int pageNo, HttpSession session){

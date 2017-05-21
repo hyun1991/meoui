@@ -20,8 +20,7 @@
 		<h2>게시글 보기</h2>
 		<br>
 		<div class="row">
-			<div class="col-md-2"></div>
-			<div class="col-md-8">
+			<div class="col-md-8 col-md-offset-2">
 				<div class="col-md-2">
 					<label for="usr">글 번호</label>
 				</div>
@@ -32,8 +31,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-2"></div>
-			<div class="col-md-8">
+			<div class="col-md-8 col-md-offset-2">
 				<div class="col-md-2">
 					<label for="usr">작성자</label>
 				</div>
@@ -44,8 +42,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-2"></div>
-			<div class="col-md-8">
+			<div class="col-md-8 col-md-offset-2">
 				<div class="col-md-2">
 					<label for="usr">글 제목</label>
 				</div>
@@ -56,8 +53,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-2"></div>
-			<div class="col-md-8">
+			<div class="col-md-8 col-md-offset-2">
 				<div class="col-md-2">
 					<label for="usr">내용</label>
 				</div>
@@ -84,8 +80,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-2"></div>
-			<div class="col-md-10">
+			<div class="col-md-10 col-md-offset-2">
 				<div class="col-md-2">
 					<label for="usr">변은지</label>
 				</div>
@@ -103,8 +98,7 @@
 			</div>
 		</div>
 		<div class="form-group row">
-			<div class="form-group col-md-2"></div>
-			<div class="form-group col-md-8">
+			<div class="form-group col-md-8 col-md-offset-2">
 				<div class="form-group">
 					<label for="usr">댓글</label>
 				</div>
