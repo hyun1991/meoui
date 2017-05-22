@@ -12,7 +12,7 @@
 	<h2>모임 게시판</h2>
 	<hr>
 	<c:forEach items="${result.list }" var="meeting">
-		모임번호: ${meeting.meetingNo }<br>
+		모임번호:<a href="/meoui/membermeeting/update/{meetingNo}">${meeting.meetingNo }</a><br>
 		모임명: ${meeting.meetingName }<br>
 		모임이미지:<img src="/meoui/images/${meeting.meetingImg}"><br>
 		인원수: ${meeting.meetingTotalNumber }<br>

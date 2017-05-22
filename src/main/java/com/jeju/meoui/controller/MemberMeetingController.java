@@ -34,7 +34,8 @@ public class MemberMeetingController {
 	}
 	//	모임생성 완료
 	@RequestMapping(value="/membermeeting/create", method=RequestMethod.POST)
-	public String isnertMemberMeeting(@RequestParam String meetingName, @RequestParam("Img")MultipartFile meetingImg){
+	public String isnertMemberMeeting(HttpSession session, @RequestParam String meetingName, @RequestParam("Img")MultipartFile meetingImg,
+			@PathVariable int memberNo){
 		MemberMeeting memberMeeting= new MemberMeeting();
 		String fileName= UploadUtil.storeAndGetFileName(meetingImg, ctx, path);
 		memberMeeting.setMeetingImg(fileName);
@@ -43,14 +44,23 @@ public class MemberMeetingController {
 		return "redirect:/membermeeting/list";
 	}
 
+	//모임 생성
+	@RequestMapping(value="/membermeeting/update/{meetingNo}", method=RequestMethod.GET)
+	public String updateMemberMeeting(){
+		return "membermeeting/update";
+	}
 	
 	//모임수정 완료
-	@RequestMapping(value="/membermeeting/update/{meetingNo}", method=RequestMethod.GET)
-	public String updateMemberMeeting(@PathVariable int meetingNo, @ModelAttribute MemberMeeting memberMeeting, 
-	HttpSession session, Model model){
+	@RequestMapping(value="/membermeeting/update/{meetingNo}", method=RequestMethod.POST)
+	public String updateMemberMeeting(@RequestParam String meetingName, @RequestParam String memberName,
+			@RequestParam("Img")MultipartFile meetingImg 
+	,HttpSession session, @PathVariable int meetingNo, @PathVariable int meetingTotalNumber){
+		MemberMeeting memberMeeting= new MemberMeeting();
 		session.setAttribute("meetingNo", meetingNo);
-		model.addAttribute("result", service.selectAllmemberMeetingList());
-		return "membermeeting/update";		
+		session.setAttribute("meetingTotalNumber",meetingTotalNumber);
+		memberMeeting.setMeetingName(meetingName);
+		service.updataMeetingName(memberMeeting);
+		return "redurect:/membermeeting/list";		
 	}
 	
 	//모임 삭제
