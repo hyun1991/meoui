@@ -39,6 +39,5 @@
 		select * from site where site_name=#{site_name}
 	</select>
 	
-	<!-- 6. 지역별 관광지 찾기 -->
 	
 </mapper>

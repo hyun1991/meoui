@@ -2,6 +2,9 @@ package com.jeju.meoui.vo;
 
 import java.sql.*;
 
+import lombok.*;
+
+@Data
 public class siteComment {
 	private int siteCommentNo;
 	private String siteCommentContent;
