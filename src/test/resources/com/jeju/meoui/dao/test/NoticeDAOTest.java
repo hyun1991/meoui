@@ -28,9 +28,9 @@ public class NoticeDAOTest {
 		notice.setUsersNo(1);
 		dao.insertNotice(notice);
 		}
-	//@Test //상세 조회 성공
+	@Test //상세 조회 성공
 	public void selectNoticeTest(){
-		System.out.println(dao.selectNotice(46));
+		System.out.println(dao.selectNotice(1));
 	}
 	//@Test //공지사항 리스트 조회 성공
 	public void selectNoticeListTest(){

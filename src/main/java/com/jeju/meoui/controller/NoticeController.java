@@ -48,9 +48,9 @@ public class NoticeController {
 	}
 	//5. 공지게시판 상세보기
 	@RequestMapping(value="/notice/view/{noticeNo}", method=RequestMethod.GET)
-	public String selectByNoticeNo(@RequestParam int noticeNo, Model model){
+	public String selectByNoticeNo(@PathVariable int noticeNo, Model model){
 	     model.addAttribute("notice", service.findByNotice(noticeNo));
-	     return "notice/view";
+	     return "/notice/view";
 	}
 	
 	
