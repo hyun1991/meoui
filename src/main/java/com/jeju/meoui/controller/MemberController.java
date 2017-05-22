@@ -60,16 +60,16 @@ public class MemberController {
 	}
 	//	6. 회원 로그인처리(완료)
 	@RequestMapping(value="/member/login", method=RequestMethod.POST)
-	public String memberLogin(@RequestParam String memberId, @RequestParam String memberPassword, HttpSession session){
+	public ResponseEntity<String> memberLogin(@RequestParam String memberId, @RequestParam String memberPassword, HttpSession session){
+		logger.info("일반회원:{}", memberId, memberPassword);
 		int result= service.memberLogin(memberId, memberPassword, session);
-		//	세션값 저장한다. 
+		logger.info("결과값:{}", result);
 		if(result==1){
-			session.setAttribute("memberId", memberId);
-			logger.info("로그인 아이디:{}", session.getAttribute("memberId"));
-			return "redirect:/";
+			session.setAttribute("memberId",memberId);
+			return new ResponseEntity<String>("success", HttpStatus.OK);
 		}
-		else
-			return "redirect:/";
+		else 
+			return new ResponseEntity<String>("fail", HttpStatus.OK);
 	}
 	//	7. 회원 로그아웃(완료)
 	@RequestMapping(value="/member/logout", method=RequestMethod.GET)
