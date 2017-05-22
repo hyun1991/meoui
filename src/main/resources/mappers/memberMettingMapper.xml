@@ -11,7 +11,7 @@
 		</selectKey>
 		<![CDATA[
 			insert into member_meeting(meeting_no, meeting_name, meeting_img, meeting_total_number, meeting_admin_no) 
-			values(#{meetingNo}, #{meetingName}, #{meetingImg}, 0, #{meetingAdminNo)
+			values(#{meetingNo}, #{meetingName}, #{meetingImg}, 0, #{meetingAdminNo})
 		]]>
 	</insert>
 	

@@ -27,24 +27,26 @@ public class MemberMeetingController {
 	private String path;
 	private static final Logger logger= LoggerFactory.getLogger(MemberMeetingController.class);
 	
-	//	모임 생성	
+	//	모임 생성(작업완료)
 	@RequestMapping(value="/membermeeting/create", method=RequestMethod.GET)
 	public String insertMemberMeeting(){
 		return "membermeeting/create";
 	}
-	//	모임생성 완료
+	//	모임생성 완료(작업완료)
 	@RequestMapping(value="/membermeeting/create", method=RequestMethod.POST)
-	public String isnertMemberMeeting(HttpSession session, @RequestParam String meetingName, @RequestParam("Img")MultipartFile meetingImg,
-			@PathVariable int memberNo){
+	public String isnertMemberMeeting(HttpSession session, @RequestParam String meetingName, @RequestParam("Img")MultipartFile meetingImg){
 		MemberMeeting memberMeeting= new MemberMeeting();
+		int meetingAdminNo= (Integer)session.getAttribute("memberNo");
 		String fileName= UploadUtil.storeAndGetFileName(meetingImg, ctx, path);
 		memberMeeting.setMeetingImg(fileName);
 		memberMeeting.setMeetingName(meetingName);
+		memberMeeting.setMeetingAdminNo(meetingAdminNo);
 		service.createMemberMeeting(memberMeeting);
+		logger.info("멤버넘버:{}", memberMeeting);
 		return "redirect:/membermeeting/list";
 	}
 
-	//모임 생성
+	//모임 업데이트(작업완료)
 	@RequestMapping(value="/membermeeting/update/{meetingNo}", method=RequestMethod.GET)
 	public String updateMemberMeeting(){
 		return "membermeeting/update";
