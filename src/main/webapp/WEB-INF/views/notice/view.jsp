@@ -20,6 +20,18 @@ $(function() {
 			$("#view").append(str);
 		})
 	}
+	$("#insertComment").on("click", function name() {
+		$.ajax({
+			url:"/meoui/noticecomment/"+$(this).data("noticeNo"),
+			type:"post",
+			data:{"content":$("#content").val()},
+			dataType:"json",
+		    success: function(result) {
+				print(result);
+			}	
+		})
+		
+	})
 });
 </script>
 </head>
@@ -33,9 +45,9 @@ $(function() {
 		<tr><td>조회수</td>	<td>${notice.nlist.noticeCnt}</td></tr>
 		 <tr><td>내용</td><td>${notice.nlist.noticeContent}</td></tr>
 	    </table>
-	    <input type="text" name="member" id="member" placeholder="작성자">
 	    <textarea name="content" id="content">
 	    </textarea>
+	    <button id="insertComment" data-bno="${notice.nlist.noticeNo }">댓글 쓰기</button>
 	    <div id="view">
 	    <c:forEach items="${notice.nclist }" var="comment">
 	    <div class="comments">
