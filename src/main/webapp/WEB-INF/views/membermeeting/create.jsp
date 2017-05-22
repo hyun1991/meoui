@@ -13,6 +13,7 @@
 		<table>
 			<tr><td>모임명:</td><td><input type="text" name="meetingName" id="meetingName"></td><tr>
 			<tr><td>이미지:</td><td><input type="file" name="Img" id="meetingName"></td></tr>
+			
 			<tr><td><button id="commit" type="submit">모임생성</button></td></tr>		
 		</table>		
 		</form>
