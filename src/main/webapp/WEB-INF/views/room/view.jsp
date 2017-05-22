@@ -17,13 +17,13 @@
 				<div>객실이름:${room.roomName}</div><br>
 				<div>예약금액:${room.roomPrice }원</div><br>
 				<div>숙박가능인원:${room.roomUseNumber}명</div>
+				<div><a href="/meoui/reserve/join?roomPrice=${room.roomPrice }"><button>예약하기</button></a></div>
 			</c:forEach>
 			<hr>
 			<c:forEach items="${result.roomImg }" var="roomImg">
 				<div><img src="/meoui/images/${roomImg.roomImg}"></div>
 			</c:forEach>
 		</div>
-		<div><button>예약하기</button></div>
 		<div><a href="/meoui/accommodation/view/<%=(Integer)session.getAttribute("accommodationNo")%>"><button>펜션정보</button></a></div>
 	<footer>
 		<h1>1 Follow Us Canada's New Passenger Bill of Rights Bans

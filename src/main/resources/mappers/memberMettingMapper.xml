@@ -10,7 +10,7 @@
 			select member_meeting_seq.nextval from dual
 		</selectKey>
 		<![CDATA[
-			insert into member_meeting(meeting_no, meeting_name, meeting_total_number) values(#{meetingNo}, #{meetingName}, 0)
+			insert into member_meeting(meeting_no, meeting_name, meeting_img, meeting_total_number) values(#{meetingNo}, #{meetingName}, #{meetingImg}, 0)
 		]]>
 	</insert>
 	
@@ -31,7 +31,7 @@
 	<!-- 모임 리스트 출력 -->
 	<select id = "selectAllMemberMeetingList" resultType="MemberMeeting">
 		<![CDATA[
-			select meeting_no, meeting_name, meeting_total_number from member_meeting
+			select meeting_no, meeting_name, meeting_img, meeting_total_number from member_meeting
 		]]>		
 	</select>	
 	

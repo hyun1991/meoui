@@ -16,5 +16,10 @@ public class MemberMeeting {
 	public MemberMeeting(String meetingName){
 			this.meetingName = meetingName;
 	}
+	public MemberMeeting(String meetingName, String meetingImg) {
+		super();
+		this.meetingName = meetingName;
+		this.meetingImg = meetingImg;
+	}
 	
 }
