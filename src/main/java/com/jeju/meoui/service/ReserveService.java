@@ -1,11 +1,15 @@
 package com.jeju.meoui.service;
 
+import javax.servlet.http.*;
+
 import org.slf4j.*;
 import org.springframework.beans.factory.annotation.*;
+import org.springframework.stereotype.*;
 
 import com.jeju.meoui.dao.*;
 import com.jeju.meoui.vo.*;
 
+@Service
 public class ReserveService {
 	@Autowired
 	private ReserveDAO dao;
@@ -14,8 +18,16 @@ public class ReserveService {
 	private Logger logger= LoggerFactory.getLogger(ReserveService.class);
 	
 	//	예약, 예약상세 추가하기
-	public void createReserve(Reserve reserve, ReserveDetails details){
+	public void createReserve(Reserve reserve, HttpSession session){
+		int ownerNo= (Integer)session.getAttribute("ownerNo");
+		int memberNo= (Integer)session.getAttribute("memberNo");
+		reserve.setOwnerNo(ownerNo);
+		reserve.setMemberNo(memberNo);
 		dao.insertReserve(reserve);
+		ReserveDetails details= new ReserveDetails();
+		details.setAccommodationNo((Integer)session.getAttribute("accommodationNo"));
+		details.setRoomNo((Integer)session.getAttribute("roomNo"));
+		details.setReserveTotalPrice(reserve.getReservePrice());
 		details.setReserveNo(dao.selectByMaxReserveNo());
 		detailsDao.insertReserveDetails(details);
 	}

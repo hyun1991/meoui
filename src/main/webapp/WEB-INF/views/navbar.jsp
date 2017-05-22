@@ -15,7 +15,7 @@
 	
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 		<link rel="stylesheet" type="text/css" href="css/hanjoon.css">
-	<link rel="stylesheet" type="text/css" href="css/sejin.css">
+<link rel="stylesheet" type="text/css" href="css/sejin.css">
 <title>Navigation Bar</title>
 <style>
 @import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
