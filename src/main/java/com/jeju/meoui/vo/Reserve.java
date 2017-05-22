@@ -14,6 +14,7 @@ public class Reserve {
 	private Date checkOut;
 	private int memberNo;
 	private int ownerNo;
+	private int roomNo;
 	public Reserve(int stayPeople, int reservePrice, Date checkIn, Date checkOut) {
 		super();
 		this.stayPeople = stayPeople;
@@ -34,6 +35,14 @@ public class Reserve {
 		super();
 		this.stayPeople = stayPeople;
 		this.reservePrice = reservePrice;
+	}
+	public Reserve(int stayPeople, int reservePrice, Date checkIn, Date checkOut, int roomNo) {
+		super();
+		this.stayPeople = stayPeople;
+		this.reservePrice = reservePrice;
+		this.checkIn = checkIn;
+		this.checkOut = checkOut;
+		this.roomNo = roomNo;
 	}
 	
 }

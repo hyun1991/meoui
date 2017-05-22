@@ -5,7 +5,7 @@
 	<!-- 1. 예약상세 추가하기 -->
 	<insert id="insertReserveDetails" parameterType="ReserveDetails">
 		<![CDATA[
-			insert into reserve_details(accommodation_no, room_no, reserve_no, reserve_data, reserve_total_price)
+			insert into reserve_details(accommodation_no, room_no, reserve_no, reserve_date, reserve_total_price)
 			values(#{accommodationNo}, #{roomNo}, #{reserveNo}, sysdate, #{reserveTotalPrice})
 		]]>
 	</insert>

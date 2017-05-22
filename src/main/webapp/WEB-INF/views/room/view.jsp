@@ -20,19 +20,13 @@
 				<div>예약금액:<input type="text" id="roomPrice" value="${room.roomPrice }" readonly="readonly">원</div><br>
 				<div>숙박가능인원:<input type="text" value="${room.roomUseNumber}" readonly="readonly">명</div>
 				<div><button id="reserveBtn">예약하기</button></div>
-			</c:forEach>
-			<hr>
-			<c:forEach items="${result.roomImg }" var="roomImg">
-				<div><img src="/meoui/images/${roomImg.roomImg}"></div>
-			</c:forEach>
-		</div>
-		<hr>
-		<div class="reserve">
-		<form action="/meoui/reserve/join" method="post">
-		<div>체크인: <input type="text" id="datepicker1" name="checkIn"></div><br>
-		<div>체크아웃: <input type="text" id="datepicker2" name="checkOut"></div><br>
-		<div>예약금액: <input type="text" name="reservePrice" id="reservePriced" readonly="readonly"></div><br>
-		<div>숙박인원: <select name="stayPeople" id="count">
+				<div class="reserve">
+					<form action="/meoui/reserve/join" method="post">
+						<div><input type="hidden" value="${room.roomNo }" name="roomNo"></div>
+						<div>체크인: <input type="text" id="datepicker1" name="checkIn"></div><br>
+						<div>체크아웃: <input type="text" id="datepicker2" name="checkOut"></div><br>
+						<div>예약금액: <input type="text" name="reservePrice" id="reservePriced" readonly="readonly"></div><br>
+						<div>숙박인원: <select name="stayPeople" id="count">
 							<option value="1" selected="selected">1</option>
 							<option value="2" >2</option>
 							<option value="3" >3</option>
@@ -44,9 +38,16 @@
 							<option value="9" >9</option>
 							<option value="10">10</option>
 						</select></div>
-		<div><input type="submit" value="예약하기"></div>
-		</form>
+				<div><input type="submit" value="결제"></div>
+				</form>
+			</div>
+			</c:forEach>
+			<hr>
+			<c:forEach items="${result.roomImg }" var="roomImg">
+				<div><img src="/meoui/images/${roomImg.roomImg}"></div>
+			</c:forEach>
 		</div>
+		<hr>
 		<div><button id="btn">리스트</button></div>
 		<div><a href="/meoui/accommodation/view/<%=(Integer)session.getAttribute("accommodationNo")%>"><button>펜션정보</button></a></div>
 	<footer>
@@ -87,7 +88,7 @@
 		})
 	})
 	$.datepicker.setDefaults({
-        dateFormat: 'yy/mm/dd',
+        dateFormat: 'yy-mm-dd',
         prevText: '이전 달',
         nextText: '다음 달',
         monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
