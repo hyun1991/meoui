@@ -1,38 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewpoert" content="width=device-width, initial-scale=1">
-
 <title>Insert title here</title>
 </head>
-<style>
-footer{
-	background-color: grey;
-}
-</style>
 <body>
-	<div class="container">
-		<h2>모임 게시판</h2>
-		<br>
-		<div>
-		<table>
-   		<tr><th>번호</th><th>모임명</th><th>인원</th></tr>
-
-		<c:forEach items="${result.list }" var ="memberMeeting">
-			<tr>	
-				<td>${memberMeeting.meetingNo }</td>
-				<td>${memberMeeting.meetingName }</td>
-				<td>${memberMeeting.meetingTotalNumber }</td>
-			</tr>
-		</c:forEach>
-		</table>			
-		</div>
-	</div>
+	<%@include file="/navbar.jsp"%>
+	<h2>모임 게시판</h2>
+	<hr>
+	<c:forEach items="${result.list }" var="meeting">
+		모임번호: ${meeting.meetingNo }<br>
+		모임명: ${meeting.meetingName }<br>
+		모임이미지:<img src="/meoui/images/${meeting.meetingImg}"><br>
+		인원수: ${meeting.meetingTotalNumber }<br>
+	</c:forEach>
 </body>
 </html>

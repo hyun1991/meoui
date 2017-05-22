@@ -20,7 +20,7 @@ public class MemberMeetingDAO {
 		template.insert("MemberMeetingMapper.insertMemberMeeting", memberMeeting);	
 		
 	}
-	
+
 	//모임 수정하기	
 	//번호로 가지고 와서이름 수정
 	public void updateMeetingName(MemberMeeting memberMeeting){
