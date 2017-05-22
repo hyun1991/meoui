@@ -24,16 +24,5 @@
 	<div><a href="/meoui/room/view/${result.accommodation.accommodationNo }&${result.accommodation.ownerNo }"><button>객실정보 조회하기</button></a></div>
 	<div><a href="/meoui/accommodaion/list?pageNo=1"><button id="sessionBtn">리스트로 이동</button></a></div>
 	<hr>
-	private int memberNo;					//	회원번호(PK)
-	private String memberId;				//	회원아이디
-	private String memberPassword;			//	패스워드
-	private String memberName;				//	이름
-	private String memberPhone;				//	연락처
-	private String memberAddress;			//	주소지
-	private String memberMail;				//	이메일
-	private String memberJob;				//	직업
-	private String memberGender;			//	성별
-	private Date memberStartdate;			//	가입일
-	private String memberHobby;				//	취미
 </body>
 </html>
