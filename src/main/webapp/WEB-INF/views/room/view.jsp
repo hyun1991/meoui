@@ -22,10 +22,10 @@
 				<div><button id="reserveBtn">예약하기</button></div>
 				<div class="reserve">
 					<form action="/meoui/reserve/join" method="post">
-						<div><input type="hidden" value="${room.roomNo }" name="roomNo"></div>
+						<div><input type="hidden" value="${room.roomNo }" name="roomNo" id="roomNo"></div>
 						<div>체크인: <input type="text" id="datepicker1" name="checkIn"></div><br>
 						<div>체크아웃: <input type="text" id="datepicker2" name="checkOut"></div><br>
-						<div>예약금액: <input type="text" name="reservePrice" id="reservePriced" readonly="readonly"></div><br>
+						<div>예약금액: <input type="text" name="reservePrice" id="reservePrice" readonly="readonly"></div><br>
 						<div>숙박인원: <select name="stayPeople" id="count">
 							<option value="1" selected="selected">1</option>
 							<option value="2" >2</option>
@@ -38,7 +38,7 @@
 							<option value="9" >9</option>
 							<option value="10">10</option>
 						</select></div>
-				<div><input type="submit" value="결제"></div>
+				<div><input type="button" id="confirmBtn" value="결제"></div>
 				</form>
 			</div>
 			</c:forEach>
@@ -82,9 +82,31 @@
 				$("#count option:selected").each(function() {
 					index+=$(this).text()+"";
 				})
-				$("#reservePriced").val(price*index+"(원)");
+				$("#reservePrice").val(price*index+"(원)");
 			})
 			$("#count").change();
+			$("#confirmBtn").on("click", function() {
+				var checkIn= $("#datepicker1").val();
+				var checkOut= $("#datepicker2").val();
+				var reservePrice= $("#reservePrice").val();
+				var roomNo= $("#roomNo").val();
+				var stayPeople= $("#count").val();
+	  			$.ajax({
+	  				type : "post",
+					url : "/meoui/reserve/join",
+					data : {checkIn: checkIn, checkOut:checkOut, reservePrice:reservePrice, roomNo: roomNo, stayPeople:stayPeople},
+					success : function(result) {
+						console.log(result)
+						if (result == "success") {
+							alert("결제페이지로 이동합니다.")
+							window.location.href="/meoui/reserve/event/cash";
+						} 
+						else {
+							alert("예약이 실패했습니다.")
+						}
+					}
+	  			})
+	  		})
 		})
 	})
 	$.datepicker.setDefaults({
@@ -102,5 +124,8 @@
   	$(function() {
     	$("#datepicker1, #datepicker2").datepicker();
   	});
+  	$(document).ready(function() {
+  		
+  	})
 </script>
 </html>
