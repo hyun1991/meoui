@@ -24,7 +24,7 @@
 .navbar-header {
 	margin-left: 5%;
 	margin-right: 2.5%;
-	color: black;
+	color: #424242;
 }
 
 span {
@@ -33,12 +33,13 @@ span {
 
 .navbar {
 	background-color: white;
+	border-color:white;
 	margin-bottom: 0;
 	font-family: 'Jeju Gothic', serif;
 }
 
 #brand {
-	color: black;
+	color: #424242;
 }
 </style>
 </head>
@@ -47,44 +48,53 @@ span {
 	<nav class="navbar navbar-default text-center" id="navbar">
 		<div class="container">
 			<div class="navbar-header">
-				<span class="glyphicon glyphicon-sunglasses"
-					style="font-size: 24px; margin-right: 70px;"></span> <a
-					class="navbar-brand navbar-left"
-					href="http://localhost:8087/meoui/" id="brand">제주를 부탁해</a>
+				<a class="navbar-brand navbar-left"
+					href="http://192.168.0.186:8087/meoui/" id="brand">제주를 부탁해 </a>
 			</div>
 			<div class="row">
 				<ul class="nav navbar-nav">
 					<li class="navMenu"><a href="/meoui/attractionlist.jsp"
-						style="color: black;"><span
+						style="color: #424242;"><span
 							class="glyphicon glyphicon glyphicon-grain" style="color: green;"></span>
 							관광 명소</a></li>
 					<li class="navMenu"><a href="/meoui/directions.jsp"
-						style="color: black;"> <span class="glyphicon glyphicon-road"
+						style="color: #424242;"> <span class="glyphicon glyphicon-road"
 							style="color: blue;"></span> 길 찾기
 					</a></li>
-					<li class="navMenu"><a href="/meoui/accomodationlist.jsp"
-						style="color: black;"><span class="glyphicon glyphicon-home"
-							style="color: orange;"></span> 숙박 시설</a></li>
+					<li class="navMenu"><a
+						href="/meoui/accommodaion/list" style="color: #424242;"><span
+							class="glyphicon glyphicon-home" style="color: orange;"></span>
+							숙박</a></li>
+								<li class="navMenu"><a
+						href="/meoui/accommodaion/listTest" style="color: #424242;"><span
+							class="glyphicon glyphicon-home" style="color: orange;"></span>
+							테스트</a></li>
 					<li class="navMenu"><a href="/meoui/meetingboard.jsp"
-						style="color: black;"><span class="glyphicon glyphicon-heart"
+						style="color: #424242;"><span class="glyphicon glyphicon-heart"
 							style="color: #f76ce4;"></span> 모임 </a></li>
-					<li class="navMenu"><a href="/meoui/noticeboard.jsp"
-						style="color: black;"><span
+					<li class="navMenu"><a href="/meoui/notice/list"
+						style="color: #424242;"><span
 							class="glyphicon glyphicon-bullhorn" style="color: red;"></span>
 							공지사항</a></li>
 					<li class="navMenu"><a href="/meoui/noticeboard.jsp"
-						style="color: black;"><span
-							class="glyphicon glyphicon-pencil" style="color: purple;"></span>
-							게시판</a></li>
+						style="color: #424242;"><span
+							class="glyphicon glyphicon-eye-open" style="color: purple;"></span>
+							포럼</a></li>
+					<li class="navMenu"><a href="/meoui/test.jsp"
+						style="color: #424242;"><span class="glyphicon glyphicon-eye-open"
+							style="color: purple;"></span>테스트</a></li>
+							<li class="navMenu"><a href="/meoui/test.jsp"
+						style="color: #424242;"><span class="glyphicon glyphicon-pencil"
+							style="color: grey;"></span>테스트</a></li>
 				</ul>
 				<ul class="nav navbar-nav pull-right">
 					<li><a href="#" data-toggle="modal" data-target="#signUpForm"
-						id="signUp" style="color: black;">회원가입</a></li>
+						id="signUp" style="color: #424242;">회원가입</a></li>
 					<li><a href="#" data-toggle="modal" data-target="#signInForm"
-						id="signIn" style="color: black;">로그인</a></li>
-					<li class="dropdown" id="loginCheck"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#" style="color: black;">
-						<%=session.getAttribute("memberId")%><span
+						id="signIn" style="color: #424242;">로그인</a></li>
+					<li class="dropdown" id="loginCheck"><a
+						class="dropdown-toggle" data-toggle="dropdown" href="#"
+						style="color: #424242;"> <%=session.getAttribute("memberId")%><span
 							class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="/meoui/mypage.jsp" id="menu">마이페이지</a></li>
@@ -99,7 +109,8 @@ span {
 <script>
 	$(document).ready(function() {
 		var memberId= "<%=session.getAttribute("memberId")%>"
-		if(memberId=="null")
+	
+		if (memberId == "null")
 			$("#loginCheck").hide();
 		else
 			$("#loginCheck").show();

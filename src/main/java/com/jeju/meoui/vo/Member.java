@@ -32,5 +32,18 @@ public class Member {
 		this.memberGender = memberGender;
 		this.memberHobby = memberHobby;
 	}
+	public Member(String memberId, String memberPassword, String memberName, String memberPhone, String memberMail,
+			String memberJob, String memberGender, Date memberStartdate, String memberHobby) {
+		super();
+		this.memberId = memberId;
+		this.memberPassword = memberPassword;
+		this.memberName = memberName;
+		this.memberPhone = memberPhone;
+		this.memberMail = memberMail;
+		this.memberJob = memberJob;
+		this.memberGender = memberGender;
+		this.memberStartdate = memberStartdate;
+		this.memberHobby = memberHobby;
+	}
 	
 }

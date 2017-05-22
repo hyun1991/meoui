@@ -11,9 +11,11 @@ import com.jeju.meoui.vo.*;
 
 @Service
 public class SiteService {
+	private static final Logger logger = LoggerFactory.getLogger(SiteService.class);
 	@Autowired
 	private SiteDAO dao;
-	private static final Logger logger = LoggerFactory.getLogger(SiteService.class);
+	@Autowired
+	private SiteCommentDAO commentdao;
 	
 	// 1.관광지 추가
 	public void createSite(Site site){
@@ -26,8 +28,9 @@ public class SiteService {
 	}
 	
 	// 3.관광지 삭제
-	public void removeSite(String siteName){
+	public void removeSite(String siteName , int siteNo){
 		dao.deleteSite(siteName);
+		commentdao.deleteAllSiteComment(siteNo);
 	}
 	
 	// 4.관광지 리스트

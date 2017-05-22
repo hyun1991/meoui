@@ -19,8 +19,8 @@ public class MemberMeetingService {
 		dao.insertMemberMeeting(memberMeeting);
 	}
 	//모임수정
-	public void updataMeetingName(MemberMeeting meetingName){
-		dao.updateMeetingName(meetingName);
+	public void updataMeetingName(MemberMeeting memberMeeting){
+		dao.updateMeetingName(memberMeeting);
 	}
 	//모임삭제
 	public void deleteMemberMeeting(int meetingNo){
@@ -28,7 +28,9 @@ public class MemberMeetingService {
 	}
 	//모임 리스트 출력
 	public List<MemberMeeting> selectAllmemberMeetingList(){
-		return dao.selectAllMemberMeetingList();
+		
+		List<MemberMeeting>list = dao.selectAllMemberMeetingList();
+		return list;
 	}
 	//모임 이름으로 검색
 	public MemberMeeting selectMeetingName(String meetingName){
@@ -41,7 +43,7 @@ public class MemberMeetingService {
 	//내가 가입한 모임 보기
 	public MemberMeeting selectMyMeeting(int memberNo){
 		return dao.selectMyMeeting(memberNo);
-	}
+	}	
 	
 	
 }

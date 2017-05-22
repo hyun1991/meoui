@@ -39,9 +39,7 @@
 }
 </style>
 <body>
-	
 	<%@include file="/signInAndUp.jsp"%>
-	
 	<nav class="navbar navbar-default row text-center">
 		<div class="navbar-header col-md-12">
 			<div class="col-md-1"></div>
@@ -65,7 +63,5 @@
 			<li class="col-md-2"><a href="/meoui/mypage.jsp">마이페이지</a></li>
 		</ul>
 	</nav>
-
-	
 </body>
 </html>

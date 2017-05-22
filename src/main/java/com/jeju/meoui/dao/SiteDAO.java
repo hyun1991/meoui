@@ -3,12 +3,14 @@ package com.jeju.meoui.dao;
 import java.util.*;
 
 import org.mybatis.spring.*;
+import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 
 import com.jeju.meoui.vo.*;
 
 @Repository
 public class SiteDAO {
+	@Autowired
 	private SqlSessionTemplate template;
 	// 1.관광지 추가
 	public void insertSite(Site site){

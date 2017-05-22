@@ -13,13 +13,18 @@
 		update ticket set agegroup_no=#{agegroup_no} , site_no=#{site_no},ticket_price=#{ticket_price}
 	</update>
 	
-	<!-- 3.티켓 삭제 -->
+	<!-- 3.티켓 전체 삭제 -->
 	<delete id="deleteTicket" parameterType="int">
-		delete from ticket where site_no=#{site_no}
+		delete from ticket where site_no=#{site_no} 
 	</delete>
 	
-	<!-- 4.관광지별 티켓 조회 -->
+	<!-- 4.연령대별 티켓 삭제 -->
+	<delete id="deleteTicketByAgegroup" parameterType="HashMap">
+		delete from ticket where site_no=#{site_no} and agegroup_no=#{agegroup_no}		
+	</delete>
+	
+	<!-- 5.관광지별 티켓 조회 -->
 	<select id="selectTicket" parameterType="int" resultType="Ticket">
-		select * from ticket where site_no=#{site_no}
+		select a.agegroup_standard , t.ticket_price from agegroup a , ticket t where a.agegroup_no=t.agegroup_no and t.site_no=#{site_no};
 	</select>
 </mapper>

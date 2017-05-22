@@ -8,7 +8,7 @@
 		values(area_no=#{area_no} , area_name=#{area_name}, details_address=#{details_address}, site_no=#{site_no}) 
 	</insert>
 	
-	<!-- 2.지역 관광지 주소 수정 -->
+	<!-- 2.관광지 상세주소 변경 -->
 	<update id="updateArea" parameterType="Area">
 		update area set area_no=#{area_no} , area_name=#{area_name} , details_address=#{deatils_address} where site_no=#{site_no}
 	</update>

@@ -7,20 +7,18 @@
 
 	<insert id="insertMemberMeeting" parameterType="MemberMeeting">
 		<selectKey keyProperty="meetingNo" resultType="int" order="BEFORE">
-			select member_seq.nextval from dual
+			select member_meeting_seq.nextval from dual
 		</selectKey>
 		<![CDATA[
-			insert into member_meeting(member_meeting_no, member_meeting_name 
-			meeting_total_number)
-			values(#{meetingNo}, #{meetingName}, #{meetingTotalNumber})
+			insert into member_meeting(meeting_no, meeting_name, meeting_total_number) values(#{meetingNo}, #{meetingName}, 0)
 		]]>
 	</insert>
 	
 	<!-- 모임수정 -->
 	<update id="updateMeetingName" parameterType="MemberMeeting">	
 		<![CDATA[
-		update member_meeting set member_meeting_name=#{meetingName}
-		 where meeting_name={meetingName}		
+		update member_meeting set meeting_name=#{meetingName}
+		 where meeting_no=#{meetingNo}		
 		]]>
 	</update>
 	
@@ -33,8 +31,7 @@
 	<!-- 모임 리스트 출력 -->
 	<select id = "selectAllMemberMeetingList" resultType="MemberMeeting">
 		<![CDATA[
-			select member_meeting_no, member_meeting_name, member_meeting_total_number 
-			from member_meeting
+			select meeting_no, meeting_name, meeting_total_number from member_meeting
 		]]>		
 	</select>	
 	

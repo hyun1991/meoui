@@ -7,6 +7,7 @@ import javax.servlet.http.*;
 import org.slf4j.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
+import org.springframework.ui.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.*;
 
@@ -23,11 +24,12 @@ public class RoomController {
 	@Resource(name="path")
 	private String path;
 	private static final Logger logger= LoggerFactory.getLogger(RoomController.class);
-	//	객실, 객실이미지 추가하기.
+	//	객실, 객실이미지 추가하기(완료).
 	@RequestMapping(value="/manage/room/join", method=RequestMethod.GET)
 	public String insertRoom(){
 		return "room/insert";
 	}
+	//	객실, 객실이미지 추가완료(완료)=> 다중업로드 구현필요합니다(아직 단일업로드...)
 	@RequestMapping(value="/manage/room/join", method=RequestMethod.POST)
 	public String insertRoom(HttpSession session, @ModelAttribute Room room, @RequestParam("img")MultipartFile roomImg){
 		RoomImg ri= new RoomImg();
@@ -41,5 +43,18 @@ public class RoomController {
 		service.createRoom(room, ri);
 		return "redirect:/manage/home";
 	}
-	
+	//	객실, 객실이미지 정보 조회하기(accommodationNo받는다)(완료, 사용자단)
+	@RequestMapping(value="/room/view/{accommodationNo}&{ownerNo}", method=RequestMethod.GET)
+	public String viewRoom(@PathVariable int accommodationNo, Model model, HttpSession session, @PathVariable int ownerNo){
+		session.setAttribute("ownerNo", ownerNo);
+		//	예약완료후 ownerNo세션에서 제거한다.
+		model.addAttribute("result", service.getByRoom(accommodationNo));
+		return "room/view";
+	}
+	//	객실, 객실이미지 정보 조회하기(accommodationNo받는다)(완료, 관리자단)
+	@RequestMapping(value="/menage/room/view/{accommodationNo}", method=RequestMethod.GET)
+	public String ownerViewRoom(@PathVariable int accommodationNo, Model model){
+		model.addAttribute("result", service.getByRoom(accommodationNo));
+		return "room/view";
+	}
 }

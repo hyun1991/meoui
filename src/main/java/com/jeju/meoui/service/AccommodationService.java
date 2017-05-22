@@ -38,7 +38,10 @@ public class AccommodationService {
 	@Transactional
 	public void deleteAccommodation(int accommodationNo){
 		dao.deleteAccommodation(accommodationNo);
+		logger.info("숙박시설 삭제");
 		commentDao.deleteAllAccommodationComment(accommodationNo);
+		logger.info("숙박시설 댓글 전체삭제");
+
 	}
 	//	숙박시설 페이지별 조회하기
 	public HashMap<String, Object> getAllAccommodation(int pageNo){
@@ -49,9 +52,33 @@ public class AccommodationService {
 		map.put("list", dao.selectAllAccommodation(pagination.getStartRow(), pagination.getLastRow()));
 		return map;
 	}
-	//	숙박시설 번호별 조회하기(상세보기)
+	//	숙박시설 오너별 페이지별 조회하기
+	public HashMap<String, Object> getByOwnerNoAccommodation(int pageNo, int ownerNo){
+		int cnt= dao.findByAccommodationMax();
+		logger.info("페이지 시작");
+		Pagination pagination= PagingUtil.getPagination(pageNo, cnt);
+		logger.info("페이지:{}", pagination);
+		HashMap<String, Object>map= new HashMap<String, Object>();
+		map.put("pagination", pagination);
+		map.put("list", dao.selectByOwnerNoAccommodation(pagination.getStartRow(), pagination.getLastRow(), ownerNo));
+		return map;
+	}
+
+	//	숙박시설 번호별 조회하기(상세보기, 사용자꺼)
 	@Transactional
-	public HashMap<String, Object> getByAccommodation(int accommodationNo){
+	public HashMap<String, Object> getByAccommodation(int accommodationNo, int memberNo){
+		HashMap<String, Object>map= new HashMap<String, Object>();
+		Accommodation accommodation= dao.findByAccommodation(accommodationNo);
+		List<AccommodationComment> comment= commentDao.selectByAccommodationNo(accommodationNo);
+		List<AccommodationComment> memberComment= commentDao.selectByMemberNoAccommodationNo(accommodationNo, memberNo);
+		map.put("accommodation", accommodation);
+		map.put("comment", comment);
+		map.put("memberComment", memberComment);
+		return map;
+	}
+	//	숙박시설 번호별 조회하기(상세보기, 숙박업주꺼)
+	@Transactional
+	public HashMap<String, Object> getByOwnerAccommodation(int accommodationNo){
 		HashMap<String, Object>map= new HashMap<String, Object>();
 		Accommodation accommodation= dao.findByAccommodation(accommodationNo);
 		List<AccommodationComment> comment= commentDao.selectByAccommodationNo(accommodationNo);

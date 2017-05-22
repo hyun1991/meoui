@@ -27,6 +27,12 @@
 			delete from accommodation_comment where accommodation_comment_no=#{accommodationCommentNo} and member_no=#{memberNo} 
 		]]>
 	</delete>
+	<!-- 오너가 댓글 삭제하기 -->
+	<delete id="deleteOwnerAccommodationComment" parameterType="int">
+		<![CDATA[
+			delete from accommodation_comment where accommodation_comment_no=#{accommodationCommentNo} 
+		]]>
+	</delete>
 	<!-- 숙박시설 번호별 댓글 전체삭제하기 -->
 	<delete id="deleteAllAccommodationComment" parameterType="int">
 		<![CDATA[
@@ -36,7 +42,13 @@
 	<!-- 숙박시설번호별 댓글 전체조회하기 -->
 	<select id="selectByAccommodationNo" parameterType="int" resultType="AccommodationComment">
 		<![CDATA[
-			select * from accommodation_comment where accommodation_no=#{accommodationNo}
+			select * from accommodation_comment where accommodation_no=#{accommodationNo} order by accommodation_comment_no asc
+		]]>
+	</select>
+	<!-- 숙박시설번호별 회원번호별 댓글 전체조회하기 -->
+	<select id="selectByMemberNoAccommodationNo" parameterType="HashMap" resultType="AccommodationComment">
+		<![CDATA[
+			select * from accommodation_comment where accommodation_no=#{accommodationNo} and member_no=#{memberNo}
 		]]>
 	</select>
 	<!-- 댓글번호별 회원번호 조회하기 -->

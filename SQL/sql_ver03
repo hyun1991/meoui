@@ -140,6 +140,7 @@ constraint travleschedule_details_pk primary key(site_no)
 create table member_meeting(
 meeting_no number(10) primary key,
 meeting_name nvarchar2(50),
+meeting_img nvarchar2(100),
 meeting_total_number number(10)
 );
 

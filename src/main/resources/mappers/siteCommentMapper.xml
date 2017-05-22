@@ -18,10 +18,14 @@
 		update site_comment set site_comment_content=#{site_comment_content} where site_no=#{site_no}
 	</update>
 <!-- 3.관광지 댓글 삭제 -->
-	<delete id="deleteSiteComment" parameterType="String">
-		delete from site_comment where member_no=#{member_no}
+	<delete id="deleteSiteComment" parameterType="HashMap">
+		delete from site_comment where member_no=#{member_no} and site_no=#{site_no}
 	</delete>
-<!-- 4.관광지 댓글 조회 -->
+<!-- 4.관광지 댓글 전체 삭제 -->
+	<delete id="deleteAllSiteComment" parameterType="int">
+		delete from site_comment where site_no=#{site_no}
+	</delete>
+<!-- 5.관광지 댓글 조회 -->
 	<select id="selectSiteCommetn" parameterType="int" resultType="SiteComment">
 		select site_comment_content , site_comment_date from site_comment where site_no=#{site_no}
 	</select>
