@@ -27,7 +27,7 @@ public class ReserveController {
 	public String createReserve(@ModelAttribute Reserve reserve, BindingResult result, HttpSession session){
 		logger.info("객실예약하기 시작전");
 		if(result.hasErrors()){
-			logger.info("Date타입 형변환 실패");
+			logger.info("Date타입검증실패");
 			service.createReserve(reserve, session);
 		}
 		logger.info("checktIn:{}", reserve.getCheckIn());
@@ -37,10 +37,9 @@ public class ReserveController {
 	}
 	@InitBinder
 	public void initBinder(WebDataBinder binder)	{
-		SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
-		sdf.setLenient(false);
-		binder.registerCustomEditor(Date.class, "checkIn", new CustomDateEditor(sdf, true));
-		binder.registerCustomEditor(Date.class, "checkOut", new CustomDateEditor(sdf, true));
+		SimpleDateFormat sdf= new SimpleDateFormat("yy/mm/dd");
+		binder.registerCustomEditor(Date.class, "checkIn", new CustomDateEditor(sdf, false));
+		binder.registerCustomEditor(Date.class, "checkOut", new CustomDateEditor(sdf, false));
 	}
 
 }
