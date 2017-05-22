@@ -11,6 +11,11 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+<style>
+ 	#slider {position:relative;margin:0 auto;padding:0;list-style:none;width:280px;height:280px;overflow-x:hidden}
+	#slider li {display:none;position:absolute;left:0;top:0}
+	#slider img {width:280px;height:280px}
+</style>
 </head>
 <body>
 	<header><h1>객실 상세페이지</h1></header>
@@ -43,12 +48,17 @@
 			</div>
 			</c:forEach>
 			<hr>
+			<ul id="slider">
 			<c:forEach items="${result.roomImg }" var="roomImg">
-				<div><img src="/meoui/images/${roomImg.roomImg}"></div>
+				<li><img src="/meoui/images/${roomImg.roomImg}"></li>
 			</c:forEach>
+			</ul>
+			이미지 둘러보기:
+			<button type="button" id="prev_btn" class="btn">이전</button>
+			<button type="button" id="next_btn" class="btn">다음</button>
 		</div>
 		<hr>
-		<div><button id="btn">리스트</button></div>
+		<div><button id="btn">리스트 이동</button></div>
 		<div><a href="/meoui/accommodation/view/<%=(Integer)session.getAttribute("accommodationNo")%>"><button>펜션정보</button></a></div>
 	<footer>
 		<h1>1 Follow Us Canada's New Passenger Bill of Rights Bans
@@ -68,6 +78,10 @@
 				location.replace("/meoui/accommodaion/list?pageNo=1");
 			})
 		})
+		$("#btn").on("click", function() {
+				alert("감사합니다");
+				location.replace("/meoui/accommodaion/list?pageNo=1");
+			})
 	})
 	$(document).ready(function() {
 		$(".reserve").hide();
@@ -127,5 +141,40 @@
   	$(document).ready(function() {
   		
   	})
+  	$(function() {
+    	var time = 500;
+    	var idx = idx2 = 0;
+    	var slide_width = $("#slider").width();
+    	var slide_count = $("#slider li").size();
+    	$("#slider li:first").css("display", "block");
+    	if(slide_count > 1)
+        	$(".btn").css("display", "inline");
+ 
+   	 $("#prev_btn").click(function() {
+        if(slide_count > 1) {
+            idx2 = (idx - 1) % slide_count;
+            if(idx2 < 0)
+                idx2 = slide_count - 1;
+            $("#slider li:hidden").css("left", "-"+slide_width+"px");
+            $("#slider li:eq("+idx+")").animate({ left: "+="+slide_width+"px" }, time, function() {
+                $(this).css("display", "none").css("left", "-"+slide_width+"px");
+            });
+            	$("#slider li:eq("+idx2+")").css("display", "block").animate({ left: "+="+slide_width+"px" }, time);
+            	idx = idx2;
+       		}
+    	});
+ 
+    	$("#next_btn").click(function() {
+        if(slide_count > 1) {
+            idx2 = (idx + 1) % slide_count;
+            	$("#slider li:hidden").css("left", slide_width+"px");
+            	$("#slider li:eq("+idx+")").animate({ left: "-="+slide_width+"px" }, time, function() {
+                $(this).css("display", "none").css("left", slide_width+"px");
+            });
+            	$("#slider li:eq("+idx2+")").css("display", "block").animate({ left: "-="+slide_width+"px" }, time);
+            	idx = idx2;
+        	}
+    	});
+	});
 </script>
 </html>
