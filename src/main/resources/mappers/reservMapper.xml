@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ReserveMapper">
+	<!-- 1. 예약추가하기 -->
+	<insert id="insertReserve" parameterType="Reserve">
+	<selectKey keyProperty="reserveNo" resultType="int" order="BEFORE">
+	    	select reserve_seq.nextval from dual
+	</selectKey>
+		<![CDATA[
+			insert into reserve(reserve_no, stay_people, reserve_price, check_in, check_out, member_no, owner_no)
+			values(#{reserveNo}, #{stayPeople}, #{reservePrice}, #{checkIn}, #{checkOut}, #{memberNo}, 
+			#{ownerNo})
+		]]>
+	</insert>
+	<!-- 2. 예약수정하기 -->
+	<update id="updateReserve" parameterType="Reserve">
+		<![CDATA[
+			update reserve set stay_people=#{stayPeople}, reserve_price=#{reservePrice}, check_in=#{checkIn}, check_out=#{checkOut}
+			where member_no=#{memberNo} and reserve_no=#{reserveNo}
+		]]>
+	</update>
+	<!-- 3. 예약취소하기 -->
+	<delete id="deleteReserve" parameterType="HashMap">
+		<![CDATA[]
+			delete from reserve where reserve_no=#{reserveNo} and member_no=#{memberNo}
+		]]>
+	</delete>
+	<!-- 4. 업주번호별 예약리스트 조회하기 -->
+	<select id="selectAllByOwnerNo" parameterType="int" resultType="Reserve">
+		<![CDATA[
+			select * from reserve where owner_no=#{ownerNo}
+		]]>
+	</select>
+	<!-- 5. 회원번호별 예약리스트 조회하기 -->
+	<select id="selectAllByMemberNo" parameterType="int" resultType="Reserve">
+		<![CDATA[
+			select*from reserve where member_no=#{memberNo}
+		]]>
+	</select>
+	<!-- 6. 예약번호별 업주번호 조회하기 -->
+	<select id="selectByOwner" parameterType="int" resultType="int">
+		<![CDATA[
+			select owner_no from reserve where reserve_no=#{reserveNo}
+		]]>
+	</select>
+	<!-- 7. 회원번호별 예약번호 조회하기 -->
+	<select id="selectByReserveNo" parameterType="int" resultType="int">
+		<![CDATA[
+			select reserve_no from reserve where member_no=#{memberNo}
+		]]>
+	</select>
+	<!-- 8. 최근 추가된 예약리스트 예약번호 조회하기 -->
+	<select id="selectByMaxReserveNo" resultType="int">
+		<![CDATA[
+			select max(reserve_no)from reserve
+		]]>
+	</select>
+</mapper>
