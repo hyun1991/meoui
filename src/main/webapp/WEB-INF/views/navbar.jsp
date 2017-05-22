@@ -15,7 +15,7 @@
 	
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 		<link rel="stylesheet" type="text/css" href="css/hanjoon.css">
-	<link rel="stylesheet" type="text/css" href="css/sejin.css">
+<link rel="stylesheet" type="text/css" href="css/sejin.css">
 <title>Navigation Bar</title>
 <style>
 @import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
@@ -39,9 +39,7 @@
 }
 </style>
 <body>
-	
 	<%@include file="/signInAndUp.jsp"%>
-	
 	<nav class="navbar navbar-default row text-center">
 		<div class="navbar-header col-md-12">
 			<div class="col-md-1"></div>
@@ -65,7 +63,5 @@
 			<li class="col-md-2"><a href="/meoui/mypage.jsp">마이페이지</a></li>
 		</ul>
 	</nav>
-
-	
 </body>
 </html>

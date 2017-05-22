@@ -15,9 +15,10 @@
 <title>Main Page</title>
 </head>
 <style>
-body,div.row {
+body, div.row {
 	width: 100%;
 	height: 100%;
+	color:#424242;
 }
 
 #mapContainer {
@@ -25,14 +26,19 @@ body,div.row {
 	height: 100%;
 }
 
-footer {
-	background-color: grey;
+@keyframes menuBlink {
+	0% {opacity: 0}
+	49%{opacity: 0}
+	50% {opacity: 1}
 }
+.glyphicon-road {animation: menuBlink 1s infinite;}
+
 </style>
 <body>
-	<%@include file="/navbar.jsp"%>
 	<header>
+		<%@include file="/navbar.jsp"%>
 	</header>
+	<div class="container">
 	<div class="row">
 		<div class="col-md-9" id=mapContainer>
 			<div id="googleMap" style="width: 100%; height: 800px;"></div>
@@ -73,10 +79,9 @@ footer {
 			</div>
 		</div>
 	</div>
+	</div>
 	<footer>
-		<h1>1 Follow Us Canada's New Passenger Bill of Rights Bans
-			Removal in Cases of Overbooking https://t.co/K2aizs9IKo
-			https://t.co/lb8fklloIp Twitter | 29 mins ago</h1>
+		<%@include file="/footer.jsp"%>
 	</footer>
 </body>
 

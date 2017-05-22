@@ -8,25 +8,54 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script>
+$(function() {
+	function print(notice) {
+		$("#view").empty();
+		$.each(notice.nclist, function(index, comments) {
+			var str = "<div class='comments'>"
+			str = str + "<div class='name'>"+comments.noticeCommentNo+"</div>"
+			str = str + "<div class='content'>"+comments.noticeCommentContent+"</div>"
+			str = str + " <div class='date'>"+comments.noticeCommentDate+"</div></div>"
+			$("#view").append(str);
+		})
+	}
+	$("#insertComment").on("click", function name() {
+		$.ajax({
+			url:"/meoui/noticecomment/"+$(this).data("noticeNo"),
+			type:"post",
+			data:{"content":$("#content").val()},
+			dataType:"json",
+		    success: function(result) {
+				print(result);
+			}	
+		})
+		
+	})
+});
+</script>
 </head>
 <body>
-        <h3>게시글 </h3>
+  <h3>게시글 </h3>
         <table>
-        <c:forEach items="${result.list }" var="notice">
-        <tr>
-			<td>게시글 번호</td><td>제목</td>
-			<td>${notice.noticeNo}</td><td>${notice.noticeTitle}</td>
-		</tr>
-		<tr>
-			<td>작성자</td><td>${notice.usersNo}</td><td>작성일</td><td>조회수</td>	
-			<td><fmt:formatDate value="${notice.noticeDate}"
-					pattern="yyyy년 MM월 dd일" /></td><td>${notice.noticeCnt}</td>
-		</tr>
-	    <tr>
-			<td>내용</td>
-			<td>${notice.noticeContent}</td>
-		</tr>
-		</c:forEach>
-	</table>
+        <tr><td>게시글 번호</td><td>${notice.nlist.noticeNo}</td></tr>
+		<tr><td>제목</td><td>${notice.nlist.noticeTitle}</td></tr>	
+		<tr><td>작성자</td><td>${notice.nlist.usersNo}</td></tr>
+		<tr><td>작성일</td><td><fmt:formatDate value="${notice.nlist.noticeDate}" pattern="yyyy년 MM월 dd일" /></td>
+		<tr><td>조회수</td>	<td>${notice.nlist.noticeCnt}</td></tr>
+		 <tr><td>내용</td><td>${notice.nlist.noticeContent}</td></tr>
+	    </table>
+	    <textarea name="content" id="content">
+	    </textarea>
+	    <button id="insertComment" data-bno="${notice.nlist.noticeNo }">댓글 쓰기</button>
+	    <div id="view">
+	    <c:forEach items="${notice.nclist }" var="comment">
+	    <div class="comments">
+	    <div class="name">${comment.memberNo }</div>
+	    <div class="content">${comment.noticeCommentContent }</div>
+	    <div class="date"><fmt:formatDate value="${comment.noticeCommentDate }"  pattern="yyyy년MM월dd일" /></div>
+	    </div>
+	    </c:forEach>
+	    </div>
 </body>
 </html>

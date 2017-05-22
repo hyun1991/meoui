@@ -32,5 +32,7 @@
 	    <typeAlias type="com.jeju.meoui.vo.RoomImg" alias="RoomImg"/>
 	    <typeAlias type="com.jeju.meoui.vo.Site" alias="Site"/>
 	    <typeAlias type="com.jeju.meoui.vo.siteComment" alias="SiteComment"/>
+	    <typeAlias type="com.jeju.meoui.vo.Reserve" alias="Reserve"/>
+	    <typeAlias type="com.jeju.meoui.vo.ReserveDetails" alias="ReserveDetails"/>
 	</typeAliases>
 </configuration>

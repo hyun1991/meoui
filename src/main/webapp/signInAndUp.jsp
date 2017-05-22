@@ -10,7 +10,7 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <style>
-label, .btn {
+label, .btn , .w3-button{
 	font-family: 'Jeju Gothic', serif;
 }
 </style>
@@ -36,7 +36,7 @@ label, .btn {
 								class="form-control" id="memberPassword" name="memberPassword">
 						</div>
 						<div class="form-group justified">
-							<button type="submit" class="w3-button w3-block w3-white w3-border w3-border-yellow"
+							<button type="submit" class="w3-button w3-block w3-white w3-border"
 								>로그인</button>
 						</div>
 						<div class="form-group">
