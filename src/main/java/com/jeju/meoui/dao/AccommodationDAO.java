@@ -47,7 +47,7 @@ public class AccommodationDAO {
 	public Accommodation findByAccommodation(int accommodationNo){
 		return template.selectOne("AccommodationMapper.findByAccommodation", accommodationNo);
 	}
-	//	숙박시설DB개수 조회하기
+	//	기본키 MAX값 조회하기
 	public int findByAccommodationMax(){
 		return template.selectOne("AccommodationMapper.findByAccommodationMax");
 	}
@@ -62,5 +62,9 @@ public class AccommodationDAO {
 		map.put("lastRow", lastRow);
 		map.put("ownerNo", ownerNo);
 		return template.selectList("AccommodationMapper.selectByOwnerNoAccommodation", map);
+	}
+	//	숙박시설 저장된 DB개수 조회하기
+	public int selectByMax(){
+		return template.selectOne("AccommodationMapper.selectByMax");
 	}
 }

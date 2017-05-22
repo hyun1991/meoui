@@ -25,7 +25,7 @@ public class AccommodationService {
 	@Transactional
 	public void createAccommodation(Accommodation accommodation, HttpSession session){
 		dao.insertAccommodation(accommodation);
-		int accommodationNo= dao.selectByAccommodationNo(accommodation.getAccommodationName());
+		int accommodationNo= dao.findByAccommodationMax();
 		session.setAttribute("accommodationNo", accommodationNo);
 		//	객실이미지 추가를 위해 세션에 저장해 놓았습니다.
 		//	객실이미지 추가후에는 바로 삭제해야 합니다.
@@ -37,15 +37,14 @@ public class AccommodationService {
 	//	숙박시설 삭제하기
 	@Transactional
 	public void deleteAccommodation(int accommodationNo){
-		dao.deleteAccommodation(accommodationNo);
-		logger.info("숙박시설 삭제");
 		commentDao.deleteAllAccommodationComment(accommodationNo);
 		logger.info("숙박시설 댓글 전체삭제");
-
+		dao.deleteAccommodation(accommodationNo);
+		logger.info("숙박시설 삭제");
 	}
 	//	숙박시설 페이지별 조회하기
 	public HashMap<String, Object> getAllAccommodation(int pageNo){
-		int cnt= dao.findByAccommodationMax();
+		int cnt= dao.selectByMax();
 		Pagination pagination= PagingUtil.getPagination(pageNo, cnt);
 		HashMap<String, Object>map= new HashMap<String, Object>();
 		map.put("pagination", pagination);
@@ -54,7 +53,7 @@ public class AccommodationService {
 	}
 	//	숙박시설 오너별 페이지별 조회하기
 	public HashMap<String, Object> getByOwnerNoAccommodation(int pageNo, int ownerNo){
-		int cnt= dao.findByAccommodationMax();
+		int cnt= dao.selectByMax();
 		logger.info("페이지 시작");
 		Pagination pagination= PagingUtil.getPagination(pageNo, cnt);
 		logger.info("페이지:{}", pagination);

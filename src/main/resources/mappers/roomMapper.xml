@@ -35,4 +35,10 @@
 			select room_no from room where room_name=#{roomName} and accommodation_no=#{accommodationNo}
 		]]>
 	</select>
+	<!-- 객실번호 MAX번호 조회하기 -->
+	<select id="selectByRoomNoMax" resultType="int">
+		<![CDATA[
+			select max(room_no)from room
+		]]>
+	</select>
 </mapper>

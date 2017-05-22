@@ -21,8 +21,14 @@ public class RoomService {
 	@Transactional
 	public void createRoom(Room room, RoomImg roomImg){
 		dao.insertRoom(room);
-		int roomNo= dao.selectByRoomNo(room.getAccommodationNo(), room.getRoomName());
+		int roomNo= dao.selectByRoomNoMax();
 		logger.info("객실번호:{}", roomNo);
+		roomImg.setRoomNo(roomNo);
+		roomImgDao.insertRoomImg(roomImg);
+	}
+	//	객실 이미지 추가하기
+	public void createRoomImg(RoomImg roomImg){
+		int roomNo= dao.selectByRoomNoMax();
 		roomImg.setRoomNo(roomNo);
 		roomImgDao.insertRoomImg(roomImg);
 	}
