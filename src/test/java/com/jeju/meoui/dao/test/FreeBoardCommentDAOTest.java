@@ -7,15 +7,21 @@ import org.springframework.test.context.*;
 import org.springframework.test.context.junit4.*;
 
 import com.jeju.meoui.dao.*;
+import com.jeju.meoui.dao.test.*;
 import com.jeju.meoui.vo.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("context.xml")
-public class MemberMeetingDAOTest {
+public class FreeBoardCommentDAOTest {
 	@Autowired
-	private MemberMeetingDAO dao;
+	private FreeBoardCommentDAO commentDAO;
+	private FreeBoardDAO dao;
 	@Test
-	public void insertTest(){
-		dao.insertMemberMeeting(new MemberMeeting("스쿠버다이빙", "test.jpg"));
+	public void insertCommentTest() {
+		FreeBoardComment comment = new FreeBoardComment();
+		comment.setFreeboardCommentContent("우와 멋져");
+		comment.setFreeboardCommentNo(1);
+		dao.selectFreeboard(43);
+		commentDAO.insertComment(comment);
 	}
 }

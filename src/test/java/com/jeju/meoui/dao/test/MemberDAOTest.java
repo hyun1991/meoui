@@ -9,6 +9,7 @@ import org.springframework.test.context.*;
 import org.springframework.test.context.junit4.*;
 
 import com.jeju.meoui.dao.*;
+import com.jeju.meoui.dao.test.*;
 import com.jeju.meoui.vo.*;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
