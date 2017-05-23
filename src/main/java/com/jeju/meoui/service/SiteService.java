@@ -10,6 +10,7 @@ import org.springframework.stereotype.*;
 import org.springframework.transaction.annotation.*;
 
 import com.jeju.meoui.dao.*;
+import com.jeju.meoui.dao.test.*;
 import com.jeju.meoui.util.*;
 import com.jeju.meoui.vo.*;
 
