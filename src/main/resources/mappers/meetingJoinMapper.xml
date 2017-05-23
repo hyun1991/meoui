@@ -17,6 +17,16 @@
 			delete from meeting_join where member_no=#{memberNo})
 		]]>
 	</delete>	
+<!-- 3. 가입한 모임 보기 -->
+	<select id="selectMyMeeting" parameterType="int" resultType="MemberMeeting">
+		<![CDATA[
+			select m.meeting_name, m.meeting_img, 
+			m.meeting_total_number from meeting_join j, member_meeting m 
+			where m.meeting_no=j.meeting_no and j.member_no=#{member_no}
 
+		]]>
+		
+		
+		</select>
 </mapper>
 	
