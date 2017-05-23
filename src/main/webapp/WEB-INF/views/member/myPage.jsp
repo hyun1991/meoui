@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@include file="/navbar.jsp"%>
+	<%@include file="/nav/navbar.jsp"%>
 	<div><h3>회원아이디:</h3>${result.accommodation.accommodationName }</div><br>
 	<div><h3>이름:</h3>${result.accommodation.accommodationPhone }</div>
 	<div><h3>연락처:</h3>${result.accommodation.accommodationAddress }</div>

@@ -8,10 +8,22 @@
 <meta charset="UTF-8">
 <title>숙박시설</title>
 <style>
-@keyframes menuBlink { 0% {
-	opacity: 0 }
-	49%{opacity: 0}
-    50%{opacity:1}
+@
+keyframes menuBlink { 0% {
+	opacity: 0
+}
+
+49%{
+opacity
+:
+ 
+0
+}
+50%{
+opacity
+:
+1
+}
 }
 #headTitle, .step {
 	font-family: 'Jeju Gothic', serif;
@@ -24,12 +36,20 @@ keyframes menuBlink { 0% {
 
 49%{
 opacity
+
+
 :
+
+
 0
 }
 50%{
 opacity
+
+
 :
+
+
 1
 }
 }
@@ -53,7 +73,7 @@ img {
 	src="//apis.daum.net/maps/maps3.js?apikey=0733036d66ec867aa0960ee525091024&libraries=services "></script>
 <body>
 	<header>
-		<%@include file="/navbar.jsp"%>
+		<%@include file="/nav/navbar.jsp"%>
 	</header>
 	<div class="container">
 		<div class="row text-center">
@@ -77,7 +97,7 @@ img {
 				<h6 class="step" style="margin-top: 20px">옵션</h6>
 			</div>
 		</div>
-
+		<hr style="border: 4px solid #f76ce4; margin-bottom: 50px;">
 		<h1 id="headTitle" style="margin-top: 50px;">숙박시설 리스트</h1>
 		<div class="row text-center">
 			<c:forEach items="${result.list }" var="accommodation">
@@ -109,17 +129,19 @@ img {
 			<hr style="border: 4px solid #f76ce4; margin-bottom: 50px;">
 		</div>
 	</div>
-	<div style="width: 300px; margin: 0 auto;">
-		<c:if test="${result.pagination.prev>0 }">
-			<a href="/meoui/accommodation/list?pageNo=${result.pagination.prev}">이전으로</a>
-		</c:if>
-		<c:forEach var="i" begin="${result.pagination.startPaging}"
-			end="${result.pagination.lastPaging}">
-			<a href="/meoui/accommodation/list?pageNo=${i}">${i} </a>
-		</c:forEach>
-		<c:if test="${result.pagination.next>0 }">
-			<a href="/meoui/accommodation/list?pageNo=${result.pagination.next}">다음으로</a>
-		</c:if>
+	<div class="row text-center">
+		<ul class="pagination pagination-md">
+			<li><c:if test="${result.pagination.prev>0 }">
+					<a href="/meoui/notice/list?pageNo=${result.pagination.prev }">이전으로</a>
+				</c:if></li>
+			<li><c:forEach begin="${result.pagination.startPaging }"
+					end="${result.pagination.lastPaging }" var="i">
+					<a href="/meoui/notice/list?pageNo=${i }">${i }</a>
+				</c:forEach></li>
+			<li><c:if test="${result.pagination.next>0 }">
+					<a href="/meoui/notice/list?pageNo=${result.pagination.next }">다음으로</a>
+				</c:if></li>
+		</ul>
 	</div>
 	<footer>
 		<%@include file="/footer.jsp"%>

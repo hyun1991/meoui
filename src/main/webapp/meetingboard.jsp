@@ -36,7 +36,7 @@ img {
 <body>
 
 	<header>
-		<%@include file="/navbar.jsp"%>
+		<%@include file="/nav/navbar.jsp"%>
 	</header>
 		<div class="container">
 			<div class="row  text-center">

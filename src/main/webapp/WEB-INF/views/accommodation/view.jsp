@@ -10,7 +10,7 @@
 </head>
 <body>
 	<header>
-		<%@include file="/navbar.jsp"%>
+		<%@include file="/nav/navbar.jsp"%>
 	</header>
 	<div><img src="/meoui/images/${result.accommodation.accommodationImg}"></div><br>
 	<div><h3>숙박시설이름:</h3>${result.accommodation.accommodationName }</div><br>

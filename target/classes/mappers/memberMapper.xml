@@ -85,4 +85,8 @@
 	<select id="selectAllMember" resultType="Member">
 			select * from member
 	</select>
+	<!-- 11. 회원번호별 회원리스트 조회하기 -->
+	<select id="findAllMemberNo" parameterType="int" resultType="Member">
+		select*from member where member_no=#{memberNo}
+	</select>
 </mapper>

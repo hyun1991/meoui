@@ -10,7 +10,6 @@ import org.springframework.stereotype.*;
 import org.springframework.transaction.annotation.*;
 
 import com.jeju.meoui.dao.*;
-import com.jeju.meoui.dao.test.*;
 import com.jeju.meoui.util.*;
 import com.jeju.meoui.vo.*;
 
@@ -21,6 +20,8 @@ public class AccommodationService {
 	private AccommodationDAO dao;
 	@Autowired
 	private AccommodationCommentDAO commentDao;
+	@Autowired
+	private SiteDAO siteDao;
 	
 	//	숙박시설 추가하기
 	@Transactional

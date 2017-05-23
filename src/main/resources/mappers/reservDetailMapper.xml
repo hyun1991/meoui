@@ -10,16 +10,27 @@
 		]]>
 	</insert>
 	<!-- 2. 예약상세 삭제하기 -->
-	<delete id="deleteReserveDetails" parameterType="HashMap">
+	<delete id="deleteReserveDetails" parameterType="int">
 		<![CDATA[
-			delete from reserve_details where accommodation_no=#{accommodationNo} and room_no=#{roomNo}
-			and reserve_no=#{reserveNo}
+			delete from reserve_details where reserve_no=#{reserveNo}
 		]]>
 	</delete>
 	<!-- 3. 객실종류번호별 예약상세 조회하기 -->
 	<select id="selectAllByRoomNo" parameterType="int" resultType="ReserveDetails">
 		<![CDATA[
 			select * from reserve_details where room_no=#{roomNo}
+		]]>
+	</select>
+	<!-- 4. 예약번호별 객실번호 조회하기 -->
+	<select id="selectByRoomNo" parameterType="int" resultType="int">
+		<![CDATA[
+			select room_no from reserve_details where reserve_no=#{reserveNo} 
+		]]>
+	</select>
+	<!-- 5. 예약번호별 펜션번호 조회하기 -->
+	<select id="selectByAccommodationNo" parameterType="int" resultType="int">
+		<![CDATA[
+			select accommodation_no from reserve_details where reserve_no=#{reserveNo} 
 		]]>
 	</select>
 </mapper>
