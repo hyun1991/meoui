@@ -17,7 +17,7 @@
 	</insert>
 	
 	<!-- 2. 관광지 수정 -->
-	<update id="updateSite" parameterType="Site">
+	<update id="updateSite" parameterType="site">
 		<![CDATA[
 			update site set site_img=#{site_img},site_introduce=#{site_introduce},site_homepage=#{site_homepage}
 			,site_open_time=#{site_open_time},site_close_time=#{site_close_time},site_phone=#{site_phone},site_night_open=#{site_night_open},site_night_close_time=#{site_night_close_time} where site_no=#{site_no}   
@@ -29,12 +29,10 @@
 		delete from site where site_name=#{site_name}
 	</delete>
 	
-	<!-- 4. 전체 관광지리스트 -->
-	<select id="selectAllSite" parameterType="HashMap"  resultType="Site">
+	<!-- 4. 전체 관광지리스트(페이징) -->
+	<select id="selectAllSite" parameterType="site"  >
 		<![CDATA[
-		select * from (
-			select rownum rnum, a1.* from 
-		(select s.site_name, s.site_park , s.site_object, s.site_img, s.site_introduce, s.site_homepage, s.site_open_time , s.site_close_time, s.site_phone,
+		select * from (select rownum rnum, a1.* from (select s.site_name, s.site_park , s.site_object, s.site_img, s.site_introduce, s.site_homepage, s.site_open_time , s.site_close_time, s.site_phone,
 		s.site_night_open, s.site_night_close_time, a.area_name, a.details_address 
 		from site s , area a 
 		where s.site_no=a.site_no) a1
@@ -44,7 +42,7 @@
 	</select>
 	
 	<!-- 5. 이름으로 관광지 찾기 -->
-	<select id="selectSiteByName" parameterType="String" resultType="Site">
+	<select id="selectSiteByName" parameterType="String" resultType="site">
 		select s.site_name, s.site_park , s.site_object, s.site_img, s.site_introduce, s.site_homepage, s.site_open_time , s.site_close_time, s.site_phone,
 		s.site_night_open, s.site_night_close_time, a.area_name, a.details_address 
 		from site s , area a 
@@ -55,4 +53,10 @@
 	<select id="SiteCount" resultType="int">
 		select count(site_no)from site
 	</select>
+	
+	<!-- 7. 관광지 리스트  -->
+	<select id="selectSiteList" resultType="site">
+		select site_no, site_name from site
+	</select>
+	
 </mapper>

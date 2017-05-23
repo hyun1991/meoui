@@ -33,12 +33,10 @@ public class SiteController {
 	
 	// 관광지 추가 성공
 	@RequestMapping(value="/site/join", method=RequestMethod.POST)
-	public String insertSite(HttpSession session , Site site, Area area, Ticket ticket, @RequestParam("img") MultipartFile siteImg){
-		int usersNo= (Integer)session.getAttribute("usersNo");
+	public String insertSite( Site site, Area area, Ticket ticket, @RequestParam("img") MultipartFile siteImg){
 		String fileName = UploadUtil.storeAndGetFileName(siteImg, ctx, path);
-		site.setUsersNo(usersNo);
-		service.createSite(site, area, ticket, session);
-		return "redirect:/users/home";
+		service.createSite(site, area, ticket);
+		return "redirect:/meoui";
 	}
 	
 	// 관광지 수정 폼
@@ -52,7 +50,7 @@ public class SiteController {
 	public String updateSitd(Site site, Area area, Ticket ticket , @RequestParam("img") MultipartFile siteImg){
 		String fileName= UploadUtil.storeAndGetFileName(siteImg, ctx, path);
 		service.modifySite(site, area, ticket);
-		return "redirect:/users/home";
+		return "redirect:/meoui";
 	}
 	
 	// 관광지 삭제
@@ -63,7 +61,7 @@ public class SiteController {
 	
 	// 관광지 전체 리스트
 	@RequestMapping(value="/site/list" , method=RequestMethod.GET)
-	public String allSite(Model model , int pageNo){
+	public String allSite(Model model ,@RequestParam(defaultValue="1") int pageNo){
 		model.addAttribute("result", service.selectAllSite(pageNo));
 		return "site/list";
 	}
