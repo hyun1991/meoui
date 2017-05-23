@@ -27,7 +27,8 @@ public class AccommodationController {
 	
 	//	숙박시설 추가하기 폼뷰(완료)
 	@RequestMapping(value="/manage/accommodation/join", method=RequestMethod.GET)
-	public String joinAccommodation(){
+	public String joinAccommodation(Model model){
+		model.addAttribute("result", service.createAccommodationStart());
 		return "accommodation/insert";
 	}
 	//	숙박시설 추가하기 완료(완료)

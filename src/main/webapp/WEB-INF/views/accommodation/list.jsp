@@ -97,7 +97,6 @@ img {
 				<h6 class="step" style="margin-top: 20px">옵션</h6>
 			</div>
 		</div>
-		<hr style="border: 4px solid #f76ce4; margin-bottom: 50px;">
 		<h1 id="headTitle" style="margin-top: 50px;">숙박시설 리스트</h1>
 		<div class="row text-center">
 			<c:forEach items="${result.list }" var="accommodation">
@@ -120,13 +119,13 @@ img {
 							href="/meoui/accommodation/view/${accommodation.accommodationNo}">
 							${accommodation.accommodationAddress}</a>
 					</p>
-					<a
-						href="/meoui/accommodation/view/${accommodation.accommodationNo}">
-						<button class="btn" style="border-color: #f76ce4;">상세보기</button>
-					</a>
+					<div class="form-group">
+						<a href="/meoui/accommodation/view/${accommodation.accommodationNo}">
+					<button type="button" class="w3-button w3-block w3-white w3-border">
+					상세보기</button></a>
+				</div>
 				</div>
 			</c:forEach>
-			<hr style="border: 4px solid #f76ce4; margin-bottom: 50px;">
 		</div>
 	</div>
 	<div class="row text-center">

@@ -40,4 +40,8 @@ public class HomeController {
 	public String home(){
 		return "/owner/main";
 	}
+	@RequestMapping("/admin/home")
+	public String adminHome(){
+		return "/admin/adminHome";
+	}
 }
