@@ -30,15 +30,29 @@
 	</delete>
 	
 	<!-- 4. 전체 관광지리스트 -->
-	<select id="selectAllSite"  resultType="Site">
-		select * from site
+	<select id="selectAllSite" parameterType="HashMap"  resultType="Site">
+		<![CDATA[
+		select * from (
+			select rownum rnum, a1.* from 
+		(select s.site_name, s.site_park , s.site_object, s.site_img, s.site_introduce, s.site_homepage, s.site_open_time , s.site_close_time, s.site_phone,
+		s.site_night_open, s.site_night_close_time, a.area_name, a.details_address 
+		from site s , area a 
+		where s.site_no=a.site_no) a1
+		where rownum<=#{end}
+		) where rnum>=#{start}
+		]]>
 	</select>
 	
 	<!-- 5. 이름으로 관광지 찾기 -->
 	<select id="selectSiteByName" parameterType="String" resultType="Site">
-		select * from site where site_name=#{site_name}
+		select s.site_name, s.site_park , s.site_object, s.site_img, s.site_introduce, s.site_homepage, s.site_open_time , s.site_close_time, s.site_phone,
+		s.site_night_open, s.site_night_close_time, a.area_name, a.details_address 
+		from site s , area a 
+		where s.site_no=a.site_no and s.site_name=#{site_name};
 	</select>
 	
-	<!-- 6. 지역별 관광지 찾기 -->
-	
+	<!-- 6. 관광지 개수 -->
+	<select id="SiteCount" resultType="int">
+		select count(site_no)from site
+	</select>
 </mapper>
