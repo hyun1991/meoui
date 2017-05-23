@@ -26,8 +26,8 @@ $(function() {
 			type:"post",
 			data:{"content":$("#content").val()},
 			dataType:"json",
-		    success: function(result) {
-				print(result);
+		    success: function(notice) {
+				print(notice);
 			}	
 		})
 		
