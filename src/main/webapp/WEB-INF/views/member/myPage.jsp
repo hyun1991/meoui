@@ -18,7 +18,7 @@
 	<div><h3>직업:</h3>${result.accommodation.accommodationAddress }</div>
 	<div><h3>성별:</h3>${result.accommodation.accommodationAddress }</div>
 	<div><h3>가입일:</h3>${result.accommodation.accommodationAddress }</div>
-	<div>작성일: <fmt:formatDate value="${result..accommodationCommentDate}" pattern="yyyy년 MM월 dd일" /></div>
+	<div>작성일: <fmt:formatDate value="${result.accommodationCommentDate}" pattern="yyyy년 MM월 dd일" /></div>
 	<div><h3>취미:</h3>${result.accommodation.accommodationAddress }</div>
 	<input type="hidden" value="${result.accommodation.ownerNo }" id="ownerNo">
 	<div><a href="/meoui/room/view/${result.accommodation.accommodationNo }&${result.accommodation.ownerNo }"><button>객실정보 조회하기</button></a></div>

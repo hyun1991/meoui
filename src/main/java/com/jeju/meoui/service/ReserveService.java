@@ -1,8 +1,16 @@
 package com.jeju.meoui.service;
 
+import java.util.*;
+
+import javax.servlet.http.*;
+
 import org.slf4j.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
+<<<<<<< HEAD
+=======
+import org.springframework.transaction.annotation.*;
+>>>>>>> branch 'master' of https://github.com/hyun1991/meoui.git
 
 import com.jeju.meoui.dao.*;
 import com.jeju.meoui.vo.*;
@@ -16,16 +24,23 @@ public class ReserveService {
 	private Logger logger= LoggerFactory.getLogger(ReserveService.class);
 	
 	//	예약, 예약상세 추가하기
-	public void createReserve(Reserve reserve, ReserveDetails details){
+	@Transactional
+	public void createReserve(Reserve reserve, HttpSession session){
+		int ownerNo= (Integer)session.getAttribute("ownerNo");
+		int memberNo= (Integer)session.getAttribute("memberNo");
+		reserve.setOwnerNo(ownerNo);
+		reserve.setMemberNo(memberNo);
 		dao.insertReserve(reserve);
+		ReserveDetails details= new ReserveDetails();
+		details.setAccommodationNo((Integer)session.getAttribute("accommodationNo"));
+		details.setRoomNo((Integer)session.getAttribute("roomNo"));
+		details.setReserveTotalPrice(reserve.getReservePrice());
 		details.setReserveNo(dao.selectByMaxReserveNo());
 		detailsDao.insertReserveDetails(details);
 	}
+
 /*
- * //	예약추가하기
-	public void insertReserve(Reserve reserve){
-		template.insert("ReserveMapper.insertReserve", reserve);
-	}
+ 
 	//	예약수정하기
 	public void updateReserve(Reserve reserve){
 		template.update("ReserveMapper.updateReserve", reserve);
@@ -71,25 +86,5 @@ public class ReserveService {
 		return template.selectList("ReserveDetailsMapper.selectAllByRoomNo", roomNo);
 	}
 	=====================================================================
- * // TODO Auto-generated method stub
-		Connection conn= JDBCUtil.getConnection();
-		SimpleDateFormat sdf= new SimpleDateFormat("YYYY-MM-DD");
-		java.util.Date date= null;
-		HttpSession session= request.getSession();
-		String basicInfoUsername= session.getAttribute("basicInfoUsername")+"";
-		try {
-			System.out.println(session.getAttribute("wineInfoId"));
-			date= sdf.parse(request.getParameter("wineOrderDate"));
-			int wineOrderInfoCount= Integer.parseInt(request.getParameter("wineOrderInfoCount"));
-			int wineOrderAmount= ((int)session.getAttribute("wineInfoPrice"))*wineOrderInfoCount;
-			int customerId= new BasicInfoDAOImpl().selectByUsernameOfCustomerId(conn, basicInfoUsername);
-			int wineSellerId= (int)session.getAttribute("wineSellerId");
-			Date getDate= new Date(date.getTime());
-			int wineOrderResult= dao.wineOrderInsert(conn, new WineOrder(getDate, wineOrderAmount, customerId, wineSellerId));
-			//	와인상세를 위한 추가
-			int wineOrderId= dao.selectWineOrderIdMax(conn);
-			System.out.println("오더아이디"+wineOrderId);
-			int wineInfoId= (int)session.getAttribute("wineInfoId");
-			int wineOrderInfoResult= new WineOrderInfoDAOImpl().wineOrderInfoInsert(conn, wineOrderInfoCount, wineOrderId, wineInfoId);
- * */
+ */
 }

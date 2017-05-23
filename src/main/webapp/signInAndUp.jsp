@@ -36,8 +36,8 @@ label, .btn , .w3-button{
 								class="form-control" id="memberPassword" name="memberPassword">
 						</div>
 						<div class="form-group justified">
-							<button type="submit" class="w3-button w3-block w3-white w3-border"
-								>로그인</button>
+							<button type="button" class="w3-button w3-block w3-white w3-border"
+								id="loginBtn">로그인</button>
 						</div>
 						<div class="form-group">
 							<a href="/meoui/findid.jsp" class="btn btn-default">아이디 찾기</a> <a
@@ -267,6 +267,24 @@ label, .btn , .w3-button{
 					}
 				}
 			})
+		})
+	})
+	$("#loginBtn").on("click", function() {
+		var memberId = $("#memberId").val();
+		var memberPassword = $("#memberPassword").val();
+		$.ajax({
+			type : "post",
+			url : "/meoui/member/login",
+			data : {memberId : memberId, memberPassword: memberPassword},
+			success : function(result) {
+				console.log(result)
+				if (result == "success") {
+					alert("환영합니다.")
+					window.location.href="/meoui/";
+				} else {
+					alert("아이디와 비밀번호를 확인해 주세요.")
+				}
+			}
 		})
 	})
 </script>

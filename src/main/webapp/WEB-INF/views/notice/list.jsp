@@ -62,7 +62,7 @@ h4 {
 							<tr class="active" id="noticeTitle">
 								<td data-toggle="collapse" data-target="#demo">
 									<h4 id="type">
-										<a href="/meoui/notice/view/{noticeNo}">${notice.noticeNo }</a>
+									<a href="/meoui/notice/view/${notice.noticeNo }">${notice.noticeNo }</a>
 									</h4>
 									<h4 id="title">${notice.noticeTitle }</h4>
 									<h4 id="writer">${notice.usersNo }</h4>

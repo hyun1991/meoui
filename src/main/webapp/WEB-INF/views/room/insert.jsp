@@ -24,7 +24,13 @@
 				min="1" max="100000000">
 			</div>
 			<div class="form-group">
-				<label>객실이미지 파일명</label><input type="file" name="img" id="img" class="form-control">
+				<label>객실이미지 파일1</label><input type="file" name="img" id="img" class="form-control" placeholder="이미지 업로드 해주세요">
+			</div>
+			<div class="form-group">
+				<label>객실이미지 파일2</label><input type="file" name="img2" id="img2" class="form-control" placeholder="이미지 업로드 해주세요">
+			</div>
+			<div class="form-group">
+				<label>객실이미지 파일3</label><input type="file" name="img3" id="img3" class="form-control" placeholder="이미지 업로드 해주세요">
 			</div>
 			<br>
 			<div class="btn-group">

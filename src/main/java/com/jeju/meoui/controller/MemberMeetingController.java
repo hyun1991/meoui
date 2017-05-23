@@ -27,29 +27,46 @@ public class MemberMeetingController {
 	private String path;
 	private static final Logger logger= LoggerFactory.getLogger(MemberMeetingController.class);
 	
-	//	모임 생성	
+	//	모임 생성(작업완료)
 	@RequestMapping(value="/membermeeting/create", method=RequestMethod.GET)
 	public String insertMemberMeeting(){
 		return "membermeeting/create";
 	}
-	//	모임생성 완료
+	//	모임생성 완료(작업완료)
 	@RequestMapping(value="/membermeeting/create", method=RequestMethod.POST)
-	public String isnertMemberMeeting(@RequestParam String meetingName, @RequestParam("Img")MultipartFile meetingImg){
+	public String isnertMemberMeeting(HttpSession session, @RequestParam String meetingName, @RequestParam("Img")MultipartFile meetingImg){
 		MemberMeeting memberMeeting= new MemberMeeting();
+		int meetingAdminNo= (Integer)session.getAttribute("memberNo");
 		String fileName= UploadUtil.storeAndGetFileName(meetingImg, ctx, path);
 		memberMeeting.setMeetingImg(fileName);
 		memberMeeting.setMeetingName(meetingName);
+		memberMeeting.setMeetingAdminNo(meetingAdminNo);
 		service.createMemberMeeting(memberMeeting);
+		logger.info("멤버넘버:{}", memberMeeting);
 		return "redirect:/membermeeting/list";
 	}
 
+	//모임 업데이트(작업완료)
+	@RequestMapping(value="/membermeeting/update/{meetingNo}", method=RequestMethod.GET)
+	public String updateMemberMeeting(){
+		return "membermeeting/update";
+	}
 	
 	//모임수정 완료
-	@RequestMapping(value="/membermeeting/update/{meetingNo}", method=RequestMethod.GET)
-	public String updateMemberMeeting(@PathVariable int meetingNo, @ModelAttribute MemberMeeting memberMeeting, 
-	HttpSession session, Model model){
+	@RequestMapping(value="/membermeeting/update/{meetingNo}", method=RequestMethod.POST)
+	public String updateMemberMeeting(@RequestParam String meetingName, @RequestParam String memberName,
+			@RequestParam("Img")MultipartFile meetingImg 
+	,HttpSession session, @PathVariable int meetingNo, @PathVariable int meetingTotalNumber){
+		MemberMeeting memberMeeting= new MemberMeeting();
 		session.setAttribute("meetingNo", meetingNo);
+<<<<<<< HEAD
 		return "membermeeting/update";		
+=======
+		session.setAttribute("meetingTotalNumber",meetingTotalNumber);
+		memberMeeting.setMeetingName(meetingName);
+		service.updataMeetingName(memberMeeting);
+		return "redurect:/membermeeting/list";		
+>>>>>>> branch 'master' of https://github.com/hyun1991/meoui.git
 	}
 	
 	//모임 삭제

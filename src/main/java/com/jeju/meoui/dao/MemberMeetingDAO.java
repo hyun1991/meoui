@@ -22,7 +22,7 @@ public class MemberMeetingDAO {
 	}
 
 	//모임 수정하기	
-	//번호로 가지고 와서이름 수정
+	//번호로 가지고 와서 이름, 이미지 수정
 	public void updateMeetingName(MemberMeeting memberMeeting){
 		template.update("MemberMeetingMapper.updateMeetingName", memberMeeting);		
 	}

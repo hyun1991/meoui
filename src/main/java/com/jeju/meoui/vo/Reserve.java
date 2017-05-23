@@ -1,5 +1,4 @@
 package com.jeju.meoui.vo;
-
 import java.util.*;
 
 import lombok.*;
@@ -8,13 +7,14 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Reserve {
-	private int reserveNo;				//	예약번호
-	private int stayPeople;				//	숙박인원
-	private int reservePrice;			//	예약금액
-	private Date checkIn;				//	체크인
-	private Date checkOut;				//	체크아웃
-	private int memberNo;				//	예약한 회원번호
-	private int ownerNo;				//	펜션정보 업로드 업주번호
+	private int reserveNo;
+	private int stayPeople;
+	private int reservePrice;
+	private Date checkIn;
+	private Date checkOut;
+	private int memberNo;
+	private int ownerNo;
+	private int roomNo;
 	public Reserve(int stayPeople, int reservePrice, Date checkIn, Date checkOut) {
 		super();
 		this.stayPeople = stayPeople;
@@ -31,6 +31,18 @@ public class Reserve {
 		this.memberNo = memberNo;
 		this.ownerNo = ownerNo;
 	}
+	public Reserve(int stayPeople, int reservePrice) {
+		super();
+		this.stayPeople = stayPeople;
+		this.reservePrice = reservePrice;
+	}
+	public Reserve(int stayPeople, int reservePrice, Date checkIn, Date checkOut, int roomNo) {
+		super();
+		this.stayPeople = stayPeople;
+		this.reservePrice = reservePrice;
+		this.checkIn = checkIn;
+		this.checkOut = checkOut;
+		this.roomNo = roomNo;
+	}
 	
 }
-

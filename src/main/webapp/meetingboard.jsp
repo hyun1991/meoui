@@ -61,6 +61,11 @@ img {
 			</div>
 
 			<h1 id="headTitle" style="margin-top: 50px;">꽃 한 송이가 그래그래 피었구나,</h1>
+			<a href="/meoui/membermeeting/create">생성 </a>
+			<a href="/meoui/membermeeting/list">리스트</a>
+			<a href="/meoui/membermeeting/ed">에디터</a>
+			
+			
 			<hr style="border: 4px solid #f76ce4; margin-bottom: 50px;">
 			<div class="row  text-center" style="margin-bottom: 50px;">
 				<div class="col-sm-3">
