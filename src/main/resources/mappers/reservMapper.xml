@@ -22,7 +22,7 @@
 	</update>
 	<!-- 3. 예약취소하기 -->
 	<delete id="deleteReserve" parameterType="HashMap">
-		<![CDATA[]
+		<![CDATA[
 			delete from reserve where reserve_no=#{reserveNo} and member_no=#{memberNo}
 		]]>
 	</delete>

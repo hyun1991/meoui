@@ -22,15 +22,16 @@
 		<div class="container">
 			<c:forEach items="${result.room }" var="room">
 				<div>객실이름:<input type="text" value="${room.roomName}" readonly="readonly"></div><br>
-				<div>예약금액:<input type="text" id="roomPrice" value="${room.roomPrice }" readonly="readonly">원</div><br>
-				<div>숙박가능인원:<input type="text" value="${room.roomUseNumber}" readonly="readonly">명</div>
-				<div><button id="reserveBtn">예약하기</button></div>
+				<div>예약금액:<input type="text" id="roomPrice" value="${room.roomPrice }" readonly="readonly">(원)</div><br>
+				<div>숙박가능인원:<input type="text" value="${room.roomUseNumber}" readonly="readonly">(명)</div>
+				<div><button id="reserveBtn">예약하기</button></div><br>
 				<div class="reserve">
 					<form action="/meoui/reserve/join" method="post">
 						<div><input type="hidden" value="${room.roomNo }" name="roomNo" id="roomNo"></div>
 						<div>체크인: <input type="text" id="datepicker1" name="checkIn"></div><br>
 						<div>체크아웃: <input type="text" id="datepicker2" name="checkOut"></div><br>
-						<div>예약금액: <input type="text" name="reservePrice" id="reservePrice" readonly="readonly"></div><br>
+						<div>예약금액: <input type="text" name="reservePrice" id="reservePrice" value="${room.roomPrice }" readonly="readonly">(원)</div>
+						<div>(안내되는 예약금액은 1박기준이며 초과시 1박당 30,000(원)씩 추가금액 발생합니다.)</div><br>
 						<div>숙박인원: <select name="stayPeople" id="count">
 							<option value="1" selected="selected">1</option>
 							<option value="2" >2</option>
@@ -42,7 +43,8 @@
 							<option value="8" >8</option>
 							<option value="9" >9</option>
 							<option value="10">10</option>
-						</select></div>
+						</select></div><br>
+						(숙박가능 인원 기준 초과시 1(인)당 10,000원 씩 추가됩니다.)
 				<div><input type="button" id="confirmBtn" value="결제"></div>
 				</form>
 			</div>
@@ -87,6 +89,7 @@
 		$(".reserve").hide();
 		$("#reserveBtn").on("click", function() {
 			$(".reserve").show();
+			/*
 			var roomPrice= $("#roomPrice").val();
 			sessionStorage.setItem("sessionPrice", roomPrice);
 			var price= sessionStorage.getItem("sessionPrice");
@@ -99,6 +102,7 @@
 				$("#reservePrice").val(price*index+"(원)");
 			})
 			$("#count").change();
+			*/
 			$("#confirmBtn").on("click", function() {
 				var checkIn= $("#datepicker1").val();
 				var checkOut= $("#datepicker2").val();

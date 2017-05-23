@@ -76,4 +76,8 @@ public class MemberDAO {
 		return template.selectList("MemberMapper.selectAllMember");
 	}
 	
+	//	11. 회원번호별 회원리스트 조회하기
+	public List<Member> findAllMemberNo(int memberNo){
+		return template.selectList("MemberMapper.findAllMemberNo", memberNo);
+	}
 }

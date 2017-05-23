@@ -1,11 +1,5 @@
 package com.jeju.meoui.dao.test;
 
-import static org.junit.Assert.*;
-
-import java.sql.*;
-import java.text.*;
-import java.util.*;
-
 import org.junit.*;
 import org.junit.runner.*;
 import org.springframework.beans.factory.annotation.*;

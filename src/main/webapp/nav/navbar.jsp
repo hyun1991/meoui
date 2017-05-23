@@ -88,16 +88,18 @@ span {
 							style="color: grey;"></span>테스트</a></li>
 				</ul>
 				<ul class="nav navbar-nav pull-right">
-					<li><a href="#" data-toggle="modal" data-target="#signUpForm"
-						id="signUp" style="color: #424242;">회원가입</a></li>
-					<li><a href="#" data-toggle="modal" data-target="#signInForm"
-						id="signIn" style="color: #424242;">로그인</a></li>
+					<li id="joinFm"><a href="#" data-toggle="modal" data-target="#signUpForm"
+						id="signUp" style="color: #424242;">회원가입
+						<span class="caret"></span></a></li>
+					<li id="loginFm"><a href="#" data-toggle="modal" data-target="#signInForm"
+						id="signIn" style="color: #424242;">로그인
+						<span class="caret"></span></a></li>
 					<li class="dropdown" id="loginCheck"><a
 						class="dropdown-toggle" data-toggle="dropdown" href="#"
-						style="color: #424242;"> <%=session.getAttribute("memberId")%><span
+						style="color: #424242;">접속ID: <%=session.getAttribute("memberId")%><span
 							class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="/meoui/mypage.jsp" id="menu">마이페이지</a></li>
+							<li><a href="/meoui/member/view/<%=session.getAttribute("memberId")%>" id="menu">마이페이지</a></li>
 							<li><a href="/meoui/member/logout" id="logout">로그아웃</a></li>
 							<li><a href="#" id="deleteId">회원탈퇴</a></li>
 						</ul></li>
@@ -109,11 +111,14 @@ span {
 <script>
 	$(document).ready(function() {
 		var memberId= "<%=session.getAttribute("memberId")%>"
-	
+		
 		if (memberId == "null")
 			$("#loginCheck").hide();
-		else
+		else{
 			$("#loginCheck").show();
+			$("#joinFm").hide();
+			$("#loginFm").hide();
+		}
 	})
 </script>
 </html>

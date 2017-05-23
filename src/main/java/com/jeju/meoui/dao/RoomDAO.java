@@ -32,6 +32,10 @@ public class RoomDAO {
 	public List<Room> selectByAccommodationNo(int accommodationNo){
 		return template.selectList("RoomMapper.selectByAccommodationNo", accommodationNo);
 	}
+	//	객실번호별 객실조회하기
+	public List<Room> findByRoomNo(int roomNo){
+		return template.selectList("RoomMapper.findByRoomNo", roomNo);
+	}
 	//	객실종류명, 숙박시설번호별 객실종류번호 조회하기
 	public int selectByRoomNo(int accommodationNo, String roomName){
 		HashMap<String, Object>map= new HashMap<String, Object>();
