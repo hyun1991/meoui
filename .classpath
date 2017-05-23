@@ -34,6 +34,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/JAVA/sts-bundle/sts-3.8.4.RELEASE/lombok.jar"/>
+	<classpathentry kind="lib" path="C:/Java/sts-bundle/sts-3.8.3.RELEASE/lombok.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
