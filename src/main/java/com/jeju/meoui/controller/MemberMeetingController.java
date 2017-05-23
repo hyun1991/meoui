@@ -58,15 +58,10 @@ public class MemberMeetingController {
 			@RequestParam("Img")MultipartFile meetingImg 
 	,HttpSession session, @PathVariable int meetingNo, @PathVariable int meetingTotalNumber){
 		MemberMeeting memberMeeting= new MemberMeeting();
-		session.setAttribute("meetingNo", meetingNo);
-<<<<<<< HEAD
-		return "membermeeting/update";		
-=======
 		session.setAttribute("meetingTotalNumber",meetingTotalNumber);
 		memberMeeting.setMeetingName(meetingName);
 		service.updataMeetingName(memberMeeting);
-		return "redurect:/membermeeting/list";		
->>>>>>> branch 'master' of https://github.com/hyun1991/meoui.git
+		return "redurect:/membermeeting/list";
 	}
 	
 	//모임 삭제
