@@ -6,6 +6,8 @@ import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.core.*;
+import org.springframework.security.core.context.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,7 +43,7 @@ public class HomeController {
 		return "/owner/main";
 	}
 	@RequestMapping("/admin/home")
-	public String adminHome(){
+	public String admin() {
 		return "/admin/adminHome";
 	}
 }
