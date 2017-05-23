@@ -62,6 +62,7 @@ public class SiteController {
 	// 관광지 전체 리스트
 	@RequestMapping(value="/site/list" , method=RequestMethod.GET)
 	public String allSite(Model model ,@RequestParam(defaultValue="1") int pageNo){
+		logger.info("pageNo:{}", pageNo);
 		model.addAttribute("result", service.selectAllSite(pageNo));
 		return "site/list";
 	}

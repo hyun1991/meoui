@@ -27,8 +27,8 @@ public class SiteDAO {
 	// 4.전체 관광지 리스트(페이징)
 	public List<Site> selectAllSite(int startRow , int lastRow){
 		HashMap<String, Object>map= new HashMap<String, Object>();
-		map.put("startRow", startRow);
-		map.put("lastRow", lastRow);
+		map.put("start", startRow);
+		map.put("last", lastRow);
 		return template.selectList("siteMapper.selectAllSite", map);
 	}
 	// 5. 관광지 개수
