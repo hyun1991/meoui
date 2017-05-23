@@ -10,7 +10,7 @@
 </head>
 <body>
 	<header>
-		<%@include file="/navbar.jsp"%>
+		<%@include file="/nav/navbar.jsp"%>
 	</header>
 	
 	<c:forEach items="${result.list }" var="result">
