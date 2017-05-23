@@ -4,7 +4,7 @@
 <mapper namespace="siteCommentMapper">
 
 <!-- 1.관광지 댓글 추가 -->
-	<insert id="insertSiteComment" parameterType="SiteComment">
+	<insert id="insertSiteComment" parameterType="siteComment">
 		<selectKey keyProperty="siteNo" resultType="int" order="BEFORE">
 			select site_comment_seq.nextval from dual
 		</selectKey>
@@ -14,7 +14,7 @@
 		]]>
 	</insert>
 <!-- 2.관광지 댓글 수정 -->
-	<update id="updateSiteComment" parameterType="SiteComment">
+	<update id="updateSiteComment" parameterType="siteComment">
 		update site_comment set site_comment_content=#{site_comment_content} where site_no=#{site_no}
 	</update>
 <!-- 3.관광지 댓글 삭제 -->
@@ -26,7 +26,7 @@
 		delete from site_comment where site_no=#{site_no}
 	</delete>
 <!-- 5.관광지 댓글 조회 -->
-	<select id="selectSiteCommetn" parameterType="int" resultType="SiteComment">
+	<select id="selectSiteCommetn" parameterType="int" resultType="siteComment">
 		select site_comment_content , site_comment_date from site_comment where site_no=#{site_no}
 	</select>
 </mapper>
