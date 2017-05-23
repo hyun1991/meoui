@@ -27,8 +27,7 @@ public class SiteService {
 	private SiteCommentDAO commentdao;
 	
 	// 1.관광지 추가
-	@Transactional
-	public void createSite(Site site, Area area , Ticket ticket , HttpSession session){
+	public void createSite(Site site, Area area , Ticket ticket ){
 		dao.insertSite(site);
 		aDao.insertArea(area);
 		tDao.insetTicket(ticket);
@@ -36,11 +35,10 @@ public class SiteService {
 	}
 	
 	// 2.관광지 수정
-	@Transactional
 	public void modifySite(Site site, Area area ,Ticket ticket ){
 		dao.updateSite(site);
 		aDao.updateArea(area);
-		aDao.updateArea(area);
+		tDao.insetTicket(ticket);
 	}
 	
 	// 3.관광지 삭제
@@ -54,12 +52,16 @@ public class SiteService {
 	
 	// 4.관광지 리스트
 	public HashMap<String, Object> selectAllSite(int pageNo){
+		
 		int cnt = dao.siteCount();
 		Pagination pagination= PagingUtil.getPagination(pageNo, cnt);
 		HashMap<String, Object>map= new HashMap<String, Object>();
-		map.put("pagination", pagination);
+		logger.info("모임리스트:{}", map);
 		map.put("list", dao.selectAllSite(pagination.getStartRow(), pagination.getLastRow()));
+		map.put("pagination", pagination);
 		return map;
+		 
+		
 	}
 	
 	// 5.이름으로 관광지 조회
