@@ -22,34 +22,30 @@
 <body>
 	<nav class="navbar navbar-default row text-center" id="navbar">
 		<ul class="nav navbar-nav col-md-12">
-			<li class="col-md-2"><a href="/meoui/manage/home" id="menu">홈</a></li>
-			<li class="col-md-2"><a href="/meoui/manage/accommodation/list?pageNo=1" id="menu">숙박시설관리</a></li>
-			<li class="col-md-2"><a href="/meoui/manage/reserve/list/<%=session.getAttribute("ownerNo")%>" id="menu">예약관리</a></li>
+			<li class="col-md-2"><a href="#" id="menu">관광명소관리</a></li>
+			<li class="col-md-2"><a class="dropdown-toggle" data-toggle="dropdown" href="#" id="board">
+			회원관리</a>
+				<ul class="dropdown-menu">
+					<li><a href="#" id="#">일반회원</a></li>
+					<li><a href="#" id="#">업주회원</a></li>
+					<li><a href="#" id="#">관리자</a></li>
+				</ul></li>
+			<li class="col-md-2"><a href="#" id="menu">숙박시설관리</a></li>
+			<li class="col-md-2">
+			<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="board">
+			게시판관리</a>
+			<ul class="dropdown-menu">
+				<li><a href="#" id="#">공지사항</a></li>
+				<li><a href="#" id="#">자유게시판</a></li>
+			</ul></li>
+			<li class="col-md-2"><a href="#" id="menu">모임관리</a></li>
 			<li class="dropdown pull-right"><a class="dropdown-toggle"
-				data-toggle="dropdown" href="#" id="loginCheck"><%=session.getAttribute("ownerId")%>님
+				data-toggle="dropdown" href="#" id="#"><%=session.getAttribute("ownerId")%>님
 					환영합니다<span class="caret"></span></a>
 				<ul class="dropdown-menu">
-					<li><a href="/meoui/manage/logout" id="logoutBtn">로그아웃</a></li>
-					<li><a id="deleteBtn">회원탈퇴</a></li>
+					<li><a href="#" id="#">로그아웃</a></li>
 				</ul></li>
 		</ul>
 	</nav>
 </body>
-<script>
-	$(document).ready(function() {
-		$("#deleteBtn").on("click", function() {
-			$.ajax({
-				type : "post",
-				url : "/meoui/manage/delete",
-				success : function(result) {
-					console.log(result)
-					if (result == "success") {
-						alert("회원탈퇴 되었습니다.")
-						window.location.href = "/meoui/manage/login";
-					}
-				}
-			})
-		})
-	})
-</script>
 </html>

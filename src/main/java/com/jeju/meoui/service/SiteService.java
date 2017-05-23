@@ -52,11 +52,13 @@ public class SiteService {
 	
 	// 4.관광지 리스트
 	public HashMap<String, Object> selectAllSite(int pageNo){
-		
+		System.out.println("페이징:"+pageNo);
 		int cnt = dao.siteCount();
 		Pagination pagination= PagingUtil.getPagination(pageNo, cnt);
 		HashMap<String, Object>map= new HashMap<String, Object>();
-		logger.info("모임리스트:{}", map);
+		logger.info("스타트:{}", pagination.getStartRow());
+		logger.info("스타트:{}", pagination.getLastRow());
+		logger.info("dao:{}", dao.selectAllSite(pagination.getStartRow(), pagination.getLastRow()));
 		map.put("list", dao.selectAllSite(pagination.getStartRow(), pagination.getLastRow()));
 		map.put("pagination", pagination);
 		return map;
