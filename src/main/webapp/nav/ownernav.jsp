@@ -15,6 +15,7 @@
 <body>
 	<nav class="navbar navbar-default row text-center" id="navbar">
 		<ul class="nav navbar-nav col-md-12">
+			<li class="col-md-2"><a href="/meoui/manage/home" id="menu">홈</a></li>
 			<li class="col-md-2"><a href="/meoui/manage/accommodation/list?pageNo=1" id="menu">숙박시설관리</a></li>
 			<li class="col-md-2"><a href="#" id="menu">예약관리</a></li>
 			<li class="col-md-2"><a href="#" id="menu">회원관리</a></li>

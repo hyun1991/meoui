@@ -39,5 +39,9 @@ public class RoomDAO {
 		map.put("roomName", roomName);
 		return template.selectOne("RoomMapper.selectByRoomNo", map);
 	}
-
+	//	객실번호 MAX값 조회하기
+	public int selectByRoomNoMax(){
+		return template.selectOne("RoomMapper.selectByRoomNoMax");
+	}
+	
 }
