@@ -5,6 +5,8 @@ import java.sql.*;
 import lombok.*;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class SiteComment {
 	private int siteCommentNo;
 	private String siteCommentContent;

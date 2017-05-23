@@ -14,10 +14,10 @@
 	</header>
 	
 	<c:forEach items="${result.list }" var="result">
-	<div><img src="/meoui/images/${result.site.siteImg}"></div><br>
-	<div><h3>관광지 이름:</h3>${result.site.siteName }</div><br>
-	<div><h3>관광지 전화번호:</h3>${result.site.sitePhone }</div>
-	<div><h3>관광지 홈페이지:</h3>${result.site.siteHomepage }</div>
+	<div><img src="/meoui/images/${result.siteImg}"></div><br>
+	<div><h3>관광지 이름:</h3>${result.siteName }</div><br>
+	<div><h3>관광지 전화번호:</h3>${result.sitePhone }</div>
+	<div><h3>관광지 홈페이지:</h3>${result.siteHomepage }</div>
 	
 	</c:forEach><div class="row text-center">
 					<ul class="pagination pagination-md">

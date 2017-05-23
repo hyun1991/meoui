@@ -52,15 +52,22 @@ public class SiteService {
 	
 	// 4.관광지 리스트
 	public HashMap<String, Object> selectAllSite(int pageNo){
-		
 		int cnt = dao.siteCount();
 		Pagination pagination= PagingUtil.getPagination(pageNo, cnt);
+		List<Site> list = dao.selectAllSite(pagination.getStartRow(), pagination.getLastRow());
 		HashMap<String, Object>map= new HashMap<String, Object>();
-		logger.info("모임리스트:{}", map);
-		map.put("list", dao.selectAllSite(pagination.getStartRow(), pagination.getLastRow()));
 		map.put("pagination", pagination);
+		map.put("list", list);
 		return map;
-		 
+		/*
+		 * int cntOfRow = dao.findByMax();
+    Pagination p = PagingUtil.getPagination(pageNo, cntOfRow);
+    List<Notice> list = dao.selectNoticeList(p.getStartRow(), p.getLastRow());
+    HashMap<String, Object>map= new HashMap<String, Object>();
+    map.put("pagination", p);
+    map.put("list", list);
+    return map;
+		 */
 		
 	}
 	
