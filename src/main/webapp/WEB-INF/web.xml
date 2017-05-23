@@ -40,13 +40,4 @@
     <servlet-name>appServlet</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
-  <filter>
-    <display-name>MeouiFilter</display-name>
-    <filter-name>MeouiFilter</filter-name>
-    <filter-class>com.jeju.meoui.filter.MeouiFilter</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>MeouiFilter</filter-name>
-    <url-pattern>/MeouiFilter</url-pattern>
-  </filter-mapping>
 </web-app>

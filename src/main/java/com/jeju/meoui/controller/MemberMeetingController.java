@@ -58,11 +58,10 @@ public class MemberMeetingController {
 			@RequestParam("Img")MultipartFile meetingImg 
 	,HttpSession session, @PathVariable int meetingNo, @PathVariable int meetingTotalNumber){
 		MemberMeeting memberMeeting= new MemberMeeting();
-		session.setAttribute("meetingNo", meetingNo);
 		session.setAttribute("meetingTotalNumber",meetingTotalNumber);
 		memberMeeting.setMeetingName(meetingName);
 		service.updataMeetingName(memberMeeting);
-		return "redurect:/membermeeting/list";		
+		return "redurect:/membermeeting/list";
 	}
 	
 	//모임 삭제

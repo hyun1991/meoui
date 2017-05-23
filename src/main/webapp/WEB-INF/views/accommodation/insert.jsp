@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +14,11 @@
 	<h1>숙박시설 추가페이지</h1>
 	<hr>
 	<form action="/meoui/manage/accommodation/join" method="post" enctype="multipart/form-data">
+		<div class="btn-group">
+				<input type="submit" value="숙박업소 추가" id="confirmBtn" class="btn btn-primary">
+				<a href="/meoui/manage/home"><input type="button" value="돌아가기" id="confirmBtn" class="btn btn-primary"></a>
+		</div>
+		<hr>
 		<div>
 			<div class="form-group">
 				<label>숙박시설이름</label><input type="text" id="accommodationName" name="accommodationName" class="form-control">
@@ -37,12 +43,12 @@
 				<label>오시는길 이미지</label><input type="file" name="file" id="accommodationDirectons" class="form-control">
 			</div>
 			<div class="form-group">
-				<label>관광명소</label><input type="text" name="siteNo" id="siteNo" class="form-control">
-			</div>
-			<br>
-			<div class="btn-group">
-				<input type="submit" value="숙박업소 추가" id="confirmBtn" class="btn btn-primary">
-				<a href="/meoui/manage/home"><input type="button" value="돌아가기" id="confirmBtn" class="btn btn-primary"></a>
+  				<label for="sel1">관광명소</label>
+  				<select class="form-control" name="siteNo">
+  					<c:forEach items="${result.list }" var="site">
+  						<option value="${site.siteNo }">${site.siteName }</option>
+  					</c:forEach>
+  				</select>
 			</div>
 		</div>
 	</form>

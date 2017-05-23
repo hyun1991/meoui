@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="AreaMapper">
+	<!-- 1.지역 추가 -->
+	<insert id="insertArea" parameterType="Area">
+		insert into area(area_no,area_name,details_address,site_no)
+		values(area_no=#{area_no} , area_name=#{area_name}, details_address=#{details_address}, site_no=#{site_no}) 
+	</insert>
+	
+	<!-- 2.관광지 상세주소 변경 -->
+	<update id="updateArea" parameterType="Area">
+		update area set area_no=#{area_no} , area_name=#{area_name} , details_address=#{deatils_address} where site_no=#{site_no}
+	</update>
+	
+	<!-- 3.지역 삭제 -->
+	<delete id="deleteArea" parameterType="int">
+		delete from Area where area_no=#{area_no}
+	</delete>
+	
+	<!-- 4.지역 관광지 삭제 -->
+	<delete id="deleteAreaSite" parameterType="int">
+		delete from Area where site_no=#{site_no}
+	</delete>
+	
+	<!-- 5.지역별 관광지 조회 -->
+	<select id="selectSiteByArea" parameterType="String" resultType="Area">
+	select a.area_name, a.details_address, s.site_name from area a ,site s where a.site_no=s.site_no and area_no=#{area_no}
+	</select>
+	
+</mapper>
+
+<!-- 
+	private int areaNo;
+	private String areaName;
+	private String detailsAddress;
+	private int siteNo;
+	 -->

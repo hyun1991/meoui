@@ -36,7 +36,7 @@ img {
 <body>
 
 	<header>
-		<%@include file="/navbar.jsp"%>
+		<%@include file="/nav/navbar.jsp"%>
 	</header>
 		<div class="container">
 			<div class="row  text-center">
@@ -64,6 +64,8 @@ img {
 			<a href="/meoui/membermeeting/create">생성 </a>
 			<a href="/meoui/membermeeting/list">리스트</a>
 			<a href="/meoui/membermeeting/ed">에디터</a>
+			<a href="/meoui/meetingjoin/list">내모임</a>
+			
 			
 			
 			<hr style="border: 4px solid #f76ce4; margin-bottom: 50px;">

@@ -20,7 +20,15 @@ public class AccommodationService {
 	private AccommodationDAO dao;
 	@Autowired
 	private AccommodationCommentDAO commentDao;
+	@Autowired
+	private SiteDAO siteDao;
 	
+	//	숙박시설 추가전 보내주어야 하는 관광명소 정보.
+	public HashMap<String, Object> createAccommodationStart(){
+		HashMap<String, Object>map= new HashMap<String, Object>();
+		map.put("list", siteDao.selectSiteList());
+		return map;
+	}
 	//	숙박시설 추가하기
 	@Transactional
 	public void createAccommodation(Accommodation accommodation, HttpSession session){

@@ -44,5 +44,4 @@ public class Reserve {
 		this.checkOut = checkOut;
 		this.roomNo = roomNo;
 	}
-	
 }

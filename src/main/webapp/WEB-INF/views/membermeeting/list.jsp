@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@include file="/navbar.jsp"%>
+	<%@include file="/nav/navbar.jsp"%>
 	<h2>모임 게시판</h2>
 	<hr>
 	<c:forEach items="${result.list }" var="meeting">

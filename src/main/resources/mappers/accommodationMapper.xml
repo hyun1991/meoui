@@ -68,6 +68,12 @@
 			select*from accommodation where accommodation_no=#{accommodationNo}
 		]]>
 	</select>
+	<!-- 숙박시설 번호별 여러번 조회 -->
+	<select id="findAllAccommodation" parameterType="int" resultType="Accommodation">
+		<![CDATA[
+			select*from accommodation where accommodation_no=#{accommodationNo}
+		]]>
+	</select>
 	<!-- 기본키MAX값 조회하기 -->
 	<select id="findByAccommodationMax" resultType="int">
 		<![CDATA[

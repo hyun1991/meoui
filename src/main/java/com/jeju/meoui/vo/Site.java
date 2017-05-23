@@ -1,5 +1,8 @@
 package com.jeju.meoui.vo;
 
+import lombok.*;
+
+@Data
 public class Site {
 	private int siteNo;
 	private String siteName;
