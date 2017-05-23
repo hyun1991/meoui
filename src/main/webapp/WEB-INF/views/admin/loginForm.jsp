@@ -51,22 +51,24 @@
 	</div>
 </body>
 <script>
-	$("#loginBtn").on("click", function() {
-		var username = $("#username").val();
-		var password = $("#adminpw").val();
-		$.ajax({
-			type : "post",
-			url : "/meoui/admin/login",
-			data : {username:username, password:password},
-			success : function(result) {
-				console.log(result)
-				if (result == "success") {
-					alert("환영합니다.")
-					window.location.href="/meoui/admin/home";
-				} else {
-					$("#target").html("아이디와 비밀번호를 확인해 주세요.").css("color", "red")
+	$(document).ready(function() {
+		$("#loginbtn").on("click", function() {
+			var username = $("#username").val();
+			var password = $("#adminpw").val();
+			$.ajax({
+				type : "post",
+				url : "/meoui/admin/login",
+				data : {username:username, password:password},
+				success : function(result) {
+					console.log(result)
+					if (result == "success") {
+						alert("환영합니다.")
+						window.location.href="/meoui/admin/home";
+					} else {
+						$("#target").html("아이디와 비밀번호를 확인해 주세요.").css("color", "red")
+					}
 				}
-			}
+			})
 		})
 	})
 </script>

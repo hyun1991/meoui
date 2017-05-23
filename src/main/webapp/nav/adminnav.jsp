@@ -27,9 +27,11 @@
 			<li class="col-md-2"><a class="dropdown-toggle" data-toggle="dropdown" href="#" id="board">
 			회원관리</a>
 				<ul class="dropdown-menu">
-					<li><a href="#" id="#">일반회원</a></li>
-					<li><a href="#" id="#">업주회원</a></li>
-					<li><a href="#" id="#">관리자</a></li>
+					<li><a href="#" id="#">일반회원 리스트</a></li>
+					<li><a href="#" id="#">숙박업주 리스트</a></li>
+					<li><a href="/meoui/manage/join">숙박업주 추가</a></li>
+					<li><a href="#" id="#">관리자 리스트</a></li>
+					<li><a href="#" id="#">관리자 추가</a></li>
 				</ul></li>
 			<li class="col-md-2"><a href="#" id="menu">숙박시설관리</a></li>
 			<li class="col-md-2">

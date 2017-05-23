@@ -34,9 +34,12 @@ footer {
 				<label for="usr">이메일: </label>${result.memberMail }<br>
 				<label for="usr">취미: </label>${result.memberHobby }<br>
 				<label for="usr">주소: </label>${result.memberAddress }<br>
-				<a href="#"><button>내정보 수정하기</button></a><br>
+				<div class="form-group">
+				<a href="#">
+				<button type="button" class="w3-button w3-block w3-white w3-border">
+				내정보 수정하기</button></a><br>
+				</div>
 			</div>
-			<a href="#" class="btn btn-success">쪽지함</a>
 		</div>
 		<h3>내 여행 도우미</h3>
 		<br>
