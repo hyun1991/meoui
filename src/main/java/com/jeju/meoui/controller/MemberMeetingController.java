@@ -49,7 +49,6 @@ public class MemberMeetingController {
 	public String updateMemberMeeting(@PathVariable int meetingNo, @ModelAttribute MemberMeeting memberMeeting, 
 	HttpSession session, Model model){
 		session.setAttribute("meetingNo", meetingNo);
-		model.addAttribute("result", service.selectAllmemberMeetingList());
 		return "membermeeting/update";		
 	}
 	

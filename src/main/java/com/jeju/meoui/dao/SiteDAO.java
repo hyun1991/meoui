@@ -25,10 +25,18 @@ public class SiteDAO {
 		template.delete("siteMapper.deleteSite", siteName);
 	}
 	// 4.전체 관광지 리스트
-	public List<Site> selectAllSite(){
-		return template.selectList("siteMappger.selectAllSite");
+	public List<Site> selectAllSite(int startRow , int lastRow){
+		HashMap<String, Object>map= new HashMap<String, Object>();
+		map.put("startRow", startRow);
+		map.put("lastRow", lastRow);
+		return template.selectList("siteMappger.selectAllSite", map);
 	}
-	// 5.이름으로 관광지 찾기
+	// 5. 관광지 개수
+	public int siteCount(){
+		return template.selectOne("siteMapper.SiteCount");
+	}
+	
+	// 6.이름으로 관광지 찾기
 	public Site selectSiteByName(String siteName){
 		return template.selectOne("siteMapper.selectSiteByName", siteName);
 	}

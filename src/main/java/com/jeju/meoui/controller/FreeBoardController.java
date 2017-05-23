@@ -18,7 +18,7 @@ public class FreeBoardController {
 	public String insertFreeboardForm() {
 		return "freeboard/insert.jsp";
 	}
-	//1-1.자유게시판 추가 성공
+	//1-1.자유게시판 추가 성공d
 	@RequestMapping(value="/freeboard/join", method=RequestMethod.POST)
 	public String insertFreeboard(ModelAndView model) {
 		return "redirect:/freeboard/list?pageNo=1";

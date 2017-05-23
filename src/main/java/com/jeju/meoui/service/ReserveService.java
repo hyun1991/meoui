@@ -2,10 +2,12 @@ package com.jeju.meoui.service;
 
 import org.slf4j.*;
 import org.springframework.beans.factory.annotation.*;
+import org.springframework.stereotype.*;
 
 import com.jeju.meoui.dao.*;
 import com.jeju.meoui.vo.*;
 
+@Service
 public class ReserveService {
 	@Autowired
 	private ReserveDAO dao;
