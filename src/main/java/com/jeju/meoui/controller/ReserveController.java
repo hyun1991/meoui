@@ -61,4 +61,10 @@ public class ReserveController {
 		service.removeReserve(reserveNo, memberNo);
 		return "redirect:/";
 	}
+	//	숙박업주 예약접수된 리스트 조회하기
+	@RequestMapping(value="/manage/reserve/list/{ownerNo}", method=RequestMethod.GET)
+	public String getByOwnerList(Model model, @PathVariable int ownerNo){
+		model.addAttribute("result", service.getAllByOwnerNo(ownerNo));
+		return "reserve/ownerlist";
+	}
 }

@@ -9,18 +9,21 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@include file="/nav/navbar.jsp"%>
+	<%@include file="/nav/ownernav.jsp"%>
 	<div class="container">
-		<h2>마이페이지</h2>
+		<h2>접수된 예약리스트</h2>
 		<br>
 		<div class="row">
 			<div class="col-md-4">
 			<c:forEach items="${result.ac }" var="accommodation">
 				<label for="usr">숙박시설명:</label>${accommodation.accommodationName }<br>
-				<label for="usr">주소:</label>${accommodation.accommodationAddress }<br>
-				<label for="usr">연락처:</label>${accommodation.accommodationPhone }<br>
-				<c:forEach items="${result.room }" var="room">
-					<label for="usr">객실명:</label>${room.roomName } <br> 
+				<c:forEach items="${result.member }" var="member">
+					<label for="usr">고객명:</label>${member.memberName }<br>
+					<label for="usr">고객연락처:</label>${member.memberPhone }<br>
+					<label for="usr">고객 주소:</label>${member.memberAddress }<br>
+					<label for="usr">고객 메일:</label>${member.memberMail }<br>
+					<c:forEach items="${result.room }" var="room">
+						<label for="usr">객실명:</label>${room.roomName } <br> 
 						<c:forEach items="${result.list }" var="reserve">
 							<label for="usr">예약인원:</label>${reserve.stayPeople }(명)<br>
 							<label for="usr">예약금액:</label>${reserve.reservePrice }(원)<br>
@@ -33,15 +36,12 @@
 								예약취소</button></a>
 							</div>
 						</c:forEach>
+					</c:forEach>
 				</c:forEach>
 				<hr>
 			</c:forEach>
 			</div>
 		</div>
-		<a href="/meoui/"><button>홈으로</button></a>
 	</div>
-	<footer>
-		<%@include file="/footer.jsp"%>
-	</footer>
 </body>
 </html>

@@ -21,6 +21,8 @@ public class AccommodationService {
 	private AccommodationDAO dao;
 	@Autowired
 	private AccommodationCommentDAO commentDao;
+	@Autowired
+	private SiteDAO siteDao;
 	
 	//	숙박시설 추가하기
 	@Transactional
