@@ -47,6 +47,10 @@ public class AccommodationDAO {
 	public Accommodation findByAccommodation(int accommodationNo){
 		return template.selectOne("AccommodationMapper.findByAccommodation", accommodationNo);
 	}
+	//	숙박시설 번호별 여러번 조회하기
+	public List<Accommodation> findAllAccommodation(int accommodationNo){
+		return template.selectList("AccommodationMapper.findAllAccommodation", accommodationNo);
+	}
 	//	기본키 MAX값 조회하기
 	public int findByAccommodationMax(){
 		return template.selectOne("AccommodationMapper.findByAccommodationMax");

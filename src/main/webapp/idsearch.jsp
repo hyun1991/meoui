@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@include file="/navbar.jsp"%>
+	<%@include file="/nav/navbar.jsp"%>
 	<div id="findId" class="tab-pane fade in active">
 		<div class="form-group row">
 			<div class="form-group col-md-6">

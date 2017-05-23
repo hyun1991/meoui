@@ -53,7 +53,7 @@ img {
 	src="//apis.daum.net/maps/maps3.js?apikey=0733036d66ec867aa0960ee525091024&libraries=services "></script>
 <body>
 	<header>
-		<%@include file="/navbar.jsp"%>
+		<%@include file="/nav/navbar.jsp"%>
 	</header>
 	<div class="container">
 		<div class="row text-center">
@@ -77,7 +77,7 @@ img {
 				<h6 class="step" style="margin-top: 20px">옵션</h6>
 			</div>
 		</div>
-
+		<hr style="border: 4px solid #f76ce4; margin-bottom: 50px;">
 		<h1 id="headTitle" style="margin-top: 50px;">숙박시설 리스트</h1>
 		<div class="row text-center">
 			<c:forEach items="${result.list }" var="accommodation">

@@ -30,7 +30,7 @@ header {
 
 </style>
 <body>
-	<%@include file="/navbar.jsp"%>
+	<%@include file="/nav/navbar.jsp"%>
 	<div class="container">
 	회원가입 폼
 	<hr style="border: 4px solid black; margin-bottom: 50px;">

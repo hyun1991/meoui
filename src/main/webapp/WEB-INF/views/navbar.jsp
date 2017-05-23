@@ -60,7 +60,7 @@
 			<li class="col-md-2"><a href="/meoui/meetingboard.jsp">모임
 					게시판</a></li>
 			<li class="col-md-2"><a href="/meoui/noticeboard.jsp">공지사항</a></li>
-			<li class="col-md-2"><a href="/meoui/mypage.jsp">마이페이지</a></li>
+			<li class="col-md-2"><a href="/meoui/member/view/{memberId}">마이페이지</a></li>
 		</ul>
 	</nav>
 </body>
