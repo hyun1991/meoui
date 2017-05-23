@@ -58,5 +58,8 @@
 	<select id="selectSiteList" resultType="site">
 		select site_no, site_name from site
 	</select>
+
+	
+	
 	
 </mapper>

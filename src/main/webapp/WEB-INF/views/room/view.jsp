@@ -21,10 +21,10 @@
 	<header><h1>객실 상세페이지</h1></header>
 		<div class="container">
 			<c:forEach items="${result.room }" var="room">
-				<div>객실이름:<input type="text" value="${room.roomName}" readonly="readonly"></div><br>
-				<div>예약금액:<input type="text" id="roomPrice" value="${room.roomPrice }" readonly="readonly">(원)</div><br>
-				<div>숙박가능인원:<input type="text" value="${room.roomUseNumber}" readonly="readonly">(명)</div>
-				<div><button id="reserveBtn">예약하기</button></div><br>
+				<div class="form-group">객실이름:<input type="text" value="${room.roomName}" readonly="readonly"></div><br>
+				<div class="form-group">예약금액:<input type="text" id="roomPrice" value="${room.roomPrice }" readonly="readonly">(원)</div><br>
+				<div class="form-group">숙박가능인원:<input type="text" value="${room.roomUseNumber}" readonly="readonly">(명)</div>
+				<div class="form-group"><button id="reserveBtn">예약하기</button></div><br>
 				<div class="reserve">
 					<form action="/meoui/reserve/join" method="post">
 						<div><input type="hidden" value="${room.roomNo }" name="roomNo" id="roomNo"></div>
