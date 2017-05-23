@@ -24,7 +24,7 @@ public class NoticeCommentDAO {
 	   template.update("NoticeCommentMapper.updateComment", noticeComment);
 	 }
  //4.공지게시판 댓글 삭제 (단일 삭제)
-   public void deleteComment(int noticeCommentNo, int noticeNo){
+   public void deleteComment(int noticeCommentNo){
 	   template.delete("NoticeCommentMapper.deleteComment",noticeCommentNo);
    }
  //5.공지게시판 댓글 삭제 (전체 삭제)
