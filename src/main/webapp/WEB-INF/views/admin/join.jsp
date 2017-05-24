@@ -12,7 +12,7 @@
 	<div id="header">
 	<%@include file="/nav/adminnav.jsp" %>
 	</div>
-		<h1>관리자 추가페이지</h1>
+		<h1 id="headTitle" style="margin-top: 50px;" align="center">관리자 추가</h1>
 	<hr>
 	<form action="/meoui/admin/join" method="post" >
 		<div>

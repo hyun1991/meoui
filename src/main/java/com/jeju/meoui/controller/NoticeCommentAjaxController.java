@@ -30,10 +30,5 @@ public class NoticeCommentAjaxController {
 		return new Gson().toJson(service.findByNotice(noticeNo));
 	}
 
-	@RequestMapping(value="/noticecomment/{noticeCommentNo}", method=RequestMethod.DELETE)
-	public String deleteNoticeComment(@PathVariable int noticeCommentNo,@RequestParam(value="noticeNo") int noticeNo, HttpSession session){
-		cservice.removeNoticeComment(noticeCommentNo);
-		return new Gson().toJson(service.findByNotice(noticeNo));
-	}
-
+	
 }

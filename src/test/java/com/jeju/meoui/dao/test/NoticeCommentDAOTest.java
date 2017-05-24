@@ -30,5 +30,10 @@ public class NoticeCommentDAOTest {
 	public void selectNoticeCommentNoTest(){
 		System.out.println(dao.selectNoticeCommentNo(41));
 	}
-
+	@Test
+	public void delteTest(){
+		int memberNo= 41;
+		int noticeCommentNo= 1;
+		dao.deleteComment(noticeCommentNo, memberNo);
+	}
 }

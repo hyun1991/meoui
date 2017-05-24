@@ -56,6 +56,8 @@ public class MemberService {
 	public HashMap<String, Object> selectAllMember(int pageNo){
 		int cnt= dao.findByMemberMax();
 		Pagination pagination= PagingUtil.getPagination(pageNo, cnt);
+		logger.info("페이징,{}",pagination.getStartPaging());
+		logger.info("페이징,{}",pagination.getLastPaging());
 		HashMap<String, Object>map= new HashMap<String, Object>();
 		map.put("pagination", pagination);
 		map.put("list", dao.selectAllMember(pagination.getStartRow(), pagination.getLastRow()));

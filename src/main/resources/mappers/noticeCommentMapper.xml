@@ -21,11 +21,11 @@ select * from notice_Comment where notice_No=#{noticeNo} order by notice_Comment
 </select>
 <!-- 3. 공지게시판 댓글 갱신 (글내용 수정 가능) -->
 <update id="updateComment" parameterType="NoticeComment">
-update notice_Comment set notice_Comment_Content=#{noticeCommentContent} where noticeCommentNo=#{noticeCommentNo} and noticeNo=#{noticeNo}
+update notice_Comment set notice_Comment_Content=#{noticeCommentContent} where notice_Comment_No=#{noticeCommentNo} and notice_No=#{noticeNo}
 </update>
 <!-- 4. 공지게시판 댓글 삭제 (단일 삭제) -->
-<delete id="deleteComment"  parameterType="int">
-delete from notice_Comment where notice_Comment_No=#{noticeCommentNo}
+<delete id="deleteComment"  parameterType="HashMap">
+delete from notice_Comment where notice_Comment_No=#{noticeCommentNo} and member_No=#{memberNo}
 </delete>
 <!-- 5. 공지게시판 댓글 삭제 (전체 삭제) -->
 <delete id="deleteAllComment" parameterType="int">

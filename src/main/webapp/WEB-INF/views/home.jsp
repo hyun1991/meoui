@@ -32,9 +32,7 @@ header {
 <body>
 	<%@include file="/nav/navbar.jsp"%>
 	<%@include file="index.jsp" %>
-	<footer>
 		<%@include file="/footer.jsp"%>
-	</footer>
 </body>
 <script>
 	$(window).bind('scroll', function() {

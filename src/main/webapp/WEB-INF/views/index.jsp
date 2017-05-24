@@ -19,7 +19,7 @@
   		<!-- 메인 비주얼 영역 이미지 슬라이드 -->
   	<div class="carousel-inner" role="listbox">
     	<div class="item active">
-      		<img src="/meoui/images/jeju92.png" alt="테스트" width="500px" height="550px">
+      		<img src="/meoui/images/jejudo.png" alt="테스트" width="700px" height="550px">
       	<div class="carousel-caption">
         <h2>제주를부탁해</h2>
        	<h3>제주도 관광지를 소개해 드리겠습니다</h3>
@@ -27,7 +27,7 @@
     	</div>
 
     	<div class="item">
-      		<img src="/meoui/images/jeju92.png" alt="테스트" width="500px" height="550px">
+      		<img src="/meoui/images/jejudo2.jpg" alt="테스트" width="700px" height="550px">
       	<div class="carousel-caption">
         		<h2>제주를부탁해</h2>
         		<h3>제주도 숙박시설을 안내해 드리겠습니다</h3>
@@ -35,14 +35,14 @@
     	</div>
 
     	<div class="item">
-      		<img src="/meoui/images/jeju92.png" alt="테스트" width="500px" height="550px">
+      		<img src="/meoui/images/jejudo3.jpg" alt="테스트" width="500px" height="550px">
       		<div class="carousel-caption">
         		<h2>제주를부탁해</h2>
         		<h3>여행을 떠나세요</h3>
       		</div> 
     	</div>
-  	</div>
-  		<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+  		</div>
+  		  		<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
     		<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
     		<span class="sr-only">Previous</span>
   		</a>
@@ -50,6 +50,7 @@
     		<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
     		<span class="sr-only">Next</span>
   		</a>
-	</div>
+  	</div>
+  	<%@include file="main-02.jsp" %>
 </body>
 </html>

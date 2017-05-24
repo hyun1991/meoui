@@ -1,59 +1,66 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>개인정보 수정 페이지</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 </head>
 <body>
-	<header>
-	<%@include file="/nav/adminnav.jsp" %>
-	</header>
-	<h1 id="headTitle" style="margin-top: 50px;" align="center">숙박업주 추가</h1>
-	<hr>
-	<form action="/meoui/manage/join" method="post" >
-		<div>
-			<div class="form-group">
-				<label>아이디</label><input type="text" id="ownerId" name="ownerId" class="form-control">
-				<span id="idcheck"></span>
-			</div>
-			<div class="form-group">
-				<label>비밀번호</label><input type="password" name="ownerPassword" id="ownerPassword" class="form-control">
-			</div>
-			<div class="form-group">
-				<label>이름</label><input type="text" name="ownerName" id="ownerName" class="form-control">
-			</div>
-			<div class="form-group">
-				<label>연락처</label><input type="text" name="ownerPhone" id="ownerPhone" class="form-control">
-			</div>
-			<div class="form-group">
-				<label for="address">주소</label><input type="button" class="btn btn-default pull-right" onclick="sample4_execDaumPostcode()" value="우편 번호 찾기"><br>
-				<input type="text" class="form-control" id="postcode" name="ownerAddress1" placeholder="우편 번호"> 
+	<h1 id="headTitle" style="margin-top: 50px;" align="center">회원정보 수정</h1>
+		<br>
+			<form action="/meoui/member/update" method="post">
+				<input type="hidden" name="memberNo" id="memberNo" value="${result.memberNo }"><br>
+				<table class="table table-striped table-bordered table-hover">
+				<tr><td>아이디<br>	
+				<input type="text" name="memberId" id="memberId" value="${result.memberId }" readonly="readonly">
+				</td></tr>
+				<tr><td>비밀번호<br>
+				<input type="password" name="memberPassword" id="memberPassword">
+				</td></tr>
+				<tr><td>이름<br>
+				<input type="text" name="memberName" id="memberName"></td></tr>
+				<tr><td>연락처 <br>
+				<input type="text" name="memberPhone" id="memberPhone"></td></tr>
+				<tr><td>직업<br>
+				<input type="text" name="memberJob" id="memberJob"></td></tr>			
+				<tr><td>이메일<br>
+				<input type="text" name="memberMail" id="memberMail"></td></tr>			
+				<tr><td>취미<br>
+				<input type="text" name="memberHobby" id="memberHobby"></td></tr>
+				<tr><td>주소
+				<input type="button" class="btn btn-default pull-right" onclick="sample4_execDaumPostcode()" value="우편 번호 찾기"><br>
+				<input type="text" class="form-control" id="postcode" name="memberAddress1" placeholder="우편 번호"> 
 				<span id="guide" 
 				style="color: #999"></span> 
-				<input type="text" class="form-control" id="address" name="ownerAddress2"
+				<input type="text" class="form-control" id="address" name="memberAddress2"
 				placeholder="상세 주소">
-			</div>
-			<div class="form-group">
-				<label>이메일</label><input type="email" name="ownerMail" id="ownerMail" class="form-control">
-			</div>
-			<div class="form-group">
-				<label>사업자번호</label><input type="text" name="ownerBrn" id="ownerBrn" class="form-control">
-			</div>
-			<br>
-			<div class="btn-group">
-				<input type="submit" value="숙박업주 추가하기" class="btn btn-primary">
-			</div>
-		</div>
-	</form>
+				</td></tr>
+				<tr><td>
+				<button type="submit" class="w3-button w3-block w3-white w3-border">
+				내정보 수정하기</button></td></tr>
+				<tr><td><a href="/meoui/">
+				<button type="submit" class="w3-button w3-block w3-white w3-border">
+				홈</button></a>
+				</td></tr>
+				</table>
+			</form>
+	<footer>
+		<%@include file="/footer.jsp"%>
+	</footer>
 </body>
 <script>
 	//본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.

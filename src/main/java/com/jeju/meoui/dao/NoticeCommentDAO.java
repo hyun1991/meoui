@@ -24,9 +24,14 @@ public class NoticeCommentDAO {
 	   template.update("NoticeCommentMapper.updateComment", noticeComment);
 	 }
  //4.공지게시판 댓글 삭제 (단일 삭제)
-   public void deleteComment(int noticeCommentNo){
-	   template.delete("NoticeCommentMapper.deleteComment",noticeCommentNo);
+   public void deleteComment(int noticeCommentNo, int memberNo){
+	   System.out.println("DAO");
+	   HashMap<String, Object>map = new HashMap<String, Object>();
+	   map.put("noticeCommentNo", noticeCommentNo);
+	   map.put("memberNo", memberNo);
+	   template.delete("NoticeCommentMapper.deleteComment",map);
    }
+
  //5.공지게시판 댓글 삭제 (전체 삭제)
    public void deleteAllComment(int noticeNo){
 	   template.delete("NoticeCommentMapper.deleteAllComment", noticeNo);

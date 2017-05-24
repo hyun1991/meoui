@@ -17,8 +17,9 @@ public class NoticeCommentService {
 	public void modifyNoticeComment(NoticeComment noticeComment){
 		cdao.updateComment(noticeComment);
 	}
-	public void removeNoticeComment(int noticeCommentNo){
-		cdao.deleteComment(noticeCommentNo);
+	public void removeNoticeComment(int noticeCommentNo, int memberNo){
+		System.out.println("서비스단");
+		cdao.deleteComment(noticeCommentNo,memberNo);
 	}
 	
 
