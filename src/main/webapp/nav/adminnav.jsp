@@ -33,7 +33,7 @@
 					<li><a href="#" id="#">관리자 리스트</a></li>
 					<li><a href="#" id="#">관리자 추가</a></li>
 				</ul></li>
-			<li class="col-md-2"><a href="#" id="menu">숙박시설관리</a></li>
+			<li class="col-md-2"><a href="/meoui/admin/accommodaion/list?pageNo" id="menu">숙박시설관리</a></li>
 			<li class="col-md-2">
 			<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="board">
 			게시판관리</a>

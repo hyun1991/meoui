@@ -34,7 +34,11 @@
 	<div><img src="/meoui/images/${result.accommodation.accommodationDirections}"></div><br>
 	<hr>
 	<form action="/meoui/accommodationComment/insert" method="post">
-		<div><textarea rows="5" cols="50" placeholder="댓글을 작성해 주세요." name="accommodationCommentContent"></textarea></div>
+		<div class="form-group">
+			<textarea class="form-control col-sm-5" rows="5" 
+			placeholder="댓글을 작성해 주세요." name="accommodationCommentContent">
+			</textarea>
+		</div>
 		<div class="form-group">
 		<select class="form-control" name="accommodationCommentAvg">
 			<option value="">선택</option>
@@ -52,16 +56,24 @@
 	</form>
 	<hr>
 	<c:forEach items="${result.comment }" var="comment">
+		<div class="container">
 			<input type="hidden" id="memberNo" value="${comment.memberNo }">
-			<div class="form-group">댓글번호: ${comment.accommodationCommentNo }</div>
-			<div class="form-group">댓글내용: ${comment.accommodationCommentContent}</div>	
-			<div class="form-group">평점: ${comment.accommodationCommentAvg}점</div>
-			<div class="form-group">작성일: <fmt:formatDate value="${comment.accommodationCommentDate}" pattern="yyyy년 MM월 dd일" /></div>
 			<div class="form-group">
+				${comment.accommodationCommentContent}
+			</div>
+		<c:forEach items="${result.member }" var="member">
+			<div class="form-group">
+				작성자: ${member.memberId }
+			</div>
+		</c:forEach>
+			<div class="form-group">평점: ${comment.accommodationCommentAvg}점</div>
+			<div class="form-group">작성일: <fmt:formatDate value="${comment.accommodationCommentDate}" pattern="yyyy년 MM월 dd일" /></div>	
+			<div class="container">
 			<a href="/meoui/accommodationComment/delete/${comment.accommodationCommentNo }">
 			<button type="button" class="w3-button w3-block w3-white w3-border" id="deleteBtn">댓글 삭제하기</button>
 			</a></div>
 			<hr>
+		</div>
 	</c:forEach>
 	<footer>
 		<h1>1 Follow Us Canada's New Passenger Bill of Rights Bans
