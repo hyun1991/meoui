@@ -36,8 +36,8 @@
 		s.site_night_open, s.site_night_close_time, a.area_name, a.details_address 
 		from site s , area a 
 		where s.site_no=a.site_no) a1
-		where rownum<=#{end}
-		) where rnum>=#{start}
+		where rownum<=#{lastRow}
+		) where rnum>=#{startRow}
 		]]>
 	</select>
 	

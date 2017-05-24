@@ -34,11 +34,28 @@ public class SiteController {
 	// 관광지 추가 성공
 	@RequestMapping(value="/site/join", method=RequestMethod.POST)
 	public String insertSite( Site site, Area area, Ticket ticket, @RequestParam("img") MultipartFile siteImg){
+		Site si = new Site();
+		//int usersNo = (Integer)session.getAttribute("usersNo");
 		String fileName = UploadUtil.storeAndGetFileName(siteImg, ctx, path);
+		si.setSiteImg(fileName);
 		service.createSite(site, area, ticket);
-		return "redirect:/meoui";
+		return "redirect:/site/list";
 	}
 	
+	/*
+	 * @RequestMapping(value="/membermeeting/create", method=RequestMethod.POST)
+	public String isnertMemberMeeting(HttpSession session, @RequestParam String meetingName, @RequestParam("Img")MultipartFile meetingImg){
+		MemberMeeting memberMeeting= new MemberMeeting();
+		int meetingAdminNo= (Integer)session.getAttribute("memberNo");
+		String fileName= UploadUtil.storeAndGetFileName(meetingImg, ctx, path);
+		memberMeeting.setMeetingImg(fileName);
+		memberMeeting.setMeetingName(meetingName);
+		memberMeeting.setMeetingAdminNo(meetingAdminNo);
+		service.createMemberMeeting(memberMeeting);
+		logger.info("멤버넘버:{}", memberMeeting);
+		return "redirect:/membermeeting/list";
+	}
+	 */
 	// 관광지 수정 폼
 	@RequestMapping(value="/site/update", method=RequestMethod.GET)
 	public String updateSite(){

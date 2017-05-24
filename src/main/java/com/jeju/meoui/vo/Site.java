@@ -12,15 +12,16 @@ public class Site {
 	private String siteObject;
 	private String siteImg;
 	private String siteIntroduce;
-	private String siteHomePage;
+	private String siteHomepage;
 	private String sitePhone;
 	private String siteOpenTime;
 	private String siteCloseTime;
 	private String siteNightOpen;
 	private String siteNightCloseTime;
+	private String detailsAddress;
 	private int usersNo;
 	public Site(String siteName, int sitePark, String siteObject, String siteImg, String siteIntroduce,
-			String siteHomePage, String sitePhone, String siteOpenTime, String siteCloseTime, String siteNightOpen,
+			String siteHomepage, String sitePhone, String siteOpenTime, String siteCloseTime, String siteNightOpen,
 			String siteNightCloseTime) {
 		super();
 		this.siteName = siteName;
@@ -28,7 +29,7 @@ public class Site {
 		this.siteObject = siteObject;
 		this.siteImg = siteImg;
 		this.siteIntroduce = siteIntroduce;
-		this.siteHomePage = siteHomePage;
+		this.siteHomepage = siteHomepage;
 		this.sitePhone = sitePhone;
 		this.siteOpenTime = siteOpenTime;
 		this.siteCloseTime = siteCloseTime;
