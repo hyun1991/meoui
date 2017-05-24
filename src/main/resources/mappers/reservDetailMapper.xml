@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ReserveDetailsMapper">
+	<!-- 1. 예약상세 추가하기 -->
+	<insert id="insertReserveDetails" parameterType="ReserveDetails">
+		<![CDATA[
+			insert into reserve_details(accommodation_no, room_no, reserve_no, reserve_date, reserve_total_price)
+			values(#{accommodationNo}, #{roomNo}, #{reserveNo}, sysdate, #{reserveTotalPrice})
+		]]>
+	</insert>
+	<!-- 2. 예약상세 삭제하기 -->
+	<delete id="deleteReserveDetails" parameterType="int">
+		<![CDATA[
+			delete from reserve_details where reserve_no=#{reserveNo}
+		]]>
+	</delete>
+	<!-- 3. 객실종류번호별 예약상세 조회하기 -->
+	<select id="selectAllByRoomNo" parameterType="int" resultType="ReserveDetails">
+		<![CDATA[
+			select * from reserve_details where room_no=#{roomNo}
+		]]>
+	</select>
+	<!-- 4. 예약번호별 객실번호 조회하기 -->
+	<select id="selectByRoomNo" parameterType="int" resultType="int">
+		<![CDATA[
+			select room_no from reserve_details where reserve_no=#{reserveNo} 
+		]]>
+	</select>
+	<!-- 5. 예약번호별 펜션번호 조회하기 -->
+	<select id="selectByAccommodationNo" parameterType="int" resultType="int">
+		<![CDATA[
+			select accommodation_no from reserve_details where reserve_no=#{reserveNo} 
+		]]>
+	</select>
+</mapper>

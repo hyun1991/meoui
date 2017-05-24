@@ -7,7 +7,7 @@ enabled CHARACTER(10)
 
 create table authorities(
 authority nvarchar2(100),
-users_no number(10) references users(users_no)
+username NVARCHAR2(50)
 );
 
 create table owner (
@@ -140,6 +140,7 @@ constraint travleschedule_details_pk primary key(site_no)
 create table member_meeting(
 meeting_no number(10) primary key,
 meeting_name nvarchar2(50),
+meeting_img nvarchar2(100),
 meeting_total_number number(10)
 );
 
@@ -194,10 +195,9 @@ constraint room_pk primary key(accommodation_no , room_no)
 );
 
 create table room_img(
-room_no number(10),
-accommodation_no number(10),
 room_img nvarchar2(100),
-constraint room_img_pk primary key(accommodation_no , room_no)
+room_no number(10),
+accommodation_no number(10)
 );
 
 create table reserve(

@@ -10,7 +10,7 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <style>
-label, .btn {
+label, .btn , .w3-button{
 	font-family: 'Jeju Gothic', serif;
 }
 </style>
@@ -36,14 +36,14 @@ label, .btn {
 								class="form-control" id="memberPassword" name="memberPassword">
 						</div>
 						<div class="form-group justified">
-							<button type="submit" class="w3-button w3-block w3-white w3-border w3-border-yellow"
-								>로그인</button>
+							<button type="button" class="w3-button w3-block w3-white w3-border"
+								id="loginBtn">로그인</button>
 						</div>
 						<div class="form-group">
-							<a href="/meoui/findid.jsp" class="btn btn-default">아이디 찾기</a> <a
-								href="/meoui/findpwd.jsp" class="btn btn-default">비밀번호 찾기</a>
-								<a
-								href="/meoui/manage/login" class="btn btn-default">사업주 로그인</a>		
+							<a href="/meoui/findid.jsp" class="btn btn-default">아이디 찾기</a> 
+							<a href="/meoui/findpwd.jsp" class="btn btn-default">비밀번호 찾기</a>	
+							<a href="/meoui/manage/login" class="btn btn-default">사업주 로그인</a>
+							<a href="/meoui/admin/login" class="btn btn-default">관리자 로그인</a>	
 						</div>
 					</div>
 				</div>
@@ -267,6 +267,24 @@ label, .btn {
 					}
 				}
 			})
+		})
+	})
+	$("#loginBtn").on("click", function() {
+		var memberId = $("#memberId").val();
+		var memberPassword = $("#memberPassword").val();
+		$.ajax({
+			type : "post",
+			url : "/meoui/member/login",
+			data : {memberId : memberId, memberPassword: memberPassword},
+			success : function(result) {
+				console.log(result)
+				if (result == "success") {
+					alert("환영합니다.")
+					window.location.href="/meoui/";
+				} else {
+					alert("아이디와 비밀번호를 확인해 주세요.")
+				}
+			}
 		})
 	})
 </script>
