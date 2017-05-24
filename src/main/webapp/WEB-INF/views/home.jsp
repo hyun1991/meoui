@@ -14,8 +14,8 @@ nav{
 	margin-bottom:0;
 }
 header {
-	background-image: url(/meoui/images/sky.jpg);
-	background-size: 100%;
+	background-image: url(/meoui/images/hareubang.jpg);
+	background-size: 300 500;
 	background-repeat: no-repeat;
 }
 
@@ -31,8 +31,10 @@ header {
 </style>
 <body>
 	<%@include file="/navbar.jsp"%>
+	<header>
+	</header>
 	<div class="container">
-	회원가입 폼
+	<img src="/meoui/images/hareubang.jpg"></img>
 	<hr style="border: 4px solid black; margin-bottom: 50px;">
 	</div>
 	<footer>
@@ -48,10 +50,6 @@ header {
 		}
 	});
 </script>
-<script>
-	$(function() {
-		$("#framewrap").resizable().draggable();
-	});
-</script>
+
 
 </html>
