@@ -13,13 +13,12 @@
 	<h2>모임 리스트</h2>
 	<hr>
 	<c:forEach items="${result.list }" var="meeting">
-		모임번호:<a href="/meoui/membermeeting/view/[meetingNo}">${meeting.meetingNo }</a><br>
-		모임번호:<a href="/meoui/membermeeting/update/{meetingNo}">${meeting.meetingNo }</a><br>
+		이엘뷰 모임번호:<a href="/meoui/membermeeting/view/${meeting.meetingNo}">${meeting.meetingNo }</a><br>
 		모임명: ${meeting.meetingName }<br>
 		모임이미지:<img src="/meoui/images/${meeting.meetingImg}"><br>
 		인원수: ${meeting.meetingTotalNumber }<br>
 	</c:forEach>
 	
-	list?pageNo=1"
+
 </body>
 </html>

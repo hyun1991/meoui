@@ -16,13 +16,22 @@ public class MeetingJoinController {
 
 	@Autowired
 	private MeetingJoinService service;
-	private static final Logger logger= LoggerFactory.getLogger(MeetingJoin.class);
+	private static final Logger logger= LoggerFactory.getLogger(MeetingJoinController.class);
 
 	
+
 	//모임 가입하기
-	@RequestMapping(value="membermeeting/join", method=RequestMethod.POST)
-	public String insertMeetingJoin(@ModelAttribute MeetingJoin meetingJoin){
-		return "membermeeting/view";
-	}	
-	
+	@RequestMapping(value="membermeeting/view/{meetingNo}", method=RequestMethod.POST)
+	public String insertMeetingJoin(@PathVariable int meetingNo, HttpSession session, Model model){
+		MeetingJoin meetingJoin = new MeetingJoin();
+		meetingNo= (Integer)session.getAttribute("meetingNo");
+		int memberNo= (Integer)session.getAttribute("memberNo");
+		meetingJoin.setMeetingNo(meetingNo);
+		meetingJoin.setMemberNo(memberNo);
+		service.createMeetingJoin(meetingJoin);
+		logger.info("미팅조인:{}", meetingJoin);
+		logger.info("미팅조인:", meetingNo);
+		return "/membermeeting/list";
+		
+	}
 }

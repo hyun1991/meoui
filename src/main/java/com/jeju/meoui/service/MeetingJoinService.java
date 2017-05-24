@@ -1,7 +1,5 @@
 package com.jeju.meoui.service;
 
-import java.util.*;
-
 import org.slf4j.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
@@ -14,12 +12,12 @@ public class MeetingJoinService {
 
 	@Autowired
 	private MeetingJoinDAO dao;
-	private Logger logger= LoggerFactory.getLogger(MemberMeetingService.class);
+	private Logger logger= LoggerFactory.getLogger(MeetingJoinDAO.class);
 	
 	//모임가입
 	public void createMeetingJoin(MeetingJoin meetingJoin){
 		dao.insertMeetingJoin(meetingJoin);
-		
+		logger.info("미팅조인dao:",meetingJoin);
 	}
 	
 	//모임탈퇴

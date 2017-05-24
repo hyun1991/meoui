@@ -10,10 +10,28 @@
 </head>
 <body>
 	<h2>모임 보기</h2>
-	<div><h3>모임번호:</h3>${result.membermeeting.meetingNo}</div><br>
-	<div><h3>모임이름:</h3>${result.membermeeting.meetingName }</div>
-	<div><h3>모임사진:</h3>${result.membermeeting.meetingImg }</div>
-	<div><h3>모임인원:</h3>${result.membermeeting.meetingToTalNumber }</div>
-	<hr>
+	모임번호:<input type="text" id="meetingNo" name="meetingNo" style = "text-align:right;" value="${meeting.meetingNo}"readonly ><br>
+	모임이름:<input type="text" id="meetingName" name="meetingName" value="${meeting.meetingName }"readonly ><br>
+	모임이미지:<img src="/meoui/images/${meeting.meetingImg}"><br>
+	모임인원 :${meeting.meetingTotalNumber}명<br>
+	모임 관리자:${meeting.meetingAdminNo }<br><br>
+	세션에 저장된 멤버 번호 :"<%=session.getAttribute("memberNo")%>"
+	세션에 저장된 미팅 번호 :"<%=session.getAttribute("meetingNo")%>"
+	<form action ="" method=post>
+			<button id="commit" type="submit">회원 가입하기</button>
+	</form>	
 </body>
+<script>
+	$(document).ready(function() {
+		var memberNo= "<%=session.getAttribute("memberNo")%>"
+		
+		var meetingNo= "<%=session.getAttribute("meetingNo")%>"
+		$("#commit").on("click", function() {
+		if(meetingNo===meetingNo)
+				alert("가입 완료")
+			else
+				alert("가입 실패")
+		})
+	})
+	</script>
 </html>

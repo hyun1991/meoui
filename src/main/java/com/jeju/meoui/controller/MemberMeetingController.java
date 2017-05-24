@@ -61,19 +61,17 @@ public class MemberMeetingController {
 	@RequestMapping(value="/membermeeting/update/{meetingNo}", method=RequestMethod.POST)
 	public String updateMemberMeeting(@RequestParam String meetingName, @RequestParam String memberName,
 			@RequestParam("Img")MultipartFile meetingImg 
-	,HttpSession session, @PathVariable int meetingNo){
-		MemberMeeting memberMeeting= new MemberMeeting();
-		memberMeeting.setMeetingName(meetingName);
-		service.updataMeetingName(memberMeeting);
+	,HttpSession session, @PathVariable int meetingNo, Model model){
+		MemberMeeting memberMeeting= new MemberMeeting();		
 		logger.info("멤머미팅완료 멤버넘버:{}", meetingNo);
 		return "redurect:/membermeeting/list";
 	}
 	
-	//모임 상세 보기
-	@RequestMapping(value="/memberMeeting/view/{meetingNo}", method=RequestMethod.GET)
+	//모임 상세 보기(작업중)
+	@RequestMapping(value="/membermeeting/view/{meetingNo}", method=RequestMethod.GET)
 	public String selectMeetingView(@PathVariable int meetingNo, Model model, HttpSession session){
 		session.setAttribute("meetingNo", meetingNo);
-		model.addAttribute("result",service.selectMeetingView(meetingNo));
+		model.addAttribute("meeting",service.selectMeetingView(meetingNo));
 		logger.info("멤머미팅 멤버넘버:{}", meetingNo);
 		return "membermeeting/view";
 	}
@@ -90,14 +88,17 @@ public class MemberMeetingController {
 			service.deleteMemberMeeting(meetingNo);
 			return "membermeeting/update";		
 	}
-	// 리스트 출력
+	// 리스트 출력(작업완료)
 	@RequestMapping(value="/membermeeting/list", method=RequestMethod.GET)
-	public String AllMemberMeeting(Model model){	
+	public String AllMemberMeeting(Model model, HttpSession session){	
+		MemberMeeting meetingNo=new MemberMeeting();
+		session.setAttribute("meetingNo", meetingNo);
 		logger.info("컨트롤 시작");
 		model.addAttribute("result", service.selectAllmemberMeetingList());
+		logger.info("멤머미팅리스트출력 세션멤버미팅:", meetingNo);
 		return "membermeeting/list";
 	}
-	//가입한 모임 리스트 보기
+	//가입한 모임 리스트 보기(작업완료)
 	@RequestMapping(value="/meetingjoin/list", method=RequestMethod.GET)
 	public String selectMyMeeting(Model model, HttpSession session){
 			int memberNo = (Integer)session.getAttribute("memberNo");		
