@@ -15,7 +15,6 @@
 			values(#{site_no},#{site_name},#{site_park},#{site_object},#{site_img},#{site_introduce},#{site_homepage},#{site_open_time},#{site_close_time},#{site_phone},#{site_night_open},#{site_night_close_time},#{users_no})
 		]]>
 	</insert>
-	
 	<!-- 2. 관광지 수정 -->
 	<update id="updateSite" parameterType="site">
 		<![CDATA[
@@ -59,7 +58,5 @@
 		select site_no, site_name from site
 	</select>
 
-	
-	
 	
 </mapper>

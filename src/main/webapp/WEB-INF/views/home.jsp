@@ -31,10 +31,7 @@ header {
 </style>
 <body>
 	<%@include file="/nav/navbar.jsp"%>
-	<div class="container">
-	회원가입 폼
-	<hr style="border: 4px solid black; margin-bottom: 50px;">
-	</div>
+	<%@include file="index.jsp" %>
 	<footer>
 		<%@include file="/footer.jsp"%>
 	</footer>

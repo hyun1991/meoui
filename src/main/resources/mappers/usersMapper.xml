@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="usersMapper">
+	<!-- 관리자 추가하기 -->
+	<insert id="insertUsers" parameterType="users">
+	<selectKey keyProperty="usersNo" resultType="int" order="BEFORE">
+	    	select users_seq.nextval from dual
+	</selectKey>
+		insert into users values(#{usersNo}, #{username}, #{password}, '1')
+	</insert>
+	<!-- 관리자 로그인처리 -->
+	<select id="login" parameterType="HashMap" resultType="int">
+		select count(*) from users where username=#{username} and password=#{password}
+	</select>
+	<!-- 관리자 비밀번호 갱신 -->
+	<update id="updateUsers" parameterType="users">
+		UPDATE users SET password = #{password} WHERE username = #{username}
+	</update>
+	<!-- 관리자 정보삭제 -->
+	<delete id="deleteUsers" parameterType="string">
+		DELETE FROM users WHERE username = #{username}
+	</delete>
+	<!-- 관리자 아이디별 정보조회 -->
+	<select id="selectUsers" parameterType="string" resultType="users">
+		SELECT * FROM users where username=#{username}
+	</select>
+</mapper>

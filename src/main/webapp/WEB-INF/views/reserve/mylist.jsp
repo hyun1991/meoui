@@ -12,6 +12,7 @@
 	<%@include file="/nav/navbar.jsp"%>
 	<div class="container">
 		<h2>마이페이지</h2>
+		<hr>
 		<br>
 		<div class="row">
 			<div class="col-md-4">
@@ -38,7 +39,10 @@
 			</c:forEach>
 			</div>
 		</div>
-		<a href="/meoui/"><button>홈으로</button></a>
+		<div class="form-group">
+			<a href="/meoui/"><button type="button" class="w3-button w3-block w3-white w3-border">
+			홈으로</button></a>
+		</div>
 	</div>
 	<footer>
 		<%@include file="/footer.jsp"%>

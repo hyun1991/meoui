@@ -77,6 +77,6 @@ public class OwnerController {
 	@RequestMapping(value="/list", method=RequestMethod.GET)
 	public String ownerList(Model model){
 		model.addAttribute("result", service.getAllOwner());
-		return "리스트 뷰페이지";
+		return "owner.list";
 	}
 }

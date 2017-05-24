@@ -42,20 +42,7 @@ public class SiteController {
 		return "redirect:/site/list";
 	}
 	
-	/*
-	 * @RequestMapping(value="/membermeeting/create", method=RequestMethod.POST)
-	public String isnertMemberMeeting(HttpSession session, @RequestParam String meetingName, @RequestParam("Img")MultipartFile meetingImg){
-		MemberMeeting memberMeeting= new MemberMeeting();
-		int meetingAdminNo= (Integer)session.getAttribute("memberNo");
-		String fileName= UploadUtil.storeAndGetFileName(meetingImg, ctx, path);
-		memberMeeting.setMeetingImg(fileName);
-		memberMeeting.setMeetingName(meetingName);
-		memberMeeting.setMeetingAdminNo(meetingAdminNo);
-		service.createMemberMeeting(memberMeeting);
-		logger.info("멤버넘버:{}", memberMeeting);
-		return "redirect:/membermeeting/list";
-	}
-	 */
+
 	// 관광지 수정 폼
 	@RequestMapping(value="/site/update", method=RequestMethod.GET)
 	public String updateSite(){
@@ -79,6 +66,7 @@ public class SiteController {
 	// 관광지 전체 리스트
 	@RequestMapping(value="/site/list" , method=RequestMethod.GET)
 	public String allSite(Model model ,@RequestParam(defaultValue="1") int pageNo){
+		logger.info("pageNo:{}", pageNo);
 		model.addAttribute("result", service.selectAllSite(pageNo));
 		return "site/list";
 	}

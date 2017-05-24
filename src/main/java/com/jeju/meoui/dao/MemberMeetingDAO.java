@@ -33,6 +33,11 @@ public class MemberMeetingDAO {
 		template.delete("MemberMeetingMapper.deleteMembermeeting", meetingNo);
 	}
 	
+	//모임 세부 정보 보기
+	public MemberMeeting selectMeetingView(int meetingNo){
+		return template.selectOne("MemberMeetingMapper.selectMeetingView", meetingNo);
+	}
+	
 	//모임 리스트 출력
 	public List<MemberMeeting> selectAllMemberMeetingList(){
 		return template.selectList("MemberMeetingMapper.selectAllMemberMeetingList");

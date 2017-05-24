@@ -96,10 +96,11 @@ span {
 						<span class="caret"></span></a></li>
 					<li class="dropdown" id="loginCheck"><a
 						class="dropdown-toggle" data-toggle="dropdown" href="#"
-						style="color: #424242;">접속ID: <%=session.getAttribute("memberId")%><span
+						style="color: #424242;">ID: <%=session.getAttribute("memberId")%><span
 							class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="/meoui/member/view/<%=session.getAttribute("memberId")%>" id="menu">마이페이지</a></li>
+							<li><a href="#" id="menu">쪽지함</a></li>
 							<li><a href="/meoui/member/logout" id="logout">로그아웃</a></li>
 							<li><a href="#" id="deleteId">회원탈퇴</a></li>
 						</ul></li>

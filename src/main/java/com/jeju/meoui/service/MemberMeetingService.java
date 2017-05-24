@@ -30,6 +30,12 @@ public class MemberMeetingService {
 	public void deleteMemberMeeting(int meetingNo){
 		dao.deleteMembeMeeting(meetingNo);
 	}
+	//모임 세부 정보 보기
+	public MemberMeeting selectMeetingView(int meetingNo){
+		logger.info("뷰보기:{}", meetingNo);
+		return dao.selectMeetingView(meetingNo);
+	}
+	
 	//모임 리스트 출력
 	public HashMap<String, Object> selectAllmemberMeetingList(){	
 		HashMap<String, Object>map= new HashMap<String, Object>();
