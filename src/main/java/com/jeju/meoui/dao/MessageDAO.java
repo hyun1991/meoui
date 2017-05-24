@@ -25,8 +25,12 @@ public class MessageDAO {
 		template.update("MessageMapper.updateMessage", map);
 	}
 	//	쪽지리스트 조회하기
-	public List<Message> selectAllMessage(int memberNo){
-		return template.selectList("MessageMapper.selectAllMessage", memberNo);
+	public List<Message> selectAllMessage(int memberNo,int startRow, int lastRow){
+		HashMap<String, Object>map= new HashMap<String, Object>();
+		map.put("memberNo", memberNo);
+		map.put("startRow", startRow);
+		map.put("lastRow", lastRow);
+		return template.selectList("MessageMapper.selectAllMessage", map);
 	}
 	//	쪽지삭제하기
 	public void deleteMessage(int memberNo, int messageNo){
@@ -42,4 +46,9 @@ public class MessageDAO {
 		map.put("messageNo", messageNo);
 		return template.selectOne("MessageMapper.selectByMessage", map);
 	}
+	//	사용자 번호별 쪽지 DB개수 체크
+	public int findDBMax(){
+		return template.selectOne("MessageMapper.findDBMax");
+	}
+
 }

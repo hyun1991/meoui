@@ -89,7 +89,7 @@
 	<!-- DB개수 조회하기 -->
 	<select id="selectByMax" resultType="int">
 		<![CDATA[
-			select count(accommodation_no)from accommodation
+			select count(*)from accommodation
 		]]>
 	</select>
 </mapper>

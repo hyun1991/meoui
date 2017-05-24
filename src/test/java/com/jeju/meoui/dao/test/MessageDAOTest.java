@@ -38,7 +38,12 @@ public class MessageDAOTest {
 	}
 	//	@Test
 	public void selectAll(){
-		List<Message>list= dao.selectAllMessage(62);
-		assertThat(list.size(), is(2));
+		//List<Message>list= dao.selectAllMessage(62);
+		//assertThat(list.size(), is(2));
+	}
+	@Test
+	public void listTest(){
+		int memberNo= 152;
+		//dao.findDBMax(memberNo);
 	}
 }

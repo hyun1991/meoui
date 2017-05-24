@@ -16,12 +16,21 @@
 	</insert>
 	
 	<!-- 모임수정 -->
-	<update id="updateMeetingName" parameterType="MemberMeeting">	
+	<update id="updateMeetingName" parameterType="int">	
 		<![CDATA[
 		update member_meeting set meeting_name=#{meetingName}, meeting_img=#{meetingImg}
-		 where meeting_no=#{meetingNo}
+		 where meeting_admin_no
 		 ]]>
 	</update>
+	
+		<!-- 모임 세부정보 보기 -->
+	<select id= "selectMeetingView" resultType="MemberMeeting" parameterType="int">
+		<![CDATA[
+			select meeting_no, meeting_name, meeting_img, meeting_total_number, meeting_admin_no
+			from member_meeting where meeting_no=#{meetingNo}
+		]]>
+	
+	</select>	
 	
 	<!-- 모임삭제 -->
 	<delete id="deleteMemberMeeting" parameterType="Int">
@@ -35,7 +44,8 @@
 			select meeting_no, meeting_name, meeting_img, meeting_total_number, meeting_admin_no
 			from member_meeting
 		]]>		
-	</select>	
+		
+		</select>
 	
 	<!-- 모임명으로 검색  -->
 	<select id = "selectMeetingName" parameterType="String" resultType="MemberMeeting">
@@ -52,13 +62,15 @@
 			from member_meeting order by member_total_number =#{meetingTotalNumber}	
 	]]>
 	</select>
+
+	
 	<!-- 내가 가입한 모임 보기 -->
 	<select id ="selectMyMeeting" parameterType="int" resultType="MemberMeeting">
 	<![CDATA[
-		select m.meeting_no, m.meeting_name, m.meeting_total_number
-		from member_meeting m, users u, meeting_join j
-		where j.member_no = #{u.users_no} and j.meeting_no = #{m.meeting_no}
-	]]>	
+			select m.meeting_no, m.meeting_name, m.meeting_img, 
+			m.meeting_total_number, m.meeting_admin_no from meeting_join j, member_meeting m 
+			where m.meeting_no=j.meeting_no and j.member_no=#{member_no}
+		]]>
 	</select>	
 				
 </mapper>

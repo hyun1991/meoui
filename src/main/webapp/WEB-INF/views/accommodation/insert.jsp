@@ -14,10 +14,6 @@
 	<h1>숙박시설 추가페이지</h1>
 	<hr>
 	<form action="/meoui/manage/accommodation/join" method="post" enctype="multipart/form-data">
-		<div class="btn-group">
-				<input type="submit" value="숙박업소 추가" id="confirmBtn" class="btn btn-primary">
-				<a href="/meoui/manage/home"><input type="button" value="돌아가기" id="confirmBtn" class="btn btn-primary"></a>
-		</div>
 		<hr>
 		<div>
 			<div class="form-group">
@@ -49,6 +45,10 @@
   						<option value="${site.siteNo }">${site.siteName }</option>
   					</c:forEach>
   				</select>
+			</div>
+			<div class="btn-group">
+				<input type="submit" value="숙박업소 추가" id="confirmBtn" class="btn btn-primary">
+				<a href="/meoui/manage/home"><input type="button" value="돌아가기" id="confirmBtn" class="btn btn-primary"></a>
 			</div>
 		</div>
 	</form>

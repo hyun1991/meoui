@@ -35,16 +35,25 @@
  	]]>
  </delete>
  
+ <!-- 6. 사용자 번호별 쪽지 db개수 체크하기 -->
+ <select id="findDBMax" resultType="int">
+ 		select count(*)from message
+ </select>
+ 
  <!-- 4. 회원번호별 쪽지리스트 조회하기 -->
- <select id="selectAllMessage" parameterType="int" resultType="Message">
+ <select id="selectAllMessage" parameterType="HashMap" resultType="Message">
  	<![CDATA[
- 		select * from message where member_no=#{memberNo}	
+ 		select t2.* from(select rownum rnum, t1.* from
+ 		(select message_no, message_receive_id, message_send_id, message_title, message_content, 
+ 		message_date, message_receive_date, message_receive_check, member_no from message 
+ 		where member_no=${memberNo} order by message_no desc)t1)t2
+    	where rnum between  ${startRow} and ${lastRow}	
  	]]>
  </select>
  <!-- 5. 쪽지상세보기 -->
  <select id="selectByMessage" parameterType="HashMap" resultType="Message">
  	<![CDATA[
- 		select * from message where member_no=#{membern} and message_no=#{messageNo}
+ 		select * from message where member_no=#{memberNo} and message_no=#{messageNo}
  	]]>
  </select>
 </mapper>

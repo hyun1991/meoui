@@ -17,9 +17,9 @@ public class NoticeCommentDAOTest {
 	//@Test// 글등록 test 성공
 	public void insertCommentTest(){
 		NoticeComment noticeComment = new NoticeComment();
-		noticeComment.setNoticeCommentContent("test2");
-		noticeComment.setMemberNo(41);
-		noticeComment.setNoticeNo(1);
+		noticeComment.setNoticeCommentContent("test65");
+		noticeComment.setMemberNo(65);
+		noticeComment.setNoticeNo(60);
 		dao.insertComment(noticeComment);
 	}
 	//@Test// 게시글에 달린 댓글 조회 성공
@@ -30,5 +30,10 @@ public class NoticeCommentDAOTest {
 	public void selectNoticeCommentNoTest(){
 		System.out.println(dao.selectNoticeCommentNo(41));
 	}
-
+	@Test
+	public void delteTest(){
+		int memberNo= 41;
+		int noticeCommentNo= 1;
+		dao.deleteComment(noticeCommentNo, memberNo);
+	}
 }

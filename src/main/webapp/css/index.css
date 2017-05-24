@@ -1,0 +1,13 @@
+@CHARSET "UTF-8";
+	.carousel-inner img {
+    	width: 100%; /* Set width to 100% */
+    	margin: auto;
+	}
+	@media (max-width: 600px) {
+    	.carousel-caption {
+        	display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
+    	}
+	}
+	.logoInfo{
+		margin-left: 420px;
+	}

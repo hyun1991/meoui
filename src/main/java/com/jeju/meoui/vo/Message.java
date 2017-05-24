@@ -17,6 +17,8 @@ public class Message {
 	private	Date messageReceiveDate;		//	수신인 읽은날짜
 	private	int	messageReceiveCheck;		//	수신인 쪽지 확인여부
 	private	int	memberNo;					//	회원번호
+	
+	private String check;					//	쪽지확인여부를 확인/미확인을 위해 보여주기 위한 필드
 	public Message(String messageReceiveId, String messageSendId, String messageTitle, String messageContent,
 			int memberNo) {
 		super();

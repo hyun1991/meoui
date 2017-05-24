@@ -14,7 +14,7 @@
 	<h1>모임 수정</h1>
 		<form id="memberMeetingForm" action="/meoui/membermeeting/update" method="POST" enctype="multipart/form-data">
 	
-			모임번호:<input type="text" name="meetingNo" id="meetingNo">${meetingNo}<br>
+			모임번호:<input type="text" name="meetingNo" id="meetingNo">${membermeeting.meetingNo}<br>
 			모임명:<input type="text" name="meetingName" id="meetingName"><br>
 			이미지:<input type="file" name="Img" id="meetingImg"><br>
 			총인원수:<input type="text" name="meetingTotalname" id="meetingTotalName"><br>

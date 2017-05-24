@@ -69,7 +69,7 @@ span {
 						href="/meoui/accommodaion/listTest" style="color: #424242;"><span
 							class="glyphicon glyphicon-home" style="color: orange;"></span>
 							테스트</a></li>
-					<li class="navMenu"><a href="/meoui/meetingboard.jsp"
+					<li class="navMenu"><a href="/meoui/membermeeting/list"
 						style="color: #424242;"><span class="glyphicon glyphicon-heart"
 							style="color: #f76ce4;"></span> 모임 </a></li>
 					<li class="navMenu"><a href="/meoui/notice/list"
@@ -100,7 +100,7 @@ span {
 							class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="/meoui/member/view/<%=session.getAttribute("memberId")%>" id="menu">마이페이지</a></li>
-							<li><a href="#" id="menu">쪽지함</a></li>
+							<li><a href="/meoui/message/list?memberId=<%=session.getAttribute("memberId") %>&pageNo=1" id="menu">쪽지함</a></li>
 							<li><a href="/meoui/member/logout" id="logout">로그아웃</a></li>
 							<li><a href="#" id="deleteId">회원탈퇴</a></li>
 						</ul></li>

@@ -14,25 +14,24 @@ $(function() {
 		$("#view").empty();
 		$.each(notice.nclist, function(index, comments) {
 			var str = "<div class='comments'>"
-			str = str + "<div class='name'>"+comments.noticeCommentNo+"</div>"
-			str = str + "<div class='content'>"+comments.noticeCommentContent+"</div>"
+			str = str + "<div class='name'>"+comments.memberNo+"</div>"
+			str = str + "<div class='contents'>"+comments.noticeCommentContent+"</div>"
 			str = str + " <div class='date'>"+comments.noticeCommentDate+"</div></div>"
 			$("#view").append(str);
 		})
 	}
-	$("#insertComment").on("click", function name() {
+	$("#insertComment").on("click", function() {
 		$.ajax({
-			url:"/meoui/noticecomment/"+$(this).data("noticeNo"),
+			url:"/meoui/noticecomment/"+$(this).data("bno"),
 			type:"post",
-			data:{"content":$("#content").val()},
+			data : {"noticeCommentContent":$("#noticeCommentContent").val()},
 			dataType:"json",
-		    success: function(result) {
-				print(result);
+		    success:function() {
+		    	window.location.reload();
 			}	
 		})
-		
-	})
-});
+	})	
+});	
 </script>
 </head>
 <body>
@@ -45,15 +44,23 @@ $(function() {
 		<tr><td>조회수</td>	<td>${notice.nlist.noticeCnt}</td></tr>
 		 <tr><td>내용</td><td>${notice.nlist.noticeContent}</td></tr>
 	    </table>
-	    <textarea name="content" id="content">
+	    <textarea name="noticeCommentContent" id="noticeCommentContent">
 	    </textarea>
 	    <button id="insertComment" data-bno="${notice.nlist.noticeNo }">댓글 쓰기</button>
 	    <div id="view">
 	    <c:forEach items="${notice.nclist }" var="comment">
 	    <div class="comments">
+	    <div class="number">${comment.noticeCommentNo }</div>
 	    <div class="name">${comment.memberNo }</div>
-	    <div class="content">${comment.noticeCommentContent }</div>
+	    <div class="contents">${comment.noticeCommentContent }</div>
 	    <div class="date"><fmt:formatDate value="${comment.noticeCommentDate }"  pattern="yyyy년MM월dd일" /></div>
+	    <div class="viewdelete">
+	    <c:if test="${comment.memberNo eq memberNo }">
+	    <a href ="/meoui/noticecomment/delete/${comment.noticeCommentNo }">
+	    <button id="deleteComment">댓글삭제</button>
+	    </a>
+	    </c:if>
+	    </div>
 	    </div>
 	    </c:forEach>
 	    </div>

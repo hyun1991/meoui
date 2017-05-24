@@ -131,14 +131,14 @@ img {
 	<div class="row text-center">
 		<ul class="pagination pagination-md">
 			<li><c:if test="${result.pagination.prev>0 }">
-					<a href="/meoui/notice/list?pageNo=${result.pagination.prev }">이전으로</a>
+					<a href="/meoui/accommodaion/list?pageNo=${result.pagination.prev }">이전으로</a>
 				</c:if></li>
 			<li><c:forEach begin="${result.pagination.startPaging }"
 					end="${result.pagination.lastPaging }" var="i">
-					<a href="/meoui/notice/list?pageNo=${i }">${i }</a>
+					<a href="/meoui/accommodaion/list?pageNo=${i }">${i }</a>
 				</c:forEach></li>
 			<li><c:if test="${result.pagination.next>0 }">
-					<a href="/meoui/notice/list?pageNo=${result.pagination.next }">다음으로</a>
+					<a href="/meoui/accommodaion/list?pageNo=${result.pagination.next }">다음으로</a>
 				</c:if></li>
 		</ul>
 	</div>
