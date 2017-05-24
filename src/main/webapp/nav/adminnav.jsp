@@ -38,7 +38,7 @@
 			<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="board">
 			게시판관리</a>
 			<ul class="dropdown-menu">
-				<li><a href="#" id="#">공지사항</a></li>
+				<li><a href="/meoui/admin/notice/list?pageNo">공지사항</a></li>
 				<li><a href="#" id="#">자유게시판</a></li>
 			</ul></li>
 			<li class="col-md-2"><a href="#" id="menu">모임관리</a></li>
