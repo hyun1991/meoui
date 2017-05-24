@@ -7,7 +7,7 @@ enabled CHARACTER(10)
 
 create table authorities(
 authority nvarchar2(100),
-users_no number(10) references users(users_no)
+username NVARCHAR2(50)
 );
 
 create table owner (

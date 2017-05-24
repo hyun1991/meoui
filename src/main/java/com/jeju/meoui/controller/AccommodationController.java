@@ -57,6 +57,12 @@ public class AccommodationController {
 		model.addAttribute("result", service.getAllAccommodation(pageNo));
 		return "accommodation/list";
 	}
+	//	숙박시설 페이지별 조회하기(관리자용: 완료)
+	@RequestMapping(value="/admin/accommodaion/list", method=RequestMethod.GET)
+	public String selectAllAdminAccommodation(Model model, @RequestParam(defaultValue="1") int pageNo){
+		model.addAttribute("result", service.getAllAccommodation(pageNo));
+		return "admin/aclist";
+	}
 	
 	//숙박시설 페이지별 조회하기(완료)<테스트용>
 	@RequestMapping(value="/accommodaion/listTest", method=RequestMethod.GET)
@@ -73,6 +79,7 @@ public class AccommodationController {
 		model.addAttribute("result", service.getByOwnerNoAccommodation(pageNo, ownerNo));
 		return "owner/accommodationlist";
 	}
+
 	//	숙박시설 삭제하기(완료)
 	@RequestMapping(value="/manage/accommodation/delete/{accommodationNo}", method=RequestMethod.GET)
 	public String deleteAccommodation(@PathVariable int accommodationNo){
