@@ -69,7 +69,7 @@ span {
 						href="/meoui/accommodaion/listTest" style="color: #424242;"><span
 							class="glyphicon glyphicon-home" style="color: orange;"></span>
 							테스트</a></li>
-					<li class="navMenu"><a href="/meoui/meetingboard.jsp"
+					<li class="navMenu"><a href="/meoui/membermeeting/list"
 						style="color: #424242;"><span class="glyphicon glyphicon-heart"
 							style="color: #f76ce4;"></span> 모임 </a></li>
 					<li class="navMenu"><a href="/meoui/notice/list"
