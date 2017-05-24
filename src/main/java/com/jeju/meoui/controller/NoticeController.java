@@ -1,16 +1,21 @@
 package com.jeju.meoui.controller;
 
+import javax.servlet.http.*;
+
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 import org.springframework.ui.*;
 import org.springframework.web.bind.annotation.*;
 
+import com.google.gson.*;
 import com.jeju.meoui.service.*;
 import com.jeju.meoui.vo.*;
 @Controller
 public class NoticeController {
 	@Autowired
 	private NoticeService service;
+	@Autowired
+	private NoticeCommentService cservice;
 	//1. 공지게시판 추가하기(작성폼)
 	@RequestMapping(value="/notice/join", method=RequestMethod.GET)
 	public String insertNoticeForm(){
@@ -58,6 +63,18 @@ public class NoticeController {
 	     model.addAttribute("notice", service.findByNotice(noticeNo));
 	     return "/notice/view";
 	}
-	
-	
+	@RequestMapping(value="/noticecomment/delete/{noticeCommentNo}", method=RequestMethod.GET)
+	public String deleteNoticeComment(@PathVariable int noticeCommentNo, HttpSession session){
+		System.out.println("댓글번호"+noticeCommentNo);
+		int memberNo= (Integer)session.getAttribute("memberNo");
+		System.out.println(memberNo);
+		int noticeNo=(Integer)session.getAttribute("noticeNo");
+		System.out.println("서비스 시작전");
+		System.out.println(memberNo);
+		System.out.println(noticeCommentNo);
+		cservice.removeNoticeComment(noticeCommentNo,memberNo);
+		System.out.println("실행완료");
+		return "redirect:/notice/view/"+noticeNo;
+	}
+
 }
