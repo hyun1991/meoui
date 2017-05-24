@@ -100,7 +100,7 @@ span {
 							class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="/meoui/member/view/<%=session.getAttribute("memberId")%>" id="menu">마이페이지</a></li>
-							<li><a href="/meoui/message/list?memberId=<%=session.getAttribute("memberId") %>&pageNo=1" id="menu">쪽지함</a></li>
+							<li><a href="/meoui/message/list?messageReceiveId=<%=session.getAttribute("memberId") %>&pageNo=1" id="menu">쪽지함</a></li>
 							<li><a href="/meoui/member/logout" id="logout">로그아웃</a></li>
 							<li><a href="#" id="deleteId">회원탈퇴</a></li>
 						</ul></li>
