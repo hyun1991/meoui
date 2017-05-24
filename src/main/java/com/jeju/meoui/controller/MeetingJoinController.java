@@ -25,18 +25,4 @@ public class MeetingJoinController {
 		return "membermeeting/view";
 	}	
 	
-	
-		
-	
-	//가입한 리스트 보기
-	@RequestMapping(value="/meetingjoin/list", method=RequestMethod.GET)
-	public String selectMyMeeting(Model model, HttpSession session){
-		int memberNo = (Integer)session.getAttribute("memberNo");		
-		model.addAttribute("result", service.selectMyMeeting(memberNo));
-		logger.info("미팅조인 가입한 리스트 보기 :[]", memberNo);
-		return "meetingjoin/list";
-				
-	}
-	
-	
 }
