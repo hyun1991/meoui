@@ -51,18 +51,22 @@ public class MemberMeetingController {
 	}
 
 	//모임 수정(작업완료)
-	@RequestMapping(value="/membermeeting/update/{meetingNo}", method=RequestMethod.GET)
+	@RequestMapping(value="/membermeeting/update", method=RequestMethod.GET)
 	public String updateMemberMeeting(){
 		return "membermeeting/update";
 	}
 	
 	
 	//모임수정 완료
-	@RequestMapping(value="/membermeeting/update/{meetingNo}", method=RequestMethod.POST)
+	@RequestMapping(value="/membermeeting/update", method=RequestMethod.POST)
 	public String updateMemberMeeting(@RequestParam String meetingName, @RequestParam String memberName,
-			@RequestParam("Img")MultipartFile meetingImg 
-	,HttpSession session, @PathVariable int meetingNo, Model model){
-		MemberMeeting memberMeeting= new MemberMeeting();		
+			@RequestParam("Img")MultipartFile meetingImg ,HttpSession session, Model model){
+		MemberMeeting memberMeeting= new MemberMeeting();	
+		int meetingNo = (Integer)session.getAttribute("meetingNo");
+		String fileName= UploadUtil.storeAndGetFileName(meetingImg, ctx, path);
+		memberMeeting.setMeetingName(meetingName);
+		memberMeeting.setMeetingImg(fileName);	
+		model.addAttribute("membermeeting", memberMeeting);
 		logger.info("멤머미팅완료 멤버넘버:{}", meetingNo);
 		return "redurect:/membermeeting/list";
 	}

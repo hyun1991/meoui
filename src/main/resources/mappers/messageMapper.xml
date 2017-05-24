@@ -24,20 +24,26 @@
  <update id="updateMessage" parameterType="HashMap">
  	<![CDATA[
  		update message set message_receive_date=sysdate, message_receive_check=1
- 		where member_no=#{memberNo} and message_no=#{messageNo}
+ 		where message_no=#{messageNo}
  	]]>	
  </update>
  
  <!-- 3. 쪽지삭제하기-->
  <delete id="deleteMessage" parameterType="HashMap">
  	<![CDATA[
- 		delete from message where member_no=#{memberNo} and message_no=#{messageNo}
+ 		delete from message where message_no=#{messageNo}
  	]]>
  </delete>
  
- <!-- 6. 사용자 번호별 쪽지 db개수 체크하기 -->
- <select id="findDBMax" resultType="int">
- 		select count(*)from message
+ <!-- 6. 현재 접속중인 유저 아이디별 쪽지 db개수 체크하기 -->
+ <select id="findDBMax" resultType="int" parameterType="String">
+ 		select count(*)from message where message_receive_id=#{messageReceiveId}
+ </select>
+ <!-- 받는이 아이디 모두다 출력 -->
+ <select id="getBySendId" resultType="String">
+ 	<![CDATA[
+ 		select message_receive_id from message
+ 	]]>
  </select>
  
  <!-- 4. 회원번호별 쪽지리스트 조회하기 -->
@@ -46,14 +52,14 @@
  		select t2.* from(select rownum rnum, t1.* from
  		(select message_no, message_receive_id, message_send_id, message_title, message_content, 
  		message_date, message_receive_date, message_receive_check, member_no from message 
- 		where member_no=${memberNo} order by message_no desc)t1)t2
-    	where rnum between  ${startRow} and ${lastRow}	
+ 		where message_receive_id=#{messageReceiveId} order by message_no desc)t1)t2
+    	where rnum between  #{startRow} and #{lastRow}	
  	]]>
  </select>
  <!-- 5. 쪽지상세보기 -->
- <select id="selectByMessage" parameterType="HashMap" resultType="Message">
+ <select id="selectByMessage" parameterType="int" resultType="Message">
  	<![CDATA[
- 		select * from message where member_no=#{memberNo} and message_no=#{messageNo}
+ 		select * from message where message_no=#{messageNo}
  	]]>
  </select>
 </mapper>

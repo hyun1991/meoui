@@ -95,6 +95,10 @@ img {
 				<button id="commit" type="submit"
 					class="w3-button w3-block w3-white w3-border">회원 가입하기</button>
 			</form>
+			<form action="/meoui/membermeeting/update" method="GET">
+				<button id="commit" type="submit"
+					class="w3-button w3-block w3-white w3-border">모임수정하기</button>
+			</form>
 		</div>
 	</div>
 	<footer>

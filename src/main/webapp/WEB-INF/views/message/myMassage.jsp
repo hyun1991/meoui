@@ -89,16 +89,25 @@ a.cbtn:hover {
             </tr>
         	</thead>
         <tbody>
-			<c:forEach items="${result.message }" var="message">
+			<c:forEach items="${result.okMessage }" var="message">
 				<tr>
-					<td>${message.messageNo }</td>
-					<td>${message.messageTitle }</td>
+					<td><a href="/meoui/message/view?messageNo=${message.messageNo }">${message.messageNo }</a></td>
+					<td><a href="/meoui/message/view?messageNo=${message.messageNo }">${message.messageTitle }</a></td>
 					<td>${message.messageSendId }</td>
 					<td><fmt:formatDate value="${message.messageDate }" pattern="yyyy년MM월dd일"/></td>
-					<c:forEach items="${result.list }" var="message">
-						<td>${message.check }</td>
-					</c:forEach>
-					<td><a href="/meoui/admin/member/delete/${member.memberId }"><button type="button" class="w3-button w3-block w3-white w3-border">
+					<td>${message.check }</td>
+					<td><a href="/meoui/message/delete/${message.messageNo }"><button type="button" class="w3-button w3-block w3-white w3-border">
+						삭제</button></a></td>
+				</tr>
+			</c:forEach>
+			<c:forEach items="${result.failMessage }" var="message">
+				<tr>
+					<td><a href="/meoui/message/view?messageNo=${message.messageNo }">${message.messageNo }</a></td>
+					<td><a href="/meoui/message/view?messageNo=${message.messageNo }">${message.messageTitle }</a></td>
+					<td>${message.messageSendId }</td>
+					<td><fmt:formatDate value="${message.messageDate }" pattern="yyyy년MM월dd일"/></td>
+					<td>${message.check }</td>
+					<td><a href="/meoui/message/delete/${message.messageNo }"><button type="button" class="w3-button w3-block w3-white w3-border">
 						삭제</button></a></td>
 				</tr>
 			</c:forEach>
@@ -116,31 +125,30 @@ a.cbtn:hover {
 				<p class="ctxt mb20">
 
 				<br></p>
+					<form action="/meoui/message/join" method="post">
 					<div><label>발신인 아이디:</label><br>
-						<input type="text" name="memberId" id="memberId" 
-						value="<%=session.getAttribute("memberId")%>" readonly="readonly">
+						<input type="text" name="messageSendId" value="<%=session.getAttribute("memberId")%>" readonly="readonly">
 					</div><br>
 					<div><label>수신인 아이디:</label><br>
-						<input type="text" name="messageReceiveId" id="messageReceiveId">
+						<input type="text" name="messageReceiveId">
 					</div><br>
 					<div><label>제목:</label><br>
-						<input type="text" name="messageTitle" id="messageTitle">
+						<input type="text" name="messageTitle">
 					</div><br>
 					<div>
-						<textarea class="form-control" rows="3" name="messageContent" id="messageContent">
+						<textarea class="form-control" rows="3" name="messageContent">
 						</textarea>
 					</div><br>
 						<input type="hidden" name="memberNo" id="memberNo" value="<%=session.getAttribute("memberNo")%>">
 					<div></div>
 					<div class="form-group">
-					<button type="button" class="w3-button w3-block w3-white w3-border" id="messageBtn">
-					발송하기</button>
-				</div>
+					<button type="submit" class="w3-button w3-block w3-white w3-border" id="messageBtn">발송하기</button>
+					</div>
+				</form>
 				<div class="btn-r">
 					<a href="#" class="cbtn">홈으로</a>
 					<a href="/meoui/message/list?memberId=<%=session.getAttribute("memberId") %>&pageNo=1" class="cabtn">쪽지함</a>
 				</div>
-				<!--// content-->
 			</div>
 		</div>
 	</div>
@@ -159,37 +167,7 @@ a.cbtn:hover {
 		</ul>
 	</div>
 </body>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$("#messageBtn").on("click", function() {
-			alert("안녕하세요")
-			var memberId= "<%=session.getAttribute("memberId")%>"
-			var messageReceiveId= $("#messageReceiveId").val();
-			var messageTitle= $("#messageTitle").val();
-			var messageContent= $("#messageContent").val();
-			var memberNo= $("#memberNo").val();
-			alert(memberId)
-			alert(messageContent)
-			alert(memberNo)
-			ajax({
-				type : "post",
-				url : "/meoui/message/join",
-				data : {memberId:memberId, messageReceiveId:messageReceiveId, messageTitle:messageTitle,
-				messageContent:messageContent, memberNo: memberNo},
-				success : function(result) {
-					alert("성공")
-					console.log(result)
-					if (result == "success") {
-						alert("쪽지발송이 완료 되었습니다.")
-						window.location.href="/meoui/";
-					} 
-					else {
-						alert("쪽지발송이 실패 하였습니다.")
-					}
-				}
-			})
-		})
-	})
+<script>
 	function layer_open(el) {
 		var temp = $('#' + el); //레이어의 id를 temp변수에 저장
 		var bg = temp.prev().hasClass('bg'); //dimmed 레이어를 감지하기 위한 boolean 변수
