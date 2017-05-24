@@ -53,7 +53,7 @@ span {
 			</div>
 			<div class="row">
 				<ul class="nav navbar-nav">
-					<li class="navMenu"><a href="/meoui/site/list?pageNo=1"
+					<li class="navMenu"><a href="/meoui/attractionlist.jsp"
 						style="color: #424242;"><span
 							class="glyphicon glyphicon glyphicon-grain" style="color: green;"></span>
 							관광 명소</a></li>
@@ -100,7 +100,7 @@ span {
 							class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="/meoui/member/view/<%=session.getAttribute("memberId")%>" id="menu">마이페이지</a></li>
-							<li><a href="#" id="menu">쪽지함</a></li>
+							<li><a href="/meoui/message/list?memberId=<%=session.getAttribute("memberId") %>&pageNo=1" id="menu">쪽지함</a></li>
 							<li><a href="/meoui/member/logout" id="logout">로그아웃</a></li>
 							<li><a href="#" id="deleteId">회원탈퇴</a></li>
 						</ul></li>

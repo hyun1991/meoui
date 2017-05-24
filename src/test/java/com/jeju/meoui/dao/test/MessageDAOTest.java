@@ -38,7 +38,7 @@ public class MessageDAOTest {
 	}
 	//	@Test
 	public void selectAll(){
-		List<Message>list= dao.selectAllMessage(62);
-		assertThat(list.size(), is(2));
+		//List<Message>list= dao.selectAllMessage(62);
+		//assertThat(list.size(), is(2));
 	}
 }
