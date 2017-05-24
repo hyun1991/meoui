@@ -10,9 +10,11 @@
 </head>
 <style>
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
-nav{
-	margin-bottom:0;
+
+nav {
+	margin-bottom: 0;
 }
+
 header {
 	background-image: url(/meoui/images/hareubang.jpg);
 	background-size: 300 500;
@@ -26,20 +28,19 @@ header {
 #text, p, header {
 	color: black;
 }
-
-
 </style>
 <body>
-	<%@include file="/navbar.jsp"%>
-	<header>
-	</header>
+
+	<%@include file="/nav/navbar.jsp"%>
+	<%@include file="index.jsp"%>
+	<header> </header>
 	<div class="container">
-	<img src="/meoui/images/hareubang.jpg"></img>
-	<hr style="border: 4px solid black; margin-bottom: 50px;">
+		<img src="/meoui/images/hareubang.jpg"></img>
+		<hr style="border: 4px solid black; margin-bottom: 50px;">
 	</div>
-	<footer>
-		<%@include file="/footer.jsp"%>
-	</footer>
+
+
+	<%@include file="/footer.jsp"%>
 </body>
 <script>
 	$(window).bind('scroll', function() {

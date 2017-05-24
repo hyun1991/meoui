@@ -8,25 +8,61 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script>
+$(function() {
+	function print(notice) {
+		$("#view").empty();
+		$.each(notice.nclist, function(index, comments) {
+			var str = "<div class='comments'>"
+			str = str + "<div class='name'>"+comments.memberNo+"</div>"
+			str = str + "<div class='contents'>"+comments.noticeCommentContent+"</div>"
+			str = str + " <div class='date'>"+comments.noticeCommentDate+"</div></div>"
+			$("#view").append(str);
+		})
+	}
+	$("#insertComment").on("click", function() {
+		$.ajax({
+			url:"/meoui/noticecomment/"+$(this).data("bno"),
+			type:"post",
+			data : {"noticeCommentContent":$("#noticeCommentContent").val()},
+			dataType:"json",
+		    success:function() {
+		    	window.location.reload();
+			}	
+		})
+	})	
+});	
+</script>
 </head>
 <body>
-        <h3>게시글 </h3>
+  <h3>게시글 </h3>
         <table>
-        <c:forEach items="${result.list }" var="notice">
-        <tr>
-			<td>게시글 번호</td><td>제목</td>
-			<td>${notice.noticeNo}</td><td>${notice.noticeTitle}</td>
-		</tr>
-		<tr>
-			<td>작성자</td><td>${notice.usersNo}</td><td>작성일</td><td>조회수</td>	
-			<td><fmt:formatDate value="${notice.noticeDate}"
-					pattern="yyyy년 MM월 dd일" /></td><td>${notice.noticeCnt}</td>
-		</tr>
-	    <tr>
-			<td>내용</td>
-			<td>${notice.noticeContent}</td>
-		</tr>
-		</c:forEach>
-	</table>
+        <tr><td>게시글 번호</td><td>${notice.nlist.noticeNo}</td></tr>
+		<tr><td>제목</td><td>${notice.nlist.noticeTitle}</td></tr>	
+		<tr><td>작성자</td><td>${notice.nlist.usersNo}</td></tr>
+		<tr><td>작성일</td><td><fmt:formatDate value="${notice.nlist.noticeDate}" pattern="yyyy년 MM월 dd일" /></td>
+		<tr><td>조회수</td>	<td>${notice.nlist.noticeCnt}</td></tr>
+		 <tr><td>내용</td><td>${notice.nlist.noticeContent}</td></tr>
+	    </table>
+	    <textarea name="noticeCommentContent" id="noticeCommentContent">
+	    </textarea>
+	    <button id="insertComment" data-bno="${notice.nlist.noticeNo }">댓글 쓰기</button>
+	    <div id="view">
+	    <c:forEach items="${notice.nclist }" var="comment">
+	    <div class="comments">
+	    <div class="number">${comment.noticeCommentNo }</div>
+	    <div class="name">${comment.memberNo }</div>
+	    <div class="contents">${comment.noticeCommentContent }</div>
+	    <div class="date"><fmt:formatDate value="${comment.noticeCommentDate }"  pattern="yyyy년MM월dd일" /></div>
+	    <div class="viewdelete">
+	    <c:if test="${comment.memberNo eq memberNo }">
+	    <a href ="/meoui/noticecomment/delete/${comment.noticeCommentNo }">
+	    <button id="deleteComment">댓글삭제</button>
+	    </a>
+	    </c:if>
+	    </div>
+	    </div>
+	    </c:forEach>
+	    </div>
 </body>
 </html>

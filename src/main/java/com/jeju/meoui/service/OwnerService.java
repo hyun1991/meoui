@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 
 import com.jeju.meoui.dao.*;
+import com.jeju.meoui.dao.test.*;
+import com.jeju.meoui.util.*;
 import com.jeju.meoui.vo.*;
 
 @Service
@@ -34,8 +36,12 @@ public class OwnerService {
 		return dao.ownerLogin(ownerId, ownerPassword);
 	}
 	//	업주리스트 전체조회하기
-	public List<Owner> getAllOwner(){
-		List<Owner>list= dao.selectAllOwner();
-		return list;
+	public HashMap<String, Object> getAllOwner(int pageNo){
+		int cnt= dao.findByDBMax();
+		Pagination pagination= PagingUtil.getPagination(pageNo, cnt);
+		HashMap<String, Object>map= new HashMap<String, Object>();
+		map.put("pagination", pagination);
+		map.put("list", dao.selectAllOwner(pagination.getStartRow(), pagination.getLastRow()));
+		return map;
 	}
 }

@@ -36,7 +36,7 @@ img {
 <body>
 
 	<header>
-		<%@include file="/navbar.jsp"%>
+		<%@include file="/nav/navbar.jsp"%>
 	</header>
 		<div class="container">
 			<div class="row  text-center">
@@ -51,7 +51,7 @@ img {
 						찾아보세요&nbsp、</p>
 					<hr style="border: 2px solid #f76ce4;">
 				</div>
-				<div class="col-md-1 text-center"">
+				<div class="col-md-1 text-center">
 					<p
 						style="writing-mode: vertical-rl; font-family: Gungsuh; font-size: 40px; margin-top: 20px;">아름다운
 						제주에서 새로운</p>
@@ -61,6 +61,13 @@ img {
 			</div>
 
 			<h1 id="headTitle" style="margin-top: 50px;">꽃 한 송이가 그래그래 피었구나,</h1>
+			<a href="/meoui/membermeeting/create">생성 </a>
+			<a href="/meoui/membermeeting/list">리스트</a>
+			<a href="/meoui/membermeeting/ed">에디터</a>
+			<a href="/meoui/meetingjoin/list">내모임</a>
+			
+			
+			
 			<hr style="border: 4px solid #f76ce4; margin-bottom: 50px;">
 			<div class="row  text-center" style="margin-bottom: 50px;">
 				<div class="col-sm-3">

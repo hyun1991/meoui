@@ -5,7 +5,7 @@
 	<!-- 객실 이미지 추가하기 -->
 	<insert id="insertRoomImg" parameterType="RoomImg">
 		<![CDATA[
-			insert into room_img values(#{roomNo}, #{accommodationNo}, #{roomImg})
+			insert into room_img values(#{roomImg}, #{roomNo}, #{accommodationNo})
 		]]>
 	</insert>
 	<!-- 객실 이미지 삭제하기 -->

@@ -20,9 +20,9 @@ public class MemberMeetingDAO {
 		template.insert("MemberMeetingMapper.insertMemberMeeting", memberMeeting);	
 		
 	}
-	
+
 	//모임 수정하기	
-	//번호로 가지고 와서이름 수정
+	//번호로 가지고 와서 이름, 이미지 수정
 	public void updateMeetingName(MemberMeeting memberMeeting){
 		template.update("MemberMeetingMapper.updateMeetingName", memberMeeting);		
 	}
@@ -31,6 +31,11 @@ public class MemberMeetingDAO {
 	//번호로 가지고와서 삭제
 	public void deleteMembeMeeting(int meetingNo){
 		template.delete("MemberMeetingMapper.deleteMembermeeting", meetingNo);
+	}
+	
+	//모임 세부 정보 보기
+	public MemberMeeting selectMeetingView(int meetingNo){
+		return template.selectOne("MemberMeetingMapper.selectMeetingView", meetingNo);
 	}
 	
 	//모임 리스트 출력
@@ -48,8 +53,8 @@ public class MemberMeetingDAO {
 		return template.selectList("MembermeetingMapper.selectMeetingTotal",meetingTotal);	}
 	
 	//내가 가입한 모임 보기
-	public MemberMeeting selectMyMeeting(int memberNo){
-		return template.selectOne("MemberMeetingMapper.selectMyMeeting",memberNo);
+	public List<MemberMeeting> selectMyMeeting(int memberNo){
+		return template.selectList("MemberMeetingMapper.selectMyMeeting",memberNo);
 	}
 	
 	

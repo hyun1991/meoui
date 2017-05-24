@@ -15,7 +15,7 @@
 	
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 		<link rel="stylesheet" type="text/css" href="css/hanjoon.css">
-	<link rel="stylesheet" type="text/css" href="css/sejin.css">
+<link rel="stylesheet" type="text/css" href="css/sejin.css">
 <title>Navigation Bar</title>
 <style>
 @import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
@@ -60,7 +60,7 @@
 			<li class="col-md-2"><a href="/meoui/meetingboard.jsp">모임
 					게시판</a></li>
 			<li class="col-md-2"><a href="/meoui/noticeboard.jsp">공지사항</a></li>
-			<li class="col-md-2"><a href="/meoui/mypage.jsp">마이페이지</a></li>
+			<li class="col-md-2"><a href="/meoui/member/view/{memberId}">마이페이지</a></li>
 		</ul>
 	</nav>
 </body>

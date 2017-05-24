@@ -14,7 +14,10 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 </head>
 <body>
-	<h1>숙박업주 추가페이지</h1>
+	<header>
+	<%@include file="/nav/adminnav.jsp" %>
+	</header>
+	<h1 id="headTitle" style="margin-top: 50px;" align="center">숙박업주 추가</h1>
 	<hr>
 	<form action="/meoui/manage/join" method="post" >
 		<div>

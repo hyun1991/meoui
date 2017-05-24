@@ -49,7 +49,7 @@
 <script type="text/javascript"
 	src="//apis.daum.net/maps/maps3.js?apikey=0733036d66ec867aa0960ee525091024&libraries=services "></script>
 <body>
-	<%@include file="/navbar.jsp"%>
+	<%@include file="/nav/navbar.jsp"%>
 
 
 	<div class="container" id=testarea1>

@@ -68,16 +68,28 @@
 			select*from accommodation where accommodation_no=#{accommodationNo}
 		]]>
 	</select>
-	<!-- 숙박시설DB개수 조회하기 -->
+	<!-- 숙박시설 번호별 여러번 조회 -->
+	<select id="findAllAccommodation" parameterType="int" resultType="Accommodation">
+		<![CDATA[
+			select*from accommodation where accommodation_no=#{accommodationNo}
+		]]>
+	</select>
+	<!-- 기본키MAX값 조회하기 -->
 	<select id="findByAccommodationMax" resultType="int">
 		<![CDATA[
-			select count(accommodation_no)from accommodation
+			select max(accommodation_no)from accommodation
 		]]>
 	</select>
 	<!-- 숙박명별 조회하기 -->
 	<select id="selectByAccommodation" parameterType="String" resultType="Accommodation">
 		<![CDATA[
 			select * from accommodation where accommodation_name=#{accommodationName}
+		]]>
+	</select>
+	<!-- DB개수 조회하기 -->
+	<select id="selectByMax" resultType="int">
+		<![CDATA[
+			select count(*)from accommodation
 		]]>
 	</select>
 </mapper>

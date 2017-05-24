@@ -30,7 +30,13 @@
 	    <typeAlias type="com.jeju.meoui.vo.AccommodationComment" alias="AccommodationComment"/>
 	    <typeAlias type="com.jeju.meoui.vo.Room" alias="Room"/>
 	    <typeAlias type="com.jeju.meoui.vo.RoomImg" alias="RoomImg"/>
-	    <typeAlias type="com.jeju.meoui.vo.Site" alias="Site"/>
-	    <typeAlias type="com.jeju.meoui.vo.siteComment" alias="SiteComment"/>
+	    <typeAlias type="com.jeju.meoui.vo.Site" alias="site"/>
+	    <typeAlias type="com.jeju.meoui.vo.SiteComment" alias="siteComment"/>
+	    <typeAlias type="com.jeju.meoui.vo.Reserve" alias="Reserve"/>
+	    <typeAlias type="com.jeju.meoui.vo.ReserveDetails" alias="ReserveDetails"/>
+	    <typeAlias type="com.jeju.meoui.vo.AgeGroup" alias="Agegroup"/>
+	    <typeAlias type="com.jeju.meoui.vo.Area" alias="Area"/>
+	    <typeAlias type="com.jeju.meoui.vo.Ticket" alias="Ticket"/>
+	    <typeAlias type="com.jeju.meoui.vo.Users" alias="users"/>
 	</typeAliases>
 </configuration>

@@ -10,12 +10,16 @@
 </head>
 <body>
 
-	<div>회원 수정</div>
-	<c:forEach items="${result.list }" var="meeting">
-		번호<input type="text" name="meetingNo" value="${meeting.meetingNo}"
-			id="articleId" />
-		모임명<input type="text" name="meetingName" value="${meeting.meetingName}" />
-		인원<input name="text" value="${meeting.meetingTotalNumber}" />
-	</c:forEach>
+	
+	<h1>모임 수정</h1>
+		<form id="memberMeetingForm" action="/meoui/membermeeting/update" method="POST" enctype="multipart/form-data">
+	
+			모임번호:<input type="text" name="meetingNo" id="meetingNo">${membermeeting.meetingNo}<br>
+			모임명:<input type="text" name="meetingName" id="meetingName">${membermeeting.meetingName}<br>
+			이미지:<input type="file" name="Img" id="meetingImg">${membermeeting.meetingImg}<br>
+			총인원수:<input type="text" name="meetingTotalname" id="meetingTotalName">${membermeeting.meetingTotalNumber}<br>
+			<button id="commit" type="submit">수정하기</button>
+		
+		</form>
 </body>
 </html>

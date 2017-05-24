@@ -38,9 +38,6 @@
                     <div>
                         <button type="button" class="form-control btn btn-primary" id="loginBtn">로그인</button>
                     </div>
-                     <div>
-                        <a href="/meoui/manage/join"><button type="button" class="form-control btn btn-primary">숙박업주 추가하기</button></a>
-                    </div>
                 </form>
             	</div>
         	</div>

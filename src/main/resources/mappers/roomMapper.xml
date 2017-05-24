@@ -29,10 +29,22 @@
 			select * from room where accommodation_no=#{accommodationNo}
 		]]>
 	</select>
+	<!-- 객실번호별 객실조회하기 -->
+	<select id="findByRoomNo" parameterType="int" resultType="Room">
+		<![CDATA[
+			select * from room where room_no=#{roomNo}
+		]]>
+	</select>
 	<!-- 객실종류명별 객실종류번호 조회하기 -->
 	<select id="selectByRoomNo" parameterType="HashMap" resultType="int">
 		<![CDATA[
 			select room_no from room where room_name=#{roomName} and accommodation_no=#{accommodationNo}
+		]]>
+	</select>
+	<!-- 객실번호 MAX번호 조회하기 -->
+	<select id="selectByRoomNoMax" resultType="int">
+		<![CDATA[
+			select max(room_no)from room
 		]]>
 	</select>
 </mapper>
