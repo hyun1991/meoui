@@ -53,8 +53,8 @@ public class MemberMeetingDAO {
 		return template.selectList("MembermeetingMapper.selectMeetingTotal",meetingTotal);	}
 	
 	//내가 가입한 모임 보기
-	public MemberMeeting selectMyMeeting(int memberNo){
-		return template.selectOne("MemberMeetingMapper.selectMyMeeting",memberNo);
+	public List<MemberMeeting> selectMyMeeting(int memberNo){
+		return template.selectList("MemberMeetingMapper.selectMyMeeting",memberNo);
 	}
 	
 	

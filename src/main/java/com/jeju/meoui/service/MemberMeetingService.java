@@ -54,9 +54,14 @@ public class MemberMeetingService {
 		return dao.selectMeetingTotal(meetingTotal);
 	}
 	//내가 가입한 모임 보기
-	public MemberMeeting selectMyMeeting(int memberNo){
-		return dao.selectMyMeeting(memberNo);
-	}	
+	public HashMap<String, Object> selectMyMeeting(int memberNo){
+		HashMap<String, Object>map= new HashMap<String, Object>();
+		List<MemberMeeting>list = dao.selectMyMeeting(memberNo);
+		map.put("list", list);		
+		logger.info("멤버미팅 내모임리스트:{}", list);
+		return map;
+	}
+	
 	
 	
 }

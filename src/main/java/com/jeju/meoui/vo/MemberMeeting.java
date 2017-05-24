@@ -22,4 +22,5 @@ public class MemberMeeting {
 		this.meetingImg = meetingImg;
 	}
 	
+	
 }
