@@ -130,10 +130,15 @@ a.cbtn:hover {
 						<textarea class="form-control" rows="3" name="messageContent" id="messageContent">
 						</textarea>
 					</div><br>
-						<input type="hidden" name="memberNo" value="<%=session.getAttribute("memberNo")%>">
+						<input type="hidden" name="memberNo" id="memberNo" value="<%=session.getAttribute("memberNo")%>">
+					<div></div>
+					<div class="form-group">
+					<button type="button" class="w3-button w3-block w3-white w3-border" id="messageBtn">
+					발송하기</button>
+				</div>
 				<div class="btn-r">
-					<a href="#" class="cbtn">발송</a>
-					<a href="/meoui/message/list?memberId=<%=session.getAttribute("memberId") %>&pageNo=1" class="cabtn">취소</a>
+					<a href="#" class="cbtn">홈으로</a>
+					<a href="/meoui/message/list?memberId=<%=session.getAttribute("memberId") %>&pageNo=1" class="cabtn">쪽지함</a>
 				</div>
 				<!--// content-->
 			</div>
@@ -155,6 +160,36 @@ a.cbtn:hover {
 	</div>
 </body>
 <script type="text/javascript">
+	$(document).ready(function() {
+		$("#messageBtn").on("click", function() {
+			alert("안녕하세요")
+			var memberId= "<%=session.getAttribute("memberId")%>"
+			var messageReceiveId= $("#messageReceiveId").val();
+			var messageTitle= $("#messageTitle").val();
+			var messageContent= $("#messageContent").val();
+			var memberNo= $("#memberNo").val();
+			alert(memberId)
+			alert(messageContent)
+			alert(memberNo)
+			ajax({
+				type : "post",
+				url : "/meoui/message/join",
+				data : {memberId:memberId, messageReceiveId:messageReceiveId, messageTitle:messageTitle,
+				messageContent:messageContent, memberNo: memberNo},
+				success : function(result) {
+					alert("성공")
+					console.log(result)
+					if (result == "success") {
+						alert("쪽지발송이 완료 되었습니다.")
+						window.location.href="/meoui/";
+					} 
+					else {
+						alert("쪽지발송이 실패 하였습니다.")
+					}
+				}
+			})
+		})
+	})
 	function layer_open(el) {
 		var temp = $('#' + el); //레이어의 id를 temp변수에 저장
 		var bg = temp.prev().hasClass('bg'); //dimmed 레이어를 감지하기 위한 boolean 변수
@@ -177,27 +212,7 @@ a.cbtn:hover {
 				$('.layer').fadeOut();
 			} else {
 				temp.fadeOut(); //'발송'버튼을 클릭하면 레이어가 사라진다.
-				var memberId= $("#memberId").val();
-				var messageReceiveId= $("#messageReceiveId").val();
-				var messageTitle= $("#messageTitle").val();
-				var messageContent= $("#messageContent").val();
-				var memberNo= $("#memberNo").val();
-				ajax({
-					type : "post",
-					url : "/meoui/message/join",
-					data : {memberId:memberId, messageReceiveId:messageReceiveId, messageTitle:messageTitle,
-					messageContent:messageContent, memberNo: memberNo},
-					success : function(result) {
-						console.log(result)
-						if (result == "success") {
-							alert("쪽지발송이 완료 되었습니다.")
-							window.location.href="/meoui/";
-						} 
-						else {
-							alert("쪽비발송이 실패 하였습니다.")
-						}
-					}
-				})
+				window.location.href="/meoui/";
 			}
 			e.preventDefault();
 		});
