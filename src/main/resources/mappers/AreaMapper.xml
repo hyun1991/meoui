@@ -15,7 +15,7 @@
 	
 	<!-- 3.지역 삭제 -->
 	<delete id="deleteArea" parameterType="int">
-		delete from Area where area_no=#{area_no}
+		delete from Area where area_no=#{area_name}
 	</delete>
 	
 	<!-- 4.지역 관광지 삭제 -->
@@ -25,7 +25,7 @@
 	
 	<!-- 5.지역별 관광지 조회 -->
 	<select id="selectSiteByArea" parameterType="String" resultType="Area">
-	select a.area_name, a.details_address, s.site_name from area a ,site s where a.site_no=s.site_no and area_no=#{area_no}
+	select a.area_name, a.details_address, s.site_name from area a ,site s where a.site_no=s.site_no and area_name=#{area_name}
 	</select>
 	
 </mapper>

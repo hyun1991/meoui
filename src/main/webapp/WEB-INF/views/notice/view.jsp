@@ -30,11 +30,11 @@ $(function() {
 		    	window.location.reload();
 			}	
 		})
-	})
-	$("#view").on("click", ".deleteComments", function() {
+	})	
+	$("#deleteComments").on("click", function() {
 		$.ajax({
  		url:"/meoui/noticecomment/"+$(this).data("cno"),
-	    type:"post",
+	    type:"delete",
 	    headers : {noticeNo: $(this).data("bno")}, 
 		dataType:"json",
 		success: function() {
@@ -64,11 +64,9 @@ $(function() {
 	    <div class="name">${comment.memberNo }</div>
 	    <div class="contents">${comment.noticeCommentContent }</div>
 	    <div class="date"><fmt:formatDate value="${comment.noticeCommentDate }"  pattern="yyyy년MM월dd일" /></div>
-	    <div class= "delete">
 	    <c:if test="${comment.memberNo eq memberNo }">
-	    	<button class="deleteComment" data-cno="${comment.noticeCommentNo }" data-bno="${notice.nlist.noticeNo }">댓글삭제</button>
+	    <button id="deleteComment" data-cno="${comment.noticeCommentNo }" data-bno="${comment.noticeNo }">댓글삭제</button>
 	    </c:if>
-	    </div>
 	    </div>
 	    </c:forEach>
 	    </div>

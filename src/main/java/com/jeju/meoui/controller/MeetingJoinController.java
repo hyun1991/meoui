@@ -16,7 +16,7 @@ public class MeetingJoinController {
 
 	@Autowired
 	private MeetingJoinService service;
-	private static final Logger logger= LoggerFactory.getLogger(MemberMeetingController.class);
+	private static final Logger logger= LoggerFactory.getLogger(MeetingJoin.class);
 
 	
 	//모임 가입하기
@@ -24,19 +24,5 @@ public class MeetingJoinController {
 	public String insertMeetingJoin(@ModelAttribute MeetingJoin meetingJoin){
 		return "membermeeting/view";
 	}	
-	
-	
-		
-	
-	//가입한 리스트 보기
-	@RequestMapping(value="/meetingjoin/list", method=RequestMethod.GET)
-	public String selectMyMeeting(Model model, HttpSession session){
-		int memberNo = (Integer)session.getAttribute("memberNo");
-		model.addAttribute("result", service.selectMyMeeting(memberNo));
-		logger.info("가입한 리스트 보기 :[]", model);
-		return "meetingjoin/list";
-				
-	}
-	
 	
 }

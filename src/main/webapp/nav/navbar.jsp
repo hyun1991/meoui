@@ -53,7 +53,7 @@ span {
 			</div>
 			<div class="row">
 				<ul class="nav navbar-nav">
-					<li class="navMenu"><a href="/meoui/attractionlist.jsp"
+					<li class="navMenu"><a href="/meoui/site/list?pageNo=1"
 						style="color: #424242;"><span
 							class="glyphicon glyphicon glyphicon-grain" style="color: green;"></span>
 							관광 명소</a></li>

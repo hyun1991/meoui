@@ -27,15 +27,15 @@ public class MemberDAOTest {
 	//	@Test
 	//	회원 리스트 조회하기(성공)
 	public void selectAllTest(){
-		List<Member>list= dao.selectAllMember();
-		assertThat(list.size(), is(0));
+		//List<Member>list= dao.selectAllMember();
+		//assertThat(list.size(), is(0));
 	}
 	//	@Test
 	//	회원 아이디 탈퇴(성공)
 	public void delete(){
 		dao.deleteMember("admin");
-		List<Member>list= dao.selectAllMember();
-		assertThat(list.size(), is(0));
+		//List<Member>list= dao.selectAllMember();
+		//assertThat(list.size(), is(0));
 	}
 	//	@Test
 	public void selectList(){
@@ -45,7 +45,7 @@ public class MemberDAOTest {
 	}
 	@Test
 	public void idcheck(){
-		dao.selectAllMember();
+		//dao.selectAllMember();
 		String id= "admin";
 		int result= dao.checkId(id);
 		assertThat(result, is(1));

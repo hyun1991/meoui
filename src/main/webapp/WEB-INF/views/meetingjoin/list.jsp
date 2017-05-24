@@ -12,7 +12,7 @@
 	</header>
 <body>
 	
-	<h2>나의 모임 게시판</h2>
+	<h2>나의 모임 목록</h2>
 	<hr>
 	<c:forEach items="${result.list }" var="meeting">
 		모임번호:<a href="/meoui/membermeeting/update/{meetingNo}">${meeting.meetingNo }</a><br>

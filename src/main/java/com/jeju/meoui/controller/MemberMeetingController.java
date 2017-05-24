@@ -1,19 +1,23 @@
 package com.jeju.meoui.controller;
 
-import javax.annotation.*;
-import javax.servlet.*;
-import javax.servlet.http.*;
+import javax.annotation.Resource;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
-import org.slf4j.*;
-import org.springframework.beans.factory.annotation.*;
-import org.springframework.stereotype.*;
-import org.springframework.ui.*;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
-import com.jeju.meoui.service.*;
-import com.jeju.meoui.util.*;
-import com.jeju.meoui.vo.*;
+import com.jeju.meoui.service.MemberMeetingService;
+import com.jeju.meoui.util.UploadUtil;
+import com.jeju.meoui.vo.MemberMeeting;
 
 @Controller
 public class MemberMeetingController {
@@ -46,22 +50,32 @@ public class MemberMeetingController {
 		return "redirect:/membermeeting/list";
 	}
 
-	//모임 업데이트(작업완료)
+	//모임 수정(작업완료)
 	@RequestMapping(value="/membermeeting/update/{meetingNo}", method=RequestMethod.GET)
 	public String updateMemberMeeting(){
 		return "membermeeting/update";
 	}
 	
+	
 	//모임수정 완료
 	@RequestMapping(value="/membermeeting/update/{meetingNo}", method=RequestMethod.POST)
 	public String updateMemberMeeting(@RequestParam String meetingName, @RequestParam String memberName,
 			@RequestParam("Img")MultipartFile meetingImg 
-	,HttpSession session, @PathVariable int meetingNo, @PathVariable int meetingTotalNumber){
+	,HttpSession session, @PathVariable int meetingNo){
 		MemberMeeting memberMeeting= new MemberMeeting();
-		session.setAttribute("meetingTotalNumber",meetingTotalNumber);
 		memberMeeting.setMeetingName(meetingName);
 		service.updataMeetingName(memberMeeting);
+		logger.info("멤머미팅완료 멤버넘버:{}", meetingNo);
 		return "redurect:/membermeeting/list";
+	}
+	
+	//모임 상세 보기
+	@RequestMapping(value="/memberMeeting/view/{meetingNo}", method=RequestMethod.GET)
+	public String selectMeetingView(@PathVariable int meetingNo, Model model, HttpSession session){
+		session.setAttribute("meetingNo", meetingNo);
+		model.addAttribute("result",service.selectMeetingView(meetingNo));
+		logger.info("멤머미팅 멤버넘버:{}", meetingNo);
+		return "membermeeting/view";
 	}
 	
 	//모임 삭제
@@ -83,6 +97,14 @@ public class MemberMeetingController {
 		model.addAttribute("result", service.selectAllmemberMeetingList());
 		return "membermeeting/list";
 	}
-	
+	//가입한 모임 리스트 보기
+	@RequestMapping(value="/meetingjoin/list", method=RequestMethod.GET)
+	public String selectMyMeeting(Model model, HttpSession session){
+			int memberNo = (Integer)session.getAttribute("memberNo");		
+			model.addAttribute("result", service.selectMyMeeting(memberNo));
+			logger.info("멤버미팅 가입한 리스트 보기 :[]", model);
+			return "meetingjoin/list";
+					
+		}
 	
 }
