@@ -20,7 +20,7 @@
 	 -->
 	<update id="updateMember" parameterType="Member">
 		<![CDATA[
-			update member set member_password=#{memberPassword}, member_name=#{memberName}, member_phone=#{memberPhone}, member_address=#{memberAddress}, member_email=#{memberEmail}, member_job=#{memberJob},
+			update member set member_password=#{memberPassword}, member_name=#{memberName}, member_phone=#{memberPhone}, member_address=#{memberAddress}, member_mail=#{memberMail}, member_job=#{memberJob},
 			member_hobby=#{memberHobby} where member_id=#{memberId} and member_no=#{memberNo} 
 		]]>
 	</update>

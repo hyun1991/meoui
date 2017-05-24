@@ -29,18 +29,20 @@ public class MemberController {
 		service.createMember(member);
 		return "redirect:/";
 	}
-	//	2-1. 회원수정 폼뷰(미구현)
+	//	2-1. 회원수정 폼뷰()
 	@RequestMapping(value="/member/update/{memberId}", method=RequestMethod.GET)
 	public String updateMember(@PathVariable String memberId, Model model){
 		model.addAttribute("result", service.getByMember(memberId));
-		return "수정폼 페이지 필요";
+		return "member/update";
 	}
-	//	2-2. 회원수정 완료(미구현)
+	//	2-2. 회원수정 완료()
 	@RequestMapping(value="/member/update", method=RequestMethod.POST)
-	public String updateMember(@ModelAttribute Member member, HttpSession session){
+	public String updateMember(@ModelAttribute Member member, @RequestParam String memberAddress1, @RequestParam String memberAddress2, HttpSession session){
 		logger.info("회원수정 vo:{}", member);
+		String memberAddress= memberAddress1+memberAddress2;
+		member.setMemberAddress(memberAddress);
 		service.modifyMember(member);
-		return "redirect:/logout";
+		return "redirect:/member/view/"+member.getMemberId();
 	}
 	//	3. 회원탈퇴(완료)
 	@RequestMapping(value="/member/delete", method=RequestMethod.POST)
@@ -52,7 +54,7 @@ public class MemberController {
 		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}
 	
-	//	5. 회원별 정보조회하기(미완료)
+	//	5. 회원별 정보조회하기(완료)
 	@RequestMapping(value="/member/view/{memberId}", method=RequestMethod.GET)
 	public String viewMember(@PathVariable String memberId, Model model){
 		model.addAttribute("result", service.getByMember(memberId));
