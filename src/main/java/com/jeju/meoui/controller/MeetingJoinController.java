@@ -30,7 +30,7 @@ public class MeetingJoinController {
 		meetingJoin.setMemberNo(memberNo);
 		service.createMeetingJoin(meetingJoin);
 		logger.info("미팅조인:{}", meetingJoin);
-		logger.info("미팅조인:", meetingNo);
+		logger.info("미팅조인:{}", meetingNo);
 		return "redirect:/membermeeting/list";
 		
 	}
