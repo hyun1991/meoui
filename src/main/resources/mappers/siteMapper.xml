@@ -58,5 +58,9 @@
 		select site_no, site_name from site
 	</select>
 
+	<!-- 8. 관광지 마지막 번호 -->
+	<select id="selectMaxSiteNo" resultType="int">
+		select max(site_no) from site
+	</select>
 	
 </mapper>

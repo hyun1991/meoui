@@ -19,18 +19,13 @@ public class SiteService {
 	private static final Logger logger = LoggerFactory.getLogger(SiteService.class);
 	@Autowired
 	private SiteDAO dao;
-	@Autowired
-	private AreaDAO aDao;
-	@Autowired
-	private TicketDAO tDao;
+
 	@Autowired
 	private SiteCommentDAO commentdao;
 	
 	// 1.관광지 추가
-	public void createSite(Site site, Area area , Ticket ticket ){
+	public void createSite(Site site  ){
 		dao.insertSite(site);
-		aDao.insertArea(area);
-		tDao.insetTicket(ticket);
 		
 		/*
 		 * public void createRoom(Room room, RoomImg roomImg){
@@ -46,16 +41,12 @@ public class SiteService {
 	// 2.관광지 수정
 	public void modifySite(Site site, Area area ,Ticket ticket ){
 		dao.updateSite(site);
-		aDao.updateArea(area);
-		tDao.insetTicket(ticket);
 	}
 	
 	// 3.관광지 삭제
 	@Transactional
 	public void removeSite(String siteName , int siteNo){
 		dao.deleteSite(siteName);
-		tDao.deleteTicket(siteNo);
-		aDao.deleteSiteArea(siteNo);
 		commentdao.deleteAllSiteComment(siteNo);
 	}
 	
@@ -72,7 +63,9 @@ public class SiteService {
 		
 	}
 	
-	// 5.이름으로 관광지 조회
+	
+	
+	// 6.이름으로 관광지 조회
 	public Site selectSiteByName(String siteName){
 		return dao.selectSiteByName(siteName);
 	}
