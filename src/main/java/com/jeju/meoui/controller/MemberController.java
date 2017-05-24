@@ -87,4 +87,10 @@ public class MemberController {
 		else 
 			return new ResponseEntity<String>("fail", HttpStatus.OK);
 	}
+	//	9. 관리자에게 제공되는 회원 전체리스트
+	@RequestMapping(value="/admin/member", method=RequestMethod.GET)
+	public String selectAllMember(Model model, @RequestParam(defaultValue="1") int pageNo){
+		model.addAttribute("result", service.selectAllMember(pageNo));
+		return "member/memberlist";
+	}
 }

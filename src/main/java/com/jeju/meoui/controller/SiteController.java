@@ -34,11 +34,15 @@ public class SiteController {
 	// 관광지 추가 성공
 	@RequestMapping(value="/site/join", method=RequestMethod.POST)
 	public String insertSite( Site site, Area area, Ticket ticket, @RequestParam("img") MultipartFile siteImg){
+		Site si = new Site();
+		//int usersNo = (Integer)session.getAttribute("usersNo");
 		String fileName = UploadUtil.storeAndGetFileName(siteImg, ctx, path);
+		si.setSiteImg(fileName);
 		service.createSite(site, area, ticket);
-		return "redirect:/meoui";
+		return "redirect:/site/list";
 	}
 	
+
 	// 관광지 수정 폼
 	@RequestMapping(value="/site/update", method=RequestMethod.GET)
 	public String updateSite(){
