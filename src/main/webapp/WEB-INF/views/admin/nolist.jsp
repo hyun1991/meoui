@@ -48,7 +48,7 @@ h4 {
 </style>
 <body>
 	<header>
-		<%@include file="/nav/navbar.jsp"%>
+		<%@include file="/nav/adminnav.jsp"%>
 	</header>
 	<div class="container" id="container">
 		<div class="row">
@@ -103,8 +103,5 @@ h4 {
 			</div>
 		</div>
 	</div>
-	<footer>
-		<%@include file="/footer.jsp"%>
-	</footer>
 </body>
 </html>
