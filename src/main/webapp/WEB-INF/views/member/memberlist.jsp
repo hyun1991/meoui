@@ -10,21 +10,8 @@
 </head>
 <body>
 	<header>
-	<%@include file="/nav/ownernav.jsp" %>
+	<%@include file="/nav/adminnav.jsp" %>
 	</header>
-	<!-- 
-	private int memberNo;					//	회원번호(PK)
-	private String memberId;				//	회원아이디
-	private String memberPassword;			//	패스워드
-	private String memberName;				//	이름
-	private String memberPhone;				//	연락처
-	private String memberAddress;			//	주소지
-	private String memberMail;				//	이메일
-	private String memberJob;				//	직업
-	private String memberGender;			//	성별
-	private Date memberStartdate;			//	가입일
-	private String memberHobby;				//	취미
-		 -->
 	<h1 id="headTitle" style="margin-top: 50px;" align="center">회원 전체리스트</h1>
 	<hr>
 		<table class="table table-striped table-bordered table-hover">
@@ -35,8 +22,9 @@
                 <th>연락처</th>
                 <th>성별</th>
                 <th>가입일</th>
+                <th>비고<th>
             </tr>
-        </thead>
+        	</thead>
         <tbody>
 			<c:forEach items="${result.list }" var="member">
 				<tr>
@@ -44,7 +32,9 @@
 					<td>${member.memberName }</td>
 					<td>${member.memberPhone }</td>
 					<td>${member.memberGender }</td>
-					<td>${member.memberStartdate }</td>
+					<td><fmt:formatDate value="${member.memberStartdate }" pattern="yyyy년MM월dd일"/></td>
+					<td><a href="/meoui/admin/member/delete/${member.memberId }"><button type="button" class="w3-button w3-block w3-white w3-border">
+						추방</button></a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
