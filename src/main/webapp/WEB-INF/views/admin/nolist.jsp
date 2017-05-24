@@ -103,5 +103,8 @@ h4 {
 			</div>
 		</div>
 	</div>
+	<a href="/meoui/notice/join">
+	<button id="insertNotice">글 작성</button>
+	</a>
 </body>
 </html>

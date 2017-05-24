@@ -59,21 +59,16 @@ public class NoticeController {
 	}
 	//6. 공지게시판 상세보기
 	@RequestMapping(value="/notice/view/{noticeNo}", method=RequestMethod.GET)
-	public String selectByNoticeNo(@PathVariable int noticeNo, Model model){
+	public String selectByNoticeNo(@PathVariable int noticeNo, Model model, HttpSession session){
+		session.setAttribute("noticeNo", noticeNo);
 	     model.addAttribute("notice", service.findByNotice(noticeNo));
 	     return "/notice/view";
 	}
 	@RequestMapping(value="/noticecomment/delete/{noticeCommentNo}", method=RequestMethod.GET)
 	public String deleteNoticeComment(@PathVariable int noticeCommentNo, HttpSession session){
-		System.out.println("댓글번호"+noticeCommentNo);
 		int memberNo= (Integer)session.getAttribute("memberNo");
-		System.out.println(memberNo);
-		int noticeNo=(Integer)session.getAttribute("noticeNo");
-		System.out.println("서비스 시작전");
-		System.out.println(memberNo);
-		System.out.println(noticeCommentNo);
+		int noticeNo= (Integer)session.getAttribute("noticeNo");
 		cservice.removeNoticeComment(noticeCommentNo,memberNo);
-		System.out.println("실행완료");
 		return "redirect:/notice/view/"+noticeNo;
 	}
 

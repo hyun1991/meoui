@@ -25,7 +25,6 @@ public class NoticeCommentDAO {
 	 }
  //4.공지게시판 댓글 삭제 (단일 삭제)
    public void deleteComment(int noticeCommentNo, int memberNo){
-	   System.out.println("DAO");
 	   HashMap<String, Object>map = new HashMap<String, Object>();
 	   map.put("noticeCommentNo", noticeCommentNo);
 	   map.put("memberNo", memberNo);
