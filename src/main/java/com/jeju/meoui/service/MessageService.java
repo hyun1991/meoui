@@ -32,7 +32,7 @@ public class MessageService {
 		HashMap<String, Object>map= new HashMap<String, Object>();
 		int memberNo= memberDao.selectByMemberNo(memberId);
 		System.out.println("회원기본키"+memberNo);
-		int cnt= dao.findDBMax(memberNo);
+		int cnt= dao.findDBMax();
 		System.out.println("db개수"+cnt);
 		Pagination pagination= PagingUtil.getPagination(pageNo, cnt);
 		System.out.println(pagination);

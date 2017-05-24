@@ -1,5 +1,7 @@
 package com.jeju.meoui.controller;
 
+import java.util.*;
+
 import javax.servlet.http.*;
 
 import org.slf4j.*;
@@ -16,12 +18,13 @@ import com.jeju.meoui.vo.*;
 public class MessageController {
 	@Autowired
 	private MessageService service;
+	@Autowired
+	private MemberService mService;
 	private static final Logger logger= LoggerFactory.getLogger(MessageController.class);
 	
 	//	쪽지 리스트 출력하기(미구현)
 	@RequestMapping(value="/message/list", method=RequestMethod.GET)
 	public String messageAllList(@RequestParam String memberId, Model model, @RequestParam(defaultValue="1") int pageNo){
-		System.out.println("111111111111111111111111111111111111111111111");
 		model.addAttribute("result", service.getAllMessage(memberId, pageNo));
 		return "massage/myMassage";
 	}
@@ -33,16 +36,17 @@ public class MessageController {
 		service.modifyMessage(memberId, messageNo);
 		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}
-	//	쪽지발송 폼 (미구현)
-	@RequestMapping(value="/message/join", method=RequestMethod.GET)
-	public String joinMessage(){
-		return "쪽지발송jsp";
-	}
-	//	쪽지발송 완료(미구현)
+
+	//	쪽지발송 완료(완료)
 	@RequestMapping(value="/message/join", method=RequestMethod.POST)
-	public String joinMessage(@ModelAttribute Message message){
-		service.createMessage(message);
-		return "redirect:/";		//	쪽지발송 후 redirect할 곳.
+	public ResponseEntity<String> joinMessage(@ModelAttribute Message message){
+		int result= mService.checkId(message.getMessageReceiveId());
+		if(result==1){
+			service.createMessage(message);
+			return new ResponseEntity<String>("success", HttpStatus.OK);
+		}
+		else
+			return new ResponseEntity<String>("fail", HttpStatus.OK);
 	}
 	
 	//	쪽지상세보기(미구현)

@@ -36,8 +36,8 @@
  </delete>
  
  <!-- 6. 사용자 번호별 쪽지 db개수 체크하기 -->
- <select id="findDBMax" parameterType="int" resultType="int">
- 		select count(message_no)from message where member_no=${memberNo}
+ <select id="findDBMax" resultType="int">
+ 		select count(*)from message
  </select>
  
  <!-- 4. 회원번호별 쪽지리스트 조회하기 -->

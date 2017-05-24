@@ -27,6 +27,7 @@ public class MessageDAO {
 	//	쪽지리스트 조회하기
 	public List<Message> selectAllMessage(int memberNo,int startRow, int lastRow){
 		HashMap<String, Object>map= new HashMap<String, Object>();
+		map.put("memberNo", memberNo);
 		map.put("startRow", startRow);
 		map.put("lastRow", lastRow);
 		return template.selectList("MessageMapper.selectAllMessage", map);
@@ -46,9 +47,8 @@ public class MessageDAO {
 		return template.selectOne("MessageMapper.selectByMessage", map);
 	}
 	//	사용자 번호별 쪽지 DB개수 체크
-	public int findDBMax(int memberNo){
-		System.out.println("33333333333333333333333");
-		return template.selectOne("MessageMapper.findDBMax", memberNo);
+	public int findDBMax(){
+		return template.selectOne("MessageMapper.findDBMax");
 	}
 
 }
