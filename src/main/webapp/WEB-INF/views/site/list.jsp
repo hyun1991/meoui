@@ -27,7 +27,8 @@
 	</div><br>
 
 	
-	</c:forEach><div class="row text-center">
+	</c:forEach>
+	<div class="row text-center">
 					<ul class="pagination pagination-md">
 						<li><c:if test="${result.pagination.prev>0 }">
 								<a href="/meoui/notice/list?pageNo=${result.pagination.prev }">이전으로</a>

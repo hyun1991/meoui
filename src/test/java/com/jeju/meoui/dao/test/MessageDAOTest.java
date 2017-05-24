@@ -34,8 +34,8 @@ public class MessageDAOTest {
 	public void update(){
 		int messageNo= 42;
 		int memberNo= 62;
-		dao.updateMessage(memberNo, messageNo);
-	}
+	//	dao.updateMessage(memberNo, messageNo);
+	}//
 	//	@Test
 	public void selectAll(){
 		//List<Message>list= dao.selectAllMessage(62);

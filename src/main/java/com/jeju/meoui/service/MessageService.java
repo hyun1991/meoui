@@ -5,9 +5,9 @@ import java.util.*;
 import org.slf4j.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
+import org.springframework.transaction.annotation.*;
 
 import com.jeju.meoui.dao.*;
-import com.jeju.meoui.dao.test.*;
 import com.jeju.meoui.util.*;
 import com.jeju.meoui.vo.*;
 
@@ -22,51 +22,42 @@ public class MessageService {
 	public void createMessage(Message message){
 		dao.insertMessage(message);
 	}
-	//	쪽지수정하기
-	public void modifyMessage(String memberId, int messageNo){
-		int memberNo= memberDao.selectByMemberNo(memberId);
-		dao.updateMessage(memberNo, messageNo);
-	}
+
 	//	회원별 쪽지리스트 조회하기
-	public HashMap<String, Object> getAllMessage(String memberId, int pageNo){
+	public HashMap<String, Object> getAllMessage(String messageReceiveId, int pageNo){
 		HashMap<String, Object>map= new HashMap<String, Object>();
-		int memberNo= memberDao.selectByMemberNo(memberId);
-		System.out.println("회원기본키"+memberNo);
-		int cnt= dao.findDBMax();
-		System.out.println("db개수"+cnt);
+		int cnt= dao.findDBMax(messageReceiveId);
 		Pagination pagination= PagingUtil.getPagination(pageNo, cnt);
-		System.out.println(pagination);
-		List<Message> message= dao.selectAllMessage(memberNo,pagination.getStartRow(), pagination.getLastRow());
-		ArrayList<Message>mesList= new ArrayList<Message>();
+		List<Message> message= dao.selectAllMessage(messageReceiveId ,pagination.getStartRow(), pagination.getLastRow());
+		ArrayList<Message>okMessage= new ArrayList<Message>();
+		ArrayList<Message>failMessage= new ArrayList<Message>();
 		for(Message ms:message){
-			Message mes= new Message();
-			if(ms.getMessageReceiveCheck()==0)
-				mes.setCheck("안읽음");
-			else
+			if(ms.getMessageReceiveCheck()==0){
+				Message mes= new Message(ms.getMessageNo(), ms.getMemberNo(), ms.getMessageReceiveId(), ms.getMessageSendId(),ms.getMessageTitle(),ms.getMessageContent(), ms.getMessageDate(), ms.getMessageReceiveDate());
+				mes.setCheck("읽지않음");
+				okMessage.add(mes);
+			}
+			else{
+				Message mes= new Message(ms.getMessageNo(), ms.getMemberNo(), ms.getMessageReceiveId(), ms.getMessageSendId(),ms.getMessageTitle(),ms.getMessageContent(), ms.getMessageDate(), ms.getMessageReceiveDate());
 				mes.setCheck("읽음");
-			mesList.add(mes);
+				failMessage.add(mes);
+			}
+			System.out.println(ms);
 		}
-		map.put("message", message);
-		map.put("list", mesList);
+		map.put("okMessage", okMessage);
+		map.put("failMessage", failMessage);
 		map.put("pagination", pagination);
 		return map;
-		/*
-		 * int cnt= dao.findByMemberMax();
-		Pagination pagination= PagingUtil.getPagination(pageNo, cnt);
-		logger.info("페이징,{}",pagination.getStartPaging());
-		logger.info("페이징,{}",pagination.getLastPaging());
-		HashMap<String, Object>map= new HashMap<String, Object>();
-		map.put("pagination", pagination);
-		map.put("list", dao.selectAllMember(pagination.getStartRow(), pagination.getLastRow()));
-		return map;
-		 * */
+		
 	}
 	// 쪽지삭제하기
-	public void removeMessage(int memberId, int messageNo){
-		dao.deleteMessage(memberId, messageNo);
+	public void removeMessage(int messageNo){
+		dao.deleteMessage(messageNo);
 	}
 	//	쪽지상세보기
-	public Message getByMessage(int memberId, int messageNo){
-		return dao.selectByMessage(memberId, messageNo);
+	@Transactional
+	public Message getByMessage(int messageNo){
+		dao.updateMessage(messageNo);
+		return dao.selectByMessage(messageNo);
 	}
 }

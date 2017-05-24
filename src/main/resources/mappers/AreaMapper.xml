@@ -28,6 +28,10 @@
 	select a.area_name, a.details_address, s.site_name from area a ,site s where a.site_no=s.site_no and area_name=#{area_name}
 	</select>
 	
+	<!-- 6.마지막 지역번호 조회 -->
+	<select id="selectMaxAreaNo" resultType="int">
+		select max(area_no) from area_no
+	</select>
 </mapper>
 
 <!-- 

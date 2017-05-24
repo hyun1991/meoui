@@ -45,4 +45,9 @@ public class SiteDAO {
 	public List<Site> selectSiteList(){
 		return template.selectList("siteMapper.selectSiteList");
 	}
+	
+	// 8.마지막 관광지 번호
+	public int maxSiteNo(){
+		return template.selectOne("siteMapper.selectMaxSiteNo");
+	}
 }

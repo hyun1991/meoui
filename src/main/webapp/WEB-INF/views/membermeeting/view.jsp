@@ -4,34 +4,108 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
+<style>
+@
+keyframes menuBlink { 0% {
+	opacity: 0
+}
+
+49%{
+opacity
+:
+
+0
+}
+50%{
+opacity
+:
+
+1
+}
+}
+#headTitle, .step {
+	font-family: 'Jeju Gothic', serif;
+}
+
+@
+keyframes menuBlink { 0% {
+	opacity: 0
+}
+
+49%{
+opacity
+
+:
+
+0
+}
+50%{
+opacity
+
+
+:
+
+
+
+1
+}
+}
+.glyphicon-home {
+	animation: menuBlink 1s infinite;
+}
+
+img {
+	width: 100%;
+	height: auto;
+}
+
+.btn {
+	background-color: white;
+	color: #orange;
+	margin: 30px;
+}
+</style>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<script type="text/javascript"
+	src="//apis.daum.net/maps/maps3.js?apikey=0733036d66ec867aa0960ee525091024&libraries=services "></script>
 <body>
-	<h2>모임 보기</h2>
-	모임번호:<input type="text" id="meetingNo" name="meetingNo" style = "text-align:right;" value="${meeting.meetingNo}"readonly ><br>
-	모임이름:<input type="text" id="meetingName" name="meetingName" value="${meeting.meetingName }"readonly ><br>
-	모임이미지:<img src="/meoui/images/${meeting.meetingImg}"><br>
-	모임인원 :${meeting.meetingTotalNumber}명<br>
-	모임 관리자:${meeting.meetingAdminNo }<br><br>
-	세션에 저장된 멤버 번호 :"<%=session.getAttribute("memberNo")%>"
-	세션에 저장된 미팅 번호 :"<%=session.getAttribute("meetingNo")%>"
-	<form action ="" method=post>
-			<button id="commit" type="submit">회원 가입하기</button>
-	</form>	
+	<header>
+		<%@include file="/nav/navbar.jsp"%>
+	</header>
+	<h2>상세 뷰</h2>
+	<div class="row text-center">
+		<div class="col-sm-3">
+			<a href="/meoui/membermeeting/view/${meeting.meetingNo}"> <img
+				class="image-responsive" src="/meoui/images/${meeting.meetingImg}"
+				alt="skinscuber" style="margin-bottom: 20px;">
+			</a>
+
+			<p>
+				<a href="/meoui/membermeeting/view/${meeting.meetingNo}"> <strong>${meeting.meetingName }</strong>
+				</a>
+			</p>
+			<p>
+				<a href="/meoui/membermeeting/view/${meeting.meetingNo}">
+					${meeting.meetingTotalNumber }명</a>
+			</p>
+			<form action="" method=post>
+				<button id="commit" type="submit"
+					class="w3-button w3-block w3-white w3-border">회원 가입하기</button>
+			</form>
+			<form action="/meoui/membermeeting/update" method="GET">
+				<button id="commit" type="submit"
+					class="w3-button w3-block w3-white w3-border">모임수정하기</button>
+			</form>
+		</div>
+	</div>
+	<footer>
+		<%@include file="/footer.jsp"%>
+	</footer>
 </body>
 <script>
-	$(document).ready(function() {
-		var memberNo= "<%=session.getAttribute("memberNo")%>"
-		
-		var meetingNo= "<%=session.getAttribute("meetingNo")%>"
-		$("#commit").on("click", function() {
-		if(meetingNo===meetingNo)
-				alert("가입 완료")
-			else
-				alert("가입 실패")
-		})
-	})
-	</script>
+	
+</script>
 </html>

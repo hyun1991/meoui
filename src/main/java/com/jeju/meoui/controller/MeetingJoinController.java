@@ -20,7 +20,7 @@ public class MeetingJoinController {
 
 	
 
-	//모임 가입하기
+	//모임 가입하기(완료)
 	@RequestMapping(value="membermeeting/view/{meetingNo}", method=RequestMethod.POST)
 	public String insertMeetingJoin(@PathVariable int meetingNo, HttpSession session, Model model){
 		MeetingJoin meetingJoin = new MeetingJoin();
@@ -30,8 +30,16 @@ public class MeetingJoinController {
 		meetingJoin.setMemberNo(memberNo);
 		service.createMeetingJoin(meetingJoin);
 		logger.info("미팅조인:{}", meetingJoin);
-		logger.info("미팅조인:", meetingNo);
-		return "/membermeeting/list";
+		logger.info("미팅조인:{}", meetingNo);
+		return "redirect:/membermeeting/list";
 		
+	}
+	
+	//모임 탈퇴하기
+	@RequestMapping(value="membermeeting/view/", method=RequestMethod.GET)
+	public String deleteMeeting(@PathVariable int memberNo, HttpSession session){
+		memberNo = (Integer)session.getAttribute("memberNo");
+		service.deleteMeetingJoin(memberNo);
+		return "redirect:membermeeting/list";
 	}
 }
