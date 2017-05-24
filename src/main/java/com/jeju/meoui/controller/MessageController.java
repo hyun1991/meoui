@@ -1,7 +1,5 @@
 package com.jeju.meoui.controller;
 
-import java.util.*;
-
 import javax.servlet.http.*;
 
 import org.slf4j.*;
@@ -40,6 +38,7 @@ public class MessageController {
 	//	쪽지발송 완료(완료)
 	@RequestMapping(value="/message/join", method=RequestMethod.POST)
 	public ResponseEntity<String> joinMessage(@ModelAttribute Message message){
+		logger.info("쪽지발송중입니다");
 		int result= mService.checkId(message.getMessageReceiveId());
 		if(result==1){
 			service.createMessage(message);
