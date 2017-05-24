@@ -32,7 +32,8 @@ public class MeetingJoinService {
 		HashMap<String, Object>map= new HashMap<String, Object>();
 		List<MemberMeeting>list = dao.selectMyMeeting(memberNo);
 		map.put("list", list);
-		logger.info("내모임리스트:{}", list);
+		
+		logger.info("미팅조인 내모임리스트:{}", list);
 		return map;
 	}
 	

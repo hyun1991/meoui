@@ -1,13 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-		 가입 완료
-		 <button onClick="location.href='/meoui/membermeeting/create'">모임생성하기</button>
+	<h2>모임 보기</h2>
+	<div><h3>모임번호:</h3>${result.membermeeting.meetingNo}</div><br>
+	<div><h3>모임이름:</h3>${result.membermeeting.meetingName }</div>
+	<div><h3>모임사진:</h3>${result.membermeeting.meetingImg }</div>
+	<div><h3>모임인원:</h3>${result.membermeeting.meetingToTalNumber }</div>
+	<hr>
 </body>
 </html>

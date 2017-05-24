@@ -35,8 +35,16 @@
 			select meeting_no, meeting_name, meeting_img, meeting_total_number, meeting_admin_no
 			from member_meeting
 		]]>		
-	</select>	
+		
+		</select>
+	<!-- 모임 세부정보 보기 -->
+	<select id= "selectMeetingView" resultType="MemberMeeting" parameterType="int">
+		<![CDATA[
+			select meeting_no, meeting_name, meeting_img, meeting_total_number, meeting_admin_no
+			from member_meeting where meeting_no=#{meetingNo}
+		]]>
 	
+	</select>		
 	<!-- 모임명으로 검색  -->
 	<select id = "selectMeetingName" parameterType="String" resultType="MemberMeeting">
 	<![CDATA[
