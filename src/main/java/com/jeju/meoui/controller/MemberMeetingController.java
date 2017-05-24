@@ -50,7 +50,7 @@ public class MemberMeetingController {
 		return "redirect:/membermeeting/list";
 	}
 
-	//모임 업데이트(작업완료)
+	//모임 수정(작업완료)
 	@RequestMapping(value="/membermeeting/update/{meetingNo}", method=RequestMethod.GET)
 	public String updateMemberMeeting(){
 		return "membermeeting/update";
@@ -61,11 +61,11 @@ public class MemberMeetingController {
 	@RequestMapping(value="/membermeeting/update/{meetingNo}", method=RequestMethod.POST)
 	public String updateMemberMeeting(@RequestParam String meetingName, @RequestParam String memberName,
 			@RequestParam("Img")MultipartFile meetingImg 
-	,HttpSession session, @PathVariable int meetingNo, @PathVariable int meetingTotalNumber){
+	,HttpSession session, @PathVariable int meetingNo){
 		MemberMeeting memberMeeting= new MemberMeeting();
-		session.setAttribute("meetingTotalNumber",meetingTotalNumber);
 		memberMeeting.setMeetingName(meetingName);
 		service.updataMeetingName(memberMeeting);
+		logger.info("멤머미팅완료 멤버넘버:{}", meetingNo);
 		return "redurect:/membermeeting/list";
 	}
 	
@@ -97,6 +97,14 @@ public class MemberMeetingController {
 		model.addAttribute("result", service.selectAllmemberMeetingList());
 		return "membermeeting/list";
 	}
-	
+	//가입한 모임 리스트 보기
+	@RequestMapping(value="/meetingjoin/list", method=RequestMethod.GET)
+	public String selectMyMeeting(Model model, HttpSession session){
+			int memberNo = (Integer)session.getAttribute("memberNo");		
+			model.addAttribute("result", service.selectMyMeeting(memberNo));
+			logger.info("멤버미팅 가입한 리스트 보기 :[]", model);
+			return "meetingjoin/list";
+					
+		}
 	
 }
