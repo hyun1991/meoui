@@ -32,6 +32,15 @@ public class SiteService {
 		aDao.insertArea(area);
 		tDao.insetTicket(ticket);
 		
+		/*
+		 * public void createRoom(Room room, RoomImg roomImg){
+		dao.insertRoom(room);
+		int roomNo= dao.selectByRoomNoMax();
+		logger.info("객실번호:{}", roomNo);
+		roomImg.setRoomNo(roomNo);
+		roomImgDao.insertRoomImg(roomImg);
+		 */
+		
 	}
 	
 	// 2.관광지 수정
@@ -59,15 +68,7 @@ public class SiteService {
 		map.put("pagination", pagination);
 		map.put("list", list);
 		return map;
-		/*
-		 * int cntOfRow = dao.findByMax();
-    Pagination p = PagingUtil.getPagination(pageNo, cntOfRow);
-    List<Notice> list = dao.selectNoticeList(p.getStartRow(), p.getLastRow());
-    HashMap<String, Object>map= new HashMap<String, Object>();
-    map.put("pagination", p);
-    map.put("list", list);
-    return map;
-		 */
+
 		
 	}
 	
