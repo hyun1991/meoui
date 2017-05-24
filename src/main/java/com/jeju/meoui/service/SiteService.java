@@ -19,14 +19,12 @@ public class SiteService {
 	private static final Logger logger = LoggerFactory.getLogger(SiteService.class);
 	@Autowired
 	private SiteDAO dao;
-
 	@Autowired
 	private SiteCommentDAO commentdao;
 	
 	// 1.관광지 추가
-	public void createSite(Site site  ){
+	public void createSite(Site site){
 		dao.insertSite(site);
-		
 		/*
 		 * public void createRoom(Room room, RoomImg roomImg){
 		dao.insertRoom(room);
@@ -62,7 +60,6 @@ public class SiteService {
 
 		
 	}
-	
 	
 	
 	// 6.이름으로 관광지 조회

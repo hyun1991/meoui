@@ -19,6 +19,7 @@ public class Site {
 	private String siteNightOpen;
 	private String siteNightCloseTime;
 	private String detailsAddress;
+	private String area;
 	private int usersNo;
 	public Site(String siteName, int sitePark, String siteObject, String siteImg, String siteIntroduce,
 			String siteHomepage, String sitePhone, String siteOpenTime, String siteCloseTime, String siteNightOpen,

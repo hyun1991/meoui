@@ -77,10 +77,4 @@ public class SiteController {
 		return "site/list";
 	}
 	
-	// 관광지 이름으로 검색
-	@RequestMapping(value="/site/view" , method=RequestMethod.GET)
-	public String siteByName(Model model , @PathVariable String siteName){
-		model.addAttribute("result", service.selectSiteByName(siteName));
-		return "site/view";
-	}
 }
