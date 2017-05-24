@@ -46,7 +46,13 @@ public class NoticeController {
 		model.addAttribute("result",service.getByNotice(pageNo));
 		return "/notice/list";
 	}
-	//5. 공지게시판 상세보기
+	//5. 공지사항 페이지별 조회하기(관리자용)
+	@RequestMapping(value="/admin/notice/list", method=RequestMethod.GET)
+	public String getAllAdminNotice(@RequestParam(defaultValue="1") int pageNo,Model model){
+		model.addAttribute("result",service.getByNotice(pageNo));
+		return "/admin/nolist";
+	}
+	//6. 공지게시판 상세보기
 	@RequestMapping(value="/notice/view/{noticeNo}", method=RequestMethod.GET)
 	public String selectByNoticeNo(@PathVariable int noticeNo, Model model){
 	     model.addAttribute("notice", service.findByNotice(noticeNo));
