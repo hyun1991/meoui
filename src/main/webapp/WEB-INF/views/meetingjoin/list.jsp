@@ -17,13 +17,10 @@
 	<c:forEach items="${result.list }" var="meeting">
 		모임번호:<a href="/meoui/membermeeting/update/{meetingNo}">${meeting.meetingNo }</a><br>
 		모임명: ${meeting.meetingName }<br>
-		모임이미지:	<a
-						href="/meoui/membermeeting/list/${meeting.meetingImg}">
-						<img class="image-responsive"
-						src="/meoui/images/${meeting.meetingImg}"
+		모임이미지:	<a href="/meoui/membermeeting/list/${meeting.meetingImg}">
+						<img class="image-responsive" src="/meoui/images/${meeting.meetingImg}"
 						alt="skinscuber" style="margin-bottom: 20px;">
-					</a>
-						<br>
+					</a><br>
 		인원수: ${meeting.meetingTotalNumber }<br>
 	</c:forEach>
 </body>

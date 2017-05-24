@@ -62,16 +62,17 @@
 				${comment.accommodationCommentContent}
 			</div>
 		<c:forEach items="${result.member }" var="member">
-			<div class="form-group">
+			<div class="btn-r">
 				작성자: ${member.memberId }
 			</div>
 		</c:forEach>
 			<div class="form-group">평점: ${comment.accommodationCommentAvg}점</div>
 			<div class="form-group">작성일: <fmt:formatDate value="${comment.accommodationCommentDate}" pattern="yyyy년 MM월 dd일" /></div>	
-			<div class="container">
-			<a href="/meoui/accommodationComment/delete/${comment.accommodationCommentNo }">
+			 <div class="viewdelete">
+			<c:if test="${comment.memberNo eq memberNo }">
+	    	<a href ="/meoui/accommodationComment/delete/${comment.accommodationCommentNo }">
 			<button type="button" class="w3-button w3-block w3-white w3-border" id="deleteBtn">댓글 삭제하기</button>
-			</a></div>
+			</a></c:if></div>
 			<hr>
 		</div>
 	</c:forEach>
@@ -83,14 +84,8 @@
 </body>
 <script>
 	$(document).ready(function() {
-		var memberNo= "<%=session.getAttribute("memberNo")%>"
-		var commentMemberNo= $("#memberNo").val();
 		$("#deleteBtn").on("click", function() {
-			if(memberNo===commentMemberNo)
-				alert("댓글 삭제가 완료되었습니다.")
-			else
-				alert("댓글 작성자가 아닙니다.")
-		})
+			alert("댓글이 삭제되었습니다")
 	})
 </script>
 </html>

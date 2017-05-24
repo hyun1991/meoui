@@ -14,7 +14,10 @@
 	<!-- 2. 모임탈퇴 -->
 	<delete id="deleteMeetingJoin" parameterType="int">
 		<![CDATA[
-			delete from meeting_join where member_no=#{memberNo})
+			delete from meeting_join where 
+			member_no=(select meeting_admin_no from member_meeting where meeting_no=#{meetingNo}) 
+			and meeting_no=#{meetingNo};
+
 		]]>
 	</delete>	
 	<!-- 3. 가입한 모임 보기 -->

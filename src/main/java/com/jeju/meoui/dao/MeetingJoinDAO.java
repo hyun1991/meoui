@@ -21,8 +21,7 @@ public class MeetingJoinDAO {
 		template.insert("MeetingJoin.insertMeetingJoin",meetingJoin);
 		
 	}
-	
-	
+		
 	//모임 탈퇴하기
 	public void deleteMeetingJoin(int memberNo){
 		template.delete("MeetingJoin.deleteMeetingJoin",memberNo);

@@ -34,11 +34,16 @@ public class MessageDAOTest {
 	public void update(){
 		int messageNo= 42;
 		int memberNo= 62;
-		dao.updateMessage(memberNo, messageNo);
-	}
+	//	dao.updateMessage(memberNo, messageNo);
+	}//
 	//	@Test
 	public void selectAll(){
-		List<Message>list= dao.selectAllMessage(62);
-		assertThat(list.size(), is(2));
+		//List<Message>list= dao.selectAllMessage(62);
+		//assertThat(list.size(), is(2));
+	}
+	@Test
+	public void listTest(){
+		int memberNo= 152;
+		//dao.findDBMax(memberNo);
 	}
 }
