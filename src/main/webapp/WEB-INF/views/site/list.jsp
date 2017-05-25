@@ -12,6 +12,9 @@
 	<header>
 		<%@include file="/nav/navbar.jsp"%>
 	</header>
+	<div class="form-group">
+							<a href="/meoui/view.jsp" class="btn btn-default">이름으로 찾기</a> 
+				</div>
 	
 	<c:forEach items="${result.list }" var="result">
 	<div><img src="/meoui/images/${result.siteImg}"></div><br>
@@ -43,6 +46,7 @@
 					</ul>
 					
 				</div>
+				
 	<footer>
 		<h1>1 Follow Us Canada's New Passenger Bill of Rights Bans
 			Removal in Cases of Overbooking https://t.co/K2aizs9IKo

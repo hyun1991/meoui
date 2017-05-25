@@ -17,11 +17,10 @@ public class SiteAjaxController {
 	public static final Logger logger = LoggerFactory.getLogger(SiteController.class);
 	@Autowired
 	private SiteService service;
-	@Autowired
 
 	
 	// 관광지 이름으로 검색
-	@RequestMapping(value="/site/view" , method=RequestMethod.POST)
+	@RequestMapping(value="/site/view" , method= {RequestMethod.GET, RequestMethod.POST})
 	public Site siteByName(String siteName){
 		return service.selectSiteByName(siteName);
 	}
