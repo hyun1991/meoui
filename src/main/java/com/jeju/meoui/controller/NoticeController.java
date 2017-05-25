@@ -23,9 +23,11 @@ public class NoticeController {
 	}
 	//1. 공지게시판 추가하기(추가 성공)
 	@RequestMapping(value="/notice/join", method=RequestMethod.POST)
-	public String insertNotice(@ModelAttribute Notice notice){
+	public String insertNotice(@ModelAttribute Notice notice,  HttpSession session){
+		int usersNo = (Integer)session.getAttribute("usersNo");
+		notice.setUsersNo(usersNo);
 		service.createNotice(notice);
-		return "redirect:/notice/list?pageNo=1";
+		return "redirect:/admin/notice/list?pageNo=1";
 	}
 	//2. 공지게시판 갱신하기(작성폼)
 	@RequestMapping(value="/notice/update", method=RequestMethod.GET)
@@ -37,7 +39,7 @@ public class NoticeController {
 	@RequestMapping(value="/notice/update", method=RequestMethod.POST)
 	public String updateNotice(Notice notice){
 		service.modifyNotice(notice);
-		return "redirect:/notice/list?pageNo=1";
+		return "redirect:/admin/notice/list?pageNo=1";
 	}
 	//3. 공지게시판 삭제
 	@RequestMapping(value="/notice/delete/{noticeNo}", method=RequestMethod.DELETE)

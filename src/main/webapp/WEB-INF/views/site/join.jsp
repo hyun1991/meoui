@@ -11,13 +11,13 @@
 	<form action="/meoui/site/join" method="post" enctype="multipart/form-data">
 		<div>
 			<div class="form-group">
-				<label>관광지 번호</label><input type="number" id="siteNo" name="siteNo" class="form-control">
+				<label>관광지 번호</label><input type="text" id="siteNo" name="siteNo" class="form-control">
 			</div>
 			<div class="form-group">
 				<label>관광지 이름</label><input type="text" id="siteName" name="siteName" class="form-control">
 			</div>
 			<div class="form-group">
-				<label>주차 유무</label><input type="number" id="sitePark" name="sitePark" class="form-control">
+				<label>주차 유무</label><input type="text" id="sitePark" name="sitePark" class="form-control">
 			</div>
 			<div class="form-group">
 				<label>관광지 전화번호</label><input type="text" id="sitePhone" name="sitePhone" class="form-control">
@@ -47,23 +47,9 @@
 				<label>야간개장 시 폐장시간</label><input type="text" id="siteNightCloseTime" name="siteNightCloseTime" class="form-control">
 			</div>
 			<div class="form-group">
-				<label>관리자 번호</label><input type="number" id="usersNo" name="usersNo" class="form-control">
+				<label>관리자 번호</label><input type="text" id="usersNo" name="usersNo" class="form-control">
 			</div>
-			<div class="form-group">
-				<label>지역 번호</label><input type="number" id="areaNo" name="areaNo" class="form-control">
-			</div>
-			<div class="form-group">
-				<label>지역 이름</label><input type="text" id="areaName" name="areaName" class="form-control">
-			</div>
-			<div class="form-group">
-				<label>상세주소</label><input type="text" id="areaDetailsAddress" name="areaDetailsAddress" class="form-control">
-			</div>
-			<div class="form-group">
-				<label>연령대</label><input type="number" id="agegroupStandared" name="agegroupStandared" class="form-control">
-			</div>
-			<div class="form-group">
-				<label>티켓</label><input type="number" id="TicketPrice" name="TicketPrice" class="form-control">
-			</div>
+		
 			<div class="btn-group">
 				<input type="submit" value="관광지 추가" id="confirmBtn" class="btn btn-primary">
 			</div>

@@ -35,8 +35,8 @@
 		s.site_night_open, s.site_night_close_time, a.area_name, a.details_address 
 		from site s , area a 
 		where s.site_no=a.site_no) a1
-		where rownum<=#{lastRow}
-		) where rnum>=#{startRow}
+		where rownum<=#{last}
+		) where rnum>=#{start}
 		]]>
 	</select>
 	
@@ -45,7 +45,7 @@
 		select s.site_name, s.site_park , s.site_object, s.site_img, s.site_introduce, s.site_homepage, s.site_open_time , s.site_close_time, s.site_phone,
 		s.site_night_open, s.site_night_close_time, a.area_name, a.details_address 
 		from site s , area a 
-		where s.site_no=a.site_no and s.site_name=#{site_name};
+		where s.site_no=a.site_no and s.site_name=#{s.site_name}
 	</select>
 	
 	<!-- 6. 관광지 개수 -->
@@ -58,5 +58,9 @@
 		select site_no, site_name from site
 	</select>
 
+	<!-- 8. 관광지 마지막 번호 -->
+	<select id="selectMaxSiteNo" resultType="int">
+		select max(site_no) from site
+	</select>
 	
 </mapper>
