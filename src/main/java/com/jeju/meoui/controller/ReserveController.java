@@ -22,7 +22,14 @@ public class ReserveController {
 	@Autowired
 	private ReserveService service;
 	private Logger logger= LoggerFactory.getLogger(ReserveController.class);
-
+	
+	//	객실예약 폼 구성
+	@RequestMapping(value="/reserve/join", method=RequestMethod.GET)
+	public String createReserverStart(@RequestParam int roomNo, @RequestParam int roomPrice, HttpSession session){
+		session.setAttribute("roomNo", roomNo);
+		session.setAttribute("roomPrice", roomPrice);
+		return "reserve/reserveForm";
+	}
 	//	객실예약 추가완료
 	@RequestMapping(value="/reserve/join", method=RequestMethod.POST)
 	public ResponseEntity<String> createReserve(@ModelAttribute Reserve reserve, BindingResult result, @RequestParam int roomNo , HttpSession session){
@@ -35,6 +42,8 @@ public class ReserveController {
 		logger.info("checktIn:{}", reserve.getCheckIn());
 		logger.info("checktOut:{}", reserve.getCheckOut());
 		service.createReserve(reserve, session);
+		session.removeAttribute("roomPrice");
+		session.removeAttribute("roomNo");
 		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}
 	@InitBinder

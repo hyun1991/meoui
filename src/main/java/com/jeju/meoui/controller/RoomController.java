@@ -71,7 +71,7 @@ public class RoomController {
 		session.setAttribute("ownerNo", ownerNo);
 		//	예약완료후 ownerNo세션에서 제거한다.
 		model.addAttribute("result", service.getByRoom(accommodationNo));
-		return "room/view";
+		return "room/roomStart";
 	}
 	//	객실, 객실이미지 정보 조회하기(accommodationNo받는다)(완료, 관리자단)
 	@RequestMapping(value="/menage/room/view/{accommodationNo}", method=RequestMethod.GET)

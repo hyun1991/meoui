@@ -56,7 +56,7 @@
 	</form>
 	<hr>
 	<c:forEach items="${result.comment }" var="comment">
-		<div class="container">
+		<div >
 			<input type="hidden" id="memberNo" value="${comment.memberNo }">
 			<div class="form-group">
 				${comment.accommodationCommentContent}

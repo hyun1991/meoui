@@ -62,6 +62,7 @@ public class ReserveService {
 				acResult.add(accommodationNo);
 				//	roomNo만 저장되어있는 List
 				for(Integer acNoResult: acResult){
+					System.out.println(acNoResult);
 					List<Accommodation> resultAc= acDao.findAllAccommodation(acNoResult);
 					map.put("ac", resultAc);
 					for(Integer roomNoResult: roomResult){
