@@ -10,7 +10,6 @@ import org.springframework.stereotype.*;
 import org.springframework.ui.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.*;
-import org.springframework.web.servlet.*;
 
 import com.jeju.meoui.service.*;
 import com.jeju.meoui.util.*;
@@ -33,15 +32,21 @@ public class SiteController {
 	
 	// 관광지 추가 성공
 	@RequestMapping(value="/site/join", method=RequestMethod.POST)
-	public String insertSite( Site site, Area area, Ticket ticket, @RequestParam("img") MultipartFile siteImg){
-		Site si = new Site();
+	public String insertSite(@ModelAttribute Site site,   @RequestParam("img") MultipartFile siteImg , @RequestParam String detailsAdress ){
 		//int usersNo = (Integer)session.getAttribute("usersNo");
 		String fileName = UploadUtil.storeAndGetFileName(siteImg, ctx, path);
-		si.setSiteImg(fileName);
-		service.createSite(site, area, ticket);
+		site.setSiteImg(fileName);
+		service.createSite(site);
 		return "redirect:/site/list";
 	}
-	
+	/*
+	 * String fileName= UploadUtil.storeAndGetFileName(roomImg, ctx, path);
+		room.setAccommodationNo(accommodationNo);
+		ri.setAccommodationNo(accommodationNo);
+		ri.setRoomImg(fileName);
+		logger.info("객실이미지1:{}", ri);
+		service.createRoom(room, ri);
+	 */
 
 	// 관광지 수정 폼
 	@RequestMapping(value="/site/update", method=RequestMethod.GET)
@@ -71,10 +76,26 @@ public class SiteController {
 		return "site/list";
 	}
 	
-	// 관광지 이름으로 검색
-	@RequestMapping(value="/site/view" , method=RequestMethod.GET)
-	public String siteByName(Model model , @PathVariable String siteName){
-		model.addAttribute("result", service.selectSiteByName(siteName));
-		return "site/view";
+	
+	/*
+	//이름으로 검색
+	@RequestMapping(value="/site/view", method=RequestMethod.GET)
+	public String selectSiteNameForm(HttpSession session, @RequestParam String siteName){
+		session.setAttribute("siteName", siteName);
+		return "/site/view";
 	}
+	
+	//이름으로 검색 뷰
+	@RequestMapping(value="/site/view", method=RequestMethod.POST)
+	public String selectsiteName(Model model, HttpSession session, String siteName){
+		String siteName1 = (String)session.getAttribute("siteName");
+		model.addAttribute(service.selectSiteByName(siteName1));
+		logger.info("사이트에서보는 {} :", siteName1);
+		return "redirect:/site/list";
+	}
+	*/
+	
+	
+	
+	
 }

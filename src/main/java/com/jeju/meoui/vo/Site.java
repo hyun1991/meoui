@@ -19,6 +19,7 @@ public class Site {
 	private String siteNightOpen;
 	private String siteNightCloseTime;
 	private String detailsAddress;
+	private String area;
 	private int usersNo;
 	public Site(String siteName, int sitePark, String siteObject, String siteImg, String siteIntroduce,
 			String siteHomepage, String sitePhone, String siteOpenTime, String siteCloseTime, String siteNightOpen,
@@ -36,5 +37,24 @@ public class Site {
 		this.siteNightOpen = siteNightOpen;
 		this.siteNightCloseTime = siteNightCloseTime;
 	}
+	public Site(int siteNo, String siteName, int sitePark, String siteObject, String siteImg, String siteIntroduce,
+			String siteHomepage, String sitePhone, String siteOpenTime, String siteCloseTime, String siteNightOpen,
+			String siteNightCloseTime, int usersNo) {
+		super();
+		this.siteNo = siteNo;
+		this.siteName = siteName;
+		this.sitePark = sitePark;
+		this.siteObject = siteObject;
+		this.siteImg = siteImg;
+		this.siteIntroduce = siteIntroduce;
+		this.siteHomepage = siteHomepage;
+		this.sitePhone = sitePhone;
+		this.siteOpenTime = siteOpenTime;
+		this.siteCloseTime = siteCloseTime;
+		this.siteNightOpen = siteNightOpen;
+		this.siteNightCloseTime = siteNightCloseTime;
+		this.usersNo = usersNo;
+	}
+	
 	
 }

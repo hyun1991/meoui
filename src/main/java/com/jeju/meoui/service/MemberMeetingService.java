@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 
 import com.jeju.meoui.dao.*;
-import com.jeju.meoui.dao.test.*;
 import com.jeju.meoui.vo.*;;
 
 @Service
@@ -15,11 +14,21 @@ public class MemberMeetingService {
 	
 	@Autowired
 	private MemberMeetingDAO dao;
+	@Autowired
+	private MeetingJoinDAO joindao;
+	
 	private Logger logger= LoggerFactory.getLogger(MemberMeetingService.class);
 	//모임생성
-	public void createMemberMeeting(MemberMeeting memberMeeting){
+	public void createMemberMeeting(MemberMeeting memberMeeting, MeetingJoin meetingJoin){
 		dao.insertMemberMeeting(memberMeeting);
+		dao.selectMaxMeetingNo();
+		joindao.insertMeetingJoin(meetingJoin);
 	}
+	//마지막 번호 찾기
+	public int selectMaxMeetingNo(){
+		return dao.selectMaxMeetingNo();
+	}
+	
 	
 	//모임수정
 	public void updataMeetingName(MemberMeeting memberMeeting){
