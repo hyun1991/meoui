@@ -5,10 +5,69 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<meta charset=UTF-8">
+<title>관광명소 페이지</title>
+<style>
+@
+keyframes menuBlink { 0% {
+	opacity: 0
+}
+
+49%{
+opacity
+:
+ 
+0
+}
+50%{
+opacity
+:
+1
+}
+}
+#headTitle, .step {
+	font-family: 'Jeju Gothic', serif;
+}
+
+@
+keyframes menuBlink { 0% {
+	opacity: 0
+}
+
+49%{
+opacity
+
+
+:
+
+
+0
+}
+50%{
+opacity
+
+
+:
+
+
+1
+}
+}
+.glyphicon-home {
+	animation: menuBlink 1s infinite;
+}
+
+img {
+	width: 100%;
+	height: auto;
+}
+
+.btn {
+	background-color: white;
+	color: #orange;
+	margin: 30px;
+}
+</style>
 </head>
 <body>
 	<header>
@@ -55,5 +114,4 @@
 			https://t.co/lb8fklloIp Twitter | 29 mins ago</h1>
 	</footer>
 </body>
-
 </html>

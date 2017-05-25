@@ -32,7 +32,7 @@
 							<label for="usr">체크아웃:</label>
 							<fmt:formatDate value="${reserve.checkOut}" pattern="yyyy년 MM월 dd일" /><br>
 							<div class="form-group">
-								<a href="/meoui/reserve/delete/${reserve.reserveNo }"><button type="button" class="w3-button w3-block w3-white w3-border">
+								<a href="/meoui/manage/reserve/delete?reserveNo=${reserve.reserveNo }&memberNo=${reserve.memberNo}"><button type="button" class="w3-button w3-block w3-white w3-border">
 								예약취소</button></a>
 							</div>
 						</c:forEach>
