@@ -16,51 +16,44 @@
 <title>Insert title here</title>
 </head>
 <body>
-		<header>
+	<header>
 		<%@include file="/nav/navbar.jsp"%>
 	</header>
 	<div class="container">
 		<div class="row">
 			<h2>관광지 찾기</h2>
-			<br>
-			</div>
-				<div class="row">
-			<br>
-			<div class="tab-content">
-				<div id="findId" class="tab-pane fade in active">
-					<form action="/meoui//member/idsearch" method="post">
+			
+					<form action="/meoui/site/view" method="post">
 						<div class="form-group row">
 							<div class="form-group col-md-6">
-								<label for="usr">이름</label> <input type="text"
-									class="form-control" id="findSite">
+								<label for="usr">이름</label> 
+								<input type="text"class="form-control" id="siteName" name="siteName">
 							</div>
-						</div>
-						<div class="form-group row">
-							<p id="target">
-							<div class="modal-footer">
-								<button type="button" class="btn btn-default" id="findSite">조회</button>
+							<div>
+								<button type="submit" class="btn btn-default" id="findSite">조회</button>
 							</div>
-						</div>
-					</form>
-				</div>
-				
-			</div>
+					</div>
+			</form>
+			<br>
 		</div>
-	</div>
+		</div>
 </body>
 <script>
 	$(document).ready(function() {
+
 		$("#findSite").on("click", function() {
-			var siteName= $("#siteName").val()
 			$.ajax({
 				type:"post",
 				url:"/meoui/site/view",
-				data:{siteName:siteName},
-				success:function(resultt){
+				data:{siteName:$("#siteName").val()},
+				success:function(response){
+					alert(result)
 					$("#target").html(result)
 				}
 			})
 		})
 	})	
+	
+	
 </script>
 </html>

@@ -23,5 +23,7 @@ public class SiteAjaxController {
 	@RequestMapping(value="/site/view" , method= {RequestMethod.GET, RequestMethod.POST})
 	public Site siteByName(String siteName){
 		return service.selectSiteByName(siteName);
+		
 	}
+
 }
