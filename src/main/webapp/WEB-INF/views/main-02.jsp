@@ -5,6 +5,27 @@
 <head>
 <meta charset=UTF-8">
 <title>Insert title here</title>
+<style>\
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+nav {
+	margin-bottom: 0;
+}
+
+header {
+	background-image: url(/meoui/images/hareubang.jpg);
+	background-size: 300 500;
+	background-repeat: no-repeat;
+}
+
+#menu {
+	font-family: 'Jeju Gothic', serif;
+}
+
+#text, p, header {
+	color: black;
+}
+</style>
 </head>
 <body>
 	<div class="logoInfo">

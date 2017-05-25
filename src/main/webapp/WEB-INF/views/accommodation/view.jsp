@@ -12,48 +12,32 @@
 	<header>
 		<%@include file="/nav/navbar.jsp"%>
 	</header>
-
-	<div class="form-group">
-	<img src="/meoui/images/${result.accommodation.accommodationImg}">
-	</div><br>
-	<div class="form-group"><h3>숙박시설이름:</h3>
-	${result.accommodation.accommodationName }</div><br>
-	<div class="form-group">
-	<h3>대표전화:</h3>${result.accommodation.accommodationPhone }</div>
-	<div class="form-group">
-	<h3>시설위치:</h3>${result.accommodation.accommodationAddress }</div>
-	<input type="hidden" value="${result.accommodation.ownerNo }" id="ownerNo">
-	<div class="form-group">
-	<a href="/meoui/room/view/${result.accommodation.accommodationNo }&${result.accommodation.ownerNo }">
-	<button type="button" class="w3-button w3-block w3-white w3-border">객실정보 조회하기</button></a></div>
-	<div class="form-group">
-	<a href="/meoui/accommodaion/list?pageNo=1"><button type="button" class="w3-button w3-block w3-white w3-border">
-	리스트로 이동</button></a></div>
-	<hr>
-	<div><h2>오시는길</h2></div><br>
-	<div><img src="/meoui/images/${result.accommodation.accommodationDirections}"></div><br>
-	<hr>
-	<form action="/meoui/accommodationComment/insert" method="post">
-		<div class="form-group">
-			<textarea class="form-control col-sm-5" rows="5" 
-			placeholder="댓글을 작성해 주세요." name="accommodationCommentContent">
-			</textarea>
+	<div class="container">
+		<hr>
+		<div class="row">
+			<div class="col-md-4">
+				<table  class="table table-striped table-bordered table-hover">
+					<tbody>
+						<tr><th rowspan="4"><img src="/meoui/images/${result.accommodation.accommodationImg}">
+						</th>
+						<td colspan="2" width="200"><h5>숙박시설이름:</h5>${result.accommodation.accommodationName }
+						</td></tr>
+						<tr><td colspan="2" width="200"><h5>대표전화:</h5>${result.accommodation.accommodationPhone }
+						</td></tr>
+						<tr><td colspan="2" width="200"><h5>시설위치:</h5>${result.accommodation.accommodationAddress }</td>
+						<td></tr>
+						<tr><td colspan="2" width="200"><a href="/meoui/room/view/${result.accommodation.accommodationNo }&${result.accommodation.ownerNo }">
+							<button type="button" class="w3-button w3-block w3-white w3-border">객실정보 조회하기</button></a>
+						<a href="/meoui/accommodaion/list?pageNo=1"><button type="button" class="w3-button w3-block w3-white w3-border">
+							리스트로 이동</button></a></td></tr>
+						<tr><td><input type="hidden" value="${result.accommodation.ownerNo }" id="ownerNo"></td></tr>
+						<tr><td colspan="3"><h2>오시는길</h2></td></tr>
+						<tr><td colspan="3"><img src="/meoui/images/${result.accommodation.accommodationDirections}"></td></tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
-		<div class="form-group">
-		<select class="form-control" name="accommodationCommentAvg">
-			<option value="">선택</option>
-			<option value="0">☆☆☆☆☆</option>
-			<option value="1">★☆☆☆☆</option>
-			<option value="2">★★☆☆☆</option>
-			<option value="3">★★★☆☆</option>
-			<option value="4">★★★★☆</option>
-			<option value="5">★★★★★</option>
-		</select>
-		</div>
-		<div class="form-group">
-		<button type="submit" class="w3-button w3-block w3-white w3-border">댓글작성</button>
-		</div>
-	</form>
+	</div>
 	<hr>
 	<c:forEach items="${result.comment }" var="comment">
 		<div >

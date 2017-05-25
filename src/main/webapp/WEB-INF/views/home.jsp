@@ -28,6 +28,7 @@ header {
 #text, p, header {
 	color: black;
 }
+#followquick { position:absolute; top:180px; right:50%; margin-right:-670px; }
 </style>
 <body>
 
@@ -38,8 +39,6 @@ header {
 		<img src="/meoui/images/hareubang.jpg"></img>
 		<hr style="border: 4px solid black; margin-bottom: 50px;">
 	</div>
-
-
 	<%@include file="/footer.jsp"%>
 </body>
 <script>
@@ -51,6 +50,4 @@ header {
 		}
 	});
 </script>
-
-
 </html>

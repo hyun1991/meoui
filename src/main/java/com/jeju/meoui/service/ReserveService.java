@@ -64,20 +64,34 @@ public class ReserveService {
 				for(Integer acNoResult: acResult){
 					System.out.println(acNoResult);
 					List<Accommodation> resultAc= acDao.findAllAccommodation(acNoResult);
-					map.put("ac", resultAc);
-					for(Integer roomNoResult: roomResult){
-						List<Room>resultRoom= roomDao.findByRoomNo(roomNoResult);
+					for(int i=0; i<resultAc.size(); i++){
+						map.put("ac", resultAc);
+						continue;
+					}
+					logger.info("숙박시설:{}", resultAc);
+					continue;
+				}
+				for(Integer roomNoResult: roomResult){
+					List<Room>resultRoom= roomDao.findByRoomNo(roomNoResult);
+					for(int i=0; i<resultRoom.size(); i++){
 						map.put("room", resultRoom);
 					}
+					logger.info("룸:{}", resultRoom);
+					continue;
 				}
 			}
+			continue;
 		}
 		map.put("list", list);
+		logger.info("서비스단 맵:{}", map);
 		return map;
 	}
 	//	예약취소하기
+	@Transactional
 	public void removeReserve(int reserveNo, int memberNo){
+		System.out.println("22222222222222222222222");
 		dao.deleteReserve(reserveNo, memberNo);
+		System.out.println("333333333333333333333333");
 		detailsDao.deleteReserveDetails(reserveNo);
 	}
 	//	숙박업주별 예약리스트 조회하기
