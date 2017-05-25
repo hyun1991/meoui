@@ -39,8 +39,30 @@
 		</div>
 	</div>
 	<hr>
+		<form action="/meoui/accommodationComment/insert" method="post">
+		<div class="form-group">
+			<textarea class="form-control col-sm-5" rows="5" 
+			placeholder="댓글을 작성해 주세요." name="accommodationCommentContent">
+			</textarea>
+		</div>
+		<div class="form-group">
+		<select class="form-control" name="accommodationCommentAvg">
+			<option value="">선택</option>
+			<option value="0">☆☆☆☆☆</option>
+			<option value="1">★☆☆☆☆</option>
+			<option value="2">★★☆☆☆</option>
+			<option value="3">★★★☆☆</option>
+			<option value="4">★★★★☆</option>
+			<option value="5">★★★★★</option>
+		</select>
+		</div>
+		<div class="form-group">
+		<button type="submit" class="w3-button w3-block w3-white w3-border">댓글작성</button>
+		</div>
+	</form>
+	<hr>
 	<c:forEach items="${result.comment }" var="comment">
-		<div >
+		<div class="container">
 			<input type="hidden" id="memberNo" value="${comment.memberNo }">
 			<div class="form-group">
 				${comment.accommodationCommentContent}
@@ -70,7 +92,6 @@
 	$(document).ready(function() {
 		$("#deleteBtn").on("click", function() {
 			alert("댓글이 삭제되었습니다")
-		})
 	})
 </script>
 </html>
