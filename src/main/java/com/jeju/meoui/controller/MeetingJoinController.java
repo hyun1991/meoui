@@ -21,13 +21,15 @@ public class MeetingJoinController {
 	
 
 	//모임 가입하기(완료)
-	@RequestMapping(value="membermeeting/view/{meetingNo}", method=RequestMethod.POST)
-	public String insertMeetingJoin(@PathVariable int meetingNo, HttpSession session, Model model){
+	@RequestMapping(value="membermeeting/post", method=RequestMethod.POST)
+	public String insertMeetingJoin(HttpSession session){
+		System.out.println("1111111111111111111111");
 		MeetingJoin meetingJoin = new MeetingJoin();
-		meetingNo= (Integer)session.getAttribute("meetingNo");
+		int meetingNo= (Integer)session.getAttribute("meetingNo");
 		int memberNo= (Integer)session.getAttribute("memberNo");
 		meetingJoin.setMeetingNo(meetingNo);
 		meetingJoin.setMemberNo(memberNo);
+		System.out.println(meetingJoin);
 		service.createMeetingJoin(meetingJoin);
 		logger.info("미팅조인:{}", meetingJoin);
 		logger.info("미팅조인:{}", meetingNo);

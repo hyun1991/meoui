@@ -57,6 +57,10 @@ public class MemberMeetingDAO {
 		return template.selectList("MemberMeetingMapper.selectMyMeeting",memberNo);
 	}
 	
+	//미팅 맥스넘버 찾기
+	public int selectMaxMeetingNo(){
+		return template.selectOne("MemberMeetingMapper.selectMaxMeetingNo");
+	}
 	
 	
 	

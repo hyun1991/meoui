@@ -72,5 +72,15 @@
 			where m.meeting_no=j.meeting_no and j.member_no=#{member_no}
 		]]>
 	</select>	
+	
+	<select id="selectMaxMeetingNo" resultType="int">
+		<![CDATA[
+			select max(meeting_no+1) from member_meeting
+		
+		]]>
+	
+	</select>
+	
+	
 				
 </mapper>
