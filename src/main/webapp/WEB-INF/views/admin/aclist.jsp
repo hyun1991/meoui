@@ -90,24 +90,20 @@ img {
 					<button type="button" class="w3-button w3-block w3-white w3-border">
 					상세보기</button></a>
 				</div>
-				<div class="form-group">
-				<a href="/meoui/manage/accommodation/delete/${accommodation.accommodationNo}">
-					<button type="button" class="w3-button w3-block w3-white w3-border">
-					삭제하기</button></a></div><br>
 				</div>
 			</c:forEach>
 		</div>
 	<div class="row text-center">
 		<ul class="pagination pagination-md">
 			<li><c:if test="${result.pagination.prev>0 }">
-					<a href="/meoui/notice/list?pageNo=${result.pagination.prev }">이전으로</a>
+					<a href="/meoui/admin/accommodaion/list?pageNo=${result.pagination.prev }">이전으로</a>
 				</c:if></li>
 			<li><c:forEach begin="${result.pagination.startPaging }"
 					end="${result.pagination.lastPaging }" var="i">
-					<a href="/meoui/notice/list?pageNo=${i }">${i }</a>
+					<a href="/meoui/admin/accommodaion/list?pageNo=${i }">${i }</a>
 				</c:forEach></li>
 			<li><c:if test="${result.pagination.next>0 }">
-					<a href="/meoui/notice/list?pageNo=${result.pagination.next }">다음으로</a>
+					<a href="/meoui/admin/accommodaion/list?pageNo=${result.pagination.next }">다음으로</a>
 				</c:if></li>
 		</ul>
 	</div>

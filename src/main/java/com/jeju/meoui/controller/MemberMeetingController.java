@@ -1,23 +1,19 @@
 package com.jeju.meoui.controller;
 
-import javax.annotation.Resource;
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpSession;
+import javax.annotation.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
+import org.slf4j.*;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.stereotype.*;
+import org.springframework.ui.*;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.*;
 
-import com.jeju.meoui.service.MemberMeetingService;
-import com.jeju.meoui.util.UploadUtil;
-import com.jeju.meoui.vo.MemberMeeting;
+import com.jeju.meoui.service.*;
+import com.jeju.meoui.util.*;
+import com.jeju.meoui.vo.*;
 
 @Controller
 public class MemberMeetingController {
@@ -38,14 +34,23 @@ public class MemberMeetingController {
 	}
 	//	모임생성 완료(작업완료)
 	@RequestMapping(value="/membermeeting/create", method=RequestMethod.POST)
-	public String isnertMemberMeeting(HttpSession session, @RequestParam String meetingName, @RequestParam("Img")MultipartFile meetingImg){
+	public String isnertMemberMeeting(HttpSession session, @RequestParam String meetingName, 
+		@RequestParam("Img")MultipartFile meetingImg){
 		MemberMeeting memberMeeting= new MemberMeeting();
+		MeetingJoin meetingJoin = new MeetingJoin();
 		int meetingAdminNo= (Integer)session.getAttribute("memberNo");
+		int memberNo = (Integer)session.getAttribute("memberNo");
+		int meetingNo=service.selectMaxMeetingNo();
 		String fileName= UploadUtil.storeAndGetFileName(meetingImg, ctx, path);
+		meetingJoin.setMemberNo(memberNo);
+		logger.info("meetingNo:{}", meetingNo);
+		meetingJoin.setMeetingNo(meetingNo);
+		logger.info("meetingNo:{}", meetingNo);
 		memberMeeting.setMeetingImg(fileName);
 		memberMeeting.setMeetingName(meetingName);
 		memberMeeting.setMeetingAdminNo(meetingAdminNo);
-		service.createMemberMeeting(memberMeeting);
+		
+		service.createMemberMeeting(memberMeeting, meetingJoin);
 		logger.info("멤버넘버:{}", memberMeeting);
 		return "redirect:/membermeeting/list";
 	}
@@ -111,5 +116,13 @@ public class MemberMeetingController {
 			return "meetingjoin/list";
 					
 		}
+	// 리스트 출력(관리자용)
+	@RequestMapping(value="/admin/membermeeting/list", method=RequestMethod.GET)
+	public String AllMemberMeetingAdmin(Model model, HttpSession session){	
+		MemberMeeting meetingNo=new MemberMeeting();
+		session.setAttribute("meetingNo", meetingNo);
+		model.addAttribute("result", service.selectAllmemberMeetingList());
+		return "admin/meetingList";
+	}
 	
 }

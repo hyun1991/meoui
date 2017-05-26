@@ -81,6 +81,21 @@ header {
 				</div>
 			</c:forEach>
 		</div>
+	<%@include file="/nav/ownernav.jsp" %>
+
+	<div class="form-group"><img src="/meoui/images/${result.accommodation.accommodationImg}"></div><br>
+	<div class="form-group"><h3>숙박시설이름:</h3>${result.accommodation.accommodationName }</div><br>
+	<div class="form-group"><h3>대표전화:</h3>${result.accommodation.accommodationPhone }</div>
+	<div class="form-group"><h3>시설위치:</h3>${result.accommodation.accommodationAddress }</div>
+	<div class="form-group">
+	<a href="#">
+	<button type="button" class="w3-button w3-block w3-white w3-border" id="messageBtn">수정하기</button>
+	</a>
+	</div>
+	<div class="form-group">
+		<a href="/meoui/manage/room/join">
+		<button type="button" class="w3-button w3-block w3-white w3-border" id="messageBtn">
+		객실추가</button></a>
 	</div>
 	</div>
 </body>

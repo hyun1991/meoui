@@ -10,7 +10,6 @@ import org.springframework.stereotype.*;
 import org.springframework.ui.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.*;
-import org.springframework.web.servlet.*;
 
 import com.jeju.meoui.service.*;
 import com.jeju.meoui.util.*;
@@ -74,7 +73,36 @@ public class SiteController {
 	public String allSite(Model model ,@RequestParam(defaultValue="1") int pageNo){
 		logger.info("pageNo:{}", pageNo);
 		model.addAttribute("result", service.selectAllSite(pageNo));
-		return "site/list";
+		return "site/resultList";
 	}
+	// 관광지 전체 리스트(관리자용)
+	@RequestMapping(value="/admin/site/list" , method=RequestMethod.GET)
+	public String allSiteAdmin(Model model ,@RequestParam(defaultValue="1") int pageNo){
+		logger.info("pageNo:{}", pageNo);
+		model.addAttribute("result", service.selectAllSite(pageNo));
+		return "admin/siteList";
+	}
+	
+	
+	/*
+	//이름으로 검색
+	@RequestMapping(value="/site/view", method=RequestMethod.GET)
+	public String selectSiteNameForm(HttpSession session, @RequestParam String siteName){
+		session.setAttribute("siteName", siteName);
+		return "/site/view";
+	}
+	
+	//이름으로 검색 뷰
+	@RequestMapping(value="/site/view", method=RequestMethod.POST)
+	public String selectsiteName(Model model, HttpSession session, String siteName){
+		String siteName1 = (String)session.getAttribute("siteName");
+		model.addAttribute(service.selectSiteByName(siteName1));
+		logger.info("사이트에서보는 {} :", siteName1);
+		return "redirect:/site/list";
+	}
+	*/
+	
+	
+	
 	
 }

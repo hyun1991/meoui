@@ -38,12 +38,16 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "home";
+		return "main-01";
 	}
 	
 	@RequestMapping("/manage/home")
 	public String home(){
 		return "/owner/main";
+	}
+	@RequestMapping("/test2")
+	public String test2(){
+		return "main-01";
 	}
 	@RequestMapping("/admin/home")
 	public String admin() {
