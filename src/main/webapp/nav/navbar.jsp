@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewpoert" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
@@ -106,7 +107,7 @@ span {
 							<li><a href="/meoui/message/list?messageReceiveId=<%=session.getAttribute("memberId") %>&pageNo=1" id="menu">쪽지함</a></li>
 							<li><a href="/meoui/member/logout" id="logout">로그아웃</a></li>
 							<li><a href="#" id="deleteId">회원탈퇴</a></li>
-						</ul></li>
+						</ul></li>	
 				</ul>
 			</div>
 		</div>

@@ -6,10 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>메인페이지</title>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<meta name="author" content="">
 <title>The Big Picture - Start Bootstrap Template</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/the-big-picture.css" rel="stylesheet">
@@ -17,8 +13,9 @@
 <body>
 <body>
 	<!-- Navigation -->
+	<header>
 	<%@include file="/nav/navbar.jsp" %>
-
+	</header>
 	<!-- Page Content -->
 	<div class="container">
 		<div class="row">
