@@ -64,9 +64,14 @@ $(function() {
 	    </div>
 	    </c:forEach>
 	    </div>
-	     <c:if test="${notice.nlist.usersNo eq usersNo }">
+	    <c:if test="${notice.nlist.usersNo eq usersNo }">
 	    <a href = "/meoui/notice/delete/${notice.nlist.noticeNo}">
 	    <button>게시글삭제</button>
+	    </a>
+	    </c:if>
+	    <c:if test="${notice.nlist.usersNo eq usersNo }">
+	    <a href = "/meoui/notice/update?noticeNo=${notice.nlist.noticeNo}">
+	    <button>게시글수정</button>
 	    </a>
 	    </c:if>
 </body>
