@@ -8,9 +8,8 @@ import org.slf4j.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 
-import com.jeju.meoui.controller.*;
 import com.jeju.meoui.dao.*;
-import com.jeju.meoui.dao.test.*;
+import com.jeju.meoui.util.*;
 import com.jeju.meoui.vo.*;
 
 @Service
@@ -53,9 +52,16 @@ public class MemberService {
 	public int checkId(String memberId){
 		return dao.checkId(memberId);
 	}
-	//	9. 회원 전체리스트 조회하기
-	public List<Member> selectAllMember(){
-		return dao.selectAllMember();
+	//	9. 회원 전체리스트 페이지별 조회하기
+	public HashMap<String, Object> selectAllMember(int pageNo){
+		int cnt= dao.findByMemberMax();
+		Pagination pagination= PagingUtil.getPagination(pageNo, cnt);
+		logger.info("페이징,{}",pagination.getStartPaging());
+		logger.info("페이징,{}",pagination.getLastPaging());
+		HashMap<String, Object>map= new HashMap<String, Object>();
+		map.put("pagination", pagination);
+		map.put("list", dao.selectAllMember(pagination.getStartRow(), pagination.getLastRow()));
+		return map;
 	}
 
 }

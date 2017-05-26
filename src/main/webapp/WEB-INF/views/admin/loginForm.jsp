@@ -30,7 +30,7 @@
     	<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
         	<div class="panel panel-success">
             	<div class="panel-heading">
-                	<div class="panel-title"><h1>홈페이지 관리자 로그인 페이지</h1></div>
+                	<div class="panel-title"><h1>관리자 로그인 페이지</h1></div>
             	</div>
             	<div class="panel-body">
                 <form action="/meoui/admin/login" method="POST">

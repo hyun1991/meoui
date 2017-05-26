@@ -16,27 +16,32 @@ public class MeetingJoinController {
 
 	@Autowired
 	private MeetingJoinService service;
-	private static final Logger logger= LoggerFactory.getLogger(MemberMeetingController.class);
+	private static final Logger logger= LoggerFactory.getLogger(MeetingJoinController.class);
 
 	
-	//모임 가입하기
-	@RequestMapping(value="membermeeting/join", method=RequestMethod.POST)
-	public String insertMeetingJoin(@ModelAttribute MeetingJoin meetingJoin){
-		return "membermeeting/view";
-	}	
-	
-	
+
+	//모임 가입하기(완료)
+	@RequestMapping(value="membermeeting/post", method=RequestMethod.POST)
+	public String insertMeetingJoin(HttpSession session){
+		System.out.println("1111111111111111111111");
+		MeetingJoin meetingJoin = new MeetingJoin();
+		int meetingNo= (Integer)session.getAttribute("meetingNo");
+		int memberNo= (Integer)session.getAttribute("memberNo");
+		meetingJoin.setMeetingNo(meetingNo);
+		meetingJoin.setMemberNo(memberNo);
+		System.out.println(meetingJoin);
+		service.createMeetingJoin(meetingJoin);
+		logger.info("미팅조인:{}", meetingJoin);
+		logger.info("미팅조인:{}", meetingNo);
+		return "redirect:/membermeeting/list";
 		
-	
-	//가입한 리스트 보기
-	@RequestMapping(value="/meetingjoin/list", method=RequestMethod.GET)
-	public String selectMyMeeting(Model model, HttpSession session){
-		int memberNo = (Integer)session.getAttribute("memberNo");
-		model.addAttribute("result", service.selectMyMeeting(memberNo));
-		logger.info("가입한 리스트 보기 :[]", model);
-		return "meetingjoin/list";
-				
 	}
 	
-	
+	//모임 탈퇴하기
+	@RequestMapping(value="membermeeting/view/", method=RequestMethod.GET)
+	public String deleteMeeting(@PathVariable int memberNo, HttpSession session){
+		memberNo = (Integer)session.getAttribute("memberNo");
+		service.deleteMeetingJoin(memberNo);
+		return "redirect:membermeeting/list";
+	}
 }

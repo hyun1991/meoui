@@ -10,12 +10,14 @@
 </head>
 <style>
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
-nav{
-	margin-bottom:0;
+
+nav {
+	margin-bottom: 0;
 }
+
 header {
-	background-image: url(/meoui/images/sky.jpg);
-	background-size: 100%;
+	background-image: url(/meoui/images/hareubang.jpg);
+	background-size: 300 500;
 	background-repeat: no-repeat;
 }
 
@@ -26,18 +28,18 @@ header {
 #text, p, header {
 	color: black;
 }
-
-
+#followquick { position:absolute; top:180px; right:50%; margin-right:-670px; }
 </style>
 <body>
+
 	<%@include file="/nav/navbar.jsp"%>
+	<%@include file="index.jsp"%>
+	<header> </header>
 	<div class="container">
-	회원가입 폼
-	<hr style="border: 4px solid black; margin-bottom: 50px;">
+		<img src="/meoui/images/hareubang.jpg"></img>
+		<hr style="border: 4px solid black; margin-bottom: 50px;">
 	</div>
-	<footer>
-		<%@include file="/footer.jsp"%>
-	</footer>
+	<%@include file="/footer.jsp"%>
 </body>
 <script>
 	$(window).bind('scroll', function() {
@@ -48,10 +50,4 @@ header {
 		}
 	});
 </script>
-<script>
-	$(function() {
-		$("#framewrap").resizable().draggable();
-	});
-</script>
-
 </html>

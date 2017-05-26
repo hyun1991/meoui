@@ -20,7 +20,7 @@
 	 -->
 	<update id="updateMember" parameterType="Member">
 		<![CDATA[
-			update member set member_password=#{memberPassword}, member_name=#{memberName}, member_phone=#{memberPhone}, member_address=#{memberAddress}, member_email=#{memberEmail}, member_job=#{memberJob},
+			update member set member_password=#{memberPassword}, member_name=#{memberName}, member_phone=#{memberPhone}, member_address=#{memberAddress}, member_mail=#{memberMail}, member_job=#{memberJob},
 			member_hobby=#{memberHobby} where member_id=#{memberId} and member_no=#{memberNo} 
 		]]>
 	</update>
@@ -82,11 +82,18 @@
 	</select>
 	
 	<!-- 10. 회원 전체리스트 조회하기 -->
-	<select id="selectAllMember" resultType="Member">
-			select * from member
+	<select id="selectAllMember" parameterType="HashMap" resultType="Member">
+			select t2.* from(select rownum rnum, t1.* from
+			(select member_no, member_id, member_password, member_name, member_phone, 
+			member_mail, member_address, member_job, member_gender, member_startdate, member_hobby 
+			from member order by member_no desc)t1)t2 where rnum between #{startRow} and #{lastRow}
 	</select>
 	<!-- 11. 회원번호별 회원리스트 조회하기 -->
 	<select id="findAllMemberNo" parameterType="int" resultType="Member">
 		select*from member where member_no=#{memberNo}
+	</select>
+	<!-- 12. 회원 DB개수 조회하기 -->
+	<select id="findByMemberMax" resultType="int">
+		select count(*) from member
 	</select>
 </mapper>

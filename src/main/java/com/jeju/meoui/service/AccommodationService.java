@@ -21,6 +21,8 @@ public class AccommodationService {
 	@Autowired
 	private AccommodationCommentDAO commentDao;
 	@Autowired
+	private MemberDAO memberDao;
+	@Autowired
 	private SiteDAO siteDao;
 	
 	//	숙박시설 추가전 보내주어야 하는 관광명소 정보.
@@ -78,6 +80,14 @@ public class AccommodationService {
 		Accommodation accommodation= dao.findByAccommodation(accommodationNo);
 		List<AccommodationComment> comment= commentDao.selectByAccommodationNo(accommodationNo);
 		List<AccommodationComment> memberComment= commentDao.selectByMemberNoAccommodationNo(accommodationNo, memberNo);
+		for(AccommodationComment mComment: comment){
+			//	mComment는 작성자memberNo를 빼기위함.
+			int cMemberNo= mComment.getMemberNo();
+			if(cMemberNo!=0){
+				List<Member>cMember= memberDao.findAllMemberNo(cMemberNo);
+				map.put("member", cMember);
+			}
+		}
 		map.put("accommodation", accommodation);
 		map.put("comment", comment);
 		map.put("memberComment", memberComment);

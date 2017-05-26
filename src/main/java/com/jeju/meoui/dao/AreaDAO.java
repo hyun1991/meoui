@@ -36,4 +36,9 @@ public class AreaDAO {
 	public List<Area> selectSiteByArea(String areaName){
 		return template.selectList("AreaMapper.selectSiteByArea", areaName);
 	}
+	
+	// 마지막 지역번호 조회
+	public int maxAreaNo(){
+		return template.selectOne("AreaMapper.selectMaxAreaNo");
+	}
 }

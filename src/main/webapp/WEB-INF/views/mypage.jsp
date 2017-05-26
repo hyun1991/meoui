@@ -35,7 +35,7 @@ footer {
 				<label for="usr">취미: </label>${result.memberHobby }<br>
 				<label for="usr">주소: </label>${result.memberAddress }<br>
 				<div class="form-group">
-				<a href="#">
+				<a href="/meoui/member/update/${result.memberId }">
 				<button type="button" class="w3-button w3-block w3-white w3-border">
 				내정보 수정하기</button></a><br>
 				</div>

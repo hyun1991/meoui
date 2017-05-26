@@ -72,12 +72,21 @@ public class MemberDAO {
 	}
 
 	//	10. 회원 전체리스트 조회하기(완료)
-	public List<Member> selectAllMember(){
-		return template.selectList("MemberMapper.selectAllMember");
+	public List<Member> selectAllMember(int startRow, int lastRow){
+		HashMap<String, Object>map= new HashMap<String, Object>();
+		map.put("startRow", startRow);
+		map.put("lastRow", lastRow);
+		return template.selectList("MemberMapper.selectAllMember", map);
 	}
 	
 	//	11. 회원번호별 회원리스트 조회하기
 	public List<Member> findAllMemberNo(int memberNo){
 		return template.selectList("MemberMapper.findAllMemberNo", memberNo);
 	}
+	
+	//	12. 회원 DB개수 조회하기
+	public int findByMemberMax(){
+		return template.selectOne("MemberMapper.findByMemberMax");
+	}
+
 }

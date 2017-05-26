@@ -37,7 +37,15 @@ public class OwnerDAO {
 		return template.selectOne("OwnerMapper.ownerLogin", map);
 	}
 	//	업주리스트 조회하기
-	public List<Owner> selectAllOwner(){
-		return template.selectList("OwnerMapper.selectAllOwner");
+	public List<Owner> selectAllOwner(int startRow, int lastRow){
+		HashMap<String, Object>map= new HashMap<String, Object>();
+		map.put("startRow", startRow);
+		map.put("lastRow", lastRow);
+		return template.selectList("OwnerMapper.selectAllOwner", map);
 	}
+	//	업주DB개수 체크
+	public int findByDBMax(){
+		return template.selectOne("OwnerMapper.findByDBMax");
+	}
+
 }

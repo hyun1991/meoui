@@ -33,6 +33,11 @@ public class MemberMeetingDAO {
 		template.delete("MemberMeetingMapper.deleteMembermeeting", meetingNo);
 	}
 	
+	//모임 세부 정보 보기
+	public MemberMeeting selectMeetingView(int meetingNo){
+		return template.selectOne("MemberMeetingMapper.selectMeetingView", meetingNo);
+	}
+	
 	//모임 리스트 출력
 	public List<MemberMeeting> selectAllMemberMeetingList(){
 		return template.selectList("MemberMeetingMapper.selectAllMemberMeetingList");
@@ -48,10 +53,14 @@ public class MemberMeetingDAO {
 		return template.selectList("MembermeetingMapper.selectMeetingTotal",meetingTotal);	}
 	
 	//내가 가입한 모임 보기
-	public MemberMeeting selectMyMeeting(int memberNo){
-		return template.selectOne("MemberMeetingMapper.selectMyMeeting",memberNo);
+	public List<MemberMeeting> selectMyMeeting(int memberNo){
+		return template.selectList("MemberMeetingMapper.selectMyMeeting",memberNo);
 	}
 	
+	//미팅 맥스넘버 찾기
+	public int selectMaxMeetingNo(){
+		return template.selectOne("MemberMeetingMapper.selectMaxMeetingNo");
+	}
 	
 	
 	

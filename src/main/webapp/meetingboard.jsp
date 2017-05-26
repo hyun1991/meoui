@@ -51,7 +51,7 @@ img {
 						찾아보세요&nbsp、</p>
 					<hr style="border: 2px solid #f76ce4;">
 				</div>
-				<div class="col-md-1 text-center"">
+				<div class="col-md-1 text-center">
 					<p
 						style="writing-mode: vertical-rl; font-family: Gungsuh; font-size: 40px; margin-top: 20px;">아름다운
 						제주에서 새로운</p>

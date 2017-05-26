@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 
 import com.jeju.meoui.dao.*;
-import com.jeju.meoui.dao.test.*;
 import com.jeju.meoui.vo.*;;
 
 @Service
@@ -15,11 +14,21 @@ public class MemberMeetingService {
 	
 	@Autowired
 	private MemberMeetingDAO dao;
+	@Autowired
+	private MeetingJoinDAO joindao;
+	
 	private Logger logger= LoggerFactory.getLogger(MemberMeetingService.class);
 	//모임생성
-	public void createMemberMeeting(MemberMeeting memberMeeting){
+	public void createMemberMeeting(MemberMeeting memberMeeting, MeetingJoin meetingJoin){
 		dao.insertMemberMeeting(memberMeeting);
+		dao.selectMaxMeetingNo();
+		joindao.insertMeetingJoin(meetingJoin);
 	}
+	//마지막 번호 찾기
+	public int selectMaxMeetingNo(){
+		return dao.selectMaxMeetingNo();
+	}
+	
 	
 	//모임수정
 	public void updataMeetingName(MemberMeeting memberMeeting){
@@ -30,6 +39,12 @@ public class MemberMeetingService {
 	public void deleteMemberMeeting(int meetingNo){
 		dao.deleteMembeMeeting(meetingNo);
 	}
+	//모임 세부 정보 보기
+	public MemberMeeting selectMeetingView(int meetingNo){
+		logger.info("뷰보기:{}", meetingNo);
+		return dao.selectMeetingView(meetingNo);
+	}
+	
 	//모임 리스트 출력
 	public HashMap<String, Object> selectAllmemberMeetingList(){	
 		HashMap<String, Object>map= new HashMap<String, Object>();
@@ -48,9 +63,14 @@ public class MemberMeetingService {
 		return dao.selectMeetingTotal(meetingTotal);
 	}
 	//내가 가입한 모임 보기
-	public MemberMeeting selectMyMeeting(int memberNo){
-		return dao.selectMyMeeting(memberNo);
-	}	
+	public HashMap<String, Object> selectMyMeeting(int memberNo){
+		HashMap<String, Object>map= new HashMap<String, Object>();
+		List<MemberMeeting>list = dao.selectMyMeeting(memberNo);
+		map.put("list", list);		
+		logger.info("멤버미팅 내모임리스트:{}", list);
+		return map;
+	}
+	
 	
 	
 }

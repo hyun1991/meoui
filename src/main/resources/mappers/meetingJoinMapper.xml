@@ -14,16 +14,18 @@
 	<!-- 2. 모임탈퇴 -->
 	<delete id="deleteMeetingJoin" parameterType="int">
 		<![CDATA[
-			delete from meeting_join where member_no=#{memberNo})
+			delete from meeting_join where 
+			member_no=(select meeting_admin_no from member_meeting where meeting_no=#{meetingNo}) 
+			and meeting_no=#{meetingNo};
+
 		]]>
 	</delete>	
-<!-- 3. 가입한 모임 보기 -->
+	<!-- 3. 가입한 모임 보기 -->
 	<select id="selectMyMeeting" parameterType="int" resultType="MemberMeeting">
 		<![CDATA[
 			select m.meeting_name, m.meeting_img, 
 			m.meeting_total_number from meeting_join j, member_meeting m 
 			where m.meeting_no=j.meeting_no and j.member_no=#{member_no}
-
 		]]>
 		
 		
