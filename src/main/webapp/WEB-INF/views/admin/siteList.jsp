@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset=UTF-8">
-<title>관광명소 페이지</title>
+<title>Insert title here</title>
 <style>
 @
 keyframes menuBlink { 0% {
@@ -17,9 +17,13 @@ keyframes menuBlink { 0% {
 opacity
 
 
+
+
 :
 
+
  
+
 
 0
 }
@@ -27,7 +31,11 @@ opacity
 opacity
 
 
+
+
 :
+
+
 
 
 1
@@ -48,7 +56,11 @@ opacity
 
 
 
+
+
 :
+
+
 
 
 
@@ -61,7 +73,11 @@ opacity
 
 
 
+
+
 :
+
+
 
 
 
@@ -87,7 +103,7 @@ img {
 </head>
 <body>
 	<header>
-		<%@include file="/nav/navbar.jsp"%>
+		<%@include file="/nav/adminnav.jsp"%>
 	</header>
 	<div class="container">
 		<h1 id="headTitle" style="margin-top: 50px;" align="center">관광명소
@@ -96,16 +112,16 @@ img {
 			<hr>
 			<c:forEach items="${result.list }" var="result">
 				<div class="col-sm-3">
-					<a href="/meoui/site/view/${result.siteNo}"> <img
+					<a href="#"> <img
 						class="image-responsive" src="/meoui/images/${site.siteImg}"
 						alt="알수없음" style="margin-bottom: 20px;">
 					</a>
 					<p>
-						<a href="/meoui/site/view/${result.siteNo}"> <strong>${result.siteName}</strong>
+						<a href="#"> <strong>${result.siteName}</strong>
 						</a>
 					</p>
 					<p>
-						<a href="/meoui/site/view/${result.siteNo}">
+						<a href="#">
 							${result.siteIntroduce}</a>
 					</p>
 					<p>
@@ -134,13 +150,11 @@ img {
 					<a href="/meoui/site/list?pageNo=${result.pagination.next }">다음으로</a>
 				</c:if></li>
 		</ul>
-
 	</div>
-	<%@include file="view.jsp" %>
-	<footer>
-		<h1>1 Follow Us Canada's New Passenger Bill of Rights Bans
-			Removal in Cases of Overbooking https://t.co/K2aizs9IKo
-			https://t.co/lb8fklloIp Twitter | 29 mins ago</h1>
-	</footer>
+		<div class="form-group">
+		<a href="#">
+			<button type="button" class="w3-button w3-block w3-white w3-border">관광명소 등록</button>
+		</a>
+	</div>
 </body>
 </html>

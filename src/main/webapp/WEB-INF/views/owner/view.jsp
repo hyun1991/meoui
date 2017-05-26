@@ -41,7 +41,7 @@
 			<div class="form-group">평점: ${comment.accommodationCommentAvg}점</div>
 			<div class="form-group">작성일: <fmt:formatDate value="${comment.accommodationCommentDate}" pattern="yyyy년 MM월 dd일" /></div>
 			<div class="viewdelete">
-	    	<a href ="/meoui/accommodationComment/delete/${comment.accommodationCommentNo }">
+	    	<a href ="/meoui/manage/accommodationComment/delete/${comment.accommodationCommentNo }">
 			<button type="button" class="w3-button w3-block w3-white w3-border" id="deleteBtn">댓글 삭제하기</button>
 			</a></div>
 			<hr>

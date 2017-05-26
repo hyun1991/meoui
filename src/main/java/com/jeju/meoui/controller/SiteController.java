@@ -73,7 +73,14 @@ public class SiteController {
 	public String allSite(Model model ,@RequestParam(defaultValue="1") int pageNo){
 		logger.info("pageNo:{}", pageNo);
 		model.addAttribute("result", service.selectAllSite(pageNo));
-		return "site/list";
+		return "site/resultList";
+	}
+	// 관광지 전체 리스트(관리자용)
+	@RequestMapping(value="/admin/site/list" , method=RequestMethod.GET)
+	public String allSiteAdmin(Model model ,@RequestParam(defaultValue="1") int pageNo){
+		logger.info("pageNo:{}", pageNo);
+		model.addAttribute("result", service.selectAllSite(pageNo));
+		return "admin/siteList";
 	}
 	
 	

@@ -31,11 +31,10 @@ h4 {
 }
 
 #container{
-  background: red; /* For browsers that do not support gradients */    
-    background: -webkit-linear-gradient(left,red , #e55223); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(right,#e55223, red)/* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(right,#e55223, red); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to right,#e55223, red); /* Standard syntax (must be last) */
+  background: #E0EBFF; /* For browsers that do not support gradients */    
+  background: -webkit-linear-gradient(left,#E0EBFF , #E0EBFF); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right,#E0EBFF, #E0EBFF)/* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right,#E0EBFF, #E0EBFF); /* For Firefox 3.6 to 15 */
 }
 
 @keyframes menuBlink {
@@ -64,24 +63,13 @@ h4 {
 									<h4 id="type">
 									<a href="/meoui/notice/view/${notice.noticeNo }">${notice.noticeNo }</a>
 									</h4>
-									<h4 id="title">${notice.noticeTitle }</h4>
-									<h4 id="writer">${notice.usersNo }</h4>
-									<h6 id="meta">
+									<h4 id="title">
+									${notice.noticeTitle }</h4>
+									<h4 id="meta">
 										<fmt:formatDate value="${notice.noticeDate }"
 											pattern="yyyy.MM.dd" />
-									</h6>
+									</h4>
 								</td>
-							</tr>
-							<tr>
-								<td id="demo" class="collapse">at
-									org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1480)
-									at
-									java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
-									at
-									java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
-									at
-									org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-									at java.lang.Thread.run(Thread.java:745)</td>
 							</tr>
 						</c:forEach>
 					</tbody>

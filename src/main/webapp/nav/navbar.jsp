@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewpoert" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
@@ -53,7 +52,7 @@ span {
 			</div>
 			<div class="row">
 				<ul class="nav navbar-nav">
-					<li class="navMenu"><a href="/meoui/attractionlist.jsp"
+					<li class="navMenu"><a href="/meoui/site/list?pageNo=1"
 						style="color: #424242;"><span
 							class="glyphicon glyphicon glyphicon-grain" style="color: green;"></span>
 							관광 명소</a></li>
@@ -65,10 +64,12 @@ span {
 						href="/meoui/accommodaion/list" style="color: #424242;"><span
 							class="glyphicon glyphicon-home" style="color: orange;"></span>
 							숙박</a></li>
+							<!-- 
 								<li class="navMenu"><a
 						href="/meoui/accommodaion/listTest" style="color: #424242;"><span
 							class="glyphicon glyphicon-home" style="color: orange;"></span>
 							테스트</a></li>
+							 -->
 					<li class="navMenu"><a href="/meoui/membermeeting/list"
 						style="color: #424242;"><span class="glyphicon glyphicon-heart"
 							style="color: #f76ce4;"></span> 모임 </a></li>
@@ -76,16 +77,18 @@ span {
 						style="color: #424242;"><span
 							class="glyphicon glyphicon-bullhorn" style="color: red;"></span>
 							공지사항</a></li>
+							<!-- 
 					<li class="navMenu"><a href="/meoui/noticeboard.jsp"
 						style="color: #424242;"><span
 							class="glyphicon glyphicon-eye-open" style="color: purple;"></span>
-							포럼</a></li>
+							자유게시판</a></li>
 					<li class="navMenu"><a href="/meoui/test.jsp"
 						style="color: #424242;"><span class="glyphicon glyphicon-eye-open"
 							style="color: purple;"></span>테스트</a></li>
-							<li class="navMenu"><a href="/meoui/test.jsp"
+							 -->
+					<li class="navMenu"><a href="/meoui/test.jsp"
 						style="color: #424242;"><span class="glyphicon glyphicon-pencil"
-							style="color: grey;"></span>테스트</a></li>
+							style="color: grey;"></span>자유게시판</a></li>
 				</ul>
 				<ul class="nav navbar-nav pull-right">
 					<li id="joinFm"><a href="#" data-toggle="modal" data-target="#signUpForm"

@@ -116,5 +116,13 @@ public class MemberMeetingController {
 			return "meetingjoin/list";
 					
 		}
+	// 리스트 출력(관리자용)
+	@RequestMapping(value="/admin/membermeeting/list", method=RequestMethod.GET)
+	public String AllMemberMeetingAdmin(Model model, HttpSession session){	
+		MemberMeeting meetingNo=new MemberMeeting();
+		session.setAttribute("meetingNo", meetingNo);
+		model.addAttribute("result", service.selectAllmemberMeetingList());
+		return "admin/meetingList";
+	}
 	
 }
