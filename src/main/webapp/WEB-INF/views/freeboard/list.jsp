@@ -20,6 +20,7 @@
 			</tr>
 		</c:forEach>
 	</table>
+	
 	<div>
 		<c:if test="${result.pagination.prev>0 }">
 			<a href="/meoui/freeboard/list?pageNo=${result.pagination.prev }">이전으로</a>
