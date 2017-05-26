@@ -17,7 +17,7 @@
 	<h1 id="headTitle" style="margin-top: 50px;" align="center">회원
 		전체리스트</h1>
 	<hr>
-	<table class="table table-striped table-bordered table-hover">
+	<table class="table table-striped">
 		<thead>
 			<tr>
 				<th>글번호</th>

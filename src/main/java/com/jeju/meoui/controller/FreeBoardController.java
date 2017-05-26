@@ -3,6 +3,7 @@ package com.jeju.meoui.controller;
 import org.slf4j.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
+import org.springframework.ui.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.*;
 
@@ -16,7 +17,7 @@ public class FreeBoardController {
 	//1 .자유게시판 추가하기(작성폼)
 	@RequestMapping(value="/freeboard/join", method=RequestMethod.GET)
 	public String insertFreeboardForm() {
-		return "freeboard/insert.jsp";
+		return "freeboard/insert";
 	}
 	//1-1.자유게시판 추가 성공d
 	@RequestMapping(value="/freeboard/join", method=RequestMethod.POST)
@@ -40,8 +41,9 @@ public class FreeBoardController {
 	}
 	//4. 자유게시판 페이지별 조회하기
 	@RequestMapping(value="/freeboard/list", method=RequestMethod.GET)
-	public String getAllFreeboard(ModelAndView model, int pageNo) {
-		return "freeboard/list.jsp";
+	public String getAllFreeboard(Model model, @RequestParam(defaultValue="1") int pageNo) {
+		model.addAttribute("result", service.getByFreeboard(pageNo));
+		return "freeboard/list";
 	}
 	//5. 자유게시판 번호별 조회
 	@RequestMapping(value="/freeboard/view/{freeboardNo}", method=RequestMethod.GET)

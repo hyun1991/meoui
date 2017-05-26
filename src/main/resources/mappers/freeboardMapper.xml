@@ -19,12 +19,12 @@
 			select * from freeboard where freeboard_no=#{freeboardNo}
 		]]>
 	</select>
-<!-- 3. 자유게시판 리스트 조회-->
-	<select id="selectAllFreeboard" parameterType="int">
+<!-- 3. 자유게시판 리스트 조회(성공)-->
+	<select id="selectAllFreeboard" parameterType="HashMap" resultType="FreeBoard">
 		<![CDATA[
 			select * from (
 			select rownum rnum, a1.* from 
-				(select freeboard_no, freeboard_title, freeboard_content, sysdate, freeboard_cnt, freeboard_img from freeboard order by ano desc) a1
+				(select freeboard_no, freeboard_title, freeboard_content, freeboard_date, freeboard_cnt, freeboard_img from freeboard order by freeboard_no desc) a1
 			where rownum<=#{end}
 		) where rnum>=#{start}
 		]]>

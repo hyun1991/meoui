@@ -87,7 +87,7 @@ span {
 						style="color: #424242;"><span class="glyphicon glyphicon-eye-open"
 							style="color: purple;"></span>테스트</a></li>
 							 -->
-					<li class="navMenu"><a href="/meoui/test.jsp"
+					<li class="navMenu"><a href="/meoui/freeboard/list?pageNo=1"
 						style="color: #424242;"><span class="glyphicon glyphicon-pencil"
 							style="color: grey;"></span>자유게시판</a></li>
 				</ul>
