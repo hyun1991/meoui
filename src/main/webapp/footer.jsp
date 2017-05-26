@@ -20,13 +20,13 @@ body{
 		<div id="contact" class="container">
 			<div class="row">
 				<div class="col-md-3">
-					<p>Fan? Drop a note.</p>
+					<p>(주)MEOUI</p>
 					<p>
 						<span class="glyphicon glyphicon-map-marker"></span>Incheon, Korea
 					</p>
 					<p>
 						<span class="glyphicon glyphicon-phone"></span>Phone: +00
-						1515151515
+						032-888-8282
 					</p>
 					<p>
 						<span class="glyphicon glyphicon-envelope"></span>Email:
@@ -44,7 +44,7 @@ body{
 					</ul>
 				</div>
 				<div class="col-md-6">
-					<h2>1 Follow Us Canada's New Passenger Bill of Rights Bans
+					<h4>1 Follow Us Canada's New Passenger Bill of Rights Bans
 						Removal in Cases of Overbooking https://t.co/K2aizs9IKo
 						https://t.co/lb8fklloIp Twitter | 29 mins ago</h2>
 				</div>
