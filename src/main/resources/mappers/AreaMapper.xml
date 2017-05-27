@@ -4,33 +4,44 @@
 <mapper namespace="AreaMapper">
 	<!-- 1.지역 추가 -->
 	<insert id="insertArea" parameterType="Area">
-		insert into area(area_no,area_name,details_address,site_no)
-		values(area_no=#{area_no} , area_name=#{area_name}, details_address=#{details_address}, site_no=#{site_no}) 
+		insert into area(area_no,area_name,details_address,site_no) values(#{areaNo},#{areaName},#{detailsAddress},#{siteNo}) 
 	</insert>
 	
 	<!-- 2.관광지 상세주소 변경 -->
 	<update id="updateArea" parameterType="Area">
-		update area set area_no=#{area_no} , area_name=#{area_name} , details_address=#{deatils_address} where site_no=#{site_no}
+		update area set area_no=#{areaNo} , area_name=#{areaName} , details_address=#{detailsAddress} where site_no=#{siteNo}
 	</update>
 	
 	<!-- 3.지역 삭제 -->
-	<delete id="deleteArea" parameterType="int">
-		delete from Area where area_no=#{area_name}
+	<delete id="deleteArea" parameterType="String">
+		delete from Area where area_name=#{areaName}
 	</delete>
 	
 	<!-- 4.지역 관광지 삭제 -->
 	<delete id="deleteAreaSite" parameterType="int">
-		delete from Area where site_no=#{site_no}
+		delete from Area where site_no=#{siteNo}
 	</delete>
 	
 	<!-- 5.지역별 관광지 조회 -->
-	<select id="selectSiteByArea" parameterType="String" resultType="Area">
-	select a.area_name, a.details_address, s.site_name from area a ,site s where a.site_no=s.site_no and area_name=#{area_name}
+	<select id="selectSiteByArea" parameterType="HashMap" resultType="Area">
+	
+	<![CDATA[
+		select * from (select rownum rnum, a1.* from (select a.area_name, a.details_address, s.site_name from area a ,site s where a.site_no=s.site_no and area_name=#{areaName}
+		from area a ,site s
+		where area_name=#{areaName}) a1
+		where rownum<=#{last}
+		) where rnum>=#{start}
+		]]>
 	</select>
 	
 	<!-- 6.마지막 지역번호 조회 -->
 	<select id="selectMaxAreaNo" resultType="int">
-		select max(area_no) from area_no
+		select max(area_no)+1 from area
+	</select>
+	
+	<!-- 7. 관광지 개수 -->
+	<select id="AreaCount" resultType="int">
+		select count(area_no)from area
 	</select>
 </mapper>
 

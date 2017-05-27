@@ -20,11 +20,16 @@ public class SiteService {
 	@Autowired
 	private SiteDAO dao;
 	@Autowired
+	private AreaDAO aDao;
+	@Autowired
 	private SiteCommentDAO commentdao;
 	
 	// 1.관광지 추가
-	public void createSite(Site site){
+	public void createSite(Site site , Area area){
 		dao.insertSite(site);
+		area.setAreaNo(aDao.maxAreaNo());
+		area.setSiteNo(site.getSiteNo());
+		aDao.insertArea(area);
 		/*
 		 * public void createRoom(Room room, RoomImg roomImg){
 		dao.insertRoom(room);
@@ -37,7 +42,7 @@ public class SiteService {
 	}
 	
 	// 2.관광지 수정
-	public void modifySite(Site site, Area area ,Ticket ticket ){
+	public void modifySite(Site site ){
 		dao.updateSite(site);
 	}
 	
@@ -57,13 +62,16 @@ public class SiteService {
 		map.put("pagination", pagination);
 		map.put("list", list);
 		return map;
-
-		
 	}
 	
 	
 	// 6.이름으로 관광지 조회
 	public Site selectSiteByName(String siteName){
 		return dao.selectSiteByName(siteName);
+	}
+	
+	// 7.관광지 상세
+	public Site selectSiteByNo(int siteNo){
+		return dao.selectSiteByNo(siteNo);
 	}
 }

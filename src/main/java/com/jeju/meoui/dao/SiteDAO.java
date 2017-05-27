@@ -50,4 +50,9 @@ public class SiteDAO {
 	public int maxSiteNo(){
 		return template.selectOne("siteMapper.selectMaxSiteNo");
 	}
+	
+	// 9.관광지 상세
+	public Site selectSiteByNo(int siteNo){
+		return template.selectOne("siteMapper.selectSiteByNo", siteNo);
+	}
 }
