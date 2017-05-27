@@ -52,7 +52,7 @@ public class SiteDAO {
 	}
 	
 	// 9.관광지 상세
-	public Site selectSiteByNo(int siteNo){
+	public Site selectSiteByNo(int siteNo ){
 		return template.selectOne("siteMapper.selectSiteByNo", siteNo);
 	}
 }

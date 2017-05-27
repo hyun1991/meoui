@@ -1,12 +1,105 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<!DOCTYPE html>
+<html lang="en">
+<style>
+@
+keyframes menuBlink { 0% {
+	opacity: 0
+}
+
+49%{
+opacity
+:
+
+0
+}
+50%{
+opacity
+:
+
+1
+}
+}
+#headTitle, .step {
+	font-family: 'Jeju Gothic', serif;
+}
+
+@
+keyframes menuBlink { 0% {
+	opacity: 0
+}
+
+49%{
+opacity
+
+:
+
+0
+}
+50%{
+opacity
+
+
+:
+
+
+
+1
+}
+}
+.glyphicon-home {
+	animation: menuBlink 1s infinite;
+}
+
+img {
+	width: 100%;
+	height: auto;
+}
+
+.btn {
+	background-color: white;
+	color: #orange;
+	margin: 30px;
+}
+</style>
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>	
-	여기는 상세페이지
+
+	<header>
+		<%@include file="/nav/navbar.jsp"%>
+	</header>
+	<h2>상세 뷰</h2>
+	<div class="row text-center">
+		<div class="col-sm-3">
+			<a href="/meoui/site/details/${site.siteNo}"> <img
+				class="image-responsive" src="/meoui/images/${stie.siteImg}"
+				alt="skinscuber" style="margin-bottom: 20px;">
+			</a>
+
+			<p>
+				<a href="/meoui/site/details/${site.siteNo}"> <strong>${site.siteName }</strong>
+				</a>
+			</p>
+			<p>
+				<a href="/meoui/site/details/${site.siteNo}">
+					${site.sitePhone }</a>
+			</p>
+			
+			
+		
+			
+		</div>
+	</div>
+	<footer>
+		<%@include file="/footer.jsp"%>
+	</footer>
 </body>
+<script>
+	
+</script>
 </html>

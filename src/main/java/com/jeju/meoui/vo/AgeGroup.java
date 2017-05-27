@@ -8,4 +8,5 @@ import lombok.*;
 public class AgeGroup {
 	private int ageGroupNo;
 	private String ageGroupStandard;
+	private int ageGroupStandardNo;
 }

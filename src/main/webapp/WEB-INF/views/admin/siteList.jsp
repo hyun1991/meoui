@@ -128,7 +128,7 @@ img {
 						<a href="${result.siteHomepage}"> ${result.siteHomepage}</a>
 					</p>
 					<div class="form-group">
-						<a href="/meoui/site/details">
+						<a href="/meoui/site/details?siteNo=${result.siteNo}">
 							<button type="button"
 								class="w3-button w3-block w3-white w3-border">상세보기</button>
 						</a>

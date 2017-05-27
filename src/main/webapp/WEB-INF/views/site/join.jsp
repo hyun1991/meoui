@@ -53,8 +53,13 @@
 				<label>상세주소</label><input type="text" name="detailsAddress" id="detailsAddress" class="form-control">
 			</div>		
 			<div class="form-group">
-				<label>지역이름<label><input type="text" name="areaName" id="areaName" class="form-control">
+					<select class="form-control input-lg" name="areaName">
+					<option value="">선택</option>
+					<option value="1">제주</option>
+					<option value="2">서귀포</option>
+				</select>
 			</div>
+			
 			<div class="btn-group">
 				<input type="submit" value="관광지 추가" id="confirmBtn" class="btn btn-primary">
 				<input type="button" value="돌아가기" id="confirmBtn" class="btn btn-primary"></a>

@@ -24,6 +24,7 @@ public class SiteController {
 	private ServletContext ctx;
 	@Resource(name="path")
 	private String path;
+	
 	// 관광지 추가 폼
 	@RequestMapping(value="/site/join", method=RequestMethod.GET)
 	public String insertSite(){
@@ -32,8 +33,9 @@ public class SiteController {
 	
 	// 관광지 추가 성공
 	@RequestMapping(value="/site/join", method=RequestMethod.POST)
-	public String insertSite( Site site, Area area,  @RequestParam("img") MultipartFile siteImg  ){
-		//int usersNo = (Integer)session.getAttribute("usersNo");
+	public String insertSite( Site site, Area area, HttpSession session , @RequestParam("img") MultipartFile siteImg  ){
+		int usersNo = (Integer)session.getAttribute("usersNo");
+		site.setUsersNo(usersNo);
 		String fileName = UploadUtil.storeAndGetFileName(siteImg, ctx, path);
 		site.setSiteImg(fileName);
 		service.createSite(site, area);
@@ -83,13 +85,21 @@ public class SiteController {
 		return "admin/siteList";
 	}
 	
+	
+	
 	// 상세보기
-	@RequestMapping(value="/site/details/{siteNo}", method=RequestMethod.GET)
-	public String selectByNoticeNo(@PathVariable int siteNo, Model model, HttpSession session){
+//	@RequestMapping(value="/site/details/{siteNo}", method=RequestMethod.GET)
+	public String selectStieDetails(@PathVariable int siteNo, Model model,  HttpSession session){
 		session.setAttribute("siteNo", siteNo);
-	     model.addAttribute("siteNo", service.selectSiteByNo(siteNo));
-	     return "/site/details";
-	}
+		model.addAttribute("site",service.selectSiteByNo(siteNo));
+		logger.info("뭐라찍히냐:{}", siteNo);
+	     return "site/details";
+	}	
+
+/*
+ */
+	
+	
 	/*
 	//이름으로 검색
 	@RequestMapping(value="/site/view", method=RequestMethod.GET)

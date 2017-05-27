@@ -5,7 +5,7 @@
 	<!-- 1.티켓 추가 -->
 	<insert id="insertTicket" parameterType="Ticket">
 		insert into ticket(agegroup_no,site_no,ticket_price)
-		values(agegroup_no=#{agegroupNo},site_no=#{siteNo},ticket_price=#{ticketPrice})
+		values(#{agegroupNo},#{siteNo},#{ticketPrice})
 	</insert>
 	
 	<!-- 2.티켓 수정 -->

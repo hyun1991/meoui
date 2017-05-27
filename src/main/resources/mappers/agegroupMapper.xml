@@ -18,4 +18,8 @@
 		delete from agegroup where agegroup_no=#{agegroupNo}
 	</delete>
 	
+	<!-- 4. 연령대최대번호 -->
+	<select id="MaxAgegroupNo" resultType="int">
+		select max(agegroup_no)+1 from agegroup
+	</select>
 </mapper>

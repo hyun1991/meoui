@@ -25,11 +25,12 @@ public class SiteService {
 	private SiteCommentDAO commentdao;
 	
 	// 1.관광지 추가
-	public void createSite(Site site , Area area){
+	public void createSite(Site site , Area area ){
 		dao.insertSite(site);
 		area.setAreaNo(aDao.maxAreaNo());
 		area.setSiteNo(site.getSiteNo());
 		aDao.insertArea(area);
+		
 		/*
 		 * public void createRoom(Room room, RoomImg roomImg){
 		dao.insertRoom(room);
