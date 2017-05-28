@@ -4,8 +4,8 @@
 <mapper namespace="AgegroupMapper">
 	<!-- 1.연령대 추가 -->
 	<insert id="insertAgegroup" parameterType="Agegroup">
-		insert into agegroup(agegroup_no,agegroup_standard)
-		values(agegroup_no=#{agegroupNo},agegroup_standard=#{agegroupStandard})
+		insert into agegroup(agegroup_no,agegroup_standard,agegroup_standard_no)
+		values(#{agegroupNo},#{agegroupStandard},#{agegroupStandardNo})
 	</insert>
 	
 	<!-- 2.연령대 수정 -->

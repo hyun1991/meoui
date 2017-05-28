@@ -13,10 +13,16 @@
 	<div class="jumbotron text-center">
 		<form class="form-inline" action="/meoui/site/details" method="post">
 			 <div class="input-group">
-				<p id="target">			 	
+				<p id="target">		
+				<br>
+						<a href="/meoui/ticket/insert?siteNo=${result.siteNo}">
+							<button type="button"
+								class="w3-button w3-block w3-white w3-border">티켓 추가</button>
+						</a>
 			 </div>
 		</form>
 	</div>
+	
 	</div>
 </body>
 <script>
