@@ -24,7 +24,9 @@ public class TicketController {
 	
 	// 티켓 추가 성공
 	@RequestMapping(value="/ticket/insert", method=RequestMethod.POST)
-	public String insertSite( Ticket ticket, AgeGroup ag){
+	public String insertSite( Ticket ticket,  AgeGroup ag, HttpSession session){
+		int usersNo = (Integer)session.getAttribute("usersNo");
+		ticket.setUsersNo(usersNo);
 		service.createTicket(ticket, ag);
 		return "redirect:/site/list?pageNo=1";
 	}

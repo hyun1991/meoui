@@ -51,23 +51,27 @@ public class SiteController {
 	 */
 
 	// 관광지 수정 폼
-	@RequestMapping(value="/site/update", method=RequestMethod.GET)
+	@RequestMapping(value="/site/update/{siteNo}", method=RequestMethod.GET)
 	public String updateSite(){
-		return "site/update";
+		return "site/update/{siteNo}";
 	}
 	
 	// 관광지 수정 성공
-	@RequestMapping(value="/site/update" , method=RequestMethod.POST)
-	public String updateSitd(Site site, Area area, Ticket ticket , @RequestParam("img") MultipartFile siteImg){
+	@RequestMapping(value="/site/update/{siteNo}" , method=RequestMethod.POST)
+	public String updateSitd(Site site, Area area, HttpSession session, @RequestParam("img") MultipartFile siteImg){
+		//int siteNo = (Integer)session.getAttribute("siteNo");
 		String fileName= UploadUtil.storeAndGetFileName(siteImg, ctx, path);
+		//site.setSiteNo(siteNo);
 		service.modifySite(site);
-		return "redirect:/meoui";
+		return "redirect:/site/list?pageNo=1";
 	}
 	
 	// 관광지 삭제
-	public String deleteSite(@PathVariable int siteNo , String siteName){
-		service.removeSite(siteName, siteNo);
-		return "users/home";
+	
+	@RequestMapping(value="/site/delete/{siteName}", method=RequestMethod.GET)
+	public String deleteSite(@PathVariable String siteName ){
+		service.removeSite(siteName);
+		return "redirect:/site/list?pageNo=1";
 	}
 	
 	// 관광지 전체 리스트
@@ -95,6 +99,7 @@ public class SiteController {
 		logger.info("뭐라찍히냐:{}", siteNo);
 	     return "site/details";
 	}	
+	
 
 /*
  */

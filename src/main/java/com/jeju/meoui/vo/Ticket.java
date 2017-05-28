@@ -10,4 +10,5 @@ public class Ticket {
 	private int siteNo;
 	private int ticketPrice;
 	private int agegroupStandardNo;
+	private int usersNo;
 }
