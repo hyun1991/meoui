@@ -81,7 +81,7 @@ img {
 
 	<div class="row text-center">
 			<c:forEach items="${result.list }" var="meeting">
-				<div class="col-sm-3">
+				<div class="col-sm-3" style="overflow-x:hidden;overflow-y:hidden">
 					<a
 						href="/meoui/membermeeting/view/${meeting.meetingNo}">
 						<img class="image-responsive"

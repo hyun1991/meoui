@@ -97,7 +97,7 @@ public class MeetingBoardController {
 			return "redirect:/meetingboard/list/"+meetingNo;
 		}
 	
-	
+	asd
 	
 	
 	/*//모임게시판 글쓰기

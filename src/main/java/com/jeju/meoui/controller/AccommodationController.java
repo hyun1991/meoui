@@ -33,7 +33,7 @@ public class AccommodationController {
 	}
 	//	숙박시설 추가하기 완료(완료)
 	@RequestMapping(value="/manage/accommodation/join", method=RequestMethod.POST)
-	public String joinAccommodation(HttpSession session, Accommodation accommodation, @RequestParam String accommodationAddress1, @RequestParam String accommodationAddress2, @RequestParam("img") MultipartFile accommodationImg, @RequestParam("file")MultipartFile accommodationDirections, @RequestParam(defaultValue="40") int siteNo){
+	public String joinAccommodation(HttpSession session, Accommodation accommodation, @RequestParam String accommodationAddress1, @RequestParam String accommodationAddress2, @RequestParam("img") MultipartFile accommodationImg, @RequestParam("file")MultipartFile accommodationDirections, @RequestParam int siteNo){
 		int ownerNo= (Integer)session.getAttribute("ownerNo");
 		String accommodationAddress= accommodationAddress1+accommodationAddress2;
 		accommodation.setSiteNo(siteNo);
@@ -101,6 +101,34 @@ public class AccommodationController {
 		model.addAttribute("result", service.getByOwnerAccommodation(accommodationNo));
 		return "owner/view";
 	}
-	//	숙박시설 수정하기(미완료)
-	//	구현 필요합니다.
+	//	숙박시설 번호별 조회하기(관리자)(완료)
+	@RequestMapping(value="/admin/accommodation/view/{accommodationNo}", method=RequestMethod.GET)
+	public String viewAdminAccommodation(Model model, @PathVariable int accommodationNo, HttpSession session){
+		session.setAttribute("accommodationNo", accommodationNo);
+		model.addAttribute("result", service.getByOwnerAccommodation(accommodationNo));
+		return "admin/acview";
+	}
+	//	숙박시설 수정하기 폼뷰(숙박업주용)
+	@RequestMapping(value="/manage/accommodation/update", method=RequestMethod.GET)
+	public String updateOwnerAccommodation(Model model){
+		model.addAttribute("result", service.createAccommodationStart());
+		return "accommodation/updateForm";
+	}
+	//	숙박시설 수정하기(완료)
+	@RequestMapping(value="/manage/accommodation/update", method=RequestMethod.POST)
+	public String updateOwnerAccommodation(HttpSession session,@ModelAttribute Accommodation accommodation, @RequestParam String accommodationAddress1, @RequestParam String accommodationAddress2, @RequestParam("img") MultipartFile accommodationImg,@RequestParam("file")MultipartFile accommodationDirections, @RequestParam int siteNo){	
+		int accommodationNo= (Integer)session.getAttribute("accommodationNo");
+		String accommodationAddress= accommodationAddress1+accommodationAddress2;
+		String fileName1= UploadUtil.storeAndGetFileName(accommodationImg, ctx, path);
+		String fileName2= UploadUtil.storeAndGetFileName(accommodationDirections, ctx, path);
+		int ownerNo= (Integer)session.getAttribute("ownerNo");
+		accommodation.setAccommodationNo(accommodationNo);
+		accommodation.setSiteNo(siteNo);
+		accommodation.setOwnerNo(ownerNo);
+		accommodation.setAccommodationAddress(accommodationAddress);
+		accommodation.setAccommodationImg(fileName1);
+		accommodation.setAccommodationDirections(fileName2);
+		service.modifyAccommodation(accommodation);
+		return "redirect:/manage/home";
+	}
 }
