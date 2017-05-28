@@ -81,7 +81,6 @@ header {
 				</div>
 			</c:forEach>
 		</div>
-	<%@include file="/nav/ownernav.jsp" %>
 
 	<div class="form-group"><img src="/meoui/images/${result.accommodation.accommodationImg}"></div><br>
 	<div class="form-group"><h3>숙박시설이름:</h3>${result.accommodation.accommodationName }</div><br>

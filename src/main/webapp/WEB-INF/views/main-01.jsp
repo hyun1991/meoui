@@ -13,6 +13,7 @@
 #box-right {
   flex: 1;
   text-align: right;
+  margin-top: 100px;
 }
 </style>
 </head>
@@ -28,11 +29,11 @@
 			<div class="col-md-6 col-sm-12">
 				<img src="/meoui/images/cool3.jpg">
 			</div>
+			<div id='box-right'>
+				<%@include file="/websocket.jsp" %>
+			</div>
 		</div>
 		<!-- /.row -->
-		<div id='box-right'>
-			<%@include file="/websocket.jsp" %>
-		</div>
 	</div>
 	<%@include file="/footer.jsp"%>
 </body>

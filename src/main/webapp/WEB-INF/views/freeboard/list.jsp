@@ -53,10 +53,12 @@
 			</div>
 		</div>
 	</div>
-	<div class="row text-center">
+	<div class="row">
+		<div class="col-xs-4">
 		<a href="/meoui/freeboard/join">
 			<button type="button" class="w3-button w3-block w3-white w3-border">글작성</button>
 		</a>
+		</div>
 	</div>
 	<footer> <%@include file="/footer.jsp"%>
 	</footer>
