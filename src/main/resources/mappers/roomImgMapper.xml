@@ -17,7 +17,7 @@
 	<!-- 객실종류별 객실이미지 전체삭제 -->
 	<delete id="deleteAllRoomImg" parameterType="RoomImg">
 		<![CDATA[
-			delte from room_img where room_no=#{roomNo}
+			delete from room_img where room_no=#{roomNo}
 		]]>
 	</delete>
 	<!-- 숙박시설번호별 객실이미지 전체조회 -->

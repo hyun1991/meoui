@@ -82,11 +82,11 @@ img {
 					<img class="image-responsive" src="/meoui/images/${accommodation.accommodationImg}"
 					alt="알수없음" style="margin-bottom: 20px;">
 				</a>
-				<p><a href="/meoui/manage/accommodation/view/${accommodation.accommodationNo}">
+				<p><a href="/meoui/admin/accommodation/view/${accommodation.accommodationNo}">
 					<strong>${accommodation.accommodationName}</strong></a></p>
 				<p>${accommodation.accommodationAddress}</p>
 				<div class="form-group">
-				<a href="/meoui/manage/accommodation/view/${accommodation.accommodationNo}">
+				<a href="/meoui/admin/accommodation/view/${accommodation.accommodationNo}">
 					<button type="button" class="w3-button w3-block w3-white w3-border">
 					상세보기</button></a>
 				</div>

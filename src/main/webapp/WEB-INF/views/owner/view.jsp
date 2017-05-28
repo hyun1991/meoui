@@ -32,10 +32,10 @@ header {
 					href="/meoui/menage/room/view/${result.accommodation.accommodationNo}">
 					<button type="button" class="w3-button w3-white w3-border"
 						id="messageBtn">객실정보</button>
-				</a> <a href="#">
+				</a> <a href="/meoui/manage/accommodation/update">
 					<button type="button" class="w3-button w3-white w3-border"
 						id="messageBtn">수정하기</button>
-				</a> <a href="#">
+				</a> <a href="/meoui/manage/room/join">
 					<button type="button" class="w3-button w3-white w3-border"
 						id="messageBtn">객실추가</button>
 				</a>
@@ -61,6 +61,7 @@ header {
 		</div>
 		<br>
 		<hr>
+		<h3>댓글리스트</h3>
 		<div class="row">
 			<c:forEach items="${result.comment }" var="comment">
 				<div class="col-md-8">
@@ -72,22 +73,15 @@ header {
 						pattern="yyyy.MM.dd" />
 					평점: ${comment.accommodationCommentAvg}점
 				</div>
-				<div class="col-md-2">
-					<a
-						href="/meoui/accommodationComment/delete/${comment.accommodationCommentNo }">
-						<button type="button"
-							class="w3-button w3-block w3-white w3-border" id="deleteBtn">삭제</button>
-					</a>
-				</div>
 			</c:forEach>
 		</div>
-
+	<hr>
 	<div class="form-group"><img src="/meoui/images/${result.accommodation.accommodationImg}"></div><br>
 	<div class="form-group"><h3>숙박시설이름:</h3>${result.accommodation.accommodationName }</div><br>
 	<div class="form-group"><h3>대표전화:</h3>${result.accommodation.accommodationPhone }</div>
 	<div class="form-group"><h3>시설위치:</h3>${result.accommodation.accommodationAddress }</div>
 	<div class="form-group">
-	<a href="#">
+	<a href="/meoui/manage/accommodation/update">
 	<button type="button" class="w3-button w3-block w3-white w3-border" id="messageBtn">수정하기</button>
 	</a>
 	</div>
