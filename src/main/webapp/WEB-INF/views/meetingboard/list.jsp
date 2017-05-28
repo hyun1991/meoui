@@ -110,7 +110,7 @@ img {
 					
 					
 					<div class="form-group">
-						<a href="/meoui/meetingboard/view">
+						<a href="/meoui/meetingboard/view/${board.meetingboardNo }">
 					<button type="button" class="w3-button w3-block w3-white w3-border">
 					상세보기</button></a>
 												

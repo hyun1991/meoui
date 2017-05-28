@@ -33,7 +33,7 @@ public class MeetingBoardController {
 	private static final Logger logger= LoggerFactory.getLogger(MeetingBoardController.class);
 	
 	
-	//모임게시판 글쓰기
+		//모임게시판 글쓰기
 		@RequestMapping(value="/meetingboard/create", method=RequestMethod.GET)
 		public String insertMeetingBoardForm(){			
 			System.out.println("s여기는 모임게시판 글쓰기 폼");
@@ -57,7 +57,7 @@ public class MeetingBoardController {
 			
 			logger.info("모임게시판 글쓰는중: {} ", meetingNo);
 			//글을 쓰고 난 후에 리스트 게시판으로 안가진다
-			return "meoui/meetingboard/list";
+			return "redirect:/meetingboard/list/"+meetingNo	;
 		}
 		// 모임게시판 전체 리스트(페이징)
 		@RequestMapping(value="/meetingboard/list/{meetingNo}" , method=RequestMethod.GET)
@@ -72,6 +72,17 @@ public class MeetingBoardController {
 		}
 		
 		//모임게시판 글 보기
+		@RequestMapping(value="/meetingboard/view/{meetingboardNo}", method=RequestMethod.GET)
+		public String MeetingboardView(@PathVariable int meetingboardNo, Model model, HttpSession session){
+			
+			session.setAttribute("meetingboardNo", meetingboardNo);
+			
+			logger.info("모임게시판글보기 : {}", meetingboardNo);
+			
+			model.addAttribute("board", service.selectMeetingBoardView(meetingboardNo));
+			
+			return "meetingboard/view";
+		}
 	
 	
 	

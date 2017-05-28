@@ -38,4 +38,10 @@ public class MeetingBoardService {
 		return map;
 	}
 	
+	//상세 보기
+	public MeetingBoard selectMeetingBoardView(int meetingboardNo){
+			
+		return dao.selectMeetingBoardView(meetingboardNo);
+	}
+	
 }

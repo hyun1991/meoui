@@ -23,5 +23,5 @@ public class MeetingBoard {
 	private String meetingboardImg;
 	private int memberNo;
 	private int meetingNo;
-	
+	private String memberName;
 }
