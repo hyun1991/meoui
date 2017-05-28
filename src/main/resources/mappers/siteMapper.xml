@@ -12,26 +12,26 @@
 		</selectKey>
 		<![CDATA[
 			insert into site(site_no,site_name,site_park,site_object,site_img,site_introduce,site_homepage,site_open_time,site_close_time,site_phone,site_night_open,site_night_close_time,users_no)
-			values(#{site_no},#{site_name},#{site_park},#{site_object},#{site_img},#{site_introduce},#{site_homepage},#{site_open_time},#{site_close_time},#{site_phone},#{site_night_open},#{site_night_close_time},#{users_no})
+			values(#{siteNo},#{siteName},#{sitePark},#{siteObject},#{siteImg},#{siteIntroduce},#{siteHomepage},#{siteOpenTime},#{siteCloseTime},#{sitePhone},#{siteNightOpen},#{siteNightCloseTime},#{usersNo})
 		]]>
 	</insert>
 	<!-- 2. 관광지 수정 -->
 	<update id="updateSite" parameterType="site">
 		<![CDATA[
-			update site set site_img=#{site_img},site_introduce=#{site_introduce},site_homepage=#{site_homepage}
-			,site_open_time=#{site_open_time},site_close_time=#{site_close_time},site_phone=#{site_phone},site_night_open=#{site_night_open},site_night_close_time=#{site_night_close_time} where site_no=#{site_no}   
+			update site set site_img=#{siteImg},site_introduce=#{siteIntroduce},site_homepage=#{siteHomepage}
+			,site_open_time=#{siteOpenTime},site_close_time=#{siteCloseTime},site_phone=#{sitePhone},site_night_open=#{siteNightOpen},site_night_close_time=#{siteNightCloseTime} where site_no=#{siteNo}   
 		]]>
 	</update>
 	
 	<!-- 3. 관광지 삭제 -->
 	<delete id="deleteSite" parameterType="String">
-		delete from site where site_name=#{site_name}
+		delete from site where site_name=#{siteName}
 	</delete>
 	
 	<!-- 4. 전체 관광지리스트(페이징) -->
 	<select id="selectAllSite" parameterType="HashMap" resultType="site"  >
 		<![CDATA[
-		select * from (select rownum rnum, a1.* from (select s.site_name, s.site_park , s.site_object, s.site_img, s.site_introduce, s.site_homepage, s.site_open_time , s.site_close_time, s.site_phone,
+		select * from (select rownum rnum, a1.* from (select s.site_no ,s.site_name, s.site_park , s.site_object, s.site_img, s.site_introduce, s.site_homepage, s.site_open_time , s.site_close_time, s.site_phone,
 		s.site_night_open, s.site_night_close_time, a.area_name, a.details_address 
 		from site s , area a 
 		where s.site_no=a.site_no) a1
@@ -42,7 +42,7 @@
 	
 	<!-- 5. 이름으로 관광지 찾기 -->
 	<select id="selectSiteByName" parameterType="String" resultType="site">
-		select s.site_name, s.site_park , s.site_object, s.site_img, s.site_introduce, s.site_homepage, s.site_open_time , s.site_close_time, s.site_phone,
+		select s.site_no, s.site_name, s.site_park , s.site_object, s.site_img, s.site_introduce, s.site_homepage, s.site_open_time , s.site_close_time, s.site_phone,
 		s.site_night_open, s.site_night_close_time, a.area_name, a.details_address 
 		from site s , area a 
 		where s.site_no=a.site_no and s.site_name=#{s.site_name}
@@ -60,7 +60,15 @@
 
 	<!-- 8. 관광지 마지막 번호 -->
 	<select id="selectMaxSiteNo" resultType="int">
-		select max(site_no) from site
+		select max(site_no) from site`
+	</select>
+	
+	<!-- 9.  관광지 상세 -->
+	<select id="selectSiteByNo" parameterType="int" resultType="site">
+		select s.site_no, s.site_name, s.site_park , s.site_object, s.site_img, s.site_introduce, s.site_homepage, s.site_open_time , s.site_close_time, s.site_phone,
+		s.site_night_open, s.site_night_close_time, a.area_name, a.details_address 
+		from site s , area a 
+		where s.site_no=a.site_no and s.site_no=#{s.site_no}
 	</select>
 	
 </mapper>

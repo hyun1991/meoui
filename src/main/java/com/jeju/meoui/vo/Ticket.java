@@ -6,7 +6,8 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Ticket {
-	private int ageGroupNo;
+	private int agegroupNo;
 	private int siteNo;
 	private int ticketPrice;
+	private int agegroupStandardNo;
 }
