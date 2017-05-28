@@ -24,6 +24,7 @@ public class SiteController {
 	private ServletContext ctx;
 	@Resource(name="path")
 	private String path;
+	
 	// 관광지 추가 폼
 	@RequestMapping(value="/site/join", method=RequestMethod.GET)
 	public String insertSite(){
@@ -32,12 +33,13 @@ public class SiteController {
 	
 	// 관광지 추가 성공
 	@RequestMapping(value="/site/join", method=RequestMethod.POST)
-	public String insertSite(@ModelAttribute Site site,   @RequestParam("img") MultipartFile siteImg , @RequestParam String detailsAdress ){
-		//int usersNo = (Integer)session.getAttribute("usersNo");
+	public String insertSite( Site site, Area area, HttpSession session , @RequestParam("img") MultipartFile siteImg  ){
+		int usersNo = (Integer)session.getAttribute("usersNo");
+		site.setUsersNo(usersNo);
 		String fileName = UploadUtil.storeAndGetFileName(siteImg, ctx, path);
 		site.setSiteImg(fileName);
-		service.createSite(site);
-		return "redirect:/site/list";
+		service.createSite(site, area);
+		return "redirect:/site/list?pageNo=1";
 	}
 	/*
 	 * String fileName= UploadUtil.storeAndGetFileName(roomImg, ctx, path);
@@ -49,23 +51,27 @@ public class SiteController {
 	 */
 
 	// 관광지 수정 폼
-	@RequestMapping(value="/site/update", method=RequestMethod.GET)
+	@RequestMapping(value="/site/update/{siteNo}", method=RequestMethod.GET)
 	public String updateSite(){
-		return "site/update";
+		return "site/update/{siteNo}";
 	}
 	
 	// 관광지 수정 성공
-	@RequestMapping(value="/site/update" , method=RequestMethod.POST)
-	public String updateSitd(Site site, Area area, Ticket ticket , @RequestParam("img") MultipartFile siteImg){
+	@RequestMapping(value="/site/update/{siteNo}" , method=RequestMethod.POST)
+	public String updateSitd(Site site, Area area, HttpSession session, @RequestParam("img") MultipartFile siteImg){
+		//int siteNo = (Integer)session.getAttribute("siteNo");
 		String fileName= UploadUtil.storeAndGetFileName(siteImg, ctx, path);
-		service.modifySite(site, area, ticket);
-		return "redirect:/meoui";
+		//site.setSiteNo(siteNo);
+		service.modifySite(site);
+		return "redirect:/site/list?pageNo=1";
 	}
 	
 	// 관광지 삭제
-	public String deleteSite(@PathVariable int siteNo , String siteName){
-		service.removeSite(siteName, siteNo);
-		return "users/home";
+	
+	@RequestMapping(value="/site/delete/{siteName}", method=RequestMethod.GET)
+	public String deleteSite(@PathVariable String siteName ){
+		service.removeSite(siteName);
+		return "redirect:/site/list?pageNo=1";
 	}
 	
 	// 관광지 전체 리스트
@@ -73,8 +79,30 @@ public class SiteController {
 	public String allSite(Model model ,@RequestParam(defaultValue="1") int pageNo){
 		logger.info("pageNo:{}", pageNo);
 		model.addAttribute("result", service.selectAllSite(pageNo));
-		return "site/list";
+		return "site/resultList";
 	}
+	// 관광지 전체 리스트(관리자용)
+	@RequestMapping(value="/admin/site/list" , method=RequestMethod.GET)
+	public String allSiteAdmin(Model model ,@RequestParam(defaultValue="1") int pageNo){
+		logger.info("pageNo:{}", pageNo);
+		model.addAttribute("result", service.selectAllSite(pageNo));
+		return "admin/siteList";
+	}
+	
+	
+	
+	// 상세보기
+//	@RequestMapping(value="/site/details/{siteNo}", method=RequestMethod.GET)
+	public String selectStieDetails(@PathVariable int siteNo, Model model,  HttpSession session){
+		session.setAttribute("siteNo", siteNo);
+		model.addAttribute("site",service.selectSiteByNo(siteNo));
+		logger.info("뭐라찍히냐:{}", siteNo);
+	     return "site/details";
+	}	
+	
+
+/*
+ */
 	
 	
 	/*

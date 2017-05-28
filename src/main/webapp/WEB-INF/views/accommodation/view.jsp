@@ -134,6 +134,7 @@
 	$(document).ready(function() {
 		$("#deleteBtn").on("click", function() {
 			alert("댓글이 삭제되었습니다")
+		})
 	})
 </script>
 </html>

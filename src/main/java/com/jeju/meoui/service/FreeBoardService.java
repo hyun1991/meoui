@@ -5,9 +5,9 @@ import java.util.*;
 
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
+import org.springframework.transaction.annotation.*;
 
 import com.jeju.meoui.dao.*;
-import com.jeju.meoui.dao.test.*;
 import com.jeju.meoui.util.*;
 import com.jeju.meoui.vo.*;
 
@@ -15,6 +15,9 @@ import com.jeju.meoui.vo.*;
 public class FreeBoardService {
 	@Autowired
 	private FreeBoardDAO dao;
+	@Autowired
+	private FreeBoardCommentDAO commentDao;
+
 	//1. 자유게시판  추가하기
 	public void createFreeboard(FreeBoard freeBoard) {
 		dao.insertFreeboard(freeBoard);
@@ -31,15 +34,21 @@ public class FreeBoardService {
 	public HashMap<String, Object> getByFreeboard(int pageNo) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		int cntRow = dao.findByMax();
-		Pagination p = PagingUtil.getPagination(pageNo, cntRow);
-		List<FreeBoard> list = dao.selectAllFreeboard(p.getStartPaging(), p.getLastPaging());
+		Pagination p = PagingUtil.getPagination(pageNo, cntRow);		
+		List<FreeBoard> list = dao.selectAllFreeboard(p.getStartRow(), p.getLastRow());
 		map.put("pagination", p);
 		map.put("list", list);
 		return map;
 	}
-	//5. 자유게시판 번호별 조회
-	public FreeBoard findByFreeboard(int freeboardNo) {
+	
+	//	5. 자유게시판 번호별 조회
+	@Transactional
+	public HashMap<String, Object> findByFreeboard(int freeboardNo) {
+		HashMap<String, Object>map= new HashMap<String, Object>();
+		map.put("comment", commentDao.selectCommentList(freeboardNo));
 		dao.incrementCnt(freeboardNo);
-		return dao.selectFreeboard(freeboardNo);
+		map.put("board", dao.selectFreeboard(freeboardNo));
+		return map;
+		
 	}
 }

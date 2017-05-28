@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -15,13 +15,21 @@ keyframes menuBlink { 0% {
 
 49%{
 opacity
+
+
 :
+
  
+
 0
 }
 50%{
 opacity
+
+
 :
+
+
 1
 }
 }
@@ -38,7 +46,11 @@ keyframes menuBlink { 0% {
 opacity
 
 
+
+
 :
+
+
 
 
 0
@@ -47,7 +59,11 @@ opacity
 opacity
 
 
+
+
 :
+
+
 
 
 1
@@ -73,41 +89,54 @@ img {
 	<header>
 		<%@include file="/nav/navbar.jsp"%>
 	</header>
-	<div class="form-group">
-							<a href="/meoui/view.jsp" class="btn btn-default">이름으로 찾기</a> 
+	<div class="container">
+		<h1 id="headTitle" style="margin-top: 50px;" align="center">관광명소
+			리스트</h1>
+		<div class="row text-center">
+			<hr>
+			<c:forEach items="${result.list }" var="result">
+				<div class="col-sm-3" style="overflow-x:hidden;overflow-y:hidden">
+					<a href="/meoui/site/view/${result.siteNo}"> <img
+						class="image-responsive" src="/meoui/images/${site.siteImg}"
+						alt="알수없음" style="margin-bottom: 20px;">
+					</a>
+					<p>
+						<a href="/meoui/site/view/${result.siteNo}"> <strong>${result.siteName}</strong>
+						</a>
+					</p>
+					<p>
+						<a href="/meoui/site/view/${result.siteNo}">
+							${result.siteIntroduce}</a>
+					</p>
+					<p>
+						<a href="${result.siteHomepage}"> ${result.siteHomepage}</a>
+					</p>
+					<div class="form-group">
+						<a href="/meoui/site/details?siteNo=${result.siteNo}">
+							<button type="button"
+								class="w3-button w3-block w3-white w3-border">상세보기</button>
+						</a>
+					</div>
 				</div>
-	
-	<c:forEach items="${result.list }" var="result">
-	<div><img src="/meoui/images/${result.siteImg}"></div><br>
-	<div>
-		<h3>${result.siteName }</h3>
-		<h4>전화번호:${result.sitePhone }</h4>
-		<h4>홈페이지:${result.siteHomepage }</h4>
-		<h4>이용시간:${result.siteOpenTime }~ ${result.siteCloseTime}</h4>
-		<h4>주차가능여부: ${result.sitePark }</h4>
-		<h4>야간개장여부:${result.siteNightOpen } </h4>
-		<h4>야간폐장시간:${result.siteNightCloseTime }</h4>
-		<h4>상세주소:${result.detailsAddress }</h4>
-	</div><br>
-
-	
-	</c:forEach>
+			</c:forEach>
+		</div>
+	</div>
 	<div class="row text-center">
-					<ul class="pagination pagination-md">
-						<li><c:if test="${result.pagination.prev>0 }">
-								<a href="/meoui/notice/list?pageNo=${result.pagination.prev }">이전으로</a>
-							</c:if></li>
-						<li><c:forEach begin="${result.pagination.startPaging }"
-								end="${result.pagination.lastPaging }" var="i">
-								<a href="/meoui/notice/list?pageNo=${i }">${i }</a>
-							</c:forEach></li>
-						<li><c:if test="${result.pagination.next>0 }">
-								<a href="/meoui/notice/list?pageNo=${result.pagination.next }">다음으로</a>
-							</c:if></li>
-					</ul>
-					
-				</div>
-				
+		<ul class="pagination pagination-md">
+			<li><c:if test="${result.pagination.prev>0 }">
+					<a href="/meoui/site/list?pageNo=${result.pagination.prev }">이전으로</a>
+				</c:if></li>
+			<li><c:forEach begin="${result.pagination.startPaging }"
+					end="${result.pagination.lastPaging }" var="i">
+					<a href="/meoui/site/list?pageNo=${i }">${i }</a>
+				</c:forEach></li>
+			<li><c:if test="${result.pagination.next>0 }">
+					<a href="/meoui/site/list?pageNo=${result.pagination.next }">다음으로</a>
+				</c:if></li>
+		</ul>
+
+	</div>
+	<%@include file="view.jsp" %>
 	<footer>
 		<h1>1 Follow Us Canada's New Passenger Bill of Rights Bans
 			Removal in Cases of Overbooking https://t.co/K2aizs9IKo
