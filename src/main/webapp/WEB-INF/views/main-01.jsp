@@ -9,6 +9,12 @@
 <title>The Big Picture - Start Bootstrap Template</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/the-big-picture.css" rel="stylesheet">
+<style>
+#box-right {
+  flex: 1;
+  text-align: right;
+}
+</style>
 </head>
 <body>
 <body>
@@ -24,6 +30,9 @@
 			</div>
 		</div>
 		<!-- /.row -->
+		<div id='box-right'>
+			<%@include file="/websocket.jsp" %>
+		</div>
 	</div>
 	<%@include file="/footer.jsp"%>
 </body>

@@ -18,7 +18,14 @@
 <script>
 	var wsocket;
 	$(document).ready(function() {
+		$("#msg").hide();
+		$("#send").hide();
+		$("#exite").hide();
 		$("#connect").on("click", function() {
+			$("#connect").hide();
+			$("#send").show();
+			$("#exite").show();
+			$("#msg").show();
 			wsocket= new WebSocket("ws://localhost:8087/meoui/handler1");
 			wsocket.onmessage= function(event){
 				console.log(event.data)
@@ -27,6 +34,10 @@
 			console.log("서버 연결");
 		})
 		$("#exit").on("click", function() {
+			$("#send").hide();
+			$("#exite").hide();
+			$("#msg").hider();
+			$("#connect").show();
 			wsocket.close();
 			console.log("연결 종료");
 		})

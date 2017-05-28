@@ -77,7 +77,7 @@ img {
 	</header>
 	<h2>모임게시판 글 목록</h2>	
 		<c:forEach items="${result.list }" var="board">
-				<div class="col-sm-3">
+				<div class="col-sm-3" style="overflow-x:hidden;overflow-y:hidden">
 				
 					<a
 						href="/meoui/meetingboard/view/${meeting.meetingNo}">

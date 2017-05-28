@@ -28,7 +28,8 @@
 					<c:forEach items="${result.list }" var="freeboard">
 						<tr>
 							<td>${freeboard.freeboardNo }</td>
-							<td><a href="/meoui/freeboard/view/${freeboard.freeboardNo }">${freeboard.freeboardTitle }</a></td>
+							<td><a
+								href="/meoui/freeboard/view/${freeboard.freeboardNo }">${freeboard.freeboardTitle }</a></td>
 							<td>${freeboard.freeboardCnt }</td>
 							<td><fmt:formatDate value="${freeboard.freeboardDate }"
 									pattern="yyyy년MM월dd일" /></td>
@@ -52,12 +53,10 @@
 			</div>
 		</div>
 	</div>
-		<div class="col-md-4">
-			<div class="row text-center">
+	<div class="row text-center">
 		<a href="/meoui/freeboard/join">
 			<button type="button" class="w3-button w3-block w3-white w3-border">글작성</button>
 		</a>
-		</div>
 	</div>
 	<footer> <%@include file="/footer.jsp"%>
 	</footer>

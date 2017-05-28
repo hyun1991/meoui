@@ -77,7 +77,7 @@ img {
 	<hr>
 		<div class="container">
 			<c:forEach items="${result.list }" var="accommodation">
-				<div class="col-sm-3">
+				<div class="col-sm-3" style="overflow-x:hidden;overflow-y:hidden">
 				<a href="/meoui/manage/accommodation/view/${accommodation.accommodationNo}">
 					<img class="image-responsive" src="/meoui/images/${accommodation.accommodationImg}"
 					alt="알수없음" style="margin-bottom: 20px;">
