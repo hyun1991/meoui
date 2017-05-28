@@ -12,9 +12,9 @@
 		</selectKey>
 	</insert>
 <!-- 2. 자유게시판 번호 별 댓글 조회 -->
-	<select id="selectCommentList" parameterType="int" resultType="FreeBoard">
+	<select id="selectCommentList" parameterType="int" resultType="FreeBoardComment">
 		<![CDATA[
-			select * from freeboardComment where freeboard_no=#{freeboardNo}
+			select * from freeboard_comment where freeboard_no=#{freeboardNo}
 		]]>
 	</select>
 <!-- 3. 댓글 수정 -->
@@ -32,7 +32,7 @@
 <!-- 5. 자유게시판 번호 별 댓글 전체 삭제하기(전체삭제) -->
 	<delete id="deleteAllComment" parameterType="int">
 		<![CDATA[
-			delete from freeboardComment where freeboard_no=#{freeboardNo}
+			delete from freeboard_comment where freeboard_no=#{freeboardNo}
 		]]>
 	</delete>
 <!-- 6. 자유게시판 댓글 번호별 자유게시판 번호 조회 -->

@@ -1,12 +1,13 @@
-package com.jeju.meoui.chat;
+package com.jeju.meoui.handler;
 
 import java.util.*;
 
 import org.springframework.web.socket.*;
 import org.springframework.web.socket.handler.*;
 
-public class WebSocketHandler extends TextWebSocketHandler {
-
+public class ChatSocketHandler extends TextWebSocketHandler {
+	//	ArrayList: 스레드 안전하지 않다
+	//	Vector: 스레드 안전하다.
 	private List<WebSocketSession>list= new ArrayList<WebSocketSession>();
 	//	사용자가 접속하면 세션을 리스트에 추가
 	@Override
@@ -30,3 +31,4 @@ public class WebSocketHandler extends TextWebSocketHandler {
 		}
 	}
 }
+ 

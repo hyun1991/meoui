@@ -82,7 +82,7 @@ img {
 					<a href="/meoui/accommodation/view/${accommodation.accommodationNo}">
 						<img class="image-responsive"
 						src="/meoui/images/${accommodation.accommodationImg}"
-						alt="skinscuber" style="margin-bottom: 20px;">
+						alt="알수없음" style="margin-bottom: 20px;">
 					</a>
 					<p>
 						<a href="/meoui/accommodation/view/${accommodation.accommodationNo}">
