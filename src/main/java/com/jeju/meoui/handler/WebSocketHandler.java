@@ -2,6 +2,8 @@ package com.jeju.meoui.handler;
 
 import java.util.*;
 
+import javax.servlet.http.*;
+
 import org.slf4j.*;
 import org.springframework.web.socket.*;
 import org.springframework.web.socket.handler.*;
