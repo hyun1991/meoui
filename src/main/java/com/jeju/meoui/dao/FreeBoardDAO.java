@@ -36,9 +36,9 @@ public class FreeBoardDAO {
 	public int deleteFreeboard(int freeboardNo) {
 		return template.delete("FreeBoardMapper.deleteFreeboard", freeboardNo);
 	}
-	// 6. 자유게시판 DB개수조회(미완료)
+	// 6. 자유게시판 DB개수조회(완료)
 	public int findByMax() {
-		return 0;
+		return template.selectOne("FreeBoardMapper.findByMax");
 	}
 	// 7. 자유게시판 조회수 증가
 	public void incrementCnt(int freeboardNo) {

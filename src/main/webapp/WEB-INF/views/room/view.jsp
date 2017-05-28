@@ -54,7 +54,7 @@ img {
 									<td><img src="/meoui/images/${roomImg.roomImg}"></td>
 								</c:if>
 							</c:forEach>
-							<td><a href="/meoui/manage/rooom/delete?roomNo=${room.roomNo }&accommodationNo=${room.accommodationNo}">
+							<td><a href="/meoui/manage/room/delete?roomNo=${room.roomNo }&accommodationNo=${room.accommodationNo}">
 									<button type="button"
 										class="w3-button w3-block w3-white w3-border">삭제</button>
 							</a></td>

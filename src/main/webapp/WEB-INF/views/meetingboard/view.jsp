@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <style>
 @
 keyframes menuBlink { 0% {
@@ -66,7 +66,7 @@ img {
 }
 </style>
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <script type="text/javascript"
@@ -74,46 +74,48 @@ img {
 <body>
 <header>
 		<%@include file="/nav/navbar.jsp"%>
-	</header>
-	<h2>모임 리스트</h2>
-		<a href="/meoui/membermeeting/create">생성 </a>
-			<a href="/meoui/meetingjoin/list">내모임</a>
+	</header>>
 
+<h2>모임 게시판 상세 뷰</h2>
 	<div class="row text-center">
-			<c:forEach items="${result.list }" var="meeting">
-				<div class="col-sm-3" style="overflow-x:hidden;overflow-y:hidden">
+		<div class="col-sm-3">
+					
 					<a
-						href="/meoui/membermeeting/view/${meeting.meetingNo}">
+						href="/meoui/meetingboard/view/${meeting.meetingNo}">
 						<img class="image-responsive"
-						src="/meoui/images/${meeting.meetingImg}"
+						src="/meoui/images/${board.meetingboardImg }"
 						alt="skinscuber" style="margin-bottom: 20px;">
 					</a>
 
+					
 					<p>
-						<a
-							href="/meoui/membermeeting/view/${meeting.meetingNo}">
-							<strong>${meeting.meetingName }</strong>
-						</a>
+							<strong>${board.meetingboardTitle }</strong>
 					</p>
+					
 					<p>
-						<a
-							href="/meoui/membermeeting/view/${meeting.meetingNo}">
-							${meeting.meetingTotalNumber }명</a>
+							${board.meetingboardContent }
 					</p>
-					<div class="form-group">
-						<a href="/meoui/membermeeting/view/${meeting.meetingNo}">
-					<button type="button" class="w3-button w3-block w3-white w3-border">
-					상세보기</button></a>
-																		
-				</div>
-				</div>
-			</c:forEach>
+					
+					<p>
+							${board.memberName }
+					</p>
+										
+					<p>
+							${board.meetingboardCnt }
+					</p>
+					
+						<p>
+						<fmt:formatDate value="${board.meetingboardDate}" pattern="yyyy년MM월dd일"/>
+					</p>
+					<form action="/meoui/meetingboard/delete/${board.meetingboardNo}" method="POST">
+				<button id="commit" type="submit"
+					class="w3-button w3-block w3-white w3-border">게시글 삭제</button>
+			</form>
+			
+		
+				
 		</div>
-	
-	
-	
-<footer>
-		<%@include file="/footer.jsp"%>
-	</footer>
+	</div>
+
 </body>
 </html>

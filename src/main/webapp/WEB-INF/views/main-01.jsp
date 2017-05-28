@@ -9,6 +9,13 @@
 <title>The Big Picture - Start Bootstrap Template</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/the-big-picture.css" rel="stylesheet">
+<style>
+#box-right {
+  flex: 1;
+  text-align: right;
+  margin-top: 100px;
+}
+</style>
 </head>
 <body>
 <body>
@@ -22,16 +29,12 @@
 			<div class="col-md-6 col-sm-12">
 				<img src="/meoui/images/cool3.jpg">
 			</div>
+			<div id='box-right'>
+				<%@include file="/websocket.jsp" %>
+			</div>
 		</div>
 		<!-- /.row -->
 	</div>
-	<!-- /.container -->
-
-	<!-- jQuery -->
-	<script src="js/jquery.js"></script>
-
-	<!-- Bootstrap Core JavaScript -->
-	<script src="js/bootstrap.min.js"></script>
 	<%@include file="/footer.jsp"%>
 </body>
 </body>

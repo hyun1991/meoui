@@ -15,9 +15,9 @@
 	<!-- 숙박시설 수정하기 -->
 	<update id="updateAccommodation" parameterType="Accommodation">
 		<![CDATA[
-			update accommodation set accommodationName=#{accommodationName}, accommodation_address=#{accommodationAddress},
+			update accommodation set accommodation_name=#{accommodationName}, accommodation_address=#{accommodationAddress},
 			accommodation_img=#{accommodationImg}, accommodation_phone=#{accommodationPhone}, 
-			accommodation_directions=#{accommodationDirections}, site_no=#{siteNo} where owner_no=#{ownerNo}
+			accommodation_directions=#{accommodationDirections}, site_no=#{siteNo} where owner_no=#{ownerNo} and accommodation_no=#{accommodationNo}
 		]]>
 	</update>
 	<!-- 숙박시설 삭제하기 -->

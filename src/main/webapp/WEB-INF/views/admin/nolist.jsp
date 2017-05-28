@@ -14,8 +14,7 @@
 	<header>
 		<%@include file="/nav/adminnav.jsp"%>
 	</header>
-	<h1 id="headTitle" style="margin-top: 50px;" align="center">회원
-		전체리스트</h1>
+	<h1 id="headTitle" style="margin-top: 50px;" align="center">공지사항</h1>
 	<hr>
 	<table class="table table-striped">
 		<thead>

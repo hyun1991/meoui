@@ -10,7 +10,7 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 </head>
 <body>
-<%@include file="/nav/ownernav.jsp" %>
+<%@include file="/nav/adminnav.jsp" %>
 	<h1>관광지 추가</h1>
 	<hr>
 	<form action="/meoui/site/join" method="post" enctype="multipart/form-data">

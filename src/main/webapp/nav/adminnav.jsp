@@ -38,7 +38,7 @@
 			게시판관리</a>
 			<ul class="dropdown-menu">
 				<li><a href="/meoui/admin/notice/list?pageNo=1">공지사항</a></li>
-				<li><a href="#" id="#">자유게시판</a></li>
+				<li><a href="/meoui/admin/freeboard/list?pageNo=1" id="#">자유게시판</a></li>
 			</ul></li>
 			<li class="col-md-2"><a href="/meoui/admin/membermeeting/list" id="menu">모임관리</a></li>
 			<li class="dropdown pull-right"><a class="dropdown-toggle"
