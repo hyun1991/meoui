@@ -44,4 +44,10 @@ public class MeetingBoardService {
 		return dao.selectMeetingBoardView(meetingboardNo);
 	}
 	
+	//번호로 글 삭제
+	public void deleteMeetingBoard(int meetingboardNo){
+		dao.deleteMeetingBoard(meetingboardNo);
+	}
+	
+	
 }

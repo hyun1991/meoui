@@ -77,14 +77,25 @@ public class MeetingBoardController {
 			
 			session.setAttribute("meetingboardNo", meetingboardNo);
 			
-			logger.info("모임게시판글보기 : {}", meetingboardNo);
+			logger.info("모임게시판글보기meetingboardNo : {}", meetingboardNo);
 			
 			model.addAttribute("board", service.selectMeetingBoardView(meetingboardNo));
 			
 			return "meetingboard/view";
 		}
 	
-	
+		//모임게시판 삭제
+		@RequestMapping(value="/meetingboard/delete/{meetingboardNo}", method=RequestMethod.POST)
+		public String deleteMeetingboard(@PathVariable int meetingboardNo, HttpSession session){
+			int meetingNo = (Integer)session.getAttribute("meetingNo");
+			meetingboardNo=(Integer)session.getAttribute("meetingboardNo");
+			//session.setAttribute("meetingboardNo", meetingboardNo);
+			logger.info("모임게시판 삭제 meetingboardNo : {}", meetingboardNo);
+			logger.info("모임게시판 삭제 meetingNo : {}", meetingNo);
+			service.deleteMeetingBoard(meetingboardNo);
+			//return "redirect:/meetingboard/list/"+meetingNo;
+			return "redirect:/meetingboard/list/"+meetingNo;
+		}
 	
 	
 	

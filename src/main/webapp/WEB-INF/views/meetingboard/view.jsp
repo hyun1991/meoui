@@ -107,7 +107,10 @@ img {
 						<p>
 						<fmt:formatDate value="${board.meetingboardDate}" pattern="yyyy년MM월dd일"/>
 					</p>
-				
+					<form action="/meoui/meetingboard/delete/${board.meetingboardNo}" method="POST">
+				<button id="commit" type="submit"
+					class="w3-button w3-block w3-white w3-border">게시글 삭제</button>
+			</form>
 			
 		
 				

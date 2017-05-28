@@ -40,5 +40,9 @@ public class MeetingBoardDAO {
 		return template.selectOne("MeetingBoardMapper.selectMeetingBoardView", meetingboardNo);
 	}
 	
+	//번호로 삭제
+	public void deleteMeetingBoard(int meetingboardNo){
+			template.delete("MeetingBoardMapper.meetingBoardDelete",meetingboardNo);
+	}
 	
 }
