@@ -10,32 +10,46 @@
 			order="BEFORE">
 			select meetingboard_seq.nextval from dual
 		</selectKey>
-<![CDATA[
- insert into notice
-(meetingboard_no, meetingboard_title, meetingboard_content, 
-meetingboard_date, meetingboard_cnt, meetingboard_img, 
-member_no, meeting_no)
- values(#{meetingboardNo},#{meetingboardtitle},#{meetingnoardContent},
- sysdate, #{meetingboardCnt}, #{meetingboardImg}, 
-#{memberNo}	, #{meetingNo})
+	<![CDATA[
+ 	insert into meetingboard
+	(meetingboard_no, meetingboard_title, meetingboard_content, 
+	meetingboard_date, meetingboard_cnt, meetingboard_img, 
+	member_no, meeting_no)
+ 	values(#{meetingboardNo},#{meetingboardTitle},#{meetingboardContent},
+ 	sysdate, #{meetingboardCnt}, #{meetingboardImg}, 
+	#{memberNo}	, #{meetingNo})
 ]]>
 	</insert>
 
+	<!-- 게시판 리스트 출력 -->
 	<select id="selectAllmeetinBoard" parameterType="HashMap"
 		resultType="MeetingBoard">
 		<![CDATA[
-	select t2.*from(select rownum rnum, t1.* from
-	(select meetingboard_no, meetingboard_title, meetingboard_content, meetingboard_date, 
-	meetingboard_cnt, meetingboard_img, member_no, meeting_no from MEETINGBOARD
-	order by meetingboard_no desc)t1)t2 
-	where rnum
-	between #{start} and #{last}
+		select t2.*from(select rownum rnum, t1.* from
+		(select meetingboard_no, meetingboard_title, meetingboard_content, meetingboard_date, 
+		meetingboard_cnt, meetingboard_img, member_no, meeting_no 
+		from MEETINGBOARD
+		order by meetingboard_no desc)t1)t2 
+		where meeting_no=#{meetingNo} and rnum
+		between #{start} and #{last}
 ]]>
 	</select>
-	
+	<!--  게시판 마지막 번호 -->
 	<select id="meetingBoardCount" resultType="int">
 		<![CDATA[select count(meetingboard_no) from meetingboard
 		]]>
 	</select>
+	
+	<!-- 게시판 상세 보기	 -->
+	<select id = "selectMeetingBoardView" parameterType="int" resultType="MeetingBoard">
+	<![CDATA[
+		select b.meetingboard_title, b.meetingboard_content, b.meetingboard_date, b.meetingboard_cnt , b.meetingboard_img,  
+		m.member_name from meetingboard b, member m where b.member_no= m.member_no and meetingboard_no=#{meetingboard_no}
+	
+	]]>
+	
+	</select>
+	
+	
 </mapper>
 

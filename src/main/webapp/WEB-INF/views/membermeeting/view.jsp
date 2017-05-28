@@ -100,9 +100,12 @@ img {
 				<button id="commit" type="submit"
 					class="w3-button w3-block w3-white w3-border">모임수정하기</button>
 			</form>
-			<a href="/meoui/meetingboard/list"
+			<a href="/meoui/meetingboard/list/${meeting.meetingNo}"
 						style="color: #424242;"><span class="glyphicon glyphicon-heart"
 							style="color: #f76ce4;"></span> 모임게시판 </a>
+							
+							
+				
 		</div>
 	</div>
 	<footer>
