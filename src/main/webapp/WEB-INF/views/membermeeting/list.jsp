@@ -101,11 +101,10 @@ img {
 							${meeting.meetingTotalNumber }명</a>
 					</p>
 					<div class="form-group">
-						<a href="/meoui/accommodation/view/${accommodation.accommodationNo}">
+						<a href="/meoui/membermeeting/view/${meeting.meetingNo}">
 					<button type="button" class="w3-button w3-block w3-white w3-border">
 					상세보기</button></a>
-																						
-					<a href="/meoui/meetingboard/list">test</a>
+																		
 				</div>
 				</div>
 			</c:forEach>

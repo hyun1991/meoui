@@ -38,6 +38,6 @@
 	    <typeAlias type="com.jeju.meoui.vo.Area" alias="Area"/>
 	    <typeAlias type="com.jeju.meoui.vo.Ticket" alias="Ticket"/>
 	    <typeAlias type="com.jeju.meoui.vo.Users" alias="users"/>
-	     <typeAlias type="com.jeju.meoui.vo.MeetingBoard" alias="MeetingBoard"/>
+	    <typeAlias type="com.jeju.meoui.vo.MeetingBoard" alias="MeetingBoard"/>
 	</typeAliases>
 </configuration>

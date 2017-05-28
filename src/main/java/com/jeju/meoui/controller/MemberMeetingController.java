@@ -36,6 +36,7 @@ public class MemberMeetingController {
 	@RequestMapping(value="/membermeeting/create", method=RequestMethod.POST)
 	public String isnertMemberMeeting(HttpSession session, @RequestParam String meetingName, 
 		@RequestParam("Img")MultipartFile meetingImg){
+		System.out.println("여기까지 바로오나 ");
 		MemberMeeting memberMeeting= new MemberMeeting();
 		MeetingJoin meetingJoin = new MeetingJoin();
 		int meetingAdminNo= (Integer)session.getAttribute("memberNo");
@@ -43,9 +44,13 @@ public class MemberMeetingController {
 		int meetingNo=service.selectMaxMeetingNo();
 		String fileName= UploadUtil.storeAndGetFileName(meetingImg, ctx, path);
 		meetingJoin.setMemberNo(memberNo);
+		
 		logger.info("meetingNo:{}", meetingNo);
+	
 		meetingJoin.setMeetingNo(meetingNo);
+			
 		logger.info("meetingNo:{}", meetingNo);
+		
 		memberMeeting.setMeetingImg(fileName);
 		memberMeeting.setMeetingName(meetingName);
 		memberMeeting.setMeetingAdminNo(meetingAdminNo);
@@ -76,7 +81,7 @@ public class MemberMeetingController {
 		return "redurect:/membermeeting/list";
 	}
 	
-	//모임 상세 보기(작업중)
+	//모임 상세 보기(작업완료)
 	@RequestMapping(value="/membermeeting/view/{meetingNo}", method=RequestMethod.GET)
 	public String selectMeetingView(@PathVariable int meetingNo, Model model, HttpSession session){
 		session.setAttribute("meetingNo", meetingNo);
