@@ -6,6 +6,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AgeGroup {
-	private int ageGroupNo;
-	private String ageGroupStandard;
+	private int agegroupNo;
+	private String agegroupStandard;
+	private int agegroupStandardNo;
 }

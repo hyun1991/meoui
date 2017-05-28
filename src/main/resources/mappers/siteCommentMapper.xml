@@ -10,23 +10,23 @@
 		</selectKey>
 		<![CDATA[
 			insert into site_comment(site_comment_no,site_comment_content,site_comment_date,member_no,site_no)
-			values(#{site_comment_no},#{site_comment_content},sysdaye,#{memeber_no},#{site_no})
+			values(#{siteCommentNo},#{siteCommentContent},sysdaye,#{memberNo},#{siteNo})
 		]]>
 	</insert>
 <!-- 2.관광지 댓글 수정 -->
 	<update id="updateSiteComment" parameterType="siteComment">
-		update site_comment set site_comment_content=#{site_comment_content} where site_no=#{site_no}
+		update site_comment set site_comment_content=#{siteCommentContent} where site_no=#{siteNo}
 	</update>
 <!-- 3.관광지 댓글 삭제 -->
 	<delete id="deleteSiteComment" parameterType="HashMap">
-		delete from site_comment where member_no=#{member_no} and site_no=#{site_no}
+		delete from site_comment where member_no=#{memberNo} and site_no=#{siteNo}
 	</delete>
 <!-- 4.관광지 댓글 전체 삭제 -->
 	<delete id="deleteAllSiteComment" parameterType="int">
-		delete from site_comment where site_no=#{site_no}
+		delete from site_comment where site_no=#{siteNo}
 	</delete>
 <!-- 5.관광지 댓글 조회 -->
 	<select id="selectSiteCommetn" parameterType="int" resultType="siteComment">
-		select site_comment_content , site_comment_date from site_comment where site_no=#{site_no}
+		select site_comment_content , site_comment_date from site_comment where site_no=#{siteNo}
 	</select>
 </mapper>

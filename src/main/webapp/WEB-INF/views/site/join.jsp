@@ -1,57 +1,68 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>관광지 추가를 해봅시다</title>
-
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://dmaps.daum.net/map_js_init/postcode.js"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 </head>
 <body>
+<%@include file="/nav/ownernav.jsp" %>
+	<h1>관광지 추가</h1>
+	<hr>
 	<form action="/meoui/site/join" method="post" enctype="multipart/form-data">
+		<hr>
 		<div>
 			<div class="form-group">
-				<label>관광지 번호</label><input type="text" id="siteNo" name="siteNo" class="form-control">
+				<label>관광지명</label><input type="text" id="siteName" name="siteName" class="form-control">
 			</div>
 			<div class="form-group">
-				<label>관광지 이름</label><input type="text" id="siteName" name="siteName" class="form-control">
+				<label>광관지 전화번호</label><input type="text" name="sitePhone" id="sitePhone" class="form-control">
 			</div>
 			<div class="form-group">
-				<label>주차 유무</label><input type="text" id="sitePark" name="sitePark" class="form-control">
+				<label>광관지 이용대상</label><input type="text" name="siteObject" id="siteObject" class="form-control">
 			</div>
 			<div class="form-group">
-				<label>관광지 전화번호</label><input type="text" id="sitePhone" name="sitePhone" class="form-control">
+				<label>광관지 소개</label><input type="text" name="siteIntroduce" id="siteIntroduce" class="form-control">
 			</div>
 			<div class="form-group">
-				<label>관광지 홈페이지</label><input type="text" id="sitePhone" name="sitePhone" class="form-control">
+				<label>광관지 홈페이지</label><input type="text" name="siteHomepage" id="siteHomepage" class="form-control">
 			</div>
 			<div class="form-group">
-				<label>관광지 소개</label><input type="text" id="siteIntroduce" name="siteIntroduce" class="form-control">
+				<label>관광지 이미지</label><input type="file" name="img" id="accommodationImg" class="form-control">
 			</div>
 			<div class="form-group">
-				<label>관광지 이용대상</label><input type="text" id="siteObject" name="siteObject" class="form-control">
+				<label>광관지 개장시간</label><input type="text" name="siteOpenTime" id="siteOpenTime" class="form-control">
 			</div>
 			<div class="form-group">
-				<label>관광지 이미지</label><input type="file" name="siteImg" id="siteImg" class="form-control" placeholder="이미지 업로드 해주세요">
+				<label>광관지 폐장시간</label><input type="text" name="siteCloseTime" id="siteCloseTime" class="form-control">
 			</div>
 			<div class="form-group">
-				<label>개장시간</label><input type="text" id="siteOpenTime" name="siteOpenTime" class="form-control">
+				<label>광관지 주차유무</label><input type="text" name="sitePark" id="siteOpenPark" class="form-control">
 			</div>
 			<div class="form-group">
-				<label>폐장시간</label><input type="text" id="siteCloseTime" name="siteCloseTime" class="form-control">
+				<label>광관지 야간개장유무</label><input type="text" name="siteNightOpen" id="siteNightOpen" class="form-control">
 			</div>
 			<div class="form-group">
-				<label>야간개장 유무</label><input type="text" id="siteNightOpen" name="siteNightOpen" class="form-control">
+				<label>광관지 야간폐장시간</label><input type="text" name="siteNightCloseTime" id="siteNightCloseTime" class="form-control">
 			</div>
 			<div class="form-group">
-				<label>야간개장 시 폐장시간</label><input type="text" id="siteNightCloseTime" name="siteNightCloseTime" class="form-control">
-			</div>
+				<label>상세주소</label><input type="text" name="detailsAddress" id="detailsAddress" class="form-control">
+			</div>		
 			<div class="form-group">
-				<label>관리자 번호</label><input type="text" id="usersNo" name="usersNo" class="form-control">
+					<select class="form-control input-lg" name="areaName">
+					<option value="">선택</option>
+					<option value="1">제주</option>
+					<option value="2">서귀포</option>
+				</select>
 			</div>
-		
+			
 			<div class="btn-group">
 				<input type="submit" value="관광지 추가" id="confirmBtn" class="btn btn-primary">
+				<input type="button" value="돌아가기" id="confirmBtn" class="btn btn-primary"></a>
 			</div>
 		</div>
 	</form>
