@@ -45,10 +45,12 @@
 		<property name="maxUploadSize" value="10000000"/>
 	</bean>
 		<!-- Root Context: defines shared resources visible to all other web components -->
-		
+	
+	<bean id="handler1" class="com.jeju.meoui.handler.WebSocketHandler"/>	
 	<bean id="echo" class="com.jeju.meoui.handler.EchoSocketHandler"/>
 	<bean id="chat" class="com.jeju.meoui.handler.ChatSocketHandler"/>
 	<websocket:handlers>
+		<websocket:mapping handler="handler1" path="handler1"/>
 		<websocket:mapping handler="echo" path="echo"/>
 		<websocket:mapping handler="chat" path="chat"/>
 	</websocket:handlers>	

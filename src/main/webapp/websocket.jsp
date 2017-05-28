@@ -19,7 +19,7 @@
 	var wsocket;
 	$(document).ready(function() {
 		$("#connect").on("click", function() {
-			wsocket= new WebSocket("ws://localhost:8087/meoui/chat");
+			wsocket= new WebSocket("ws://localhost:8087/meoui/handler1");
 			wsocket.onmessage= function(event){
 				console.log(event.data)
 				$("#content").append(event.data+"\r\n");
