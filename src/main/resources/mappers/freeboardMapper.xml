@@ -3,28 +3,28 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="FreeBoardMapper">
 
-<!-- 1. 자유게시판 작성 -->
+<!-- 1. 자유게시판 작성(성공) -->
 	<insert id="insertFreeboard" parameterType="FreeBoard">
 	<selectKey keyProperty="freeboardNo" resultType="int" order="BEFORE">
 		select freeboard_seq.nextval from dual
 	</selectKey>
 		<![CDATA[
-			insert into freeboard(freeboard_no, freeboard_title, freeboard_content, freeboard_date, freeboard_cnt, freeboard_img)
-			values(#{freeboardNo}, #{freeboardTitle}, #{freeboardContent}, sysdate, #{freeboardCnt}, #{freeboardImg})
+			insert into freeboard(freeboard_no, freeboard_title, freeboard_content, freeboard_date, freeboard_cnt, freeboard_img, member_no)
+			values(#{freeboardNo}, #{freeboardTitle}, #{freeboardContent}, sysdate, 0, #{freeboardImg}, #{memberNo})
 		]]>
 	</insert>
 <!-- 2. 자유게시판 상세조회 -->
-	<select id="selectFreeboard" parameterType="int">
+	<select id="selectFreeboard" parameterType="int" resultType="FreeBoard">
 		<![CDATA[
 			select * from freeboard where freeboard_no=#{freeboardNo}
 		]]>
 	</select>
-<!-- 3. 자유게시판 리스트 조회-->
-	<select id="selectAllFreeboard" parameterType="int">
+<!-- 3. 자유게시판 리스트 조회(성공)-->
+	<select id="selectAllFreeboard" parameterType="HashMap" resultType="FreeBoard">
 		<![CDATA[
 			select * from (
 			select rownum rnum, a1.* from 
-				(select freeboard_no, freeboard_title, freeboard_content, sysdate, freeboard_cnt, freeboard_img from freeboard order by ano desc) a1
+				(select freeboard_no, freeboard_title, freeboard_content, freeboard_date, freeboard_cnt, freeboard_img, member_no from freeboard order by freeboard_no desc) a1
 			where rownum<=#{end}
 		) where rnum>=#{start}
 		]]>
@@ -43,15 +43,15 @@
 		]]>
 	</delete>
 <!-- 6. 자유게시판 db개수 조회 -->
-	<select id="findByMax" parameterType="int">
+	<select id="findByMax" resultType="int">
 		<![CDATA[
-			select count(*) from freeboard
+			select count(*)from freeboard
 		]]>
 	</select>
 	<!-- 7. 자유게시판 조회수 증가 -->
 	<update id="incrementCnt" parameterType="int">
 		<![CDATA[
-			update freeboard set cnt=cnt+1 where freeboard_no=#{freeboardNo}
+			update freeboard set freeboard_cnt=freeboard_cnt+1 where freeboard_no=#{freeboardNo}
 		]]>
 	</update>
 </mapper>

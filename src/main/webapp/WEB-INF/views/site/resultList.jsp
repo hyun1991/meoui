@@ -95,7 +95,7 @@ img {
 		<div class="row text-center">
 			<hr>
 			<c:forEach items="${result.list }" var="result">
-				<div class="col-sm-3">
+				<div class="col-sm-3" style="overflow-x:hidden;overflow-y:hidden">
 					<a href="/meoui/site/view/${result.siteNo}"> <img
 						class="image-responsive" src="/meoui/images/${site.siteImg}"
 						alt="알수없음" style="margin-bottom: 20px;">
@@ -112,7 +112,7 @@ img {
 						<a href="${result.siteHomepage}"> ${result.siteHomepage}</a>
 					</p>
 					<div class="form-group">
-						<a href="/meoui/site/view/${result.siteNo}">
+						<a href="/meoui/site/details?siteNo=${result.siteNo}">
 							<button type="button"
 								class="w3-button w3-block w3-white w3-border">상세보기</button>
 						</a>

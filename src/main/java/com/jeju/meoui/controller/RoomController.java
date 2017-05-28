@@ -80,9 +80,9 @@ public class RoomController {
 		return "room/view";
 	}
 	//	객실, 객실이미지 삭제하기(완료, 관리자단)
-	@RequestMapping(value="/meoui/manage/rooom/delete", method=RequestMethod.GET)
+	@RequestMapping(value="/manage/room/delete", method=RequestMethod.GET)
 	public String ownerRoomDelete(@RequestParam int roomNo, @RequestParam int accommodationNo){
 		service.removeRoom(accommodationNo, roomNo);
-		return "/manage/accommodation/list?pageNo=1";
+		return "redirect:/manage/home";
 	}
 }
