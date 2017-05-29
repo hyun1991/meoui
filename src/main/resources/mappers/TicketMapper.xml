@@ -4,27 +4,27 @@
 <mapper namespace="TicketMapper">
 	<!-- 1.티켓 추가 -->
 	<insert id="insertTicket" parameterType="Ticket">
-		insert into ticket(agegroup_no,site_no,ticket_price)
-		values(agegroup_no=#{agegroup_no},site_no=#{site_no},ticket_price=#{ticket_price})
+		insert into ticket(agegroup_no,site_no,ticket_price,users_no)
+		values(#{agegroupNo},#{siteNo},#{ticketPrice},#{usersNo})
 	</insert>
 	
 	<!-- 2.티켓 수정 -->
 	<update id="updateTicket" parameterType="Ticket">
-		update ticket set agegroup_no=#{agegroup_no} , site_no=#{site_no},ticket_price=#{ticket_price}
+		update ticket set agegroup_no=#{agegroupNo} , site_no=#{siteNo},ticket_price=#{ticketPrice} where users_no=#{userNo}
 	</update>
 	
 	<!-- 3.관광지 티켓 전체 삭제 -->
 	<delete id="deleteTicket" parameterType="int">
-		delete from ticket where site_no=#{site_no} 
+		delete from ticket where site_no=#{siteNo} and users_no=#{usersNo}
 	</delete>
 	
 	<!-- 4.연령대별 티켓 삭제 -->
 	<delete id="deleteTicketByAgegroup" parameterType="HashMap">
-		delete from ticket where site_no=#{site_no} and agegroup_no=#{agegroup_no}		
+		delete from ticket where site_no=#{siteNo} and agegroup_no=#{agegroupNo}		
 	</delete>
 	
 	<!-- 6.관광지별 티켓 조회 -->
 	<select id="selectTicket" parameterType="int" resultType="Ticket">
-		select a.agegroup_standard , t.ticket_price from agegroup a , ticket t where a.agegroup_no=t.agegroup_no and t.site_no=#{site_no};
+		select a.agegroup_standard , t.ticket_price from agegroup a , ticket t where a.agegroup_no=t.agegroup_no and t.site_no=#{siteNo};
 	</select>
 </mapper>

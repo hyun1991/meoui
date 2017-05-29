@@ -12,7 +12,7 @@ public class AgegroupDAO {
 	private SqlSessionTemplate template;
 	// 연령대 추가
 	public void insertAgegroup(AgeGroup ag){
-		template.insert("AgegroupMapper.insetAgegorup", ag);
+		template.insert("AgegroupMapper.insertAgegroup", ag);
 	}
 	
 	// 연령대 수정
@@ -23,5 +23,10 @@ public class AgegroupDAO {
 	// 연령대 삭제
 	public void deleteAgegroup(int agegroupNo){
 		template.delete("AgegroupMapper.deleteAgegroup" , agegroupNo);
+	}
+	
+	// 마지막 번호
+	public int MaxNo(){
+		return template.selectOne("AgegroupMapper.MaxAgegroupNo");
 	}
 }

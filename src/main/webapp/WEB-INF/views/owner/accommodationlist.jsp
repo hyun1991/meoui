@@ -6,76 +6,28 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>숙박업소 리스트</title>
+<title>등록된 숙박업소 리스트</title>
+</head>
 <style>
-@
-keyframes menuBlink { 0% {
-	opacity: 0
-}
-
-49%{
-opacity
-:
- 
-0
-}
-50%{
-opacity
-:
-1
-}
-}
-#headTitle, .step {
+body {
 	font-family: 'Jeju Gothic', serif;
 }
-
-@
-keyframes menuBlink { 0% {
-	opacity: 0
-}
-
-49%{
-opacity
-
-
-:
-
-
-0
-}
-50%{
-opacity
-
-
-:
-
-
-1
-}
-}
-.glyphicon-home {
-	animation: menuBlink 1s infinite;
-}
-
-img {
-	width: 100%;
-	height: auto;
-}
-
-.btn {
-	background-color: white;
-	color: #orange;
-	margin: 30px;
-}
 </style>
-</head>
 <body>
 	<header>
 	<%@include file="/nav/ownernav.jsp" %>
 	</header>
-	<h1 id="headTitle" style="margin-top: 50px;" align="center">등록된 숙박시설 리스트</h1>
+	<div class="container">
+		<h1 id="headTitle" style="margin-top: 50px;">등록된 숙박시설 리스트</h1>
 	<hr>
-		<div class="container">
+	<div class="row"  style="margin-bottom: 50px;">
+		<div class="col-md-10">
+		</div>
+		<div class="form-group">
+		<a href="/meoui/manage/accommodation/join"><button type="button" class="w3-button  w3-white w3-border">
+		숙박업소 추가하기</button></a>
+	</div>
+	</div>	
 			<c:forEach items="${result.list }" var="accommodation">
 				<div class="col-sm-3">
 				<a href="/meoui/manage/accommodation/view/${accommodation.accommodationNo}">
@@ -87,12 +39,12 @@ img {
 				<p>${accommodation.accommodationAddress}</p>
 				<div class="form-group">
 				<a href="/meoui/manage/accommodation/view/${accommodation.accommodationNo}">
-					<button type="button" class="w3-button w3-block w3-white w3-border">
+					<button type="button" class="w3-button w3-white w3-border">
 					상세보기</button></a>
 				</div>
 				<div class="form-group">
 				<a href="/meoui/manage/accommodation/delete/${accommodation.accommodationNo}">
-					<button type="button" class="w3-button w3-block w3-white w3-border">
+					<button type="button" class="w3-button w3-white w3-border">
 					삭제하기</button></a></div><br>
 				</div>
 			</c:forEach>
@@ -111,9 +63,8 @@ img {
 				</c:if></li>
 		</ul>
 	</div>
-	<div class="form-group">
-		<a href="/meoui/manage/accommodation/join"><button type="button" class="w3-button w3-block w3-white w3-border">
-		숙박업소 추가하기</button></a>
-	</div>
+
+
+
 </body>
 </html>

@@ -70,6 +70,13 @@ public class ReserveController {
 		service.removeReserve(reserveNo, memberNo);
 		return "redirect:/";
 	}
+	//	예약내역 취소하기(업주용)
+	@RequestMapping(value="/manage/reserve/delete", method=RequestMethod.GET)
+	public String deleteReserve(@RequestParam int reserveNo,@RequestParam int memberNo){
+		System.out.println("컨트롤");
+		service.removeReserve(reserveNo, memberNo);
+		return "redirect:/manage/home";
+	}
 	//	숙박업주 예약접수된 리스트 조회하기
 	@RequestMapping(value="/manage/reserve/list/{ownerNo}", method=RequestMethod.GET)
 	public String getByOwnerList(Model model, @PathVariable int ownerNo){

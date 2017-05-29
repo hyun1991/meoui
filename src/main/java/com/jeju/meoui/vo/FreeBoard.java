@@ -12,4 +12,5 @@ public class FreeBoard {
 	private Date freeboardDate;			// 자유게시판 작성일
 	private int freeboardCnt;			// 자유게시판 조회수
 	private String freeboardImg;			// 자유게시판 업로드 파일명
+	private int memberNo;
 }

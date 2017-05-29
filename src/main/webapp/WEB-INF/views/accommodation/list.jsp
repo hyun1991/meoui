@@ -78,26 +78,20 @@ img {
 		<div class="row text-center">
 		<hr>
 			<c:forEach items="${result.list }" var="accommodation">
-				<div class="col-sm-3">
-					<a
-						href="/meoui/accommodation/view/${accommodation.accommodationNo}">
+				<div class="col-sm-3" style="overflow-x:hidden;overflow-y:hidden">
+					<a href="/meoui/accommodation/view/${accommodation.accommodationNo}">
 						<img class="image-responsive"
 						src="/meoui/images/${accommodation.accommodationImg}"
-						alt="skinscuber" style="margin-bottom: 20px;">
+						alt="알수없음" style="margin-bottom: 20px;">
 					</a>
-
 					<p>
-						<a
-							href="/meoui/accommodation/view/${accommodation.accommodationNo}">
+						<a href="/meoui/accommodation/view/${accommodation.accommodationNo}">
 							<strong>${accommodation.accommodationName}</strong>
 						</a>
 					</p>
-					<p>
-						<a
-							href="/meoui/accommodation/view/${accommodation.accommodationNo}">
+					<p><a href="/meoui/accommodation/view/${accommodation.accommodationNo}">
 							${accommodation.accommodationAddress}</a>
-					</p>
-					<div class="form-group">
+					</p><div class="form-group">
 						<a href="/meoui/accommodation/view/${accommodation.accommodationNo}">
 					<button type="button" class="w3-button w3-block w3-white w3-border">
 					상세보기</button></a>

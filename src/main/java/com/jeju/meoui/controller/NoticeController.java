@@ -37,7 +37,9 @@ public class NoticeController {
 	}
 	//2. 공지게시판 갱신하기(갱신 성공)
 	@RequestMapping(value="/notice/update", method=RequestMethod.POST)
-	public String updateNotice(Notice notice){
+	public String updateNotice(@ModelAttribute Notice notice, HttpSession session){
+		int usersNo = (Integer)session.getAttribute("usersNo");
+		notice.setUsersNo(usersNo);
 		service.modifyNotice(notice);
 		return "redirect:/admin/notice/list?pageNo=1";
 	}
