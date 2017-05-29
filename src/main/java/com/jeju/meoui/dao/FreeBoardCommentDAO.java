@@ -26,8 +26,11 @@ public class FreeBoardCommentDAO {
 		template.update("FreeBoardCommentMapper.updateComment", comment);
 	}
 	//4. 댓글삭제
-	public void deleteComment(int freeboardCommentNo, int freeboardNo) {
-		template.delete("FreeBoardCommentMapper.deleteComment", freeboardCommentNo);
+	public void deleteComment(int freeboardCommentNo, int memberNo) {
+		HashMap<String, Object>map = new HashMap<String, Object>();
+		map.put("freeboardCommentNo", freeboardCommentNo);
+		map.put("memberNo", memberNo);
+		template.delete("FreeBoardCommentMapper.deleteComment", map);
 	}
 	//5. 자유게시판 번호별 댓글 전체 삭제하기
 	public void deleteAllComment(int freeboardNo) {

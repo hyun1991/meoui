@@ -49,7 +49,7 @@
 	<h5 style="margin-left: 70px">댓글작성란</h5>
 	<br>
 	<div id="center">
-		<form action="#" method="post">
+		<form action="/meoui/freeboardComment/${{result.board.freeboardNo}" method="post">
 			<div class="row text-center">
 				<div class="col-xs-4" style="margin-left: 70px">
 					<textarea class="form-control col-sm-5" rows="5"
