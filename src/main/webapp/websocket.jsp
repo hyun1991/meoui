@@ -28,11 +28,13 @@
 		$("#msg").hide();
 		$("#send").hide();
 		$("#exit").hide();
+		$("#content").hide();
 		$("#connect").on("click", function() {
 			$("#connect").hide();
 			$("#send").show();
 			$("#exit").show();
 			$("#msg").show();
+			$("#content").show();
 			wsocket = new WebSocket("ws://192.168.0.186:8087/meoui/handler1");
 			wsocket.onmessage = function(event) {
 				console.log(event.data)
@@ -44,6 +46,7 @@
 			$("#send").hide();
 			$("#exit").hide();
 			$("#msg").hide();
+			$("#content").hide();
 			$("#connect").show();
 			$("#content").html("").val()
 			wsocket.close();

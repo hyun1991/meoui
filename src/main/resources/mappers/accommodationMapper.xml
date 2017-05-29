@@ -92,4 +92,11 @@
 			select count(*)from accommodation
 		]]>
 	</select>
+	<!-- 최근 올라온 숙박업소 4개 가져오기 -->
+	<select id="newAcoomoodation" resultType="Accommodation">
+		select t2.* from(select rownum rnum, t1.* from
+			(select accommodation_no, accommodation_name, accommodation_address, accommodation_img, 
+			accommodation_phone, accommodation_directions, site_no, owner_no 
+			from accommodation order by accommodation_no desc)t1)t2 where rnum between 1 and 4
+	</select>
 </mapper>

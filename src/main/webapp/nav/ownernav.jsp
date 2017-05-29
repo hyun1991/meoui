@@ -35,7 +35,7 @@
 				<ul class="dropdown-menu">
 					<li><a href="/meoui/manage/logout" id="logoutBtn">로그아웃</a></li>
 					<li><a id="deleteBtn">회원탈퇴</a></li>
-				</ul></li>
+				</ul></li>			
 		</ul>
 	</nav>
 </body>

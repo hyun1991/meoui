@@ -70,5 +70,14 @@
 		from site s , area a 
 		where s.site_no=a.site_no and s.site_no=#{s.site_no}
 	</select>
-	
+	<!-- 10. 최근등록된 관광리스트 4개 조회 -->
+	<select id="fineNewSite" resultType="site">
+		<![CDATA[
+		select * from (select rownum rnum, a1.* from (select s.site_no ,s.site_name, s.site_park , s.site_object, s.site_img, s.site_introduce, s.site_homepage, s.site_open_time , s.site_close_time, s.site_phone,
+		s.site_night_open, s.site_night_close_time, a.area_name, a.details_address 
+		from site s , area a 
+		where s.site_no=a.site_no) a1
+		where rownum<=4) where rnum>=1
+		]]>
+	</select>
 </mapper>

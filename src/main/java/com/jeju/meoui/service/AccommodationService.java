@@ -79,6 +79,20 @@ public class AccommodationService {
 		HashMap<String, Object>map= new HashMap<String, Object>();
 		Accommodation accommodation= dao.findByAccommodation(accommodationNo);
 		List<AccommodationComment> comment= commentDao.selectByAccommodationNo(accommodationNo);
+		for(AccommodationComment cm: comment){
+			if(cm.getAccommodationCommentAvg()!=0){
+				if(cm.getAccommodationCommentAvg()==1)
+					cm.setByul("★☆☆☆☆");
+				else if(cm.getAccommodationCommentAvg()==2)
+					cm.setByul("★★☆☆☆");
+				else if(cm.getAccommodationCommentAvg()==3)
+					cm.setByul("★★★☆☆");
+				else if(cm.getAccommodationCommentAvg()==4)
+					cm.setByul("★★★★☆");
+				else if(cm.getAccommodationCommentAvg()==5)
+					cm.setByul("★★★★★");
+			}
+		}
 		List<AccommodationComment> memberComment= commentDao.selectByMemberNoAccommodationNo(accommodationNo, memberNo);
 		for(AccommodationComment mComment: comment){
 			//	mComment는 작성자memberNo를 빼기위함.
@@ -101,6 +115,12 @@ public class AccommodationService {
 		List<AccommodationComment> comment= commentDao.selectByAccommodationNo(accommodationNo);
 		map.put("accommodation", accommodation);
 		map.put("comment", comment);
+		return map;
+	}
+	//	숙박시설 최근업로드된 메인페이지 노출용 조회
+	public HashMap<String,Object>mainNewAccommodation(){
+		HashMap<String, Object>map= new HashMap<String, Object>();
+		map.put("list", dao.newAcoomoodation());
 		return map;
 	}
 
