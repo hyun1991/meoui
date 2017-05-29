@@ -55,4 +55,8 @@ public class SiteDAO {
 	public Site selectSiteByNo(int siteNo ){
 		return template.selectOne("siteMapper.selectSiteByNo", siteNo);
 	}
+	//	10. 최근업로드된 관광명소 4개 노출
+	public List<Site>fineNewSite(){
+		return template.selectList("siteMapper.fineNewSite");
+	}
 }
