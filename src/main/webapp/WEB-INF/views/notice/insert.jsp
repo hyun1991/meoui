@@ -10,7 +10,7 @@
 <h1>게시글 작성</h1>
 <form id="NoticeFrom" action="/meoui/notice/join" method="post">
 <table>
-<tr><td>제목</td><td><input type="text" name="noticeTitle" id="noticeTitle" placeholder="제목"></td></tr>
+<tr><td>제목</td><td><input type="text" name="noticeTitle" id="noticeTitle" ></td></tr>
 <tr><td>내용</td><td><textarea name="noticeContent" id="noticeContent"></textarea></td></tr>
 </table>
 <a href="/meoui/notice/join">

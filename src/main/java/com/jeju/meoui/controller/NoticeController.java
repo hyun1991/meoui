@@ -2,12 +2,12 @@ package com.jeju.meoui.controller;
 
 import javax.servlet.http.*;
 
+import org.slf4j.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 import org.springframework.ui.*;
 import org.springframework.web.bind.annotation.*;
 
-import com.google.gson.*;
 import com.jeju.meoui.service.*;
 import com.jeju.meoui.vo.*;
 @Controller
@@ -16,6 +16,8 @@ public class NoticeController {
 	private NoticeService service;
 	@Autowired
 	private NoticeCommentService cservice;
+	
+	private static final Logger logger = LoggerFactory.getLogger(NoticeController.class);
 	//1. 공지게시판 추가하기(작성폼)
 	@RequestMapping(value="/notice/join", method=RequestMethod.GET)
 	public String insertNoticeForm(){
@@ -31,15 +33,14 @@ public class NoticeController {
 	}
 	//2. 공지게시판 갱신하기(작성폼)
 	@RequestMapping(value="/notice/update", method=RequestMethod.GET)
-	public String updateNoticeForm(@RequestParam int noticeNo,Model model){
-		model.addAttribute(service.findByNotice(noticeNo));
+	public String updateNoticeForm(){
 		return "notice/update";
 	}
 	//2. 공지게시판 갱신하기(갱신 성공)
 	@RequestMapping(value="/notice/update", method=RequestMethod.POST)
-	public String updateNotice(@ModelAttribute Notice notice, HttpSession session){
-		int usersNo = (Integer)session.getAttribute("usersNo");
-		notice.setUsersNo(usersNo);
+	public String updateNotice(@ModelAttribute Notice notice , HttpSession session){
+		int noticeNo = (Integer)session.getAttribute("noticeNo");
+		notice.setNoticeNo(noticeNo);
 		service.modifyNotice(notice);
 		return "redirect:/admin/notice/list?pageNo=1";
 	}

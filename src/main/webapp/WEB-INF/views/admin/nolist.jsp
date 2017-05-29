@@ -30,11 +30,11 @@
 			<c:forEach items="${result.list }" var="notice">
 				<tr>
 					<td>${notice.noticeNo }</td>
-					<td><a href="/meoui/admin/noview/{noticeNo}">${notice.noticeTitle }</a></td>
+					<td><a href="/meoui/admin/noview/${notice.noticeNo}">${notice.noticeTitle }</a></td>
 					<td><fmt:formatDate value="${notice.noticeDate }"
 							pattern="yyyy년MM월dd일" /></td>
 					<td>${notice.noticeCnt }</td>
-					<td><a href="#">
+					<td><a href="/meoui/notice/delete/${notice.noticeNo}">
 							<button type="button"
 								class="w3-button w3-block w3-white w3-border">삭제</button>
 					</a></td>
@@ -45,14 +45,14 @@
 	<div class="row text-center">
 		<ul class="pagination pagination-md">
 			<li><c:if test="${result.pagination.prev>0 }">
-					<a href="/meoui/notice/list?pageNo=${result.pagination.prev }">이전으로</a>
+					<a href="/meoui/admin/notice/list?pageNo=${result.pagination.prev }">이전으로</a>
 				</c:if></li>
 			<li><c:forEach begin="${result.pagination.startPaging }"
 					end="${result.pagination.lastPaging }" var="i">
-					<a href="/meoui/notice/list?pageNo=${i }">${i }</a>
+					<a href="/meoui/admin/notice/list?pageNo=${i }">${i }</a>
 				</c:forEach></li>
 			<li><c:if test="${result.pagination.next>0 }">
-					<a href="/meoui/notice/list?pageNo=${result.pagination.next }">다음으로</a>
+					<a href="/meoui/admin/notice/list?pageNo=${result.pagination.next }">다음으로</a>
 				</c:if></li>
 		</ul>
 	</div>

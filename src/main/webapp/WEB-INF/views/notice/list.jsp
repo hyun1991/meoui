@@ -64,7 +64,7 @@ h4 {
 									<a href="/meoui/notice/view/${notice.noticeNo }">${notice.noticeNo }</a>
 									</h4>
 									<h4 id="title">
-									${notice.noticeTitle }</h4>
+								    <a href="/meoui/notice/view/${notice.noticeNo }">${notice.noticeTitle }</a></h4>
 									<h4 id="meta">
 										<fmt:formatDate value="${notice.noticeDate }"
 											pattern="yyyy.MM.dd" />
