@@ -39,12 +39,9 @@
 	    <typeAlias type="com.jeju.meoui.vo.Ticket" alias="Ticket"/>
 	    <typeAlias type="com.jeju.meoui.vo.Users" alias="users"/>
 	    <typeAlias type="com.jeju.meoui.vo.MeetingBoard" alias="MeetingBoard"/>
-<<<<<<< HEAD
 	   	<typeAlias type="com.jeju.meoui.vo.MeetingBoardComment" alias="MeetingBoardComment"/>
-	    
-=======
 	    <typeAlias type="com.jeju.meoui.vo.Travleschedule" alias="Travleschedule"/>
 	    <typeAlias type="com.jeju.meoui.vo.TravlescheduleDetails" alias="TravlescheduleDetails"/>
->>>>>>> branch 'master' of https://github.com/hyun1991/meoui.git
+
 	</typeAliases>
 </configuration>
