@@ -81,17 +81,6 @@ img {
 				alt="skinscuber" style="margin-bottom: 20px;">
 			</a>
 
-			<p>
-				<a href="/meoui/site/details/${site.siteNo}"> <strong>${site.siteName }</strong>
-				</a>
-			</p>
-			<p>
-				<a href="/meoui/site/details/${site.siteNo}">
-					${site.sitePhone }</a>
-			</p>
-			
-			
-		
 			
 		</div>
 	</div>
