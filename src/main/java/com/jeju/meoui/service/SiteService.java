@@ -49,8 +49,11 @@ public class SiteService {
 	
 	// 3.관광지 삭제
 	@Transactional
-	public void removeSite(String siteName){
-		dao.deleteSite(siteName);
+	public void removeSite( int siteNo , Area area , Site site){
+		area.setSiteNo(site.getSiteNo());
+		aDao.deleteSiteArea(siteNo);
+		dao.deleteSite(siteNo);
+		
 	}
 	
 	// 4.관광지 리스트
@@ -73,5 +76,12 @@ public class SiteService {
 	// 7.관광지 상세
 	public Site selectSiteByNo(int siteNo){
 		return dao.selectSiteByNo(siteNo);
+	}
+	
+	//	8.최근업로드된 메인페이지 노출용 관광명소 조회
+	public HashMap<String, Object>findNewSite(){
+		HashMap<String, Object>map= new HashMap<String, Object>();
+		map.put("list", dao.fineNewSite());
+		return map;
 	}
 }

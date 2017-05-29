@@ -23,9 +23,6 @@ header {
 	</header>
 	<div class="container">
 		<div class="row">
-			<h1>${result.accommodation.accommodationName }</h1>
-		</div>
-		<div class="row">
 			<div class="col-md-10"></div>
 			<div class="col-md-2">
 				<a
@@ -42,18 +39,22 @@ header {
 			</div>
 		</div>
 		<div class="row">
-			<img src="/meoui/images/${result.accommodation.accommodationImg}">
+			<h1 style="margin-left: 10px">${result.accommodation.accommodationName }</h1>
 		</div>
 		<div class="row">
-			<h2>전화</h2>
-			<h4>${result.accommodation.accommodationPhone }</h4>
+			<img src="/meoui/images/${result.accommodation.accommodationImg}"
+				style="margin-left: 10px">
 		</div>
 		<div class="row">
-			<h2>위치</h2>
-			<h4>${result.accommodation.accommodationAddress }</h4>
+			<h2 style="margin-left: 10px">전화</h2>
+			<h4 style="margin-left: 10px">${result.accommodation.accommodationPhone }</h4>
 		</div>
 		<div class="row">
-			<h2>오시는길</h2>
+			<h2 style="margin-left: 10px">위치</h2>
+			<h4 style="margin-left: 10px">${result.accommodation.accommodationAddress }</h4>
+		</div>
+		<div class="row">
+			<h2 style="margin-left: 10px">오시는길</h2>
 		</div>
 		<div>
 			<img
@@ -71,25 +72,23 @@ header {
 					<h6>${comment.accommodationCommentContent}</h6>
 					<fmt:formatDate value="${comment.accommodationCommentDate}"
 						pattern="yyyy.MM.dd" />
-					평점: ${comment.accommodationCommentAvg}점
+					<div class="form-group">${comment.byul }</div>
 				</div>
 			</c:forEach>
 		</div>
-	<hr>
-	<div class="form-group"><img src="/meoui/images/${result.accommodation.accommodationImg}"></div><br>
-	<div class="form-group"><h3>숙박시설이름:</h3>${result.accommodation.accommodationName }</div><br>
-	<div class="form-group"><h3>대표전화:</h3>${result.accommodation.accommodationPhone }</div>
-	<div class="form-group"><h3>시설위치:</h3>${result.accommodation.accommodationAddress }</div>
-	<div class="form-group">
-	<a href="/meoui/manage/accommodation/update">
-	<button type="button" class="w3-button w3-block w3-white w3-border" id="messageBtn">수정하기</button>
-	</a>
-	</div>
-	<div class="form-group">
-		<a href="/meoui/manage/room/join">
-		<button type="button" class="w3-button w3-block w3-white w3-border" id="messageBtn">
-		객실추가</button></a>
-	</div>
+		<hr>
+		<div class="form-group">
+			<a href="/meoui/manage/accommodation/update">
+				<button type="button" class="w3-button w3-block w3-white w3-border"
+					id="messageBtn">수정하기</button>
+			</a>
+		</div>
+		<div class="form-group">
+			<a href="/meoui/manage/room/join">
+				<button type="button" class="w3-button w3-block w3-white w3-border"
+					id="messageBtn">객실추가</button>
+			</a>
+		</div>
 	</div>
 </body>
 </html>
