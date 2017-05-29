@@ -26,8 +26,26 @@ public class TicketController {
 	@RequestMapping(value="/ticket/insert", method=RequestMethod.POST)
 	public String insertSite( Ticket ticket,  AgeGroup ag, HttpSession session){
 		int usersNo = (Integer)session.getAttribute("usersNo");
+		int siteNo = (Integer)session.getAttribute("siteNo");
 		ticket.setUsersNo(usersNo);
+		ticket.setSiteNo(siteNo);
 		service.createTicket(ticket, ag);
-		return "redirect:/site/list?pageNo=1";
+		return "redirect:/admin/site/list?pageNo=1";
+	}
+	
+	// 티켓 수정 폼
+	@RequestMapping(value="/ticket/update" , method=RequestMethod.GET)
+	public String updateSite(){
+		return "ticket/update";
+	}
+	
+	// 티켓 수정 성공
+	public String updateSite(Ticket ticket, AgeGroup ag , HttpSession session){
+		int usersNo = (Integer)session.getAttribute("usrsNo");
+		int siteNo = (Integer)session.getAttribute("siteNo");
+		ticket.setUsersNo(usersNo);
+		ticket.setSiteNo(siteNo);
+		service.modifyTicket(ticket, ag);
+		return "redirect:/admin/site/list?pageNo=1";
 	}
 }

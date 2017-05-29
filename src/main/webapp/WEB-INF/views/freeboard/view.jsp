@@ -8,70 +8,57 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-.td input:focus, .td textarea:focus {
-	outline: none;
+#date-writer-hit {
+    display: block;
+    margin: 0;
+    padding: 0;
+    font-size: 11px;
+    color: #555;
+    text-align: right;
 }
-
-input:focus, textarea:focus {
-	outline: none;
+#detail > p {
+    margin: 0 0 15px 0;
+    padding: 0;
+    color: #333;
 }
 </style>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 </head>
 <body>
-	<header> <%@include file="/nav/navbar.jsp"%>
+	<header> 
+		<%@include file="/nav/navbar.jsp"%>
 	</header>
-	<div class="container">
-		<hr>
-		<div class="row text-center">
-			<table style="border: 1px solid; border-collapse: collapse;">
-				<tr style="border: solid 1px;">
-					<th style="border: solid 1px;">제목</th>
-					<td style="border: 1px solid;"><input type="text"
-						value="${result.board.freeboardTitle }" size="20"
-						style="width: 100%; border: 0;"></td>
-				</tr>
-				<tr style="border: solid 1px;">
-					<th style="border: solid 1px;">작성일</th>
-					<td style="border: 1px solid;"><fmt:formatDate
-							value="${result.board.freeboardDate }" pattern="yyyy년MM월dd일" /></td>
-				</tr>
-				<tr style="border: solid 1px;">
-					<th style="border: solid 1px;">조회수</th>
-					<td style="border: 1px solid;"><input type="text"
-						value="${result.board.freeboardCnt }" size="20"
-						style="width: 100%; border: 0;"></td>
-				</tr>
-				<tr style="border: solid 1px;">
-					<th style="border: solid 1px;">내용</th>
-					<td style="border: 1px solid;"><textarea name="content"
-							rows="30" style="width: 100%; border: 0; resize: none;">
-					${result.board.freeboardContent}</textarea></td>
-				</tr>
-				<tr style="border: solid 1px;">
-					<th style="border: solid 1px;">첨부파일</th>
-					<td style="border: 1px solid;"><a
-						href="/meoui/freeboard/download?freeboardImg=${result.board.freeboardImg }">
-							${result.board.freeboardImg }</a></td>
-				</tr>
-			</table>
-		</div>
+	<table style="margin-left: 100px; width: auto;">
+		<tr>
+			<th style="text-align: left; vertical-align: top;"><h5>제목: &nbsp;&nbsp;</h5></th>
+			<th style="text-align: left; color: #555;">${result.board.freeboardTitle }</th>
+		</tr>
+	</table>
+	<div id="detail">
+		<span id="date-writer-hit"><fmt:formatDate
+				value="${result.board.freeboardDate }" pattern="yyyy년MM월dd일" /> Hit
+			${result.board.freeboardCnt }</span>
+		<p style="margin-left: 100px">${result.board.freeboardContent}</p>
+	</div>
+	<div style="margin-left: 100px">
+		첨부파일: &nbsp;&nbsp;<a href="/meoui/freeboard/download?freeboardImg=${result.board.freeboardImg }">
+			${result.board.freeboardImg }</a>
 	</div>
 	<hr>
-	<h5>댓글작성란</h5>
+	<h5 style="margin-left: 70px">댓글작성란</h5>
 	<br>
 	<div id="center">
-		<form action="#" method="post">
+		<form action="/meoui/freeboardComment/${{result.board.freeboardNo}" method="post">
 			<div class="row text-center">
-				<div class="col-xs-4">
+				<div class="col-xs-4" style="margin-left: 70px">
 					<textarea class="form-control col-sm-5" rows="5"
 						placeholder="댓글을 작성해 주세요." name="accommodationCommentContent">
 				</textarea>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-xs-4">
+				<div class="col-xs-4" style="margin-left: 70px">
 					<button type="submit" class="w3-button w3-block w3-white w3-border">댓글작성</button>
 				</div>
 			</div>

@@ -71,4 +71,8 @@ public class AccommodationDAO {
 	public int selectByMax(){
 		return template.selectOne("AccommodationMapper.selectByMax");
 	}
+	//	최근 업로드된 숙박업소노출
+	public List<Accommodation> newAcoomoodation(){
+		return template.selectList("AccommodationMapper.newAcoomoodation");
+	}
 }

@@ -13,5 +13,6 @@ public class NoticeComment {
 	private Date noticeCommentDate;
 	private int memberNo;
 	private int noticeNo;
+	private String memberName;
 
 }

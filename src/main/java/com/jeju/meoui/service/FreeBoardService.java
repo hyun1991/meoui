@@ -27,7 +27,9 @@ public class FreeBoardService {
 		dao.updateFreeboard(freeBoard);
 	}
 	//3. 자유게시판 삭제하기
+	@Transactional
 	public void removeFreeboard(int freeboardNo) {
+		commentDao.deleteAllComment(freeboardNo);
 		dao.deleteFreeboard(freeboardNo);
 	}
 	//4. 자유게시판 페이지별 조회하기

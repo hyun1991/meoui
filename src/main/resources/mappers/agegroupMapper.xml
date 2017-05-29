@@ -10,7 +10,7 @@
 	
 	<!-- 2.연령대 수정 -->
 	<update id="updateAgegroup" parameterType="Agegroup">
-		update agegroup set agegroup_standard=#{agegroupStandard} 
+		update agegroup set agegroup_standard=#{agegroupStandard} ,agegroup_standard_no=#{agegroupStandardNo}
 	</update>
 	
 	<!-- 3.연령대 삭제 -->

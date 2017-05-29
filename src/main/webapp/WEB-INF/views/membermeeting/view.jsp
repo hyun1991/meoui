@@ -96,10 +96,9 @@ img {
 				<button id="commit" type="submit"
 					class="w3-button w3-block w3-white w3-border">회원 가입하기</button>
 			</form>
-			<form action="/meoui/membermeeting/update" method="GET">
+			<a href="/meoui/membermeeting/update/${meeting.meetingNo}&<%=session.getAttribute("memberNo")%>">
 				<button id="commit" type="submit"
-					class="w3-button w3-block w3-white w3-border">모임수정하기</button>
-			</form>
+					class="w3-button w3-block w3-white w3-border">모임수정하기</button></a>
 			<a href="/meoui/meetingboard/list/${meeting.meetingNo}"
 						style="color: #424242;"><span class="glyphicon glyphicon-heart"
 							style="color: #f76ce4;"></span> 모임게시판 </a>

@@ -3,14 +3,15 @@ package com.jeju.meoui.controller;
 import javax.servlet.http.*;
 
 import org.springframework.beans.factory.annotation.*;
+import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
 
 import com.google.gson.*;
 import com.jeju.meoui.service.*;
 import com.jeju.meoui.vo.*;
 
-@RestController
-public class FreeBoardCommentAjaxController {
+@Controller
+public class FreeBoardCommentController {
 	@Autowired
 	private FreeBoardCommentService commentService;
 	@Autowired
@@ -21,12 +22,14 @@ public class FreeBoardCommentAjaxController {
 		commentService.createFreeboardComment(freeBoardComment);
 		return new Gson().toJson(service.findByFreeboard(freeboardNo));
 	}
+	/*
 	//2. 댓글 수정하기
 	@RequestMapping(value="/freeboardComment/{freeboardNo}", method=RequestMethod.PATCH)
 	public String updateFreeboardComment(@PathVariable int freeboardNo, @ModelAttribute FreeBoardComment freeBoardComment) {
 		commentService.modifyFreeboardComment(freeBoardComment);
 		return new Gson().toJson(service.findByFreeboard(freeboardNo));
 	}
+	*/
 	//3. 댓글 삭제하기
 	@RequestMapping(value="/freeboardComment/{freeboardNo}", method=RequestMethod.DELETE)
 	public String deleteFreeboardComment(HttpSession session, @PathVariable int freeboardCommentNo, @RequestHeader(value="freeboardNo")int freeboardNo) {
