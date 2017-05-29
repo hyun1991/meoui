@@ -4,6 +4,7 @@ import java.util.*;
 
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
+import org.springframework.transaction.annotation.*;
 
 import com.jeju.meoui.dao.*;
 import com.jeju.meoui.vo.*;
@@ -26,6 +27,7 @@ public class TicketService {
 	// 2. 티켓 리스트
 	public HashMap<String, Object>findTicket(int siteNo){
 		HashMap<String, Object>map= new HashMap<String, Object>();
+		System.out.println(dao.selectTicketList(siteNo));
 		map.put("list", dao.selectTicketList(siteNo));
 		return map;
 	}

@@ -38,6 +38,7 @@ public class TicketDAO {
 	
 	// 5.관광지별 티켓 리스트
 	public List<Ticket> selectTicketList(int siteNo){
+		System.out.println(template.selectList("TicketMapper.selectTicket",siteNo));
 		return template.selectList("TicketMapper.selectTicket",siteNo);
 	}
 }
