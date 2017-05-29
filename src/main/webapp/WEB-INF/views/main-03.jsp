@@ -41,9 +41,9 @@
 			<%@include file="slide.jsp"%>
 		</div>
 		<div class="container">
-			<h1 id="headTitle" style="margin-top: 50px;" align="center">추천숙박시설</h1>
+			<hr>
+			<h1 id="headTitle" style="margin-top: 50px;" align="center">추천숙박시설</h1><br>
 			<div class="row text-center">
-				<hr>
 				<c:forEach items="${result.list }" var="accommodation">
 					<div class="col-sm-3"
 						style="overflow-x: hidden; overflow-y: hidden">
@@ -63,9 +63,9 @@
 					</div>
 				</c:forEach>
 			</div>
-			<h1 id="headTitle" style="margin-top: 50px;" align="center">추천관광명소</h1>
+			<hr>
+			<h1 id="headTitle" style="margin-top: 50px;" align="center">추천관광명소</h1><br>
 			<div class="row text-center">
-				<hr>
 				<c:forEach items="${result2.list }" var="result">
 					<div class="col-sm-3"
 						style="overflow-x: hidden; overflow-y: hidden">
