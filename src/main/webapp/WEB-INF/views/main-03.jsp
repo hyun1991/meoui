@@ -31,9 +31,10 @@
 .container-fluid {
 	font-family: 'Jeju Gothic', serif;
 }
+#mainForm{background-color: #EBF5FF;}
 </style>
 
-<body>
+<body id="mainForm">
 	<header>
 	<%@include file="/nav/navbar.jsp" %>
 	</header>

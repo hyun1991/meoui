@@ -49,9 +49,10 @@ span {
 		<div class="container">
 			<div class="navbar-header">
 				<a class="navbar-brand navbar-left"
-					href="http://192.168.0.186:8087/meoui/" id="brand">제주를 부탁해 </a>
+					href="http://192.168.0.186:8087/meoui/" id="brand">
+					<img alt="알수없음" src="/meoui/images/jejulogo3.png"> </a>
 			</div>
-			<div class="row">
+			<div class="row" style="margin-top: 100px;">
 				<ul class="nav navbar-nav">
 					<li class="navMenu"><a href="/meoui/site/list?pageNo=1"
 						style="color: #424242;"><span

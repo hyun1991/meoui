@@ -14,7 +14,6 @@
 body{
 	color:#424242;
 }
-#footer{background-color: #EBF5FF;}
 </style>
 <body>
 	<footer>
