@@ -132,6 +132,16 @@ img {
 							<button type="button"
 								class="w3-button w3-block w3-white w3-border">상세보기</button>
 						</a>
+						<a href="/meoui/site/update?siteNo=${result.siteNo}">
+							<button type="button"
+								class="w3-button w3-block w3-white w3-border">관광지 수정</button>
+						</a>
+						<a
+						href="/meoui/site/delete/${result.siteName }">
+						<button type="button"
+							class="w3-button w3-block w3-white w3-border" id="deleteBtn">
+							삭제하기</button>
+					</a>
 					</div>
 				</div>
 			</c:forEach>

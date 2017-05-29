@@ -18,7 +18,7 @@
 	<!-- 2. 관광지 수정 -->
 	<update id="updateSite" parameterType="site">
 		<![CDATA[
-			update site set site_img=#{siteImg},site_introduce=#{siteIntroduce},site_homepage=#{siteHomepage}
+			update site set site_name=#{siteName}, site_img=#{siteImg},site_introduce=#{siteIntroduce},site_homepage=#{siteHomepage}
 			,site_open_time=#{siteOpenTime},site_close_time=#{siteCloseTime},site_phone=#{sitePhone},site_night_open=#{siteNightOpen},site_night_close_time=#{siteNightCloseTime} where site_no=#{siteNo}   
 		]]>
 	</update>

@@ -49,9 +49,8 @@ public class SiteService {
 	
 	// 3.관광지 삭제
 	@Transactional
-	public void removeSite(String siteName , int siteNo){
+	public void removeSite(String siteName){
 		dao.deleteSite(siteName);
-		commentdao.deleteAllSiteComment(siteNo);
 	}
 	
 	// 4.관광지 리스트
