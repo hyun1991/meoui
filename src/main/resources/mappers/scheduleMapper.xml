@@ -38,5 +38,9 @@
 	<select id="findAllMemberNo" parameterType="int" resultType="Travleschedule">
 		select * from travleschedule where member_no=#{memberNo}
 	</select>
+	<!-- 8. 최근입력된 일정번호 조회하기 -->
+	<select id="getByTravleNo" resultType="int">
+		select max(travleschedule_no)from travleschedule
+	</select>
 
 </mapper>
