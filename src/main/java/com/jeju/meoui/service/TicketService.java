@@ -33,6 +33,7 @@ public class TicketService {
 	// 3. 티켓 수정
 	public void modifyTicket(Ticket t , AgeGroup ag){
 		aDao.updateAgegroup(ag);
+		t.setAgegroupNo(ag.getAgegroupNo());
 		dao.updateTicket(t);
 	}
 }
