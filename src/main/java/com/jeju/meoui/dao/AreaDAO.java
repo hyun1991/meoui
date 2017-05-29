@@ -29,7 +29,7 @@ public class AreaDAO {
 	
 	// 지역 관광지 삭제
 	public void deleteSiteArea(int siteNo){
-		template.delete("AreaMapper.deleteSiteArea" , siteNo);
+		template.delete("AreaMapper.deleteAreaSite" , siteNo);
 	}
 	
 	// 지역별 관광지 조회

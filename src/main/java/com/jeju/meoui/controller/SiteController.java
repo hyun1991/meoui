@@ -39,7 +39,7 @@ public class SiteController {
 		String fileName = UploadUtil.storeAndGetFileName(siteImg, ctx, path);
 		site.setSiteImg(fileName);
 		service.createSite(site, area);
-		return "redirect:/site/list?pageNo=1";
+		return "redirect:/admin/site/list?pageNo=1";
 	}
 	/*
 	 * String fileName= UploadUtil.storeAndGetFileName(roomImg, ctx, path);
@@ -51,27 +51,27 @@ public class SiteController {
 	 */
 
 	// 관광지 수정 폼
-	@RequestMapping(value="/site/update/{siteNo}", method=RequestMethod.GET)
+	@RequestMapping(value="/site/update", method=RequestMethod.GET)
 	public String updateSite(){
-		return "site/update/{siteNo}";
+		return "site/update";
 	}
 	
 	// 관광지 수정 성공
-	@RequestMapping(value="/site/update/{siteNo}" , method=RequestMethod.POST)
+	@RequestMapping(value="/site/update" , method=RequestMethod.POST)
 	public String updateSitd(Site site, Area area, HttpSession session, @RequestParam("img") MultipartFile siteImg){
-		//int siteNo = (Integer)session.getAttribute("siteNo");
+		int siteNo = (Integer)session.getAttribute("siteNo");
 		String fileName= UploadUtil.storeAndGetFileName(siteImg, ctx, path);
-		//site.setSiteNo(siteNo);
+		site.setSiteNo(siteNo);
 		service.modifySite(site);
-		return "redirect:/site/list?pageNo=1";
+		return "redirect:/admin/site/list?pageNo=1";
 	}
 	
 	// 관광지 삭제
 	
-	@RequestMapping(value="/site/delete/{siteName}", method=RequestMethod.GET)
-	public String deleteSite(@PathVariable String siteName ){
-		service.removeSite(siteName);
-		return "redirect:/site/list?pageNo=1";
+	@RequestMapping(value="/site/delete/{siteNo}", method=RequestMethod.GET)
+	public String deleteSite(@PathVariable  int siteNo , Area area , Site site  ){
+		service.removeSite(siteNo, area, site);
+		return "redirect:/admin/site/list?pageNo=1";
 	}
 	
 	// 관광지 전체 리스트
@@ -92,14 +92,22 @@ public class SiteController {
 	
 	
 	// 상세보기
-//	@RequestMapping(value="/site/details/{siteNo}", method=RequestMethod.GET)
+	@RequestMapping(value="/site/details/{siteNo}", method=RequestMethod.GET)
 	public String selectStieDetails(@PathVariable int siteNo, Model model,  HttpSession session){
 		session.setAttribute("siteNo", siteNo);
-		model.addAttribute("site",service.selectSiteByNo(siteNo));
+		model.addAttribute("result",service.selectSiteByNo(siteNo));
 		logger.info("뭐라찍히냐:{}", siteNo);
 	     return "site/details";
 	}	
-	
+	/*
+	 * 	//	숙박시설 번호별 조회하기(숙박업주)(완료)
+	@RequestMapping(value="/manage/accommodation/view/{accommodationNo}", method=RequestMethod.GET)
+	public String viewOwnerAccommodation(Model model, @PathVariable int accommodationNo, HttpSession session){
+		session.setAttribute("accommodationNo", accommodationNo);
+		model.addAttribute("result", service.getByOwnerAccommodation(accommodationNo));
+		return "owner/view";
+	 * 
+	 */
 
 /*
  */

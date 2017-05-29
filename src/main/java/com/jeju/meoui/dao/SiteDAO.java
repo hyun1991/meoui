@@ -21,8 +21,8 @@ public class SiteDAO {
 		template.update("siteMapper.updateSite" , site);
 	}
 	// 3.관광지 삭제
-	public void deleteSite(String siteName){
-		template.delete("siteMapper.deleteSite", siteName);
+	public void deleteSite(int siteNo){
+		template.delete("siteMapper.deleteSite", siteNo);
 	}
 	// 4.전체 관광지 리스트(페이징)
 	public List<Site> selectAllSite(int startRow , int lastRow){
