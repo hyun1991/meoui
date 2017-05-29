@@ -35,8 +35,10 @@ public class MeetingBoardDAO {
 	public int meetingBoardCount(){
 		return template.selectOne("MeetingBoardMapper.meetingBoardCount");
 	}
+	
 	//상세보기
 	public MeetingBoard selectMeetingBoardView(int meetingboardNo){
+	
 		return template.selectOne("MeetingBoardMapper.selectMeetingBoardView", meetingboardNo);
 	}
 	

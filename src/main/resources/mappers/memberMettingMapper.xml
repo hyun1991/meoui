@@ -19,7 +19,7 @@
 	<update id="updateMeetingName" parameterType="int">	
 		<![CDATA[
 		update member_meeting set meeting_name=#{meetingName}, meeting_img=#{meetingImg}
-		 where meeting_admin_no
+		 where meeting_admin_no=#{memberNo} and meeting_no=#{meetingNo}
 		 ]]>
 	</update>
 	
