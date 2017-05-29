@@ -27,7 +27,7 @@ public class HomeController {
 	public String home(Model model) {
 		model.addAttribute("result2", service.findNewSite());
 		model.addAttribute("result", acServier.mainNewAccommodation());
-		return "main-01";
+		return "main-03";
 	}
 	
 	@RequestMapping("/manage/home")
@@ -44,6 +44,6 @@ public class HomeController {
 	}
 	@RequestMapping("/test")
 	public String test() {
-		return "index";
+		return "main-03";
 	}
 }
