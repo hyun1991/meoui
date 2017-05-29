@@ -37,18 +37,6 @@
 		<%@include file="/nav/navbar.jsp"%>
 	</header>
 	<div class="container-fluid text-center">
-		<div class="row">
-			<form class="form-inline">
-				<div class="input-group">
-					<input type="search" class="form-control input-lg" size="40"
-						placeholder="목적지" required style="margin: 50px;">
-					<div class="input-group-btn">
-						<button type="button" class="btn btn-info btn-lg">검색</button>
-					</div>
-				</div>
-			</form>
-		</div>
-
 		<div class="container text-center" style="height: 30%;">
 			<%@include file="slide.jsp"%>
 		</div>
@@ -104,6 +92,17 @@
 	<hr>
 	<div class="container text-center">
 		<h1 id="headTitle" style="margin-top: 50px;" align="center">제주도</h1>
+		<div class="row">
+			<form class="form-inline">
+				<div class="input-group">
+					<input type="search" class="form-control input-lg" size="40"
+						placeholder="목적지" required style="margin: 50px;">
+					<div class="input-group-btn">
+						<button type="button" class="btn btn-info btn-lg">검색</button>
+					</div>
+				</div>
+			</form>
+		</div>
 	<div class="row" id="googleMapBackground">
 		<div id="googleMap" style="height: 400px; width: 100%;" alt="구글 지도"></div>
 	</div>
