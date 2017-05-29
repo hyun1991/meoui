@@ -16,7 +16,7 @@ values(#{noticeCommentNo},#{noticeCommentContent},sysdate,#{memberNo},#{noticeNo
 <!-- 2. 공지게시글에 달린 댓글 조회 -->
 <select id="selectCommentList" parameterType="int" resultType="NoticeComment">
 <![CDATA[
-select * from notice_Comment where notice_No=#{noticeNo} order by notice_Comment_No desc
+select c.notice_Comment_No,c.notice_Comment_Content,c.notice_Comment_Date,c.member_No,c.notice_No,m.member_Name from notice_Comment c, member m where c.member_No = m.member_No and notice_No=#{noticeNo} order by notice_Comment_No desc
 ]]>
 </select>
 <!-- 3. 공지게시판 댓글 갱신 (글내용 수정 가능) -->

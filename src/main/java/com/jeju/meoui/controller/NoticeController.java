@@ -72,7 +72,7 @@ public class NoticeController {
 	//6. 공지게시판 상세보기(관리자용)
 	@RequestMapping(value="/admin/noview/{noticeNo}", method=RequestMethod.GET)
 	public String selectByAdminNoticeNo(@PathVariable int noticeNo, Model model, HttpSession session){
-		session.setAttribute("noticeNo", noticeNo);
+		 session.setAttribute("noticeNo", noticeNo);
 	     model.addAttribute("notice", service.findByNotice(noticeNo));
 	     return "/admin/noview";
 	}
