@@ -46,12 +46,29 @@
 			<div>
 				<h3>야간개장 시 폐장시간</h3>${result.siteNightCloseTime }
 			</div>
-			
+			<div>
+			<h3>입장료</h3>
+			<c:forEach items="${result1.list }" var="result1">
+				<table>
+					<tr>
+						<td>${result1.agegroupStandard } : ${result1.ticketPrice }</td>
+					</tr>
+				</table>
+			</c:forEach>
+			</div>
 		
 			<div class="col-xs-4">
 					<a href="/meoui/site/update">
 							<button type="button"
 								class="w3-button w3-block w3-white w3-border">관광지 수정</button>
+						</a>
+							<a href="/meoui/ticket/insert">
+							<button type="button"
+								class="w3-button w3-block w3-white w3-border">티켓 추가</button>
+						</a>
+							<a href="/meoui/ticket/update">
+							<button type="button"
+								class="w3-button w3-block w3-white w3-border">티켓 수정</button>
 						</a>
 						<a
 						href="/meoui/site/delete/${result.siteNo }">

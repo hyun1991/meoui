@@ -17,6 +17,33 @@
 				<label>관광지명</label><input type="text" id="siteName" name="siteName" class="form-control">
 			</div>
 			<div class="form-group">
+				<label>주차여부</label><input type="text" id="sitePark" name=""sitePark"" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>이용대상</label><input type="text" id="siteObject" name="siteObject" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>소개</label><input type="text" id="siteIntroduce" name="siteIntroduce" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>홈페이지</label><input type="text" id="siteHomepage" name="siteHomepage" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>개장시간</label><input type="text" id="siteOpenTime" name="siteOpenTime" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>폐장시간</label><input type="text" id="siteCloseTime" name="siteCloseTime" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>야간개장 여부</label><input type="text" id="siteNightOpen" name="siteNightOpen" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>야간개장 시 폐장시간</label><input type="text" id="siteNightCloseTime" name="siteNightCloseTime" class="form-control">
+			</div>
+				<div class="form-group">
+				<label>상세주소</label><input type="text" id="detailsAddress" name="detailsAddress" class="form-control">
+			</div>
+			<div class="form-group">
 				<label>전화번호</label><input type="text" name="sitePhone" id="sitePhone" class="form-control"
 				placeholder="대표전화를 입력해 주세요.">
 			</div>
