@@ -26,7 +26,7 @@ public class SiteAjaxController {
 	
 	// 관광지 상세
 	// 관광지 이름으로 검색
-	@RequestMapping(value="/site/details" , method= {RequestMethod.GET, RequestMethod.POST})
+//	@RequestMapping(value="/site/details" , method= {RequestMethod.GET, RequestMethod.POST})
 	public Site detailsSite(int siteNo , HttpSession session){
 			session.setAttribute("siteNo", siteNo);
 		    return service.selectSiteByNo(siteNo);

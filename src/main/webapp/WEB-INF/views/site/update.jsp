@@ -7,22 +7,27 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>관광지 수정</h1>
-<form id="update" action="/stie/update/{siteNo}" method="post" enctype="multipart/form-data">
-<table>
-<tr><td>관광지 번호</td><td><input type="text" name="siteNo" id="siteNo">${siteNo }</td></tr>
-<tr><td>관광지명</td><td><input type="text" name="siteName" id="siteName">${siteName}</td></tr>
-<tr><td>관광지 소개</td><td><textarea name="siteIntroduce" id="siteIntroduce">${siteIntroduce}</textarea></td></tr>
-<tr><td>관광지 전화번호</td><td><input type="text" name="sitePhone" id="sitePhone">${sitePhone}</td></tr>
-<tr><td>관광지 홈페이지</td><td><input type="text" name="siteHomePage" id="siteHomePage">${siteHomePage}</td></tr>
-<tr><td>관광지 개장시간</td><td><input type="text" name="siteOpenTime" id="siteOpenTime">${siteOpenTime}</td></tr>
-<tr><td>관광지 폐장시간</td><td><input type="text" name="siteCloseTime" id="siteCloseTime">${siteCloseTime}</td></tr>
-<tr><td>관광지 야간개장여부</td><td><input type="text" name="siteNightOpen" id="siteNightOpen">${siteNightOpen}</td></tr>
-<tr><td>관광지 야간개장 시 폐장시간</td><td><input type="text" name="siteNightCloseTime" id="siteNightCloseTime">${siteNightCloseTime}</td></tr>
-</table>
-<a href="/meoui/site/update">
-<button id="update">수정 완료</button>
-</a>
-</form>
+<%@include file="/nav/ownernav.jsp" %>
+	<h1>관광지 수정페이지</h1>
+	<hr>
+	<form action="/meoui/site/update" method="post" enctype="multipart/form-data">
+		<hr>
+		<div>
+			<div class="form-group">
+				<label>관광지명</label><input type="text" id="siteName" name="siteName" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>전화번호</label><input type="text" name="sitePhone" id="sitePhone" class="form-control"
+				placeholder="대표전화를 입력해 주세요.">
+			</div>
+			<div class="form-group">
+				<label>대표 이미지</label><input type="file" name="img" id="siteImg" class="form-control">
+			</div>
+			<div class="btn-group">
+				<input type="submit" value="관광지 수정" id="confirmBtn" class="btn btn-primary">
+				<a href="/meoui/admin/site/list?pageNo=1"><input type="button" value="리스트로" id="confirmBtn" class="btn btn-primary"></a>
+			</div>
+		</div>
+	</form>
 </body>
 </html>
