@@ -21,6 +21,8 @@ public class SiteController {
 	@Autowired
 	private SiteService service;
 	@Autowired
+	private TicketService tservice;
+	@Autowired
 	private ServletContext ctx;
 	@Resource(name="path")
 	private String path;
@@ -62,7 +64,7 @@ public class SiteController {
 		int siteNo = (Integer)session.getAttribute("siteNo");
 		String fileName= UploadUtil.storeAndGetFileName(siteImg, ctx, path);
 		site.setSiteNo(siteNo);
-		service.modifySite(site);
+		service.modifySite(site,area);
 		return "redirect:/admin/site/list?pageNo=1";
 	}
 	
@@ -96,6 +98,7 @@ public class SiteController {
 	public String selectStieDetails(@PathVariable int siteNo, Model model,  HttpSession session){
 		session.setAttribute("siteNo", siteNo);
 		model.addAttribute("result",service.selectSiteByNo(siteNo));
+		model.addAttribute("result1", tservice.findTicket(siteNo));
 		logger.info("뭐라찍히냐:{}", siteNo);
 	     return "site/details";
 	}	

@@ -43,8 +43,10 @@ public class SiteService {
 	}
 	
 	// 2.관광지 수정
-	public void modifySite(Site site ){
+	public void modifySite(Site site , Area area ){
 		dao.updateSite(site);
+		area.setSiteNo(site.getSiteNo());
+		aDao.updateArea(area);
 	}
 	
 	// 3.관광지 삭제

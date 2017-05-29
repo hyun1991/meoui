@@ -35,4 +35,9 @@ public class TicketDAO {
 		map.put("agegroupNo", agegroupNo);
 		template.delete("TicketMapper.deleteTicketByAgegroup",map);
 	}
+	
+	// 5.관광지별 티켓 리스트
+	public List<Ticket> selectTicketList(int siteNo){
+		return template.selectList("TicketMapper.selectTicket",siteNo);
+	}
 }
