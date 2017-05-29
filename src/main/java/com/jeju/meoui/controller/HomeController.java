@@ -44,6 +44,6 @@ public class HomeController {
 	}
 	@RequestMapping("/test")
 	public String test() {
-		return "main-03";
+		return "slide";
 	}
 }

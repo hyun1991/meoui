@@ -23,7 +23,6 @@
 
 #googleMapBackground {
 	background-color: EBF5FF;
-	
 }
 
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
@@ -31,12 +30,11 @@
 .container-fluid {
 	font-family: 'Jeju Gothic', serif;
 }
-#mainForm{background-color: #EBF5FF;}
 </style>
 
-<body id="mainForm">
+<body>
 	<header>
-	<%@include file="/nav/navbar.jsp" %>
+		<%@include file="/nav/navbar.jsp"%>
 	</header>
 	<div class="container-fluid text-center">
 		<div class="row">
@@ -51,56 +49,63 @@
 			</form>
 		</div>
 
-		<div class="container text-center">
-			<div class="row" id="googleMapBackground">
-				<div id="googleMap" style="height: 400px; width: 100%;" alt="구글 지도"></div>
-			</div>
+		<div class="container text-center" style="height: 30%;">
+			<%@include file="slide.jsp"%>
 		</div>
 		<div class="container">
-		<h1 id="headTitle" style="margin-top: 50px;" align="center">추천숙박시설</h1>
-		<div class="row text-center">
-		<hr>
-			<c:forEach items="${result.list }" var="accommodation">
-				<div class="col-sm-3" style="overflow-x:hidden;overflow-y:hidden">
-					<a href="/meoui/accommodaion/list?pageNo=1">
-						<img class="image-responsive"
-						src="/meoui/images/${accommodation.accommodationImg}"
-						alt="알수없음" style="margin-bottom: 20px; height: auto; width: 260px">
-					</a>
-					<p>
-						<a href="/meoui/accommodaion/list?pageNo=1">
-							<strong>${accommodation.accommodationName}</strong>
+			<h1 id="headTitle" style="margin-top: 50px;" align="center">추천숙박시설</h1>
+			<div class="row text-center">
+				<hr>
+				<c:forEach items="${result.list }" var="accommodation">
+					<div class="col-sm-3"
+						style="overflow-x: hidden; overflow-y: hidden">
+						<a href="/meoui/accommodaion/list?pageNo=1"> <img
+							class="image-responsive"
+							src="/meoui/images/${accommodation.accommodationImg}" alt="알수없음"
+							style="margin-bottom: 20px; height: auto; width: 260px">
 						</a>
-					</p>
-					<p><a href="/meoui/accommodaion/list?pageNo=1">
-							${accommodation.accommodationAddress}</a>
-					</p>
-				</div>
-			</c:forEach>
-		</div>
-		<h1 id="headTitle" style="margin-top: 50px;" align="center">추천관광명소</h1>
-		<div class="row text-center">
-			<hr>
-			<c:forEach items="${result2.list }" var="result">
-				<div class="col-sm-3" style="overflow-x:hidden;overflow-y:hidden">
-					<a href="/meoui/site/list?pageNo=1"> <img
-						class="image-responsive" src="/meoui/images/${site.siteImg}"
-						alt="알수없음" style="margin-bottom: 20px; height: auto; width: 260px;" >
-					</a>
-					<p>
-						<a href="/meoui/site/list?pageNo=1"> <strong>${result.siteName}</strong>
+						<p>
+							<a href="/meoui/accommodaion/list?pageNo=1"> <strong>${accommodation.accommodationName}</strong>
+							</a>
+						</p>
+						<p>
+							<a href="/meoui/accommodaion/list?pageNo=1">
+								${accommodation.accommodationAddress}</a>
+						</p>
+					</div>
+				</c:forEach>
+			</div>
+			<h1 id="headTitle" style="margin-top: 50px;" align="center">추천관광명소</h1>
+			<div class="row text-center">
+				<hr>
+				<c:forEach items="${result2.list }" var="result">
+					<div class="col-sm-3"
+						style="overflow-x: hidden; overflow-y: hidden">
+						<a href="/meoui/site/list?pageNo=1"> <img
+							class="image-responsive" src="/meoui/images/${site.siteImg}"
+							alt="알수없음"
+							style="margin-bottom: 20px; height: auto; width: 260px;">
 						</a>
-					</p>
-					<p>
-						<a href="/meoui/site/list?pageNo=1">
-							${result.siteIntroduce}</a>
-					</p>
-					<p>
-						<a href="${result.siteHomepage}"> ${result.siteHomepage}</a>
-					</p>
-				</div>
-			</c:forEach>
+						<p>
+							<a href="/meoui/site/list?pageNo=1"> <strong>${result.siteName}</strong>
+							</a>
+						</p>
+						<p>
+							<a href="/meoui/site/list?pageNo=1"> ${result.siteIntroduce}</a>
+						</p>
+						<p>
+							<a href="${result.siteHomepage}"> ${result.siteHomepage}</a>
+						</p>
+					</div>
+				</c:forEach>
+			</div>
 		</div>
+	</div>
+	<hr>
+	<div class="container text-center">
+		<h1 id="headTitle" style="margin-top: 50px;" align="center">제주도</h1>
+	<div class="row" id="googleMapBackground">
+		<div id="googleMap" style="height: 400px; width: 100%;" alt="구글 지도"></div>
 	</div>
 	</div>
 	<hr>
