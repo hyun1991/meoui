@@ -76,10 +76,7 @@ img {
 	<h2>상세 뷰</h2>
 	<div class="row text-center">
 		<div class="col-sm-3">
-			<a href="/meoui/site/details/${site.siteNo}"> <img
-				class="image-responsive" src="/meoui/images/${stie.siteImg}"
-				alt="skinscuber" style="margin-bottom: 20px;">
-			</a>
+			
 
 			
 		</div>
@@ -89,6 +86,13 @@ img {
 	</footer>
 </body>
 <script>
-	
+	$.ajax({
+		url:"",
+		type:"",
+		data: {},
+		success:function(Obj){
+			$().css("", "");
+				},
+			});
 </script>
 </html>

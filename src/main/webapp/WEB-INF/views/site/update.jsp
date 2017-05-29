@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>관광지 수정</h1>
-<form id="UpdateFrom" action="/stie/update/{siteNo}" method="post" enctype="multipart/form-data">
+<form id="update" action="/stie/update/{siteNo}" method="post" enctype="multipart/form-data">
 <table>
 <tr><td>관광지 번호</td><td><input type="text" name="siteNo" id="siteNo">${siteNo }</td></tr>
 <tr><td>관광지명</td><td><input type="text" name="siteName" id="siteName">${siteName}</td></tr>
