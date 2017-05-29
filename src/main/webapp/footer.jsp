@@ -18,7 +18,7 @@ body{
 <body>
 	<footer>
 		<div id="contact" class="container">
-			<div class="row">
+			<div class="row" style="margin-left: 0;">
 				<div class="col-md-3">
 					<p>(주)MEOUI</p>
 					<p>
@@ -33,23 +33,21 @@ body{
 						mail@mail.com
 					</p>
 				</div>
-				<div class="col-md-3">
+				<div class="col-md-3" style="margin-left: 100px;margin-right: 85px;margin-top: 10px">
 					<ul class="nav navbar-nav">
-						<li><a href=""><i class="fa fa-facebook"
+						<li><a href="http://www.facebook.com"><i class="fa fa-facebook"
 								style="font-size: 50px"></i></a></li>
-						<li><a href=""><i class="fa fa-twitter"
+						<li><a href="http://www.twitter.com"><i class="fa fa-twitter"
 								style="font-size: 50px"></i></a></li>
-						<li><a href=""><i class="fa fa-instagram"
+						<li><a href="http://www.instagram.com"><i class="fa fa-instagram"
 								style="font-size: 50px"></i></a></li>
 					</ul>
 				</div>
-				<div class="col-md-6">
-					<h4>1 Follow Us Canada's New Passenger Bill of Rights Bans
-						Removal in Cases of Overbooking https://t.co/K2aizs9IKo
-						https://t.co/lb8fklloIp Twitter | 29 mins ago</h2>
+				<div>
+					<%@include file="/websocket.jsp" %>
 				</div>
 			</div>
-			<div class="row text-center">
+			<!-- <div class="row text-center">
 				<div class="col-md-8 col-md-offset-2">
 					<p>트래포트(주) Travelhow.com은 통신판매중개자로서 통신판매의 당사자가 아니며, 상품주문, 배송 및
 						환불의 의무와 책임은 각각의 판매업체에 있습니다. 사업자등록번호 : 211-88-19164통신판매업 :
@@ -58,7 +56,7 @@ body{
 						02-2178-9393 Traport. Copyright (c) 2015 Traport..com Inc. All
 						Rights Reserved.</p>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</footer>
 </body>

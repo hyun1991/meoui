@@ -113,6 +113,20 @@ public class AccommodationService {
 		HashMap<String, Object>map= new HashMap<String, Object>();
 		Accommodation accommodation= dao.findByAccommodation(accommodationNo);
 		List<AccommodationComment> comment= commentDao.selectByAccommodationNo(accommodationNo);
+		for(AccommodationComment cm: comment){
+			if(cm.getAccommodationCommentAvg()!=0){
+				if(cm.getAccommodationCommentAvg()==1)
+					cm.setByul("★☆☆☆☆");
+				else if(cm.getAccommodationCommentAvg()==2)
+					cm.setByul("★★☆☆☆");
+				else if(cm.getAccommodationCommentAvg()==3)
+					cm.setByul("★★★☆☆");
+				else if(cm.getAccommodationCommentAvg()==4)
+					cm.setByul("★★★★☆");
+				else if(cm.getAccommodationCommentAvg()==5)
+					cm.setByul("★★★★★");
+			}
+		}
 		map.put("accommodation", accommodation);
 		map.put("comment", comment);
 		return map;

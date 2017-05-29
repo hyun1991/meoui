@@ -67,8 +67,5 @@ img{
 				</c:if></li>
 		</ul>
 	</div>
-
-
-
 </body>
 </html>

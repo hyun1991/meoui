@@ -41,17 +41,17 @@
 		<hr>
 			<c:forEach items="${result.list }" var="accommodation">
 				<div class="col-sm-3" style="overflow-x:hidden;overflow-y:hidden">
-					<a href="/meoui/accommodation/list?pageNo=1">
+					<a href="/meoui/accommodaion/list?pageNo=1">
 						<img class="image-responsive"
 						src="/meoui/images/${accommodation.accommodationImg}"
 						alt="알수없음" style="margin-bottom: 20px; height: auto; width: 260px">
 					</a>
 					<p>
-						<a href="/meoui/accommodation/list?pageNo=1">
+						<a href="/meoui/accommodaion/list?pageNo=1">
 							<strong>${accommodation.accommodationName}</strong>
 						</a>
 					</p>
-					<p><a href="/meoui/accommodation/list?pageNo=1">
+					<p><a href="/meoui/accommodaion/list?pageNo=1">
 							${accommodation.accommodationAddress}</a>
 					</p>
 				</div>

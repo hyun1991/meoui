@@ -12,7 +12,7 @@
 	<header> <%@include file="/nav/navbar.jsp"%>
 	</header>
 	<div class="container">
-		<h2>관광시설목록</h2>
+		<h2>자유게시판</h2>
 		<br>
 		<div class="row">
 			<table class="table table-hover table-responsive">
@@ -62,7 +62,6 @@
 		</a>
 		</div>
 	</div>
-	<footer> <%@include file="/footer.jsp"%>
-	</footer>
+	<%@include file="/footer.jsp"%>
 </body>
 </html>
