@@ -21,7 +21,7 @@ public class FreeBoardCommentService {
 		commentDAO.updateComment(freeBoardComment);
 	}
 	//3. 댓글 삭제하기(미완료)
-	public void removeFreeboardComment(int freeboardCommentNo, int freeboardNo) {
-		commentDAO.deleteComment(freeboardCommentNo, freeboardNo);
+	public void removeFreeboardComment(int freeboardCommentNo, int memberNo) {
+		commentDAO.deleteComment(freeboardCommentNo, memberNo);
 	}
 }
