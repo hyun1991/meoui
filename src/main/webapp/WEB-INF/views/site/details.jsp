@@ -70,6 +70,10 @@
 							<button type="button"
 								class="w3-button w3-block w3-white w3-border">티켓 수정</button>
 						</a>
+								<a href="/meoui/ticket/delete/${result.siteNo }">
+							<button type="button"
+								class="w3-button w3-block w3-white w3-border">티켓 삭제</button>
+						</a>
 						<a
 						href="/meoui/site/delete/${result.siteNo }">
 						<button type="button"
