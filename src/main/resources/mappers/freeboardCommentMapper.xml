@@ -8,8 +8,8 @@
 		select freeboard_Comment_seq.nextval from dual
 		</selectKey>
 			<![CDATA[
-				insert into freeboard_Comment(freeboardComment_no, freeboardComment_content, freeboard_date)
-				values(#{freeboardCommentNo}, #{freeboardCommentContent}, sysdate)
+				insert into freeboard_Comment(freeboard_Comment_no, freeboard_Comment_content, freeboard_Comment_date,freeboard_No,member_No)
+				values(#{freeboardCommentNo}, #{freeboardCommentContent}, sysdate, #{freeboardNo}, #{memberNo})
 			]]>
 		</insert>
 <!-- 2. 자유게시판 번호 별 댓글 조회 -->
