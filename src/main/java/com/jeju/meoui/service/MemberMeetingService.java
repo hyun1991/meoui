@@ -35,7 +35,14 @@ public class MemberMeetingService {
 		dao.updateMeetingName(memberMeeting);
 		logger.info("모임수정:{}", memberMeeting);
 	}
-	//모임삭제
+	
+	//모임삭제(유저용)
+		public void deleteMemberMeeting(int meetingNo, int memberNo){
+			dao.deleteMembeMeetingUser(meetingNo, memberNo);
+		
+		}
+	
+	//모임삭제(관리자용)
 	public void deleteMemberMeeting(int meetingNo){
 		dao.deleteMembeMeeting(meetingNo);
 	}
