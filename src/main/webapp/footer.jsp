@@ -43,9 +43,12 @@ body{
 								style="font-size: 50px"></i></a></li>
 					</ul>
 				</div>
-				<div>
+				<div align="right">
 					<%@include file="/websocket.jsp" %>
 				</div>
+			</div>
+			<div class="row">
+				<hr>
 			</div>
 			<!-- <div class="row text-center">
 				<div class="col-md-8 col-md-offset-2">
