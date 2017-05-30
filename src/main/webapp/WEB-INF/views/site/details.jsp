@@ -51,7 +51,7 @@
 			<c:forEach items="${result1.list }" var="result1">
 				<table>
 					<tr>
-						<td>${result1.agegroupStandard } : ${result1.ticketPrice }</td>
+						<td>${result1.ticketStandard } : ${result1.ticketPrice }</td>
 					</tr>
 				</table>
 			</c:forEach>

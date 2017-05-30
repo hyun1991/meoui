@@ -14,19 +14,11 @@
 		<hr>
 		<div>
 			<div class="form-group">
-				<select class="form-control input-lg" name="agegroupStandard">
+				<select class="form-control input-lg"  id="ticketStandard" name="ticketStandard">
 					<option value="">선택</option>
 					<option value="성인">성인</option>
 					<option value="청소년">청소년</option>
 					<option value="소인">소인</option>
-				</select>
-			</div>
-			<div class="form-group">
-				<select class="form-control input-lg" name="agegroupStandardNo">
-					<option value="">선택</option>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
 				</select>
 			</div>
 			<div class="form-group">

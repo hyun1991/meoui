@@ -34,10 +34,13 @@
 	    <typeAlias type="com.jeju.meoui.vo.SiteComment" alias="siteComment"/>
 	    <typeAlias type="com.jeju.meoui.vo.Reserve" alias="Reserve"/>
 	    <typeAlias type="com.jeju.meoui.vo.ReserveDetails" alias="ReserveDetails"/>
-	    <typeAlias type="com.jeju.meoui.vo.AgeGroup" alias="Agegroup"/>
 	    <typeAlias type="com.jeju.meoui.vo.Area" alias="Area"/>
 	    <typeAlias type="com.jeju.meoui.vo.Ticket" alias="Ticket"/>
 	    <typeAlias type="com.jeju.meoui.vo.Users" alias="users"/>
 	    <typeAlias type="com.jeju.meoui.vo.MeetingBoard" alias="MeetingBoard"/>
+	   	<typeAlias type="com.jeju.meoui.vo.MeetingBoardComment" alias="MeetingBoardComment"/>
+	    <typeAlias type="com.jeju.meoui.vo.Travleschedule" alias="Travleschedule"/>
+	    <typeAlias type="com.jeju.meoui.vo.TravlescheduleDetails" alias="TravlescheduleDetails"/>
+
 	</typeAliases>
 </configuration>

@@ -65,7 +65,18 @@ public class MemberMeetingController {
 	public String updateMemberMeeting(){
 		return "membermeeting/update";
 	}
-	
+	/*
+	@RequestMapping(value="/membermeeting/update", method=RequestMethod.POST)
+	public String updateMemberMeeting(Model model, HttpSession session){
+		MemberMeeting memberMeeting = new MemberMeeting();
+		int meetingNo = (Integer)session.getAttribute("meetingNo");
+		int memberNo = (Integer)session.getAttribute("memberNo");
+		
+		service.updataMeetingName(memberMeeting);
+		
+		return "redirect:/membermeeting/view/"+meetingNo;
+	}
+	*/
 	
 	//모임수정 완료
 	@RequestMapping(value="/membermeeting/update", method=RequestMethod.POST)
@@ -74,6 +85,7 @@ public class MemberMeetingController {
 		MemberMeeting memberMeeting= new MemberMeeting();	
 		int meetingNo = (Integer)session.getAttribute("meetingNo");
 		String fileName= UploadUtil.storeAndGetFileName(meetingImg, ctx, path);
+		int memberNo=(Integer)session.getAttribute("memberNo");
 		memberMeeting.setMeetingName(meetingName);
 		memberMeeting.setMeetingImg(fileName);	
 		model.addAttribute("membermeeting", memberMeeting);
