@@ -103,6 +103,15 @@ public class SiteController {
 		logger.info("뭐라찍히냐:{}", siteNo);
 	     return "site/details";
 	}	
+	
+	// 관광명소 상세보기(사용자용)
+	@RequestMapping(value="/site/view/{siteNo}", method=RequestMethod.GET)
+	public String selectBySite(@PathVariable int siteNo, Model model,  HttpSession session){
+		session.setAttribute("siteNo", siteNo);
+		model.addAttribute("result",service.selectSiteByNo(siteNo));
+		model.addAttribute("result1", tservice.findTicket(siteNo));
+		return "site/mdetail";
+	}	
 	/*
 	 * 	//	숙박시설 번호별 조회하기(숙박업주)(완료)
 	@RequestMapping(value="/manage/accommodation/view/{accommodationNo}", method=RequestMethod.GET)
