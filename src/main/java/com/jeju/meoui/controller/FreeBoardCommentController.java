@@ -17,10 +17,14 @@ public class FreeBoardCommentController {
 	@Autowired
 	private FreeBoardService service;
 	//1. 댓글 추가하기
-	@RequestMapping(value="/freeboardComment/{freeboardNo}", method=RequestMethod.POST)
-	public String insertFreeboardComment(@PathVariable int freeboardNo ,@ModelAttribute FreeBoardComment freeBoardComment) {
+	@RequestMapping(value="/freeboardComment/insert", method=RequestMethod.POST)
+	public String insertFreeboardComment(@ModelAttribute FreeBoardComment freeBoardComment, HttpSession session) {
+		int freeboardNo = (Integer)session.getAttribute("freeboardNo");
+		int memberNo = (Integer)session.getAttribute("memberNo");
+		freeBoardComment.setFreeboardNo(freeboardNo);
+		freeBoardComment.setMemberNo(memberNo);
 		commentService.createFreeboardComment(freeBoardComment);
-		return new Gson().toJson(service.findByFreeboard(freeboardNo));
+		return"redirect:/freeboard/view/"+freeboardNo;
 	}
 	/*
 	//2. 댓글 수정하기
@@ -31,9 +35,11 @@ public class FreeBoardCommentController {
 	}
 	*/
 	//3. 댓글 삭제하기
-	@RequestMapping(value="/freeboardComment/{freeboardNo}", method=RequestMethod.DELETE)
-	public String deleteFreeboardComment(HttpSession session, @PathVariable int freeboardCommentNo, @RequestHeader(value="freeboardNo")int freeboardNo) {
-		commentService.removeFreeboardComment(freeboardCommentNo, freeboardNo);
-		return new Gson().toJson(service.findByFreeboard(freeboardNo));
+	@RequestMapping(value="/freeboardComment/delete/{freeboardCommentNo}", method=RequestMethod.GET)
+	public String deleteFreeboardComment(HttpSession session, @PathVariable int freeboardCommentNo) {
+		int freeboardNo = (Integer)session.getAttribute("freeboardNo");
+		int memberNo = (Integer)session.getAttribute("memberNo");
+		commentService.removeFreeboardComment(freeboardCommentNo, memberNo);
+		return "redirect:/freeboard/view/"+freeboardNo;
 	}
 }

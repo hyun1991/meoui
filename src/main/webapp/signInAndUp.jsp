@@ -112,10 +112,11 @@ label, .btn , .w3-button{
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-default" id="prevBtn2">이전</button>
+						<!-- <button type="button" class="btn btn-default" id="prevBtn2">이전</button>
 						<button type="button" class="btn btn-default" id="prevBtn3">이전</button>
 						<button type="button" class="btn btn-default" id="nextBtn1">다음</button>
 						<button type="button" class="btn btn-default" id="nextBtn2">다음</button>
+						 -->
 						<button type="submit" class="btn btn-default" id="nextBtn3">회원가입</button>
 					</div>
 				</div>
@@ -126,6 +127,7 @@ label, .btn , .w3-button{
 </body>
 
 <script>
+	/*
 	$(document).ready(function() {
 		$(".step2").hide();
 		$(".step3").hide();
@@ -183,6 +185,7 @@ label, .btn , .w3-button{
 		$("#prevBtn2").hide();
 		$("#prevBtn3").show();
 	});
+	*/
 </script>
 
 

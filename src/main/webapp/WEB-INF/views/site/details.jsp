@@ -51,7 +51,7 @@
 			<c:forEach items="${result1.list }" var="result1">
 				<table>
 					<tr>
-						<td>${result1.agegroupStandard } : ${result1.ticketPrice }</td>
+						<td>${result1.ticketStandard } : ${result1.ticketPrice }</td>
 					</tr>
 				</table>
 			</c:forEach>
@@ -69,6 +69,10 @@
 							<a href="/meoui/ticket/update">
 							<button type="button"
 								class="w3-button w3-block w3-white w3-border">티켓 수정</button>
+						</a>
+								<a href="/meoui/ticket/delete/${result.siteNo }">
+							<button type="button"
+								class="w3-button w3-block w3-white w3-border">티켓 삭제</button>
 						</a>
 						<a
 						href="/meoui/site/delete/${result.siteNo }">

@@ -49,11 +49,11 @@
 	<h5 style="margin-left: 70px">댓글작성란</h5>
 	<br>
 	<div id="center">
-		<form action="/meoui/freeboardComment/${{result.board.freeboardNo}" method="post">
+		<form action="/meoui/freeboardComment/insert" method="post">
 			<div class="row text-center">
 				<div class="col-xs-4" style="margin-left: 70px">
 					<textarea class="form-control col-sm-5" rows="5"
-						placeholder="댓글을 작성해 주세요." name="accommodationCommentContent">
+						placeholder="댓글을 작성해 주세요." name="freeboardCommentContent" id="freeboardCommentContent">
 				</textarea>
 				</div>
 			</div>
@@ -67,8 +67,9 @@
 	<hr>
 	<c:forEach items="${result.comment }" var="comment">
 		<div class="container">
-			<input type="hidden" id="memberNo"
+			<input type="hidden" id="boardCommentNo"
 				value="${comment.freeboardCommentNo }" class="form-control input-lg">
+			<div class="form-group">${comment.memberNo}</div>
 			<div class="form-group">${comment.freeboardCommentContent}</div>
 			<div class="form-group">
 				작성일:

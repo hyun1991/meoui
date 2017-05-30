@@ -2,6 +2,7 @@ package com.jeju.meoui.service;
 
 import java.util.*;
 
+import org.slf4j.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 import org.springframework.transaction.annotation.*;
@@ -11,16 +12,15 @@ import com.jeju.meoui.vo.*;
 
 @Service
 public class TicketService {
+	private static final Logger logger = LoggerFactory.getLogger(TicketService.class);
 	@Autowired
 	private TicketDAO dao;
-	@Autowired
-	private AgegroupDAO aDao;
 	
 	// 1. 추가
-	public void createTicket(Ticket ticket, AgeGroup ag){
-		ag.setAgegroupNo(aDao.MaxNo());
-		aDao.insertAgegroup(ag);
-		ticket.setAgegroupNo(aDao.MaxNo());
+	public void createTicket(Ticket ticket){
+		int ticketNo = dao.MaxTicketNo();
+		ticket.setTicketNo(ticketNo);
+		logger.info("pageNo:{}", ticketNo);
 		dao.insetTicket(ticket);
 	}
 	
@@ -33,9 +33,12 @@ public class TicketService {
 	}
 	
 	// 3. 티켓 수정
-	public void modifyTicket(Ticket t , AgeGroup ag){
-		aDao.updateAgegroup(ag);
-		t.setAgegroupNo(ag.getAgegroupNo());
-		dao.updateTicket(t);
+	public void modifyTicket(Ticket ticket ){
+		dao.updateTicket(ticket);
+	}
+	
+	// 4. 티켓 삭제
+	public void removeTicket(int siteNo){
+		dao.deleteTicket(siteNo);
 	}
 }

@@ -1,15 +1,26 @@
 package com.jeju.meoui.dao;
 
+import java.util.*;
+
+import org.mybatis.spring.*;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.stereotype.*;
+
+import com.jeju.meoui.vo.*;
+
+@Repository
 public class TravlescheduleDetailsDAO {
-/*
- * 	<!-- 1. 일정상세 추가하기 -->
-	<insert id="insertTravleDetails" parameterType="TravlescheduleDetails">
-		insert into travleschedule_details(site_no, travleschedule_no, member_no)
-		values(#{siteNo}, #{travlescheduleNo}, #{memberNo})
-	</insert>
-	<!-- 2. 일정상세 삭제하기 -->
-	<delete id="deleteTravleDetails" parameterType="HashMap">
-		delete from travleschedule_details where travleschedule_no=#{travlescheduleNo} and member_no=#{memberNo}
-	</delete>
- * */
+	@Autowired
+	private SqlSessionTemplate template;
+	//	일정상세 추가하기
+	public void insertTravleDetails(TravlescheduleDetails details){
+		template.insert("TravlescheduleDetailsMapper.insertTravleDetails", details);
+	}
+	//	일정상세 삭제하기
+	public void deleteTravleDetails(int travlescheduleNo,int memberNo){
+		HashMap<String, Object>map= new HashMap<String, Object>();
+		map.put("travlescheduleNo", travlescheduleNo);
+		map.put("memberNo", memberNo);
+		template.delete("TravlescheduleDetailsMapper.deleteTravleDetails",map);
+	}
 }
