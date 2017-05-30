@@ -78,7 +78,7 @@
 			</div>
 			<div class="viewdelete">
 				<c:if test="${comment.memberNo eq memberNo }">
-					<a href="#">
+					<a href="/meoui/freeboardComment/delete/${comment.freeboardCommentNo}">
 						<button type="button"
 							class="w3-button w3-block w3-white w3-border" id="deleteBtn">댓글
 							삭제하기</button>
