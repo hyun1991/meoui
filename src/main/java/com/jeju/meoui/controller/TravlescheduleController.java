@@ -18,8 +18,7 @@ public class TravlescheduleController {
 	private TravlescheduleService service;
 	//	일정 추가하기
 	@RequestMapping(value="/schedule/join", method=RequestMethod.POST)
-	@DateTimeFormat(pattern="yyyy-MM-dd")
-	public String insertTravle(@RequestParam String schedule, @RequestParam Date travlescheduleDate, HttpSession session){
+	public String insertTravle(@RequestParam String schedule, @DateTimeFormat(pattern="yyyy-MM-dd") Date travlescheduleDate, HttpSession session){
 		Travleschedule travleschedule= new Travleschedule();
 		int memberNo= (Integer)session.getAttribute("memberNo");
 		int siteNo= (Integer)session.getAttribute("siteNo");
