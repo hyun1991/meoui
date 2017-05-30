@@ -48,16 +48,7 @@ footer {
 				<div class="btn-group btn-group-justified">
 					<a href="/meoui/reserve/list/<%=session.getAttribute("memberNo") %>" 
 					class="btn btn-success">내가 예약한 숙박업소 확인</a> 
-					<a href="#" class="btn btn-success">내가 짠 코스 보기</a>
-				</div>
-			</div>
-		</div>
-		<div class="form-group row">
-
-			<div class="form-group col-md-6">
-				<div class="btn-group btn-group-justified">
-					<a href="#" class="btn btn-success">내 여행 일정 보기</a> <a href="#"
-						class="btn btn-success">즐겨찾기 목록</a>
+					<a href="/meoui/schedule/mylist?memberNo=<%=session.getAttribute("memberNo") %>" class="btn btn-success">나의 일정 전체보기</a>
 				</div>
 			</div>
 		</div>

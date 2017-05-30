@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 import org.springframework.transaction.annotation.*;
 
+import com.google.gson.*;
 import com.jeju.meoui.dao.*;
 import com.jeju.meoui.vo.*;
 
@@ -27,7 +28,7 @@ public class TravlescheduleService {
 		detailDao.insertTravleDetails(details);
 	}
 	//	고객번호별 일정전체 조회하기
-	public HashMap<String, Object>getAllTravle(int memberNo){
+	public HashMap<String, Object> getAllTravle(int memberNo){
 		HashMap<String, Object>map= new HashMap<String, Object>();
 		map.put("list", dao.findAllMemberNo(memberNo));
 		return map;

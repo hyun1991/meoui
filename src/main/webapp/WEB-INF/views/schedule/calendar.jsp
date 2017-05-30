@@ -1,23 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset=UTF-8">
 <title>Insert title here</title>
-<link
-	href='http://fullcalendar.io/js/fullcalendar-2.1.1/fullcalendar.css'
-	rel='stylesheet' />
-<link
-	href='http://fullcalendar.io/js/fullcalendar-2.1.1/fullcalendar.print.css'
-	media='print' />
-<script
-	src='http://fullcalendar.io/js/fullcalendar-2.1.1/lib/moment.min.js'></script>
-<script
-	src='http://fullcalendar.io/js/fullcalendar-2.1.1/lib/jquery.min.js'></script>
-<script
-	src='http://fullcalendar.io/js/fullcalendar-2.1.1/fullcalendar.min.js'></script>
-<style>
+<link href="/meoui/fullcalendar-2.9.1/fullcalendar.css" rel="stylesheet" />
+<link href="/meoui/fullcalendar-2.9.1/fullcalendar.print.css"
+	rel="stylesheet" media="print" />
+<script type="text/javascript"
+	src="/meoui/fullcalendar-2.9.1/lib/moment.min.js"></script>
+<script type="text/javascript"
+	src="/meoui/fullcalendar-2.9.1/lib/jquery.min.js"></script>
+<script type="text/javascript"
+	src="/meoui/fullcalendar-2.9.1/fullcalendar.js"></script>
+<script type="text/javascript"
+	src="/meoui/fullcalendar-2.9.1//lang-all.js"></script>
+<style type="text/css">
 body {
 	margin: 40px 10px;
 	padding: 0;
@@ -29,111 +30,88 @@ body {
 	max-width: 900px;
 	margin: 0 auto;
 }
+
+.fc-day-number.fc-sat.fc-past {
+	color: #0000FF;
+} /* 토요일 */
+.fc-day-number.fc-sun.fc-past {
+	color: #FF0000;
+} /* 일요일 */
+button {
+	background: #1AAB8A;
+	color: #fff;
+	border: none;
+	position: relative;
+	height: 60px;
+	font-size: 1.6em;
+	padding: 0 2em;
+	cursor: pointer;
+	transition: 800ms ease all;
+	outline: none;
+}
+
+button:hover {
+	background: #fff;
+	color: #1AAB8A;
+}
+
+button:before, button:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 2px;
+	width: 0;
+	background: #1AAB8A;
+	transition: 400ms ease all;
+}
+
+button:after {
+	right: inherit;
+	top: inherit;
+	left: 0;
+	bottom: 0;
+}
+
+button:hover:before, button:hover:after {
+	width: 100%;
+	transition: 800ms ease all;
+}
 </style>
 </head>
 <body>
-	<button id="bttnAllEvents">bttnAllEvents</button>
-	<button id="bttnRecreateEvents">bttnRecreateEvents</button>
-	<div id='calendar'></div>
-	<pre id="myPre"></pre>
+	<div id="calendar"></div>
+	<div align="center">
+		<a href="/meoui/"><button>홈으로</button></a>
+	</div>
+	<c:forEach items="${result.list }" var="tv">
+		<input type="hidden" id="schedule" value="${tv.schedule }">
+		<input type="hidden" id="scDate" value='<fmt:formatDate value="${tv.travlescheduleDate }" pattern="yyyy-MM-dd"/>'>
+	</c:forEach>
 </body>
-<script>
-	$('#calendar').fullCalendar({
-		header : {
-			left : 'prev,next today',
-			center : 'title',
-			right : 'month,basicWeek,basicDay'
-		},
-		defaultDate : '2014-11-07',
+<script type="text/javascript">
+jQuery(document).ready(function() {
+	var schedule= $("#schedule").val();
+	var scDate= $("#scDate").val();
+	alert(schedule)
+	alert(scDate)
+	jQuery("#calendar").fullCalendar({
+		defaultDate : "2017-05-30",
+		lang : "ko",
 		editable : true,
-
-		eventDrop : function(event) {
-			event.start._i = event.start.format();
-		},
-		eventResize : function(event) {
-			event.end._i = event.end.format();
-		},
-
-		eventLimit : true, // allow "more" link when too many events
-		events : [ {
-			id : 'All Day Event',
-			title : 'All Day Event',
-			start : '2014-11-03'
-		}, {
-			id : 'popo',
-			title : 'popo',
-			start : '2014-11-04T10:30:00',
-			end : '2014-11-05T12:30:00',
-			description : 'This is a cool event',
-			color : 'rgb(142, 67, 163)',
-			textColor : 'white'
-		}, {
-			id : 'popo2',
-			title : 'popo2',
-			//url: 'http://google.com/',
-			start : '2014-11-06'
-		} ]
-	});
-
-	$('#calendar').on('click', '.fc-day', function() {
-		var myPrompt = prompt('uno', 'due');
-		if (myPrompt != null && myPrompt != '') {
-			$('#calendar').fullCalendar('addEventSource', [ {
-				id : myPrompt,
-				title : myPrompt,
-				start : $(this).attr('data-date')
-			} ]);
+		eventLimit : true,
+		events:function(start, end, callback){
+			$.ajax({
+				url:"/schedule/data",
+				dataType:'json',
+				success:function(){
+					alert("스케줄 데이터")
+					var events= eval(data.jsonTxt);
+					callback(events);
+				}
+			})
 		}
 	});
-
-	$('#calendar').on('click', '.fc-content', function() {
-		var gugu = $(this).children('.fc-title').html();
-		$('#calendar').fullCalendar('removeEvents', gugu);
-	});
-
-	$('#bttnAllEvents').click(function() {
-		var myEvents = $("#calendar").fullCalendar("clientEvents");
-		popo = {};
-		for (var i = 0; i < myEvents.length; i++) {
-			popo[i] = {};
-			if (myEvents[i].id) {
-				popo[i]['id'] = myEvents[i].id;
-			}
-			if (myEvents[i].title) {
-				popo[i]['title'] = myEvents[i].title;
-			}
-			if (myEvents[i].start) {
-				popo[i]['start'] = myEvents[i].start._i;
-			}
-			if (myEvents[i].end) {
-				popo[i]['end'] = myEvents[i].end._i;
-			}
-			if (myEvents[i].description) {
-				popo[i]['description'] = myEvents[i].description;
-			}
-			if (myEvents[i].color) {
-				popo[i]['color'] = myEvents[i].color;
-			}
-			if (myEvents[i].textColor) {
-				popo[i]['textColor'] = myEvents[i].textColor;
-			}
-		}
-		myPre.innerHTML = JSON.stringify(popo, undefined, 4);
-	});
-
-	$('#bttnRecreateEvents').click(function() {
-		for (var i = 0; i < Object.keys(popo).length; i++) {
-			$('#calendar').fullCalendar('addEventSource', [ {
-				id : popo[i].id,
-				title : popo[i].title,
-				start : popo[i].start,
-				end : popo[i].end,
-				description : popo[i].description,
-				color : popo[i].color,
-				textColor : popo[i].textColor
-			} ]);
-			console.log('ok');
-		}
-	});
+});
 </script>
 </html>

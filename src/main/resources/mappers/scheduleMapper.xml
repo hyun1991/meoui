@@ -5,7 +5,7 @@
 	<!-- 1. 일정추가하기 -->
 	<insert id="insertTravle" parameterType="Travleschedule">
 		<selectKey keyProperty="travlescheduleNo" resultType="int" order="BEFORE">
-	    	select travelschedule_seq.nextval from dual
+	    	select travle_seq.nextval from dual
 		</selectKey>
 		<![CDATA[
 			insert into travleschedule(travleschedule_no, member_no, travleschedule_date, schedule)
