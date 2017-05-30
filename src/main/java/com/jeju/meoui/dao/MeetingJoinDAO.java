@@ -27,6 +27,12 @@ public class MeetingJoinDAO {
 		template.delete("MeetingJoin.deleteMeetingJoin",memberNo);
 		
 	}
+	//모임 탈퇴하기 관리자용
+	
+	public void deleteMeetingJoinAdmin(int meetingNo){
+		template.delete("MeetingJoin.deleteMeetingJoinAdmin", meetingNo);
+	}
+	
 	
 	//내 모임보기
 	public List<MemberMeeting> selectMyMeeting(int memberNo){

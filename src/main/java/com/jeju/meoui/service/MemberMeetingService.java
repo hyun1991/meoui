@@ -16,6 +16,11 @@ public class MemberMeetingService {
 	private MemberMeetingDAO dao;
 	@Autowired
 	private MeetingJoinDAO joindao;
+	@Autowired
+	private MeetingBoardCommentDAO comdao;
+	@Autowired
+	private MeetingBoardDAO boarddao;
+	
 	
 	private Logger logger= LoggerFactory.getLogger(MemberMeetingService.class);
 	//모임생성
@@ -38,13 +43,23 @@ public class MemberMeetingService {
 	
 	//모임삭제(유저용)
 		public void deleteMemberMeeting(int meetingNo, int memberNo){
-			dao.deleteMembeMeetingUser(meetingNo, memberNo);
-		
+			
+			logger.info("멤버미팅서비스 meeintno : {}",meetingNo);
+			comdao.deleteMeetingboardCommentAmin(meetingNo); //댓글 삭제
+			boarddao.deleteMeetingBoardAdmin(meetingNo);//게시판 삭제											//모임게시판 삭제
+			joindao.deleteMeetingJoinAdmin(meetingNo);	//가입 삭제		
+			dao.deleteMembeMeetingUser(meetingNo, memberNo); //모임삭제		
+	
 		}
 	
 	//모임삭제(관리자용)
 	public void deleteMemberMeeting(int meetingNo){
-		dao.deleteMembeMeeting(meetingNo);
+		//comdao.deleteMeetingboardCommentAmin(meetingNo); //댓글 삭제
+		//boarddao.deleteMeetingBoardAdmin(meetingNo);//게시판 삭제											//모임게시판 삭제
+		//joindao.deleteMeetingJoinAdmin(meetingNo);	//가입 삭제
+		//dao.deleteMembeMeetingAdmin(meetingNo);
+		
+	
 	}
 	//모임 세부 정보 보기
 	public MemberMeeting selectMeetingView(int meetingNo){

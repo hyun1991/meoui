@@ -57,6 +57,16 @@
 	
 	]]>
 		</delete>
+	<!-- 번호로 삭제 관리자용-->
+	<delete id="meetingBoardDeleteAdmin" parameterType="int">
+	<![CDATA[
+	
+	delete from meetingboard where meeting_no = #{meetingNo}
+	
+	]]>
+		</delete>	
+		
+		
 	<!-- 수정 -->
 	<update id="updateMeetingBoard" parameterType="MeetingBoard">
 	<![CDATA[

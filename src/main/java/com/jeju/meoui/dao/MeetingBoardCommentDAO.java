@@ -35,5 +35,11 @@ public class MeetingBoardCommentDAO {
 		template.delete("MeetingBoardCommentMapper.deleteMeetingboardComment", map);
 	}
 	
+	//댓글 삭제 하기(관리자용)
+	public void deleteMeetingboardCommentAmin(int meetingNo){
+	template.delete("MeetingBoardCommentMapper.deleteMeetingboardCommentAdmin", meetingNo);
+	}
+	
+	
 	
 }

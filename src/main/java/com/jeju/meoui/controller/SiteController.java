@@ -73,6 +73,7 @@ public class SiteController {
 	@RequestMapping(value="/site/delete/{siteNo}", method=RequestMethod.GET)
 	public String deleteSite(@PathVariable  int siteNo , Area area , Site site  ){
 		service.removeSite(siteNo, area, site);
+		logger.info("관광지삭제 : {}", siteNo);
 		return "redirect:/admin/site/list?pageNo=1";
 	}
 	
