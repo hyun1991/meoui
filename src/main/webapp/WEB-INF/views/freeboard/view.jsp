@@ -30,6 +30,10 @@
 		<%@include file="/nav/navbar.jsp"%>
 	</header>
 	<table style="margin-left: 100px; width: auto;">
+	    <tr>
+			<th style="text-align: left; vertical-align: top;"><h5>작성자: &nbsp;&nbsp;</h5></th>
+			<th style="text-align: left; color: #555;">${result.board.memberName }</th>
+		</tr>
 		<tr>
 			<th style="text-align: left; vertical-align: top;"><h5>제목: &nbsp;&nbsp;</h5></th>
 			<th style="text-align: left; color: #555;">${result.board.freeboardTitle }</th>
@@ -69,7 +73,7 @@
 		<div class="container">
 			<input type="hidden" id="boardCommentNo"
 				value="${comment.freeboardCommentNo }" class="form-control input-lg">
-			<div class="form-group">${comment.memberNo}</div>
+			<div class="form-group">${comment.memberName}</div>
 			<div class="form-group">${comment.freeboardCommentContent}</div>
 			<div class="form-group">
 				작성일:

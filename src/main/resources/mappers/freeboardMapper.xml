@@ -16,7 +16,7 @@
 <!-- 2. 자유게시판 상세조회 -->
 	<select id="selectFreeboard" parameterType="int" resultType="FreeBoard">
 		<![CDATA[
-			select * from freeboard where freeboard_no=#{freeboardNo}
+			select f.freeboard_no, f.freeboard_title, f.freeboard_content, f.freeboard_date, f.freeboard_cnt, f.freeboard_img, f.member_no,m.member_Name from freeboard f, member m where f.member_no = m.member_no and  freeboard_no=#{freeboardNo}
 		]]>
 	</select>
 <!-- 3. 자유게시판 리스트 조회(성공)-->
