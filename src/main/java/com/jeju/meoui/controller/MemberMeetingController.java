@@ -98,6 +98,7 @@ public class MemberMeetingController {
 		int memberNo=(Integer)session.getAttribute("memberNo");
 		int meetingNo=(Integer)session.getAttribute("meetingNo");
 		service.deleteMemberMeeting(meetingNo, memberNo);
+		logger.info("모임삭제유저용 미팅넘버  {}",meetingNo);
 		return "redirect:/membermeeting/list";
 	}
 	
