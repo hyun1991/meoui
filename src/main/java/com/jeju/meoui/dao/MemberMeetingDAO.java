@@ -15,7 +15,7 @@ public class MemberMeetingDAO {
 	private SqlSessionTemplate template;
 	
 	
-	// 모임 생성하기
+	// 모임 생성하기 완료
 	public void insertMemberMeeting(MemberMeeting memberMeeting){
 		template.insert("MemberMeetingMapper.insertMemberMeeting", memberMeeting);	
 		
@@ -28,10 +28,19 @@ public class MemberMeetingDAO {
 	}
 	
 	//모임삭제하기 
-	//번호로 가지고와서 삭제
-	public void deleteMembeMeeting(int meetingNo){
-		template.delete("MemberMeetingMapper.deleteMembermeeting", meetingNo);
+	//번호로 가지고와서 생성한 사람이 삭제
+	public void deleteMembeMeetingUser(int meetingNo, int memberNo){
+		HashMap<String, Object>map= new HashMap<String, Object>();
+		map.put("meetingNo", meetingNo);
+		map.put("memberNo", memberNo);
+		template.delete("MemberMeetingMapper.deleteMemberMeetingUser", map);
 	}
+	//모임삭제하기 
+	//번호로 가지고와서 관리자가
+	public void deleteMembeMeetingAdmin(int meetingNo){
+		template.delete("MemberMeetingMapper.deleteMemberMeeting", meetingNo);
+	}
+	
 	
 	//모임 세부 정보 보기
 	public MemberMeeting selectMeetingView(int meetingNo){

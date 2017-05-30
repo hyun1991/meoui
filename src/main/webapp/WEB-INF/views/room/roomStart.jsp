@@ -32,9 +32,8 @@ img {
 		상세페이지</h1>
 	<div class="container">
 		<hr>
-		<div class="row">
-			<div class="col-md-4">
-				<table class="table table-striped table-bordered table-hover">
+		<div class="row text-center">
+				<table class="table table-striped table-bordered table-hover" style="width: auto;">
 					<thead>
 						<tr>
 							<th>객실이름</th>
@@ -71,7 +70,6 @@ img {
 							class="w3-button w3-block w3-white w3-border">펜션정보</button>
 					</a>
 				</div>
-			</div>
 		</div>
 	</div>
 </body>

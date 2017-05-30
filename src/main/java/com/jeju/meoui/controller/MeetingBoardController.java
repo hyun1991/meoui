@@ -1,30 +1,29 @@
 package com.jeju.meoui.controller;
 
-import javax.annotation.Resource;
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpSession;
+import javax.annotation.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
+import org.slf4j.*;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.stereotype.*;
+import org.springframework.ui.*;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.*;
 
-import com.jeju.meoui.service.MeetingBoardService;
-import com.jeju.meoui.util.UploadUtil;
-import com.jeju.meoui.vo.MeetingBoard;
+import com.jeju.meoui.service.*;
+import com.jeju.meoui.util.*;
+import com.jeju.meoui.vo.*;
 
 @Controller
 public class MeetingBoardController {
 
 	@Autowired
 	private MeetingBoardService service;
+	
+	@Autowired
+	private MeetingBoardCommentService comservice;
+	
 	@Autowired
 	private ServletContext ctx;
 	@Resource(name="path")
@@ -39,6 +38,7 @@ public class MeetingBoardController {
 			System.out.println("s여기는 모임게시판 글쓰기 폼");
 			return "meetingboard/create";
 		}
+		
 		//모임게시판 글쓰기 완료
 		@RequestMapping(value="/meetingboard/create", method=RequestMethod.POST)
 		public String insertMeetingBoard(HttpSession session,
@@ -71,21 +71,30 @@ public class MeetingBoardController {
 			return "meetingboard/list";
 		}
 		
-		//모임게시판 글 보기
+		//모임게시판 글 상세 보기
 		@RequestMapping(value="/meetingboard/view/{meetingboardNo}", method=RequestMethod.GET)
 		public String MeetingboardView(@PathVariable int meetingboardNo, Model model, HttpSession session){
 			
-			session.setAttribute("meetingboardNo", meetingboardNo);
-			
-			logger.info("모임게시판글보기 : {}", meetingboardNo);
-			
+			session.setAttribute("meetingboardNo", meetingboardNo);			
+			logger.info("모임게시판글보기meetingboardNo : {}", meetingboardNo);			
 			model.addAttribute("board", service.selectMeetingBoardView(meetingboardNo));
-			
+			model.addAttribute("comment", comservice.selectMeetingBoardCommentList(meetingboardNo));
+			logger.info("댓글이 왜 안뜨지 : {} ",comservice.selectMeetingBoardCommentList(meetingboardNo));
 			return "meetingboard/view";
 		}
 	
-	
-	
+		//모임게시판 삭제
+		@RequestMapping(value="/meetingboard/delete/{meetingboardNo}", method=RequestMethod.POST)
+		public String deleteMeetingboard(@PathVariable int meetingboardNo, HttpSession session){
+			int meetingNo = (Integer)session.getAttribute("meetingNo");
+			meetingboardNo=(Integer)session.getAttribute("meetingboardNo");
+			//session.setAttribute("meetingboardNo", meetingboardNo);
+			logger.info("모임게시판 삭제 meetingboardNo : {}", meetingboardNo);
+			logger.info("모임게시판 삭제 meetingNo : {}", meetingNo);
+			service.deleteMeetingBoard(meetingboardNo);
+			//return "redirect:/meetingboard/list/"+meetingNo;
+			return "redirect:/meetingboard/list/"+meetingNo;
+		}
 	
 	
 	

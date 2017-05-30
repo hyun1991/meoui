@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MeetingBoardCommentMapper">
+
+	<!-- 댓글 목록 게시판 별로 가지고 오기 -->
+	<select id="selectMeetingBoardCommentList" resultType="MeetingBoardComment"
+		parameterType="int">
+
+<![CDATA[
+
+select c.meetingboard_comment_no, c.meetingboard_comment_content, 
+
+c.meetingboard_comment_date, b.member_name, c.member_no
+
+from meetingboard_comment c, member b 
+
+where c.member_no= b.member_no
+
+ and 
+
+c.meetingboard_no=#{meetingboard_no}
+
+]]>
+
+	</select>
+
+
+	<!-- 댓글 추가하기 -->
+	<insert id="insertMeetingBoardComment" parameterType="MeetingBoardComment">
+		<selectKey keyProperty="meetingboardCommentNo" resultType="int"
+			order="BEFORE">
+			select meetingboard_comment_seq.nextval from dual
+		</selectKey>
+	<![CDATA[
+ 	insert into meetingboard_comment
+	(meetingboard_comment_no, meetingboard_comment_content, meetingboard_comment_date, 
+	meetingboard_no, member_no)
+ 	values(#{meetingboardCommentNo}, #{meetingboardCommentContent},
+ 	sysdate, #{meetingboardNo}, #{memberNo})
+]]>
+
+	</insert>
+
+	<!-- 댓글 삭제 하기 -->
+	<delete id="deleteMeetingboardComment" parameterType="int">
+	<![CDATA[
+	delete from meetingboard_comment 
+	where meetingboard_comment_no=#{meetingboardCommentNo}
+	 and 
+	member_no = #{memberNo}
+	]]>	
+	
+	</delete>
+	
+		<!-- 댓글 삭제 하기 관리자용 -->
+	<delete id="deleteMeetingboardCommentAdmin" parameterType="int">
+	<![CDATA[
+	delete from meetingboard_comment 
+	where meetingboard_no = 
+  (select meetingboard_no from meetingboard where meeting_no=
+  
+  (select meeting_no from member_meeting where meeting_no=#{meetingNo})); 
+	]]>	
+	
+	</delete>
+
+
+
+</mapper>

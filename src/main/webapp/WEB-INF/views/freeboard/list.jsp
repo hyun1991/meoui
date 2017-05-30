@@ -12,7 +12,7 @@
 	<header> <%@include file="/nav/navbar.jsp"%>
 	</header>
 	<div class="container">
-		<h2>관광시설목록</h2>
+		<h2>자유게시판</h2>
 		<br>
 		<div class="row">
 			<table class="table table-hover table-responsive">
@@ -53,14 +53,15 @@
 			</div>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-xs-4">
+	<div class="row" style="margin-bottom: 50px;">
+		<div class="col-md-10">
+		</div>
+		<div class="form-group">
 		<a href="/meoui/freeboard/join">
 			<button type="button" class="w3-button w3-block w3-white w3-border">글작성</button>
 		</a>
 		</div>
 	</div>
-	<footer> <%@include file="/footer.jsp"%>
-	</footer>
+	<%@include file="/footer.jsp"%>
 </body>
 </html>

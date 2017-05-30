@@ -14,7 +14,7 @@ $(function() {
 		$("#view").empty();
 		$.each(notice.nclist, function(index, comments) {
 			var str = "<div class='comments'>"
-			str = str + "<div class='name'>"+comments.memberNo+"</div>"
+			str = str + "<div class='name'>"+comments.memberName+"</div>"
 			str = str + "<div class='contents'>"+comments.noticeCommentContent+"</div>"
 			str = str + " <div class='date'>"+comments.noticeCommentDate+"</div></div>"
 			$("#view").append(str);
@@ -39,7 +39,7 @@ $(function() {
         <table>
         <tr><td>게시글 번호</td><td>${notice.nlist.noticeNo}</td></tr>
 		<tr><td>제목</td><td>${notice.nlist.noticeTitle}</td></tr>	
-		<tr><td>작성자</td><td>${notice.nlist.usersNo}</td></tr>
+		<tr><td>작성자</td><td>${notice.nlist.username}</td></tr>
 		<tr><td>작성일</td><td><fmt:formatDate value="${notice.nlist.noticeDate}" pattern="yyyy년 MM월 dd일" /></td>
 		<tr><td>조회수</td>	<td>${notice.nlist.noticeCnt}</td></tr>
 		 <tr><td>내용</td><td>${notice.nlist.noticeContent}</td></tr>
@@ -51,7 +51,7 @@ $(function() {
 	    <c:forEach items="${notice.nclist }" var="comment">
 	    <div class="comments">
 	    <div class="number">${comment.noticeCommentNo }</div>
-	    <div class="name">${comment.memberNo }</div>
+	    <div class="name">${comment.memberName }</div>
 	    <div class="contents">${comment.noticeCommentContent }</div>
 	    <div class="date"><fmt:formatDate value="${comment.noticeCommentDate }"  pattern="yyyy년MM월dd일" /></div>
 	    <div class="viewdelete">
@@ -64,15 +64,8 @@ $(function() {
 	    </div>
 	    </c:forEach>
 	    </div>
-	    <c:if test="${notice.nlist.usersNo eq usersNo }">
-	    <a href = "/meoui/notice/delete/${notice.nlist.noticeNo}">
-	    <button>게시글삭제</button>
-	    </a>
-	    </c:if>
-	    <c:if test="${notice.nlist.usersNo eq usersNo }">
 	    <a href = "/meoui/notice/update?noticeNo=${notice.nlist.noticeNo}">
 	    <button>게시글수정</button>
 	    </a>
-	    </c:if>
-</body>
+	  </body>
 </html>

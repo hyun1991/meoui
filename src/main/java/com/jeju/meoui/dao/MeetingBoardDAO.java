@@ -35,9 +35,21 @@ public class MeetingBoardDAO {
 	public int meetingBoardCount(){
 		return template.selectOne("MeetingBoardMapper.meetingBoardCount");
 	}
+	
 	//상세보기
 	public MeetingBoard selectMeetingBoardView(int meetingboardNo){
+	
 		return template.selectOne("MeetingBoardMapper.selectMeetingBoardView", meetingboardNo);
+	}
+	
+	//번호로 삭제
+	public void deleteMeetingBoard(int meetingboardNo){
+			template.delete("MeetingBoardMapper.meetingBoardDelete",meetingboardNo);
+	}
+	
+	//번호로 삭제(관리자용)
+	public void deleteMeetingBoardAdmin(int meetingNo){
+			template.delete("MeetingBoardMapper.meetingBoardDeleteAdmin",meetingNo);
 	}
 	
 	

@@ -2,15 +2,12 @@ package com.jeju.meoui.service;
 
 import java.util.*;
 
-import javax.servlet.http.*;
-
 import org.slf4j.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 import org.springframework.transaction.annotation.*;
 
 import com.jeju.meoui.dao.*;
-import com.jeju.meoui.dao.test.*;
 import com.jeju.meoui.util.*;
 import com.jeju.meoui.vo.*;
 
@@ -23,6 +20,10 @@ public class SiteService {
 	private AreaDAO aDao;
 	@Autowired
 	private SiteCommentDAO commentdao;
+	@Autowired
+	private TicketDAO tDao;
+	@Autowired
+	private AccommodationDAO acDao;
 	
 	// 1.관광지 추가
 	public void createSite(Site site , Area area ){
@@ -43,15 +44,19 @@ public class SiteService {
 	}
 	
 	// 2.관광지 수정
-	public void modifySite(Site site ){
+	public void modifySite(Site site , Area area ){
 		dao.updateSite(site);
+		area.setSiteNo(site.getSiteNo());
+		aDao.updateArea(area);
 	}
 	
 	// 3.관광지 삭제
 	@Transactional
-	public void removeSite(String siteName , int siteNo){
-		dao.deleteSite(siteName);
-		commentdao.deleteAllSiteComment(siteNo);
+	public void removeSite( int siteNo , Area area , Site site){
+		area.setSiteNo(site.getSiteNo());
+		aDao.deleteSiteArea(siteNo);
+		dao.deleteSite(siteNo);
+		
 	}
 	
 	// 4.관광지 리스트
@@ -74,5 +79,25 @@ public class SiteService {
 	// 7.관광지 상세
 	public Site selectSiteByNo(int siteNo){
 		return dao.selectSiteByNo(siteNo);
+	}
+	
+	//	8.최근업로드된 메인페이지 노출용 관광명소 조회
+	public HashMap<String, Object>findNewSite(){
+		HashMap<String, Object>map= new HashMap<String, Object>();
+		map.put("list", dao.fineNewSite());
+		return map;
+	}
+	//	9. 인근 펜션정보&관광명소 상세정보 조회하기
+	public HashMap<String, Object> getBySiteDetail(int siteNo){
+		HashMap<String, Object>map= new HashMap<String, Object>();
+		Site site= dao.selectSiteByNo(siteNo);
+		if(site.getSitePark()==1)
+			site.setPark("주차가능");
+		else
+			site.setPark("주차 불가능");
+		List<Accommodation>list= acDao.findBySiteNo(siteNo);
+		map.put("site", site);
+		map.put("list", list);
+		return map;
 	}
 }

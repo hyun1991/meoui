@@ -5,16 +5,17 @@
 <!-- 1. 댓글 작성 -->
 	<insert id="insertComment" parameterType="FreeBoardComment">
 		<selectKey keyProperty="freeboardCommentNo" resultType="int" order="BEFORE">
-			<![CDATA[
-				insert into freeboardComment(freeboardComment_no, freeboardComment_content, freeboard_date)
-				values(#{freeboardCommentNo}, #{freeboardCommentContent}, sysdate)
-			]]>
+		select freeboard_Comment_seq.nextval from dual
 		</selectKey>
-	</insert>
+			<![CDATA[
+				insert into freeboard_Comment(freeboard_Comment_no, freeboard_Comment_content, freeboard_Comment_date,freeboard_No,member_No)
+				values(#{freeboardCommentNo}, #{freeboardCommentContent}, sysdate, #{freeboardNo},#{memberNo})
+			]]>
+		</insert>
 <!-- 2. 자유게시판 번호 별 댓글 조회 -->
 	<select id="selectCommentList" parameterType="int" resultType="FreeBoardComment">
 		<![CDATA[
-			select * from freeboard_comment where freeboard_no=#{freeboardNo}
+			select * from freeboard_comment where freeboard_no=#{freeboardNo} order by freeboard_Comment_no desc
 		]]>
 	</select>
 <!-- 3. 댓글 수정 -->
@@ -24,9 +25,9 @@
 		]]>
 	</update>
 <!-- 4. 댓글 삭제(단일 삭제) -->
-	<delete id="deleteComment" parameterType="int">
+	<delete id="deleteComment" parameterType="HashMap">
 		<![CDATA[
-			delete from freeboardComment where member_no=#{memberNo}
+			delete from freeboard_Comment where freeboard_Comment_No=#{freeboardCommentNo} and member_no=#{memberNo}
 		]]>
 	</delete>
 <!-- 5. 자유게시판 번호 별 댓글 전체 삭제하기(전체삭제) -->
@@ -38,7 +39,7 @@
 <!-- 6. 자유게시판 댓글 번호별 자유게시판 번호 조회 -->
 	<select id="selectfreeboardCommentNo">
 		<![CDATA[
-			select freeboardNo from freeboardComment where freeboardComment_no=#{freeboardCommentNo}
+			select freeboard_No from freeboard_Comment where freeboard_Comment_no=#{freeboardCommentNo}
 		]]>
 	</select>
 </mapper>

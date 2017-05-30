@@ -95,24 +95,24 @@ img {
 		<div class="row text-center">
 			<hr>
 			<c:forEach items="${result.list }" var="result">
-				<div class="col-sm-3" style="overflow-x:hidden;overflow-y:hidden">
-					<a href="/meoui/site/view/${result.siteNo}"> <img
-						class="image-responsive" src="/meoui/images/${site.siteImg}"
+				<div class="col-sm-3" style="overflow-x:hidden;overflow-y:hidden; width: 280px; height: 500px;">
+					<a href="/meoui/site/detail/${result.siteNo}"> <img
+						class="image-responsive" src="/meoui/images/${result.siteImg}"
 						alt="알수없음" style="margin-bottom: 20px;">
 					</a>
 					<p>
-						<a href="/meoui/site/view/${result.siteNo}"> <strong>${result.siteName}</strong>
+						<a href="/meoui/site/detail/${result.siteNo}"> <strong>${result.siteName}</strong>
 						</a>
 					</p>
 					<p>
-						<a href="/meoui/site/view/${result.siteNo}">
+						<a href="/meoui/site/detail/${result.siteNo}">
 							${result.siteIntroduce}</a>
 					</p>
 					<p>
 						<a href="${result.siteHomepage}"> ${result.siteHomepage}</a>
 					</p>
 					<div class="form-group">
-						<a href="/meoui/site/details?siteNo=${result.siteNo}">
+						<a href="/meoui/site/detail/${result.siteNo}">
 							<button type="button"
 								class="w3-button w3-block w3-white w3-border">상세보기</button>
 						</a>
@@ -138,9 +138,7 @@ img {
 	</div>
 	<%@include file="view.jsp" %>
 	<footer>
-		<h1>1 Follow Us Canada's New Passenger Bill of Rights Bans
-			Removal in Cases of Overbooking https://t.co/K2aizs9IKo
-			https://t.co/lb8fklloIp Twitter | 29 mins ago</h1>
+		<%@include file="/footer.jsp"%>
 	</footer>
 </body>
 </html>

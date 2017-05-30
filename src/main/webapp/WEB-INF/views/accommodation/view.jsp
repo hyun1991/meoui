@@ -8,92 +8,82 @@
 <meta charset="UTF-8">
 <title>숙박업소 정보</title>
 <style>
-		
 </style>
 </head>
 <body>
 	<header>
 		<%@include file="/nav/navbar.jsp"%>
 	</header>
+	<hr>
 	<div class="container">
-		<hr>
 		<div class="row">
-			<div class="col-md-4">
-				<table class="table table-striped table-bordered table-hover">
-					<tbody>
-						<tr>
-							<th rowspan="4"><img
-								src="/meoui/images/${result.accommodation.accommodationImg}">
-							</th>
-							<td colspan="2" width="200"><h5>숙박시설이름:</h5>${result.accommodation.accommodationName }
-							</td>
-						</tr>
-						<tr>
-							<td colspan="2" width="200"><h5>대표전화:</h5>${result.accommodation.accommodationPhone }
-							</td>
-						</tr>
-						<tr>
-							<td colspan="2" width="200"><h5>시설위치:</h5>${result.accommodation.accommodationAddress }</td>
-							<td>
-						</tr>
-						<tr>
-							<td colspan="2" width="200"><a
-								href="/meoui/room/view/${result.accommodation.accommodationNo }&${result.accommodation.ownerNo }">
-									<button type="button"
-										class="w3-button w3-block w3-white w3-border">객실정보
-										조회하기</button>
-							</a> <a href="/meoui/accommodaion/list?pageNo=1"><button
-										type="button" class="w3-button w3-block w3-white w3-border">
-										리스트로 이동</button></a></td>
-						</tr>
-						<tr>
-							<td><input type="hidden"
-								value="${result.accommodation.ownerNo }" id="ownerNo"></td>
-						</tr>
-						<tr>
-							<td colspan="3"><h2>오시는길</h2></td>
-						</tr>
-						<tr>
-							<td colspan="3"><img
-								src="/meoui/images/${result.accommodation.accommodationDirections}"></td>
-						</tr>
-					</tbody>
-				</table>
+			<div class="col-md-6 col-sm-12">
+				<img src="/meoui/images/${result.accommodation.accommodationImg}">
 			</div>
+			<div>
+				<h3>숙박시설이름</h3>${result.accommodation.accommodationName }
+			</div>
+			<div>
+				<h3>대표전화</h3>${result.accommodation.accommodationPhone }
+			</div>
+			<div>
+				<h3>시설위치</h3>${result.accommodation.accommodationAddress }
+			</div>
+			<div class="col-xs-4" style="margin-top: 100px">
+				<a href="/meoui/room/view/${result.accommodation.accommodationNo }&${result.accommodation.ownerNo }">
+					<button type="button"
+					class="w3-button w3-block w3-white w3-border">객실정보 조회하기</button></a>
+			</div>
+			<div class="col-xs-4">
+				<a href="/meoui/accommodaion/list?pageNo=1"><button
+							type="button" class="w3-button w3-block w3-white w3-border">
+							리스트로 이동</button></a>
+			</div>
+		</div>
+		<hr>
+		<input type="hidden"
+					value="${result.accommodation.ownerNo }" id="ownerNo">
+		<div class="row">
+			<h2 style="margin-left: 10px">오시는길</h2>
+		</div>
+		<div class="row">
+			<img src="/meoui/images/${result.accommodation.accommodationDirections}" style="margin-left: 10px">
 		</div>
 	</div>
+
 	<hr>
-	<h5>댓글작성란</h5><br>
+	<h3 style="margin-left: 70px">댓글작성란</h3>
+	<br>
 	<div id="center">
-	<form action="/meoui/accommodationComment/insert" method="post">
-		<div class="row">
-			<div class="col-xs-4">
-				<textarea class="form-control col-sm-5" rows="5"
-					placeholder="댓글을 작성해 주세요." name="accommodationCommentContent">
+		<form action="/meoui/accommodationComment/insert" method="post">
+			<div class="row">
+				<div class="col-xs-4" style="margin-left: 70px">
+					<textarea class="form-control col-sm-5" rows="5"
+						placeholder="댓글을 작성해 주세요." name="accommodationCommentContent">
 				</textarea>
+				</div>
 			</div>
-		</div>
-		<br>
-		<div class="row">
-			<div class="col-xs-4">
-				<select class="form-control input-lg" name="accommodationCommentAvg">
-					<option value="">선택</option>
-					<option value="0">☆☆☆☆☆</option>
-					<option value="1">★☆☆☆☆</option>
-					<option value="2">★★☆☆☆</option>
-					<option value="3">★★★☆☆</option>
-					<option value="4">★★★★☆</option>
-					<option value="5">★★★★★</option>
-				</select>
+			<br>
+			<div class="row">
+				<div class="col-xs-4" style="margin-left: 70px">
+					<select class="form-control input-lg"
+						name="accommodationCommentAvg">
+						<option value="">선택</option>
+						<option value="1">★☆☆☆☆</option>
+						<option value="2">★★☆☆☆</option>
+						<option value="3">★★★☆☆</option>
+						<option value="4">★★★★☆</option>
+						<option value="5">★★★★★</option>
+					</select>
+				</div>
 			</div>
-		</div>
-		<br>
-		<div class="row">
-			<div class="col-xs-4">
-				<button type="submit" class="w3-button w3-block w3-white w3-border">댓글작성</button>
+			<br>
+			<div class="row">
+				<div class="col-xs-4" style="margin-left: 70px">
+					<button type="submit" class="w3-button w3-block w3-white w3-border">댓글작성</button>
+				</div>
 			</div>
-		</div>
-	</form>
+		</form>
 	</div>
 	<hr>
 	<c:forEach items="${result.comment }" var="comment">
@@ -105,7 +95,7 @@
 			<c:forEach items="${result.member }" var="member">
 				<div class="btn-r">작성자: ${member.memberId }</div>
 			</c:forEach>
-			<div class="form-group">평점: ${comment.accommodationCommentAvg}점</div>
+			<div class="form-group">${comment.byul }</div>
 			<div class="form-group">
 				작성일:
 				<fmt:formatDate value="${comment.accommodationCommentDate}"
@@ -125,9 +115,7 @@
 		</div>
 	</c:forEach>
 	<footer>
-		<h1>1 Follow Us Canada's New Passenger Bill of Rights Bans
-			Removal in Cases of Overbooking https://t.co/K2aizs9IKo
-			https://t.co/lb8fklloIp Twitter | 29 mins ago</h1>
+		<%@include file="/footer.jsp" %>
 	</footer>
 </body>
 <script>

@@ -49,6 +49,37 @@
 	]]>
 	
 	</select>
+	<!-- 번호로 삭제 -->
+	<delete id="meetingBoardDelete" parameterType="int">
+	<![CDATA[
+	
+	delete from meetingboard where meetingboard_no = #{meetingboardNo}
+	
+	]]>
+		</delete>
+	<!-- 번호로 삭제 관리자용-->
+	<delete id="meetingBoardDeleteAdmin" parameterType="int">
+	<![CDATA[
+	
+	delete from meetingboard where meeting_no = #{meetingNo}
+	
+	]]>
+		</delete>	
+		
+		
+	<!-- 수정 -->
+	<update id="updateMeetingBoard" parameterType="MeetingBoard">
+	<![CDATA[
+	
+		update member set member_password=#{memberPassword}, member_name=#{memberName}, member_phone=#{memberPhone}, member_address=#{memberAddress}, member_mail=#{memberMail}, member_job=#{memberJob},
+			member_hobby=#{memberHobby} where member_id=#{memberId} and member_no=#{memberNo} 
+	
+	]]>
+	
+	</update>
+	
+	
+
 	
 	
 </mapper>

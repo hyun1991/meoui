@@ -18,14 +18,14 @@
 	<!-- 2. 관광지 수정 -->
 	<update id="updateSite" parameterType="site">
 		<![CDATA[
-			update site set site_img=#{siteImg},site_introduce=#{siteIntroduce},site_homepage=#{siteHomepage}
+			update site set site_name=#{siteName}, site_img=#{siteImg},site_introduce=#{siteIntroduce},site_homepage=#{siteHomepage}
 			,site_open_time=#{siteOpenTime},site_close_time=#{siteCloseTime},site_phone=#{sitePhone},site_night_open=#{siteNightOpen},site_night_close_time=#{siteNightCloseTime} where site_no=#{siteNo}   
 		]]>
 	</update>
 	
 	<!-- 3. 관광지 삭제 -->
-	<delete id="deleteSite" parameterType="String">
-		delete from site where site_name=#{siteName}
+	<delete id="deleteSite" parameterType="int">
+		delete from site where site_no=#{siteNo}
 	</delete>
 	
 	<!-- 4. 전체 관광지리스트(페이징) -->
@@ -34,7 +34,7 @@
 		select * from (select rownum rnum, a1.* from (select s.site_no ,s.site_name, s.site_park , s.site_object, s.site_img, s.site_introduce, s.site_homepage, s.site_open_time , s.site_close_time, s.site_phone,
 		s.site_night_open, s.site_night_close_time, a.area_name, a.details_address 
 		from site s , area a 
-		where s.site_no=a.site_no) a1
+		where s.site_no=a.site_no order by s.site_no desc) a1
 		where rownum<=#{last}
 		) where rnum>=#{start}
 		]]>
@@ -60,7 +60,7 @@
 
 	<!-- 8. 관광지 마지막 번호 -->
 	<select id="selectMaxSiteNo" resultType="int">
-		select max(site_no) from site`
+		select max(site_no) from site
 	</select>
 	
 	<!-- 9.  관광지 상세 -->
@@ -70,5 +70,14 @@
 		from site s , area a 
 		where s.site_no=a.site_no and s.site_no=#{s.site_no}
 	</select>
-	
+	<!-- 10. 최근등록된 관광리스트 4개 조회 -->
+	<select id="fineNewSite" resultType="site">
+		<![CDATA[
+		select * from (select rownum rnum, a1.* from (select s.site_no ,s.site_name, s.site_park , s.site_object, s.site_img, s.site_introduce, s.site_homepage, s.site_open_time , s.site_close_time, s.site_phone,
+		s.site_night_open, s.site_night_close_time, a.area_name, a.details_address 
+		from site s , area a 
+		where s.site_no=a.site_no) a1
+		where rownum<=4) where rnum>=1
+		]]>
+	</select>
 </mapper>

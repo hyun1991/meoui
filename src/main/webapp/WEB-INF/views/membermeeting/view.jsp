@@ -96,10 +96,17 @@ img {
 				<button id="commit" type="submit"
 					class="w3-button w3-block w3-white w3-border">회원 가입하기</button>
 			</form>
-			<form action="/meoui/membermeeting/update" method="GET">
+			<a href="/meoui/membermeeting/update">
 				<button id="commit" type="submit"
-					class="w3-button w3-block w3-white w3-border">모임수정하기</button>
+					class="w3-button w3-block w3-white w3-border">모임수정하기</button></a>
+			
+			<c:if test="${meeting.meetingAdminNo eq memberNo }">
+			<form action="/meoui/membermeeting/delete" method=post>
+				<button id="commit" type="submit"
+					class="w3-button w3-block w3-white w3-border">모임 삭제하기</button>
 			</form>
+			</c:if>
+			
 			<a href="/meoui/meetingboard/list/${meeting.meetingNo}"
 						style="color: #424242;"><span class="glyphicon glyphicon-heart"
 							style="color: #f76ce4;"></span> 모임게시판 </a>

@@ -66,20 +66,22 @@ public class MemberMeetingController {
 		return "membermeeting/update";
 	}
 	
-	
-	//모임수정 완료
 	@RequestMapping(value="/membermeeting/update", method=RequestMethod.POST)
-	public String updateMemberMeeting(@RequestParam String meetingName, @RequestParam String memberName,
-			@RequestParam("Img")MultipartFile meetingImg ,HttpSession session, Model model){
-		MemberMeeting memberMeeting= new MemberMeeting();	
+	public String updateMemberMeeting(@ModelAttribute MemberMeeting memberMeeting, HttpSession session){
 		int meetingNo = (Integer)session.getAttribute("meetingNo");
-		String fileName= UploadUtil.storeAndGetFileName(meetingImg, ctx, path);
-		memberMeeting.setMeetingName(meetingName);
-		memberMeeting.setMeetingImg(fileName);	
-		model.addAttribute("membermeeting", memberMeeting);
-		logger.info("멤머미팅완료 멤버넘버:{}", meetingNo);
-		return "redurect:/membermeeting/list";
+		int memberNo = (Integer)session.getAttribute("memberNo");
+		memberMeeting.setMeetingNo(meetingNo);
+		memberMeeting.setMeetingAdminNo(memberNo);
+		
+		service.updataMeetingName(memberMeeting);
+		logger.info("업데이트하는데 모임 번호가 없어  : {}", meetingNo);
+		logger.info("업데이트하는데 멤버 번호가 없어  : {}", meetingNo);
+		session.removeAttribute("meetingNo");
+		
+		return "redirect:/membermeeting/list/";
 	}
+	
+	
 	
 	//모임 상세 보기(작업완료)
 	@RequestMapping(value="/membermeeting/view/{meetingNo}", method=RequestMethod.GET)
@@ -90,17 +92,21 @@ public class MemberMeetingController {
 		return "membermeeting/view";
 	}
 	
-	//모임 삭제
-	@RequestMapping(value="/membermeeting/delete", method=RequestMethod.GET)
-	public String deleteMemberMeeting(){
-		return "*";
+	//모임 삭제 유저용
+	@RequestMapping(value="/membermeeting/delete", method=RequestMethod.POST)
+	public String deleteMemberMeetingUser(HttpSession session){
+		int memberNo=(Integer)session.getAttribute("memberNo");
+		int meetingNo=(Integer)session.getAttribute("meetingNo");
+		service.deleteMemberMeeting(meetingNo, memberNo);
+		logger.info("모임삭제유저용 미팅넘버  {}",meetingNo);
+		return "redirect:/membermeeting/list";
 	}
 	
-	//모임 삭제 완료	
-	@RequestMapping(value="/membermeeting/delete", method=RequestMethod.POST)
+	//모임 삭제 완료(관리자용)
+	@RequestMapping(value="/membermeeting/delete/{admin}", method=RequestMethod.POST)
 		public String deleteMemberMeeting(int meetingNo){
 			service.deleteMemberMeeting(meetingNo);
-			return "membermeeting/update";		
+			return "membermeeting/update/{admin}";		
 	}
 	// 리스트 출력(작업완료)
 	@RequestMapping(value="/membermeeting/list", method=RequestMethod.GET)

@@ -71,4 +71,12 @@ public class AccommodationDAO {
 	public int selectByMax(){
 		return template.selectOne("AccommodationMapper.selectByMax");
 	}
+	//	최근 업로드된 숙박업소노출
+	public List<Accommodation> newAcoomoodation(){
+		return template.selectList("AccommodationMapper.newAcoomoodation");
+	}
+	//	관광명소번호별 펜션정보 조회하기
+	public List<Accommodation>findBySiteNo(int siteNo){
+		return template.selectList("AccommodationMapper.findBySiteNo", siteNo);
+	}
 }
