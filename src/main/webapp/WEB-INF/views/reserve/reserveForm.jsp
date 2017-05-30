@@ -15,7 +15,7 @@
 <style>
 table.type06 {
     border-collapse: collapse;
-    text-align: left;
+    text-align: center;
     line-height: 1.5;
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
@@ -77,11 +77,11 @@ button:hover:before,button:hover:after{
 		상세페이지</h1>
 	<div class="container">
 		<hr>
-		<div class="row">
-			<div class="col-md-4">
+		<div>
+			<div>
 				<input type="hidden" value="<%=session.getAttribute("roomNo") %>" 
 				name="roomNo" id="roomNo">
-				<table class="type06">				
+				<table class="type06" style="margin-left: 350px;">				
 					<tr><th scope="row">체크인: </th><td class="even"><input type="text" id="datepicker1" name="checkIn">
 					</td></tr>
 					<tr><th scope="row">체크아웃: </th><td><input type="text" id="datepicker2" name="checkOut">
@@ -91,7 +91,7 @@ button:hover:before,button:hover:after{
 					<tr><th scope="row">숙박인원</th><td><input type="number" name="stayPeople" id="count"></td></tr>
 				</table>
 				<div>
-					<button id="confirmBtn">결제</button>
+					<button id="confirmBtn" style="margin-left: 460px;">결제</button>
 					<a href="/meoui/accommodaion/list?pageNo=1"><button>리스트</button></a>
 				</div>
 			</div>

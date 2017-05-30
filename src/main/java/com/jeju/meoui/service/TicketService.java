@@ -36,4 +36,9 @@ public class TicketService {
 	public void modifyTicket(Ticket ticket ){
 		dao.updateTicket(ticket);
 	}
+	
+	// 4. 티켓 삭제
+	public void removeTicket(int siteNo){
+		dao.deleteTicket(siteNo);
+	}
 }

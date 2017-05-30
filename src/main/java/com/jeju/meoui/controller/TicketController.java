@@ -51,4 +51,12 @@ public class TicketController {
 		service.modifyTicket(ticket);
 		return "redirect:/admin/site/list?pageNo=1";
 	}
+	
+	// 티켓 삭제
+	@RequestMapping(value="/ticket/delete/{siteNo}" , method=RequestMethod.GET)
+	public String deleteTicket(@PathVariable int siteNo){
+		service.removeTicket(siteNo);
+		logger.info("siteNo{}:",siteNo);
+		return "redirect:/admin/site/list?pageNo=1"; 
+	}
 }

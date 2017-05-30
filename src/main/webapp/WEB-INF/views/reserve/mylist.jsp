@@ -30,7 +30,6 @@
 								<label for="usr">숙박시설명:</label>${accommodation.accommodationName }<br>
 								<label for="usr">주소:</label>${accommodation.accommodationAddress }<br>
 								<label for="usr">연락처:</label>${accommodation.accommodationPhone }<br>	
-								${reserve.reserveNo }
 								<div class="form-group">
 								<a href="/meoui/reserve/delete/${reserve.reserveNo }"><button type="button" class="w3-button w3-block w3-white w3-border">
 								예약취소</button></a>

@@ -78,6 +78,7 @@ img {
 	<h2>모임 리스트</h2>
 		<a href="/meoui/membermeeting/create">생성 </a>
 			<a href="/meoui/meetingjoin/list">내모임</a>
+			<a href="/meoui/eded.jsp">내모임</a>
 
 	<div class="row text-center">
 			<c:forEach items="${result.list }" var="meeting">
