@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="MeetingJoin">
-	<!-- 1. 모임 가입하기-->
+	<!-- 1. 모임 가입하기 완료 -->
 	<insert id="insertMeetingJoin" parameterType="MeetingJoin">
 		<![CDATA[
 		insert into meeting_join(member_no, meeting_no)
@@ -16,10 +16,20 @@
 		<![CDATA[
 			delete from meeting_join where 
 			member_no=(select meeting_admin_no from member_meeting where meeting_no=#{meetingNo}) 
-			and meeting_no=#{meetingNo};
-
+			and member_no=#{memberNo};
 		]]>
 	</delete>	
+	
+	<!-- 모임탈퇴 관리자용 -->
+	<delete id="deleteMeetingJoinAdmin" parameterType="int">
+	<![CDATA[
+			delete from meeting_join where 
+			meeting_no = #{meetingNo}
+		]]>
+	
+	</delete>
+	
+	
 	<!-- 3. 가입한 모임 보기 -->
 	<select id="selectMyMeeting" parameterType="int" resultType="MemberMeeting">
 		<![CDATA[

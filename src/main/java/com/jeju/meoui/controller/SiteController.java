@@ -73,6 +73,7 @@ public class SiteController {
 	@RequestMapping(value="/site/delete/{siteNo}", method=RequestMethod.GET)
 	public String deleteSite(@PathVariable  int siteNo , Area area , Site site  ){
 		service.removeSite(siteNo, area, site);
+		logger.info("관광지삭제 : {}", siteNo);
 		return "redirect:/admin/site/list?pageNo=1";
 	}
 	
@@ -104,11 +105,11 @@ public class SiteController {
 	}	
 	
 	// 관광명소 상세보기(사용자용)
-	@RequestMapping(value="/site/view/{siteNo}", method=RequestMethod.GET)
+	@RequestMapping(value="/site/detail/{siteNo}", method=RequestMethod.GET)
 	public String selectBySite(@PathVariable int siteNo, Model model,  HttpSession session){
 		session.setAttribute("siteNo", siteNo);
-		model.addAttribute("result",service.selectSiteByNo(siteNo));
-		model.addAttribute("result1", tservice.findTicket(siteNo));
+		model.addAttribute("site",service.getBySiteDetail(siteNo));
+		model.addAttribute("ticket", tservice.findTicket(siteNo));
 		return "site/mdetail";
 	}	
 	/*

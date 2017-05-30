@@ -99,4 +99,8 @@
 			accommodation_phone, accommodation_directions, site_no, owner_no 
 			from accommodation order by accommodation_no desc)t1)t2 where rnum between 1 and 4
 	</select>
+	<!-- siteNo별 Acoommodation조회하기 -->
+	<select id="findBySiteNo" parameterType="int" resultType="Accommodation">
+		select *from accommodation where site_no=#{siteNo}
+	</select>
 </mapper>

@@ -52,4 +52,5 @@ public class TicketDAO {
 	public int MaxTicketNo(){
 		return template.selectOne("TicketMapper.maxTicketNo");
 	}
+
 }
