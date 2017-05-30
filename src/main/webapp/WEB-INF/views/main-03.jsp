@@ -62,7 +62,7 @@
 					<div class="col-sm-3"
 						style="overflow-x: hidden; overflow-y: hidden">
 						<a href="/meoui/site/list?pageNo=1"> <img
-							class="image-responsive" src="/meoui/images/${site.siteImg}"
+							class="image-responsive" src="/meoui/images/${result.siteImg}"
 							alt="알수없음"
 							style="margin-bottom: 20px; height: auto; width: 260px;">
 						</a>

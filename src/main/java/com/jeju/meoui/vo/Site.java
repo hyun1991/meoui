@@ -23,6 +23,7 @@ public class Site {
 	private int usersNo;
 	private int ticketPrice;
 	private String agegroupStandard;
+	private String park;
 	public Site(String siteName, int sitePark, String siteObject, String siteImg, String siteIntroduce,
 			String siteHomepage, String sitePhone, String siteOpenTime, String siteCloseTime, String siteNightOpen,
 			String siteNightCloseTime) {
