@@ -41,6 +41,7 @@ public class MemberMeetingService {
 	
 	//모임수정
 	public void updataMeetingName(MemberMeeting memberMeeting){
+		
 		dao.updateMeetingName(memberMeeting);
 		logger.info("모임수정:{}", memberMeeting);
 	}
