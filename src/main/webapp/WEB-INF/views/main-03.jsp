@@ -42,7 +42,7 @@
 						<a href="/meoui/accommodaion/list?pageNo=1"> <img
 							class="image-responsive"
 							src="/meoui/images/${accommodation.accommodationImg}" alt="알수없음"
-							style="margin-bottom: 20px; height: auto; width: 260px">
+							style="margin-bottom: 20px; width:400px; height: 200px;">
 						</a>
 						<p>
 							<a href="/meoui/accommodaion/list?pageNo=1"> <strong>${accommodation.accommodationName}</strong>
@@ -64,14 +64,16 @@
 						<a href="/meoui/site/list?pageNo=1"> <img
 							class="image-responsive" src="/meoui/images/${result.siteImg}"
 							alt="알수없음"
-							style="margin-bottom: 20px; height: auto; width: 260px;">
+							style="margin-bottom: 20px; width:400px; height: 200px;">
 						</a>
 						<p>
 							<a href="/meoui/site/list?pageNo=1"> <strong>${result.siteName}</strong>
 							</a>
 						</p>
 						<p>
-							<a href="/meoui/site/list?pageNo=1"> ${result.siteIntroduce}</a>
+							<a href="/meoui/site/list?pageNo=1"> 
+							${result.siteOpenTime }~${result.siteCloseTime } 까지
+							</a>
 						</p>
 						<p>
 							<a href="${result.siteHomepage}"> ${result.siteHomepage}</a>

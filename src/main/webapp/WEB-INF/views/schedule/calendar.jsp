@@ -101,13 +101,21 @@ jQuery(document).ready(function() {
 		lang : "ko",
 		editable : true,
 		eventLimit : true,
-		events:function(start, end, callback){
+		events:function(title, start, callback){
+			alert("테스트요")
 			$.ajax({
-				url:"/schedule/data",
+				url:"/meoui/schedule/data",
 				dataType:'json',
-				success:function(){
-					alert("스케줄 데이터")
-					var events= eval(data.jsonTxt);
+				success:function(data){
+					alert("1")
+					var events=[];
+					$(data).each(function(){
+						alert("2")
+						events.push({
+							title:$(this).attr('schedule')
+						})
+					})
+					alert(events)
 					callback(events);
 				}
 			})

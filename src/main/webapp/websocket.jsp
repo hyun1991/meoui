@@ -16,7 +16,7 @@
 		<input type="text" id="msg">
 		<button type="button" class="btn btn-default"
 			id="send" onkeyup="enterkey()">전송</button>
-		<input type="image" id="connect" src="/meoui/images/talk.jpg">
+		<input type="image" id="connect" src="/meoui/images/talkkk.png">
 		<button type="button" class="btn btn-default"
 			id="exit">채팅종료</button>
 	</div>
@@ -31,6 +31,7 @@
 		$("#exit").hide();
 		$("#content").hide();
 		$("#connect").on("click", function() {
+			$("#chatStart").hide();
 			$("#content").append("채팅에 참여하였습니다"+ "\r\n");
 			$("#connect").hide();
 			$("#send").show();
@@ -40,7 +41,7 @@
 			wsocket = new WebSocket("ws://192.168.0.186:8087/meoui/handler1");
 			wsocket.onmessage = function(event) {
 				console.log(event.data)
-				$("#content").append(memberId+":"+event.data + "\r\n");
+				$("#content").append("익명:"+event.data + "\r\n");
 				content.scrollTop= content.scrollHeight;
 			}
 			console.log("서버 연결");
@@ -51,6 +52,7 @@
 			$("#msg").hide();
 			$("#content").hide();
 			$("#connect").show();
+			$("#chatStart").show();
 			$("#content").html("").val()
 			wsocket.close();
 			console.log("연결 종료");

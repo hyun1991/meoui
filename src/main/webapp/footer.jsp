@@ -45,6 +45,7 @@ body{
 				</div>
 				<div align="right">
 					<%@include file="/websocket.jsp" %>
+					<p id="chatStart">채팅에 참여 하시려면 클릭해 주세요</p>
 				</div>
 			</div>
 			<div class="row">

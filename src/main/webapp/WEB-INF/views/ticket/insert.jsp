@@ -13,7 +13,7 @@
 <%@include file="/nav/adminnav.jsp" %>
 	<h1>관광지 추가</h1>
 	<hr>
-	<form action="/meoui/ticket/insert" method="post" >
+	<form action="/meoui/admin/ticket/insert" method="post" >
 		<hr>
 		<div>
 			<div class="form-group">
@@ -31,7 +31,8 @@
 			
 			<div class="btn-group">
 				<input type="submit" value="티켓 추가" id="confirmBtn" class="btn btn-primary">
-				<input type="button" value="돌아가기" id="confirmBtn" class="btn btn-primary">
+				<a href="/meoui/admin/site/list?pageNo=1"><input type="button" value="돌아가기" id="confirmBtn" class="btn btn-primary">
+				</a>
 			</div>
 		</div>
 	</form>

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -96,6 +98,14 @@ button:hover:before,button:hover:after{
 				</div>
 			</div>
 		</div>
+	</div>
+	<div>
+	</div>
+	<div style="margin-top: 200px;">
+	<c:forEach items="${result.list }" var="res">
+			<hr>
+			<p align="center">****님께서<fmt:formatDate value="${res.checkIn }" pattern="yyyy년MM월dd일"/>에 ${res.stayPeople }명이 예약되었습니다.</p>
+	</c:forEach>
 	</div>
 </body>
 <script>

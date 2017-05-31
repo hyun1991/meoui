@@ -40,4 +40,10 @@ public class TravlescheduleController {
 		model.addAttribute("result", service.getAllTravle(memberNo));
 		return "schedule/calendar";
 	}
+	//	일정관련 전체조회(캘린더형식x)
+	@RequestMapping(value="/schedule/list", method=RequestMethod.GET)
+	public String getAllSchedule(@RequestParam int memberNo, @RequestParam(defaultValue="1")int pageNo, Model model){
+		model.addAttribute("result", service.findAllSchedule(pageNo, memberNo));
+		return "schedule/schedulelist";
+	}
 }

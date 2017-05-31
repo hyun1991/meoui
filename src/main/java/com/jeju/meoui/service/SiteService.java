@@ -84,10 +84,12 @@ public class SiteService {
 		HashMap<String, Object>map= new HashMap<String, Object>();
 		Site site= dao.selectSiteByNo(siteNo);
 		List<SiteComment> comment= commentdao.selectSiteCommetn(siteNo);
+		logger.info("주차정보:{}", site.getSitePark());
 		if(site.getSitePark()==1)
 			site.setPark("주차가능");
 		else
 			site.setPark("주차 불가능");
+		logger.info("주차정보:{}", site.getPark());
 		for(SiteComment cm: comment){
 			if(cm.getMemberNo()!=0){
 				List<Member>mList= mDao.findAllMemberNo(cm.getMemberNo());
@@ -113,10 +115,12 @@ public class SiteService {
 		HashMap<String, Object>map= new HashMap<String, Object>();
 		Site site= dao.selectSiteByNo(siteNo);
 		List<SiteComment> comment= commentdao.selectSiteCommetn(siteNo);
+		logger.info("주차정보:{}", site.getSitePark());
 		if(site.getSitePark()==1)
 			site.setPark("주차가능");
 		else
 			site.setPark("주차 불가능");
+		logger.info("주차정보:{}", site.getPark());
 		for(SiteComment cm: comment){
 			if(cm.getMemberNo()!=0){
 				List<Member>mList= mDao.findAllMemberNo(cm.getMemberNo());
