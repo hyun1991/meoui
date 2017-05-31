@@ -14,12 +14,12 @@ public class AreaController {
 	@Autowired
 	private AreaService service;
 	// 지역 추가 폼
-	@RequestMapping(value="/site/insert", method=RequestMethod.GET)
+	@RequestMapping(value="/admin/site/insert", method=RequestMethod.GET)
 	public String updateSite(){
 		return "site/join";
 	}
 	// 관광지 추가 성공
-	@RequestMapping(value="/site/isnert" , method=RequestMethod.POST)
+	@RequestMapping(value="/admin/site/isnert" , method=RequestMethod.POST)
 	public String updateSitd(@ModelAttribute Area area){
 		service.createArea(area);
 		return "redirect:/site/list?pageNo=1";

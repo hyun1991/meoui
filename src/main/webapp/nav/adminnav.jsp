@@ -29,7 +29,7 @@
 				<ul class="dropdown-menu">
 					<li><a href="/meoui/admin/member/list?pageNo=1" id="#">일반회원 리스트</a></li>
 					<li><a href="/meoui/admin/owner/list?pageNo=1" id="#">숙박업주 리스트</a></li>
-					<li><a href="/meoui/manage/join">숙박업주 추가</a></li>
+					<li><a href="/meoui/admin/manage/join">숙박업주 추가</a></li>
 					<li><a href="/meoui//admin/join" id="#">관리자 추가</a></li>
 				</ul></li>
 			<li class="col-md-2"><a href="/meoui/admin/accommodaion/list?pageNo=1" id="menu">숙박시설관리</a></li>

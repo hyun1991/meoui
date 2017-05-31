@@ -13,4 +13,5 @@ public class FreeBoardComment {
 	private Date freeboardCommentDate;// 자유게시판 댓글 작성일
 	private int freeboardNo;
 	private int memberNo;
+	private String memberName;
 }

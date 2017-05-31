@@ -15,7 +15,7 @@
 <!-- 2. 자유게시판 번호 별 댓글 조회 -->
 	<select id="selectCommentList" parameterType="int" resultType="FreeBoardComment">
 		<![CDATA[
-			select * from freeboard_comment where freeboard_no=#{freeboardNo} order by freeboard_Comment_no desc
+			select f.freeboard_Comment_no, f.freeboard_Comment_content, f.freeboard_Comment_date,f.freeboard_No,f.member_No, m.member_name from freeboard_comment f, member m where f.member_No=m.member_No and  freeboard_no=#{freeboardNo}  order by freeboard_Comment_no desc
 		]]>
 	</select>
 <!-- 3. 댓글 수정 -->

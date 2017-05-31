@@ -29,6 +29,6 @@ public class SiteAjaxController {
 //	@RequestMapping(value="/site/details" , method= {RequestMethod.GET, RequestMethod.POST})
 	public Site detailsSite(int siteNo , HttpSession session){
 			session.setAttribute("siteNo", siteNo);
-		    return service.selectSiteByNo(siteNo);
+		    return null;
 	}
 }

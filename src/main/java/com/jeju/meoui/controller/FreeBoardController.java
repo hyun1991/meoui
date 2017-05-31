@@ -49,17 +49,23 @@ public class FreeBoardController {
 	//2. 자유게시판 수정하기(작성폼)
 	@RequestMapping(value="/freeboard/update", method=RequestMethod.GET)
 	public String updateFreeboardForm() {
-		return "freeboard/updatejsp";
+		return "freeboard/update";
 	}
 	//2-1. 자유게시판 수정하기 수정 성공
 	@RequestMapping(value="/freeboard/update", method=RequestMethod.POST)
-	public String updateFreeboardSuccess(ModelAndView model) {
+	public String updateFreeboardSuccess(@ModelAttribute FreeBoard freeBoard, @RequestParam("img") MultipartFile freeboardImg, HttpSession session){
+		int freeboardNo= (Integer)session.getAttribute("freeboardNo");
+		String fileName= UploadUtil.storeAndGetFileName(freeboardImg, ctx, path);
+		freeBoard.setFreeboardNo(freeboardNo);
+		freeBoard.setFreeboardImg(fileName);
+		service.modifyFreeboard(freeBoard);
 		return "redirect:/freeboard/list?pageNo=1";
 	}
 	//3. 자유게시판 삭제하기
-	@RequestMapping(value="/freeboard/delete/{freeboardNo}", method=RequestMethod.DELETE)
-	public String deleteFreeboard(int noticeNo) {
-		return "redirect:/home";
+	@RequestMapping(value="/freeboard/delete/{freeboardNo}", method=RequestMethod.GET)
+	public String deleteFreeboard(@PathVariable int freeboardNo) {
+		service.removeFreeboard(freeboardNo);
+		return "redirect:/freeboard/list?pageNo=1";
 	}
 	//4. 자유게시판 페이지별 조회하기(사용자용)
 	@RequestMapping(value="/freeboard/list", method=RequestMethod.GET)

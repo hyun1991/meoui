@@ -1,5 +1,7 @@
 package com.jeju.meoui.controller;
 
+import java.io.*;
+
 import javax.servlet.http.*;
 
 import org.slf4j.*;
@@ -20,12 +22,12 @@ public class OwnerController {
 	private OwnerService service;
 	private static final Logger logger= LoggerFactory.getLogger(OwnerController.class);
 	//	펜션업주 추가하기(완료)
-	@RequestMapping(value="/manage/join", method=RequestMethod.GET)
+	@RequestMapping(value="/admin/manage/join", method=RequestMethod.GET)
 	public String insertForm(){
 		return "owner/join";
 	}
 	//	펜션업주 추가완료(완료)
-	@RequestMapping(value="/manage/join", method=RequestMethod.POST)
+	@RequestMapping(value="/admin/manage/join", method=RequestMethod.POST)
 	public String insertEnd(@ModelAttribute Owner owner, @RequestParam String ownerAddress1, @RequestParam String ownerAddress2){
 		String ownerAddress= ownerAddress1+ownerAddress2;
 		owner.setOwnerAddress(ownerAddress);
@@ -39,17 +41,22 @@ public class OwnerController {
 	}
 	//	펜션업주 로긴(완료)
 	@RequestMapping(value="/manage/login", method=RequestMethod.POST)
-	public ResponseEntity<String>ajaxLogin(String ownerId, String ownerPassword, HttpSession session){
+	public ResponseEntity<String>ajaxLogin(String ownerId, String ownerPassword, HttpSession session, HttpServletResponse res) throws IOException{
 		logger.info("업주로그인:{}", ownerId, ownerPassword);
 		int result= service.ownerLogin(ownerId, ownerPassword, session);
 		logger.info("결과값:{}", result);
 		if(result==1){
+			String go3= (String)session.getAttribute("go3");
+			session.removeAttribute("go3");
+			if(go3==null)
+				go3="/meoui/owner/login";	
 			session.setAttribute("ownerId", ownerId);
 			return new ResponseEntity<String>("success", HttpStatus.OK);
 		}
 		else 
 			return new ResponseEntity<String>("fail", HttpStatus.OK);
 	}
+
 	//	업주 로그아웃(완료)
 	@RequestMapping(value="/manage/logout", method=RequestMethod.GET)
 	public String ownerLogout(HttpSession session){

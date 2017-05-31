@@ -5,6 +5,8 @@ import java.util.Date;
 import lombok.*;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class FreeBoard {
 	private int freeboardNo;			// 자유게시판 번호
 	private String freeboardTitle;		// 자유게시판 제목
@@ -13,4 +15,5 @@ public class FreeBoard {
 	private int freeboardCnt;			// 자유게시판 조회수
 	private String freeboardImg;			// 자유게시판 업로드 파일명
 	private int memberNo;
+	private String memberName;
 }

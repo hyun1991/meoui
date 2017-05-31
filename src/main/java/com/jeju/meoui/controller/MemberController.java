@@ -1,5 +1,7 @@
 package com.jeju.meoui.controller;
 
+import java.io.*;
+
 import javax.servlet.http.*;
 
 import org.slf4j.*;
@@ -67,12 +69,17 @@ public class MemberController {
 		int result= service.memberLogin(memberId, memberPassword, session);
 		logger.info("결과값:{}", result);
 		if(result==1){
+			String go= (String)session.getAttribute("go");
+			session.removeAttribute("go");
+			if(go==null)
+				go="/meoui/";		
 			session.setAttribute("memberId",memberId);
 			return new ResponseEntity<String>("success", HttpStatus.OK);
 		}
 		else 
 			return new ResponseEntity<String>("fail", HttpStatus.OK);
 	}
+
 	//	7. 회원 로그아웃(완료)
 	@RequestMapping(value="/member/logout", method=RequestMethod.GET)
 	public String memberLogout(HttpSession session){

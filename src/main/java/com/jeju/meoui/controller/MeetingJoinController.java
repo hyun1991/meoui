@@ -23,7 +23,6 @@ public class MeetingJoinController {
 	//모임 가입하기(완료)
 	@RequestMapping(value="membermeeting/post", method=RequestMethod.POST)
 	public String insertMeetingJoin(HttpSession session){
-		System.out.println("1111111111111111111111");
 		MeetingJoin meetingJoin = new MeetingJoin();
 		int meetingNo= (Integer)session.getAttribute("meetingNo");
 		int memberNo= (Integer)session.getAttribute("memberNo");

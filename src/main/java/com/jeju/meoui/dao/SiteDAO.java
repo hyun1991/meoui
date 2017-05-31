@@ -59,4 +59,5 @@ public class SiteDAO {
 	public List<Site>fineNewSite(){
 		return template.selectList("siteMapper.fineNewSite");
 	}
+
 }
