@@ -46,4 +46,9 @@ public class HomeController {
 	public String test() {
 		return "slide";
 	}
+	//	테스트용입니다.
+	@RequestMapping("/boardT")
+	public String formTest(){
+		return "boardWrite";
+	}
 }

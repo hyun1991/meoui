@@ -21,7 +21,7 @@ public class NoticeController {
 	//1. 공지게시판 추가하기(작성폼)
 	@RequestMapping(value="/admin/notice/join", method=RequestMethod.GET)
 	public String insertNoticeForm(){
-		return "notice/insert";
+		return "admin/boardWrite";
 	}
 	//1. 공지게시판 추가하기(추가 성공)
 	@RequestMapping(value="/admin/notice/join", method=RequestMethod.POST)
@@ -74,7 +74,7 @@ public class NoticeController {
 	public String selectByAdminNoticeNo(@PathVariable int noticeNo, Model model, HttpSession session){
 		 session.setAttribute("noticeNo", noticeNo);
 	     model.addAttribute("notice", service.findByNotice(noticeNo));
-	     return "/admin/noview";
+	     return "/admin/noticeDetail";
 	}
 	@RequestMapping(value="/noticecomment/delete/{noticeCommentNo}", method=RequestMethod.GET)
 	public String deleteNoticeComment(@PathVariable int noticeCommentNo, HttpSession session){
