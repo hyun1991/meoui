@@ -28,7 +28,7 @@
 			<c:forEach items="${result.list }" var ="freeboard">
     			<tr>
         			<td>${freeboard.freeboardNo }</td>
-        			<td><a href="#">${freeboard.freeboardTitle }</a></td>
+        			<td><a href="/meoui/admin/view/${freeboard.freeboardNo}">${freeboard.freeboardTitle }</a></td>
         			<td>${freeboard.freeboardCnt }</td>
         			<td><fmt:formatDate value="${freeboard.freeboardDate }" pattern="yyyy년MM월dd일"/></td>
     				<td><a href="#">

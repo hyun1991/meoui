@@ -60,7 +60,7 @@ c.meetingboard_no=#{meetingboard_no}
 	where meetingboard_no = 
   (select meetingboard_no from meetingboard where meeting_no=
   
-  (select meeting_no from member_meeting where meeting_no=#{meetingNo})); 
+  (select meeting_no from member_meeting where meeting_no=#{meetingNo}))
 	]]>	
 	
 	</delete>

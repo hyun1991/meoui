@@ -79,12 +79,19 @@ public class FreeBoardController {
 		model.addAttribute("result", service.getByFreeboard(pageNo));
 		return "admin/adminfb";
 	}
-	//6. 자유게시판 번호별 조회
+	//6. 자유게시판 번호별 조회(사용자용)
 	@RequestMapping(value="/freeboard/view/{freeboardNo}", method=RequestMethod.GET)
 	public String selectByFreeboard(Model model, HttpSession session, @PathVariable int freeboardNo) {
 		session.setAttribute("freeboardNo", freeboardNo);
 		model.addAttribute("result", service.findByFreeboard(freeboardNo));
 		return "freeboard/view";
+	}
+	//6. 자유게시판 번호별 조회(관리자용)
+	@RequestMapping(value="/admin/view/{freeboardNo}", method=RequestMethod.GET)
+	public String selectByAdminFreeboard(Model model, HttpSession session, @PathVariable int freeboardNo) {
+		session.setAttribute("freeboardNo", freeboardNo);
+		model.addAttribute("result", service.findByFreeboard(freeboardNo));
+		return "admin/adminfdview";
 	}
 	
 	//	자유게시판 상세뷰에서 이미지 다운로드
