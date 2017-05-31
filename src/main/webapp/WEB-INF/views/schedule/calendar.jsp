@@ -88,6 +88,7 @@ button:hover:before, button:hover:after {
 		<input type="hidden" id="schedule" value="${tv.schedule }">
 		<input type="hidden" id="scDate" value='<fmt:formatDate value="${tv.travlescheduleDate }" pattern="yyyy-MM-dd"/>'>
 	</c:forEach>
+	
 </body>
 <script type="text/javascript">
 jQuery(document).ready(function() {
