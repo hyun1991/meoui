@@ -80,8 +80,26 @@ public class SiteService {
 	}
 	
 	// 7.관광지 상세
-	public Site selectSiteByNo(int siteNo){
-		return dao.selectSiteByNo(siteNo);
+	public HashMap<String, Object> selectSiteByNo(int siteNo){
+		HashMap<String, Object>map= new HashMap<String, Object>();
+		Site site= dao.selectSiteByNo(siteNo);
+		List<SiteComment> comment= commentdao.selectSiteCommetn(siteNo);
+		if(site.getSitePark()==1)
+			site.setPark("주차가능");
+		else
+			site.setPark("주차 불가능");
+		for(SiteComment cm: comment){
+			if(cm.getMemberNo()!=0){
+				List<Member>mList= mDao.findAllMemberNo(cm.getMemberNo());
+				logger.info("고객정보:{}", mList);
+				map.put("member", mList);
+			}
+		}
+		List<Accommodation>list= acDao.findBySiteNo(siteNo);
+		map.put("site", site);
+		map.put("list", list);
+		map.put("comment", comment);
+		return map;
 	}
 	
 	//	8.최근업로드된 메인페이지 노출용 관광명소 조회

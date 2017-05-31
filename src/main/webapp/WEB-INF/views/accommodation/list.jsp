@@ -114,6 +114,7 @@ img {
 				</c:if></li>
 		</ul>
 	</div>
+	<hr>
 	<footer>
 		<%@include file="/footer.jsp"%>
 	</footer>

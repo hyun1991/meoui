@@ -10,7 +10,7 @@
 <%@include file="/nav/ownernav.jsp" %>
 	<h1>관광지 수정페이지</h1>
 	<hr>
-	<form action="/meoui/site/update" method="post" enctype="multipart/form-data">
+	<form action="/meoui/admin/site/update" method="post" enctype="multipart/form-data">
 		<hr>
 		<div>
 			<div class="form-group">

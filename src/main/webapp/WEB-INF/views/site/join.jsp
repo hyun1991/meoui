@@ -13,7 +13,7 @@
 <%@include file="/nav/adminnav.jsp" %>
 	<h1>관광지 추가</h1>
 	<hr>
-	<form action="/meoui/site/join" method="post" enctype="multipart/form-data">
+	<form action="/meoui/admin/site/join" method="post" enctype="multipart/form-data">
 		<hr>
 		<div>
 			<div class="form-group">
@@ -41,7 +41,12 @@
 				<label>광관지 폐장시간</label><input type="text" name="siteCloseTime" id="siteCloseTime" class="form-control">
 			</div>
 			<div class="form-group">
-				<label>광관지 주차유무</label><input type="text" name="sitePark" id="siteOpenPark" class="form-control">
+				<label>광관지 주차유무</label>
+				<select class="form-control input-lg" name="sitePark">
+					<option value="">선택</option>
+					<option value="1">주차가능</option>
+					<option value="2">주차불가능</option>
+				</select>
 			</div>
 			<div class="form-group">
 				<label>광관지 야간개장유무</label><input type="text" name="siteNightOpen" id="siteNightOpen" class="form-control">
@@ -50,19 +55,18 @@
 				<label>광관지 야간폐장시간</label><input type="text" name="siteNightCloseTime" id="siteNightCloseTime" class="form-control">
 			</div>
 			<div class="form-group">
-				<label>상세주소</label><input type="text" name="detailsAddress" id="detailsAddress" class="form-control">
-			</div>		
-			<div class="form-group">
 					<select class="form-control input-lg" name="areaName">
 					<option value="">선택</option>
 					<option value="1">제주</option>
 					<option value="2">서귀포</option>
 				</select>
 			</div>
-			
+			<div class="form-group">
+				<label>상세주소</label><input type="text" name="detailsAddress" id="detailsAddress" class="form-control">
+			</div>			
 			<div class="btn-group">
 				<input type="submit" value="관광지 추가" id="confirmBtn" class="btn btn-primary">
-				<input type="button" value="돌아가기" id="confirmBtn" class="btn btn-primary"></a>
+				<a href="/meoui/admin/home"><input type="button" value="돌아가기" id="confirmBtn" class="btn btn-primary"></a>
 			</div>
 		</div>
 	</form>

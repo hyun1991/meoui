@@ -1,5 +1,7 @@
 package com.jeju.meoui.controller;
 
+import java.io.*;
+
 import javax.servlet.http.*;
 
 import org.springframework.beans.factory.annotation.*;
@@ -21,9 +23,13 @@ public class UsersController {
 	}
 	//	로그인 완료
 	@RequestMapping(value="/admin/login", method=RequestMethod.POST)
-	public ResponseEntity<String> login(@RequestParam String username, @RequestParam String password, HttpSession session){
+	public ResponseEntity<String> login(@RequestParam String username, @RequestParam String password, HttpSession session, HttpServletResponse res) throws IOException{
 		int result= service.login(username, password, session);
 		if(result>0){
+			String go2= (String)session.getAttribute("go2");
+			session.removeAttribute("go2");
+			if(go2==null)
+				go2="/meoui/admin/login";		
 			session.setAttribute("username", username);
 			return new ResponseEntity<String>("success", HttpStatus.OK);
 		}

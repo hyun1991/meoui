@@ -113,7 +113,7 @@ img {
 			<c:forEach items="${result.list }" var="result">
 				<div class="col-sm-3" style="overflow-x:hidden;overflow-y:hidden">
 					<a href="#"> <img
-						class="image-responsive" src="/meoui/images/${site.siteImg}"
+						class="image-responsive" src="/meoui/images/${result.siteImg}"
 						alt="알수없음" style="margin-bottom: 20px;">
 					</a>
 					<p>
@@ -124,7 +124,7 @@ img {
 						<a href="${result.siteHomepage}"> ${result.siteHomepage}</a>
 					</p>
 					<div class="form-group">
-						<a href="/meoui/site/details/${result.siteNo}">
+						<a href="/meoui/admin/site/details/${result.siteNo}">
 							<button type="button"
 								class="w3-button w3-block w3-white w3-border">상세보기</button>
 						</a>
@@ -149,7 +149,7 @@ img {
 		</ul>
 	</div>
 		<div class="form-group">
-		<a href="/meoui/site/join">
+		<a href="/meoui/admin/site/join">
 			<button type="button" class="w3-button w3-block w3-white w3-border">관광명소 등록</button>
 		</a>
 	</div>

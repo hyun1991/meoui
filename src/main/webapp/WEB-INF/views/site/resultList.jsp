@@ -17,9 +17,13 @@ keyframes menuBlink { 0% {
 opacity
 
 
+
+
 :
 
+
  
+
 
 0
 }
@@ -27,7 +31,11 @@ opacity
 opacity
 
 
+
+
 :
+
+
 
 
 1
@@ -48,7 +56,11 @@ opacity
 
 
 
+
+
 :
+
+
 
 
 
@@ -61,7 +73,11 @@ opacity
 
 
 
+
+
 :
+
+
 
 
 
@@ -95,7 +111,8 @@ img {
 		<div class="row text-center">
 			<hr>
 			<c:forEach items="${result.list }" var="result">
-				<div class="col-sm-3" style="overflow-x:hidden;overflow-y:hidden; width: 280px; height: 500px;">
+				<div class="col-sm-3"
+					style="overflow-x: hidden; overflow-y: hidden; width: 280px; height: 500px;">
 					<a href="/meoui/site/detail/${result.siteNo}"> <img
 						class="image-responsive" src="/meoui/images/${result.siteImg}"
 						alt="알수없음" style="margin-bottom: 20px;">
@@ -134,9 +151,8 @@ img {
 					<a href="/meoui/site/list?pageNo=${result.pagination.next }">다음으로</a>
 				</c:if></li>
 		</ul>
-
 	</div>
-	<%@include file="view.jsp" %>
+	<hr>
 	<footer>
 		<%@include file="/footer.jsp"%>
 	</footer>
