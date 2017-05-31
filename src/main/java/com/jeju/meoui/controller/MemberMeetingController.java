@@ -41,20 +41,13 @@ public class MemberMeetingController {
 		MeetingJoin meetingJoin = new MeetingJoin();
 		int meetingAdminNo= (Integer)session.getAttribute("memberNo");
 		int memberNo = (Integer)session.getAttribute("memberNo");
-		int meetingNo=service.selectMaxMeetingNo();
+		//	int meetingNo=service.selectMaxMeetingNo();
 		String fileName= UploadUtil.storeAndGetFileName(meetingImg, ctx, path);
-		meetingJoin.setMemberNo(memberNo);
-		
-		logger.info("meetingNo:{}", meetingNo);
 	
-		meetingJoin.setMeetingNo(meetingNo);
-			
-		logger.info("meetingNo:{}", meetingNo);
-		
 		memberMeeting.setMeetingImg(fileName);
 		memberMeeting.setMeetingName(meetingName);
 		memberMeeting.setMeetingAdminNo(meetingAdminNo);
-		
+		meetingJoin.setMemberNo(memberNo);
 		service.createMemberMeeting(memberMeeting, meetingJoin);
 		logger.info("멤버넘버:{}", memberMeeting);
 		return "redirect:/membermeeting/list";
