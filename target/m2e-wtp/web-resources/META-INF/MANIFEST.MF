@@ -1,10 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: user
 Build-Jdk: 1.8.0_101
-=======
-Built-By: MOND
-Build-Jdk: 1.8.0_121
->>>>>>> branch 'master' of https://github.com/hyun1991/meoui.git
 Created-By: Maven Integration for Eclipse
 
