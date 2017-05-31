@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>게시글 수정</h1>
-<form id="UpdateNoticeFrom" action="/meoui/notice/update" method="POST">
+<form id="UpdateNoticeFrom" action="/meoui/admin/notice/update" method="POST">
 <table>
 <tr><td>제목</td><td><input type="text" name="noticeTitle" id="noticeTitle"></td></tr>
 <tr><td>내용</td><td><textarea name="noticeContent" id="noticeContent"></textarea></td></tr>

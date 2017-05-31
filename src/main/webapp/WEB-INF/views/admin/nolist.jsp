@@ -57,7 +57,7 @@
 		</ul>
 	</div>
 	<div class="form-group">
-		<a href="/meoui/notice/join">
+		<a href="/meoui/admin/notice/join">
 			<button type="button" class="w3-button w3-block w3-white w3-border">글작성</button>
 		</a>
 	</div>
