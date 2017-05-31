@@ -85,7 +85,7 @@
 	</div>
 	<hr>
 	<div class="container text-center">
-		<h1 id="headTitle" style="margin-top: 50px;" align="center">제주도</h1>
+		<img src="/meoui/images/jejju.jpg">
 		<div class="row">
 			<form class="form-inline">
 				<div class="input-group">
