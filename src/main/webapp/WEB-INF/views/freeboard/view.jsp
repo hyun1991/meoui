@@ -49,6 +49,20 @@
 		첨부파일: &nbsp;&nbsp;<a href="/meoui/freeboard/download?freeboardImg=${result.board.freeboardImg }">
 			${result.board.freeboardImg }</a>
 	</div>
+	<div class="deleteboard">
+	<c:if test="${result.board.memberNo eq memberNo }">
+	<a href ="/meoui/freeboard/delete/${result.board.freeboardNo}">
+	<button type="submit" class="w3-button w3-block w3-white w3-border">글 삭제</button>
+	 </a>
+	 </c:if>
+	 </div>
+	 <div class="updateboard">
+	<c:if test="${result.board.memberNo eq memberNo }">
+	<a href ="/meoui/freeboard/update?freeboardNo=${result.board.freeboardNo}">
+	<button type="submit" class="w3-button w3-block w3-white w3-border">글 수정</button>
+	 </a>
+	 </c:if>
+	 </div>
 	<hr>
 	<h5 style="margin-left: 70px">댓글작성란</h5>
 	<br>

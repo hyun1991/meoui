@@ -33,8 +33,8 @@ public class FreeBoardDAO {
 		template.update("FreeBoardMapper.updateFreeboard", freeBoard);
 	}
 	// 5. 자유게시판 삭제
-	public int deleteFreeboard(int freeboardNo) {
-		return template.delete("FreeBoardMapper.deleteFreeboard", freeboardNo);
+	public void deleteFreeboard(int freeboardNo) {
+		template.delete("FreeBoardMapper.deleteFreeboard", freeboardNo);
 	}
 	// 6. 자유게시판 DB개수조회(완료)
 	public int findByMax() {
