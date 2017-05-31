@@ -24,6 +24,8 @@ public class SiteService {
 	private TicketDAO tDao;
 	@Autowired
 	private AccommodationDAO acDao;
+	@Autowired
+	private MemberDAO mDao;
 	
 	// 1.관광지 추가
 	public void createSite(Site site , Area area ){
@@ -53,6 +55,7 @@ public class SiteService {
 	// 3.관광지 삭제
 	@Transactional
 	public void removeSite( int siteNo , Area area , Site site){
+		commentdao.deleteAllSiteComment(siteNo);
 		area.setSiteNo(site.getSiteNo());
 		aDao.deleteSiteArea(siteNo);
 		dao.deleteSite(siteNo);
@@ -91,13 +94,22 @@ public class SiteService {
 	public HashMap<String, Object> getBySiteDetail(int siteNo){
 		HashMap<String, Object>map= new HashMap<String, Object>();
 		Site site= dao.selectSiteByNo(siteNo);
+		List<SiteComment> comment= commentdao.selectSiteCommetn(siteNo);
 		if(site.getSitePark()==1)
 			site.setPark("주차가능");
 		else
 			site.setPark("주차 불가능");
+		for(SiteComment cm: comment){
+			if(cm.getMemberNo()!=0){
+				List<Member>mList= mDao.findAllMemberNo(cm.getMemberNo());
+				logger.info("고객정보:{}", mList);
+				map.put("member", mList);
+			}
+		}
 		List<Accommodation>list= acDao.findBySiteNo(siteNo);
 		map.put("site", site);
 		map.put("list", list);
+		map.put("comment", comment);
 		return map;
 	}
 }

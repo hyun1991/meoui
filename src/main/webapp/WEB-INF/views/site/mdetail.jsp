@@ -191,6 +191,53 @@ img {
 				</div>
 			</c:forEach>
 		</div>
+			<hr>
+	<h3 style="margin-left: 70px">댓글작성란</h3>
+	<br>
+	<div id="center">
+		<form action="/meoui/siteComment/insert" method="post">
+			<div class="row">
+				<div class="col-xs-4" style="margin-left: 70px">
+					<textarea class="form-control col-sm-5" rows="5"
+						placeholder="댓글을 작성해 주세요." name="siteCommentContent">
+				</textarea>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-4" style="margin-left: 70px">
+					<button type="submit" class="w3-button w3-block w3-white w3-border">댓글작성</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	<hr>
+	<c:forEach items="${site.comment }" var="comment">
+		<div class="container">
+			<input type="hidden" id="memberNo" value="${comment.memberNo }"
+				class="form-control input-lg">
+			<div class="form-group">${comment.siteCommentContent}
+			</div>
+			<c:forEach items="${site.member }" var="member">
+				<div class="btn-r">작성자: ${member.memberId }</div>
+			</c:forEach>
+			<div class="form-group">
+				작성일:
+				<fmt:formatDate value="${comment.siteCommentDate}"
+					pattern="yyyy년 MM월 dd일" />
+			</div>
+			<div class="viewdelete">
+				<c:if test="${comment.memberNo eq memberNo }">
+					<a
+						href="/meoui/siteComment/delete/${comment.siteCommentNo }">
+						<button type="button"
+							class="w3-button w3-block w3-white w3-border" id="deleteBtn">댓글
+							삭제하기</button>
+					</a>
+				</c:if>
+			</div>
+			<hr>
+		</div>
+	</c:forEach>
 	<footer>
 		<%@include file="/footer.jsp" %>
 	</footer>

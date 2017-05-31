@@ -5,12 +5,12 @@
 
 <!-- 1.관광지 댓글 추가 -->
 	<insert id="insertSiteComment" parameterType="siteComment">
-		<selectKey keyProperty="siteNo" resultType="int" order="BEFORE">
+		<selectKey keyProperty="siteCommentNo" resultType="int" order="BEFORE">
 			select site_comment_seq.nextval from dual
 		</selectKey>
 		<![CDATA[
 			insert into site_comment(site_comment_no,site_comment_content,site_comment_date,member_no,site_no)
-			values(#{siteCommentNo},#{siteCommentContent},sysdaye,#{memberNo},#{siteNo})
+			values(#{siteCommentNo},#{siteCommentContent},sysdate,#{memberNo},#{siteNo})
 		]]>
 	</insert>
 <!-- 2.관광지 댓글 수정 -->
@@ -19,7 +19,7 @@
 	</update>
 <!-- 3.관광지 댓글 삭제 -->
 	<delete id="deleteSiteComment" parameterType="HashMap">
-		delete from site_comment where member_no=#{memberNo} and site_no=#{siteNo}
+		delete from site_comment where member_no=#{memberNo} and site_comment_no=#{siteCommentNo}
 	</delete>
 <!-- 4.관광지 댓글 전체 삭제 -->
 	<delete id="deleteAllSiteComment" parameterType="int">
@@ -27,6 +27,6 @@
 	</delete>
 <!-- 5.관광지 댓글 조회 -->
 	<select id="selectSiteCommetn" parameterType="int" resultType="siteComment">
-		select site_comment_content , site_comment_date from site_comment where site_no=#{siteNo}
+		select * from site_comment where site_no=#{siteNo}
 	</select>
 </mapper>

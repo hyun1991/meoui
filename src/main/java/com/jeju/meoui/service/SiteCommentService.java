@@ -27,10 +27,7 @@ public class SiteCommentService {
 	}
 	
 	// 관광지 댓글 삭제
-	public void deleteSiteComment(int siteNo, int memberNo){
-		HashMap<String,Object> map = new HashMap<String,Object>();
-		map.put("siteNo", siteNo);
-		map.put("memberNo", memberNo);
-		dao.deleteSiteComment(siteNo, memberNo);
+	public void deleteSiteComment(int siteCommentNo, int memberNo){
+		dao.deleteSiteComment(siteCommentNo, memberNo);
 	}
 }
