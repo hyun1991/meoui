@@ -7,16 +7,47 @@
 <head>
 <meta charset=UTF-8">
 <title>Insert title here</title>
+<style>
+#scheduleBtn{
+  background:#1AAB8A;
+  color:#fff;
+  border:none;
+  position:relative;
+  height:60px;
+  font-size:1.6em;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+}
+#scheduleBtn:hover{
+  background:#fff;
+  color:#1AAB8A;
+}
+#scheduleBtn:before,#scheduleBtn:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #1AAB8A;
+  transition:400ms ease all;
+}
+#scheduleBtn:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+#scheduleBtn:hover:before,#scheduleBtn:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+</style>
 </head>
 <body>
-	<%@include file="/nav/navbar.jsp"%>
-	<div class="form-group" style="margin-left: auto">
-	<div class="col-xs-4">
-		<a href="/meoui/schedule/mylist?memberNo=<%=session.getAttribute("memberNo")%>">
-		<button type="button" class="w3-button w3-block w3-white w3-border">
-		일정 달력으로 조회</button></a>
-	</div>
-	</div>
+	<%@include file="/nav/navbar.jsp"%>		
 	<br><br>
 	<div class="container">
 		<h2>나의일정보기</h2>
@@ -39,9 +70,13 @@
 				</c:forEach>
 			</div>
 		</div>
-		<div class="form-group">
-			<a href="/meoui/"><button type="button"
-					class="w3-button w3-block w3-white w3-border">홈으로</button></a>
+		<div align="center">
+		<div>
+			<a href="/meoui/schedule/mylist?memberNo=<%=session.getAttribute("memberNo")%>">
+			<button id="scheduleBtn">일정달력으로 조회</button></a>
+			<a href="/meoui/">
+					<button id="scheduleBtn">홈으로</button></a>
+		</div>
 		</div>
 	</div>
 		<div class="row text-center">
