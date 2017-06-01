@@ -237,6 +237,7 @@ message_no number(10),
 constraint message_box_pk primary key(member_no , message_no)
 );
 
+
 create sequence room_seq start with 0 minvalue 0 maxvalue 999999;
 create sequence accommodation_seq start with 0 minvalue 0 maxvalue 999999;
 create sequence owner_seq start with 0 minvalue 0 maxvalue 999999;

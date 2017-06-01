@@ -32,11 +32,6 @@
         <a href="/meoui/admin/notice/list?pageNo=1" class="btn" id="list" >목록으로</a>
     </form>
     </div>
-    <%@ include file="/WEB-INF/include/include-body.jsp" %>
-    <script type="text/javascript">
-        $(document).ready(function(){
-                     
-        });
-    </script>  
+    <%@ include file="/WEB-INF/include/include-body.jsp" %> 
 </body>
 </html>

@@ -38,17 +38,21 @@ footer {
 				<a href="/meoui/member/update/${result.memberId }">
 				<button type="button" class="w3-button w3-block w3-white w3-border">
 				내정보 수정하기</button></a><br>
-				</div>
+				<a href="/meoui/member/delete">
+				<button type="button" class="w3-button w3-block w3-white w3-border">
+				회원탈퇴</button>
+				</a>
 			</div>
+		</div>
 		</div>
 		<h3>내 여행 도우미</h3>
 		<br>
 		<div class="btn-group row">
 			<div class="form-group col-md-6">
 				<div class="btn-group btn-group-justified">
-					<a href="/meoui/reserve/list/<%=session.getAttribute("memberNo") %>" 
+					<a href="/meoui/reserve/mylist/<%=session.getAttribute("memberNo") %>" 
 					class="btn btn-success">내가 예약한 숙박업소 확인</a> 
-					<a href="/meoui/schedule/mylist?memberNo=<%=session.getAttribute("memberNo") %>" class="btn btn-success">나의 일정 전체보기</a>
+					<a href="/meoui/schedule/list?memberNo=<%=session.getAttribute("memberNo") %>&pageNo=1" class="btn btn-success">나의 일정 전체보기</a>
 				</div>
 			</div>
 		</div>
@@ -57,17 +61,8 @@ footer {
 		<div class="btn-group row">
 			<div class="form-group col-md-6">
 				<div class="btn-group btn-group-justified">
-					<a href="#" class="btn btn-success">내가 가입한 모임</a> <a href="#"
-						class="btn btn-success">내 친구 목록 확인</a>
-				</div>
-			</div>
-		</div>
-		<div class="form-group row">
-
-			<div class="form-group col-md-6">
-				<div class="btn-group btn-group-justified">
-					<a href="#" class="btn btn-success">접속한 회원 목록 확인</a> <a href="#"
-						class="btn btn-success">즐겨찾기 목록</a>
+					<a href="/meoui/membermeeting/create" class="btn btn-success">모임생성</a> 
+					<a href="/meoui/meetingjoin/list"	class="btn btn-success">나의 모임리스트</a>
 				</div>
 			</div>
 		</div>

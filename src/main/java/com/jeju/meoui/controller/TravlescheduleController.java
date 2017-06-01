@@ -11,7 +11,6 @@ import org.springframework.stereotype.*;
 import org.springframework.ui.*;
 import org.springframework.web.bind.annotation.*;
 
-import com.google.gson.*;
 import com.jeju.meoui.service.*;
 import com.jeju.meoui.vo.*;
 
@@ -45,5 +44,12 @@ public class TravlescheduleController {
 	public String getAllSchedule(@RequestParam int memberNo, @RequestParam(defaultValue="1")int pageNo, Model model){
 		model.addAttribute("result", service.findAllSchedule(pageNo, memberNo));
 		return "schedule/schedulelist";
+	}
+	//	일정관련 내용 삭제하기
+	@RequestMapping(value="schedule/delete/{travlescheduleNo}", method=RequestMethod.GET)
+	public String deleteSchedule(@PathVariable int travlescheduleNo, HttpSession session){
+		int memberNo= (Integer)session.getAttribute("memberNo");
+		service.deleteSchedule(travlescheduleNo, memberNo);
+		return "redirect:/";
 	}
 }
