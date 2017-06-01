@@ -31,11 +31,7 @@
         			<td><a href="/meoui/admin/view/${freeboard.freeboardNo}">${freeboard.freeboardTitle }</a></td>
         			<td>${freeboard.freeboardCnt }</td>
         			<td><fmt:formatDate value="${freeboard.freeboardDate }" pattern="yyyy년MM월dd일"/></td>
-    				<td><a href="#">
-							<button type="button"
-								class="w3-button w3-block w3-white w3-border">삭제</button>
-					</a></td>
-    			</tr>
+    				</tr>
     		</c:forEach>
 		</tbody>
 	</table>
