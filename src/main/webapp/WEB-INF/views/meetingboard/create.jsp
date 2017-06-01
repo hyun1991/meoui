@@ -10,7 +10,7 @@
 
 	<h1>모임게시판 글 생성하기</h1>
 		<form id="meetingboard" action="/meoui/meetingboard/create" method="POST" enctype="multipart/form-data">
-		<table>
+		<!-- <table>
 			<tr><td>제목:</td><td><input type="text" name="meetingboardTitle" id="meetingboardTitle"></td><tr>
 			<tr><td>이미지:</td><td><input type="file" name="Img" id="meetingboardImg"></td></tr>
 			<tr><td>내용</td><td><input type="text" name="meetingboardContent" id="meetingboardContent"></td></tr>
@@ -18,7 +18,68 @@
 			
 			<tr><td><button id="commit" type="submit">글 쓰기</button></td></tr>		
 		
-		</table>		
+		</table> -->
+		
+		<table>
+  <tr>
+   <td>
+    <table width="1000px" cellpadding="0" cellspacing="0" border="0">
+     <tr style="background:url('img/table_mid.gif') repeat-x; text-align:center;">
+      <td width="5"></td>
+      <td>글쓰기</td>
+      <td width="5"></td>
+     </tr>
+    </table>
+   <table width="1000px">
+     <tr>
+      <td>&nbsp;</td>
+      <td align="center">제목</td>
+      <td><input name="title" size="120" maxlength="100"></td>
+      <td>&nbsp;</td>
+     </tr>
+     <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td align="center">이름</td>
+      <td><input name="name" size="120" maxlength="50"></td>
+      <td>&nbsp;</td>
+     </tr>
+      <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td align="center">비밀번호</td>
+      <td><input name="password" size="120" maxlength="50"></td>
+      <td>&nbsp;</td>
+     </tr>
+     <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
+     <tr>
+      <td>&nbsp;</td>
+      <td align="center">내용</td>
+      <td><textarea name="memo" cols="121" rows="25"></textarea></td>
+      <td>&nbsp;</td>
+     </tr>
+     <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
+     <tr height="1" bgcolor="#82B5DF"><td colspan="4"></td></tr>
+     <tr>
+      <td>&nbsp;</td>
+      <td colspan="2">
+<input type="file" name="img" id="freeboardImg" class="form-control" value="등록">
+		</td>	
+		</tr>
+	
+     <tr align="center">
+      <td>&nbsp;</td>
+      <td colspan="2"><input type=button value="등록">
+       <input type=button value="취소">
+      <td>&nbsp;</td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+
+
+	
 		
 		</form>
 </body>
