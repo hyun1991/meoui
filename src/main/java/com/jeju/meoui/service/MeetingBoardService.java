@@ -17,6 +17,7 @@ public class MeetingBoardService {
 	@Autowired
 	public MeetingBoardDAO dao;
 	
+	
 	private Logger logger= LoggerFactory.getLogger(MeetingBoardService.class);
 
 
@@ -28,13 +29,20 @@ public class MeetingBoardService {
 	
 	//모임게시판 리스트 출력
 	public HashMap<String, Object> selectAllMeetingBoard(int pageNo, int meetingNo){
-		int cnt = dao.meetingBoardCount();
+		int cnt = dao.selectCountMeetingNo(meetingNo);
+		
 		Pagination pagination= PagingUtil.getPagination(pageNo, cnt);
+		
 		List<MeetingBoard> list = dao.selectAllMeetingBoard(pagination.getStartRow(), pagination.getLastRow(), meetingNo);
+		
 		HashMap<String, Object>map= new HashMap<String, Object>();
+		
 		map.put("pagination", pagination);
+		
 		map.put("list", list);
+		
 		logger.info("미팅보더서비스 리스트출력: {}", list);
+		
 		return map;
 	}
 	
