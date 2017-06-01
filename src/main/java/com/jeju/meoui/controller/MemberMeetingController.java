@@ -53,9 +53,10 @@ public class MemberMeetingController {
 		return "redirect:/membermeeting/list";
 	}
 
-	//모임 수정(작업완료)
+	//모임 수정(작업완료중)
 	@RequestMapping(value="/membermeeting/update", method=RequestMethod.GET)
 	public String updateMemberMeeting(){
+		
 		return "membermeeting/update";
 	}
 	
@@ -85,7 +86,7 @@ public class MemberMeetingController {
 		return "membermeeting/view";
 	}
 	
-	//모임 삭제 유저용
+	//모임 삭제 유저용(작업 완료)
 	@RequestMapping(value="/membermeeting/delete", method=RequestMethod.POST)
 	public String deleteMemberMeetingUser(HttpSession session){
 		int memberNo=(Integer)session.getAttribute("memberNo");
