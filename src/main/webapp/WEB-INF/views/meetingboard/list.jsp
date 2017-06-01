@@ -18,19 +18,28 @@ img {
 }
 
 #div{
-	text-align: center;
+	text-align: right;
 	margin: auto;
 	width: 300px;
 	height: 225px;
+	position: absolute;
 }
 
 #div2{
-	text-align: center;
+	text-align: right;
 	margin: auto;
-	width: 100%;
+	width: 50%;
 	height: 45px;
+	position: absolute;
 }
 
+#new{
+position: relative;
+background-image: url('/meoui/images/jejufestival1.jpg');
+width: 50%;
+height: 100%;
+
+}
 
 </style>
 <head>
@@ -43,6 +52,11 @@ img {
 	<header>
 		<%@include file="/nav/navbar.jsp"%>
 	</header>
+	
+	<div id="new" >
+	asdasdsadas 뉴가 어디로 갔지?
+	
+	</div>
 	<c:forEach items="${result.list }" var="board">
 		<%-- <div class="col-sm-3" style="overflow-x:hidden;overflow-y:hidden">
 				
@@ -96,7 +110,7 @@ img {
 						href="/meoui/meetingboard/view/${meeting.meetingNo}">
 						<img class="image-responsive"
 						src="/meoui/images/${board.meetingboardImg }"
-						alt="skinscuber" style="margin-bottom: 20px;">
+						alt="skinscuber">
 					</a>	</div>
 			
 			<div id="div2"><a	href="/meoui/membermeeting/view/${meeting.meetingNo}">

@@ -71,7 +71,7 @@
 	<div class="row text-center">
 		<div class="col-xs-4" style="margin-left: 70px;">
 		<c:if test="${result.board.memberNo eq memberNo }">
-			<a href="meoui/freeboard/delete/${result.board.freeboardNo}">
+			<a href="/meoui/freeboard/delete/${result.board.freeboardNo}">
 				<button type="button" class="w3-button w3-block w3-white w3-border">삭제하기</button>
 			</a>
 		</c:if>
@@ -84,15 +84,14 @@
 		<form action="/meoui/freeboardComment/insert" method="post">
 	    <div class="row text-center">
 	    <div class="col-xs-4" style="margin-left: 70px">
-			<textarea class="form-control col-sm-5" rows="5" id="freeboardCommentContent">
+			<textarea class="form-control col-sm-5" rows="5" id="freeboardCommentContent" name="freeboardCommentContent">
 			</textarea>
 		</div>
 		<br>
 	</div>
 	<div class="row">
 		<div class="col-xs-4" style="margin-left: 70px">
-			<button type="button" class="w3-button w3-block w3-white w3-border"
-				id="insertComment" data-bno="${notice.nlist.noticeNo}">댓글작성</button>
+			<button type="submit" class="w3-button w3-block w3-white w3-border">댓글작성</button>
 		</div>
 		</div>
 		</form>
