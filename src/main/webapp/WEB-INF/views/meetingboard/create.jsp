@@ -34,28 +34,28 @@
      <tr>
       <td>&nbsp;</td>
       <td align="center">제목</td>
-      <td><input name="title" size="120" maxlength="100"></td>
+      <td><input  name="meetingboardTitle" id="meetingboardTitle" size="120" maxlength="100"></td>
       <td>&nbsp;</td>
      </tr>
      <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
-    <tr>
+  	<!--  <tr>
       <td>&nbsp;</td>
       <td align="center">이름</td>
       <td><input name="name" size="120" maxlength="50"></td>
       <td>&nbsp;</td>
-     </tr>
+     </tr> 
       <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
     <tr>
       <td>&nbsp;</td>
       <td align="center">비밀번호</td>
       <td><input name="password" size="120" maxlength="50"></td>
       <td>&nbsp;</td>
-     </tr>
+     </tr>-->
      <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
      <tr>
       <td>&nbsp;</td>
       <td align="center">내용</td>
-      <td><textarea name="memo" cols="121" rows="25"></textarea></td>
+      <td><textarea  name="meetingboardContent" id="meetingboardContent" cols="121" rows="25"></textarea></td>
       <td>&nbsp;</td>
      </tr>
      <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
@@ -63,14 +63,14 @@
      <tr>
       <td>&nbsp;</td>
       <td colspan="2">
-<input type="file" name="img" id="freeboardImg" class="form-control" value="등록">
+		<input type="file" name="Img" id="meetingboardImg" class="form-control" value="등록">
 		</td>	
 		</tr>
 	
      <tr align="center">
       <td>&nbsp;</td>
-      <td colspan="2"><input type=button value="등록">
-       <input type=button value="취소">
+      <td colspan="2"><input id="commit" type="submit"    value="등록">	       
+       <input type="button" value="취소" onclick="move('list/${meetingboard.meetingNo}}');">
       <td>&nbsp;</td>
      </tr>
     </table>
