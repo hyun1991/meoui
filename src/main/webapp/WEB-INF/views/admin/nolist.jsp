@@ -34,7 +34,7 @@
 					<td><fmt:formatDate value="${notice.noticeDate }"
 							pattern="yyyy년MM월dd일" /></td>
 					<td>${notice.noticeCnt }</td>
-					<td><a href="/meoui/notice/delete/${notice.noticeNo}">
+					<td><a href="/meoui/admin/notice/delete/${notice.noticeNo}">
 							<button type="button"
 								class="w3-button w3-block w3-white w3-border">삭제</button>
 					</a></td>

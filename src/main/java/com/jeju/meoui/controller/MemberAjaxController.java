@@ -24,8 +24,8 @@ public class MemberAjaxController {
 
 	//	4. 회원 비밀번호 찾기 완료(미완료)
 	@RequestMapping(value="/member/pwsearch", method=RequestMethod.POST)
-	public String selectByMemberPassword(String garaName, String garaMail, String memberId){
-		logger.info("비밀번호찾기{}", service.searchByMemberPassword(garaName, memberId, garaMail));
-		return service.searchByMemberPassword(garaName, memberId, garaMail);
+	public String selectByMemberPassword(String memberName, String memberMail, String memberId){
+		logger.info("비밀번호찾기{}", service.searchByMemberPassword(memberName, memberId, memberMail));
+		return service.searchByMemberPassword(memberName, memberId, memberMail);
 	}
 }
