@@ -44,6 +44,7 @@ footer {
 				</a>
 			</div>
 		</div>
+		</div>
 		<h3>내 여행 도우미</h3>
 		<br>
 		<div class="btn-group row">
@@ -51,7 +52,7 @@ footer {
 				<div class="btn-group btn-group-justified">
 					<a href="/meoui/reserve/mylist/<%=session.getAttribute("memberNo") %>" 
 					class="btn btn-success">내가 예약한 숙박업소 확인</a> 
-					<a href="/meoui/schedule/mylist?memberNo=<%=session.getAttribute("memberNo") %>" class="btn btn-success">나의 일정 전체보기</a>
+					<a href="/meoui/schedule/list?memberNo=<%=session.getAttribute("memberNo") %>&pageNo=1" class="btn btn-success">나의 일정 전체보기</a>
 				</div>
 			</div>
 		</div>
@@ -65,7 +66,6 @@ footer {
 				</div>
 			</div>
 		</div>
-	</div>
 	</div>
 	<footer>
 		<%@include file="/footer.jsp"%>
