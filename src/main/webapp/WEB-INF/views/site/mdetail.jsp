@@ -1,155 +1,245 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<title>관광명소 상세페이지</title>
 <style>
-#wineImage {margin-top: 60px; margin-bottom: 120px;
-	
+@
+keyframes menuBlink { 0% {
+	opacity: 0
 }
 
+49%{
+opacity
+
+
+:
+
+ 
+
+0
+}
+50%{
+opacity
+
+
+:
+
+
+1
+}
+}
+#headTitle, .step {
+	font-family: 'Jeju Gothic', serif;
+}
+
+@
+keyframes menuBlink { 0% {
+	opacity: 0
+}
+
+49%{
+opacity
+
+
+
+
+:
+
+
+
+
+0
+}
+50%{
+opacity
+
+
+
+
+:
+
+
+
+
+1
+}
+}
+.glyphicon-home {
+	animation: menuBlink 1s infinite;
+}
+
+img {
+	width: 100%;
+	height: auto;
+}
+
+.btn {
+	background-color: white;
+	color: #orange;
+	margin: 30px;
+}
 </style>
 </head>
 <body>
-	
-	
-	
-	
-	<div class="container-fluid" align="center">
-
+	<header>
+		<%@include file="/nav/navbar.jsp"%>
+	</header>
+	<hr>
+	<div class="row">
+		<h1 align="center">${site.site.siteName }</h1>
+	</div>
+	<br><br>
+	<div class="container">
 		<div class="row">
-
-				<div class="col-sm-10">
-				<h1 align="left">와인 정보</h1>
-
-				<br> <br>
-				<div class="col-sm-5">
-					<div>
-						<img id="wineImage" src="../images/wine.jpg" alt="Image" width=100%; height=auto>
-					</div>
-					<div>
-						<button type="button" class="btn btn-default" data-toggle="modal"
-							data-target="#order" data-dismiss="modal">주문하기</button>
-						<button type="button" class="btn btn-default" data-toggle="modal"
-							data-target="#" data-dismiss="modal">장바구니</button>
-					</div>
-				</div>
-
-				<div class="col-sm-1"></div>
-				<div class="col-sm-4">
-					<div class="table-responsive">
-						<table class="table">
-							<tbody>
-							</tbody>
-						</table>
-					</div>
-
-				</div>
-
+			<div class="col-md-6 col-sm-12">
+				<img src="/meoui/images/${site.site.siteImg}" style="width: 500px; height: 600px;">
 			</div>
-			<div class="col-sm-5" align="left">
-				<br> <br>
-				<h1>리뷰</h1>
+			<div>
+				<h4>대표전화</h4>${site.site.sitePhone }
+			</div>
+			<div>
+				<h4>시설위치</h4>${site.site.detailsAddress }
+			</div>
+			<div>
+				<h4>이용대상</h4>${site.site.siteObject }
+			</div>
+			<div>
+				<h4>주차여부</h4>${site.site.park }
+			</div>
+			<div>
+				<h4>이용시간</h4>${site.site.siteOpenTime }~${site.site.siteCloseTime }까지
+			</div>
+			<div>
+				<h4>야간개장</h4>${site.site.siteNightOpen }
+			</div>
+			<div style="margin-left: 0;">
+				<h4>야간개장시 폐장시간</h4>${site.site.siteNightCloseTime }
+			</div> 
+			<h4>입장료</h4>
+			<c:forEach items="${ticket.list }" var="ticket">
+					<div>
+						${ticket.ticketStandard } : ${ticket.ticketPrice }
+					</div>
+			</c:forEach>
+			<br>
+			<div class="col-xs-4">
+				<button type="button" class="w3-button w3-block w3-white w3-border" data-toggle="modal"
+							data-target="#schedule" data-dismiss="modal">일정추가</button></a>
+				<a href="/meoui/site/list?pageNo=1">
+				<button type="button" class="w3-button w3-block w3-white w3-border" data-toggle="modal"
+							data-target="#" data-dismiss="modal">리스트</button></a>
 			</div>
 		</div>
-
-</div>
-
-		<div id="order" class="modal fade" role="dialog">
-			<div class="modal-dialog">
-				<!-- Modal content-->
+		<hr>		
+	</div>
+	
+	<div id="schedule" class="modal fade" role="dialog">
+	<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">와인 주문</h4>
+						<h4 class="modal-title">일정추가</h4>
 					</div>
 					<div class="modal-body">
-						<form action="/dionysus/wineinfo/wineorder/insert" method="post">
+						<form action="/meoui/schedule/join" method="post">
 							<table>
 								<tr>
-									<td>와인 주문일자</td>
-									<td><input type="date" name="wineOrderDate"></td>
+									<td>날짜</td></tr>
+									<tr><td>
+									<input type="date" name="travlescheduleDate"></td>
 								</tr>
 								<tr>
-									<td>와인 가격</td>
-									<td id="wineOrderPrice"></td>
-								</tr>
-								<tr>
-									<td>와인 개수</td>
-									<td><select name="wineOrderInfoCount" id="count">
-											<option value="1" selected="selected">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-											<option value="4">4</option>
-											<option value="5">5</option>
-											<option value="6">6</option>
-											<option value="7">7</option>
-											<option value="8">8</option>
-											<option value="9">9</option>
-											<option value="10">10</option>
-									</select></td>
+									<td>일정내용</td></tr>
+									<tr><td>
+									<textarea class="form-control col-sm-5" rows="10" cols="30"
+									name="schedule">
+									</textarea></td>
 								</tr>
 							</table>
-							<button type="submit" class="btn btn-default">주문하기</button>
-							<button type="button" class="btn btn-default" data-toggle="modal"
+							<button type="submit" class="w3-button w3-block w3-white w3-border">일정추가</button>
+							<button type="button" class="w3-button w3-block w3-white w3-border" data-toggle="modal"
 								data-target="#" data-dismiss="modal">취소하기</button>
 						</form>
 					</div>
 				</div>
 			</div>
 		</div>
-</body>
 
+		<h1 align="center">주변숙박시설</h1>
+    	<div class="row text-center" style="margin-left: 70px;">
+		<hr>
+			<c:forEach items="${site.list }" var="accommodation">
+				<div class="col-sm-3" style="overflow-x:hidden;overflow-y:hidden; width: 280px; height: 500px;" >
+					<a href="/meoui/accommodation/view/${accommodation.accommodationNo}">
+						<img class="image-responsive"
+						src="/meoui/images/${accommodation.accommodationImg}"
+						alt="알수없음" style="margin-bottom: 20px;">
+					</a>
+					<p>
+						<a href="/meoui/accommodation/view/${accommodation.accommodationNo}">
+							<strong>${accommodation.accommodationName}</strong>
+						</a>
+					</p>
+					<p><a href="/meoui/accommodation/view/${accommodation.accommodationNo}">
+							${accommodation.accommodationAddress}</a>
+					</p>
+				</div>
+			</c:forEach>
+		</div>
+			<hr>
+	<h3 style="margin-left: 70px">댓글작성란</h3>
+	<br>
+	<div id="center">
+		<form action="/meoui/siteComment/insert" method="post">
+			<div class="row">
+				<div class="col-xs-4" style="margin-left: 70px">
+					<textarea class="form-control col-sm-5" rows="5"
+						placeholder="댓글을 작성해 주세요." name="siteCommentContent">
+				</textarea>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-4" style="margin-left: 70px">
+					<button type="submit" class="w3-button w3-block w3-white w3-border">댓글작성</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	<hr>
+	<c:forEach items="${site.comment }" var="comment">
+		<div class="container">
+			<input type="hidden" id="memberNo" value="${comment.memberNo }"
+				class="form-control input-lg">
+			<div class="form-group">${comment.siteCommentContent}
+			</div>
+			<c:forEach items="${site.member }" var="member">
+				<div class="btn-r">작성자: ${member.memberId }</div>
+			</c:forEach>
+			<div class="form-group">
+				작성일:
+				<fmt:formatDate value="${comment.siteCommentDate}"
+					pattern="yyyy년 MM월 dd일" />
+			</div>
+			<div class="viewdelete">
+				<c:if test="${comment.memberNo eq memberNo }">
+					<a
+						href="/meoui/siteComment/delete/${comment.siteCommentNo }">
+						<button type="button"
+							class="w3-button w3-block w3-white w3-border" id="deleteBtn">댓글
+							삭제하기</button>
+					</a>
+				</c:if>
+			</div>
+			<hr>
+		</div>
+	</c:forEach>
+	<footer>
+		<%@include file="/footer.jsp" %>
+	</footer>
 </body>
-
-<script>
-	var result =
-<%=request.getAttribute("result")%>
-	$(document).ready(
-			function() {
-				var str = "<tr><td>와인이름:</td><td>" + result.wineInfoName
-						+ "</td></tr>";
-				str = str + "<tr><td>와인가격:<td><td>" + result.wineInfoPrice
-						+ "원</td><tr>";
-				str = str + "<tr><td>용량:<td><td>" + result.wineInfoCapacity
-						+ "</td><tr>";
-				str = str + "<tr><td>생산국가:<td><td>" + result.wineInfoCountry
-						+ "</td><tr>";
-				str = str + "<tr><td>생산지:<td><td>" + result.wineInfoRegion
-						+ "</td><tr>";
-				str = str + "<tr><td>제조사:<td><td>" + result.wineInfoWinery
-						+ "</td><tr>";
-				str = str + "<tr><td>수입사:<td><td>" + result.wineInfoImporter
-						+ "</td><tr>";
-				str = str + "<tr><td>빈티지:<td><td>" + result.wineInfoVintage
-						+ "</td><tr>";
-				str = str + "<tr><td>품종:<td><td>" + result.wineInfoGrapes
-						+ "</td><tr>";
-				str = str + "<tr><td>알고올도수:<td><td>" + result.wineInfoABV
-						+ "</td><tr>";
-				str = str + "<tr><td>와인종류:<td><td>" + result.wineInfoType
-						+ "</td><tr>";
-				str = str + "<tr><td>와인등급:<td><td>"
-						+ result.wineInfoClassification + "</td><tr>";
-				str = str + "<tr><td>향:<td><td>" + result.wineInfoFlavors
-						+ "</td><tr>";
-				str = str + "<tr><td>당도:<td><td>" + result.wineInfoSweetness
-						+ "</td><tr>";
-				str = str + "<tr><td>산도:<td><td>" + result.wineInfoAcidity
-						+ "</td><tr>";
-				str = str + "<tr><td>바디:<td><td>" + result.wineInfoBody
-						+ "</td><tr>";
-				$("tbody").append(str);
-			})
-</script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script>
-	$(document).ready(function() {
-		$("#btn").on("click", function() {
-			alert("감사합니다");
-			location.replace("/dionysus/wineinfo/list");
-		})
-	})
-</script>
 </html>

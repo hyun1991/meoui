@@ -47,4 +47,14 @@ public class MeetingBoardDAO {
 			template.delete("MeetingBoardMapper.meetingBoardDelete",meetingboardNo);
 	}
 	
+	//번호로 삭제(관리자용)
+	public void deleteMeetingBoardAdmin(int meetingNo){
+			template.delete("MeetingBoardMapper.meetingBoardDeleteAdmin",meetingNo);
+	}
+	//미팅번호 갯수 불러오기
+	public int selectCountMeetingNo(int meetingNo){
+		return template.selectOne("MeetingBoardMapper.selectCountMeetingNo",meetingNo);
+		
+	}
+	
 }

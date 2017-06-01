@@ -16,7 +16,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-		<header>
+	<header>
 		<%@include file="/nav/navbar.jsp"%>
 	</header>
 	<div class="container">
@@ -86,12 +86,12 @@
 	$(document).ready(function() {
 		$("#pwBtn").on("click", function() {
 			var memberId= $("#pwSearchId").val()
-			var garaName= $("#idSearchName").val()
-			var garaMail= $("#idSearchMail").val()
+			var memberName= $("#pwSearchName").val()
+			var memberMail= $("#pwSearchMail").val()
 			$.ajax({
 				type:"post",
 				url:"/meoui/member/pwsearch",
-				data:{memberId:memberId, garaName: garaName, garaMail:garaMail},
+				data:{memberId:memberId, memberName:memberName, memberMail:memberMail},
 				success:function(reulst){
 					alert("찾으신 비밀번호는"+result+"입니다.")
 				}

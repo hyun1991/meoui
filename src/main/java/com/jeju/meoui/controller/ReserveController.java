@@ -25,7 +25,8 @@ public class ReserveController {
 	
 	//	객실예약 폼 구성
 	@RequestMapping(value="/reserve/join", method=RequestMethod.GET)
-	public String createReserverStart(@RequestParam int roomNo, @RequestParam int roomPrice, HttpSession session){
+	public String createReserverStart(Model model,@RequestParam int roomNo, @RequestParam int roomPrice, HttpSession session){
+		model.addAttribute("result", service.getAllReserve());
 		session.setAttribute("roomNo", roomNo);
 		session.setAttribute("roomPrice", roomPrice);
 		return "reserve/reserveForm";

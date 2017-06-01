@@ -19,12 +19,12 @@ public class NoticeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(NoticeController.class);
 	//1. 공지게시판 추가하기(작성폼)
-	@RequestMapping(value="/notice/join", method=RequestMethod.GET)
+	@RequestMapping(value="/admin/notice/join", method=RequestMethod.GET)
 	public String insertNoticeForm(){
-		return "notice/insert";
+		return "admin/boardWrite";
 	}
 	//1. 공지게시판 추가하기(추가 성공)
-	@RequestMapping(value="/notice/join", method=RequestMethod.POST)
+	@RequestMapping(value="/admin/notice/join", method=RequestMethod.POST)
 	public String insertNotice(@ModelAttribute Notice notice,  HttpSession session){
 		int usersNo = (Integer)session.getAttribute("usersNo");
 		notice.setUsersNo(usersNo);
@@ -32,12 +32,12 @@ public class NoticeController {
 		return "redirect:/admin/notice/list?pageNo=1";
 	}
 	//2. 공지게시판 갱신하기(작성폼)
-	@RequestMapping(value="/notice/update", method=RequestMethod.GET)
+	@RequestMapping(value="/admin/notice/update", method=RequestMethod.GET)
 	public String updateNoticeForm(){
 		return "notice/update";
 	}
 	//2. 공지게시판 갱신하기(갱신 성공)
-	@RequestMapping(value="/notice/update", method=RequestMethod.POST)
+	@RequestMapping(value="/admin/notice/update", method=RequestMethod.POST)
 	public String updateNotice(@ModelAttribute Notice notice , HttpSession session){
 		int noticeNo = (Integer)session.getAttribute("noticeNo");
 		notice.setNoticeNo(noticeNo);
@@ -45,7 +45,7 @@ public class NoticeController {
 		return "redirect:/admin/notice/list?pageNo=1";
 	}
 	//3. 공지게시판 삭제
-	@RequestMapping(value="/notice/delete/{noticeNo}", method=RequestMethod.GET)
+	@RequestMapping(value="/admin/notice/delete/{noticeNo}", method=RequestMethod.GET)
 	public String deleteNotice(@PathVariable int noticeNo){
 		service.removeNotice(noticeNo);
 		return "redirect:/admin/notice/list?pageNo=1";
@@ -74,7 +74,7 @@ public class NoticeController {
 	public String selectByAdminNoticeNo(@PathVariable int noticeNo, Model model, HttpSession session){
 		 session.setAttribute("noticeNo", noticeNo);
 	     model.addAttribute("notice", service.findByNotice(noticeNo));
-	     return "/admin/noview";
+	     return "/admin/noticeDetail";
 	}
 	@RequestMapping(value="/noticecomment/delete/{noticeCommentNo}", method=RequestMethod.GET)
 	public String deleteNoticeComment(@PathVariable int noticeCommentNo, HttpSession session){

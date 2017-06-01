@@ -48,12 +48,7 @@
 					</ul>
 					
 				</div>
-				
-	<footer>
-		<h1>1 Follow Us Canada's New Passenger Bill of Rights Bans
-			Removal in Cases of Overbooking https://t.co/K2aizs9IKo
-			https://t.co/lb8fklloIp Twitter | 29 mins ago</h1>
-	</footer>
+			
 </body>
 
 </html>

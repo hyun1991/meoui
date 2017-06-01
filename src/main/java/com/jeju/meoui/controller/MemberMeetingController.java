@@ -41,28 +41,22 @@ public class MemberMeetingController {
 		MeetingJoin meetingJoin = new MeetingJoin();
 		int meetingAdminNo= (Integer)session.getAttribute("memberNo");
 		int memberNo = (Integer)session.getAttribute("memberNo");
-		int meetingNo=service.selectMaxMeetingNo();
+		//	int meetingNo=service.selectMaxMeetingNo();
 		String fileName= UploadUtil.storeAndGetFileName(meetingImg, ctx, path);
-		meetingJoin.setMemberNo(memberNo);
-		
-		logger.info("meetingNo:{}", meetingNo);
 	
-		meetingJoin.setMeetingNo(meetingNo);
-			
-		logger.info("meetingNo:{}", meetingNo);
-		
 		memberMeeting.setMeetingImg(fileName);
 		memberMeeting.setMeetingName(meetingName);
 		memberMeeting.setMeetingAdminNo(meetingAdminNo);
-		
+		meetingJoin.setMemberNo(memberNo);
 		service.createMemberMeeting(memberMeeting, meetingJoin);
 		logger.info("멤버넘버:{}", memberMeeting);
 		return "redirect:/membermeeting/list";
 	}
 
-	//모임 수정(작업완료)
+	//모임 수정(작업완료중)
 	@RequestMapping(value="/membermeeting/update", method=RequestMethod.GET)
 	public String updateMemberMeeting(){
+		
 		return "membermeeting/update";
 	}
 	
@@ -92,12 +86,13 @@ public class MemberMeetingController {
 		return "membermeeting/view";
 	}
 	
-	//모임 삭제 유저용
+	//모임 삭제 유저용(작업 완료)
 	@RequestMapping(value="/membermeeting/delete", method=RequestMethod.POST)
 	public String deleteMemberMeetingUser(HttpSession session){
 		int memberNo=(Integer)session.getAttribute("memberNo");
 		int meetingNo=(Integer)session.getAttribute("meetingNo");
 		service.deleteMemberMeeting(meetingNo, memberNo);
+		logger.info("모임삭제유저용 미팅넘버  {}",meetingNo);
 		return "redirect:/membermeeting/list";
 	}
 	

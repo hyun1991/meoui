@@ -64,7 +64,7 @@ $(function() {
 	    </div>
 	    </c:forEach>
 	    </div>
-	    <a href = "/meoui/notice/update?noticeNo=${notice.nlist.noticeNo}">
+	    <a href = "/meoui/admin/notice/update?noticeNo=${notice.nlist.noticeNo}">
 	    <button>게시글수정</button>
 	    </a>
 	  </body>

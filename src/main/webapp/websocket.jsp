@@ -10,26 +10,29 @@
 </head>
 <body>
 	<div class="col-xs-4">
-		<textarea class="form-control col-sm-5" rows="20" id="content" readonly="readonly">
+		<textarea class="form-control col-sm-5" id="content" rows="12" readonly="readonly">
 		</textarea>
 		<br>
-			<input type="text" size="37" id="msg">
-		<button type="button" class="w3-button w3-block w3-white w3-border"
-			id="send">전송</button>
-		<button type="button" class="w3-button w3-block w3-white w3-border"
-			id="connect">채팅연결</button>
-		<button type="button" class="w3-button w3-block w3-white w3-border"
+		<input type="text" id="msg">
+		<button type="button" class="btn btn-default"
+			id="send" onkeyup="enterkey()">전송</button>
+		<input type="image" id="connect" src="/meoui/images/talkkk.png">
+		<button type="button" class="btn btn-default"
 			id="exit">채팅종료</button>
 	</div>
 </body>
-<script>
+<script> 
 	var wsocket;
+	var memberId= "<%=session.getAttribute("memberId")%>";
+	var content= $("#content").val();
 	$(document).ready(function() {
 		$("#msg").hide();
 		$("#send").hide();
 		$("#exit").hide();
 		$("#content").hide();
 		$("#connect").on("click", function() {
+			$("#chatStart").hide();
+			$("#content").append("채팅에 참여하였습니다"+ "\r\n");
 			$("#connect").hide();
 			$("#send").show();
 			$("#exit").show();
@@ -38,7 +41,8 @@
 			wsocket = new WebSocket("ws://192.168.0.186:8087/meoui/handler1");
 			wsocket.onmessage = function(event) {
 				console.log(event.data)
-				$("#content").append(event.data + "\r\n");
+				$("#content").append("익명:"+event.data + "\r\n");
+				content.scrollTop= content.scrollHeight;
 			}
 			console.log("서버 연결");
 		})
@@ -48,6 +52,7 @@
 			$("#msg").hide();
 			$("#content").hide();
 			$("#connect").show();
+			$("#chatStart").show();
 			$("#content").html("").val()
 			wsocket.close();
 			console.log("연결 종료");
@@ -56,6 +61,12 @@
 			wsocket.send($("#msg").val());
 			$("#msg").val("");
 		})
+		//     엔터키를 통해 send함
+   		 function enterkey() {
+        if (window.event.keyCode == 13) {
+            send();
+        	}
+    	}
 	})
 </script>
 </html>

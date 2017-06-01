@@ -19,7 +19,7 @@
 	</header>
 	<h1 id="headTitle" style="margin-top: 50px;" align="center">숙박업주 추가</h1>
 	<hr>
-	<form action="/meoui/manage/join" method="post" >
+	<form action="/meoui/admin/manage/join" method="post" >
 		<div>
 			<div class="form-group">
 				<label>아이디</label><input type="text" id="ownerId" name="ownerId" class="form-control">

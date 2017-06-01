@@ -34,7 +34,7 @@
 		select * from (select rownum rnum, a1.* from (select s.site_no ,s.site_name, s.site_park , s.site_object, s.site_img, s.site_introduce, s.site_homepage, s.site_open_time , s.site_close_time, s.site_phone,
 		s.site_night_open, s.site_night_close_time, a.area_name, a.details_address 
 		from site s , area a 
-		where s.site_no=a.site_no) a1
+		where s.site_no=a.site_no order by s.site_no desc) a1
 		where rownum<=#{last}
 		) where rnum>=#{start}
 		]]>

@@ -19,13 +19,13 @@ public class TicketController {
 	private TicketService service;
 	
 	// 티켓 추가 폼
-	@RequestMapping(value="/ticket/insert", method=RequestMethod.GET)
+	@RequestMapping(value="/admin/ticket/insert", method=RequestMethod.GET)
 	public String insertSite(){
 		return "ticket/insert";
 	}
 	
 	// 티켓 추가 성공
-	@RequestMapping(value="/ticket/insert", method=RequestMethod.POST)
+	@RequestMapping(value="/admin/ticket/insert", method=RequestMethod.POST)
 	public String insertSite( Ticket ticket,  HttpSession session){
 		int usersNo = (Integer)session.getAttribute("usersNo");
 		int siteNo = (Integer)session.getAttribute("siteNo");
@@ -36,13 +36,13 @@ public class TicketController {
 	}
 	
 	// 티켓 수정 폼
-	@RequestMapping(value="/ticket/update" , method=RequestMethod.GET)
+	@RequestMapping(value="/admin/ticket/update" , method=RequestMethod.GET)
 	public String updateSite(){
 		return "ticket/update";
 	}
 	
 	// 티켓 수정 성공
-	@RequestMapping(value="/ticket/update", method=RequestMethod.POST)
+	@RequestMapping(value="/admin/ticket/update", method=RequestMethod.POST)
 	public String updateSite(Ticket ticket,   HttpSession session){
 		int usersNo = (Integer)session.getAttribute("usersNo");
 		int siteNo = (Integer)session.getAttribute("siteNo");
@@ -53,7 +53,7 @@ public class TicketController {
 	}
 	
 	// 티켓 삭제
-	@RequestMapping(value="/ticket/delete/{siteNo}" , method=RequestMethod.GET)
+	@RequestMapping(value="/admin/ticket/delete/{siteNo}" , method=RequestMethod.GET)
 	public String deleteTicket(@PathVariable int siteNo){
 		service.removeTicket(siteNo);
 		logger.info("siteNo{}:",siteNo);

@@ -42,7 +42,7 @@
 						<a href="/meoui/accommodaion/list?pageNo=1"> <img
 							class="image-responsive"
 							src="/meoui/images/${accommodation.accommodationImg}" alt="알수없음"
-							style="margin-bottom: 20px; height: auto; width: 260px">
+							style="margin-bottom: 20px; width:400px; height: 200px;">
 						</a>
 						<p>
 							<a href="/meoui/accommodaion/list?pageNo=1"> <strong>${accommodation.accommodationName}</strong>
@@ -62,16 +62,18 @@
 					<div class="col-sm-3"
 						style="overflow-x: hidden; overflow-y: hidden">
 						<a href="/meoui/site/list?pageNo=1"> <img
-							class="image-responsive" src="/meoui/images/${site.siteImg}"
+							class="image-responsive" src="/meoui/images/${result.siteImg}"
 							alt="알수없음"
-							style="margin-bottom: 20px; height: auto; width: 260px;">
+							style="margin-bottom: 20px; width:400px; height: 200px;">
 						</a>
 						<p>
 							<a href="/meoui/site/list?pageNo=1"> <strong>${result.siteName}</strong>
 							</a>
 						</p>
 						<p>
-							<a href="/meoui/site/list?pageNo=1"> ${result.siteIntroduce}</a>
+							<a href="/meoui/site/list?pageNo=1"> 
+							${result.siteOpenTime }~${result.siteCloseTime } 까지
+							</a>
 						</p>
 						<p>
 							<a href="${result.siteHomepage}"> ${result.siteHomepage}</a>
@@ -83,7 +85,7 @@
 	</div>
 	<hr>
 	<div class="container text-center">
-		<h1 id="headTitle" style="margin-top: 50px;" align="center">제주도</h1>
+		<img src="/meoui/images/jejju.jpg">
 		<div class="row">
 			<form class="form-inline">
 				<div class="input-group">

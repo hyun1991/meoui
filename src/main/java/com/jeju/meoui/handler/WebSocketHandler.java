@@ -2,8 +2,6 @@ package com.jeju.meoui.handler;
 
 import java.util.*;
 
-import javax.servlet.http.*;
-
 import org.slf4j.*;
 import org.springframework.web.socket.*;
 import org.springframework.web.socket.handler.*;
@@ -18,6 +16,7 @@ public class WebSocketHandler extends TextWebSocketHandler{
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 		// TODO Auto-generated method stub
+		logger.info("아이디{}", session.getId());
 		list.add(session);
 	}
 	//	사용자가 종료하면 세션을 리스트에 제거

@@ -37,8 +37,8 @@ public class MemberMeetingDAO {
 	}
 	//모임삭제하기 
 	//번호로 가지고와서 관리자가
-	public void deleteMembeMeeting(int meetingNo){
-		template.delete("MemberMeetingMapper.deleteMemberMeeting", meetingNo);
+	public void deleteMembeMeetingAdmin(int meetingNo){
+		template.delete("MemberMeetingMapper.deleteMemberMeetingAdmin", meetingNo);
 	}
 	
 	

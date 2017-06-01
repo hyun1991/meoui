@@ -24,9 +24,9 @@ public class SiteCommentDAO {
 	}
 	
 	// 관광지 댓글 삭제
-	public void deleteSiteComment(int siteNo, int memberNo){
+	public void deleteSiteComment(int siteCommentNo, int memberNo){
 		HashMap<String,Object> map = new HashMap<String,Object>();
-		map.put("siteNo", siteNo);
+		map.put("siteCommentNo", siteCommentNo);
 		map.put("memberNo", memberNo);
 		template.delete("siteCommentMapper.deleteSiteComment", map);
 	}
@@ -37,5 +37,8 @@ public class SiteCommentDAO {
 	}
 	
 	// 관광지 댓글 조회
-	
+	public List<SiteComment> selectSiteCommetn(int siteNo){
+		return template.selectList("siteCommentMapper.selectSiteCommetn", siteNo);
+	}
+
 }

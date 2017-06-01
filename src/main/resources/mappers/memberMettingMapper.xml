@@ -40,7 +40,7 @@
 	</delete>
 	
 	<!-- 모임삭제 (관리자용)-->
-	<delete id="deleteMemberMeeting" parameterType="Int">
+	<delete id="deleteMemberMeetingAdmind" parameterType="Int">
 		<![CDATA[
 			delete from member_meeting where meeting_no=#{meetingNo}
 		]]>	
@@ -85,8 +85,7 @@
 	
 	<select id="selectMaxMeetingNo" resultType="int">
 		<![CDATA[
-			select max(meeting_no+1) from member_meeting
-		
+			select max(meeting_no) from member_meeting
 		]]>
 	
 	</select>

@@ -31,8 +31,7 @@ public class MeetingBoardCommentService {
 			dao.insertMeetingBoardComment(meetingboardComment);
 	}
 	
-	//댓글 삭제
-	
+	//댓글 삭제 유저용	
 	public void deleteMeetingboardComment(int meetingboardCommentNo, int memberNo){
 		dao.deleteMeetingboardComment(meetingboardCommentNo, memberNo);
 		

@@ -46,5 +46,16 @@ public class TravlescheduleDAO {
 	public int getByTravleNo(){
 		return template.selectOne("TravlescheduleMapper.getByTravleNo");
 	}
-
+	//	페이지별 회원번호별 일정리스트 조회하기
+	public List<Schedule>getBySchedule(int memberNo, int startRow, int lastRow){
+		HashMap<String, Object>map= new HashMap<String, Object>();
+		map.put("memberNo", memberNo);
+		map.put("startRow", startRow);
+		map.put("lastRow", lastRow);
+		return template.selectList("TravlescheduleMapper.getBySchedule", map);
+	}
+	//	사용자번호별 일정개수 조회
+	public int getByMax(int memberNo){
+		return template.selectOne("TravlescheduleMapper.getByMax", memberNo);
+	}
 }

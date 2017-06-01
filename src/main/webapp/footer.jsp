@@ -43,9 +43,13 @@ body{
 								style="font-size: 50px"></i></a></li>
 					</ul>
 				</div>
-				<div>
+				<div align="right">
 					<%@include file="/websocket.jsp" %>
+					<p id="chatStart">채팅에 참여 하시려면 클릭해 주세요</p>
 				</div>
+			</div>
+			<div class="row">
+				<hr>
 			</div>
 			<!-- <div class="row text-center">
 				<div class="col-md-8 col-md-offset-2">

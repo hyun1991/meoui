@@ -14,37 +14,38 @@
 </head>
 <body>
 	<header>
-		<%@include file="/nav/navbar.jsp"%>
+		<%@include file="/nav/adminnav.jsp"%>
 	</header>
 	<hr>
+	<div class="row">
+		<h1 align="center">${result.site.siteName }</h1>
+	</div>
+	<br><br>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6 col-sm-12">
-				<img src="/meoui/images/${result.siteImg}">
+				<img src="/meoui/images/${result.site.siteImg}" style="width: 500px; height: 575px;">
 			</div>
 			<div>
-				<h3>${result.siteName }</h3>
+				<h3>대표전화</h3>${result.site.sitePhone }
 			</div>
 			<div>
-				<h3>대표전화</h3>${result.sitePhone }
+				<h3>주소</h3>${result.site.detailsAddress }
 			</div>
 			<div>
-				<h3>주소</h3>${result.detailsAddress }
+				<h3>이용대상</h3>${result.site.siteObject }
 			</div>
 			<div>
-				<h3>이용대상</h3>${result.siteObject }
+				<h3>주차</h3>${result.site.park }
 			</div>
 			<div>
-				<h3>주차</h3>${result.sitePark }
+				<h3>이용시간</h3>${result.site.siteOpenTime }~${result.site.siteCloseTime }
 			</div>
 			<div>
-				<h3>이용시간</h3>${result.siteOpenTime }~${result.siteCloseTime }
+				<h3>야간개장여부</h3>${result.site.siteNightOpen }
 			</div>
-			<div>
-				<h3>야간개장여부</h3>${result.siteNightOpen }
-			</div>
-			<div>
-				<h3>야간개장 시 폐장시간</h3>${result.siteNightCloseTime }
+			<div style="margin-left: 0;">
+				<h3>야간개장 시 폐장시간</h3>${result.site.siteNightCloseTime }
 			</div>
 			<div>
 			<h3>입장료</h3>
@@ -58,24 +59,24 @@
 			</div>
 		
 			<div class="col-xs-4">
-					<a href="/meoui/site/update">
+					<a href="/meoui/admin/site/update">
 							<button type="button"
 								class="w3-button w3-block w3-white w3-border">관광지 수정</button>
 						</a>
-							<a href="/meoui/ticket/insert">
+							<a href="/meoui/admin/ticket/insert">
 							<button type="button"
 								class="w3-button w3-block w3-white w3-border">티켓 추가</button>
 						</a>
-							<a href="/meoui/ticket/update">
+							<a href="/meoui/admin/ticket/update">
 							<button type="button"
 								class="w3-button w3-block w3-white w3-border">티켓 수정</button>
 						</a>
-								<a href="/meoui/ticket/delete/${result.siteNo }">
+								<a href="/meoui/admin/ticket/delete/${result.siteNo }">
 							<button type="button"
 								class="w3-button w3-block w3-white w3-border">티켓 삭제</button>
 						</a>
 						<a
-						href="/meoui/site/delete/${result.siteNo }">
+						href="/meoui/admin/site/delete/${result.siteNo }">
 						<button type="button"
 							class="w3-button w3-block w3-white w3-border" id="deleteBtn">
 							삭제하기</button>
@@ -87,14 +88,56 @@
 		</div>
 		
 	</div>
-
-	
-	
-	<footer>
-		<h1>1 Follow Us Canada's New Passenger Bill of Rights Bans
-			Removal in Cases of Overbooking https://t.co/K2aizs9IKo
-			https://t.co/lb8fklloIp Twitter | 29 mins ago</h1>
-	</footer>
+	<hr>
+	<h1 align="center">주변숙박시설</h1>
+    	<div class="row text-center" style="margin-left: 70px;">
+			<c:forEach items="${result.list }" var="accommodation">
+				<div class="col-sm-3" style="overflow-x:hidden;overflow-y:hidden; width: 280px; height: 600px;" >
+					<a href="#">
+						<img class="image-responsive"
+						src="/meoui/images/${accommodation.accommodationImg}"
+						alt="알수없음" style="margin-bottom: 20px;">
+					</a>
+					<p>
+						<a href="#">
+							<strong>${accommodation.accommodationName}</strong>
+						</a>
+					</p>
+					<p><a href="#">
+							${accommodation.accommodationAddress}</a>
+					</p>
+				</div>
+			</c:forEach>
+		</div>
+	<hr>
+	<h1 align="center">댓글리스트</h1>
+	<c:forEach items="${result.comment }" var="comment">
+		<div class="container">
+			<input type="hidden" id="memberNo" value="${comment.memberNo }"
+				class="form-control input-lg">
+			<div class="form-group">${comment.siteCommentContent}
+			</div>
+			<c:forEach items="${site.member }" var="member">
+				<div class="btn-r">작성자: ${member.memberId }</div>
+			</c:forEach>
+			<div class="form-group">
+				작성일:
+				<fmt:formatDate value="${comment.siteCommentDate}"
+					pattern="yyyy년 MM월 dd일" />
+			</div>
+			<div class="viewdelete">
+				<c:if test="${comment.memberNo eq memberNo }">
+					<a
+						href="/meoui/siteComment/delete/${comment.siteCommentNo }">
+						<button type="button"
+							class="w3-button w3-block w3-white w3-border" id="deleteBtn">댓글
+							삭제하기</button>
+					</a>
+				</c:if>
+			</div>
+			<hr>
+		</div>
+	</c:forEach>
 </body>
 
 </html>

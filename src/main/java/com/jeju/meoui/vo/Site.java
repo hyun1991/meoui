@@ -19,10 +19,12 @@ public class Site {
 	private String siteNightOpen;
 	private String siteNightCloseTime;
 	private String detailsAddress;
+	private String areaName;
 	private String area;
 	private int usersNo;
 	private int ticketPrice;
 	private String agegroupStandard;
+	private String park;
 	public Site(String siteName, int sitePark, String siteObject, String siteImg, String siteIntroduce,
 			String siteHomepage, String sitePhone, String siteOpenTime, String siteCloseTime, String siteNightOpen,
 			String siteNightCloseTime) {

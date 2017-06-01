@@ -30,6 +30,10 @@
 		<%@include file="/nav/navbar.jsp"%>
 	</header>
 	<table style="margin-left: 100px; width: auto;">
+	    <tr>
+			<th style="text-align: left; vertical-align: top;"><h5>작성자: &nbsp;&nbsp;</h5></th>
+			<th style="text-align: left; color: #555;">${result.board.memberName }</th>
+		</tr>
 		<tr>
 			<th style="text-align: left; vertical-align: top;"><h5>제목: &nbsp;&nbsp;</h5></th>
 			<th style="text-align: left; color: #555;">${result.board.freeboardTitle }</th>
@@ -45,6 +49,20 @@
 		첨부파일: &nbsp;&nbsp;<a href="/meoui/freeboard/download?freeboardImg=${result.board.freeboardImg }">
 			${result.board.freeboardImg }</a>
 	</div>
+	<div class="deleteboard">
+	<c:if test="${result.board.memberNo eq memberNo }">
+	<a href ="/meoui/freeboard/delete/${result.board.freeboardNo}">
+	<button type="submit" class="w3-button w3-block w3-white w3-border">글 삭제</button>
+	 </a>
+	 </c:if>
+	 </div>
+	 <div class="updateboard">
+	<c:if test="${result.board.memberNo eq memberNo }">
+	<a href ="/meoui/freeboard/update?freeboardNo=${result.board.freeboardNo}">
+	<button type="submit" class="w3-button w3-block w3-white w3-border">글 수정</button>
+	 </a>
+	 </c:if>
+	 </div>
 	<hr>
 	<h5 style="margin-left: 70px">댓글작성란</h5>
 	<br>
@@ -69,7 +87,7 @@
 		<div class="container">
 			<input type="hidden" id="boardCommentNo"
 				value="${comment.freeboardCommentNo }" class="form-control input-lg">
-			<div class="form-group">${comment.memberNo}</div>
+			<div class="form-group">${comment.memberName}</div>
 			<div class="form-group">${comment.freeboardCommentContent}</div>
 			<div class="form-group">
 				작성일:
