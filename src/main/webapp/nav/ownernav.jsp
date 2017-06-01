@@ -30,7 +30,7 @@
 		<ul class="nav navbar-nav col-md-12">
 			<li class="col-md-2"><a href="/meoui/manage/home" id="menu">홈</a></li>
 			<li class="col-md-2"><a href="/meoui/manage/accommodation/list?pageNo=1" id="menu">숙박 시설 관리</a></li>
-			<li class="col-md-2"><a href="/meoui/manage/reserve/list/<%=session.getAttribute("ownerNo")%>" id="menu">예약 관리</a></li>
+			<li class="col-md-2"><a href="/meoui/manage/reserve/ownerlist/<%=session.getAttribute("ownerNo")%>" id="menu">예약 관리</a></li>
 			<li class="dropdown pull-right"><a class="dropdown-toggle"
 				data-toggle="dropdown" href="#"><%=session.getAttribute("ownerId")%><span class="caret"></span></a>
 				<ul class="dropdown-menu">

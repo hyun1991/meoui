@@ -63,4 +63,19 @@
 		(select*from reserve order by reserve_no desc)t1)t2
 		where rnum between 1 and 10
 	</select>
+	<!-- 회원번호별 예약리스트 전체 조회하기 -->
+	<select id="getAllReserveByMemberNo" parameterType="int" resultType="ReserveResult">
+		select ((r.check_out-r.check_in)*(r.reserve_price+(r.stay_people*10000)))totalprice, r.stay_people, r.check_in, r.check_out,
+		a.accommodation_name, a.accommodation_address, a.accommodation_phone, r.reserve_no
+		from reserve r, reserve_details rd, accommodation a 
+		where r.member_no=#{memberNo} and r.reserve_no=rd.reserve_no and rd.accommodation_no=a.accommodation_no and r.check_in>=sysdate
+	</select>
+	<!-- 업주번호별 예약리스트 전체 조회하기 -->
+	<select id="getAllReserveByOwnerNo" parameterType="int" resultType="ReserveResult">
+		select r.reserve_no, r.check_in, r.check_out, ((r.check_out-r.check_in)*(r.reserve_price+(r.stay_people*10000)))totalprice,
+		r.stay_people, r.owner_no, r.member_no, m.member_name, m.member_phone, m.member_address, m.member_mail,
+		a.accommodation_name, a.accommodation_address, a.accommodation_phone from reserve r, reserve_details rd, accommodation a, member m
+		where r.owner_no=#{ownerNo} and r.reserve_no=rd.reserve_no and rd.accommodation_no=a.accommodation_no and r.member_no=m.member_no 
+		and r.check_in>=sysdate
+	</select>
 </mapper>

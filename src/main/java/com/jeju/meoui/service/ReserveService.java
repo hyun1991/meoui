@@ -127,4 +127,16 @@ public class ReserveService {
 		map.put("list", dao.getByAllReserve());
 		return map;
 	}
+	//	회원번호별 예약리스트 조회하기(쿼리에서 처리했습니다)
+	public HashMap<String, Object>findAllReserveByMemberNo(int memberNo){
+		HashMap<String, Object>map= new HashMap<String, Object>();
+		map.put("list", dao.getAllReserveByMemberNo(memberNo));
+		return map;
+	}
+	//	업주번호별 예약리스트 조회하기(쿼리에서 처리했습니다)
+	public HashMap<String, Object>findAllReserveByOwnerNo(int ownerNo){
+		HashMap<String, Object>map= new HashMap<String, Object>();
+		map.put("list", dao.getAllReserveByOwnerNo(ownerNo));
+		return map;
+	}
 }

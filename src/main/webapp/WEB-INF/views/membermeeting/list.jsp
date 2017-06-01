@@ -67,7 +67,7 @@ img {
 </style>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>모임 목록</title>
 </head>
 <script type="text/javascript"
 	src="//apis.daum.net/maps/maps3.js?apikey=0733036d66ec867aa0960ee525091024&libraries=services "></script>
@@ -75,11 +75,6 @@ img {
 <header>
 		<%@include file="/nav/navbar.jsp"%>
 	</header>
-	<h2>모임 리스트</h2>
-		<a href="/meoui/membermeeting/create">생성 </a>
-			<a href="/meoui/meetingjoin/list">내모임</a>
-			<a href="/meoui/eded.jsp">내모임</a>
-
 	<div class="row text-center">
 			<c:forEach items="${result.list }" var="meeting">
 				<div class="col-sm-3" style="overflow-x:hidden;overflow-y:hidden">
