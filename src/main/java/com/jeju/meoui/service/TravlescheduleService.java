@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.*;
 
 import com.google.gson.*;
 import com.jeju.meoui.dao.*;
+import com.jeju.meoui.util.*;
 import com.jeju.meoui.vo.*;
 
 @Service
@@ -31,6 +32,14 @@ public class TravlescheduleService {
 	public HashMap<String, Object> getAllTravle(int memberNo){
 		HashMap<String, Object>map= new HashMap<String, Object>();
 		map.put("list", dao.findAllMemberNo(memberNo));
+		return map;
+	}
+	public HashMap<String, Object>findAllSchedule(int pageNo, int memberNo){
+		int cntRow= dao.getByMax(memberNo);
+		Pagination pagination= PagingUtil.getPagination(pageNo, cntRow);
+		HashMap<String, Object>map= new HashMap<String, Object>();
+		map.put("pagination", pagination);
+		map.put("list", dao.getBySchedule(memberNo, pagination.getStartRow(), pagination.getLastRow()));
 		return map;
 	}
 }

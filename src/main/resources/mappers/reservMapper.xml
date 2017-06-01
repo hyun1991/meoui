@@ -56,4 +56,11 @@
 			select max(reserve_no)from reserve
 		]]>
 	</select>
+	<!-- 전체 예약리스트 조회하기 -->
+	<select id="getByAllReserve" resultType="Reserve">
+		select t2.* from
+		(select rownum rnum,t1.* from
+		(select*from reserve order by reserve_no desc)t1)t2
+		where rnum between 1 and 10
+	</select>
 </mapper>

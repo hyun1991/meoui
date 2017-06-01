@@ -115,15 +115,15 @@ img {
 					style="overflow-x: hidden; overflow-y: hidden; width: 280px; height: 500px;">
 					<a href="/meoui/site/detail/${result.siteNo}"> <img
 						class="image-responsive" src="/meoui/images/${result.siteImg}"
-						alt="알수없음" style="margin-bottom: 20px;">
+						alt="알수없음" style="margin-bottom: 20px;width:400px; height: 200px;">
 					</a>
 					<p>
 						<a href="/meoui/site/detail/${result.siteNo}"> <strong>${result.siteName}</strong>
 						</a>
 					</p>
-					<p>
-						<a href="/meoui/site/detail/${result.siteNo}">
-							${result.siteIntroduce}</a>
+					<p id="selector">
+						<a href="#">
+							${result.siteOpenTime }~${result.siteCloseTime }까지</a>
 					</p>
 					<p>
 						<a href="${result.siteHomepage}"> ${result.siteHomepage}</a>
@@ -157,4 +157,6 @@ img {
 		<%@include file="/footer.jsp"%>
 	</footer>
 </body>
+<script>
+</script>
 </html>

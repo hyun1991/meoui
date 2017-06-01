@@ -5,6 +5,7 @@ import java.util.*;
 import org.slf4j.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
+import org.springframework.transaction.annotation.*;
 
 import com.jeju.meoui.dao.*;
 import com.jeju.meoui.vo.*;;
@@ -24,9 +25,12 @@ public class MemberMeetingService {
 	
 	private Logger logger= LoggerFactory.getLogger(MemberMeetingService.class);
 	//모임생성
+	@Transactional
 	public void createMemberMeeting(MemberMeeting memberMeeting, MeetingJoin meetingJoin){
 		dao.insertMemberMeeting(memberMeeting);
-		dao.selectMaxMeetingNo();
+		logger.info("{}",dao.selectMaxMeetingNo());
+		int meetingNo= dao.selectMaxMeetingNo();
+		meetingJoin.setMeetingNo(meetingNo);
 		joindao.insertMeetingJoin(meetingJoin);
 	}
 	//마지막 번호 찾기
@@ -37,6 +41,7 @@ public class MemberMeetingService {
 	
 	//모임수정
 	public void updataMeetingName(MemberMeeting memberMeeting){
+		
 		dao.updateMeetingName(memberMeeting);
 		logger.info("모임수정:{}", memberMeeting);
 	}
@@ -44,16 +49,20 @@ public class MemberMeetingService {
 	//모임삭제(유저용)
 		public void deleteMemberMeeting(int meetingNo, int memberNo){
 			
-			logger.info("멤버미팅서비스 meeintno : {}",meetingNo);
-			comdao.deleteMeetingboardCommentAmin(meetingNo); //댓글 삭제
+			logger.info("멤버미팅서비스 meeingtno : {}",meetingNo);
+			logger.info("멤버미팅서비스 memberNo : {}",meetingNo);
+			comdao.deleteMeetingboardCommentAdmin(meetingNo); //댓글 삭제
+			logger.info("댓글삭제 완료");
 			boarddao.deleteMeetingBoardAdmin(meetingNo);//게시판 삭제											//모임게시판 삭제
+			logger.info("모임게시판 삭제완료");
 			joindao.deleteMeetingJoinAdmin(meetingNo);	//가입 삭제		
+			logger.info("가입삭제 완료");
 			dao.deleteMembeMeetingUser(meetingNo, memberNo); //모임삭제		
-	
+			logger.info("모임삭제 완료 ");
 		}
 	
 	//모임삭제(관리자용)
-	public void deleteMemberMeeting(int meetingNo){
+		public void deleteMemberMeeting(int meetingNo){
 		//comdao.deleteMeetingboardCommentAmin(meetingNo); //댓글 삭제
 		//boarddao.deleteMeetingBoardAdmin(meetingNo);//게시판 삭제											//모임게시판 삭제
 		//joindao.deleteMeetingJoinAdmin(meetingNo);	//가입 삭제

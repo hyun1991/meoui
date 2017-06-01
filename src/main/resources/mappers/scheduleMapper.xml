@@ -42,5 +42,18 @@
 	<select id="getByTravleNo" resultType="int">
 		select max(travleschedule_no)from travleschedule
 	</select>
-
+	
+	<select id="getBySchedule" parameterType="HashMap" resultType="Schedule">
+		<![CDATA[
+  		select t2.* from 
+      (select rownum rnum, t1.* from
+      (select t.travleschedule_no, t.member_no, t.travleschedule_date, t.schedule, d.site_no, 
+		s.site_name from travleschedule t, travleschedule_details d, site s 
+		where t.member_no=#{memberNo} and t.travleschedule_no=d.travleschedule_no and d.site_no= s.site_no order by t.travleschedule_no desc
+      )t1)t2 where rnum between #{startRow} and #{lastRow}
+		]]>
+	</select>
+	<select id="getByMax" resultType="int">
+		select count(*)from travleschedule where member_no=#{memberNo}
+	</select>
 </mapper>

@@ -41,6 +41,6 @@
 	   	<typeAlias type="com.jeju.meoui.vo.MeetingBoardComment" alias="MeetingBoardComment"/>
 	    <typeAlias type="com.jeju.meoui.vo.Travleschedule" alias="Travleschedule"/>
 	    <typeAlias type="com.jeju.meoui.vo.TravlescheduleDetails" alias="TravlescheduleDetails"/>
-
+		<typeAlias type="com.jeju.meoui.vo.Schedule" alias="Schedule"/>
 	</typeAliases>
 </configuration>

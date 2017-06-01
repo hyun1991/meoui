@@ -111,10 +111,10 @@ img {
 		<div class="row text-center">
 			<hr>
 			<c:forEach items="${result.list }" var="result">
-				<div class="col-sm-3" style="overflow-x:hidden;overflow-y:hidden">
+				<div class="col-sm-3" style="overflow-x:hidden;overflow-y:hidden;width: 280px; height: 500px;">
 					<a href="#"> <img
 						class="image-responsive" src="/meoui/images/${result.siteImg}"
-						alt="알수없음" style="margin-bottom: 20px;">
+						alt="알수없음" style="margin-bottom: 20px; width:400px; height: 200px;">
 					</a>
 					<p>
 						<a href="#"> <strong>${result.siteName}</strong>

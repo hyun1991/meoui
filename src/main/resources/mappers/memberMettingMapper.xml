@@ -85,7 +85,7 @@
 	
 	<select id="selectMaxMeetingNo" resultType="int">
 		<![CDATA[
-			select max(meeting_no+1) from member_meeting
+			select max(meeting_no) from member_meeting
 		]]>
 	
 	</select>

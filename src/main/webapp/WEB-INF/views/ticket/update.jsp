@@ -7,10 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%@include file="/nav/ownernav.jsp" %>
+<%@include file="/nav/adminnav.jsp" %>
 	<h1>티켓 수정페이지</h1>
 	<hr>
-	<form action="/meoui/ticket/update" method="post" >
+	<form action="/meoui/admin/ticket/update" method="post" >
 		<hr>
 		<div>
 			<div class="form-group">

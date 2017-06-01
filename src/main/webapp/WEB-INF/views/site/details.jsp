@@ -17,13 +17,14 @@
 		<%@include file="/nav/adminnav.jsp"%>
 	</header>
 	<hr>
+	<div class="row">
+		<h1 align="center">${result.site.siteName }</h1>
+	</div>
+	<br><br>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6 col-sm-12">
 				<img src="/meoui/images/${result.site.siteImg}" style="width: 500px; height: 575px;">
-			</div>
-			<div>
-				<h3>${result.site.siteName }</h3>
 			</div>
 			<div>
 				<h3>대표전화</h3>${result.site.sitePhone }
@@ -35,7 +36,7 @@
 				<h3>이용대상</h3>${result.site.siteObject }
 			</div>
 			<div>
-				<h3>주차</h3>${result.site.sitePark }
+				<h3>주차</h3>${result.site.park }
 			</div>
 			<div>
 				<h3>이용시간</h3>${result.site.siteOpenTime }~${result.site.siteCloseTime }

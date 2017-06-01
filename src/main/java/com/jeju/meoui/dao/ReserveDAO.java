@@ -48,4 +48,8 @@ public class ReserveDAO {
 	public int selectByMaxReserveNo(){
 		return template.selectOne("ReserveMapper.selectByMaxReserveNo");
 	}
+	//	예약리스트 전체조회하기
+	public List<Reserve>getByAllReserve(){
+		return template.selectList("ReserveMapper.getByAllReserve");
+	}
 }
