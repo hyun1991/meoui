@@ -83,7 +83,6 @@
 			</div>
 		</div>
 	</div>
-	<hr>
 	<div class="container text-center">
 		<img src="/meoui/images/jejju.jpg">
 		<div class="row">

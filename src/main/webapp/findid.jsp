@@ -13,19 +13,12 @@
 	</header>
 	<div class="container">
 		<div class="row">
-			<h2>계정정보찾기(아이디/비밀번호)</h2>
+			<h2>아이디 찾기</h2>
 			<br>
 		</div>
-
 		<div class="row">
-			<ul class="nav nav-pills">
-				<li class="active"><a data-toggle="pill" href="#findId">아이디찾기</a></li>
-				<li><a data-toggle="pill" href="#findPwd">비밀번호 찾기</a></li>
-			</ul>
-			<br>
-			<div class="tab-content">
 				<div id="findId" class="tab-pane fade in active">
-					<form action="/meoui//member/idsearch" method="post">
+					<form action="/meoui/member/idsearch" method="post">
 						<div class="form-group row">
 							<div class="form-group col-md-6">
 								<label for="usr">이름</label> <input type="text"
@@ -40,40 +33,13 @@
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-default" id="idBtn">조회</button>
-							</div>
-						</div>
-					</form>
-				</div>
-				<div id="findPwd" class="tab-pane fade">
-					<form>
-						<div class="form-group row">
-							<div class="form-group col-md-6">
-								<label for="email">아이디</label> <input type="text"
-									class="form-control">
-							</div>
-						</div>
-						<div class="form-group row">
-							<div class="form-group col-md-6">
-								<label for="usr">이름</label> <input type="text"
-									class="form-control">
-							</div>
-						</div>
-						<div class="form-group row">
-							<div class="form-group col-md-6">
-								<label for="email">이메일</label> <input type="email"
-									class="form-control">
-
-							</div>
-							<div class="form-group">
-								<label for="email"></label>
-								<button type="submit" class="btn btn-default" id="pwBtn">조회</button>
+								<a href="/meoui/"><button type="button" class="btn btn-default" id="idBtn">홈으로</button></a>
 							</div>
 						</div>
 					</form>
 				</div>
 			</div>
 		</div>
-	</div>
 </body>
 <script>
 	$(document).ready(function() {

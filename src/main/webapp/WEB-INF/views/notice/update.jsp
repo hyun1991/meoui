@@ -7,13 +7,34 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>게시글 수정</h1>
-<form id="UpdateNoticeFrom" action="/meoui/admin/notice/update" method="POST">
-<table>
-<tr><td>제목</td><td><input type="text" name="noticeTitle" id="noticeTitle"></td></tr>
-<tr><td>내용</td><td><textarea name="noticeContent" id="noticeContent"></textarea></td></tr>
-</table>
-<button id="update" type = "submit">수정 완료</button>
-</form>
+<%@ include file="/WEB-INF/include/include-header.jsp" %>
+	<header>
+		<%@include file="/nav/adminnav.jsp" %>
+	</header>
+	<div align="center">
+    <form id="frm" action="/meoui/admin/notice/update" method="post">
+        <table class="board_view">
+            <colgroup>
+                <col width="15%">
+                <col width="*"/>
+            </colgroup>
+            <caption><h1>게시글 수정하기</h1></caption>
+            <tbody>
+                <tr>
+                    <th scope="row">제목</th>
+                    <td><input type="text" id="TITLE" name="noticeTitle" class="wdp_90"></input></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="view_text">
+                        <textarea rows="20" cols="100" title="내용" id="CONTENTS" name="noticeContent"></textarea>
+                    </td>
+                </tr>
+            </tbody>
+        </table>         
+        <input type="submit" value="수정완료" class="btn">
+        <a href="/meoui/admin/notice/list?pageNo=1" class="btn" id="list" >목록으로</a>
+    </form>
+    </div>
+    <%@ include file="/WEB-INF/include/include-body.jsp" %> 
 </body>
 </html>
