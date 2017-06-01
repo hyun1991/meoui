@@ -77,7 +77,7 @@ img {
 	</header>
 	<h2>모임게시판 글 목록</h2>	
 		<c:forEach items="${result.list }" var="board">
-				<div class="col-sm-3" style="overflow-x:hidden;overflow-y:hidden">
+				<%-- <div class="col-sm-3" style="overflow-x:hidden;overflow-y:hidden">
 				
 					<a
 						href="/meoui/meetingboard/view/${meeting.meetingNo}">
@@ -117,7 +117,36 @@ img {
 												
 																						
 				</div>
-				</div>
+				</div> --%>
+				<table class="table table-hover table-responsive">
+				<thead width="100%">
+					<tr>
+						<th width="30%">사진</th>
+						<th width="30%">제목</th>
+						<th width="20%">작성자</th>
+						<th width="20%">작성날자</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><a
+						href="/meoui/meetingboard/view/${meeting.meetingNo}">
+						<img class="image-responsive"
+						src="/meoui/images/${board.meetingboardImg }"
+						alt="skinscuber" style="margin-bottom: 20px;">
+					</a></td>
+						<td><a href="/meoui/membermeeting/view/${meeting.meetingNo}">
+							<strong>${board.meetingboardTitle }</strong>
+						</a></td>
+						<td><a	href="/meoui/membermeeting/view/${meeting.meetingNo}">
+							${board.meetingboardContent }</a></td>
+						<td><a	href="/meoui/membermeeting/view/${meeting.meetingNo}">
+							${board.meetingboardCnt }</a></td>
+					</tr>
+					
+
+				</tbody>
+			</table>
 			</c:forEach>		
 				<a href="/meoui/meetingboard/create">글쓰기 </a>		
 	<div class="row text-center">
