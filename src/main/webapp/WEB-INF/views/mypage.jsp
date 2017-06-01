@@ -60,17 +60,8 @@ footer {
 		<div class="btn-group row">
 			<div class="form-group col-md-6">
 				<div class="btn-group btn-group-justified">
-					<a href="#" class="btn btn-success">내가 가입한 모임</a> <a href="#"
-						class="btn btn-success">내 친구 목록 확인</a>
-				</div>
-			</div>
-		</div>
-		<div class="form-group row">
-
-			<div class="form-group col-md-6">
-				<div class="btn-group btn-group-justified">
-					<a href="#" class="btn btn-success">접속한 회원 목록 확인</a> <a href="#"
-						class="btn btn-success">즐겨찾기 목록</a>
+					<a href="/meoui/membermeeting/create" class="btn btn-success">모임생성</a> 
+					<a href="/meoui/meetingjoin/list"	class="btn btn-success">나의 모임리스트</a>
 				</div>
 			</div>
 		</div>
