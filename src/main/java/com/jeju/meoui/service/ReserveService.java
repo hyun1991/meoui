@@ -89,9 +89,7 @@ public class ReserveService {
 	//	예약취소하기
 	@Transactional
 	public void removeReserve(int reserveNo, int memberNo){
-		System.out.println("22222222222222222222222");
 		dao.deleteReserve(reserveNo, memberNo);
-		System.out.println("333333333333333333333333");
 		detailsDao.deleteReserveDetails(reserveNo);
 	}
 	//	숙박업주별 예약리스트 조회하기
