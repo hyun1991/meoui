@@ -1,24 +1,21 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="ko">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<%@ include file="/WEB-INF/include/include-header.jsp" %>
 </head>
 <body>
-<%@ include file="/WEB-INF/include/include-header.jsp" %>
 	<header>
 		<%@include file="/nav/adminnav.jsp" %>
 	</header>
 	<div align="center">
-    <form id="frm" action="/meoui/admin/notice/update" method="post">
+    <form id="frm" action="/meoui/admin/notice/join" method="post">
         <table class="board_view">
             <colgroup>
                 <col width="15%">
                 <col width="*"/>
             </colgroup>
-            <caption><h1>게시글 수정하기</h1></caption>
+            <caption><h1>게시글 작성</h1></caption>
             <tbody>
                 <tr>
                     <th scope="row">제목</th>
@@ -31,7 +28,7 @@
                 </tr>
             </tbody>
         </table>         
-        <input type="submit" value="수정완료" class="btn">
+        <input type="submit" value="작성하기" class="btn">
         <a href="/meoui/admin/notice/list?pageNo=1" class="btn" id="list" >목록으로</a>
     </form>
     </div>

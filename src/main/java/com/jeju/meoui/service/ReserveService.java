@@ -89,9 +89,7 @@ public class ReserveService {
 	//	예약취소하기
 	@Transactional
 	public void removeReserve(int reserveNo, int memberNo){
-		System.out.println("22222222222222222222222");
 		dao.deleteReserve(reserveNo, memberNo);
-		System.out.println("333333333333333333333333");
 		detailsDao.deleteReserveDetails(reserveNo);
 	}
 	//	숙박업주별 예약리스트 조회하기
@@ -127,6 +125,18 @@ public class ReserveService {
 	public HashMap<String, Object>getAllReserve(){
 		HashMap<String, Object> map= new HashMap<String, Object>();
 		map.put("list", dao.getByAllReserve());
+		return map;
+	}
+	//	회원번호별 예약리스트 조회하기(쿼리에서 처리했습니다)
+	public HashMap<String, Object>findAllReserveByMemberNo(int memberNo){
+		HashMap<String, Object>map= new HashMap<String, Object>();
+		map.put("list", dao.getAllReserveByMemberNo(memberNo));
+		return map;
+	}
+	//	업주번호별 예약리스트 조회하기(쿼리에서 처리했습니다)
+	public HashMap<String, Object>findAllReserveByOwnerNo(int ownerNo){
+		HashMap<String, Object>map= new HashMap<String, Object>();
+		map.put("list", dao.getAllReserveByOwnerNo(ownerNo));
 		return map;
 	}
 }

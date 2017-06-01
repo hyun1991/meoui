@@ -42,4 +42,10 @@ public class TravlescheduleService {
 		map.put("list", dao.getBySchedule(memberNo, pagination.getStartRow(), pagination.getLastRow()));
 		return map;
 	}
+	//	일정삭제하기
+	@Transactional
+	public void deleteSchedule(int travlescheduleNo, int memberNo){
+		detailDao.deleteTravleDetails(travlescheduleNo, memberNo);
+		dao.deleteTravle(travlescheduleNo, memberNo);
+	}
 }

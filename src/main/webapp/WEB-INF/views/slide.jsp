@@ -43,11 +43,10 @@ animation: 20s slidy ease-in-out infinite;
 <body>
 <div id="slider">
 	<figure>
+	<img src="/meoui/images/jeju200.jpg" alt="">
+	<img src="/meoui/images/hanaa.jpg" alt="">
 	<img src="/meoui/images/hanra.jpg" alt="">
-	<img src="/meoui/images/hanra.jpg" alt="">
-	<img src="/meoui/images/hanra.jpg" alt="">
-	<img src="/meoui/images/hanra.jpg" alt="">
-	<img src="/meoui/images/hanra.jpg" alt="">
+	<img src="/meoui/images/hanra2.jpg" alt="">
 	</figure>
 	</div>
 </body>

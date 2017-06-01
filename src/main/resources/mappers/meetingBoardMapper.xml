@@ -32,7 +32,18 @@
 		order by meetingboard_no desc)t1)t2 
 		where meeting_no=#{meetingNo} and rnum
 		between #{start} and #{last}
-]]>
+]]> 
+</select>
+	<!--미팅 번호별 게시판 갯수 -->
+	<select id="selectCountMeetingNo" parameterType="int" resultType="int">
+	
+			<![CDATA[
+		select count(meeting_no) from meetingboard where meeting_no=#{meetingNo}
+]]> 
+	
+	
+
+
 	</select>
 	<!--  게시판 마지막 번호 -->
 	<select id="meetingBoardCount" resultType="int">

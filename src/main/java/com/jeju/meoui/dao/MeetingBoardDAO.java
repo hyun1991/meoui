@@ -51,6 +51,10 @@ public class MeetingBoardDAO {
 	public void deleteMeetingBoardAdmin(int meetingNo){
 			template.delete("MeetingBoardMapper.meetingBoardDeleteAdmin",meetingNo);
 	}
-	
+	//미팅번호 갯수 불러오기
+	public int selectCountMeetingNo(int meetingNo){
+		return template.selectOne("MeetingBoardMapper.selectCountMeetingNo",meetingNo);
+		
+	}
 	
 }

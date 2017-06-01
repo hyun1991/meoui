@@ -9,7 +9,7 @@
 </head>
 <body>
 	<header>
-		<%@include file="/nav/navbar.jsp"%>
+		<%@include file="/nav/adminnav.jsp"%>
 	</header>
 	<div align="left" style="margin-left: 70px;">
 		<table class="board_view">
@@ -45,12 +45,20 @@
 				</tr>
 			</tbody>
 		</table>
+		<%@ include file="/WEB-INF/include/include-body.jsp"%>
 	</div>
 	<br>
 	<div class="row text-center">
 		<div class="col-xs-4" style="margin-left: 70px;">
-			<a href="/meoui/notice/list?pageNo=1">
+			<a href="/meoui/admin/notice/list?pageNo=1">
 				<button type="button" class="w3-button w3-block w3-white w3-border">목록으로</button>
+			</a>
+		</div>
+	</div>
+	<div class="row text-center">
+		<div class="col-xs-4" style="margin-left: 70px;">
+			<a href="/meoui/admin/notice/update?noticeNo=${notice.nlist.noticeNo}">
+				<button type="button" class="w3-button w3-block w3-white w3-border">수정하기</button>
 			</a>
 		</div>
 	</div>
@@ -59,7 +67,8 @@
 	<br>
 	<div class="row">
 		<div class="col-xs-4" style="margin-left: 70px">
-			<textarea class="form-control col-sm-5" rows="5" id="noticeCommentContent">
+			<textarea class="form-control col-sm-5" rows="5"
+				id="noticeCommentContent">
 				</textarea>
 		</div>
 		<br>
@@ -83,8 +92,9 @@
 				<div class="form-group">
 					<c:if test="${comment.memberNo eq memberNo }">
 						<a href="/meoui/noticecomment/delete/${comment.noticeCommentNo }">
-							<button id="deleteComment" class="w3-button w3-block w3-white w3-border" id="deleteBtn">
-							댓글삭제</button>
+							<button id="deleteComment"
+								class="w3-button w3-block w3-white w3-border" id="deleteBtn">
+								댓글삭제</button>
 						</a>
 					</c:if>
 				</div>
@@ -94,9 +104,6 @@
 	<br>
 	<br>
 	<%@ include file="/WEB-INF/include/include-body.jsp"%>
-	<footer>
-		<%@include file="/footer.jsp"%>
-	</footer>
 </body>
 <script>
 	$(function() {

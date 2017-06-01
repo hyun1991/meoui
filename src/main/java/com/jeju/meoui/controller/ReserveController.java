@@ -84,4 +84,16 @@ public class ReserveController {
 		model.addAttribute("result", service.getAllByOwnerNo(ownerNo));
 		return "reserve/ownerlist";
 	}
+	//	회원별 예약리스트 조회하기(쿼리에서 처리했습니다)
+	@RequestMapping(value="/reserve/mylist/{memberNo}", method=RequestMethod.GET)
+	public String getAllMyList(Model model, @PathVariable int memberNo){
+		model.addAttribute("result", service.findAllReserveByMemberNo(memberNo));
+		return "reserve/melist";
+	}
+	//	업주별 예약리스트 조회하기(쿼리에서 처리했습니다)
+	@RequestMapping(value="/manage/reserve/ownerlist/{ownerNo}", method=RequestMethod.GET)
+	public String getAllOwnerList(Model model, @PathVariable int ownerNo){
+		model.addAttribute("result", service.findAllReserveByOwnerNo(ownerNo));
+		return "reserve/owlist";
+	}
 }
