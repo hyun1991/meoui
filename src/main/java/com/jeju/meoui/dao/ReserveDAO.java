@@ -52,4 +52,13 @@ public class ReserveDAO {
 	public List<Reserve>getByAllReserve(){
 		return template.selectList("ReserveMapper.getByAllReserve");
 	}
+	//	회원번호별 예약리스트 조회하기(쿼리처리용)
+	public List<ReserveResult> getAllReserveByMemberNo(int memberNo){
+		return template.selectList("ReserveMapper.getAllReserveByMemberNo", memberNo);
+	}
+	//	업주번호별 예약리스트 조회하기(쿼리처리용)
+	public List<ReserveResult> getAllReserveByOwnerNo(int ownerNo){
+		return template.selectList("ReserveMapper.getAllReserveByOwnerNo", ownerNo);
+	}
+
 }
