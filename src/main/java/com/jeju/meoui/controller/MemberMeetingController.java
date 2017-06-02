@@ -55,10 +55,15 @@ public class MemberMeetingController {
 
 	//모임 수정(작업완료)
 	@RequestMapping(value="/membermeeting/update", method=RequestMethod.GET)
-	public String updateMemberMeeting(){
+	public String updateMemberMeeting(HttpSession session, Model model){
+		int meetingNo=(Integer)session.getAttribute("meetingNo");
 		
+		model.addAttribute("result",service.selectMeetingView(meetingNo));
 		return "membermeeting/update";
 	}
+	
+	
+	
 	//모임 수정(작업 완료)
 	@RequestMapping(value="/membermeeting/update", method=RequestMethod.POST)
 	public String updateMemberMeeting(@RequestParam String meetingName, @RequestParam("img") MultipartFile meetingImg, HttpSession session){
