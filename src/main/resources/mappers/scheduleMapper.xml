@@ -8,15 +8,15 @@
 	    	select travle_seq.nextval from dual
 		</selectKey>
 		<![CDATA[
-			insert into travleschedule(travleschedule_no, member_no, travleschedule_date, schedule)
-			values(#{travlescheduleNo}, #{memberNo}, #{travlescheduleDate}, #{schedule})
+			insert into travleschedule(travleschedule_no, member_no, travleschedule_date, schedule, end)
+			values(#{travlescheduleNo}, #{memberNo}, #{travlescheduleDate}, #{schedule}, #{end})
 		]]>
 	</insert>
 	<!-- 2. 일정수정하기 -->
 	<update id="updateTravle" parameterType="Travleschedule">
 		<![CDATA[
 			update travleschedule set schedule=#{schedule} where travleschedule_no=#{travlescheduleNo} and
-			member_no=#{memberNo} and travleschedule_date=#{travlescheduleDate}
+			member_no=#{memberNo} and travleschedule_date=#{travlescheduleDate} and end=#{end}
 		]]>
 	</update>
 
@@ -36,7 +36,7 @@
 	</select>
 	<!-- 7. 고객번호별 일정전체리스트 출력하기 -->
 	<select id="findAllMemberNo" parameterType="int" resultType="Travleschedule">
-		select * from travleschedule where member_no=#{memberNo}
+		select * from travleschedule where member_no=#{memberNo} 
 	</select>
 	<!-- 8. 최근입력된 일정번호 조회하기 -->
 	<select id="getByTravleNo" resultType="int">
@@ -47,7 +47,7 @@
 		<![CDATA[
   		select t2.* from 
       (select rownum rnum, t1.* from
-      (select t.travleschedule_no, t.member_no, t.travleschedule_date, t.schedule, d.site_no, 
+      (select t.travleschedule_no, t.member_no, t.travleschedule_date, t.end, t.schedule, d.site_no, 
 		s.site_name from travleschedule t, travleschedule_details d, site s 
 		where t.member_no=#{memberNo} and t.travleschedule_no=d.travleschedule_no and d.site_no= s.site_no order by t.travleschedule_no desc
       )t1)t2 where rnum between #{startRow} and #{lastRow}

@@ -11,6 +11,7 @@ public class Schedule {
 	private int travlescheduleNo;		//	일정번호(pk)
 	private int memberNo;				//	일반고객번호(pk)
 	private Date travlescheduleDate;	//	일정날짜;
+	private Date end;
 	private String schedule;			//	스케쥴내용
 	private String siteName;
 	private int sitePark;
