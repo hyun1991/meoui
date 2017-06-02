@@ -1,13 +1,12 @@
 package com.jeju.meoui.dao;
 
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
-import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.mybatis.spring.*;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.stereotype.*;
 
-import com.jeju.meoui.vo.MeetingBoard;
+import com.jeju.meoui.vo.*;
 
 @Repository
 public class MeetingBoardDAO {
@@ -31,10 +30,21 @@ public class MeetingBoardDAO {
 		return template.selectList("MeetingBoardMapper.selectAllmeetinBoard", map);
 		}
 	
+	//게시글 수정
+	public void updateMeetingBoard(MeetingBoard meetingBoard){
+	//	HashMap<String, Object>map= new HashMap<String, Object>();
+		//map.put("meetingNo", meetingNo);
+	//	map.put("memberNo", memberNo);
+		template.update("MeetingBoardMapper.updateMeetingBoard", meetingBoard);
+	}
+	
 	
 	public int meetingBoardCount(){
 		return template.selectOne("MeetingBoardMapper.meetingBoardCount");
 	}
+	
+	
+	
 	
 	//상세보기
 	public MeetingBoard selectMeetingBoardView(int meetingboardNo){

@@ -71,6 +71,12 @@ public class MemberMeetingDAO {
 		return template.selectOne("MemberMeetingMapper.selectMaxMeetingNo");
 	}
 	
+	//토탈넘버 증가
+	public void updateMemberMeetingTotalNumber(int meetingNo){
+		template.update("MemberMeetingMapper.updateMemberMeetingTotalNumber", meetingNo);
+		
+	}
+	
 	
 	
 }
