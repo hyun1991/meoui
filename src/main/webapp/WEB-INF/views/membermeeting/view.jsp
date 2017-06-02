@@ -92,21 +92,29 @@ img {
 					${meeting.meetingTotalNumber }명</a>
 			</p>
 			
+			
 			<form action="/meoui/membermeeting/post" method=post>
 				<button id="commit" type="submit"
 					class="w3-button w3-block w3-white w3-border">회원 가입하기</button>
 			</form>
+			<form action="/meoui/membermeeting/view/bye" method=get>
+			<button id="commit" type="submit"
+					class="w3-button w3-block w3-white w3-border">모임 탈퇴하기</button>
+			</form>	
+		
 			<c:if test="${meeting.meetingAdminNo eq memberNo }">
 			<a href="/meoui/membermeeting/update">
 				<button id="commit" type="submit"
 					class="w3-button w3-block w3-white w3-border">모임수정하기</button></a>
-			</c:if>
-			<c:if test="${meeting.meetingAdminNo eq memberNo }">
+					
 			<form action="/meoui/membermeeting/delete" method=post>
 				<button id="commit" type="submit"
 					class="w3-button w3-block w3-white w3-border">모임 삭제하기</button>
 			</form>
-			</c:if>
+				</c:if>
+			
+			
+			
 			
 			<a href="/meoui/meetingboard/list/${meeting.meetingNo}"
 						style="color: #424242;"><span class="glyphicon glyphicon-heart"

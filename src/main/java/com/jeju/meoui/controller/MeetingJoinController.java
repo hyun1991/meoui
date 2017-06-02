@@ -29,18 +29,22 @@ public class MeetingJoinController {
 		meetingJoin.setMeetingNo(meetingNo);
 		meetingJoin.setMemberNo(memberNo);
 		System.out.println(meetingJoin);
-		service.createMeetingJoin(meetingJoin);
+		service.createMeetingJoin(meetingJoin,meetingNo);
 		logger.info("미팅조인:{}", meetingJoin);
 		logger.info("미팅조인:{}", meetingNo);
 		return "redirect:/membermeeting/list";
 		
 	}
 	
-	//모임 탈퇴하기
-	@RequestMapping(value="membermeeting/view/", method=RequestMethod.GET)
-	public String deleteMeeting(@PathVariable int memberNo, HttpSession session){
-		memberNo = (Integer)session.getAttribute("memberNo");
-		service.deleteMeetingJoin(memberNo);
-		return "redirect:membermeeting/list";
+	//모임 탈퇴하기(완료)
+	@RequestMapping(value="membermeeting/view/bye", method=RequestMethod.GET)
+	public String deleteMeeting( HttpSession session){
+		int memberNo = (Integer)session.getAttribute("memberNo");
+		int meetingNo = (Integer)session.getAttribute("meetingNo");
+		logger.info("미팅조인 탈퇴 회원번호:{}", memberNo);
+		logger.info("미팅조인 탈퇴 모임번호:{}", meetingNo);
+		
+		service.deleteMeetingJoin(memberNo, meetingNo);
+		return "redirect:/membermeeting/list";
 	}
 }
