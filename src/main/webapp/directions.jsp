@@ -96,15 +96,11 @@
     <div id="map"></div>
 	<div id="directionsPanel" style=" display:block;  ">
 	<p>총 거리 : <span id="total"></span></p>
+	</div>
 <div class="row">
-				<label for="usr"></label>
 				<label for="usr">이동 거리</label><br>
 				<p></p>
 				<br> <label for="usr">소요 시간</label><br>
-				<p></p>
-				<br> <label for="usr">출발 시간</label><br>
-				<p></p>
-				<br> <label for="usr">도착 시간</label>
 				<p></p>
 				<br> <label for="usr">자세한 위치 정보</label>
 				<p></p>
@@ -117,8 +113,8 @@
       // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
       function initMap() {
-    	//  var directionsService = new google.maps.DirectionsService;
-        //  var directionsDisplay = new google.maps.DirectionsRenderer;  이거 2개하면 지도 안나오
+    	  var directionsService = new google.maps.DirectionsService;
+          var directionsDisplay = new google.maps.DirectionsRenderer;  //이거 2개하면 지도 안나오
         var map = new google.maps.Map(document.getElementById('map'), {
           mapTypeControl: false,
           center: {lat: 33.3850285, lng: 126.62044279999998},
