@@ -113,7 +113,6 @@
 		}
 	});
 </script>
-
 <script>
 	function myMap() {
 		var myCenter = new google.maps.LatLng(33.386581, 126.558209);

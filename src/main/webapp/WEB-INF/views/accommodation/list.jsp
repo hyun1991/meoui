@@ -74,7 +74,7 @@ img {
 		<%@include file="/nav/navbar.jsp"%>
 	</header>
 	<div class="container">
-		<h1 id="headTitle" style="margin-top: 50px;" align="center">숙박시설 리스트</h1>
+		<h1 id="headTitle" style="margin-top: 50px;" align="center">숙박시설 전체 리스트</h1>
 		<div class="row text-center">
 		<hr>
 			<c:forEach items="${result.list }" var="accommodation">

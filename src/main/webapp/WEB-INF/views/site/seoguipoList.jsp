@@ -122,7 +122,7 @@ opacity
 	</div>
 	</div>
 	<div class="container">
-		<h1 id="headTitle" style="margin-top: 50px;" align="center">관광명소
+		<h1 id="headTitle" style="margin-top: 50px;" align="center">서귀포시 관광명소
 			리스트</h1>
 		<div class="row text-center">
 			<hr>
@@ -175,7 +175,7 @@ opacity
 </body>
 <script>
 	function myMap() {
-		var myCenter = new google.maps.LatLng(33.386581, 126.558209);
+		var myCenter = new google.maps.LatLng(33.282656, 126.546191);
 		var mapProp = {
 			center : myCenter,
 			zoom : 10,
