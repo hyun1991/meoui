@@ -43,7 +43,10 @@ public class MeetingBoardDAO {
 		return template.selectOne("MeetingBoardMapper.meetingBoardCount");
 	}
 	
-	
+	//게시글 조회 증가
+	public void updateMeetingBoardCnt(int meetingboardNo){
+		template.update("MeetingBoardMapper.updateMeetingBoardCnt", meetingboardNo);
+	}
 	
 	
 	//상세보기
