@@ -12,7 +12,8 @@ public class MemberMeeting {
 	private String meetingImg;			//모임대표이미지
 	private int meetingTotalNumber;		//모임인원수
 	private int meetingAdminNo;			//모임생성자
-
+	//private int memberNo;				//멤버 넘버 
+	
 	public MemberMeeting(String meetingName){
 			this.meetingName = meetingName;
 	}
