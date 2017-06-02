@@ -72,10 +72,10 @@ img {
 <body>
 	<header>
 		<%@include file="/nav/navbar.jsp"%>
-	</header>
-	<div class="container">
+	</header>	
+		<div class="container text-center">
 		<h1 id="headTitle" style="margin-top: 50px;" align="center">숙박시설 전체 리스트</h1>
-		<div class="row text-center">
+		<div class="row">
 		<hr>
 			<c:forEach items="${result.list }" var="accommodation">
 				<div class="col-sm-3" style="overflow-x:hidden;overflow-y:hidden; width: 280px; height: 500px;" >

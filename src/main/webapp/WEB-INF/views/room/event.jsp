@@ -59,7 +59,7 @@ a.cbtn:hover {
 }
 </style>
 </head>
-<body>
+<body onload="">
 	<a href="#" class="btn-example"
 		onclick="layer_open('layer1');return false;">상세결제 진행</a>
 	<div id="layer1" class="pop-layer">

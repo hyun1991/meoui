@@ -69,11 +69,11 @@ span {
 						style="color: #424242;"><span
 							class="glyphicon glyphicon glyphicon-grain" style="color: green;"></span>
 							관광 명소</a></li>
+							-->
 					<li class="navMenu"><a href="/meoui/directions.jsp"
 						style="color: #424242;"> <span class="glyphicon glyphicon-road"
 							style="color: blue;"></span> 길 찾기
 					</a></li>
-				 -->
 					<li class="navMenu"><a
 						href="/meoui/accommodaion/list" style="color: #424242;"><span
 							class="glyphicon glyphicon-home" style="color: orange;"></span>

@@ -51,4 +51,9 @@ public class HomeController {
 	public String formTest(){
 		return "sample";
 	}
+	//	길찾기테스트용입니다.
+	@RequestMapping("/street")
+	public String directions(){
+		return "street/directions";
+	}
 }
