@@ -1,85 +1,101 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<html>
+<!DOCTYPE html>
+<html lang="ko">
 <head>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<style>
-#date-writer-hit {
-    display: block;
-    margin: 0;
-    padding: 0;
-    font-size: 11px;
-    color: #555;
-    text-align: right;
-}
-#detail > p {
-    margin: 0 0 15px 0;
-    padding: 0;
-    color: #333;
-}
-</style>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<%@ include file="/WEB-INF/include/include-header.jsp"%>
 </head>
 <body>
-	<table style="margin-left: 100px; width: auto;">
-	    <tr>
-			<th style="text-align: left; vertical-align: top;"><h5>작성자: &nbsp;&nbsp;</h5></th>
-			<th style="text-align: left; color: #555;">${result.board.memberName }</th>
-		</tr>
-		<tr>
-			<th style="text-align: left; vertical-align: top;"><h5>제목: &nbsp;&nbsp;</h5></th>
-			<th style="text-align: left; color: #555;">${result.board.freeboardTitle }</th>
-		</tr>
-	</table>
-	<div id="detail">
-		<span id="date-writer-hit"><fmt:formatDate
-				value="${result.board.freeboardDate }" pattern="yyyy년MM월dd일" /> Hit
-			${result.board.freeboardCnt }</span>
-		<p style="margin-left: 100px">${result.board.freeboardContent}</p>
+	<header>
+		<%@include file="/nav/adminnav.jsp"%>
+	</header>
+	<div align="left" style="margin-left: 70px;">
+		<table class="board_view">
+			<colgroup>
+				<col width="15%" />
+				<col width="35%" />
+				<col width="15%" />
+				<col width="35%" />
+			</colgroup>
+			<caption>
+				<h1>게시글 상세</h1>
+			</caption>
+			<tbody>
+				<tr>
+					<th scope="row">글 번호</th>
+					<td>${result.board.freeboardNo}</td>
+					<th scope="row">조회수</th>
+					<td>${result.board.freeboardCnt}</td>
+				</tr>
+				<tr>
+					<th scope="row">작성자</th>
+					<td>${result.board.memberName}</td>
+					<th scope="row">작성시간</th>
+					<td><fmt:formatDate value="${result.board.freeboardDate}"
+							pattern="yyyy년 MM월 dd일" /></td>
+				</tr>
+				<tr>
+					<th scope="row">제목</th>
+					<td colspan="3">${result.board.freeboardTitle}</td>
+				</tr>
+				<tr>
+				    <th scope="row">내용</th>
+					<td colspan="4">${result.board.freeboardContent}</td>
+				</tr>
+				<tr>
+				    <th scope="row">첨부파일</th>
+					<td colspan="4">${result.board.freeboardImg}</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
-	<div style="margin-left: 100px">
-		첨부파일: &nbsp;&nbsp;<a href="/meoui/freeboard/download?freeboardImg=${result.board.freeboardImg }">
-			${result.board.freeboardImg }</a>
-	</div>
-	
-	<hr>
-	<h5 style="margin-left: 70px">댓글작성란</h5>
 	<br>
-	<div id="center">
+	<div class="row text-center">
+	<div class="col-xs-4" style="margin-left: 70px;">
+			<a href="/meoui/admin/freeboard/list?pageNo=1">
+				<button type="button" class="w3-button w3-block w3-white w3-border">목록으로</button>
+			</a>
+		</div>
+	</div>
+	<hr>
+	<h2 id="headTitle" style="margin-top: 50px;" align="center">댓글작성란</h2>
+	<br>
+	<div class="row">
 		<form action="/meoui/freeboardComment/insert" method="post">
-			<div class="row text-center">
-				<div class="col-xs-4" style="margin-left: 70px">
-					<textarea class="form-control col-sm-5" rows="5"
-						placeholder="댓글을 작성해 주세요." name="freeboardCommentContent" id="freeboardCommentContent">
-				</textarea>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-4" style="margin-left: 70px">
-					<button type="submit" class="w3-button w3-block w3-white w3-border">댓글작성</button>
-				</div>
-			</div>
+	    <div class="row text-center">
+	    <div class="col-xs-4" style="margin-left: 70px">
+			<textarea class="form-control col-sm-5" rows="5" id="freeboardCommentContent" name="freeboardCommentContent">
+			</textarea>
+		</div>
+		<br>
+	</div>
+	<div class="row">
+		<div class="col-xs-4" style="margin-left: 70px">
+			<button type="submit" class="w3-button w3-block w3-white w3-border">댓글작성</button>
+		</div>
+		</div>
 		</form>
 	</div>
-	<hr>
-	<c:forEach items="${result.comment }" var="comment">
-		<div class="container">
-			<input type="hidden" id="boardCommentNo"
-				value="${comment.freeboardCommentNo }" class="form-control input-lg">
-			<div class="form-group">${comment.memberName}</div>
-			<div class="form-group">${comment.freeboardCommentContent}</div>
-			<div class="form-group">
-				작성일:
-				<fmt:formatDate value="${comment.freeboardCommentDate}"
-					pattern="yyyy년 MM월 dd일" />
+	<div id="view">
+		<c:forEach items="${result.comment }" var="comment">
+			<div class="container">
+				<hr>
+				<div class="form-group">${comment.memberName }</div>
+				<div class="form-group">${comment.freeboardCommentContent }</div>
+				<div class="form-group">
+					<fmt:formatDate value="${comment.freeboardCommentDate }"
+						pattern="yyyy년MM월dd일" />
+				</div>
 			</div>
-			</div>
-			</c:forEach>
+		</c:forEach>
+	</div>
+	<br>
+	<br>
+	<%@ include file="/WEB-INF/include/include-body.jsp"%>
+	<footer>
+		<%@include file="/footer.jsp"%>
+	</footer>
 </body>
 </html>
