@@ -34,7 +34,7 @@
 		</div>
 		<div class="container">
 			<hr>
-			<h1 id="headTitle" style="margin-top: 50px;" align="center">추천숙박시설</h1><br>
+			<img src="/meoui/images/cho1.PNG">
 			<div class="row text-center">
 				<c:forEach items="${result.list }" var="accommodation">
 					<div class="col-sm-3"
@@ -56,7 +56,7 @@
 				</c:forEach>
 			</div>
 			<hr>
-			<h1 id="headTitle" style="margin-top: 50px;" align="center">추천관광명소</h1><br>
+			<img src="/meoui/images/cho2.PNG">
 			<div class="row text-center">
 				<c:forEach items="${result2.list }" var="result">
 					<div class="col-sm-3"
@@ -83,16 +83,14 @@
 			</div>
 		</div>
 	</div>
+	<hr>
 	<div class="container text-center">
-		<img src="/meoui/images/jejju.jpg">
+		<img src="/meoui/images/isa.PNG">
 		<div class="row">
 			<form class="form-inline">
 				<div class="input-group">
 					<input type="search" class="form-control input-lg" size="40"
-						placeholder="목적지" required style="margin: 50px;">
-					<div class="input-group-btn">
-						<button type="button" class="btn btn-info btn-lg">검색</button>
-					</div>
+						placeholder="목적지" required style="margin: 50px;" id="letgo">
 				</div>
 			</form>
 		</div>
@@ -113,7 +111,6 @@
 		}
 	});
 </script>
-
 <script>
 	function myMap() {
 		var myCenter = new google.maps.LatLng(33.386581, 126.558209);
@@ -131,6 +128,11 @@
 		});
 		marker.setMap(map);
 	}
+	$(document).ready(function(){
+		$("#letgo").focus(function(){
+			window.location.href = "/meoui/directions.jsp";
+		})
+	})
 </script>
 <script
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQhKWycyWtScR72Jxc_E-FKHq4-F2b4CM&callback=myMap"></script>

@@ -26,6 +26,13 @@ public class MeetingBoardService {
 		dao.insertMeetingBoard(meetingBoard);
 	}
 	
+	//게시글 수정
+	public void updateMeetingBoard(MeetingBoard meetingBoard){
+		
+		dao.updateMeetingBoard(meetingBoard);
+		
+	}
+	
 	
 	//모임게시판 리스트 출력
 	public HashMap<String, Object> selectAllMeetingBoard(int pageNo, int meetingNo){

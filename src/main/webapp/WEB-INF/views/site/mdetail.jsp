@@ -149,9 +149,14 @@ img {
 						<form action="/meoui/schedule/join" method="post">
 							<table>
 								<tr>
-									<td>날짜</td></tr>
+									<td>스케줄시작</td></tr>
 									<tr><td>
 									<input type="date" name="travlescheduleDate"></td>
+								</tr>
+																<tr>
+									<td>스케줄종료</td></tr>
+									<tr><td>
+									<input type="date" name="end"></td>
 								</tr>
 								<tr>
 									<td>일정내용</td></tr>

@@ -54,10 +54,22 @@ span {
 			</div>
 			<div class="row" style="margin-top: 100px;">
 				<ul class="nav navbar-nav">
+					<li class="navMenu">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="board">
+						<span class="glyphicon glyphicon glyphicon-grain" style="color: green;"></span>
+						관광명소 소개</a>
+						<ul class="dropdown-menu">
+							<li><a href="/meoui/site/list?pageNo=1">전체보기</a></li>
+							<li><a href="/meoui/site/list/jeju?pageNo=1" id="#">제주시별</a></li>
+							<li><a href="/meoui/site/list/seoguipo?pageNo=1" id="#">서귀포시별</a></li>
+						</ul>
+					</li>
+				<!-- 
 					<li class="navMenu"><a href="/meoui/site/list?pageNo=1"
 						style="color: #424242;"><span
 							class="glyphicon glyphicon glyphicon-grain" style="color: green;"></span>
 							관광 명소</a></li>
+							-->
 					<li class="navMenu"><a href="/meoui/directions.jsp"
 						style="color: #424242;"> <span class="glyphicon glyphicon-road"
 							style="color: blue;"></span> 길 찾기

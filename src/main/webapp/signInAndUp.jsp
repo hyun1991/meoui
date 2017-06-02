@@ -62,16 +62,16 @@ label, .btn , .w3-button{
 						<label class="modal-title">회원 가입</label>
 					</div>
 					<div class="modal-body">
-						<div class="form-group step1">
+						<div class="form-group step1"> 
 							<label for="usr">아이디</label><br> <input type="text"
 								class="form-control" id="checkId" name="memberId"> <input
 								type="button" class="btn btn-default" id="checkbtn"
 								value="아이디 중복확인">
 						</div>
 						<span id="idCheckResult"></span>
-						<div class="form-group step1">
+						<div class="form-group step1">	
 							<label for="pwd">비밀번호</label><br> <input type="password"
-								class="form-control" id="memberPassword" name="memberPassword">
+								class="form-control" id="memberPhone" name="memberPassword">
 						</div>
 						<div class="form-group step1">
 							<label for="pwd">이름</label><br> <input type="text"

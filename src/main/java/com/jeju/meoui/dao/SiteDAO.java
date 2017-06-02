@@ -31,6 +31,20 @@ public class SiteDAO {
 		map.put("last", lastRow);
 		return template.selectList("siteMapper.selectAllSite", map);
 	}
+	//	제주시별 관광지 리스트(페이징)
+	public List<Site>selectAllSiteByJeju(int startRow, int lastRow){
+		HashMap<String, Object>map= new HashMap<String, Object>();
+		map.put("start", startRow);
+		map.put("last", lastRow);
+		return template.selectList("siteMapper.selectAllSiteByJeju", map);
+	}
+	//	서귀포시별 관광지 리스트(페이징)
+	public List<Site>selectAllSiteBySeoguipo(int startRow, int lastRow){
+		HashMap<String, Object>map= new HashMap<String, Object>();
+		map.put("start", startRow);
+		map.put("last", lastRow);
+		return template.selectList("siteMapper.selectAllSiteBySeoguipo", map);
+	}
 	// 5. 관광지 개수
 	public int siteCount(){
 		return template.selectOne("siteMapper.SiteCount");

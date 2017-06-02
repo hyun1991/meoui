@@ -21,7 +21,8 @@ public class MemberMeetingService {
 	private MeetingBoardCommentDAO comdao;
 	@Autowired
 	private MeetingBoardDAO boarddao;
-	
+	@Autowired
+	private MemberMeetingDAO meetingdao;
 	
 	private Logger logger= LoggerFactory.getLogger(MemberMeetingService.class);
 	//모임생성
@@ -32,6 +33,7 @@ public class MemberMeetingService {
 		int meetingNo= dao.selectMaxMeetingNo();
 		meetingJoin.setMeetingNo(meetingNo);
 		joindao.insertMeetingJoin(meetingJoin);
+		meetingdao.updateMemberMeetingTotalNumber(meetingNo);
 	}
 	//마지막 번호 찾기
 	public int selectMaxMeetingNo(){

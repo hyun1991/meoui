@@ -84,6 +84,18 @@ public class SiteController {
 		model.addAttribute("result", service.selectAllSite(pageNo));
 		return "site/resultList";
 	}
+	// 제주시별 관광지 전체 리스트
+	@RequestMapping(value="/site/list/jeju" , method=RequestMethod.GET)
+	public String allSiteByJeju(Model model ,@RequestParam(defaultValue="1") int pageNo){
+		model.addAttribute("result", service.selectAllSiteByJeju(pageNo));
+		return "site/jejuList";
+	}
+	// 서귀포시별 관광지 전체 리스트
+	@RequestMapping(value="/site/list/seoguipo" , method=RequestMethod.GET)
+	public String allSiteBySeoguipo(Model model ,@RequestParam(defaultValue="1") int pageNo){
+		model.addAttribute("result", service.selectAllSiteBySeoguipo(pageNo));
+		return "site/seoguipoList";
+	}
 	// 관광지 전체 리스트(관리자용)
 	@RequestMapping(value="/admin/site/list" , method=RequestMethod.GET)
 	public String allSiteAdmin(Model model ,@RequestParam(defaultValue="1") int pageNo){

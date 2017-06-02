@@ -53,33 +53,35 @@ public class MemberMeetingController {
 		return "redirect:/membermeeting/list";
 	}
 
-	//모임 수정(작업완료중)
+	//모임 수정(작업완료)
 	@RequestMapping(value="/membermeeting/update", method=RequestMethod.GET)
 	public String updateMemberMeeting(){
 		
 		return "membermeeting/update";
 	}
-	
+	//모임 수정(작업 완료)
 	@RequestMapping(value="/membermeeting/update", method=RequestMethod.POST)
-	public String updateMemberMeeting(@ModelAttribute MemberMeeting memberMeeting, HttpSession session){
-		int meetingNo = (Integer)session.getAttribute("meetingNo");
-		int memberNo = (Integer)session.getAttribute("memberNo");
+	public String updateMemberMeeting(@RequestParam String meetingName, @RequestParam("img") MultipartFile meetingImg, HttpSession session){
+		int meetingAdminNo = (Integer)session.getAttribute("memberNo");
+		int meetingNo = (Integer)session.getAttribute("meetingNo");		
+		String fileName= UploadUtil.storeAndGetFileName(meetingImg, ctx, path);
+		MemberMeeting memberMeeting = new MemberMeeting();
 		memberMeeting.setMeetingNo(meetingNo);
-		memberMeeting.setMeetingAdminNo(memberNo);
-		
+		memberMeeting.setMeetingAdminNo(meetingAdminNo);
+		memberMeeting.setMeetingImg(fileName);
+		memberMeeting.setMeetingName(meetingName);		
 		service.updataMeetingName(memberMeeting);
 		logger.info("업데이트하는데 모임 번호가 없어  : {}", meetingNo);
-		logger.info("업데이트하는데 멤버 번호가 없어  : {}", meetingNo);
+		logger.info("업데이트하는데 멤버 번호가 없어  : {}", meetingAdminNo);
+		
 		session.removeAttribute("meetingNo");
 		
 		return "redirect:/membermeeting/list/";
 	}
 	
-	
-	
 	//모임 상세 보기(작업완료)
 	@RequestMapping(value="/membermeeting/view/{meetingNo}", method=RequestMethod.GET)
-	public String selectMeetingView(@PathVariable int meetingNo, Model model, HttpSession session){
+	public String selectMeetingView(@ModelAttribute MeetingJoin meetingJoin, @PathVariable int meetingNo, Model model, HttpSession session){
 		session.setAttribute("meetingNo", meetingNo);
 		model.addAttribute("meeting",service.selectMeetingView(meetingNo));
 		logger.info("멤머미팅 멤버넘버:{}", meetingNo);
@@ -118,10 +120,11 @@ public class MemberMeetingController {
 			int memberNo = (Integer)session.getAttribute("memberNo");		
 			model.addAttribute("result", service.selectMyMeeting(memberNo));
 			logger.info("멤버미팅 가입한 리스트 보기 :[]", model);
-			return "meetingjoin/list";
-					
+			return "meetingjoin/list";		
 		}
-	// 리스트 출력(관리자용)
+	
+	
+	//리스트 출력(관리자용)
 	@RequestMapping(value="/admin/membermeeting/list", method=RequestMethod.GET)
 	public String AllMemberMeetingAdmin(Model model, HttpSession session){	
 		MemberMeeting meetingNo=new MemberMeeting();
