@@ -96,10 +96,11 @@ img {
 				<button id="commit" type="submit"
 					class="w3-button w3-block w3-white w3-border">회원 가입하기</button>
 			</form>
+			<c:if test="${meeting.meetingAdminNo eq memberNo }">
 			<a href="/meoui/membermeeting/update">
 				<button id="commit" type="submit"
 					class="w3-button w3-block w3-white w3-border">모임수정하기</button></a>
-			
+			</c:if>
 			<c:if test="${meeting.meetingAdminNo eq memberNo }">
 			<form action="/meoui/membermeeting/delete" method=post>
 				<button id="commit" type="submit"

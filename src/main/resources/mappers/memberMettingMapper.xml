@@ -15,10 +15,10 @@
 	</insert>
 	
 	<!-- 모임수정 -->
-	<update id="updateMeetingName" parameterType="int">	
+	<update id="updateMeetingName" parameterType="MemberMeeting">	
 		<![CDATA[
 		update member_meeting set meeting_name=#{meetingName}, meeting_img=#{meetingImg}
-		 where meeting_admin_no=#{memberNo} and meeting_no=#{meetingNo}
+		 where meeting_admin_no=#{meetingAdminNo} and meeting_no=#{meetingNo}
 		 ]]>
 	</update>
 	

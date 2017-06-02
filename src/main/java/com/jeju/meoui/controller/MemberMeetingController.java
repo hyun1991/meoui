@@ -61,15 +61,19 @@ public class MemberMeetingController {
 	}
 	
 	@RequestMapping(value="/membermeeting/update", method=RequestMethod.POST)
-	public String updateMemberMeeting(@ModelAttribute MemberMeeting memberMeeting, HttpSession session){
-		int meetingNo = (Integer)session.getAttribute("meetingNo");
-		int memberNo = (Integer)session.getAttribute("memberNo");
+	public String updateMemberMeeting(@RequestParam String meetingName, @RequestParam("img") MultipartFile meetingImg, HttpSession session){
+		int meetingAdminNo = (Integer)session.getAttribute("memberNo");
+		int meetingNo = (Integer)session.getAttribute("meetingNo");		
+		String fileName= UploadUtil.storeAndGetFileName(meetingImg, ctx, path);
+		MemberMeeting memberMeeting = new MemberMeeting();
 		memberMeeting.setMeetingNo(meetingNo);
-		memberMeeting.setMeetingAdminNo(memberNo);
-		
+		memberMeeting.setMeetingAdminNo(meetingAdminNo);
+		memberMeeting.setMeetingImg(fileName);
+		memberMeeting.setMeetingName(meetingName);		
 		service.updataMeetingName(memberMeeting);
 		logger.info("업데이트하는데 모임 번호가 없어  : {}", meetingNo);
-		logger.info("업데이트하는데 멤버 번호가 없어  : {}", meetingNo);
+		logger.info("업데이트하는데 멤버 번호가 없어  : {}", meetingAdminNo);
+		
 		session.removeAttribute("meetingNo");
 		
 		return "redirect:/membermeeting/list/";
