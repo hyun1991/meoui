@@ -13,8 +13,8 @@
 <tr><td>제목</td><td><input type="text" name="noticeTitle" id="noticeTitle" ></td></tr>
 <tr><td>내용</td><td><textarea name="noticeContent" id="noticeContent"></textarea></td></tr>
 </table>
-<button id="insert">글 작성</button>
-</a>
+<button type="submit" >글 작성</button>
+
 </form>
 </body>
 </html>
