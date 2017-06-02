@@ -84,43 +84,51 @@ button:hover:before, button:hover:after {
 	<div align="center">
 		<a href="/meoui/"><button>홈으로</button></a>
 	</div>
-	<c:forEach items="${result.list }" var="tv">
-		<input type="hidden" id="schedule" value="${tv.schedule }">
-		<input type="hidden" id="scDate" value='<fmt:formatDate value="${tv.travlescheduleDate }" pattern="yyyy-MM-dd"/>'>
-	</c:forEach>
-	
 </body>
 <script type="text/javascript">
-jQuery(document).ready(function() {
-	var schedule= $("#schedule").val();
-	var scDate= $("#scDate").val();
-	alert(schedule)
-	alert(scDate)
-	jQuery("#calendar").fullCalendar({
-		defaultDate : "2017-05-30",
-		lang : "ko",
-		editable : true,
-		eventLimit : true,
-		events:function(title, start, callback){
-			alert("테스트요")
-			$.ajax({
-				url:"/meoui/schedule/data",
-				dataType:'json',
-				success:function(data){
-					alert("1")
-					var events=[];
-					$(data).each(function(){
-						alert("2")
-						events.push({
-							title:$(this).attr('schedule')
-						})
-					})
-					alert(events)
-					callback(events);
-				}
-			})
+	function calendarEvent(eventData) {
+		console.log(eventData)
+		jQuery("#calendar").fullCalendar({
+			defaultDate : "2017-05-30",
+			lang : "ko",
+			editable : true,
+			eventLimit : true,
+			events:eventData
+		});
+	}
+	$(document).ready(function(){
+		alert("캘린더 형식으로 일정 조회합니다.")
+		var date= new Date();
+		var d= date.getDate();
+		var m= date.getMonth();
+		var y= date.getFullYear();
+		getEvent();
+	})
+	function getEvent(){
+		$.ajax({
+			url:"/meoui/schedule/data",
+			dataType:"JSON",
+			success: function(res){
+				console.log(res)
+				createCalendarDateResult(res)
+			}
+		});
+	}
+	function createCalendarDateResult(res){
+		var result= res, eventData=[];
+		console.log(result)
+		if(result!=null){
+			var date= result.extra;
+			console.log(date)
+			for(var i=0; i<date.length; i++){
+				eventData.push({
+					title:date[i].title,
+					start:date[i].start,
+					end:date[i].end
+				})
+			}
 		}
-	});
-});
+		calendarEvent(eventData)
+	}
 </script>
 </html>

@@ -21,12 +21,13 @@ public class TravlescheduleController {
 	private Logger logger= LoggerFactory.getLogger(TravlescheduleController.class);
 	//	일정 추가하기
 	@RequestMapping(value="/schedule/join", method=RequestMethod.POST)
-	public String insertTravle(@RequestParam String schedule, @DateTimeFormat(pattern="yyyy-MM-dd") Date travlescheduleDate, HttpSession session){
+	public String insertTravle(@RequestParam String schedule, @DateTimeFormat(pattern="yyyy-MM-dd") Date travlescheduleDate,@DateTimeFormat(pattern="yyyy-MM-dd") Date end, HttpSession session){
 		Travleschedule travleschedule= new Travleschedule();
 		int memberNo= (Integer)session.getAttribute("memberNo");
 		int siteNo= (Integer)session.getAttribute("siteNo");
 		travleschedule.setMemberNo(memberNo);
 		travleschedule.setTravlescheduleDate(travlescheduleDate);
+		travleschedule.setEnd(end);
 		travleschedule.setSchedule(schedule);
 		service.createTravle(travleschedule, siteNo);
 		return "redirect:/site/list?pageNo=1";
@@ -35,8 +36,8 @@ public class TravlescheduleController {
 	//	일정 전체조회하기(전면 캘린더 도입)
 	@RequestMapping(value="/schedule/mylist", method=RequestMethod.GET)
 	public String selectAllTravle(@RequestParam int memberNo, Model model){
-		logger.info("일정:{}",service.getAllTravle(memberNo));
 		model.addAttribute("result", service.getAllTravle(memberNo));
+		logger.info("캘린더:{}", service.getAllTravle(memberNo));
 		return "schedule/calendar";
 	}
 	//	일정관련 전체조회(캘린더형식x)

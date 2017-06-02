@@ -56,8 +56,11 @@
 		<div class="row">
 			<div class="col-md-4">
 				<c:forEach items="${result.list }" var="schedule">
-						<label for="usr">일자:</label>
+						<label for="usr">스케줄시작:</label>
 						<fmt:formatDate value="${schedule.travlescheduleDate }" pattern="yyyy년 MM월 dd일" />
+						<br>
+						<label for="usr">스케줄종료:</label>
+						<fmt:formatDate value="${schedule.end }" pattern="yyyy년 MM월 dd일" />
 						<br>
 						<label for="usr">관광명소명:</label>${schedule.siteName }<br>
 						<label for="usr">스케줄내용:</label>${schedule.schedule }<br>

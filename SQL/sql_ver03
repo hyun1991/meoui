@@ -124,6 +124,7 @@ create table travleschedule(
 travleschedule_no number(10) ,
 member_no number(10),
 travleschedule_date date,
+end date,
 schedule nvarchar2(100),
 constraint travleschedule_pk primary key(travleschedule_no , member_no)
 );
