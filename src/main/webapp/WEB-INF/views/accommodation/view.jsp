@@ -43,7 +43,7 @@
 		<hr>
 		<input type="hidden"
 					value="${result.accommodation.ownerNo }" id="ownerNo">
-		<div class="row">
+		<div align="center">
 			<h2 style="margin-left: 10px">오시는길</h2>
 		</div>
 		<div class="row">
@@ -52,11 +52,10 @@
 	</div>
 
 	<hr>
-	<h3 style="margin-left: 70px">댓글작성란</h3>
+	<h2 align="center">댓글작성란</h2>
 	<br>
-	<div id="center">
 		<form action="/meoui/accommodationComment/insert" method="post">
-			<div class="row">
+			<div class="container" style="margin-left: auto;margin-right:450px;">
 				<div class="col-xs-4" style="margin-left: 70px">
 					<textarea class="form-control col-sm-5" rows="5"
 						placeholder="댓글을 작성해 주세요." name="accommodationCommentContent">
@@ -64,11 +63,11 @@
 				</div>
 			</div>
 			<br>
-			<div class="row">
+			<div class="container" style="margin-left: auto;margin-right:450px;">
 				<div class="col-xs-4" style="margin-left: 70px">
 					<select class="form-control input-lg"
 						name="accommodationCommentAvg">
-						<option value="">선택</option>
+						<option value="">평점</option>
 						<option value="1">★☆☆☆☆</option>
 						<option value="2">★★☆☆☆</option>
 						<option value="3">★★★☆☆</option>
@@ -78,13 +77,12 @@
 				</div>
 			</div>
 			<br>
-			<div class="row">
-				<div class="col-xs-4" style="margin-left: 70px">
+			<div class="container" style="margin-left: auto;">
+				<div class="col-xs-4">
 					<button type="submit" class="w3-button w3-block w3-white w3-border">댓글작성</button>
 				</div>
 			</div>
 		</form>
-	</div>
 	<hr>
 	<c:forEach items="${result.comment }" var="comment">
 		<div class="container">
