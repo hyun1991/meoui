@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="MeetingBoardMapper">
 
-	<!-- 1. 모임게시판 작성 -->
+	<!-- 1. 모임게시판 작성(완료) -->
 
 	<insert id="insertMeetingBoard" parameterType="MeetingBoard">
 		<selectKey keyProperty="meetingboardNo" resultType="int"
@@ -21,7 +21,7 @@
 ]]>
 	</insert>
 
-	<!-- 게시판 리스트 출력 -->
+	<!-- 게시판 리스트 출력 (완료)-->
 	<select id="selectAllmeetinBoard" parameterType="HashMap"
 		resultType="MeetingBoard">
 		<![CDATA[
@@ -34,7 +34,7 @@
 		between #{start} and #{last}
 ]]> 
 </select>
-	<!--미팅 번호별 게시판 갯수 -->
+	<!--미팅 번호별 게시판 갯수(완료) -->
 	<select id="selectCountMeetingNo" parameterType="int" resultType="int">
 	
 			<![CDATA[
@@ -45,13 +45,13 @@
 
 
 	</select>
-	<!--  게시판 마지막 번호 -->
+	<!--  게시판 마지막 번호(완료) -->
 	<select id="meetingBoardCount" resultType="int">
 		<![CDATA[select count(meetingboard_no) from meetingboard
 		]]>
 	</select>
 	
-	<!-- 게시판 상세 보기	 -->
+	<!-- 게시판 상세 보기(완료)	 -->
 	<select id = "selectMeetingBoardView" parameterType="int" resultType="MeetingBoard">
 	<![CDATA[
 		select b.meetingboard_title, b.meetingboard_content, b.meetingboard_date, b.meetingboard_cnt , b.meetingboard_img,  
@@ -60,7 +60,7 @@
 	]]>
 	
 	</select>
-	<!-- 번호로 삭제 -->
+	<!-- 번호로 삭제(완료) -->
 	<delete id="meetingBoardDelete" parameterType="int">
 	<![CDATA[
 	
@@ -68,7 +68,7 @@
 	
 	]]>
 		</delete>
-	<!-- 번호로 삭제 관리자용-->
+	<!-- 번호로 삭제 관리자용(완료)-->
 	<delete id="meetingBoardDeleteAdmin" parameterType="int">
 	<![CDATA[
 	
@@ -80,17 +80,25 @@
 		
 	<!-- 수정 -->
 	<update id="updateMeetingBoard" parameterType="MeetingBoard">
-	<![CDATA[
+	<![CDATA[	
+		update meetingboard set meetingboard_title=#{meetingboardTitle},
+		 meetingboard_content=#{meetingboardContent},
+		meetingboard_img=#{meetingboardImg}
+		where meetingboard_no=#{meetingboardNo} and member_no=#{memberNo} 	
+	]]>	
+	</update>	
 	
-		update member set member_password=#{memberPassword}, member_name=#{memberName}, member_phone=#{memberPhone}, member_address=#{memberAddress}, member_mail=#{memberMail}, member_job=#{memberJob},
-			member_hobby=#{memberHobby} where member_id=#{memberId} and member_no=#{memberNo} 
-	
+	<!-- 조회수 증가 -->
+	<update id="updateMeetingBoardCnt"	parameterType="int">
+	<![CDATA[	
+		 update meetingboard set meetingboard_cnt=meetingboard_cnt+1 
+		 where meetingboard_no=#{meetingboard_no} 	
 	]]>
 	
 	</update>
 	
 	
-
+	
 	
 	
 </mapper>

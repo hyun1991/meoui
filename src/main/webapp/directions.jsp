@@ -60,6 +60,7 @@
         background-color: #4d90fe;
         margin-left: 12px;
         padding: 5px 11px 0px 11px;
+        width:25%;
       }
 
       #mode-selector label {
@@ -88,7 +89,7 @@
 
     <div id="mode-selector" class="controls">
       <input type="radio" name="type" id="changemode-transit">
-      <label for="changemode-transit">대중교통</label>
+      <label for="changemode-transit">대중교만 지원가능한 서비스 입니다.</label>
     
     
     </div>
@@ -96,29 +97,20 @@
     <div id="map"></div>
 	<div id="directionsPanel" style=" display:block;  ">
 	<p>총 거리 : <span id="total"></span></p>
+	</div>
+	<!-- 
 <div class="row">
-				<label for="usr"></label>
 				<label for="usr">이동 거리</label><br>
 				<p></p>
 				<br> <label for="usr">소요 시간</label><br>
 				<p></p>
-				<br> <label for="usr">출발 시간</label><br>
-				<p></p>
-				<br> <label for="usr">도착 시간</label>
-				<p></p>
 				<br> <label for="usr">자세한 위치 정보</label>
 				<p></p>
 			</div>
-
-</div>
+	 -->
     <script>
-      // This example requires the Places library. Include the libraries=places
-      // parameter when you first load the API. For example:
-      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
       function initMap() {
-    	//  var directionsService = new google.maps.DirectionsService;
-        //  var directionsDisplay = new google.maps.DirectionsRenderer;  이거 2개하면 지도 안나오
         var map = new google.maps.Map(document.getElementById('map'), {
           mapTypeControl: false,
           center: {lat: 33.3850285, lng: 126.62044279999998},
@@ -127,11 +119,35 @@
 	//33.51041350000001,126.49135339999998   공항
 	//33.3850285,126.62044279999998 성판악입구
         new AutocompleteDirectionsHandler(map);
+		
+		
+	
+	/*
+	function initialize() {
+	  directionsDisplay = new google.maps.DirectionsRenderer();
+	  
+	  var chicago = new google.maps.LatLng(41.850033, -87.6500523);
+	  
+	  var mapOptions = {
+		zoom:7,
+		mapTypeId: google.maps.MapTypeId.ROADMAP,
+		center: chicago
+	  }
+	  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+	  directionsDisplay.setMap(map);
+	  
+	  directionsDisplay.setPanel(document.getElementById('directionsPanel'));
+	  google.maps.event.addListener(directionsDisplay, 'directions_changed', function() {
+		computeTotalDistance(directionsDisplay.getDirections());
+	  });
+		*/
+		
+        directionsDisplay.setPanel(document.getElementById('directionsPanel'));
+        google.maps.event.addListener(directionsDisplay, 'directions_changed', function(){
+        computeTotalDistance(directionsDisplay.getDirections());
+        });
       }
-
-       /**
-        * @constructor
-       */
+	
       function AutocompleteDirectionsHandler(map) {
         this.map = map;
         this.originPlaceId = null;
@@ -153,14 +169,14 @@
 
         this.setupPlaceChangedListener(originAutocomplete, 'ORIG');
         this.setupPlaceChangedListener(destinationAutocomplete, 'DEST');
-
+	
+        /*
         this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(originInput);
         this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(destinationInput);
         this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(modeSelector);
+        */
       }
 
-      // Sets a listener on a radio button to change the filter type on Places
-      // Autocomplete.
       AutocompleteDirectionsHandler.prototype.setupClickListener = function(id, mode) {
         var radioButton = document.getElementById(id);
         var me = this;
@@ -207,21 +223,24 @@
           }
         });
       };
-	
+		
+     // 여기부터 거리계산
+     
       function calcRoute() {
-
+			
     	  var request = {
     		origin: {'placeId': this.originPlaceId},
     	      destination: {'placeId': this.destinationPlaceId},
     	      travelMode: this.travelMode
-    	  };
-    	  directionsService.route(request, function(response, status) {
+    	  };   
+    	  this.directionsService.route(request, function(response, status) {
     		alert(status);  // 확인용 Alert..미사용시 삭제
     		if (status == google.maps.DirectionsStatus.OK) {
-    			directionsDisplay.setDirections(response);
+    			directionsDisplay.setDirections(result);
     		}
     	  });
     	}
+     
     	
     	function computeTotalDistance(result) {
     	  var total = 0;

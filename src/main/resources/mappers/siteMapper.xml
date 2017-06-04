@@ -39,6 +39,28 @@
 		) where rnum>=#{start}
 		]]>
 	</select>
+	<!-- 4. 제주시별 관광지리스트(페이징) area_name=1일때 => 제주시-->
+	<select id="selectAllSiteByJeju" parameterType="HashMap" resultType="site"  >
+		<![CDATA[
+		select * from (select rownum rnum, a1.* from (select s.site_no ,s.site_name, s.site_park , s.site_object, s.site_img, s.site_introduce, s.site_homepage, s.site_open_time , s.site_close_time, s.site_phone,
+		s.site_night_open, s.site_night_close_time, a.area_name, a.details_address 
+		from site s , area a 
+		where s.site_no=a.site_no and a.area_name=1 order by s.site_no desc) a1
+		where rownum<=#{last}
+		) where rnum>=#{start}
+		]]>
+	</select>
+	<!-- 4. 서귀포시별 관광지리스트(페이징) area_name=2일때 => 서귀포시 -->
+	<select id="selectAllSiteBySeoguipo" parameterType="HashMap" resultType="site"  >
+		<![CDATA[
+		select * from (select rownum rnum, a1.* from (select s.site_no ,s.site_name, s.site_park , s.site_object, s.site_img, s.site_introduce, s.site_homepage, s.site_open_time , s.site_close_time, s.site_phone,
+		s.site_night_open, s.site_night_close_time, a.area_name, a.details_address 
+		from site s , area a 
+		where s.site_no=a.site_no and a.area_name=2 order by s.site_no desc) a1
+		where rownum<=#{last}
+		) where rnum>=#{start}
+		]]>
+	</select>
 	
 	<!-- 5. 이름으로 관광지 찾기 -->
 	<select id="selectSiteByName" parameterType="String" resultType="site">

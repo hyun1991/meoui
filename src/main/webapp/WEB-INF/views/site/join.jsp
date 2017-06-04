@@ -57,8 +57,8 @@
 			<div class="form-group">
 					<select class="form-control input-lg" name="areaName">
 					<option value="">선택</option>
-					<option value="1">제주</option>
-					<option value="2">서귀포</option>
+					<option value="1">제주시</option>
+					<option value="2">서귀포시</option>
 				</select>
 			</div>
 			<div class="form-group">

@@ -15,10 +15,10 @@
 	</insert>
 	
 	<!-- 모임수정 -->
-	<update id="updateMeetingName" parameterType="int">	
+	<update id="updateMeetingName" parameterType="MemberMeeting">	
 		<![CDATA[
 		update member_meeting set meeting_name=#{meetingName}, meeting_img=#{meetingImg}
-		 where meeting_admin_no=#{memberNo} and meeting_no=#{meetingNo}
+		 where meeting_admin_no=#{meetingAdminNo} and meeting_no=#{meetingNo}
 		 ]]>
 	</update>
 	
@@ -45,6 +45,16 @@
 			delete from member_meeting where meeting_no=#{meetingNo}
 		]]>	
 	</delete>
+	
+	<!-- 모임 인원 증가	 -->
+	<update id="updateMemberMeetingTotalNumber" parameterType="int">
+		<![CDATA[
+		
+		 update member_meeting set meeting_total_number=meeting_total_number+1 
+		 where meeting_no=#{meeting_no}			
+		
+		]]>		
+	</update>
 
 
 	

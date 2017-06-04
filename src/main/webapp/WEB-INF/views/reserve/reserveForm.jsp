@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,62 +16,70 @@
 </head>
 <style>
 table.type06 {
-    border-collapse: collapse;
-    text-align: center;
-    line-height: 1.5;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    margin: 20px 10px;
+	border-collapse: collapse;
+	text-align: center;
+	line-height: 1.5;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	margin: 20px 10px;
 }
+
 table.type06 th {
-    width: 150px;
-    padding: 10px;
-    font-weight: bold;
-    vertical-align: top;
+	width: 150px;
+	padding: 10px;
+	font-weight: bold;
+	vertical-align: top;
 }
+
 table.type06 td {
-    width: 350px;
-    padding: 10px;
-    vertical-align: top;
+	width: 350px;
+	padding: 10px;
+	vertical-align: top;
 }
+
 table.type06 .even {
-    background: #efefef;
+	background: #efefef;
 }
-button{
-  background:#1AAB8A;
-  color:#fff;
-  border:none;
-  position:relative;
-  height:60px;
-  font-size:1.6em;
-  padding:0 2em;
-  cursor:pointer;
-  transition:800ms ease all;
-  outline:none;
+
+button {
+	background: #1AAB8A;
+	color: #fff;
+	border: none;
+	position: relative;
+	height: 60px;
+	font-size: 1.6em;
+	padding: 0 2em;
+	cursor: pointer;
+	transition: 800ms ease all;
+	outline: none;
 }
-button:hover{
-  background:#fff;
-  color:#1AAB8A;
+
+button:hover {
+	background: #fff;
+	color: #1AAB8A;
 }
-button:before,button:after{
-  content:'';
-  position:absolute;
-  top:0;
-  right:0;
-  height:2px;
-  width:0;
-  background: #1AAB8A;
-  transition:400ms ease all;
+
+button:before, button:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 2px;
+	width: 0;
+	background: #1AAB8A;
+	transition: 400ms ease all;
 }
-button:after{
-  right:inherit;
-  top:inherit;
-  left:0;
-  bottom:0;
+
+button:after {
+	right: inherit;
+	top: inherit;
+	left: 0;
+	bottom: 0;
 }
-button:hover:before,button:hover:after{
-  width:100%;
-  transition:800ms ease all;
+
+button:hover:before, button:hover:after {
+	width: 100%;
+	transition: 800ms ease all;
 }
 </style>
 <body>
@@ -81,31 +89,52 @@ button:hover:before,button:hover:after{
 		<hr>
 		<div>
 			<div>
-				<input type="hidden" value="<%=session.getAttribute("roomNo") %>" 
-				name="roomNo" id="roomNo">
-				<table class="type06" style="margin-left: 350px;">				
-					<tr><th scope="row">체크인: </th><td class="even"><input type="text" id="datepicker1" name="checkIn">
-					</td></tr>
-					<tr><th scope="row">체크아웃: </th><td><input type="text" id="datepicker2" name="checkOut">
-					</td></tr>
-					<tr><th scope="row">기본 예약금액: </th><td class="even"><input type="text" name="reservePrice" id="reservePrice"
-					value="<%=session.getAttribute("roomPrice") %>" readonly="readonly">(원)</td></tr>
-					<tr><th scope="row">숙박인원</th><td><input type="number" name="stayPeople" id="count"></td></tr>
+				<input type="hidden" value="<%=session.getAttribute("roomNo")%>"
+					name="roomNo" id="roomNo">
+				<table class="type06" style="margin-left: 350px;">
+					<tr>
+						<th scope="row">체크인:</th>
+						<td class="even"><input type="text" id="datepicker1"
+							name="checkIn"></td>
+					</tr>
+					<tr>
+						<th scope="row">체크아웃:</th>
+						<td><input type="text" id="datepicker2" name="checkOut">
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">기본 예약금액:</th>
+						<td class="even"><input type="text" name="reservePrice"
+							id="reservePrice" value="<%=session.getAttribute("roomPrice")%>"
+							readonly="readonly">(원)</td>
+					</tr>
+					<tr>
+						<th scope="row">숙박인원</th>
+						<td><input type="number" name="stayPeople" id="count"></td>
+					</tr>
 				</table>
 				<div>
 					<button id="confirmBtn" style="margin-left: 460px;">결제</button>
 					<a href="/meoui/accommodaion/list?pageNo=1"><button>리스트</button></a>
 				</div>
+				<br> <br> <br>
 			</div>
 		</div>
 	</div>
-	<div>
+	<div align="center" style="color: gray; font-size: x-small;">
+		<strong>주의사항</strong>
+		<p>1. 숙박가능 인원 초과 시 1인당 10,000원씩 추가 됩니다.</p>
+		<p>2. 기본 숙박비용은 1박 기준이며 기간 추가에 따라 달라집니다</p>
 	</div>
-	<div style="margin-top: 200px;">
-	<c:forEach items="${result.list }" var="res">
+	<div style="margin-top: 150px;">
+		<c:forEach items="${result.list }" var="res">
 			<hr>
-			<p align="center">****님께서<fmt:formatDate value="${res.checkIn }" pattern="yyyy년MM월dd일"/>에 ${res.stayPeople }명이 예약되었습니다.</p>
-	</c:forEach>
+			<p align="center" style="color: gray; font-size: xx-small;">
+				****님께서
+				<fmt:formatDate value="${res.checkIn }" pattern="yyyy년MM월dd일" />
+				에 ${res.stayPeople }명이 예약되었습니다.
+			</p>
+		</c:forEach>
 	</div>
 </body>
 <script>

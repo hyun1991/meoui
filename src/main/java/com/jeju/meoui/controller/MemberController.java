@@ -23,7 +23,6 @@ public class MemberController {
 	//	1. 회원가입(완료)
 	@RequestMapping(value="/member/join", method=RequestMethod.POST)
 	public String joinMember(@ModelAttribute Member member, @RequestParam String memberAddress1, @RequestParam String memberAddress2){
-		logger.info("회원가입 vo:{}", member);
 		String memberAddress= memberAddress1+memberAddress2;
 		member.setMemberAddress(memberAddress);
 		service.createMember(member);
@@ -63,9 +62,7 @@ public class MemberController {
 	//	6. 회원 로그인처리(완료)
 	@RequestMapping(value="/member/login", method=RequestMethod.POST)
 	public ResponseEntity<String> memberLogin(@RequestParam String memberId, @RequestParam String memberPassword, HttpSession session){
-		logger.info("일반회원:{}", memberId, memberPassword);
 		int result= service.memberLogin(memberId, memberPassword, session);
-		logger.info("결과값:{}", result);
 		if(result==1){
 			String go= (String)session.getAttribute("go");
 			session.removeAttribute("go");
@@ -87,7 +84,6 @@ public class MemberController {
 	//	8. 아이디 중복체크(완료)
 	@RequestMapping(value="/member/check", method=RequestMethod.POST)
 	public ResponseEntity<String> checkId(@RequestParam String memberId){
-		logger.info("중복체크 아이디값:{}", memberId);
 		int result= service.checkId(memberId);
 		if(result==0)
 			return new ResponseEntity<String>("success", HttpStatus.OK);

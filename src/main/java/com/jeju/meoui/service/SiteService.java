@@ -72,7 +72,26 @@ public class SiteService {
 		map.put("list", list);
 		return map;
 	}
-	
+	//	제주시별 관광지 리스트
+	public HashMap<String, Object> selectAllSiteByJeju(int pageNo){
+		int cnt = dao.siteCount();
+		Pagination pagination= PagingUtil.getPagination(pageNo, cnt);
+		List<Site> list = dao.selectAllSiteByJeju(pagination.getStartRow(), pagination.getLastRow());
+		HashMap<String, Object>map= new HashMap<String, Object>();
+		map.put("pagination", pagination);
+		map.put("list", list);
+		return map;
+	}
+	//	서귀포시별 관광지 리스트
+	public HashMap<String, Object> selectAllSiteBySeoguipo(int pageNo){
+		int cnt = dao.siteCount();
+		Pagination pagination= PagingUtil.getPagination(pageNo, cnt);
+		List<Site> list = dao.selectAllSiteBySeoguipo(pagination.getStartRow(), pagination.getLastRow());
+		HashMap<String, Object>map= new HashMap<String, Object>();
+		map.put("pagination", pagination);
+		map.put("list", list);
+		return map;
+	}
 	
 	// 6.이름으로 관광지 조회
 	public Site selectSiteByName(String siteName){

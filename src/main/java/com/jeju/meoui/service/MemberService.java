@@ -16,6 +16,7 @@ import com.jeju.meoui.vo.*;
 public class MemberService {
 	@Autowired
 	private MemberDAO dao;
+
 	private static final Logger logger= LoggerFactory.getLogger(MemberService.class);
 	//	1. 회원 추가하기
 	public void createMember(Member member){

@@ -50,7 +50,7 @@
 		select t2.* from(select rownum rnum, t1.* from
 			(select owner_no, owner_id, owner_password, owner_name, owner_phone, 
 			owner_mail, owner_address, owner_brn, owner_startdate 
-			from owner order by owner_no desc)t1)t2 where rnum between #{startRow} and #{lastRow}
+			from owner where owner_name is not null order by owner_no desc)t1)t2 where rnum between #{startRow} and #{lastRow}
 	</select>
 	<!-- 7. 숙박업주 db개수 조회하기 -->
 	<select id="findByDBMax" resultType="int"> 

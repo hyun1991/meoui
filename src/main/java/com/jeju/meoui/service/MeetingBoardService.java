@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
+import org.springframework.transaction.annotation.*;
 
 import com.jeju.meoui.dao.*;
 import com.jeju.meoui.util.*;
@@ -24,6 +25,13 @@ public class MeetingBoardService {
 	//글 작성
 	public void createMeetingBoard(MeetingBoard meetingBoard){
 		dao.insertMeetingBoard(meetingBoard);
+	}
+	
+	//게시글 수정
+	public void updateMeetingBoard(MeetingBoard meetingBoard){
+		
+		dao.updateMeetingBoard(meetingBoard);
+		
 	}
 	
 	
@@ -47,8 +55,9 @@ public class MeetingBoardService {
 	}
 	
 	//상세 보기
+	@Transactional
 	public MeetingBoard selectMeetingBoardView(int meetingboardNo){
-			
+		dao.updateMeetingBoardCnt(meetingboardNo);
 		return dao.selectMeetingBoardView(meetingboardNo);
 	}
 	

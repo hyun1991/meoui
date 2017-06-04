@@ -86,7 +86,7 @@
 			select t2.* from(select rownum rnum, t1.* from
 			(select member_no, member_id, member_password, member_name, member_phone, 
 			member_mail, member_address, member_job, member_gender, member_startdate, member_hobby 
-			from member order by member_no desc)t1)t2 where rnum between #{startRow} and #{lastRow}
+			from member where member_name is not null order by member_no desc)t1)t2 where rnum between #{startRow} and #{lastRow}
 	</select>
 	<!-- 11. 회원번호별 회원리스트 조회하기 -->
 	<select id="findAllMemberNo" parameterType="int" resultType="Member">
