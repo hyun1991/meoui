@@ -194,6 +194,72 @@ img {
 		</ul>
 	</div>
 	
+	
+	<!-- 
+	이거 이쁘다 이거 내일 해볼것 
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<div class="row text-center">
+  <div class="col-sm-4">
+    <div class="thumbnail">
+      <img src="paris.jpg" alt="Paris">
+      <p><strong>Paris</strong></p>
+      <p>Fri. 27 November 2015</p>
+      <button class="btn">Buy Tickets</button>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="thumbnail">
+      <img src="newyork.jpg" alt="New York">
+      <p><strong>New York</strong></p>
+      <p>Sat. 28 November 2015</p>
+      <button class="btn">Buy Tickets</button>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="thumbnail">
+      <img src="sanfran.jpg" alt="San Francisco">
+      <p><strong>San Francisco</strong></p>
+      <p>Sun. 29 November 2015</p>
+      <button class="btn">Buy Tickets</button>
+    </div>
+  </div>
+</div>
+	
+	
+	 -->
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 
 
