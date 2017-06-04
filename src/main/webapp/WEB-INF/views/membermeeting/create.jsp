@@ -5,6 +5,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>모임 생성</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"> 
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
 <style>
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 
@@ -23,11 +31,6 @@ body {
 </script>
 <style type="text/css">
 
-
-
-
-
-
 </style>
 </head>
 <body>
@@ -43,7 +46,22 @@ body {
 
 
 
-			<table >
+  <div class="form-group">
+    <label for="exampleInputEmail1">모임명</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" name="meetingName" placeholder="모임명을 적어주세요">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">이미지</label>
+  <input type="file" name="Img" id="meetingboardImg" class="form-control" value="등록">
+  </div>
+  <input type="button"  class="btn btn-default pull-right" value="취소" onclick=" history.back(-1);">
+  <button type="submit" class="btn btn-default pull-right" >모임생성하기</button>
+ 
+  
+</form>
+
+<!-- 
+	<table >
 				<colgroup>
 					<col width="20%">
 					<col width="80%">
@@ -58,14 +76,6 @@ body {
 					<td><input type="file" name="Img" size=30></td>
 				</tr>
 				<tr>
-					<td>아 이 디</td>
-					<td><input type=text name=title></td>
-				</tr>
-				<tr>
-					<td>비밀번호</td>
-					<td><input type=password name=password size=15 maxlength=15></td>
-				</tr>
-				<tr>
 					<td colspan=2><hr size=1></td>
 				</tr>
 				<tr>
@@ -77,7 +87,7 @@ body {
 
 
 			</table>
-		</form>
+	 -->
 <footer>
 		<%@include file="/footer.jsp"%>
 	</footer>

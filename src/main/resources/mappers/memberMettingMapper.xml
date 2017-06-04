@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="MemberMeetingMapper">
 
-	<!-- 모임생성 완료-->
+	<!-- 모임생성 완료 -->
 	<insert id="insertMemberMeeting" parameterType="MemberMeeting">
 		<selectKey keyProperty="meetingNo" resultType="int" order="BEFORE">
 			select member_meeting_seq.nextval from dual
@@ -13,7 +13,7 @@
 			values(#{meetingNo}, #{meetingName}, #{meetingImg}, 0, #{meetingAdminNo})
 		]]>
 	</insert>
-	
+
 	<!-- 모임수정 -->
 	<update id="updateMeetingName" parameterType="MemberMeeting">	
 		<![CDATA[
@@ -21,85 +21,96 @@
 		 where meeting_admin_no=#{meetingAdminNo} and meeting_no=#{meetingNo}
 		 ]]>
 	</update>
-	
-		<!-- 모임 세부정보 보기 완료-->
-	<select id= "selectMeetingView" resultType="MemberMeeting" parameterType="int">
+
+	<!-- 모임 세부정보 보기 완료 -->
+	<select id="selectMeetingView" resultType="MemberMeeting"
+		parameterType="int">
 		<![CDATA[
 			select meeting_no, meeting_name, meeting_img, meeting_total_number, meeting_admin_no
 			from member_meeting where meeting_no=#{meetingNo}
 		]]>
-	
-	</select>	
-	
-	<!-- 모임삭제 (유저용)-->
+
+	</select>
+
+	<!-- 모임삭제 (유저용) -->
 	<delete id="deleteMemberMeetingUser" parameterType="Int">
 		<![CDATA[
 			delete from member_meeting where meeting_no=#{meetingNo}
 			 and meeting_admin_no=#{memberNo}
-		]]>	
+		]]>
 	</delete>
-	
-	<!-- 모임삭제 (관리자용)-->
+
+	<!-- 모임삭제 (관리자용) -->
 	<delete id="deleteMemberMeetingAdmind" parameterType="Int">
 		<![CDATA[
 			delete from member_meeting where meeting_no=#{meetingNo}
-		]]>	
+		]]>
 	</delete>
-	
-	<!-- 모임 인원 증가	 -->
+
+	<!-- 모임 인원 증가 -->
 	<update id="updateMemberMeetingTotalNumber" parameterType="int">
 		<![CDATA[
 		
 		 update member_meeting set meeting_total_number=meeting_total_number+1 
 		 where meeting_no=#{meeting_no}			
 		
-		]]>		
+		]]>
 	</update>
 
 
-	
-	<!-- 모임 리스트 출력 완료 -->
-	<select id = "selectAllMemberMeetingList" resultType="MemberMeeting">
+
+	<!-- 모임 리스트 출력 페이징 -->
+	<select id="selectAllMemberMeetingList"  parameterType="HashMap" resultType="MemberMeeting">
 		<![CDATA[
-			select meeting_no, meeting_name, meeting_img, meeting_total_number, meeting_admin_no
-			from member_meeting
-		]]>		
-		
-		</select>
+		   select t2.* from
+      (select rownum rnum, t1.* from 
+      (select meeting_no, meeting_name, meeting_img, meeting_total_number, meeting_admin_no
+	from member_meeting)t1)t2 where rnum between #{startRow} and #{lastRow}
+		]]>
+	</select>
+	<!-- 등록된 db갯수 -->
+	<select id="selectByMax" resultType="int">
+	<![CDATA[
+		   select count(*)from member_meeting
+		]]>
 	
-	<!-- 모임명으로 검색  -->
-	<select id = "selectMeetingName" parameterType="String" resultType="MemberMeeting">
+	</select>
+
+
+	<!-- 모임명으로 검색 -->
+	<select id="selectMeetingName" parameterType="String"
+		resultType="MemberMeeting">
 	<![CDATA[
 		select meeting_no, meeting_name, meeting_total_number, meeting_img 
 		from member_meeting where member_meeting = #{meetingName} desc
 	]]>
 	</select>
-			
-	<!-- 모임 인원수별 리스트 보기 -->			
-	<select id = "selectMeetingTotal" parameterType="int" resultType="MemberMeeting">
+
+	<!-- 모임 인원수별 리스트 보기 -->
+	<select id="selectMeetingTotal" parameterType="int" resultType="MemberMeeting">
 	<![CDATA[
 		select meeting_no, meeting_name, meeting_total_number 
 			from member_meeting order by member_total_number =#{meetingTotalNumber}	
 	]]>
 	</select>
 
-	
+
 	<!-- 내가 가입한 모임 보기 -->
-	<select id ="selectMyMeeting" parameterType="int" resultType="MemberMeeting">
+	<select id="selectMyMeeting" parameterType="int" resultType="MemberMeeting">
 	<![CDATA[
 			select m.meeting_no, m.meeting_name, m.meeting_img, 
 			m.meeting_total_number, m.meeting_admin_no from meeting_join j, member_meeting m 
 			where m.meeting_no=j.meeting_no and j.member_no=#{member_no}
 		]]>
-	</select>	
-	
+	</select>
+
 	<select id="selectMaxMeetingNo" resultType="int">
 		<![CDATA[
 			select max(meeting_no) from member_meeting
 		]]>
-	
+
 	</select>
-	
-	
-				
+
+
+
 </mapper>

@@ -8,6 +8,7 @@ import org.springframework.stereotype.*;
 import org.springframework.transaction.annotation.*;
 
 import com.jeju.meoui.dao.*;
+import com.jeju.meoui.util.PagingUtil;
 import com.jeju.meoui.vo.*;;
 
 @Service
@@ -72,19 +73,21 @@ public class MemberMeetingService {
 		
 	
 	}
+		
 	//모임 세부 정보 보기
 	public MemberMeeting selectMeetingView(int meetingNo){
 		logger.info("뷰보기:{}", meetingNo);
 		return dao.selectMeetingView(meetingNo);
 	}
 	
-	//모임 리스트 출력
-	public HashMap<String, Object> selectAllmemberMeetingList(){	
+	//모임 리스트 출력 페이징
+	public HashMap<String, Object> selectAllmemberMeetingList(int pageNo){	
+		int cnt=dao.selectByMax();
+		Pagination pagination= PagingUtil.getPagination(pageNo, cnt);
 		HashMap<String, Object>map= new HashMap<String, Object>();
-		List<MemberMeeting>list = dao.selectAllMemberMeetingList();
-		map.put("list", list);
-		logger.info("모임리스트:{}", list);
-		return map;
+		map.put("pagination", pagination);
+		map.put("list", dao.selectAllMemberMeetingList(pagination.getStartRow(), pagination.getLastRow()));
+		return map;		
 	}
 	
 	//모임 이름으로 검색
