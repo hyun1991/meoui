@@ -42,16 +42,28 @@ c.meetingboard_no=#{meetingboard_no}
 
 	</insert>
 
-	<!-- 댓글 삭제 하기 -->
+	<!-- 댓글 삭제 하기 
 	<delete id="deleteMeetingboardComment" parameterType="int">
 	<![CDATA[
 	delete from meetingboard_comment 
 	where meetingboard_comment_no=#{meetingboardCommentNo}
 	 and 
-	member_no = #{memberNo}
-	]]>	
-	
+	member_no = #{memberNo}	
+	]]>		
 	</delete>
+-->	
+	
+		<!-- 댓글 삭제 하기 -->
+	<delete id="deleteMeetingboardComment" parameterType="int">
+	<![CDATA[
+	
+	  delete from meetingboard_comment where meetingboard_no =(select meetingboard_no from meetingboard where meeting_no=#{meetingNo}
+		]]>	
+	
+		</delete>
+	
+	
+	
 	
 		<!-- 댓글 삭제 하기 관리자용 -->
 	<delete id="deleteMeetingboardCommentAdmin" parameterType="int">

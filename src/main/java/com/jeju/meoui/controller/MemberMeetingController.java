@@ -22,6 +22,9 @@ public class MemberMeetingController {
 	@Autowired
 	private MemberMeetingService service;
 	@Autowired
+	private MeetingJoinService joinservice;
+	
+	@Autowired
 	private ServletContext ctx;
 	@Resource(name="path")
 	private String path;
@@ -88,8 +91,14 @@ public class MemberMeetingController {
 	@RequestMapping(value="/membermeeting/view/{meetingNo}", method=RequestMethod.GET)
 	public String selectMeetingView(@ModelAttribute MeetingJoin meetingJoin, @PathVariable int meetingNo, Model model, HttpSession session){
 		session.setAttribute("meetingNo", meetingNo);
+		int memberNo = (Integer)session.getAttribute("memberNo");
+		model.addAttribute("meetingjoin",service.selectMyMeeting(memberNo));
 		model.addAttribute("meeting",service.selectMeetingView(meetingNo));
-		logger.info("멤머미팅 멤버넘버:{}", meetingNo);
+		
+		logger.info("멤머미팅 미팅넘버:{}", meetingNo);
+		logger.info("멤머미팅 멤버넘버:{}", memberNo);
+		logger.info("멤머미팅 멤버넘버:{}",service.selectMyMeeting(memberNo));
+		
 		return "membermeeting/view";
 	}
 	
@@ -111,13 +120,16 @@ public class MemberMeetingController {
 	}
 	// 리스트 출력(작업완료)
 	@RequestMapping(value="/membermeeting/list", method=RequestMethod.GET)
-	public String AllMemberMeeting(Model model, HttpSession session){	
+	public String AllMemberMeeting(Model model, HttpSession session, @RequestParam(defaultValue="1") int pageNo){	
 		MemberMeeting meetingNo=new MemberMeeting();
 		session.setAttribute("meetingNo", meetingNo);
-		logger.info("컨트롤 시작");
-		model.addAttribute("result", service.selectAllmemberMeetingList());
-		logger.info("멤머미팅리스트출력 세션멤버미팅:", meetingNo);
+		logger.info("컨트롤 시작");		
+		model.addAttribute("result", service.selectAllmemberMeetingList(pageNo));	
+		
 		return "membermeeting/list";
+	
+		
+		
 	}
 	//가입한 모임 리스트 보기(작업완료)
 	@RequestMapping(value="/meetingjoin/list", method=RequestMethod.GET)
@@ -134,7 +146,7 @@ public class MemberMeetingController {
 	public String AllMemberMeetingAdmin(Model model, HttpSession session){	
 		MemberMeeting meetingNo=new MemberMeeting();
 		session.setAttribute("meetingNo", meetingNo);
-		model.addAttribute("result", service.selectAllmemberMeetingList());
+		//model.addAttribute("result", service.selectAllmemberMeetingList());
 		return "admin/meetingList";
 	}
 	

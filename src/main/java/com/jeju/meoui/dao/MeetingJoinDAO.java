@@ -38,8 +38,20 @@ public class MeetingJoinDAO {
 	
 	
 	//내 모임보기
-	public List<MemberMeeting> selectMyMeeting(int memberNo){
-		return template.selectList("MeetingJoin.selectMyMeeting",memberNo);
+	//public List<MemberMeeting> selectMyMeeting(int memberNo){
+		//return template.selectList("MeetingJoin.selectMyMeeting",memberNo);
+//	}
+	
+	//내 모임보기 22
+	public List<MeetingJoin> selectMyMeetingJoin(int meetingNo, int memberNo){
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("memberNo", memberNo);
+		map.put("meetingNo", meetingNo);
+		return template.selectList("MeetingJoin.selectMyMeetingJoin",map);
+		
+		
 	}
+	
+	
 	
 }

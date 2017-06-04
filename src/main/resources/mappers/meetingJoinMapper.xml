@@ -26,17 +26,16 @@
 		]]>
 	
 	</delete>
-	
-	
-	<!-- 3. 가입한 모임 보기 -->
-	<select id="selectMyMeeting" parameterType="int" resultType="MemberMeeting">
-		<![CDATA[
-			select m.meeting_name, m.meeting_img, 
-			m.meeting_total_number from meeting_join j, member_meeting m 
-			where m.meeting_no=j.meeting_no and j.member_no=#{member_no}
+	<!-- 모든 가입 회원번호로 조회 -->
+	<select id="selectMyMeetingJoin" parameterType="int" resultType="meetingJoin">
+	<![CDATA[
+				select meeting_no, member_no from meeting_join where meeting_no=#{meetingNo} and member_no=#{memberNo};
 		]]>
+	
+	
+	</select>
+	
 		
 		
-		</select>
 </mapper>
 	
