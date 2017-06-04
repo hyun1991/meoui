@@ -47,9 +47,14 @@ public class MemberMeetingDAO {
 		return template.selectOne("MemberMeetingMapper.selectMeetingView", meetingNo);
 	}
 	
-	//모임 리스트 출력
-	public List<MemberMeeting> selectAllMemberMeetingList(){
-		return template.selectList("MemberMeetingMapper.selectAllMemberMeetingList");
+	//모임 리스트 출력 페이징
+	public List<MemberMeeting> selectAllMemberMeetingList(int startRow, int lastRow){
+		HashMap<String, Object>map= new HashMap<String, Object>();
+		
+		map.put("startRow", startRow);
+		map.put("lastRow", lastRow);
+		
+		return template.selectList("MemberMeetingMapper.selectAllMemberMeetingList", map);
 	}
 	
 	//모임명 검색
@@ -70,6 +75,11 @@ public class MemberMeetingDAO {
 	public int selectMaxMeetingNo(){
 		return template.selectOne("MemberMeetingMapper.selectMaxMeetingNo");
 	}
+	//등록된 미팅넘버 검사
+	public int selectByMax(){
+		return template.selectOne("MemberMeetingMapper.selectByMax");
+	}
+	
 	
 	//토탈넘버 증가
 	public void updateMemberMeetingTotalNumber(int meetingNo){

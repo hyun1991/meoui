@@ -85,10 +85,21 @@
 		 meetingboard_content=#{meetingboardContent},
 		meetingboard_img=#{meetingboardImg}
 		where meetingboard_no=#{meetingboardNo} and member_no=#{memberNo} 	
+	]]>	
+	</update>	
+	
+	<!-- 조회수 증가 -->
+	<update id="updateMeetingBoardCnt"	parameterType="int">
+	<![CDATA[	
+		 update meetingboard set meetingboard_cnt=meetingboard_cnt+1 
+		 where meetingboard_no=#{meetingboard_no} 	
 	]]>
 	
+	</update>
 	
-	</update>	
+	
+	
+	
 	
 </mapper>
 

@@ -83,13 +83,14 @@ button:hover:before, button:hover:after {
 	<div id="calendar"></div>
 	<div align="center">
 		<a href="/meoui/"><button>홈으로</button></a>
+		<a href="/meoui/schedule/list?memberNo=<%=session.getAttribute("memberNo") %>&pageNo=1"><button>리스트형식 조회</button></a>
 	</div>
 </body>
 <script type="text/javascript">
 	function calendarEvent(eventData) {
 		console.log(eventData)
 		jQuery("#calendar").fullCalendar({
-			defaultDate : "2017-05-30",
+			defaultDate : "2017-06-02",
 			lang : "ko",
 			editable : true,
 			eventLimit : true,
