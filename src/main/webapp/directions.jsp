@@ -12,7 +12,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>Main Page</title>
+<title>길찾기</title>
 </head>
 <style>
       #right-panel {
@@ -38,10 +38,9 @@
         padding: 0;
       }
       #map {
-        height: 100%;
+        height: 80%;
         float: left;
         width: 70%;
-        height: 100%;
       }
       #right-panel {
         margin: 20px;
@@ -69,7 +68,7 @@
         width: 200px;
       }
 	  #submit{
-	 	background-color: #8dded8;
+	 	background-color: #81feee;
         font-family: Roboto;
 	  }
       #origin-input:focus,
@@ -171,7 +170,7 @@
               summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
             }
           } else {
-            window.alert('Directions request failed due to ' + status);
+            window.alert('주소를 정확히 입력해주세요 ' );
           }
         });
       }
@@ -185,7 +184,7 @@
             if (status === 'OK') {
               display.setDirections(response);
             } else {
-              alert('Could not display directions due to: ' + status);
+              alert('주소를 정확히 입력해주세요 ' );
             }
           });
         }
