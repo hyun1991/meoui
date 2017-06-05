@@ -16,10 +16,22 @@ opacity
 
 
 
+
+
+
+
+
+
 :
 
 
+
+
+
  
+
+
+
 
 
 0
@@ -30,7 +42,19 @@ opacity
 
 
 
+
+
+
+
+
+
 :
+
+
+
+
+
+
 
 
 
@@ -55,7 +79,19 @@ opacity
 
 
 
+
+
+
+
+
+
 :
+
+
+
+
+
+
 
 
 
@@ -72,7 +108,19 @@ opacity
 
 
 
+
+
+
+
+
+
 :
+
+
+
+
+
+
 
 
 
@@ -96,11 +144,6 @@ img {
 	color: #orange;
 	margin: 30px;
 }
-
-
-
-
-
 </style>
 <head>
 <meta charset="UTF-8">
@@ -125,7 +168,6 @@ img {
 	<header>
 		<%@include file="/nav/navbar.jsp"%>
 	</header>
-
 	<!-- 
 		
 		<div class="row text-center">
@@ -225,57 +267,41 @@ img {
 		</ul>
 	</div>
 	-->
-
-
-
-	<div class="row text-center container">
+	<h1 style="margin-top: 50px;" align="center">모임 전체리스트</h1>
+	<hr>
+	<div class="container">
+	<div class="row text-center container"
+		style="height: 100%; width: 100%; margin-top: 10px;">
 		<c:forEach items="${result.list }" var="meeting">
-		<div class="col-sm-4" style="height: 400px; width: 340px; margin-top:10px;" >
-			
-			<div class="thumbnail" style="height: 400px; width: 330px; margin-top:30px; margin-left: 10px; " >
+			<div class="col-sm-4"
+				style="height: 400px; width: 340px; margin-top: 10px;">
 
-				<a href="/meoui/membermeeting/view/${meeting.meetingNo}"> <img 					src="/meoui/images/${meeting.meetingImg}"
-					style="margin-bottom: 20px; height: 80%; width: 100%;" class="img-circle" alt="Cinque Terre"
-					>
-				</a>
+				<div class="thumbnail"
+					style="height: 400px; width: 330px; margin-top: 30px; margin-left: 10px;">
 
-				<p>
-					<a href="/meoui/membermeeting/view/${meeting.meetingNo}"> <strong>${meeting.meetingName }</strong>
+					<a href="/meoui/membermeeting/view/${meeting.meetingNo}"> <img
+						src="/meoui/images/${meeting.meetingImg}"
+						style="margin-bottom: 20px; height: 80%; width: 100%;"
+						class="img-circle" alt="Cinque Terre">
+					</a>
+
+					<p>
+						<a href="/meoui/membermeeting/view/${meeting.meetingNo}"> <strong>${meeting.meetingName }</strong>
 						</a>
-				</p>
+					</p>
 
-				<p>우리모임을 좋아하는 사람은: ${meeting.meetingTotalNumber }명</p>
+					<p>우리모임을 좋아하는 사람은: ${meeting.meetingTotalNumber }명</p>
 
-				<!-- <button class="btn">Buy Tickets</button> -->
+					<!-- <button class="btn">Buy Tickets</button> -->
+				</div>
+
 			</div>
-		
-		</div>
-			</c:forEach>
+		</c:forEach>
 	</div>
-  
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+	</div>
 
-
-	<div class="row text-center">
+	<hr />
+	<div class="row text-center" style="margin-top: 30px;">
 		<ul class="pagination pagination-md">
 			<li><c:if test="${result.pagination.prev>0 }">
 					<a
@@ -291,40 +317,6 @@ img {
 				</c:if></li>
 		</ul>
 	</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	<footer>
 		<%@include file="/footer.jsp"%>
 	</footer>
