@@ -34,10 +34,6 @@ img {
 }
 </style>
 <body>
-
-	<header>
-		<%@include file="/nav/navbar.jsp"%>
-	</header>
 		<div class="container">
 			<div class="row  text-center">
 				<div class="col-md-10">
@@ -48,7 +44,7 @@ img {
 				<div class="col-md-1 text-center">
 					<p
 						style="writing-mode: vertical-rl; font-family: Gungsuh; font-size: 40px; margin-top: 20px;">인연을
-						찾아보세요&nbsp、</p>
+						찾아보세요</p>
 					<hr style="border: 2px solid #f76ce4;">
 				</div>
 				<div class="col-md-1 text-center">
@@ -59,103 +55,8 @@ img {
 				</div>
 
 			</div>
-
-			<h1 id="headTitle" style="margin-top: 50px;">꽃 한 송이가 그래그래 피었구나,</h1>
-			<a href="/meoui/membermeeting/create">생성 </a>
-			<a href="/meoui/membermeeting/list">리스트</a>
-			<a href="/meoui/membermeeting/ed">에디터</a>
-			<a href="/meoui/meetingjoin/list">내모임</a>
-			
-			
-			
-			<hr style="border: 4px solid #f76ce4; margin-bottom: 50px;">
-			<div class="row  text-center" style="margin-bottom: 50px;">
-				<div class="col-sm-3">
-					<img class="image-responsive"
-						src="/meoui/images/meetup/skinscuber.jpg" alt="skinscuber"
-						style="margin-bottom: 20px;">
-					<p>
-						<strong>스킨스쿠버</strong>
-					</p>
-					<p>Fri. 27 November 2015</p>
-					<button class="btn" style="border-color: #f76ce4;">참여하기</button>
-				</div>
-				<div class="col-sm-3">
-					<img class="image-responsive"
-						src="/meoui/images/meetup/jejufood.jpg" alt="jejufood"
-						style="margin-bottom: 20px;">
-					<p>
-						<strong>토속 음식</strong>
-					</p>
-					<p>Sat. 28 November 2015</p>
-					<button class="btn" style="border-color: #f76ce4;">참여하기</button>
-				</div>
-				<div class="col-sm-3">
-					<img class="image-responsive" src="/meoui/images/meetup/olle.png"
-						alt="Olle" style="margin-bottom: 20px;">
-					<p>
-						<strong>올레 길 걷기</strong>
-					</p>
-					<p>Sun. 29 November 2015</p>
-					<button class="btn" style="border-color: #f76ce4;">참여하기</button>
-				</div>
-				<div class="col-sm-3">
-					<img class="image-responsive"
-						src="/meoui/images/meetup/tradition.jpg" alt="tradition"
-						style="margin-bottom: 20px;">
-					<p>
-						<strong>전통 체험</strong>
-					</p>
-					<p>Sun. 29 November 2015</p>
-					<button class="btn" style="border-color: #f76ce4;">참여하기</button>
-				</div>
-			</div>
-			<div class="row  text-center" style="margin-bottom: 50px;"">
-				<div class="col-sm-3">
-					<img class="image-responsive"
-						src="/meoui/images/meetup/skinscuber.jpg" alt="skinscuber"
-						style="margin-bottom: 20px;">
-					<p>
-						<strong>스킨스쿠버</strong>
-					</p>
-					<p>Fri. 27 November 2015</p>
-					<button class="btn" style="border-color: #f76ce4;">참여하기</button>
-				</div>
-				<div class="col-sm-3">
-					<img class="image-responsive"
-						src="/meoui/images/meetup/jejufood.jpg" alt="jejufood"
-						style="margin-bottom: 20px;">
-					<p>
-						<strong>New York</strong>
-					</p>
-					<p>Sat. 28 November 2015</p>
-					<button class="btn" style="border-color: #f76ce4;">참여하기</button>
-				</div>
-				<div class="col-sm-3">
-					<img class="image-responsive" src="/meoui/images/meetup/olle.png"
-						alt="Olle" style="margin-bottom: 20px;">
-					<p>
-						<strong>올레 길 걷기</strong>
-					</p>
-					<p>Sun. 29 November 2015</p>
-					<button class="btn" style="border-color: #f76ce4;">참여하기</button>
-				</div>
-				<div class="col-sm-3">
-					<img class="image-responsive"
-						src="/meoui/images/meetup/tradition.jpg" alt="tradition"
-						style="margin-bottom: 20px;">
-					<p>
-						<strong>전통 체험</strong>
-					</p>
-					<p>Sun. 29 November 2015</p>
-					<button class="btn" style="border-color: #f76ce4;">참여하기</button>
-				</div>
-			</div>
-			<hr style="border: 4px solid #f76ce4; margin-bottom: 50px;">
 		</div>
-	<footer>
-		<%@include file="/footer.jsp"%>
-	</footer>
+
 </body>
 <!-- 벚꽃 -->
 <script>
