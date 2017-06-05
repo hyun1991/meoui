@@ -230,9 +230,9 @@ img {
 
 	<div class="row text-center container">
 		<c:forEach items="${result.list }" var="meeting">
-		<div class="col-sm-4" style="height: 400px; width: 340px;">
+		<div class="col-sm-4" style="height: 400px; width: 340px; margin-top:10px;" >
 			
-			<div class="thumbnail" style="height: 400px; width: 330px; margin-top:10px; margin-left: 10px; " >
+			<div class="thumbnail" style="height: 400px; width: 330px; margin-top:30px; margin-left: 10px; " >
 
 				<a href="/meoui/membermeeting/view/${meeting.meetingNo}"> <img 					src="/meoui/images/${meeting.meetingImg}"
 					style="margin-bottom: 20px; height: 80%; width: 100%;" class="img-circle" alt="Cinque Terre"
