@@ -17,7 +17,9 @@
 
 
 <style>
-
+footer{
+position: fixed;
+}
 /* 사이드바 래퍼 스타일 */
 #page-wrapper {
 	padding-left: 250px;
@@ -39,8 +41,16 @@ height: 80%;
 #page-content-wrapper {
 	width: 100%;
 	padding: 20px;
-	height: 80%;
+	height: 100%;
 }
+
+#divview{
+width: 100%;
+height: 80%;
+
+}
+
+
 /* 사이드바 스타일 */
 .sidebar-nav {
 	width: 100%;
@@ -263,7 +273,7 @@ img {
 	<div id="page-content-wrapper">
     
     <div class="container-fluid">
-     
+     <!-- 메인 -->
      <div class="row text-center" id="page-content-wrapper">
 		<div class="col-sm-3 container-fluid" id="divview">
 			<!-- <a href="/meoui/meetingboard/view/${meeting.meetingNo}"> <img
@@ -426,6 +436,8 @@ img {
 	</form>
 
  -->
+ 
+
 
 </body>
 </html>
