@@ -54,17 +54,18 @@
 	<hr>
 	<h2 align="center">댓글작성란</h2>
 	<br>
+		<div class="container">
 		<form action="/meoui/accommodationComment/insert" method="post">
-			<div class="container" style="margin-left: auto;margin-right:450px;">
-				<div class="col-xs-4" style="margin-left: 70px">
+			<div class="container">
+				<div class="col-xs-4">
 					<textarea class="form-control col-sm-5" rows="5"
 						placeholder="댓글을 작성해 주세요." name="accommodationCommentContent">
 				</textarea>
 				</div>
 			</div>
 			<br>
-			<div class="container" style="margin-left: auto;margin-right:450px;">
-				<div class="col-xs-4" style="margin-left: 70px">
+			<div class="container">
+				<div class="col-xs-4">
 					<select class="form-control input-lg"
 						name="accommodationCommentAvg">
 						<option value="">평점</option>
@@ -77,12 +78,13 @@
 				</div>
 			</div>
 			<br>
-			<div class="container" style="margin-left: auto;">
+			<div class="container">
 				<div class="col-xs-4">
 					<button type="submit" class="w3-button w3-block w3-white w3-border">댓글작성</button>
 				</div>
 			</div>
 		</form>
+		</div>
 	<hr>
 	<c:forEach items="${result.comment }" var="comment">
 		<div class="container">
