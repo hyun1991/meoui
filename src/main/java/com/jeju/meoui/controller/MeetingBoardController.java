@@ -76,7 +76,7 @@ public class MeetingBoardController {
 		return "meetingboard/update";
 	}
 	
-	
+	//모임게시판 수정
 	@RequestMapping(value="/meetingboard/update", method=RequestMethod.POST)
 	public String updateMeetingBoard(@RequestParam String meetingboardTitle,
 			@RequestParam String meetingboardContent,

@@ -229,10 +229,11 @@ font-style: italic;
 								pattern="yyyy년MM월dd일" /></td>
 						<td>${board.meetingboardCnt }</td>
 					</tr>
+					</c:forEach>
 			</tbody>
-			</c:forEach>
+		
 		</table>
-		<hr />
+		<hr /><input type="button"  class="btn btn-default pull-right" value="취소" onclick=" history.back(-1);">
 		<a class="btn btn-default pull-right"
 			href="/meoui/meetingboard/create">글쓰기</a>
 		<div class="text-center">
