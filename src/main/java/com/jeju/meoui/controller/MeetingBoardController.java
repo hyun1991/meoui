@@ -76,7 +76,7 @@ public class MeetingBoardController {
 		return "meetingboard/update";
 	}
 	
-	
+	//모임게시판 수정
 	@RequestMapping(value="/meetingboard/update", method=RequestMethod.POST)
 	public String updateMeetingBoard(@RequestParam String meetingboardTitle,
 			@RequestParam String meetingboardContent,
@@ -108,7 +108,7 @@ public class MeetingBoardController {
 	// 모임게시판 글 상세 보기
 	@RequestMapping(value = "/meetingboard/view/{meetingboardNo}", method = RequestMethod.GET)
 	public String MeetingboardView(@PathVariable int meetingboardNo, Model model, HttpSession session) {
-
+		int memberNo=(Integer)session.getAttribute("memberNo");
 		session.setAttribute("meetingboardNo", meetingboardNo);
 		logger.info("모임게시판글보기meetingboardNo : {}", meetingboardNo);
 		model.addAttribute("board", service.selectMeetingBoardView(meetingboardNo));

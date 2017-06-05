@@ -18,18 +18,19 @@ public class MeetingBoardService {
 	@Autowired
 	public MeetingBoardDAO dao;
 	
-	
-	private Logger logger= LoggerFactory.getLogger(MeetingBoardService.class);
+	@Autowired
+	public MeetingBoardCommentDAO commentdao;
+                                                                                                   	private Logger logger= LoggerFactory.getLogger(MeetingBoardService.class);
 
 
 	//글 작성
 	public void createMeetingBoard(MeetingBoard meetingBoard){
+		
 		dao.insertMeetingBoard(meetingBoard);
 	}
 	
 	//게시글 수정
-	public void updateMeetingBoard(MeetingBoard meetingBoard){
-		
+	public void updateMeetingBoard(MeetingBoard meetingBoard){		
 		dao.updateMeetingBoard(meetingBoard);
 		
 	}
@@ -58,11 +59,14 @@ public class MeetingBoardService {
 	@Transactional
 	public MeetingBoard selectMeetingBoardView(int meetingboardNo){
 		dao.updateMeetingBoardCnt(meetingboardNo);
+		
 		return dao.selectMeetingBoardView(meetingboardNo);
 	}
 	
 	//번호로 글 삭제
+	@Transactional
 	public void deleteMeetingBoard(int meetingboardNo){
+		commentdao.deleteMeetingMeetingboardComment(meetingboardNo);
 		dao.deleteMeetingBoard(meetingboardNo);
 	}
 	

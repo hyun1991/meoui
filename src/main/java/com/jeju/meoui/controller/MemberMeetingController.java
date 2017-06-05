@@ -59,8 +59,7 @@ public class MemberMeetingController {
 	//모임 수정(작업완료)
 	@RequestMapping(value="/membermeeting/update", method=RequestMethod.GET)
 	public String updateMemberMeeting(HttpSession session, Model model){
-		int meetingNo=(Integer)session.getAttribute("meetingNo");
-		
+		int meetingNo=(Integer)session.getAttribute("meetingNo");		
 		model.addAttribute("result",service.selectMeetingView(meetingNo));
 		return "membermeeting/update";
 	}

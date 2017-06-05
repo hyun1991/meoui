@@ -50,6 +50,7 @@ public class MemberMeetingService {
 	}
 	
 	//모임삭제(유저용)
+		@Transactional
 		public void deleteMemberMeeting(int meetingNo, int memberNo){
 			
 			logger.info("멤버미팅서비스 meeingtno : {}",meetingNo);

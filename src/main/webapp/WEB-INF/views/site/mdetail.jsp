@@ -179,7 +179,7 @@ img {
     	<div class="container" style="margin-left: auto;">
 		<hr>
 			<c:forEach items="${site.list }" var="accommodation">
-				<div class="col-sm-3" style="overflow-x:hidden;overflow-y:hidden; width: 280px; height: 500px;" >
+				<div class="col-sm-3" style="overflow-x:hidden;overflow-y:hidden; width: 280px; height: 400px;" >
 					<a href="/meoui/accommodation/view/${accommodation.accommodationNo}">
 						<img class="image-responsive"
 						src="/meoui/images/${accommodation.accommodationImg}"
@@ -199,16 +199,16 @@ img {
 			<hr>
 	<h3 align="center" style="margin-right: 600px; padding-right: 400px;">댓글작성란</h3>
 	<br>
-	<div>
+	<div class="container">
 		<form action="/meoui/siteComment/insert" method="post">
-			<div class="container" style="margin-left: 350px;">
+			<div class="container">
 				<div class="col-xs-4">
 					<textarea class="form-control col-sm-5" rows="5"
 						placeholder="댓글을 작성해 주세요." name="siteCommentContent">
 				</textarea>
 				</div>
 			</div>
-			<div class="container" style="margin-left: 350px;">
+			<div class="container">
 				<div class="col-xs-4">
 					<button type="submit" class="w3-button w3-block w3-white w3-border">댓글작성</button>
 				</div>

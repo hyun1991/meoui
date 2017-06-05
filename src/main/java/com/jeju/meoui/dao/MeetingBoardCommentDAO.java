@@ -27,7 +27,7 @@ public class MeetingBoardCommentDAO {
 		template.insert("MeetingBoardCommentMapper.insertMeetingBoardComment", meetingboardComment);
 	}
 	
-	//댓글 삭제 하기
+	//댓글 삭제 하기(작성자용
 	public void deleteMeetingboardComment(int meetingboardCommentNo, int memberNo){
 		HashMap<String, Object>map= new HashMap<String, Object>();
 		map.put("meetingboardCommentNo", meetingboardCommentNo);
@@ -35,11 +35,16 @@ public class MeetingBoardCommentDAO {
 		template.delete("MeetingBoardCommentMapper.deleteMeetingboardComment", map);
 	}
 	
+	//댓글 삭제 게시판 만든 사람용
+	public void deleteMeetingMeetingboardComment(int meetingboardNo){
+		template.delete("MeetingBoardCommentMapper.deleteMeetingMeetingboardComment", meetingboardNo);
+		
+	}
 	//댓글 삭제 하기(관리자용)
 	public void deleteMeetingboardCommentAdmin(int meetingNo){
 	template.delete("MeetingBoardCommentMapper.deleteMeetingboardCommentAdmin", meetingNo);
 	}
-	
+
 	
 	
 }
