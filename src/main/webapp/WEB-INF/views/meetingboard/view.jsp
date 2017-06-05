@@ -379,7 +379,6 @@ img {
 						<p>${board.memberName }</p>
 
 						<p>${board.meetingboardCnt }</p>
-							이거 표시가 왜 안되지	${board.memberNo }
 						<p>
 							<fmt:formatDate value="${board.meetingboardDate}"
 								pattern="yyyy년MM월dd일" />
