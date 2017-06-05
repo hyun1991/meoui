@@ -4,6 +4,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" type="text/css"
+	href="/meoui/css/meetingboardimg.css">
 <style>
 @
 keyframes menuBlink { 0% {
@@ -22,13 +24,37 @@ opacity
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 :
 
 
 
 
 
- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -48,7 +74,32 @@ opacity
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -85,7 +136,32 @@ opacity
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -114,7 +190,37 @@ opacity
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -145,9 +251,17 @@ img {
 	margin: 30px;
 }
 </style>
+<script>
+	$(".hover").mouseleave(function() {
+		$(this).removeClass("hover");
+	});
+</script>
+
 <head>
 <meta charset="UTF-8">
 <title>모임 목록</title>
+
+
 </head>
 <script type="text/javascript"
 	src="//apis.daum.net/maps/maps3.js?apikey=0733036d66ec867aa0960ee525091024&libraries=services "></script>
@@ -168,14 +282,12 @@ img {
 	<header>
 		<%@include file="/nav/navbar.jsp"%>
 	</header>
-	<!-- 
-		
+	<!-- 		
 		<div class="row text-center">
-			<c:forEach items="${result.list }" var="meeting">
+					<c:forEach items="${result.list }" var="meeting">
 				
 				<div class="col-sm-3" style="overflow-x:hidden;overflow-y:hidden">
-					
-					<a
+										<a
 						href="/meoui/membermeeting/view/${meeting.meetingNo}">
 						<img class="image-responsive"
 						src="/meoui/images/${meeting.meetingImg}"
@@ -204,9 +316,6 @@ img {
 			</c:forEach>
 		</div>
  -->
-
-
-
 	<!-- 
 		원래 코드
 	<div class="container text-center">
@@ -270,36 +379,94 @@ img {
 	<h1 style="margin-top: 50px;" align="center">모임 전체리스트</h1>
 	<hr>
 	<div class="container">
-	<div class="row text-center container"
-		style="height: 100%; width: 100%; margin-top: 10px;">
-		<c:forEach items="${result.list }" var="meeting">
-			<div class="col-sm-4"
-				style="height: 400px; width: 340px; margin-top: 10px;">
+		<div class="row text-center container"
+			style="height: 100%; width: 100%; margin-top: 10px;">
+			<c:forEach items="${result.list }" var="meeting">
+				<div class="col-sm-4"
+					style="height: 400px; width: 340px; margin-top: 10px;">
+					<div class="thumbnail"
+						style="height: 400px; width: 330px; margin-top: 30px; margin-left: 10px;">
 
-				<div class="thumbnail"
-					style="height: 400px; width: 330px; margin-top: 30px; margin-left: 10px;">
 
-					<a href="/meoui/membermeeting/view/${meeting.meetingNo}"> <img
-						src="/meoui/images/${meeting.meetingImg}"
-						style="margin-bottom: 20px; height: 80%; width: 100%;"
-						class="img-circle" alt="Cinque Terre">
-					</a>
 
-					<p>
-						<a href="/meoui/membermeeting/view/${meeting.meetingNo}"> <strong>${meeting.meetingName }</strong>
+
+
+						<figure class="snip1382" style="height: 80%;">
+							<img src="/meoui/images/${meeting.meetingImg}"
+								style="margin-bottom: 0px; height: 100%; width: 100%;"
+								class="img-circle" alt="sample99" />
+							<figcaption
+								style="width: 100%; padding-right: 0px; padding-top: 0px; padding-left: 0px; padding-bottom: 0px;">
+								<h2>회원 가입은 아래버튼을 눌러주세요</h2>
+								<p></p>
+
+								<div class="icons">
+
+
+									<!--<c:if
+										test="${meeting.meetingAdminNo ne memberNo or meetingJoin.meetingNo ne meetingNo}"></c:if>-->
+										<form action="/meoui/membermeeting/post" method=post>
+										<button id="commit" type="submit"
+									style="padding-top: 0px; padding-left: 0px; border-right-width: 0px; padding-right: 0px; border-top-width: 0px; border-left-width: 0px; padding-bottom: 0px; color: cyan; background-color: black; border-bottom-width: 0px;">
+												<i class="ion-person-add"></i>
+											</button>
+										</form>
+									
+
+
+
+
+								</div>
+
+							</figcaption>
+						</figure>
+
+						<p>
+							<a href="/meoui/membermeeting/view/${meeting.meetingNo}"> <strong>${meeting.meetingName }</strong>
+							</a>
+						</p>
+
+						<p>우리모임을 좋아하는 사람은: ${meeting.meetingTotalNumber }명</p>
+
+
+						<!-- 원래 이미지 -->
+						<!-- <a href="/meoui/membermeeting/view/${meeting.meetingNo}"> <img
+							src="/meoui/images/${meeting.meetingImg}"
+							style="margin-bottom: 20px; height: 80%; width: 100%;"
+							class="img-circle" alt="Cinque Terre">
 						</a>
-					</p>
+						<p>
+							<a href="/meoui/membermeeting/view/${meeting.meetingNo}"> <strong>${meeting.meetingName }</strong>
+							</a>
+						</p>
 
-					<p>우리모임을 좋아하는 사람은: ${meeting.meetingTotalNumber }명</p>
+						<p>우리모임을 좋아하는 사람은: ${meeting.meetingTotalNumber }명</p>
+ -->
 
-					<!-- <button class="btn">Buy Tickets</button> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+						<!-- <button class="btn">Buy Tickets</button> -->
+					</div>
 				</div>
-
-			</div>
-		</c:forEach>
+			</c:forEach>
+		</div>
 	</div>
-	</div>
-
 	<hr />
 	<div class="row text-center" style="margin-top: 30px;">
 		<ul class="pagination pagination-md">
