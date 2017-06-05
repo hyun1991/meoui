@@ -14,9 +14,13 @@ keyframes menuBlink { 0% {
 opacity
 
 
+
+
 :
 
+
  
+
 
 0
 }
@@ -24,7 +28,11 @@ opacity
 opacity
 
 
+
+
 :
+
+
 
 
 1
@@ -45,7 +53,11 @@ opacity
 
 
 
+
+
 :
+
+
 
 
 
@@ -58,7 +70,11 @@ opacity
 
 
 
+
+
 :
+
+
 
 
 
@@ -93,6 +109,13 @@ img {
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <body>
 	<header>
 		<%@include file="/nav/navbar.jsp"%>
@@ -136,6 +159,9 @@ img {
  -->
 
 
+
+	<!-- 
+		원래 코드
 	<div class="container text-center">
 		<h1 id="headTitle" style="margin-top: 50px;" align="center">모임
 			리스트</h1>
@@ -193,73 +219,105 @@ img {
 				</c:if></li>
 		</ul>
 	</div>
-	
-	
-	<!-- 
-	이거 이쁘다 이거 내일 해볼것 
-	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	-->
 
-<div class="row text-center">
-  <div class="col-sm-4">
-    <div class="thumbnail">
-      <img src="paris.jpg" alt="Paris">
-      <p><strong>Paris</strong></p>
-      <p>Fri. 27 November 2015</p>
-      <button class="btn">Buy Tickets</button>
-    </div>
-  </div>
-  <div class="col-sm-4">
-    <div class="thumbnail">
-      <img src="newyork.jpg" alt="New York">
-      <p><strong>New York</strong></p>
-      <p>Sat. 28 November 2015</p>
-      <button class="btn">Buy Tickets</button>
-    </div>
-  </div>
-  <div class="col-sm-4">
-    <div class="thumbnail">
-      <img src="sanfran.jpg" alt="San Francisco">
-      <p><strong>San Francisco</strong></p>
-      <p>Sun. 29 November 2015</p>
-      <button class="btn">Buy Tickets</button>
-    </div>
-  </div>
-</div>
-	
-	
-	 -->
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+	<div class="row text-center">
+		<c:forEach items="${result.list }" var="meeting">
+		<div class="col-sm-4">
+			
+			<div class="thumbnail">
+
+				<a href="/meoui/membermeeting/view/${meeting.meetingNo}"> <img
+					src="/meoui/images/${meeting.meetingImg}"
+					style="margin-bottom: 20px;" class="img-circle" alt="Cinque Terre"
+					width="304" height="236">
+				</a>
+
+				<p>
+					<a href="/meoui/membermeeting/view/${meeting.meetingNo}"> <strong>${meeting.meetingName }</strong>
+						</a>
+				</p>
+
+				<p>우리모임을 좋아하는 사람은: ${meeting.meetingTotalNumber }명</p>
+
+				<!-- <button class="btn">Buy Tickets</button> -->
+			</div>
+		
+		</div>
+			</c:forEach>
+	</div>
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+	<div class="row text-center">
+		<ul class="pagination pagination-md">
+			<li><c:if test="${result.pagination.prev>0 }">
+					<a
+						href="/meoui/membermeeting/list?pageNo=${result.pagination.prev }">이전으로</a>
+				</c:if></li>
+			<li><c:forEach begin="${result.pagination.startPaging }"
+					end="${result.pagination.lastPaging }" var="i">
+					<a href="/meoui/membermeeting/list?pageNo=${i }">${i }</a>
+				</c:forEach></li>
+			<li><c:if test="${result.pagination.next>0 }">
+					<a
+						href="/meoui/membermeeting/list?pageNo=${result.pagination.next }">다음으로</a>
+				</c:if></li>
+		</ul>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

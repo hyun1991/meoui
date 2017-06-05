@@ -19,7 +19,7 @@ public class MeetingBoardService {
 	public MeetingBoardDAO dao;
 	
 	
-	private Logger logger= LoggerFactory.getLogger(MeetingBoardService.class);
+                                                                                                   	private Logger logger= LoggerFactory.getLogger(MeetingBoardService.class);
 
 
 	//글 작성
