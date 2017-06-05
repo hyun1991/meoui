@@ -11,31 +11,34 @@
 	src="//maxcdn.bootstrapcdn.com/bootstrap/latest/js/bootstrap.min.js"></script>
 <script type="text/javascript"
 	src="//apis.daum.net/maps/maps3.js?apikey=0733036d66ec867aa0960ee525091024&libraries=services "></script>
-	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
 <style>
-footer{
-position: fixed;
+footer {
+	position: fixed;
 }
 /* 사이드바 래퍼 스타일 */
 #page-wrapper {
 	padding-left: 250px;
 	position: fixed;
-width: 100%;
-height: 80%;
+	width: 100%;
+	height: 80%;
 }
 
-#sidebar-wrapper {    
+#sidebar-wrapper {
 	position: fixed;
-    width: 25%;
-    height: 80%;
-    margin-left: -250px;
-    background: #ffffff;
-    overflow-x: hidden;
-    overflow-y: auto;
+	width: 25%;
+	height: 80%;
+	margin-left: -250px;
+	background: #ffffff;
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 
 #page-content-wrapper {
@@ -44,12 +47,10 @@ height: 80%;
 	height: 100%;
 }
 
-#divview{
-width: 100%;
-height: 80%;
-
+#divview {
+	width: 100%;
+	height: 80%;
 }
-
 
 /* 사이드바 스타일 */
 .sidebar-nav {
@@ -63,7 +64,6 @@ height: 80%;
 	text-indent: 1.5em;
 	line-height: 2.8em;
 	width: 100%;
-	
 }
 
 .sidebar-nav li a {
@@ -82,10 +82,9 @@ height: 80%;
 	line-height: 3em;
 }
 
-.ppp{
-text-align: right;
-margin-right: 30px;
-
+.ppp {
+	text-align: right;
+	margin-right: 30px;
 }
 </style>
 <script>
@@ -134,7 +133,27 @@ keyframes menuBlink { 0% {
 opacity
 
 
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -145,7 +164,27 @@ opacity
 
 
 
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -163,14 +202,53 @@ keyframes menuBlink { 0% {
 }
 
 49%{
-opacity:
+opacity
+
+
+
+
+
+
+
+
+:
+
+
+
+
+
+
+
+
+
+
 
 0
 }
 50%{
 opacity
 
+
+
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
+
+
+
+
+
 1
 }
 }
@@ -193,8 +271,6 @@ img {
 	margin-left: 30%;
 	margin-right: 30%;
 }
-
-
 </style>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -210,141 +286,130 @@ img {
 	</header>
 
 
-	<button id = "sidebar" type="button" class="btn btn-primary .float_sidebar"  data-toggle="modal"
+	<button id="sidebar" type="button"
+		class="btn btn-primary .float_sidebar" data-toggle="modal"
 		data-target="#myModal">댓글쓰기</button>
-	<form action="/meoui/metingcomment/insert" method="POST"> 
+	<form action="/meoui/metingcomment/insert" method="POST">
 
-	<!-- Modal -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel">
-		
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">	
-				<div class="modal-body"><label for="exampleInputPassword1">글 내용</label>
-				 <textarea class="form-control" rows="6" id="comment" name="meetingboardCommentContent" placeholder="contents"></textarea>
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel">
+
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-body">
+						<label for="exampleInputPassword1">글 내용</label>
+						<textarea class="form-control" rows="6" id="comment"
+							name="meetingboardCommentContent" placeholder="contents"></textarea>
 					</div>
-				
-				
-				<div class="modal-footer">
-					<button id="commit" type="submit">작성</button>
+
+
+					<div class="modal-footer">
+						<button id="commit" type="submit">작성</button>
+					</div>
 				</div>
 			</div>
+
 		</div>
-		
-	</div>
-		</form> 
+	</form>
 
 
 
 
 	<div id="page-wrapper" class="container">
 		<!-- 사이드바 -->
-		<div id="sidebar-wrapper">	
-			<ul class="sidebar-nav">			
-			
-			
+		<div id="sidebar-wrapper">
+			<ul class="sidebar-nav">
+
+
 				<c:forEach items="${comment.list }" var="list">
 					<div class="sidebar-nav li">
-						<hr/>
-						<p class="ppp" >
+						<hr />
+						<p class="ppp">
 							<strong>${list.meetingboardCommentContent }</strong>
-						</p><br><br>
-						
+						</p>
+						<br>
+
 						<p class="ppp">작성자 : ${list.memberName }</p>
-						
+
 						<p class="ppp">
 							<fmt:formatDate value="${list.meetingboardCommentDate}"
 								pattern="yyyy년MM월dd일" />
 						</p>
-						<p>							<form class="ppp"
-							action="/meoui/metingcomment/delete/${list.meetingboardCommentNo }"
-							method="POST">
-				<button id="commit" type="submit">댓글 삭제</button><hr/>
-				<br> <br>
-			</form>
-
+						<p>
+							<c:if test="${list.memberNo eq memberNo }">
+								<form class="ppp"
+									action="/meoui/metingcomment/delete/${list.meetingboardCommentNo }"
+									method="POST">
+									<button id="commit" type="submit">댓글 삭제</button>
+									<hr />
+								</form>
+							</c:if>
+					</div>
+				</c:forEach>
+			</ul>
 		</div>
-	</c:forEach>
-    </ul>
-  </div>
-  
-  
-  
-	<div id="page-content-wrapper">
-    
-    <div class="container-fluid">
-     <!-- 메인 -->
-     <div class="row text-center" id="page-content-wrapper">
-		<div class="col-sm-3 container-fluid" id="divview">
-			<!-- <a href="/meoui/meetingboard/view/${meeting.meetingNo}"> <img
+
+
+		<!-- 메인 -->
+		<div id="page-content-wrapper">
+
+			<div class="container-fluid">
+
+				<div class="row text-center" id="page-content-wrapper">
+					<div class="col-sm-3 container-fluid" id="divview"
+						style="margin-left: 10%; margin-right: 10%; width: 80%; height: 80%;">
+						<!-- <a href="/meoui/meetingboard/view/${meeting.meetingNo}"> <img
 							class="image-responsive"
 							src="/meoui/images/${board.meetingboardImg }" alt="skinscuber"
 							style="margin-bottom: 20px;">
 							 -->
-								<a href="/meoui/meetingboard/view/${meeting.meetingNo}"> <img
-				src="/meoui/images/${board.meetingboardImg }"
-				class="img-thumbnail" alt="Cinque Terre" width="40%" height="50%">
-			</a>							
-		
-			<p>
-				<strong>${board.meetingboardTitle }</strong>
-			</p>
+						<a href="/meoui/meetingboard/view/${meeting.meetingNo}"> <img
+							style=" width: 50%; height: 60%;"
+							src="/meoui/images/${board.meetingboardImg }"
+							class="img-thumbnail" alt="Cinque Terre" width="40%" height="50%">
+						</a>
 
-			<p>${board.meetingboardContent }</p>
+						<p style="margin-top:10px;">
+							<strong>${board.meetingboardTitle }</strong>
+						</p>
 
-			<p>${board.memberName }</p>
+						<p>${board.meetingboardContent }</p>
 
-			<p>${board.meetingboardCnt }</p>
+						<p>${board.memberName }</p>
 
-			<p>
-				<fmt:formatDate value="${board.meetingboardDate}"
+						<p>${board.meetingboardCnt }</p>
+
+						<p>
+							<fmt:formatDate value="${board.meetingboardDate}"
 								pattern="yyyy년MM월dd일" />
-			</p>
+						</p>
+						<c:if test="${board.memberNo eq memberNo }">
+							<form action="/meoui/meetingboard/delete/${board.meetingboardNo}"
+								method="POST" style="margin-left: 90%;">
+								<button id="commit" type="submit"
+									class="w3-button w3-block w3-white w3-border"
+									style="width: 134px; margin-right: 0; text-align: content:;">
 
-			<form action="/meoui/meetingboard/delete/${board.meetingboardNo}"
-							method="POST">
-				<button id="commit" type="submit"
-								class="w3-button w3-block w3-white w3-border">게시글 삭제</button>
-			</form>
+
+									게시글 삭제</button>
+							</form>
+						</c:if>
+					</div>
+				</div>
+
+			</div>
+
 		</div>
 	</div>
-   
-    </div>
-  
-  </div>
-</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	 
+
+
+
+
+
+
+
+
 	<!-- <h2>모임 게시판 상세 뷰</h2> -->
 	<!--<div class="row text-center" id="page-content-wrapper">
 		<div class="col-sm-3 container-fluid" id="divview">
@@ -402,10 +467,10 @@ img {
 
 
 
-<!-- 	<button id = "sidebar"type="button" class="btn btn-primary .float_sidebar"  data-toggle="modal"
+	<!-- 	<button id = "sidebar"type="button" class="btn btn-primary .float_sidebar"  data-toggle="modal"
 		data-target="#myModal">댓글쓰기</button>
 	<form action="/meoui/metingcomment/insert" method="POST"> -->
-	
+
 	<!-- Modal -->
 	<!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel">
@@ -426,7 +491,7 @@ img {
 	</div>
 		</form> -->
 
-<!-- <form action="/meoui/metingcomment/insert" method="POST">
+	<!-- <form action="/meoui/metingcomment/insert" method="POST">
 		<input type="text" id="meetingboardCommentContent"
 			name="meetingboardCommentContent">
 
@@ -436,7 +501,7 @@ img {
 	</form>
 
  -->
- 
+
 
 
 </body>
