@@ -37,6 +37,14 @@
 					</c:forEach>
 				</tbody>
 			</table>
+			<div class="container" style="margin-left: auto;">
+				<div class="col-xs-4">
+					<a href="/meoui/freeboard/join">
+						<button type="button"
+							class="w3-button w3-block w3-white w3-border">글작성</button>
+					</a>
+				</div>
+			</div>
 			<div class="row text-center">
 				<ul class="pagination pagination-md">
 					<li><c:if test="${result.pagination.prev>0 }">
@@ -51,15 +59,6 @@
 						</c:if></li>
 				</ul>
 			</div>
-		</div>
-	</div>
-	<div class="row" style="margin-bottom: 50px;">
-		<div class="col-md-10">
-		</div>
-		<div class="form-group">
-		<a href="/meoui/freeboard/join">
-			<button type="button" class="w3-button w3-block w3-white w3-border">글작성</button>
-		</a>
 		</div>
 	</div>
 	<%@include file="/footer.jsp"%>

@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
-<style>
+<!--<style>
 .body {
 	position: relative;
 }
@@ -118,20 +118,33 @@
 #aa{
 font-size: 2em;
 font-style: italic;
-}
-
-</style>
+} 
+</style> -->
 <head>
+<link rel="stylesheet" href="css/botstrap.css">
+<script src="js/jquery-3.1.1.js"></script>
+<script src="js/bootstrap.js"></script>
 <meta charset="UTF-8">
-<title>모임게시판 글리스트</title>
+<title>모임게시판 글목록</title>
 </head>
 <script type="text/javascript"
 	src="//apis.daum.net/maps/maps3.js?apikey=0733036d66ec867aa0960ee525091024&libraries=services "></script>
+
+<style>
+#thtitle{
+	text-align: center;
+	
+}
+</style>
+
+
 <body class="body">
+	
+	
 	<header>
 		<%@include file="/nav/navbar.jsp"%>
 	</header>
-
+	<!-- 
 	<div id="main">
 		<div id="side"></div>
 		<div>
@@ -190,6 +203,60 @@ font-style: italic;
 			</ul>
 
 		</div>
+		 -->
+
+	
+	<div class="container">
+		<div  class="container"><h4><strong>모임게시판 글 목록</strong></h4></div>
+		<table class="table table-hover">
+
+			<thead>
+				<tr>
+					<th><strong>번호</strong></th>
+					<th id="thtitle"><strong>제목</strong></th>
+					<th><strong>작성자</strong></th>
+					<th><strong>날짜</strong></th>
+					<th><strong>조회수</strong></th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${result.list }" var="board">
+					<tr>
+						<td>${board.meetingboardNo }</td>
+						<td><a href="/meoui/meetingboard/view/${board.meetingboardNo }">${board.meetingboardTitle }</a></td>
+						<td>${board.memberName }</td>
+						<td><fmt:formatDate value="${board.meetingboardDate}"
+								pattern="yyyy년MM월dd일" /></td>
+						<td>${board.meetingboardCnt }</td>
+					</tr>
+			</tbody>
+			</c:forEach>
+		</table>
+		<hr />
+		<a class="btn btn-default pull-right"
+			href="/meoui/meetingboard/create">글쓰기</a>
+		<div class="text-center">
+			<ul class="pagination">
+				<li><c:if test="${result.pagination.prev>0 }">
+						<a
+							href="/meoui/meetingboard/list?pageNo=${result.pagination.prev }">이전으로</a>
+					</c:if></li>
+				<li><c:forEach begin="${result.pagination.startPaging }"
+						end="${result.pagination.lastPaging }" var="i">
+						<a href="/meoui/meetingboard/list?pageNo=${i }">${i }</a>
+					</c:forEach></li>
+				<li><c:if test="${result.pagination.next>0 }">
+						<a
+							href="/meoui/meetingboard/list?pageNo=${result.pagination.next }">다음으로</a>
+					</c:if></li>
+			</ul>
+
+		</div>
+
+	</div>
+
+
+
 	<footer>
 		<%@include file="/footer.jsp"%>
 	</footer>
