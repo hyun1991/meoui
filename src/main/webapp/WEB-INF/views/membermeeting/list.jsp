@@ -223,7 +223,7 @@ img {
 
 
 
-	<div class="row text-center">
+	<div class="row text-center container">
 		<c:forEach items="${result.list }" var="meeting">
 		<div class="col-sm-4">
 			
