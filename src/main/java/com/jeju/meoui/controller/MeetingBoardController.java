@@ -108,7 +108,7 @@ public class MeetingBoardController {
 	// 모임게시판 글 상세 보기
 	@RequestMapping(value = "/meetingboard/view/{meetingboardNo}", method = RequestMethod.GET)
 	public String MeetingboardView(@PathVariable int meetingboardNo, Model model, HttpSession session) {
-
+		int memberNo=(Integer)session.getAttribute("memberNo");
 		session.setAttribute("meetingboardNo", meetingboardNo);
 		logger.info("모임게시판글보기meetingboardNo : {}", meetingboardNo);
 		model.addAttribute("board", service.selectMeetingBoardView(meetingboardNo));

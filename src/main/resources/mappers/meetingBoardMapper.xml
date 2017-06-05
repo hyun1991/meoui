@@ -54,7 +54,8 @@
 	<!-- 게시판 상세 보기(완료)	 -->
 	<select id = "selectMeetingBoardView" parameterType="int" resultType="MeetingBoard">
 	<![CDATA[
-		select b.meetingboard_title, b.meetingboard_content, b.meetingboard_date, b.meetingboard_cnt , b.meetingboard_img,  
+		select b.meetingboard_title, b.meetingboard_content, b.meetingboard_date, b.meetingboard_cnt , 
+		b.meetingboard_img, b.member_no
 		m.member_name from meetingboard b, member m where b.member_no= m.member_no and meetingboard_no=#{meetingboard_no}
 	
 	]]>
