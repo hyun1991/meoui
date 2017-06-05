@@ -120,11 +120,14 @@ public class MemberMeetingController {
 	// 리스트 출력(작업완료)
 	@RequestMapping(value="/membermeeting/list", method=RequestMethod.GET)
 	public String AllMemberMeeting(Model model, HttpSession session, @RequestParam(defaultValue="1") int pageNo){	
+		
 		MemberMeeting meetingNo=new MemberMeeting();
 		session.setAttribute("meetingNo", meetingNo);
-		logger.info("컨트롤 시작");		
+		//int meetingNo=(Integer)session.getAttribute("meetingNo");
+		logger.info("컨트롤 시작d:{}",meetingNo);		
 		model.addAttribute("result", service.selectAllmemberMeetingList(pageNo));	
-		
+		logger.info("컨트롤 시작d:{}",service.selectAllmemberMeetingList(pageNo));
+		//logger.info("멤버미팅리스트출력:{}",meetingNo);
 		return "membermeeting/list";
 	
 		

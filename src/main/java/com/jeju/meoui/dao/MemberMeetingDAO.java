@@ -49,8 +49,7 @@ public class MemberMeetingDAO {
 	
 	//모임 리스트 출력 페이징
 	public List<MemberMeeting> selectAllMemberMeetingList(int startRow, int lastRow){
-		HashMap<String, Object>map= new HashMap<String, Object>();
-		
+		HashMap<String, Object>map= new HashMap<String, Object>();		
 		map.put("startRow", startRow);
 		map.put("lastRow", lastRow);
 		

@@ -68,6 +68,7 @@
 	from member_meeting)t1)t2 where rnum between #{startRow} and #{lastRow}
 		]]>
 	</select>
+	
 	<!-- 등록된 db갯수 -->
 	<select id="selectByMax" resultType="int">
 	<![CDATA[

@@ -403,9 +403,10 @@ img {
 								<div class="icons">
 
 
+
 									<!--<c:if
 										test="${meeting.meetingAdminNo ne memberNo or meetingJoin.meetingNo ne meetingNo}"></c:if>-->
-										<form action="/meoui/membermeeting/post" method=post>
+										<form action="/meoui/membermeeting/post/${meeting.meetingNo}" method=post>
 										<button id="commit" type="submit"
 									style="padding-top: 0px; padding-left: 0px; border-right-width: 0px; padding-right: 0px; border-top-width: 0px; border-left-width: 0px; padding-bottom: 0px; color: cyan; background-color: black; border-bottom-width: 0px;">
 												<i class="ion-person-add"></i>

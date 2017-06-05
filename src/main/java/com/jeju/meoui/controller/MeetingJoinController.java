@@ -21,10 +21,9 @@ public class MeetingJoinController {
 	
 
 	//모임 가입하기(완료)
-	@RequestMapping(value="membermeeting/post", method=RequestMethod.POST)
-	public String insertMeetingJoin(HttpSession session, Model model){
+	@RequestMapping(value="membermeeting/post/{meetingNo}", method=RequestMethod.POST)
+	public String insertMeetingJoin(@PathVariable int meetingNo, HttpSession session, Model model){
 		MeetingJoin meetingJoin = new MeetingJoin();
-		int meetingNo= (Integer)session.getAttribute("meetingNo");
 		int memberNo= (Integer)session.getAttribute("memberNo");
 		meetingJoin.setMeetingNo(meetingNo);
 		meetingJoin.setMemberNo(memberNo);

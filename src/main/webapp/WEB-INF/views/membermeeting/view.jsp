@@ -110,11 +110,11 @@ text-align: right;
 			
 			
 			
-			<c:if test="${meeting.meetingAdminNo ne memberNo or meetingJoin.meetingNo ne meetingNo}">
+			<!--<c:if test="${meeting.meetingAdminNo ne memberNo or meetingJoin.meetingNo ne meetingNo}">
 			<form action="/meoui/membermeeting/post" method=post>
 				<button id="commit" type="submit"
 					class="w3-button w3-block w3-white w3-border">회원 가입하기</button>
-			</form>			
+			</form>			-->
 			</c:if>		
 			<c:if test="${meeting.meetingAdminNo == memberNo }">
 			<a href="/meoui/membermeeting/update">
