@@ -20,12 +20,16 @@ opacity
 
 
 
+
+
 :
 
 
 
 
+
  
+
 
 
 
@@ -42,7 +46,11 @@ opacity
 
 
 
+
+
 :
+
+
 
 
 
@@ -75,7 +83,11 @@ opacity
 
 
 
+
+
 :
+
+
 
 
 
@@ -100,7 +112,11 @@ opacity
 
 
 
+
+
 :
+
+
 
 
 
@@ -152,7 +168,6 @@ img {
 	<header>
 		<%@include file="/nav/navbar.jsp"%>
 	</header>
-
 	<!-- 
 		
 		<div class="row text-center">
@@ -252,10 +267,11 @@ img {
 		</ul>
 	</div>
 	-->
-
-
-
-	<div class="row text-center container" style="height: 100%; width: 100%; margin-top: 10px;">
+	<h1 style="margin-top: 50px;" align="center">모임 전체리스트</h1>
+	<hr>
+	<div class="container">
+	<div class="row text-center container"
+		style="height: 100%; width: 100%; margin-top: 10px;">
 		<c:forEach items="${result.list }" var="meeting">
 			<div class="col-sm-4"
 				style="height: 400px; width: 340px; margin-top: 10px;">
@@ -282,7 +298,8 @@ img {
 			</div>
 		</c:forEach>
 	</div>
-	
+	</div>
+
 	<hr />
 	<div class="row text-center" style="margin-top: 30px;">
 		<ul class="pagination pagination-md">
@@ -300,40 +317,6 @@ img {
 				</c:if></li>
 		</ul>
 	</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	<footer>
 		<%@include file="/footer.jsp"%>
 	</footer>

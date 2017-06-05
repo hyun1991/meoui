@@ -37,7 +37,7 @@
 					</c:forEach>
 				</tbody>
 			</table>
-			<div class="container" style="margin-left: auto;">
+			<div class="container" align="center">
 				<div class="col-xs-4">
 					<a href="/meoui/freeboard/join">
 						<button type="button"
