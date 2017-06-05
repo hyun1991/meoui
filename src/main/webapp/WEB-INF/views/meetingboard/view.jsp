@@ -378,7 +378,7 @@ img {
 
 						<p>${board.memberName }</p>
 
-						<p>${board.meetingboardCnt }</p>
+						<!-- <p>${board.meetingboardCnt }</p> -->
 						<p>
 							<fmt:formatDate value="${board.meetingboardDate}"
 								pattern="yyyy년MM월dd일" />

@@ -35,9 +35,9 @@ c.meetingboard_no=#{meetingboard_no}
 	<![CDATA[
  	insert into meetingboard_comment
 	(meetingboard_comment_no, meetingboard_comment_content, meetingboard_comment_date, 
-	meetingboard_no, member_no)
+	meetingboard_no, meeting_no, member_no)
  	values(#{meetingboardCommentNo}, #{meetingboardCommentContent},
- 	sysdate, #{meetingboardNo}, #{memberNo})
+            sysdate, #{meetingboardNo}, #{meetingNo}, #{memberNo})
 ]]>
 
 	</insert>

@@ -26,13 +26,17 @@ public class MeetingBoardCommentController {
 	@RequestMapping(value="metingcomment/insert", method=RequestMethod.POST)
 	public String insertMeetingBoardComment(@ModelAttribute MeetingBoardComment meetingboardComment,
 				HttpSession session){
-			int meetingboardNo = (Integer)session.getAttribute("meetingboardNo");
+		int meetingNo = (Integer)session.getAttribute("meetingNo");	
+		int meetingboardNo = (Integer)session.getAttribute("meetingboardNo");
 			int memberNo=(Integer)session.getAttribute("memberNo");			
+			meetingboardComment.setMeetingNo(meetingNo);
 			meetingboardComment.setMeetingboardNo(meetingboardNo);
 			meetingboardComment.setMemberNo(memberNo);		
 			service.insertMeetingBoardComment(meetingboardComment);
 			logger.info("댓글추가 보드번호 : {}", meetingboardNo);
 			logger.info("댓글추가 멤버 번호 : {}", meetingboardNo);
+			logger.info("댓글추가 미팅번호 : {}", meetingNo);
+			
 			return "redirect:/meetingboard/view/"+meetingboardNo;
 	}
 	
