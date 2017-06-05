@@ -97,10 +97,9 @@ img {
 	margin: 30px;
 }
 
-#divview{
- width: 100%;
- height: 15%;
-}
+
+
+
 
 </style>
 <head>
@@ -231,14 +230,13 @@ img {
 
 	<div class="row text-center container">
 		<c:forEach items="${result.list }" var="meeting">
-		<div id="divview"  class="col-sm-4">
+		<div class="col-sm-4" style="height: 400px; width: 340px;">
 			
-			<div class="thumbnail">
+			<div class="thumbnail" style="height: 400px; width: 330px; margin-top:10px; margin-left: 10px; " >
 
-				<a href="/meoui/membermeeting/view/${meeting.meetingNo}"> <img
-					src="/meoui/images/${meeting.meetingImg}"
-					style="margin-bottom: 20px;" class="img-circle" alt="Cinque Terre"
-					width="304" height="236">
+				<a href="/meoui/membermeeting/view/${meeting.meetingNo}"> <img 					src="/meoui/images/${meeting.meetingImg}"
+					style="margin-bottom: 20px; height: 80%; width: 100%;" class="img-circle" alt="Cinque Terre"
+					>
 				</a>
 
 				<p>
