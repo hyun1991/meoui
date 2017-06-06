@@ -12,32 +12,50 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>Main Page</title>
+<title>길찾기</title>
 </head>
-  <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 70%;
+<style>
+      #right-panel {
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+
+      #right-panel select, #right-panel input {
+        font-size: 15px;
+      }
+
+      #right-panel select {
         width: 100%;
       }
-      /* Optional: Makes the sample page fill the window. */
+
+      #right-panel i {
+        font-size: 12px;
+      }
       html, body {
         height: 100%;
         margin: 0;
         padding: 0;
       }
-      .controls {
-        margin-top: 10px;
-        border: 1px solid transparent;
-        border-radius: 2px 0 0 2px;
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        height: 32px;
-        outline: none;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      #map {
+        height: 80%;
+        float: left;
+        width: 70%;
       }
-
+      #right-panel {
+        margin: 20px;
+        border-width: 2px;
+        width: 20%;
+        height: 400px;
+        float: left;
+        text-align: left;
+        padding-top: 0;
+      }
+      #directions-panel {
+        margin-top: 10px;
+        background-color: #FFEE77;
+        padding: 10px;
+      }
       #origin-input,
       #destination-input {
         background-color: #fff;
@@ -49,214 +67,142 @@
         text-overflow: ellipsis;
         width: 200px;
       }
-
+	  #submit{
+	 	background-color: #81feee;
+        font-family: Roboto;
+	  }
       #origin-input:focus,
       #destination-input:focus {
         border-color: #4d90fe;
       }
-
-      #mode-selector {
-        color: #fff;
-        background-color: #4d90fe;
-        margin-left: 12px;
-        padding: 5px 11px 0px 11px;
-        width:25%;
+          .controls {
+        margin-top: 10px;
+        border: 1px solid transparent;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        height: 32px;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
       }
-
-      #mode-selector label {
-        font-family: Roboto;
-        font-size: 13px;
-        font-weight: 300;
-      }
-      div.row {
-	width: 100%;
-	height: 100%;
-	color:#424242;
-}
-	
-
     </style>
   </head>
   <body>
-  <header>
+   <header>
 		<%@include file="/nav/navbar.jsp"%>
 	</header>
+    <div id="map"></div>
+    <div>
     <input id="origin-input" class="controls" type="text"
         placeholder="출발지를 입력하세요">
 
     <input id="destination-input" class="controls" type="text"
         placeholder="도착지를 입력하세요">
-
-    <div id="mode-selector" class="controls">
-      <input type="radio" name="type" id="changemode-transit">
-      <label for="changemode-transit">대중교만 지원가능한 서비스 입니다.</label>
-    
-    
+      <input type="submit" id="submit" class="controls" value="길찾기">
     </div>
-
-    <div id="map"></div>
-	<div id="directionsPanel" style=" display:block;  ">
-	<p>총 거리 : <span id="total"></span></p>
-	</div>
-	<!-- 
-<div class="row">
-				<label for="usr">이동 거리</label><br>
-				<p></p>
-				<br> <label for="usr">소요 시간</label><br>
-				<p></p>
-				<br> <label for="usr">자세한 위치 정보</label>
-				<p></p>
-			</div>
-	 -->
+    
+      <div id="right-panel">
+      <p>총거리: <span id="total"></span></p>
+    </div>
     <script>
-
       function initMap() {
+
+          var directionsService = new google.maps.DirectionsService;
+          var directionsDisplay = new google.maps.DirectionsRenderer({
+            draggable: true,
+            map: map,
+            panel: document.getElementById('right-panel')
+          });
         var map = new google.maps.Map(document.getElementById('map'), {
-          mapTypeControl: false,
-          center: {lat: 33.3850285, lng: 126.62044279999998},
-          zoom: 10
+        	 center: {lat: 33.3850285, lng: 126.62044279999998},
+             zoom: 10
+           });
+        
+        directionsDisplay.setMap(map);
+
+        document.getElementById('submit').addEventListener('click', function() {
+          calculateAndDisplayRoute(directionsService, directionsDisplay);
         });
-	//33.51041350000001,126.49135339999998   공항
-	//33.3850285,126.62044279999998 성판악입구
-        new AutocompleteDirectionsHandler(map);
-		
-		
-	
+        
+        directionsDisplay.addListener('directions_changed', function() {
+            computeTotalDistance(directionsDisplay.getDirections());
+          });
+
+          displayRoute(origin-input.val(), destination-input.val(), directionsService,
+              directionsDisplay);
+      }
 	/*
-	function initialize() {
-	  directionsDisplay = new google.maps.DirectionsRenderer();
-	  
-	  var chicago = new google.maps.LatLng(41.850033, -87.6500523);
-	  
-	  var mapOptions = {
-		zoom:7,
-		mapTypeId: google.maps.MapTypeId.ROADMAP,
-		center: chicago
-	  }
-	  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-	  directionsDisplay.setMap(map);
-	  
-	  directionsDisplay.setPanel(document.getElementById('directionsPanel'));
-	  google.maps.event.addListener(directionsDisplay, 'directions_changed', function() {
-		computeTotalDistance(directionsDisplay.getDirections());
-	  });
-		*/
-		
-        directionsDisplay.setPanel(document.getElementById('directionsPanel'));
-        google.maps.event.addListener(directionsDisplay, 'directions_changed', function(){
-        computeTotalDistance(directionsDisplay.getDirections());
-        });
-      }
-	
-      function AutocompleteDirectionsHandler(map) {
-        this.map = map;
-        this.originPlaceId = null;
-        this.destinationPlaceId = null;
-        this.travelMode = 'TRANSIT';
-        var originInput = document.getElementById('origin-input');
-        var destinationInput = document.getElementById('destination-input');
-        var modeSelector = document.getElementById('mode-selector');
-        this.directionsService = new google.maps.DirectionsService;
-        this.directionsDisplay = new google.maps.DirectionsRenderer;
-        this.directionsDisplay.setMap(map);
-
-        var originAutocomplete = new google.maps.places.Autocomplete(
-            originInput, {placeIdOnly: true});
-        var destinationAutocomplete = new google.maps.places.Autocomplete(
-            destinationInput, {placeIdOnly: true});
-
-        this.setupClickListener('changemode-transit', 'TRANSIT');
-
-        this.setupPlaceChangedListener(originAutocomplete, 'ORIG');
-        this.setupPlaceChangedListener(destinationAutocomplete, 'DEST');
-	
-        /*
-        this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(originInput);
-        this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(destinationInput);
-        this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(modeSelector);
-        */
-      }
-
-      AutocompleteDirectionsHandler.prototype.setupClickListener = function(id, mode) {
-        var radioButton = document.getElementById(id);
-        var me = this;
-        radioButton.addEventListener('click', function() {
-          me.travelMode = mode;
-          me.route();
-        });
-      };
-
-      AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function(autocomplete, mode) {
-        var me = this;
-        autocomplete.bindTo('bounds', this.map);
-        autocomplete.addListener('place_changed', function() {
-          var place = autocomplete.getPlace();
-          if (!place.place_id) {
-            window.alert("Please select an option from the dropdown list.");
-            return;
-          }
-          if (mode === 'ORIG') {
-            me.originPlaceId = place.place_id;
-          } else {
-            me.destinationPlaceId = place.place_id;
-          }
-          me.route();
-        });
-
-      };
-
-      AutocompleteDirectionsHandler.prototype.route = function() {
-        if (!this.originPlaceId || !this.destinationPlaceId) {
-          return;
-        }
-        var me = this;
-
-        this.directionsService.route({
-          origin: {'placeId': this.originPlaceId},
-          destination: {'placeId': this.destinationPlaceId},
-          travelMode: this.travelMode
+      var originAutocomplete = new google.maps.places.Autocomplete(
+              originInput, {placeIdOnly: true});
+          var destinationAutocomplete = new google.maps.places.Autocomplete(
+              destinationInput, {placeIdOnly: true});
+	*/
+      function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+    	  /* 경유지
+    	  var waypts = [];
+    	        var checkboxArray = document.getElementById('waypoints');
+    	        for (var i = 0; i < checkboxArray.length; i++) {
+    	          if (checkboxArray.options[i].selected) {
+    	            waypts.push({
+    	              location: checkboxArray[i].value,
+    	              stopover: true
+    	            });
+    	          }
+    	        }
+			*/
+        directionsService.route({
+          origin: document.getElementById('origin-input').value,
+          destination: document.getElementById('destination-input').value,
+          travelMode: 'TRANSIT'
         }, function(response, status) {
           if (status === 'OK') {
-            me.directionsDisplay.setDirections(response);
+            directionsDisplay.setDirections(response);
+            var route = response.routes[0];
+            var summaryPanel = document.getElementById('directions-panel');
+            summaryPanel.innerHTML = '';
+            // For each route, display summary information.
+            for (var i = 0; i < route.legs.length; i++) {
+              var routeSegment = i + 1;
+              summaryPanel.innerHTML += '<b>Route Segment: ' + routeSegment +
+                  '</b><br>';
+              summaryPanel.innerHTML += route.legs[i].start_address + ' to ';
+              summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
+              summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
+            }
           } else {
-            window.alert(status + '로 인해 길찾기 요청이 실패하였습니다. ' );
+            window.alert('주소를 정확히 입력해주세요 ' );
           }
         });
-      };
-		
-     // 여기부터 거리계산
-     
-      function calcRoute() {
-			
-    	  var request = {
-    		origin: {'placeId': this.originPlaceId},
-    	      destination: {'placeId': this.destinationPlaceId},
-    	      travelMode: this.travelMode
-    	  };   
-    	  this.directionsService.route(request, function(response, status) {
-    		alert(status);  // 확인용 Alert..미사용시 삭제
-    		if (status == google.maps.DirectionsStatus.OK) {
-    			directionsDisplay.setDirections(result);
-    		}
-    	  });
-    	}
-     
-    	
-    	function computeTotalDistance(result) {
-    	  var total = 0;
-    	  var myroute = result.routes[0];
-    	  for (var i = 0; i < myroute.legs.length; i++) {
-    		total += myroute.legs[i].distance.value;
-    	  }
-    	  total = total / 1000.0;
-    	  document.getElementById('total').innerHTML = total + ' km';
-    	}
+      }
+      
+      function displayRoute(origin, destination, service, display) {
+          service.route({
+            origin: origin,
+            destination: destination,
+            travelMode: 'TRANSIT'
+          }, function(response, status) {
+            if (status === 'OK') {
+              display.setDirections(response);
+            } else {
+              alert('주소를 정확히 입력해주세요 ' );
+            }
+          });
+        }
 
+      function computeTotalDistance(result) {
+        var total = 0;
+        var myroute = result.routes[0];
+        for (var i = 0; i < myroute.legs.length; i++) {
+          total += myroute.legs[i].distance.value;
+        }
+        total = total / 1000;
+        document.getElementById('total').innerHTML = total + ' km';
+      }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFj0i9yKOLhZ2Ji9-x7KMW4CxTRkVlxS0&libraries=places&callback=initMap"
-        async defer></script>
-        <footer>
-		<%@include file="/footer.jsp"%>
-	</footer>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFj0i9yKOLhZ2Ji9-x7KMW4CxTRkVlxS0&callback=initMap">
+    </script>
+  
+    
   </body>
 </html>

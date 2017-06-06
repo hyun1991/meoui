@@ -15,54 +15,41 @@
 	<header>
 		<%@include file="/nav/adminnav.jsp"%>
 	</header>
+	<hr>
 	<div class="container">
-		<hr>
 		<div class="row">
-			<div class="col-md-4">
-				<table class="table table-striped table-bordered table-hover">
-					<tbody>
-						<tr>
-							<th rowspan="4"><img
-								src="/meoui/images/${result.accommodation.accommodationImg}">
-							</th>
-							<td colspan="2" width="200"><h5>숙박시설이름:</h5>${result.accommodation.accommodationName }
-							</td>
-						</tr>
-						<tr>
-							<td colspan="2" width="200"><h5>대표전화:</h5>${result.accommodation.accommodationPhone }
-							</td>
-						</tr>
-						<tr>
-							<td colspan="2" width="200"><h5>시설위치:</h5>${result.accommodation.accommodationAddress }</td>
-							<td>
-						</tr>
-						<tr>
-							<td colspan="2" width="200"><a
-								href="/meoui/admin/room/view/${result.accommodation.accommodationNo }&${result.accommodation.ownerNo }">
-									<button type="button"
-										class="w3-button w3-block w3-white w3-border">객실정보
-										조회하기</button>
-							</a> <a href="/meoui/admin/accommodaion/list?pageNo=1"><button
-										type="button" class="w3-button w3-block w3-white w3-border">
-										리스트로 이동</button></a></td>
-						</tr>
-						<tr>
-							<td><input type="hidden"
-								value="${result.accommodation.ownerNo }" id="ownerNo"></td>
-						</tr>
-						<tr>
-							<td colspan="3"><h2>오시는길</h2></td>
-						</tr>
-						<tr>
-							<td colspan="3"><img
-								src="/meoui/images/${result.accommodation.accommodationDirections}"></td>
-						</tr>
-					</tbody>
-				</table>
+			<div class="col-md-6 col-sm-12">
+				<img src="/meoui/images/${result.accommodation.accommodationImg}">
+			</div>
+			<div>
+				<h3>숙박시설이름</h3>${result.accommodation.accommodationName }
+			</div>
+			<div>
+				<h3>대표전화</h3>${result.accommodation.accommodationPhone }
+			</div>
+			<div>
+				<h3>시설위치</h3>${result.accommodation.accommodationAddress }
+			</div>
+			<hr size="5">
+			<div class="col-xs-4">
+				<a href="/meoui/admin/accommodaion/list?pageNo=1"><button
+							type="button" class="w3-button w3-block w3-white w3-border">
+							리스트로 이동</button></a>
 			</div>
 		</div>
+		<hr>
+		<input type="hidden"
+					value="${result.accommodation.ownerNo }" id="ownerNo">
+		<div align="center">
+			<h2 style="margin-left: 10px">오시는길</h2>
+		</div>
+		<div class="row">
+			<img src="/meoui/images/${result.accommodation.accommodationDirections}" style="margin-left: 10px">
+		</div>
 	</div>
+
 	<hr>
+	<h2 align="center">댓글 리스트</h2>
 	<c:forEach items="${result.comment }" var="comment">
 		<div class="container">
 			<input type="hidden" id="memberNo" value="${comment.memberNo }"
@@ -72,7 +59,7 @@
 			<c:forEach items="${result.member }" var="member">
 				<div class="btn-r">작성자: ${member.memberId }</div>
 			</c:forEach>
-			<div class="form-group">평점: ${comment.accommodationCommentAvg}점</div>
+			<div class="form-group">${comment.byul }</div>
 			<div class="form-group">
 				작성일:
 				<fmt:formatDate value="${comment.accommodationCommentDate}"
@@ -91,5 +78,6 @@
 			<hr>
 		</div>
 	</c:forEach>
+	
 </body>
 </html>

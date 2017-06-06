@@ -1,19 +1,25 @@
 package com.jeju.meoui.controller;
 
-import javax.annotation.*;
-import javax.servlet.*;
-import javax.servlet.http.*;
+import javax.annotation.Resource;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
-import org.slf4j.*;
-import org.springframework.beans.factory.annotation.*;
-import org.springframework.stereotype.*;
-import org.springframework.ui.*;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
-import com.jeju.meoui.service.*;
-import com.jeju.meoui.util.*;
-import com.jeju.meoui.vo.*;
+import com.jeju.meoui.service.MeetingBoardCommentService;
+import com.jeju.meoui.service.MeetingBoardService;
+import com.jeju.meoui.util.UploadUtil;
+import com.jeju.meoui.vo.MeetingBoard;
 
 @Controller
 public class MeetingBoardController {
@@ -59,14 +65,23 @@ public class MeetingBoardController {
 
 	// 모임게시판 전체 리스트(페이징)
 	@RequestMapping(value = "/meetingboard/list/{meetingNo}", method = RequestMethod.GET)
-	public String allSite(@PathVariable int meetingNo, Model model, @RequestParam(defaultValue = "1") int pageNo,
+	public String selectAllMeetingBoard(@PathVariable int meetingNo, Model model, @RequestParam(defaultValue = "1") int pageNo,
 			HttpSession session) {
-		session.setAttribute("meetingNo", meetingNo);
-
-		model.addAttribute("result", service.selectAllMeetingBoard(pageNo, meetingNo));
+		//int meetingboardNo=(Integer)session.getAttribute("meetingboardNo");
+		
+		session.setAttribute("meetingNo", meetingNo);	
+		model.addAttribute("result", service.selectAllMeetingBoard(pageNo, meetingNo));		
+		//int commentCnt=comservice.selectMeetingBoardCommentCnt(meetingboardNo);
+		
+		//MeetingBoard meetingboard= new MeetingBoard();
+		
+		//meetingboard.setCommentCnt(commentCnt);
+		
+		//model.addAttribute("comment",meetingboard);
+		
 		logger.info("모임게시판 미팅넘버: {}", meetingNo);
 		logger.info("모임게시판 모델 : {}", model);
-
+		//logger.info("모임게시판 미팅보더넘버 : {}", meetingboardNo);
 		return "meetingboard/list";
 	}
 
@@ -76,7 +91,7 @@ public class MeetingBoardController {
 		return "meetingboard/update";
 	}
 	
-	
+	//모임게시판 수정
 	@RequestMapping(value="/meetingboard/update", method=RequestMethod.POST)
 	public String updateMeetingBoard(@RequestParam String meetingboardTitle,
 			@RequestParam String meetingboardContent,
@@ -108,7 +123,7 @@ public class MeetingBoardController {
 	// 모임게시판 글 상세 보기
 	@RequestMapping(value = "/meetingboard/view/{meetingboardNo}", method = RequestMethod.GET)
 	public String MeetingboardView(@PathVariable int meetingboardNo, Model model, HttpSession session) {
-
+		int memberNo=(Integer)session.getAttribute("memberNo");
 		session.setAttribute("meetingboardNo", meetingboardNo);
 		logger.info("모임게시판글보기meetingboardNo : {}", meetingboardNo);
 		model.addAttribute("board", service.selectMeetingBoardView(meetingboardNo));

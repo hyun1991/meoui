@@ -6,21 +6,81 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>모임 수정</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"> 
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+<style>
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+body {
+	font-family: 'Nanum Gothic', sans-serif;
+}
+</style>
 </head>
 <body>
 
-	
+<!-- 
 	<h1>모임 수정</h1>
-		<form id="memberMeeting" action="/meoui/membermeeting/update" method="POST" enctype="multipart/form-data">
-	
-			모임번호:<input type="hidden" name="meetingNo" id="meetingNo" readonly="readonly" value="${result.meetingNo}"><br>
-			모임명:<input type="text" name="meetingName" id="meetingName" value="${result.meetingName}"><br>
-			이미지:<input type="file" name="img" id="meetingimg" value="${result.meetingImg}"><br>
-			총인원수:<input type="hidden" name="meetingTotalname" id="meetingTotalName" readonly="readonly">${result.meetingTotalNumber}<br>
-			${memberMeeting.meetingName}
-			<button id="commit" type="submit">수정하기</button>
+	<form id="memberMeeting" action="/meoui/membermeeting/update"
+		method="POST" enctype="multipart/form-data">
+
+		모임명:<input type="text" name="meetingName" id="meetingName"
+			value="${result.meetingName}"><br> 이미지:<input
+			type="file" name="img" id="meetingimg" value="${result.meetingImg}"><br>
+		총인원수:<input type="hidden" name="meetingTotalname"
+			id="meetingTotalName" readonly="readonly">${result.meetingTotalNumber}<br>
+		${memberMeeting.meetingName}
+		<button id="commit" type="submit">수정하기</button>
+	</form>
+
+
+ -->
+
+
+
+
+	<h1>모임 수정</h1>
+	<form id="memberMeeting" action="/meoui/membermeeting/update"
+		method="POST" enctype="multipart/form-data">
 		
-		</form>
+		<div class="form-group">
+			<label for="exampleInputEmail1">모임명</label> 			
+			
+			<input type="text"
+				class="form-control" id="exampleInputEmail1" name="meetingName" value="${result.meetingName}"
+				placeholder="모임명을 적어주세요">
+		</div>		
+		<div class="form-group">		
+			<label for="exampleInputPassword1">이미지</label>
+			 <input type="file"	name="img" id="meetingimg" class="form-control" value="${result.meetingName}">
+		</div>		
+		<input type="button" class="btn btn-default pull-right" value="취소"
+			onclick=" history.back(-1);">
+		<button type="submit" class="btn btn-default pull-right">수정하기</button>
+	</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>

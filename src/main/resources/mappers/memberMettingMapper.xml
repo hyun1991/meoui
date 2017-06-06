@@ -14,7 +14,7 @@
 		]]>
 	</insert>
 
-	<!-- 모임수정 -->
+	<!-- 모임수정 완료-->
 	<update id="updateMeetingName" parameterType="MemberMeeting">	
 		<![CDATA[
 		update member_meeting set meeting_name=#{meetingName}, meeting_img=#{meetingImg}
@@ -32,7 +32,7 @@
 
 	</select>
 
-	<!-- 모임삭제 (유저용) -->
+	<!-- 모임삭제 (유저용) 완료 -->
 	<delete id="deleteMemberMeetingUser" parameterType="Int">
 		<![CDATA[
 			delete from member_meeting where meeting_no=#{meetingNo}
@@ -40,14 +40,14 @@
 		]]>
 	</delete>
 
-	<!-- 모임삭제 (관리자용) -->
+	<!-- 모임삭제 (관리자용) 완료-->
 	<delete id="deleteMemberMeetingAdmind" parameterType="Int">
 		<![CDATA[
 			delete from member_meeting where meeting_no=#{meetingNo}
 		]]>
 	</delete>
 
-	<!-- 모임 인원 증가 -->
+	<!-- 모임 인원수 증가 완료-->
 	<update id="updateMemberMeetingTotalNumber" parameterType="int">
 		<![CDATA[
 		
@@ -59,7 +59,7 @@
 
 
 
-	<!-- 모임 리스트 출력 페이징 -->
+	<!-- 모임 리스트 출력 페이징 완료 -->
 	<select id="selectAllMemberMeetingList"  parameterType="HashMap" resultType="MemberMeeting">
 		<![CDATA[
 		   select t2.* from
@@ -68,7 +68,8 @@
 	from member_meeting)t1)t2 where rnum between #{startRow} and #{lastRow}
 		]]>
 	</select>
-	<!-- 등록된 db갯수 -->
+	
+	<!-- 등록된 db갯수 완료 -->
 	<select id="selectByMax" resultType="int">
 	<![CDATA[
 		   select count(*)from member_meeting
@@ -86,16 +87,18 @@
 	]]>
 	</select>
 
-	<!-- 모임 인원수별 리스트 보기 -->
+	<!-- 모임 인원수별 리스트 보기 (인기순)-->
 	<select id="selectMeetingTotal" parameterType="int" resultType="MemberMeeting">
 	<![CDATA[
-		select meeting_no, meeting_name, meeting_total_number 
-			from member_meeting order by member_total_number =#{meetingTotalNumber}	
+		select t2.* from
+      (select rownum rnum, t1.* from 
+      (select meeting_no, meeting_name, meeting_img, meeting_total_number, meeting_admin_no
+	from member_meeting ORDER BY meeting_total_number desc)t1)t2 where rnum between #{startRow} and #{lastRow}
 	]]>
 	</select>
 
 
-	<!-- 내가 가입한 모임 보기 -->
+	<!-- 내가 가입한 모임 보기 완료 -->
 	<select id="selectMyMeeting" parameterType="int" resultType="MemberMeeting">
 	<![CDATA[
 			select m.meeting_no, m.meeting_name, m.meeting_img, 
@@ -104,6 +107,7 @@
 		]]>
 	</select>
 
+	<!-- 미팅넘버갯수 -->
 	<select id="selectMaxMeetingNo" resultType="int">
 		<![CDATA[
 			select max(meeting_no) from member_meeting

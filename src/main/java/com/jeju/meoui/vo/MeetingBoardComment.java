@@ -16,7 +16,7 @@ public class MeetingBoardComment {
 	private int meetingboardNo;
 	private int memberNo;
 	private String memberName;
-	private String meetingNo;
+	private int meetingNo;
 	
 	
 }
