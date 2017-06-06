@@ -95,9 +95,14 @@ public class MemberMeetingService {
 	public MemberMeeting selectMeetingName(String meetingName){
 		return dao.selectMeetingName(meetingName);
 	}
-	//모임인원 오름차순으로 보기
-	public List<MemberMeeting> selectMeetingTotal(int meetingTotal){
-		return dao.selectMeetingTotal(meetingTotal);
+	//모임인원 내림차순으로 보기
+	public HashMap<String, Object> selectMeetingTotal(int pageNo){
+		int cnt=dao.selectByMax();
+		Pagination pagination= PagingUtil.getPagination(pageNo, cnt);
+		HashMap<String, Object>map= new HashMap<String, Object>();
+		map.put("pagination", pagination);
+		map.put("list", dao.selectMeetingTotal(pagination.getStartRow(), pagination.getLastRow()));
+		return map;
 	}
 	//내가 가입한 모임 보기
 	public HashMap<String, Object> selectMyMeeting(int memberNo){
