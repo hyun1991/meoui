@@ -70,4 +70,18 @@ public class MeetingBoardDAO {
 		
 	}
 	
+	//댓글수 증가
+	public void updateMeetingBoardCommentCnt(int meetingboardNo){
+		
+		template.selectOne("MeetingBoardMapper.updateMeetingBoardCommentCnt", meetingboardNo);
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 }

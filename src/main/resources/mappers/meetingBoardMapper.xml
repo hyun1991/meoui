@@ -14,10 +14,10 @@
  	insert into meetingboard
 	(meetingboard_no, meetingboard_title, meetingboard_content, 
 	meetingboard_date, meetingboard_cnt, meetingboard_img, 
-	member_no, meeting_no)
+	member_no, meeting_no, meetingboard_comment_cnt)
  	values(#{meetingboardNo},#{meetingboardTitle},#{meetingboardContent},
  	sysdate, #{meetingboardCnt}, #{meetingboardImg}, 
-	#{memberNo}	, #{meetingNo})
+	#{memberNo}	, #{meetingNo},0)
 ]]>
 	</insert>
 
@@ -27,7 +27,7 @@
 		<![CDATA[
 		    select t2.*from(select rownum rnum, t1.* from
 		(select b.meetingboard_no, b.meetingboard_title, b.meetingboard_content, b.meetingboard_date, 
-		b.meetingboard_cnt, b.meetingboard_img, b.member_no, b.meeting_no, m.member_name 
+		b.meetingboard_cnt, b.meetingboard_img, b.member_no, b.meeting_no, m.member_name , b.meetingboard_comment_cnt
 		from MEETINGBOARD b, member m where b.member_no=m.member_no
 		order by meetingboard_no desc)t1)t2 
 		where meeting_no=#{meetingNo} and rnum
@@ -94,9 +94,20 @@
 	<![CDATA[	
 		 update meetingboard set meetingboard_cnt=meetingboard_cnt+1 
 		 where meetingboard_no=#{meetingboard_no} 	
-	]]>
-	
+	]]>	
 	</update>
+	
+	
+	<!-- 댓글수 증가 -->
+	<update id="updateMeetingBoardCommentCnt"	parameterType="int">
+	<![CDATA[	
+		 update meetingboard set meetingboard_comment_cnt=meetingboard_comment_cnt+1 
+		 where meetingboard_no=#{meetingboard_no} 	
+	]]>	
+	</update>
+	
+	
+	
 	
 	
 	

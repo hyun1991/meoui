@@ -6,13 +6,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.jeju.meoui.service.MeetingBoardCommentService;
+import com.jeju.meoui.service.MeetingBoardService;
+import com.jeju.meoui.service.MeetingJoinService;
 import com.jeju.meoui.vo.MeetingBoardComment;
 
 @Controller
@@ -20,10 +22,14 @@ public class MeetingBoardCommentController {
 
 	@Autowired
 	private MeetingBoardCommentService service;
+	
+	@Autowired
+	private MeetingBoardService boardservice;
 
 	private static final Logger logger = LoggerFactory.getLogger(MeetingBoardCommentController.class);
 
 	// 댓글 추가
+	@Transactional
 	@RequestMapping(value = "meetingcomment/insert", method = RequestMethod.POST)
 	public String insertMeetingBoardComment(@ModelAttribute MeetingBoardComment meetingboardComment,
 			HttpSession session) {
@@ -33,7 +39,9 @@ public class MeetingBoardCommentController {
 		meetingboardComment.setMeetingNo(meetingNo);
 		meetingboardComment.setMeetingboardNo(meetingboardNo);
 		meetingboardComment.setMemberNo(memberNo);
+		
 		service.insertMeetingBoardComment(meetingboardComment);
+		boardservice.updateMeetingBoardCommentCnt(meetingboardNo);
 		logger.info("댓글추가 보드번호 : {}", meetingboardNo);
 		logger.info("댓글추가 멤버 번호 : {}", meetingboardNo);
 		logger.info("댓글추가 미팅번호 : {}", meetingNo);

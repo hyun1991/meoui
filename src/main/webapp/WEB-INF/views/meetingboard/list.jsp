@@ -227,7 +227,8 @@ font-style: italic;
 						
 						
 						
-						<td><a href="/meoui/meetingboard/view/${board.meetingboardNo }">${board.meetingboardTitle }</a></td>
+						<td><a href="/meoui/meetingboard/view/${board.meetingboardNo }">${board.meetingboardTitle }
+						<strong>(${board.meetingboardCommentCnt})</strong></a></td>
 						
 						
 						<td>${board.memberName }</td>

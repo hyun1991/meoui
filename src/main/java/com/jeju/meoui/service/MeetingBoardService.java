@@ -51,16 +51,16 @@ public class MeetingBoardService {
 		HashMap<String, Object>map= new HashMap<String, Object>();
 
 		int meetingboardNo = meetingboard.getMeetingboardNo();
-		meetingboard.setCommentCnt(commentdao.selectMeetingBoardCommentCnt(meetingboardNo));
+	//	meetingboard.setCommentCnt(commentdao.selectMeetingBoardCommentCnt(meetingboardNo));
 		map.put("pagination", pagination);
 		
 		map.put("list", list);
 		
 			
-		logger.info("미팅보더서비스 미팅보더넘버: {}", meetingboardNo);
-		logger.info("미팅보더서비스 카운트개수: {}",(commentdao.selectMeetingBoardCommentCnt(meetingboardNo)));
+		//logger.info("미팅보더서비스 미팅보더넘버: {}", meetingboardNo);
+		//logger.info("미팅보더서비스 카운트개수: {}",(commentdao.selectMeetingBoardCommentCnt(meetingboardNo)));
 		
-		logger.info("미팅보더서비스 리스트출력: {}", list);
+		//logger.info("미팅보더서비스 리스트출력: {}", list);
 		
 		return map;
 	}
@@ -78,6 +78,10 @@ public class MeetingBoardService {
 	public void deleteMeetingBoard(int meetingboardNo){
 		commentdao.deleteMeetingMeetingboardComment(meetingboardNo);
 		dao.deleteMeetingBoard(meetingboardNo);
+	}
+	
+	public void updateMeetingBoardCommentCnt(int meetingboardNo){
+		dao.updateMeetingBoardCommentCnt(meetingboardNo);
 	}
 	
 	

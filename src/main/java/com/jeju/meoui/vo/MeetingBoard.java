@@ -24,5 +24,5 @@ public class MeetingBoard {
 	private int memberNo;
 	private int meetingNo;
 	private String memberName;
-	private int commentCnt; //댓글갯수만 가져오기
+	private int meetingboardCommentCnt; //댓글갯수만 가져오기
 }

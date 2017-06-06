@@ -440,10 +440,11 @@ img {
 
 
 		<!-- 메인 -->
-		<div id="page-content-wrapper">
+		<div id="page-content-wrapper">	
+		<input type="button"  class="btn btn-primary .float_sidebar" value="뒤로가기" style="margin-left: 80%;" onclick=" history.back(-1);">			
 			<a href="/meoui/meetingboard/update"><button id="sidebar"
 					type="button" class="btn btn-primary .float_sidebar"
-					data-toggle="modal" style="margin-left: 80%;"
+					data-toggle="modal" style="margin-left: 80%; margin-top: 0px;"
 					data-target="#myModal">수정하기</button></a>
 
 
@@ -493,6 +494,7 @@ img {
 									class="w3-button w3-block w3-white w3-border"
 									style="width: 134px; margin-right: 0; text-align: content:;">
 									게시글 삭제</button>
+								
 							</form>
 							<!-- 		<a href="/meoui/meetingboard/update">
 				<button id="commit" type="submit"
