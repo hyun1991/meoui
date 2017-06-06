@@ -30,11 +30,7 @@
 			<div>
 				<h3>시설위치</h3>${result.accommodation.accommodationAddress }
 			</div>
-			<div class="col-xs-4" style="margin-top: 100px">
-				<a href="/meoui/admin/room/view/${result.accommodation.accommodationNo }&${result.accommodation.ownerNo }">
-					<button type="button"
-					class="w3-button w3-block w3-white w3-border">객실정보 조회하기</button></a>
-			</div>
+			<hr size="5">
 			<div class="col-xs-4">
 				<a href="/meoui/admin/accommodaion/list?pageNo=1"><button
 							type="button" class="w3-button w3-block w3-white w3-border">
@@ -53,7 +49,7 @@
 	</div>
 
 	<hr>
-	<h2 align="center">리스트</h2>
+	<h2 align="center">댓글 리스트</h2>
 	<c:forEach items="${result.comment }" var="comment">
 		<div class="container">
 			<input type="hidden" id="memberNo" value="${comment.memberNo }"
