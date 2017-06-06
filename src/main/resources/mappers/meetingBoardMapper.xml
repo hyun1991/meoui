@@ -25,10 +25,10 @@
 	<select id="selectAllmeetinBoard" parameterType="HashMap"
 		resultType="MeetingBoard">
 		<![CDATA[
-		select t2.*from(select rownum rnum, t1.* from
-		(select meetingboard_no, meetingboard_title, meetingboard_content, meetingboard_date, 
-		meetingboard_cnt, meetingboard_img, member_no, meeting_no 
-		from MEETINGBOARD
+		    select t2.*from(select rownum rnum, t1.* from
+		(select b.meetingboard_no, b.meetingboard_title, b.meetingboard_content, b.meetingboard_date, 
+		b.meetingboard_cnt, b.meetingboard_img, b.member_no, b.meeting_no, m.member_name 
+		from MEETINGBOARD b, member m where b.member_no=m.member_no
 		order by meetingboard_no desc)t1)t2 
 		where meeting_no=#{meetingNo} and rnum
 		between #{start} and #{last}

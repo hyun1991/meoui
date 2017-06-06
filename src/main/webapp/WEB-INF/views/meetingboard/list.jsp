@@ -222,8 +222,14 @@ font-style: italic;
 			<tbody>
 				<c:forEach items="${result.list }" var="board">
 					<tr>
+					
 						<td>${board.meetingboardNo }</td>
+						
+						
+						
 						<td><a href="/meoui/meetingboard/view/${board.meetingboardNo }">${board.meetingboardTitle }</a></td>
+						
+						
 						<td>${board.memberName }</td>
 						<td><fmt:formatDate value="${board.meetingboardDate}"
 								pattern="yyyy년MM월dd일" /></td>
@@ -238,6 +244,8 @@ font-style: italic;
 			href="/meoui/meetingboard/create">글쓰기</a>
 		<div class="text-center">
 			<ul class="pagination">
+			
+			
 				<li><c:if test="${result.pagination.prev>0 }">
 						<a
 							href="/meoui/meetingboard/list?pageNo=${result.pagination.prev }">이전으로</a>

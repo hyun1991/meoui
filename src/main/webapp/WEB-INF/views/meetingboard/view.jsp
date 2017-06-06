@@ -393,7 +393,7 @@ img {
 
 
 					<div class="modal-footer">
-						<button id="commit" type="submit">작성</button>
+						<button id="commit2" type="submit">작성</button>
 					</div>
 				</div>
 			</div>
@@ -489,7 +489,7 @@ img {
 						<c:if test="${board.memberNo eq memberNo }">
 							<form action="/meoui/meetingboard/delete/${board.meetingboardNo}"
 								method="POST" style="margin-left: 90%;">
-								<button id="commit" type="submit"
+								<button id="commit3" type="submit"
 									class="w3-button w3-block w3-white w3-border"
 									style="width: 134px; margin-right: 0; text-align: content:;">
 									게시글 삭제</button>
@@ -605,7 +605,23 @@ img {
 
  -->
 
-
+<script>
+	$(document).ready(function() {
+		$("#commit").on("click", function() {
+			alert("댓글이 삭제되었습니다")
+		})
+	})
+	$(document).ready(function() {
+		$("#commit2").on("click", function() {
+			alert("댓글을 작성하였습니다.")
+		})
+	})
+	$(document).ready(function() {
+		$("#commit3").on("click", function() {
+			alert("게시글이 삭제되었습니다")
+		})
+	})
+</script>
 
 </body>
 </html>

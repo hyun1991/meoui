@@ -47,4 +47,18 @@ public class MeetingJoinController {
 		service.deleteMeetingJoin(memberNo, meetingNo);
 		return "redirect:/membermeeting/list";
 	}
+	
+	@RequestMapping(value="membermeeting/list", method=RequestMethod.POST)
+	public String selectMemberAllList(HttpSession session, Model model){
+		int meetingNo=(Integer)session.getAttribute("meetingNo");
+		model.addAttribute("join",service.selectMemberAllList(meetingNo));
+		logger.info("미팅조인멤버미팅으로멤버넘버 :{}",service.selectMemberAllList(meetingNo));
+		return "membermeeting/list";
+	}
+	
+	
+	
+	
+	
+	
 }

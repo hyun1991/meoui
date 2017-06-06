@@ -26,6 +26,15 @@ public class MeetingBoardCommentService {
 		return map;
 	}
 	
+	//댓글 개수 불러오기
+	public int selectMeetingBoardCommentCnt(int meetingboardNo){
+		return dao.selectMeetingBoardCommentCnt(meetingboardNo);
+		
+		
+		
+	}
+	
+	
 	//댓글 쓰기
 	public void insertMeetingBoardComment(MeetingBoardComment meetingboardComment){
 			dao.insertMeetingBoardComment(meetingboardComment);

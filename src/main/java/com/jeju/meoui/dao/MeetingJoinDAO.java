@@ -47,9 +47,18 @@ public class MeetingJoinDAO {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("memberNo", memberNo);
 		map.put("meetingNo", meetingNo);
-		return template.selectList("MeetingJoin.selectMyMeetingJoin",map);
-		
-		
+		return template.selectList("MeetingJoin.selectMyMeetingJoin",map);		
+	}
+	
+	public List<MeetingJoin> selectMyMeetingJoinMemberNo(int memberNo){
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("memberNo", memberNo);
+		return template.selectList("MeetingJoin.selectMyMeetingJoinMemberNo",map);
+	}
+	
+	//모든 모임 리스트
+	public int selectMemberAllList(int meetingNo){
+	return 	template.selectOne("MeetingJoin.selectMemberAllList", meetingNo);
 	}
 	
 	
