@@ -23,6 +23,7 @@ public class MeetingJoinService {
 	private MemberMeetingDAO meetingdao;
 	private Logger logger= LoggerFactory.getLogger(MeetingJoinDAO.class);
 	private Logger memterlogger= LoggerFactory.getLogger(MemberMeetingDAO.class);
+	
 	//모임가입
 	@Transactional
 	public void createMeetingJoin(MeetingJoin meetingJoin, int meetingNo){
@@ -35,6 +36,7 @@ public class MeetingJoinService {
 	
 	//모임탈퇴(완료)
 	public void deleteMeetingJoin(int memberNo, int meetingNo){
+		
 		dao.deleteMeetingJoin(memberNo, meetingNo);
 	}
 	

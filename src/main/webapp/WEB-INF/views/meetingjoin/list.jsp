@@ -92,8 +92,8 @@
 					</a>
 
 					<c:if test="${meeting.meetingAdminNo eq memberNo }">
-						<a href="/meoui/membermeeting/update">
-							<button id="commit" type="submit" class="btn">모임수정하기</button>
+						<a href="/meoui/membermeeting/update?meetingNo=${meeting.meetingNo}">
+							<button id="commit" class="btn">모임수정하기</button>
 						</a>
 
 						<form action="/meoui/membermeeting/delete" method=post>
@@ -102,7 +102,7 @@
 						</form>
 					</c:if>
 					<c:if test="${meeting.meetingAdminNo != memberNo }">
-						<form action="/meoui/membermeeting/view/bye" method=get>
+						<form action="/meoui/meetinjoin/list/bye/${meeting.meetingNo}" method=get>
 							<button class="btn" id="commit" type="submit" style="margin-top: 5px;">모임 탈퇴하기</button>
 						</form>
 					</c:if>

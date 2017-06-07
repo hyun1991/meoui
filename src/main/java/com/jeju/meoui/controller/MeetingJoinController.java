@@ -37,13 +37,12 @@ public class MeetingJoinController {
 	}
 	
 	//모임 탈퇴하기(완료)
-	@RequestMapping(value="membermeeting/view/bye", method=RequestMethod.GET)
-	public String deleteMeeting( HttpSession session){
+	@RequestMapping(value="meetinjoin/list/bye/{meetingNo}", method=RequestMethod.GET)
+	public String deleteMeeting(@PathVariable int meetingNo ,HttpSession session){
 		int memberNo = (Integer)session.getAttribute("memberNo");
-		int meetingNo = (Integer)session.getAttribute("meetingNo");
+		//int meetingNo = (Integer)session.getAttribute("meetingNo");
 		logger.info("미팅조인 탈퇴 회원번호:{}", memberNo);
-		logger.info("미팅조인 탈퇴 모임번호:{}", meetingNo);
-		
+		logger.info("미팅조인 탈퇴 모임번호:{}", meetingNo);		
 		service.deleteMeetingJoin(memberNo, meetingNo);
 		return "redirect:/membermeeting/list";
 	}
@@ -53,6 +52,9 @@ public class MeetingJoinController {
 		int meetingNo=(Integer)session.getAttribute("meetingNo");
 		model.addAttribute("join",service.selectMemberAllList(meetingNo));
 		logger.info("미팅조인멤버미팅으로멤버넘버 :{}",service.selectMemberAllList(meetingNo));
+	
+		//session.removeAttribute("meetingNo");
+		
 		return "membermeeting/list";
 	}
 	

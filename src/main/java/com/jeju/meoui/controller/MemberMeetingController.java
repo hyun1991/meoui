@@ -58,13 +58,12 @@ public class MemberMeetingController {
 
 	//모임 수정(작업완료)
 	@RequestMapping(value="/membermeeting/update", method=RequestMethod.GET)
-	public String updateMemberMeeting(HttpSession session, Model model){
-		int meetingNo=(Integer)session.getAttribute("meetingNo");		
+	public String updateMemberMeeting(@RequestParam int meetingNo,HttpSession session, Model model){	
 		model.addAttribute("result",service.selectMeetingView(meetingNo));
+		logger.info("수정하기 로그 :{}", service.selectMeetingView(meetingNo));
+		//session.removeAttribute("meetingNo");
 		return "membermeeting/update";
-	}
-	
-	
+	}	
 	
 	//모임 수정(작업 완료)
 	@RequestMapping(value="/membermeeting/update", method=RequestMethod.POST)
@@ -81,9 +80,9 @@ public class MemberMeetingController {
 		logger.info("업데이트하는데 모임 번호가 없어  : {}", meetingNo);
 		logger.info("업데이트하는데 멤버 번호가 없어  : {}", meetingAdminNo);
 		
-		session.removeAttribute("meetingNo");
+		//session.removeAttribute("meetingNo");
 		
-		return "redirect:/membermeeting/list/";
+		return "redirect:/membermeeting/list";
 	}
 	
 	//모임 상세 보기(작업완료)
@@ -148,6 +147,9 @@ public class MemberMeetingController {
 			int memberNo = (Integer)session.getAttribute("memberNo");		
 			model.addAttribute("result", service.selectMyMeeting(memberNo));
 			logger.info("멤버미팅 가입한 리스트 보기 :[]", model);
+			
+			//session.removeAttribute("meetingNo");
+			
 			return "meetingjoin/list";		
 		}
 	
