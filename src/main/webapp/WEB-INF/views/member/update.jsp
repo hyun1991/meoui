@@ -25,7 +25,7 @@
 			<form action="/meoui/member/update" method="post">
 				<input type="hidden" name="memberNo" id="memberNo" value="${result.memberNo }"><br>
 				<table class="table table-striped table-bordered table-hover">
-				<tr><td>ID: ${result.memberId }<br>	
+				<tr><td>아이디: ${result.memberId }<br>	
 				</td></tr>
 				<tr><td>비밀번호<br>
 				<input type="password" name="memberPassword" id="memberPassword" value="${result.memberPassword }">
