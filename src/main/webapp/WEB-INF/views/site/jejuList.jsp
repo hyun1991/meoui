@@ -183,14 +183,31 @@ opacity
 			draggable : false,
 			mapTypeId : google.maps.MapTypeId.ROADMAP
 		};
-		var map = new google.maps.Map(document.getElementById("googleMap"),
-				mapProp);
-		var marker = new google.maps.Marker({
-			position : myCenter
-		});
-		marker.setMap(map);
+	
 	}
+	   var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    var markers = locations.map(function(location, i) {
+        return new google.maps.Marker({
+          position: location,
+          label: labels[i % labels.length]
+        });
+      });
+
+      // Add a marker clusterer to manage the markers.
+      var markerCluster = new MarkerClusterer(map, markers,
+          {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+    }
+    var locations = [
+    	{lat:33.51041350000001, lng:126.49135339999998}
+		{lat:33.4316207, lng:126.6900058}
+		{lat:33.451638, lng:126.49000000000001}
+		{lat:33.393962, lng:126.23909839999999}
+		{lat:33.5559836, lng:126.79622810000001}
+    ]
+
 </script>
+  <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+    </script>
 <script
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQhKWycyWtScR72Jxc_E-FKHq4-F2b4CM&callback=myMap"></script>
 </html>
