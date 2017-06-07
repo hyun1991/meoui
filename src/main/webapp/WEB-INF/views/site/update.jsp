@@ -17,7 +17,7 @@
 				<label>관광지명</label><input type="text" id="siteName" name="siteName" class="form-control">
 			</div>
 			<div class="form-group">
-				<label>주차여부</label><input type="text" id="sitePark" name=""sitePark"" class="form-control">
+				<label>주차여부</label><input type="text" id="sitePark" name="sitePark" class="form-control">
 			</div>
 			<div class="form-group">
 				<label>이용대상</label><input type="text" id="siteObject" name="siteObject" class="form-control">
