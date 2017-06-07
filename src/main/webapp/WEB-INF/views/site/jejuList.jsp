@@ -118,7 +118,7 @@ opacity
 	</header>
 	<div class="container text-center">
 	<div class="row" id="googleMapBackground">
-		<div id="googleMap" style="height: 400px; width: 100%;" alt="구글 지도"></div>
+		<div id="map" style="height: 400px; width: 100%;" alt="구글 지도"></div>
 	</div>
 	</div>
 	<div class="container">
