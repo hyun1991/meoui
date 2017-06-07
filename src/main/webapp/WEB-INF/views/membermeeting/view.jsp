@@ -114,9 +114,10 @@ text-align: right;
 			<form action="/meoui/membermeeting/post" method=post>
 				<button id="commit" type="submit"
 					class="w3-button w3-block w3-white w3-border">회원 가입하기</button>
-			</form>			-->
-			</c:if>		
-			<c:if test="${meeting.meetingAdminNo == memberNo }">
+			</form>		</c:if>		-->
+				
+				<!-- 원래 뷰에 있던것들 -->
+		<!--  	<c:if test="${meeting.meetingAdminNo == memberNo }">
 			<a href="/meoui/membermeeting/update">
 				<button id="commit" type="submit"
 					class="w3-button w3-block w3-white w3-border">모임수정하기</button></a>
@@ -129,7 +130,7 @@ text-align: right;
 			
 			<a href="/meoui/meetingboard/list/${meeting.meetingNo}"
 						style="color: #424242;"><span class="glyphicon glyphicon-heart"
-							style="color: #f76ce4;"></span> 모임게시판 </a>
+							style="color: #f76ce4;"></span> 모임게시판 </a>-->
 							
 							
 				
