@@ -40,7 +40,7 @@
 				<li><a href="/meoui/admin/notice/list?pageNo=1">공지사항</a></li>
 				<li><a href="/meoui/admin/freeboard/list?pageNo=1" id="#">자유게시판</a></li>
 			</ul></li>
-			<li class="col-md-2"><a href="/meoui/admin/membermeeting/list" id="menu">모임관리</a></li>
+			<li class="col-md-2"><a href="/meoui/admin/meetingList2" id="menu">모임관리</a></li>
 			<li class="dropdown pull-right"><a class="dropdown-toggle"
 				data-toggle="dropdown" href="#" id="#">관리자님
 					환영합니다<span class="caret"></span></a>
