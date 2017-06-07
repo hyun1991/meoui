@@ -107,7 +107,6 @@ footer {
 	    onNavigate: function(direction, itemIndex) {
 	        console.log('Navigating '+direction+'. Current item: '+itemIndex);
 	    }
-	    ...
 	});
 </script>
 
