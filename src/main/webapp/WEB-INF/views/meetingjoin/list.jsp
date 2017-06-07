@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
 <!-- Theme Made By www.w3schools.com - No Copyright -->
-<title>Bootstrap Theme The Band</title>
+<title>마이페이지</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -82,10 +82,30 @@
 
 
 					<p>회원 인원 :${meeting.meetingTotalNumber }</p>
-					<form action="/meoui/membermeeting/view/bye" method=get>
 
-						<button class="btn" id="commit" type="submit">모임 탈퇴하기</button>
-					</form>
+
+
+
+
+					<a href="/meoui/meetingboard/list/${meeting.meetingNo}"> <span
+						class="btn" style="margin-right: 1px;">모임게시판</span>
+					</a>
+
+					<c:if test="${meeting.meetingAdminNo eq memberNo }">
+						<a href="/meoui/membermeeting/update">
+							<button id="commit" type="submit" class="btn">모임수정하기</button>
+						</a>
+
+						<form action="/meoui/membermeeting/delete" method=post>
+							<button id="commit" type="submit" class="btn"
+								style="margin-top: 5px;">모임 삭제하기</button>
+						</form>
+					</c:if>
+					<c:if test="${meeting.meetingAdminNo != memberNo }">
+						<form action="/meoui/membermeeting/view/bye" method=get>
+							<button class="btn" id="commit" type="submit">모임 탈퇴하기</button>
+						</form>
+					</c:if>
 				</div>
 			</div>
 		</div>

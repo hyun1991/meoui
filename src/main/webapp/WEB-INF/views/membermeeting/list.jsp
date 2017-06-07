@@ -448,14 +448,11 @@ img {
 							<figcaption
 								style="width: 100%; padding-right: 0px; padding-top: 0px; padding-left: 0px; padding-bottom: 0px;">
 								<h2>회원 가입은 아래버튼을 눌러주세요</h2>
-
-
-
-								<p>${meeting.meetingAdminNo}...12</p>								
-									<c:forEach items="${join.list }" var="join">
+								<c:forEach items="${join.list }" var="join">
 										<p>${join.meetingNo }</p>
 									</c:forEach>
 									<div class="icons">
+									
 										<c:if test="${meeting.meetingAdminNo ne memberNo}">
 											<!-- test="${meeting.meetingAdminNo ne memberNo or meetingJoin.meetingNo ne meetingNo}"> -->
 											<form action="/meoui/membermeeting/post/${meeting.meetingNo}"
@@ -473,8 +470,9 @@ img {
 					</figure>
 
 					<p>
-						<a href="/meoui/membermeeting/view/${meeting.meetingNo}"> <strong>${meeting.meetingName }</strong>
-						</a>
+					<!-- 	<a href="/meoui/membermeeting/view/${meeting.meetingNo}">-->
+					<strong>${meeting.meetingName }</strong>
+					<!-- 	</a> -->
 					</p>
 
 					<p>우리모임을 좋아하는 사람은: ${meeting.meetingTotalNumber }명</p>
