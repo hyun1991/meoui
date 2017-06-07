@@ -174,7 +174,6 @@ opacity
 	</footer>
 </body>
 <script>
-<script>
 
 function initMap() {
 
@@ -213,5 +212,5 @@ var locations = [
   <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
     </script>
 <script
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQhKWycyWtScR72Jxc_E-FKHq4-F2b4CM&callback=myMap"></script>
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQhKWycyWtScR72Jxc_E-FKHq4-F2b4CM&callback=initMap"></script>
 </html>
