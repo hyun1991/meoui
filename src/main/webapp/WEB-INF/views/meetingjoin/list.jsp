@@ -87,25 +87,25 @@
 
 
 
-					<a href="/meoui/meetingboard/list/${meeting.meetingNo}"
-						>
-						<span class="btn" >모임게시판</span></a>
-					
+					<a href="/meoui/meetingboard/list/${meeting.meetingNo}"> <span
+						class="btn" style="margin-right: 1px;">모임게시판</span>
+					</a>
+
 					<c:if test="${meeting.meetingAdminNo eq memberNo }">
 						<a href="/meoui/membermeeting/update">
-							<button id="commit" type="submit"
-								class="btn">모임수정하기</button>
+							<button id="commit" type="submit" class="btn">모임수정하기</button>
 						</a>
 
 						<form action="/meoui/membermeeting/delete" method=post>
-							<button id="commit" type="submit"
-								class="btn" >모임 삭제하기</button>
+							<button id="commit" type="submit" class="btn"
+								style="margin-top: 5px;">모임 삭제하기</button>
 						</form>
 					</c:if>
-					<c:if test="${meeting.meetingAdminNo != memberNo }">	
-					<form action="/meoui/membermeeting/view/bye" method=get>
-						<button class="btn" id="commit" type="submit">모임 탈퇴하기</button>
-					</form></c:if>
+					<c:if test="${meeting.meetingAdminNo != memberNo }">
+						<form action="/meoui/membermeeting/view/bye" method=get>
+							<button class="btn" id="commit" type="submit">모임 탈퇴하기</button>
+						</form>
+					</c:if>
 				</div>
 			</div>
 		</div>
