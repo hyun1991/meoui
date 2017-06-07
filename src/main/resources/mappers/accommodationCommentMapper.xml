@@ -42,7 +42,7 @@
 	<!-- 숙박시설번호별 댓글 전체조회하기 -->
 	<select id="selectByAccommodationNo" parameterType="int" resultType="AccommodationComment">
 		<![CDATA[
-			select * from accommodation_comment where accommodation_no=#{accommodationNo} order by accommodation_comment_no asc
+			select ac.*, m.member_id from accommodation_comment ac, member m where ac.accommodation_no=#{accommodationNo} and ac.member_no=m.member_no order by accommodation_comment_no asc
 		]]>
 	</select>
 	<!-- 숙박시설번호별 회원번호별 댓글 전체조회하기 -->

@@ -14,6 +14,7 @@ public class AccommodationComment {
 	private int accommodationCommentAvg;				//	평점
 	private int	accommodationNo;						//	숙박시설번호
 	private int memberNo;								//	댓글작성자
+	private String memberId;
 	private String byul;		//	임의로 만듬.
 	
 	public AccommodationComment(String accommodationCommentContent, Date accommodationCommentDate,
