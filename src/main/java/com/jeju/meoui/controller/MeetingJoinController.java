@@ -1,10 +1,13 @@
 package com.jeju.meoui.controller;
+import java.io.*;
+
 import javax.servlet.http.*;
 
 import org.slf4j.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 import org.springframework.ui.*;
+import org.springframework.validation.*;
 import org.springframework.web.bind.annotation.*;
 
 import com.jeju.meoui.service.*;
@@ -22,18 +25,18 @@ public class MeetingJoinController {
 
 	//모임 가입하기(완료)
 	@RequestMapping(value="membermeeting/post/{meetingNo}", method=RequestMethod.POST)
-	public String insertMeetingJoin(@PathVariable int meetingNo, HttpSession session, Model model){
+	public void insertMeetingJoin(@PathVariable int meetingNo, HttpSession session, Model model,HttpServletResponse response) throws IOException{
 		MeetingJoin meetingJoin = new MeetingJoin();
 		int memberNo= (Integer)session.getAttribute("memberNo");
 		meetingJoin.setMeetingNo(meetingNo);
 		meetingJoin.setMemberNo(memberNo);
 		System.out.println(meetingJoin);
-		
 		service.createMeetingJoin(meetingJoin,meetingNo);
-		logger.info("미팅조인:{}", meetingJoin);
-		logger.info("미팅조인:{}", meetingNo);
-		return "redirect:/membermeeting/list";
-		
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out=response.getWriter();
+		out.println("<script>alert('모임활동은 마이페이지내 나의 모임리스트 참고해주세요'); history.go(-1);</script>");
+		out.flush();
+		out.close();	
 	}
 	
 	//모임 탈퇴하기(완료)
