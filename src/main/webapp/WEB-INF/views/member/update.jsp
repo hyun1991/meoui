@@ -29,18 +29,18 @@
 				<input type="text" name="memberId" id="memberId" value="${result.memberId }" readonly="readonly">
 				</td></tr>
 				<tr><td>비밀번호<br>
-				<input type="password" name="memberPassword" id="memberPassword">
+				<input type="password" name="memberPassword" id="memberPassword" value="${result.memberPassword }">
 				</td></tr>
 				<tr><td>이름<br>
-				<input type="text" name="memberName" id="memberName"></td></tr>
+				<input type="text" name="memberName" id="memberName" value="${result.memberName }"></td></tr>
 				<tr><td>연락처 <br>
-				<input type="text" name="memberPhone" id="memberPhone"></td></tr>
+				<input type="text" name="memberPhone" id="memberPhone" value="${result.memberPhone }"></td></tr>
 				<tr><td>직업<br>
-				<input type="text" name="memberJob" id="memberJob"></td></tr>			
+				<input type="text" name="memberJob" id="memberJob" value="${result.memberJob }"></td></tr>			
 				<tr><td>이메일<br>
-				<input type="text" name="memberMail" id="memberMail"></td></tr>			
+				<input type="text" name="memberMail" id="memberMail" value="${result.memberMail }"></td></tr>			
 				<tr><td>취미<br>
-				<input type="text" name="memberHobby" id="memberHobby"></td></tr>
+				<input type="text" name="memberHobby" id="memberHobby" value="${result.memberHobby }"></td></tr>
 				<tr><td>주소
 				<input type="button" class="btn btn-default pull-right" onclick="sample4_execDaumPostcode()" value="우편 번호 찾기"><br>
 				<input type="text" class="form-control" id="postcode" name="memberAddress1" placeholder="우편 번호"> 
