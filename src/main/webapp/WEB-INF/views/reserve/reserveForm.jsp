@@ -82,7 +82,7 @@ button:hover:before, button:hover:after {
 	transition: 800ms ease all;
 }
 </style>
-<body>
+<body name="form">
 	<h1 id="headTitle" style="margin-top: 50px;" align="center">객실
 		상세페이지</h1>
 	<div class="container">
@@ -110,7 +110,9 @@ button:hover:before, button:hover:after {
 					</tr>
 					<tr>
 						<th scope="row">숙박인원</th>
-						<td><input type="number" name="stayPeople" id="count"></td>
+						<td>
+						<input type="number" name="stayPeole" id="count">
+						</td>
 					</tr>
 				</table>
 				<div>
