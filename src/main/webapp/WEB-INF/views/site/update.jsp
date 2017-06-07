@@ -16,6 +16,7 @@
 			<div class="form-group">
 				<label>관광지명</label><input type="text" id="siteName" name="siteName" class="form-control">
 			</div>
+<<<<<<< HEAD
 				<div class="form-group">
 				<label>광관지 주차유무</label>
 				<select class="form-control input-lg" name="sitePark" id="sitePark">
@@ -23,6 +24,10 @@
 					<option value="1">주차가능</option>
 					<option value="2">주차불가능</option>
 				</select>
+=======
+			<div class="form-group">
+				<label>주차여부</label><input type="text" id="sitePark" name="sitePark" class="form-control">
+>>>>>>> branch 'master' of https://github.com/hyun1991/meoui.git
 			</div>
 			<div class="form-group">
 				<label>이용대상</label><input type="text" id="siteObject" name="siteObject" class="form-control">

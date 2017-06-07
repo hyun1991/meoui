@@ -48,17 +48,7 @@ public class MeetingBoardCommentController {
 
 		return "redirect:/meetingboard/view/" + meetingboardNo;
 	}
-	//댓글개수
-	//@RequestMapping(value="meetingboard/list/commentcnt/{meetingboardNo}", method=RequestMethod.GET)
-	//public String selectMeetingBoardComment(@PathVariable int meetingboardNo, HttpSession session, Model model){
-		
-		//model.addAttribute("comment", service.selectMeetingBoardCommentCnt(meetingboardNo));	
-		//logger.info("어떻게 사용하지?:{}",service.selectMeetingBoardCommentCnt(meetingboardNo));
-		//return "meetingboard/list";
-//	}
-	
 	// 댓글 삭제 작성자용
-
 	@RequestMapping(value = "meetingcomment/delete/{meetingboardCommentNo}", method = RequestMethod.POST)
 	public String deleteMeetingBoardComment(@PathVariable int meetingboardCommentNo, HttpSession session) {
 		session.setAttribute("meetingboardCommentNo", meetingboardCommentNo);

@@ -38,7 +38,7 @@
 			$("#exit").show();
 			$("#msg").show();
 			$("#content").show();
-			wsocket = new WebSocket("ws://192.168.0.186:8087/meoui/handler1");
+			wsocket = new WebSocket("ws://106.243.194.226:5001/meoui/handler1");
 			wsocket.onmessage = function(event) {
 				console.log(event.data)
 				$("#content").append("익명:"+event.data + "\r\n");

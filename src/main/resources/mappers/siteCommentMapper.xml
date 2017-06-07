@@ -27,6 +27,6 @@
 	</delete>
 <!-- 5.관광지 댓글 조회 -->
 	<select id="selectSiteCommetn" parameterType="int" resultType="siteComment">
-		select * from site_comment where site_no=#{siteNo}
+		select sc.*, m.member_id from site_comment sc, member m where site_no=#{siteNo} and sc.member_no=m.member_no
 	</select>
 </mapper>

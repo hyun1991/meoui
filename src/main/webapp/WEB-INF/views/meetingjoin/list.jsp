@@ -8,13 +8,6 @@
 <!-- Theme Made By www.w3schools.com - No Copyright -->
 <title>마이페이지</title>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
 /* Remove rounded borders from list */
 .list-group-item:first-child {
@@ -54,61 +47,61 @@
 	background-color: #fff;
 	color: #000;
 }
+
+ #joinimg{
+	width: 300px;
+	height: 300px;
+}
 </style>
 </head>
 <header>
 	<%@include file="/nav/navbar.jsp"%>
 </header>
 <body>
-
-
 	<!-- Container (TOUR Section) -->
-	<h2>나의 모임 목록</h2>
+	<h1 id="headTitle" style="margin-top: 50px;" align="center">나의
+		모임리스트</h1>
 	<hr>
-	<c:forEach items="${result.list }" var="meeting">
-
-		<div class="row text-center" style="width: 90%; height: 0px;">
-			<div class="col-sm-4" style="padding-right: 5px; padding-left: 5px;">
-				<div class="thumbnail">
-
-					<a href="/meoui/membermeeting/list/${meeting.meetingImg}"> <img
-						src="/meoui/images/${meeting.meetingImg}" alt="Paris" width="400"
-						height="300">
-					</a>
-
-					<p>
-						<strong>${meeting.meetingName }</strong>
-					</p>
-
-
-					<p>회원 인원 :${meeting.meetingTotalNumber }</p>
-
-
-
-
-
-					<a href="/meoui/meetingboard/list/${meeting.meetingNo}"> <span
-						class="btn" style="margin-right: 1px;">모임게시판</span>
-					</a>
-
-					<c:if test="${meeting.meetingAdminNo eq memberNo }">
-						<a href="/meoui/membermeeting/update">
-							<button id="commit" type="submit" class="btn">모임수정하기</button>
+	<div class="container">
+		<c:forEach items="${result.list }" var="meeting">
+			<div class="row text-center" style="width: 90%; height: 0px;">
+				<div class="col-sm-4" style="padding-right: 5px; padding-left: 5px;">
+					<div class="thumbnail">
+						
+						<a href="/meoui/membermeeting/list/${meeting.meetingImg}"> <img id="joinimg"
+							src="/meoui/images/${meeting.meetingImg}" alt="Paris" width="400"
+							height="300">
+						</a> 
+					
+				
+						
+						
+						
+						<p>
+							<strong>${meeting.meetingName }</strong>
+						</p>
+						<p>회원 인원 :${meeting.meetingTotalNumber }</p>
+						<a href="/meoui/meetingboard/list/${meeting.meetingNo}"> <span
+							class="btn" style="margin-right: 1px;">모임게시판</span>
 						</a>
-
-						<form action="/meoui/membermeeting/delete" method=post>
-							<button id="commit" type="submit" class="btn"
-								style="margin-top: 5px;">모임 삭제하기</button>
-						</form>
-					</c:if>
-					<c:if test="${meeting.meetingAdminNo != memberNo }">
-						<form action="/meoui/membermeeting/view/bye" method=get>
-							<button class="btn" id="commit" type="submit" style="margin-top: 5px;">모임 탈퇴하기</button>
-						</form>
-					</c:if>
+						<c:if test="${meeting.meetingAdminNo eq memberNo }">
+							<a href="/meoui/membermeeting/update?meetingNo=${meeting.meetingNo}">
+								<button id="commit" class="btn">모임수정하기</button>
+							</a><a href="/meoui/membermeeting/delete/${meeting.meetingNo}">
+								<button id="commit" type="submit" class="btn"
+									style="margin-top: 5px;">모임 삭제하기</button></a>
+						</c:if>
+						<c:if test="${meeting.meetingAdminNo != memberNo }">
+							<form action="/meoui/meetinjoin/list/bye/${meeting.meetingNo}"
+								method=get>
+								<button class="btn" id="commit" type="submit"
+									style="margin-top: 5px;">모임 탈퇴하기</button>
+							</form>
+						</c:if>
+					</div>
 				</div>
 			</div>
-		</div>
-	</c:forEach>
+		</c:forEach>
+	</div>
 </body>
 </html>

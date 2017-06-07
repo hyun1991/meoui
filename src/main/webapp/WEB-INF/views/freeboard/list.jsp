@@ -27,7 +27,8 @@
 				<tbody>
 					<c:forEach items="${result.list }" var="freeboard">
 						<tr>
-							<td>${freeboard.freeboardNo }</td>
+							<td><a
+								href="/meoui/freeboard/view/${freeboard.freeboardNo }">${freeboard.freeboardNo }</a></td>
 							<td><a
 								href="/meoui/freeboard/view/${freeboard.freeboardNo }">${freeboard.freeboardTitle }</a></td>
 							<td>${freeboard.freeboardCnt }</td>

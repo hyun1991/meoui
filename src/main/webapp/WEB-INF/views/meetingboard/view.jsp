@@ -97,18 +97,18 @@ footer {
 		event.preventDefault();
 		$(this).ekkoLightbox();
 	});
-	
-	
-	$(this).ekkoLightbox({
-	    alwaysShowClose: true,
-	    onShown: function() {
-	        console.log('Checking our the events huh?');
-	    },
-	    onNavigate: function(direction, itemIndex) {
-	        console.log('Navigating '+direction+'. Current item: '+itemIndex);
-	    }
-	    ...
-	});
+
+	$(this).ekkoLightbox(
+			{
+				alwaysShowClose : true,
+				onShown : function() {
+					console.log('Checking our the events huh?');
+				},
+				onNavigate : function(direction, itemIndex) {
+					console.log('Navigating ' + direction + '. Current item: '
+							+ itemIndex);
+				}
+			});
 </script>
 
 <script>
@@ -154,190 +154,24 @@ keyframes menuBlink { 0% {
 }
 
 49%{
-opacity
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-0
+opacity:0
 }
 50%{
-opacity
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1
+opacity:1
 }
 }
 #headTitle, .step {
 	font-family: 'Jeju Gothic', serif;
 }
-
 @
 keyframes menuBlink { 0% {
 	opacity: 0
 }
-
 49%{
-opacity
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-0
+opacity:0
 }
 50%{
-opacity
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1
+opacity:1
 }
 }
 .glyphicon-home {
@@ -372,8 +206,6 @@ img {
 	<header>
 		<%@include file="/nav/navbar.jsp"%>
 	</header>
-
-
 	<button id="sidebar" type="button"
 		class="btn btn-primary .float_sidebar" data-toggle="modal"
 		data-target="#myModal">댓글쓰기</button>
@@ -390,8 +222,6 @@ img {
 						<textarea class="form-control" rows="6" id="comment"
 							name="meetingboardCommentContent" placeholder="contents"></textarea>
 					</div>
-
-
 					<div class="modal-footer">
 						<button id="commit2" type="submit">작성</button>
 					</div>
@@ -400,16 +230,10 @@ img {
 
 		</div>
 	</form>
-
-
-
-
 	<div id="page-wrapper" class="container">
 		<!-- 사이드바 -->
 		<div id="sidebar-wrapper">
 			<ul class="sidebar-nav">
-
-
 				<c:forEach items="${comment.list }" var="list">
 					<div class="sidebar-nav li">
 						<hr />
@@ -437,43 +261,25 @@ img {
 				</c:forEach>
 			</ul>
 		</div>
-
-
 		<!-- 메인 -->
-		<div id="page-content-wrapper">	
-		<input type="button"  class="btn btn-primary .float_sidebar" value="뒤로가기" style="margin-left: 80%;" onclick=" history.back(-1);">			
+		<div id="page-content-wrapper">
+			<input type="button" class="btn btn-primary .float_sidebar"
+				value="뒤로가기" style="margin-left: 80%;" onclick=" history.back(-1);">
 			<a href="/meoui/meetingboard/update"><button id="sidebar"
 					type="button" class="btn btn-primary .float_sidebar"
 					data-toggle="modal" style="margin-left: 80%; margin-top: 0px;"
 					data-target="#myModal">수정하기</button></a>
-
-
-
-
 			<div class="container-fluid">
 
 				<div class="row text-center" id="page-content-wrapper">
 					<div class="col-sm-3 container-fluid" id="divview"
 						style="margin-left: 10%; margin-right: 10%; width: 80%; height: 80%;">
-						<!-- <a href="/meoui/meetingboard/view/${meeting.meetingNo}"> <img
-							class="image-responsive"
-							src="/meoui/images/${board.meetingboardImg }" alt="skinscuber"
-							style="margin-bottom: 20px;">
-							 -->
-
-					<!-- 
-						<img style="width: 50%; height: 60%;"
+						<a href="/meoui/images/${board.meetingboardImg }"
+							data-toggle="lightbox" data-title="A random title"
+							data-footer="A custom footer text"> <img
 							src="/meoui/images/${board.meetingboardImg }"
-							class="img-thumbnail" alt="Cinque Terre" width="40%" height="50%">
- -->
-
-<a href="/meoui/images/${board.meetingboardImg }" data-toggle="lightbox" data-title="A random title" data-footer="A custom footer text">
-    <img src="/meoui/images/${board.meetingboardImg }"  style="width: 50%; height: 60%;" class="img-fluid">
-</a>
-
-
-
-
+							style="width: 50%; height: 60%;" class="img-fluid">
+						</a>
 						<p style="margin-top: 10px;">
 							<strong>${board.meetingboardTitle }</strong>
 						</p>
@@ -481,8 +287,6 @@ img {
 						<p>${board.meetingboardContent }</p>
 
 						<p>${board.memberName }</p>
-
-						<!-- <p>${board.meetingboardCnt }</p> -->
 						<p>
 							<fmt:formatDate value="${board.meetingboardDate}"
 								pattern="yyyy년MM월dd일" />
@@ -494,136 +298,20 @@ img {
 									class="w3-button w3-block w3-white w3-border"
 									style="width: 134px; margin-right: 0; text-align: content:;">
 									게시글 삭제</button>
-								
 							</form>
-							<!-- 		<a href="/meoui/meetingboard/update">
-				<button id="commit" type="submit"
-					class="w3-button w3-block w3-white w3-border">모임수정하기</button></a> -->
 						</c:if>
 					</div>
 				</div>
-
-			</div>
-
-		</div>
-	</div>
-
-
-
-
-
-
-
-
-	<!-- <h2>모임 게시판 상세 뷰</h2> -->
-	<!--<div class="row text-center" id="page-content-wrapper">
-		<div class="col-sm-3 container-fluid" id="divview">
-			<a href="/meoui/meetingboard/view/${meeting.meetingNo}"> <img
-				class="image-responsive"
-				src="/meoui/images/${board.meetingboardImg }" alt="skinscuber"
-				style="margin-bottom: 20px;">
-			</a>
-			<p>
-				<strong>${board.meetingboardTitle }</strong>
-			</p>
-
-			<p>${board.meetingboardContent }</p>
-
-			<p>${board.memberName }</p>
-
-			<p>${board.meetingboardCnt }</p>
-
-			<p>
-				<fmt:formatDate value="${board.meetingboardDate}"
-					pattern="yyyy년MM월dd일" />
-			</p>
-
-			<form action="/meoui/meetingboard/delete/${board.meetingboardNo}"
-				method="POST">
-				<button id="commit" type="submit"
-					class="w3-button w3-block w3-white w3-border">게시글 삭제</button>
-			</form>
-		</div>
-	</div> -->
-
-
-	<!--<c:forEach items="${comment.list }" var="list">
-		<div id="divview">
-
-			<p>
-				<strong>${list.meetingboardCommentContent }</strong>
-			</p>
-			<p>작성자 : ${list.memberName }</p>
-
-			<p>
-				<fmt:formatDate value="${list.meetingboardCommentDate}"
-					pattern="yyyy년MM월dd일" />
-			</p>
-			<p>
-			<form
-				action="/meoui/metingcomment/delete/${list.meetingboardCommentNo }"
-				method="POST">
-				<button id="commit" type="submit">댓글 삭제</button>
-				<br> <br> <br>
-			</form>
-
-		</div>
-	</c:forEach>  -->
-
-
-
-	<!-- 	<button id = "sidebar"type="button" class="btn btn-primary .float_sidebar"  data-toggle="modal"
-		data-target="#myModal">댓글쓰기</button>
-	<form action="/meoui/metingcomment/insert" method="POST"> -->
-
-	<!-- Modal -->
-	<!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel">
-		
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">	
-				<div class="modal-body"><label for="exampleInputPassword1">글 내용</label>
-				 <textarea class="form-control" rows="5" id="comment" name="meetingboardCommentContent" placeholder="contents"></textarea>
-					</div>
-				
-				
-				<div class="modal-footer">
-					<button id="commit" type="submit">작성</button>
-				</div>
 			</div>
 		</div>
-		
 	</div>
-		</form> -->
-
-	<!-- <form action="/meoui/metingcomment/insert" method="POST">
-		<input type="text" id="meetingboardCommentContent"
-			name="meetingboardCommentContent">
-
-
-		<button id="commit" type="submit">대글작성하기</button>
-
-	</form>
-
- -->
-
-<script>
-	$(document).ready(function() {
-		$("#commit").on("click", function() {
-			alert("댓글이 삭제되었습니다")
+	<script>
+		$(document).ready(function() {
+			$("#commit3").on("click", function() {
+				alert("게시글이 삭제되었습니다")
+			})
 		})
-	})
-	$(document).ready(function() {
-		$("#commit2").on("click", function() {
-			alert("댓글을 작성하였습니다.")
-		})
-	})
-	$(document).ready(function() {
-		$("#commit3").on("click", function() {
-			alert("게시글이 삭제되었습니다")
-		})
-	})
-</script>
+	</script>
 
 </body>
 </html>

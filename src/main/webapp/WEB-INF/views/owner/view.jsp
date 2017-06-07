@@ -77,18 +77,6 @@ header {
 			</c:forEach>
 		</div>
 		<hr>
-		<div class="form-group">
-			<a href="/meoui/manage/accommodation/update">
-				<button type="button" class="w3-button w3-block w3-white w3-border"
-					id="messageBtn">수정하기</button>
-			</a>
-		</div>
-		<div class="form-group">
-			<a href="/meoui/manage/room/join">
-				<button type="button" class="w3-button w3-block w3-white w3-border"
-					id="messageBtn">객실추가</button>
-			</a>
-		</div>
 	</div>
 </body>
 </html>
