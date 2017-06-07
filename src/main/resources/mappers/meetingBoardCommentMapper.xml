@@ -9,9 +9,11 @@
 
 <![CDATA[
 
+
+
 select c.meetingboard_comment_no, c.meetingboard_comment_content, 
 
-c.meetingboard_comment_date, b.member_name, c.member_no
+c.meetingboard_comment_date, b.member_name, c.member_no, c.meeting_no,c.meetingboard_no
 
 from meetingboard_comment c, member b 
 
@@ -19,7 +21,10 @@ where c.member_no= b.member_no
 
  and 
 
-c.meetingboard_no=#{meetingboard_no}
+c.meetingboard_no=#{meetingboardNo}
+
+
+
 
 ]]>
 
@@ -42,38 +47,49 @@ c.meetingboard_no=#{meetingboard_no}
 
 	</insert>
 
-	<!-- 댓글 삭제 하기 
+	<!-- 댓글 삭제 하기 <delete id="deleteMeetingboardComment" parameterType="int"> 
+		<![CDATA[ delete from meetingboard_comment where meetingboard_comment_no=#{meetingboardCommentNo} 
+		and member_no = #{memberNo} ]]> </delete> -->
+
+	<!-- 댓글 삭제 하기 유저용 모임삭제시-->
 	<delete id="deleteMeetingboardComment" parameterType="int">
 	<![CDATA[
-	delete from meetingboard_comment 
-	where meetingboard_comment_no=#{meetingboardCommentNo}
-	 and 
-	member_no = #{memberNo}	
-	]]>		
+	
+	delete from meetingboard_comment where member_no=#{memberNo}
+	 and meetingboard_comment_no=#{meetingboardCommentNo}
+	]]>
+
 	</delete>
--->	
 	
-		<!-- 댓글 삭제 하기 -->
-	<delete id="deleteMeetingboardComment" parameterType="int">
+	
+	<!-- 게시판별 댓글 갯수  -->
+	<select id="selectMeetingBoardCommentCnt" parameterType="int" resultType="int">
+	<![CDATA[
+		
+	select count(meetingboard_comment_no) from meetingboard_comment where meetingboard_no=#{meetingboardNo}
+	]]>
+	
+	</select>
+	
+	
+	<!-- 댓글삭제 게시판 만든 사람용 -->
+		<delete id="deleteMeetingMeetingboardComment" parameterType="int">
 	<![CDATA[
 	
-	  delete from meetingboard_comment where meetingboard_no =(select meetingboard_no from meetingboard where meeting_no=#{meetingNo}
-		]]>	
-	
-		</delete>
-	
-	
-	
-	
-		<!-- 댓글 삭제 하기 관리자용 -->
+	delete from meetingboard_comment where
+	 meetingboard_no=#{meetingboardNo}
+	]]>
+
+	</delete>
+
+
+
+	<!-- 댓글 삭제 하기 관리자용 -->
 	<delete id="deleteMeetingboardCommentAdmin" parameterType="int">
 	<![CDATA[
-	delete from meetingboard_comment 
-	where meetingboard_no = 
-  (select meetingboard_no from meetingboard where meeting_no= 
-  (select meeting_no from member_meeting where meeting_no=#{meetingNo}))
-	]]>	
-	
+	delete from meetingboard_comment where meeting_no=#{meetingNo}
+	]]>
+
 	</delete>
 
 

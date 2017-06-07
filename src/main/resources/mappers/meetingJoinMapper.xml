@@ -30,11 +30,21 @@
 	<select id="selectMyMeetingJoin" parameterType="int" resultType="meetingJoin">
 	<![CDATA[
 				select meeting_no, member_no from meeting_join where meeting_no=#{meetingNo} and member_no=#{memberNo};
-		]]>
-	
-	
+	]]>	
+	</select>
+	<!-- 내가 가입한 모임 내 너버로 검색 -->
+	<select id="selectMyMeetingJoinMemberNo" parameterType="int" resultType="meetingJoin">
+	<![CDATA[
+			select meeting_no from meeting_join where  member_no=#{memberNo}
+	]]>	
 	</select>
 	
+	<!-- 미팅번호별 회원검색 -->
+	<select id="selectMemberAllList"  resultType="int" parameterType="int">
+	<![CDATA[
+			select member_no from meeting_join where meeting_no=#{meetingNo}
+	]]>	
+	</select>
 		
 		
 </mapper>

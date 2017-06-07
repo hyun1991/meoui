@@ -19,6 +19,9 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
+
+
+
 <style>
 footer {
 	position: fixed;
@@ -87,6 +90,27 @@ footer {
 	margin-right: 30px;
 }
 </style>
+
+<!-- 이미지 -->
+<script>
+	$(document).on('click', '[data-toggle="lightbox"]', function(event) {
+		event.preventDefault();
+		$(this).ekkoLightbox();
+	});
+	
+	
+	$(this).ekkoLightbox({
+	    alwaysShowClose: true,
+	    onShown: function() {
+	        console.log('Checking our the events huh?');
+	    },
+	    onNavigate: function(direction, itemIndex) {
+	        console.log('Navigating '+direction+'. Current item: '+itemIndex);
+	    }
+	    ...
+	});
+</script>
+
 <script>
 	$(function() {
 		var $win = $(window);
@@ -143,7 +167,23 @@ opacity
 
 
 
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
+
+
+
 
 
 
@@ -174,7 +214,23 @@ opacity
 
 
 
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
+
+
+
 
 
 
@@ -211,7 +267,23 @@ opacity
 
 
 
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
+
+
+
 
 
 
@@ -238,7 +310,23 @@ opacity
 
 
 
+
+
+
+
+
+
+
+
 :
+
+
+
+
+
+
+
+
 
 
 
@@ -289,7 +377,7 @@ img {
 	<button id="sidebar" type="button"
 		class="btn btn-primary .float_sidebar" data-toggle="modal"
 		data-target="#myModal">댓글쓰기</button>
-	<form action="/meoui/metingcomment/insert" method="POST">
+	<form action="/meoui/meetingcomment/insert" method="POST">
 
 		<!-- Modal -->
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
@@ -305,7 +393,7 @@ img {
 
 
 					<div class="modal-footer">
-						<button id="commit" type="submit">작성</button>
+						<button id="commit2" type="submit">작성</button>
 					</div>
 				</div>
 			</div>
@@ -339,7 +427,7 @@ img {
 						<p>
 							<c:if test="${list.memberNo eq memberNo }">
 								<form class="ppp"
-									action="/meoui/metingcomment/delete/${list.meetingboardCommentNo }"
+									action="/meoui/meetingcomment/delete/${list.meetingboardCommentNo }"
 									method="POST">
 									<button id="commit" type="submit">댓글 삭제</button>
 									<hr />
@@ -352,7 +440,15 @@ img {
 
 
 		<!-- 메인 -->
-		<div id="page-content-wrapper">
+		<div id="page-content-wrapper">	
+		<input type="button"  class="btn btn-primary .float_sidebar" value="뒤로가기" style="margin-left: 80%;" onclick=" history.back(-1);">			
+			<a href="/meoui/meetingboard/update"><button id="sidebar"
+					type="button" class="btn btn-primary .float_sidebar"
+					data-toggle="modal" style="margin-left: 80%; margin-top: 0px;"
+					data-target="#myModal">수정하기</button></a>
+
+
+
 
 			<div class="container-fluid">
 
@@ -364,13 +460,21 @@ img {
 							src="/meoui/images/${board.meetingboardImg }" alt="skinscuber"
 							style="margin-bottom: 20px;">
 							 -->
-						<a href="/meoui/meetingboard/view/${meeting.meetingNo}"> <img
-							style=" width: 50%; height: 60%;"
+
+					<!-- 
+						<img style="width: 50%; height: 60%;"
 							src="/meoui/images/${board.meetingboardImg }"
 							class="img-thumbnail" alt="Cinque Terre" width="40%" height="50%">
-						</a>
+ -->
 
-						<p style="margin-top:10px;">
+<a href="/meoui/images/${board.meetingboardImg }" data-toggle="lightbox" data-title="A random title" data-footer="A custom footer text">
+    <img src="/meoui/images/${board.meetingboardImg }"  style="width: 50%; height: 60%;" class="img-fluid">
+</a>
+
+
+
+
+						<p style="margin-top: 10px;">
 							<strong>${board.meetingboardTitle }</strong>
 						</p>
 
@@ -386,13 +490,15 @@ img {
 						<c:if test="${board.memberNo eq memberNo }">
 							<form action="/meoui/meetingboard/delete/${board.meetingboardNo}"
 								method="POST" style="margin-left: 90%;">
-								<button id="commit" type="submit"
+								<button id="commit3" type="submit"
 									class="w3-button w3-block w3-white w3-border"
 									style="width: 134px; margin-right: 0; text-align: content:;">
-
-
 									게시글 삭제</button>
+								
 							</form>
+							<!-- 		<a href="/meoui/meetingboard/update">
+				<button id="commit" type="submit"
+					class="w3-button w3-block w3-white w3-border">모임수정하기</button></a> -->
 						</c:if>
 					</div>
 				</div>
@@ -501,7 +607,23 @@ img {
 
  -->
 
-
+<script>
+	$(document).ready(function() {
+		$("#commit").on("click", function() {
+			alert("댓글이 삭제되었습니다")
+		})
+	})
+	$(document).ready(function() {
+		$("#commit2").on("click", function() {
+			alert("댓글을 작성하였습니다.")
+		})
+	})
+	$(document).ready(function() {
+		$("#commit3").on("click", function() {
+			alert("게시글이 삭제되었습니다")
+		})
+	})
+</script>
 
 </body>
 </html>

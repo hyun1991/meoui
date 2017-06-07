@@ -222,21 +222,31 @@ font-style: italic;
 			<tbody>
 				<c:forEach items="${result.list }" var="board">
 					<tr>
+					
 						<td>${board.meetingboardNo }</td>
-						<td><a href="/meoui/meetingboard/view/${board.meetingboardNo }">${board.meetingboardTitle }</a></td>
+						
+						
+						
+						<td><a href="/meoui/meetingboard/view/${board.meetingboardNo }">${board.meetingboardTitle }
+						<strong>(${board.meetingboardCommentCnt})</strong></a></td>
+						
+						
 						<td>${board.memberName }</td>
 						<td><fmt:formatDate value="${board.meetingboardDate}"
 								pattern="yyyy년MM월dd일" /></td>
 						<td>${board.meetingboardCnt }</td>
 					</tr>
+					</c:forEach>
 			</tbody>
-			</c:forEach>
+		
 		</table>
-		<hr />
+		<hr /><input type="button"  class="btn btn-default pull-right" value="취소" onclick=" history.back(-1);">
 		<a class="btn btn-default pull-right"
 			href="/meoui/meetingboard/create">글쓰기</a>
 		<div class="text-center">
 			<ul class="pagination">
+			
+			
 				<li><c:if test="${result.pagination.prev>0 }">
 						<a
 							href="/meoui/meetingboard/list?pageNo=${result.pagination.prev }">이전으로</a>
