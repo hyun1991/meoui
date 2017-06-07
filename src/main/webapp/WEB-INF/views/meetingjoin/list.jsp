@@ -47,6 +47,11 @@
 	background-color: #fff;
 	color: #000;
 }
+
+ #joinimg{
+	width: 300px;
+	height: 300px;
+}
 </style>
 </head>
 <header>
@@ -62,10 +67,16 @@
 			<div class="row text-center" style="width: 90%; height: 0px;">
 				<div class="col-sm-4" style="padding-right: 5px; padding-left: 5px;">
 					<div class="thumbnail">
-						<a href="/meoui/membermeeting/list/${meeting.meetingImg}"> <img
+						
+						<a href="/meoui/membermeeting/list/${meeting.meetingImg}"> <img id="joinimg"
 							src="/meoui/images/${meeting.meetingImg}" alt="Paris" width="400"
 							height="300">
-						</a>
+						</a> 
+					
+				
+						
+						
+						
 						<p>
 							<strong>${meeting.meetingName }</strong>
 						</p>
