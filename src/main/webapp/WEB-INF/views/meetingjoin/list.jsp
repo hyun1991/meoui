@@ -103,7 +103,7 @@
 					</c:if>
 					<c:if test="${meeting.meetingAdminNo != memberNo }">
 						<form action="/meoui/membermeeting/view/bye" method=get>
-							<button class="btn" id="commit" type="submit">모임 탈퇴하기</button>
+							<button class="btn" id="commit" type="submit" style="margin-top: 5px;">모임 탈퇴하기</button>
 						</form>
 					</c:if>
 				</div>
