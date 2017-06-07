@@ -118,7 +118,7 @@ opacity
 	</header>
 	<div class="container text-center">
 	<div class="row" id="googleMapBackground">
-		<div id="googleMap" style="height: 400px; width: 100%;" alt="구글 지도"></div>
+		<div id="map" style="height: 400px; width: 100%;" alt="구글 지도"></div>
 	</div>
 	</div>
 	<div class="container">
@@ -174,23 +174,44 @@ opacity
 	</footer>
 </body>
 <script>
-	function myMap() {
-		var myCenter = new google.maps.LatLng(33.386581, 126.558209);
-		var mapProp = {
-			center : myCenter,
-			zoom : 10,
-			scrollwheel : false,
-			draggable : false,
-			mapTypeId : google.maps.MapTypeId.ROADMAP
-		};
-		var map = new google.maps.Map(document.getElementById("googleMap"),
-				mapProp);
-		var marker = new google.maps.Marker({
-			position : myCenter
-		});
-		marker.setMap(map);
+function initMap() {
+
+	  var map = new google.maps.Map(document.getElementById('map'), {
+	    zoom: 10,
+	    center: {lat: 33.3850285, lng: 126.62044279999998}
+	  });
+		
+	  	
+	  // Create an array of alphabetical characters used to label the markers.
+	  var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+	  // Add some markers to the map.
+	  // Note: The code uses the JavaScript Array.prototype.map() method to
+	  // create an array of markers based on a given "locations" array.
+	  // The map() method here has nothing to do with the Google Maps API.
+	  var markers = locations.map(function(location, i) {
+	    return new google.maps.Marker({
+	      position: location,
+	      label: labels[i % labels.length]
+	    });
+	  });
+
+	  // Add a marker clusterer to manage the markers.
+	  var markerCluster = new MarkerClusterer(map, markers,
+	      {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
 	}
-</script>
+	var locations = [
+		{lat:33.51041350000001, lng:126.49135339999998},
+		{lat:33.4316207, lng:126.6900058},
+		{lat:33.451638, lng:126.49000000000001},
+		{lat:33.393962, lng:126.23909839999999},
+		{lat:33.5559836, lng:126.79622810000001}
+	]
+	
+    
+	</script>
+	  <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+	    </script>
 <script
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQhKWycyWtScR72Jxc_E-FKHq4-F2b4CM&callback=myMap"></script>
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQhKWycyWtScR72Jxc_E-FKHq4-F2b4CM&callback=initMap"></script>
 </html>
