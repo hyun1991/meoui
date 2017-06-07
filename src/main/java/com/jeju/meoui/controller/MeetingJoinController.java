@@ -30,7 +30,6 @@ public class MeetingJoinController {
 		int memberNo= (Integer)session.getAttribute("memberNo");
 		meetingJoin.setMeetingNo(meetingNo);
 		meetingJoin.setMemberNo(memberNo);
-		System.out.println(meetingJoin);
 		service.createMeetingJoin(meetingJoin,meetingNo);
 		response.setContentType("text/html; charset=utf-8");
 		PrintWriter out=response.getWriter();
