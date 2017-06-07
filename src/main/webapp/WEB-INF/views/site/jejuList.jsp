@@ -175,6 +175,7 @@ opacity
 </body>
 <script>
 
+
 function initMap() {
 
   var map = new google.maps.Map(document.getElementById('map'), {
@@ -201,10 +202,10 @@ function initMap() {
       {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
 }
 var locations = [
-	{lat:33.51041350000001, lng:126.49135339999998}
-	{lat:33.4316207, lng:126.6900058}
-	{lat:33.451638, lng:126.49000000000001}
-	{lat:33.393962, lng:126.23909839999999}
+	{lat:33.51041350000001, lng:126.49135339999998},
+	{lat:33.4316207, lng:126.6900058},
+	{lat:33.451638, lng:126.49000000000001},
+	{lat:33.393962, lng:126.23909839999999},
 	{lat:33.5559836, lng:126.79622810000001}
 ]
 
