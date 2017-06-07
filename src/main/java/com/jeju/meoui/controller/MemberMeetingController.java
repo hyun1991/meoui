@@ -101,10 +101,9 @@ public class MemberMeetingController {
 	}
 	
 	//모임 삭제 유저용(작업 완료)
-	@RequestMapping(value="/membermeeting/delete", method=RequestMethod.POST)
-	public String deleteMemberMeetingUser(HttpSession session){
+	@RequestMapping(value="/membermeeting/delete/{meetingNo}", method=RequestMethod.GET)
+	public String deleteMemberMeetingUser(HttpSession session, @PathVariable int meetingNo){
 		int memberNo=(Integer)session.getAttribute("memberNo");
-		int meetingNo=(Integer)session.getAttribute("meetingNo");
 		service.deleteMemberMeeting(meetingNo, memberNo);
 		logger.info("모임삭제유저용 미팅넘버  {}",meetingNo);
 		return "redirect:/membermeeting/list";

@@ -62,7 +62,6 @@
 			<div class="row text-center" style="width: 90%; height: 0px;">
 				<div class="col-sm-4" style="padding-right: 5px; padding-left: 5px;">
 					<div class="thumbnail">
-
 						<a href="/meoui/membermeeting/list/${meeting.meetingImg}"> <img
 							src="/meoui/images/${meeting.meetingImg}" alt="Paris" width="400"
 							height="300">
@@ -75,14 +74,11 @@
 							class="btn" style="margin-right: 1px;">모임게시판</span>
 						</a>
 						<c:if test="${meeting.meetingAdminNo eq memberNo }">
-							<a
-								href="/meoui/membermeeting/update?meetingNo=${meeting.meetingNo}">
+							<a href="/meoui/membermeeting/update?meetingNo=${meeting.meetingNo}">
 								<button id="commit" class="btn">모임수정하기</button>
-							</a>
-							<form action="/meoui/membermeeting/delete" method=post>
+							</a><a href="/meoui/membermeeting/delete/${meeting.meetingNo}">
 								<button id="commit" type="submit" class="btn"
-									style="margin-top: 5px;">모임 삭제하기</button>
-							</form>
+									style="margin-top: 5px;">모임 삭제하기</button></a>
 						</c:if>
 						<c:if test="${meeting.meetingAdminNo != memberNo }">
 							<form action="/meoui/meetinjoin/list/bye/${meeting.meetingNo}"
