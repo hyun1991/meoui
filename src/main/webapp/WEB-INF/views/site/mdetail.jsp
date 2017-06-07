@@ -225,9 +225,7 @@ img {
 				class="form-control input-lg">
 			<div class="form-group">${comment.siteCommentContent}
 			</div>
-			<c:forEach items="${site.member }" var="member">
-				<div class="btn-r">작성자: ${member.memberId }</div>
-			</c:forEach>
+				<div class="btn-r">작성자: ${comment.memberId }</div>
 			<div class="form-group">
 				작성일:
 				<fmt:formatDate value="${comment.siteCommentDate}"

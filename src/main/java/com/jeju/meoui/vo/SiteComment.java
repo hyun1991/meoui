@@ -13,4 +13,5 @@ public class SiteComment {
 	private Date siteCommentDate;
 	private int memberNo;
 	private int siteNo;
+	private String memberId;
 }

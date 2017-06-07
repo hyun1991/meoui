@@ -95,9 +95,7 @@
 				class="form-control input-lg">
 			<div class="form-group">${comment.accommodationCommentContent}
 			</div>
-			<c:forEach items="${result.member }" var="member">
-				<div class="btn-r">작성자: ${member.memberId }</div>
-			</c:forEach>
+				<div class="btn-r">작성자: ${comment.memberId }</div>
 			<div class="form-group">${comment.byul }</div>
 			<div class="form-group">
 				작성일:
