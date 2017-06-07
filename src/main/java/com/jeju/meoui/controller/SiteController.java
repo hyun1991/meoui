@@ -71,8 +71,8 @@ public class SiteController {
 	
 	// 관광지 삭제
 	@RequestMapping(value="/admin/site/delete/{siteNo}", method=RequestMethod.GET)
-	public String deleteSite(@PathVariable  int siteNo , Area area , Site site  ){
-		service.removeSite(siteNo, area, site);
+	public String deleteSite(@PathVariable  int siteNo , Area area , Site site ,Ticket ticket ){
+		service.removeSite(siteNo, area, site, ticket);
 		logger.info("관광지삭제 : {}", siteNo);
 		return "redirect:/admin/site/list?pageNo=1";
 	}
