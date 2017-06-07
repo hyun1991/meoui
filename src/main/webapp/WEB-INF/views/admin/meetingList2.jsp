@@ -374,6 +374,9 @@ img {
 		</ul>
 	</div>
 	-->
+	<header>
+		<%@include file="/nav/adminnav.jsp" %>
+	</header>
 	<h1 style="margin-top: 50px;" align="center">모임 전체리스트</h1>
 	<hr>
 	<div class="container">
