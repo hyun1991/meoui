@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.jeju.meoui.dao.MeetingJoinDAO;
 import com.jeju.meoui.dao.MemberMeetingDAO;
 import com.jeju.meoui.vo.MeetingJoin;
+import com.jeju.meoui.vo.MemberMeeting;
 
 @Service
 public class MeetingJoinService {
@@ -44,13 +45,23 @@ public class MeetingJoinService {
 		List<MeetingJoin>list = dao.selectMyMeetingJoin(meetingNo, memberNo);;
 		map.put("list", list);		
 		logger.info("미팅조인 내가입리스트{}", list);
-		return map;
-		
-		
-		
-	
-		
+		return map;	
 	}
+	public HashMap<String, Object> selectMyMeetingJoinMemberNo(int memberNo){
+		HashMap<String, Object>map= new HashMap<String, Object>();
+		List<MeetingJoin>list = dao.selectMyMeetingJoinMemberNo(memberNo);;
+		map.put("list", list);		
+		logger.info("미팅조인 내가입리스트1{}", list);
+		return map;	
+	}
+	
+	
+	
+	public int selectMemberAllList(int meetingNo){
+	
+		return dao.selectMemberAllList(meetingNo);
+	}
+	
 	
 	
 	//모임탈퇴 관리자용

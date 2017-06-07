@@ -29,7 +29,8 @@
 			<div>
 				<h3>시설위치</h3>${result.accommodation.accommodationAddress }
 			</div>
-			<div class="col-xs-4" style="margin-top: 100px">
+			<hr size="5">
+			<div class="col-xs-4" style="margin-top: 10px">
 				<a href="/meoui/room/view/${result.accommodation.accommodationNo }&${result.accommodation.ownerNo }">
 					<button type="button"
 					class="w3-button w3-block w3-white w3-border">객실정보 조회하기</button></a>

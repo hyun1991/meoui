@@ -49,8 +49,7 @@ public class MemberMeetingDAO {
 	
 	//모임 리스트 출력 페이징
 	public List<MemberMeeting> selectAllMemberMeetingList(int startRow, int lastRow){
-		HashMap<String, Object>map= new HashMap<String, Object>();
-		
+		HashMap<String, Object>map= new HashMap<String, Object>();		
 		map.put("startRow", startRow);
 		map.put("lastRow", lastRow);
 		
@@ -63,8 +62,11 @@ public class MemberMeetingDAO {
 	}
 	
 	//모임인원수별 리스트 조회
-	public List<MemberMeeting> selectMeetingTotal(int meetingTotal){
-		return template.selectList("MembermeetingMapper.selectMeetingTotal",meetingTotal);	}
+	public List<MemberMeeting> selectMeetingTotal(int startRow, int lastRow){
+		HashMap<String, Object>map= new HashMap<String, Object>();		
+		map.put("startRow", startRow);
+		map.put("lastRow", lastRow);
+		return template.selectList("MembermeetingMapper.selectMeetingTotal", map);	}
 	
 	//내가 가입한 모임 보기
 	public List<MemberMeeting> selectMyMeeting(int memberNo){

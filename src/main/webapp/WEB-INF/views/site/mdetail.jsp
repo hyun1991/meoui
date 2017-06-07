@@ -179,7 +179,7 @@ img {
     	<div class="container" style="margin-left: auto;">
 		<hr>
 			<c:forEach items="${site.list }" var="accommodation">
-				<div class="col-sm-3" style="overflow-x:hidden;overflow-y:hidden; width: 280px; height: 500px;" >
+				<div class="col-sm-3" style="overflow-x:hidden;overflow-y:hidden; width: 280px; height: 400px;" >
 					<a href="/meoui/accommodation/view/${accommodation.accommodationNo}">
 						<img class="image-responsive"
 						src="/meoui/images/${accommodation.accommodationImg}"

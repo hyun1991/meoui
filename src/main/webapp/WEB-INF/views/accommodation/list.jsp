@@ -78,7 +78,7 @@ img {
 		<div class="row">
 		<hr>
 			<c:forEach items="${result.list }" var="accommodation">
-				<div class="col-sm-3" style="overflow-x:hidden;overflow-y:hidden; width: 280px; height: 500px;" >
+				<div class="col-sm-3" style="overflow-x:hidden;overflow-y:hidden; width: 280px; height: 400px;" >
 					<a href="/meoui/accommodation/view/${accommodation.accommodationNo}">
 						<img class="image-responsive"
 						src="/meoui/images/${accommodation.accommodationImg}"
@@ -89,7 +89,8 @@ img {
 							<strong>${accommodation.accommodationName}</strong>
 						</a>
 					</p>
-					<p><a href="/meoui/accommodation/view/${accommodation.accommodationNo}">
+					<p style="text-overflow: ellipsis; width: 280px; overflow: hidden;white-space: nowrap;
+					text-overflow: ellipsis;"><a href="/meoui/accommodation/view/${accommodation.accommodationNo}">
 							${accommodation.accommodationAddress}</a>
 					</p><div class="form-group">
 						<a href="/meoui/accommodation/view/${accommodation.accommodationNo}">

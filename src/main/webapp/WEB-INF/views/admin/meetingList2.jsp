@@ -35,19 +35,7 @@ opacity
 
 
 
-
-
-
-
-
-
 :
-
-
-
-
-
-
 
 
 
@@ -98,19 +86,7 @@ opacity
 
 
 
-
-
-
-
-
-
 :
-
-
-
-
-
-
 
 
 
@@ -173,19 +149,7 @@ opacity
 
 
 
-
-
-
-
-
-
 :
-
-
-
-
-
-
 
 
 
@@ -242,19 +206,7 @@ opacity
 
 
 
-
-
-
-
-
-
 :
-
-
-
-
-
-
 
 
 
@@ -327,9 +279,7 @@ img {
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <body>
-	<header>
-		<%@include file="/nav/navbar.jsp"%>
-	</header>
+
 	<!-- 		
 		<div class="row text-center">
 					<c:forEach items="${result.list }" var="meeting">
@@ -429,18 +379,11 @@ img {
 	<div class="container">
 		<div class="row text-center container"
 			style="height: 100%; width: 100%; margin-top: 10px;">
-
 			<c:forEach items="${result.list }" var="meeting">
-
 				<div class="col-sm-4"
 					style="height: 400px; width: 340px; margin-top: 10px;">
 					<div class="thumbnail"
 						style="height: 400px; width: 330px; margin-top: 30px; margin-left: 10px;">
-
-
-
-
-
 						<figure class="snip1382" style="height: 80%;">
 							<img src="/meoui/images/${meeting.meetingImg}"
 								style="margin-bottom: 0px; height: 100%; width: 100%;"
@@ -448,40 +391,31 @@ img {
 							<figcaption
 								style="width: 100%; padding-right: 0px; padding-top: 0px; padding-left: 0px; padding-bottom: 0px;">
 								<h2>회원 가입은 아래버튼을 눌러주세요</h2>
+								<p></p>
+
+								<div class="icons">
+									<!--<c:if
+										test="${meeting.meetingAdminNo ne memberNo or meetingJoin.meetingNo ne meetingNo}"></c:if>-->
+										<form action="/meoui/membermeeting/post/${meeting.meetingNo}" method=post>
+										<button id="commit" type="submit"
+									style="padding-top: 0px; padding-left: 0px; border-right-width: 0px; padding-right: 0px; border-top-width: 0px; border-left-width: 0px; padding-bottom: 0px; color: cyan; background-color: black; border-bottom-width: 0px;">
+												<i class="ion-person-add"></i>
+											</button>
+										</form>
+								</div>
+
+							</figcaption>
+						</figure>
+						<p>
+							<a href="/meoui/membermeeting/view/${meeting.meetingNo}"> <strong>${meeting.meetingName }</strong>
+							</a>
+						</p>
+
+						<p>우리모임을 좋아하는 사람은: ${meeting.meetingTotalNumber }명</p>
 
 
-
-								<p>${meeting.meetingAdminNo}...12</p>								
-									<c:forEach items="${join.list }" var="join">
-										<p>${join.meetingNo }</p>
-									</c:forEach>
-									<div class="icons">
-										<c:if test="${meeting.meetingAdminNo ne memberNo}">
-											<!-- test="${meeting.meetingAdminNo ne memberNo or meetingJoin.meetingNo ne meetingNo}"> -->
-											<form action="/meoui/membermeeting/post/${meeting.meetingNo}"
-												method=post>
-												<button id="commit" type="submit"
-													style="padding-top: 0px; padding-left: 0px; border-right-width: 0px; padding-right: 0px; border-top-width: 0px; border-left-width: 0px; padding-bottom: 0px; color: cyan; background-color: black; border-bottom-width: 0px;">
-													<i class="ion-person-add"></i>
-												</button>
-											</form>
-								
-								</c:if>
-					</div>
-
-					</figcaption>
-					</figure>
-
-					<p>
-						<a href="/meoui/membermeeting/view/${meeting.meetingNo}"> <strong>${meeting.meetingName }</strong>
-						</a>
-					</p>
-
-					<p>우리모임을 좋아하는 사람은: ${meeting.meetingTotalNumber }명</p>
-
-
-					<!-- 원래 이미지 -->
-					<!-- <a href="/meoui/membermeeting/view/${meeting.meetingNo}"> <img
+						<!-- 원래 이미지 -->
+						<!-- <a href="/meoui/membermeeting/view/${meeting.meetingNo}"> <img
 							src="/meoui/images/${meeting.meetingImg}"
 							style="margin-bottom: 20px; height: 80%; width: 100%;"
 							class="img-circle" alt="Cinque Terre">
@@ -493,30 +427,11 @@ img {
 
 						<p>우리모임을 좋아하는 사람은: ${meeting.meetingTotalNumber }명</p>
  -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-					<!-- <button class="btn">Buy Tickets</button> -->
+						<!-- <button class="btn">Buy Tickets</button> -->
+					</div>
 				</div>
+			</c:forEach>
 		</div>
-		</c:forEach>
-	</div>
 	</div>
 	<hr />
 	<div class="row text-center" style="margin-top: 30px;">
@@ -535,16 +450,6 @@ img {
 				</c:if></li>
 		</ul>
 	</div>
-	<script>
-		$(document).ready(function() {
-			for(#commit==0){
-			$("#commit").on("click", function() {
-				alert("마이페이지 나의 모임에서 게시판으로 이동 가능합니다.")
-			})}
-		})
-	</script>
-	<footer>
-		<%@include file="/footer.jsp"%>
-	</footer>
+	
 </body>
 </html>
