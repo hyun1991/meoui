@@ -71,12 +71,12 @@
 							<button type="button"
 								class="w3-button w3-block w3-white w3-border">티켓 수정</button>
 						</a>
-								<a href="/meoui/admin/ticket/delete/${result.siteNo }">
+								<a href="/meoui/admin/ticket/delete/${result.site.siteNo }">
 							<button type="button"
 								class="w3-button w3-block w3-white w3-border">티켓 삭제</button>
 						</a>
 						<a
-						href="/meoui/admin/site/delete/${result.siteNo }">
+						href="/meoui/admin/site/delete/${result.site.siteNo }">
 						<button type="button"
 							class="w3-button w3-block w3-white w3-border" id="deleteBtn">
 							삭제하기</button>

@@ -26,6 +26,7 @@ public class SiteService {
 	private AccommodationDAO acDao;
 	@Autowired
 	private MemberDAO mDao;
+
 	
 	// 1.관광지 추가
 	public void createSite(Site site , Area area ){
@@ -54,7 +55,9 @@ public class SiteService {
 	
 	// 3.관광지 삭제
 	@Transactional
-	public void removeSite( int siteNo , Area area , Site site){
+	public void removeSite( int siteNo , Area area , Site site , Ticket ticket){
+		tDao.deleteTicket(siteNo);
+		ticket.setSiteNo(site.getSiteNo());
 		commentdao.deleteAllSiteComment(siteNo);
 		area.setSiteNo(site.getSiteNo());
 		aDao.deleteSiteArea(siteNo);
