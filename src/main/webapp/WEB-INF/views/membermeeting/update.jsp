@@ -25,25 +25,6 @@ body {
 </head>
 <body>
 
-<!-- 
-	<h1>모임 수정</h1>
-	<form id="memberMeeting" action="/meoui/membermeeting/update"
-		method="POST" enctype="multipart/form-data">
-
-		모임명:<input type="text" name="meetingName" id="meetingName"
-			value="${result.meetingName}"><br> 이미지:<input
-			type="file" name="img" id="meetingimg" value="${result.meetingImg}"><br>
-		총인원수:<input type="hidden" name="meetingTotalname"
-			id="meetingTotalName" readonly="readonly">${result.meetingTotalNumber}<br>
-		${memberMeeting.meetingName}
-		<button id="commit" type="submit">수정하기</button>
-	</form>
-
-
- -->
-
-
-
 
 	<h1>모임 수정</h1>
 	<form id="memberMeeting" action="/meoui/membermeeting/update"
@@ -58,7 +39,7 @@ body {
 		</div>		
 		<div class="form-group">		
 			<label for="exampleInputPassword1">이미지</label>
-			 <input type="file"	name="img" id="meetingimg" class="form-control" value="${result.meetingName}">
+			 <input type="file"	name="img" id="meetingimg" class="form-control">
 		</div>		
 		<input type="button" class="btn btn-default pull-right" value="취소"
 			onclick=" history.back(-1);">
