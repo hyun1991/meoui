@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -112,7 +113,6 @@ img {
 			style="height: 100%; width: 100%; margin-top: 10px;">
 
 			<c:forEach items="${result.list }" var="meeting">
-				<c:forEach items="${join.list }" var="joins">
 
 					<div class="col-sm-4"
 						style="height: 400px; width: 340px; margin-top: 10px;">
@@ -132,15 +132,8 @@ img {
 
 									<div class="icons">
 
-										<!--<c:if test="${meeting.meetingAdminNo ne memberNo}">-->
-
-										<c:if test="${joins.memberNo eq memberNo}">
-
-
-
-
-
-											<!-- test="${meeting.meetingAdminNo ne memberNo or meetingJoin.meetingNo ne meetingNo}"> -->
+										<c:if test="${meeting.meetingAdminNo ne memberNo}">
+	
 											<form action="/meoui/membermeeting/post/${meeting.meetingNo}"
 												method=post>
 												<button id="commit" type="submit"
@@ -159,7 +152,6 @@ img {
 							<p>우리모임을 좋아하는 사람은: ${meeting.meetingTotalNumber }명</p>
 						</div>
 					</div>
-				</c:forEach>
 			</c:forEach>
 		</div>
 	</div>
@@ -180,14 +172,7 @@ img {
 				</c:if></li>
 		</ul>
 	</div>
-	<script>
-		$(document).ready(function() {
-			for(#commit==0){
-			$("#commit").on("click", function() {
-				alert("마이페이지 나의 모임에서 게시판으로 이동 가능합니다.")
-			})}
-		})
-	</script>
+
 	<footer>
 		<%@include file="/footer.jsp"%>
 	</footer>
