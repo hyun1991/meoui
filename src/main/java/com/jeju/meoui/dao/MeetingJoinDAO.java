@@ -50,6 +50,7 @@ public class MeetingJoinDAO {
 		return template.selectList("MeetingJoin.selectMyMeetingJoin",map);		
 	}
 	
+	//멤버넘버로 미팅넘버 리스트 출력
 	public List<MeetingJoin> selectMyMeetingJoinMemberNo(int memberNo){
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("memberNo", memberNo);
@@ -57,10 +58,11 @@ public class MeetingJoinDAO {
 	}
 	
 	//모든 모임 리스트
-	public int selectMemberAllList(int meetingNo){
-	return 	template.selectOne("MeetingJoin.selectMemberAllList", meetingNo);
+	public List<MeetingJoin> selectMemberAllList(){
+		
+		return 	template.selectList("MeetingJoin.selectAllMeetingJoinList");
 	}
-	
+
 	
 	
 }

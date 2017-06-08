@@ -118,23 +118,29 @@ public class MemberMeetingController {
 	// 리스트 출력(작업완료)
 	@RequestMapping(value="/membermeeting/list", method=RequestMethod.GET)
 	public String AllMemberMeeting(Model model, HttpSession session, @RequestParam(defaultValue="1") int pageNo){			
-		
 		MemberMeeting meetingNo=new MemberMeeting();
-		//MeetingJoin meetingJoin= new MeetingJoin(); //가입한 리스트 출력
+		MeetingJoin meetingJoin= new MeetingJoin(); //가입한 리스트 출력
+		
 		session.setAttribute("meetingNo", meetingNo);
-		int memberNo=(Integer)session.getAttribute("memberNo");
-		//logger.info("컨트롤 시작d:{}",meetingNo);		
-		//joinservice.selectMyMeetingJoinMemberNo(memberNo);
+		
+		int memberNo=(Integer)session.getAttribute("memberNo");	
+		
+		logger.info("멤버미팅컨트롤 시작 미팅넘버:{}",meetingNo);		
+		
+		System.out.println(memberNo);
+		
 		model.addAttribute("result", service.selectAllmemberMeetingList(pageNo));			
 		
+		
+		
+		model.addAttribute("join", joinservice.selectMemberAllList());
+		
+		
+		
 		logger.info("컨트롤 시작d:{}",service.selectAllmemberMeetingList(pageNo));
-		
 		logger.info("멤버미팅컨트롤러 리스트 출력 멤버넘버 :{}",memberNo );
-		
-		logger.info("멤버미팅컨트롤러 리스트 출력 미팅넘버 :{}",meetingNo );
-		
-		
-		//logger.info("멤버미팅리스트출력:{}",meetingNo);
+		logger.info("",11 );
+		logger.info("멤버미팅 멤버넘버 마지막:{}",memberNo);
 		return "membermeeting/list";
 	
 		

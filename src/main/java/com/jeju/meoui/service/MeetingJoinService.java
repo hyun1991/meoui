@@ -49,19 +49,24 @@ public class MeetingJoinService {
 		logger.info("미팅조인 내가입리스트{}", list);
 		return map;	
 	}
+	
+	//내 모임보기
 	public HashMap<String, Object> selectMyMeetingJoinMemberNo(int memberNo){
+		
 		HashMap<String, Object>map= new HashMap<String, Object>();
 		List<MeetingJoin>list = dao.selectMyMeetingJoinMemberNo(memberNo);;
 		map.put("list", list);		
-		logger.info("미팅조인 내가입리스트1{}", list);
+		logger.info("미팅조인 내가입리스트2{}", list);
 		return map;	
 	}
 	
 	
 	
-	public int selectMemberAllList(int meetingNo){
-	
-		return dao.selectMemberAllList(meetingNo);
+	public  HashMap<String, Object> selectMemberAllList(){
+		HashMap<String, Object>map= new HashMap<String, Object>();
+		List<MeetingJoin>list = dao.selectMemberAllList();
+		map.put("list", list);
+		return map;
 	}
 	
 	
