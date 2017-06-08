@@ -82,7 +82,7 @@ button:hover:before, button:hover:after {
 	transition: 800ms ease all;
 }
 </style>
-<body>
+<body name="form">
 	<h1 id="headTitle" style="margin-top: 50px;" align="center">객실
 		상세페이지</h1>
 	<div class="container">
@@ -95,22 +95,24 @@ button:hover:before, button:hover:after {
 					<tr>
 						<th scope="row">체크인:</th>
 						<td class="even"><input type="text" id="datepicker1"
-							name="checkIn"></td>
+							name="checkIn" size="20"></td>
 					</tr>
 					<tr>
 						<th scope="row">체크아웃:</th>
-						<td><input type="text" id="datepicker2" name="checkOut">
+						<td><input type="text" id="datepicker2" name="checkOut" size="20">
 						</td>
 					</tr>
 					<tr>
 						<th scope="row">기본 예약금액:</th>
 						<td class="even"><input type="text" name="reservePrice"
 							id="reservePrice" value="<%=session.getAttribute("roomPrice")%>"
-							readonly="readonly">(원)</td>
+							readonly="readonly" size="20"></td>
 					</tr>
 					<tr>
 						<th scope="row">숙박인원</th>
-						<td><input type="number" name="stayPeople" id="count"></td>
+						<td>
+						<input type="number" name="stayPeole" id="count" size="10">
+						</td>
 					</tr>
 				</table>
 				<div>

@@ -29,13 +29,14 @@
 	<!-- 모든 가입 회원번호로 조회 -->
 	<select id="selectMyMeetingJoin" parameterType="int" resultType="meetingJoin">
 	<![CDATA[
-				select meeting_no, member_no from meeting_join where meeting_no=#{meetingNo} and member_no=#{memberNo};
+				select meeting_no, member_no from meeting_join where meeting_no=#{meetingNo} and member_no=#{memberNo}
 	]]>	
 	</select>
+	
 	<!-- 내가 가입한 모임 내 너버로 검색 -->
 	<select id="selectMyMeetingJoinMemberNo" parameterType="int" resultType="meetingJoin">
 	<![CDATA[
-			select meeting_no from meeting_join where  member_no=#{memberNo}
+			select meeting_no, member_no from meeting_join where  member_no=#{memberNo}
 	]]>	
 	</select>
 	
@@ -46,6 +47,11 @@
 	]]>	
 	</select>
 		
-		
+	<!-- 모든 리스트 조회 -->
+			<select id="selectAllMeetingJoinList"  resultType="meetingJoin">
+	<![CDATA[
+		select meeting_no, member_no from meeting_join 
+	]]>	
+	</select>
 </mapper>
 	

@@ -120,7 +120,8 @@ img {
 						<a href="#"> <strong>${result.siteName}</strong>
 						</a>
 					</p>
-					<p>
+					<p style="text-overflow: ellipsis; width: 280px; overflow: hidden;white-space: nowrap;
+					text-overflow: ellipsis;">
 						<a href="${result.siteHomepage}"> ${result.siteHomepage}</a>
 					</p>
 					<div class="form-group">
@@ -137,14 +138,14 @@ img {
 	<div class="row text-center">
 		<ul class="pagination pagination-md">
 			<li><c:if test="${result.pagination.prev>0 }">
-					<a href="/meoui/site/list?pageNo=${result.pagination.prev }">이전으로</a>
+					<a href="/meoui/admin/site/list?pageNo=${result.pagination.prev }">이전으로</a>
 				</c:if></li>
 			<li><c:forEach begin="${result.pagination.startPaging }"
 					end="${result.pagination.lastPaging }" var="i">
-					<a href="/meoui/site/list?pageNo=${i }">${i }</a>
+					<a href="/meoui/admin/site/list?pageNo=${i }">${i }</a>
 				</c:forEach></li>
 			<li><c:if test="${result.pagination.next>0 }">
-					<a href="/meoui/site/list?pageNo=${result.pagination.next }">다음으로</a>
+					<a href="/meoui/admin/site/list?pageNo=${result.pagination.next }">다음으로</a>
 				</c:if></li>
 		</ul>
 	</div>
