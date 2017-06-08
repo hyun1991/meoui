@@ -120,7 +120,8 @@ img {
 						<a href="#"> <strong>${result.siteName}</strong>
 						</a>
 					</p>
-					<p>
+					<p style="text-overflow: ellipsis; width: 280px; overflow: hidden;white-space: nowrap;
+					text-overflow: ellipsis;">
 						<a href="${result.siteHomepage}"> ${result.siteHomepage}</a>
 					</p>
 					<div class="form-group">

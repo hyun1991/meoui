@@ -21,7 +21,7 @@ where c.member_no= b.member_no
 
  and 
 
-c.meetingboard_no=#{meetingboardNo}
+c.meetingboard_no=#{meetingboardNo} order by c.meetingboard_comment_no asc
 
 
 

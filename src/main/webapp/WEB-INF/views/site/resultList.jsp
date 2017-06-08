@@ -141,7 +141,8 @@ opacity
 					<p id="selector">
 						<a href="#"> ${result.siteOpenTime }~${result.siteCloseTime }까지</a>
 					</p>
-					<p>
+					<p style="text-overflow: ellipsis; width: 280px; overflow: hidden;white-space: nowrap;
+					text-overflow: ellipsis;">
 						<a href="${result.siteHomepage}"> ${result.siteHomepage}</a>
 					</p>
 					<div class="form-group">

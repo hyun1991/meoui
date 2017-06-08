@@ -29,6 +29,7 @@ public class SiteService {
 
 	
 	// 1.관광지 추가
+	@Transactional
 	public void createSite(Site site , Area area ){
 		dao.insertSite(site);
 		area.setAreaNo(aDao.maxAreaNo());
