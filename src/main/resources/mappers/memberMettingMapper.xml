@@ -65,7 +65,7 @@
 		   select t2.* from
       (select rownum rnum, t1.* from 
       (select meeting_no, meeting_name, meeting_img, meeting_total_number, meeting_admin_no
-	from member_meeting)t1)t2 where rnum between #{startRow} and #{lastRow}
+	from member_meeting order by meeting_no desc)t1)t2 where rnum between #{startRow} and #{lastRow}
 		]]>
 	</select>
 	
