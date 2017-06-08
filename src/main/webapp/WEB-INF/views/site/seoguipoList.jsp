@@ -118,7 +118,7 @@ opacity
 	</header>
 	<div class="container text-center">
 	<div class="row" id="googleMapBackground">
-		<div id="googleMap" style="height: 400px; width: 100%;" alt="구글 지도"></div>
+		<div id="map" style="height: 400px; width: 100%;" alt="구글 지도"></div>
 	</div>
 	</div>
 	<div class="container">
@@ -221,5 +221,5 @@ var locations = [
   <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
     </script>
 <script
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQhKWycyWtScR72Jxc_E-FKHq4-F2b4CM&callback=myMap"></script>
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQhKWycyWtScR72Jxc_E-FKHq4-F2b4CM&callback=initMap"></script>
 </html>
