@@ -52,8 +52,8 @@ public class MeetingJoinController {
 	@RequestMapping(value="membermeeting/list", method=RequestMethod.POST)
 	public String selectMemberAllList(HttpSession session, Model model){
 		int meetingNo=(Integer)session.getAttribute("meetingNo");
-		model.addAttribute("join",service.selectMemberAllList(meetingNo));
-		logger.info("미팅조인멤버미팅으로멤버넘버 :{}",service.selectMemberAllList(meetingNo));
+	//	model.addAttribute("join",service.selectMemberAllList(meetingNo));
+		//logger.info("미팅조인멤버미팅으로멤버넘버 :{}",service.selectMemberAllList(meetingNo));
 	
 		//session.removeAttribute("meetingNo");
 		
