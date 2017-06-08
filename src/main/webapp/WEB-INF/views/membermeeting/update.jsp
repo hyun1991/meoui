@@ -32,33 +32,21 @@ body {
 		
 		<div class="form-group">
 			<label for="exampleInputEmail1">모임명</label> 			
-			
-			<input type="text"
-				class="form-control" id="exampleInputEmail1" name="meetingName" value="${result.meetingName}"
-				placeholder="모임명을 적어주세요">
+			<input type="hidden" name="meetingNo" value="${result.meetingNo }">
+					
+					
+	<input type="text"
+		class="form-control" id="exampleInputEmail1" name="meetingName" value="${result.meetingName}"
+	placeholder="모임명을 적어주세요">
 		</div>		
 		<div class="form-group">		
 			<label for="exampleInputPassword1">이미지</label>
-			 <input type="file"	name="img" id="meetingimg" class="form-control">
+			 <input type="file"	name="img" class="form-control">
 		</div>		
 		<input type="button" class="btn btn-default pull-right" value="취소"
 			onclick=" history.back(-1);">
 		<button type="submit" class="btn btn-default pull-right">수정하기</button>
 	</form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
