@@ -67,12 +67,11 @@ public class MemberMeetingController {
 	
 	//모임 수정(작업 완료)
 	@RequestMapping(value="/membermeeting/update", method=RequestMethod.POST)
-	public String updateMemberMeeting(@RequestParam String meetingName, @RequestParam("img") MultipartFile meetingImg, HttpSession session){
+	public String updateMemberMeeting(@RequestParam String meetingName,@RequestParam int meetingNo, @RequestParam("img") MultipartFile meetingImg, HttpSession session){
 		int meetingAdminNo = (Integer)session.getAttribute("memberNo");		
-		int meetingNo = (Integer)session.getAttribute("meetingNo");		
-	
 		String fileName= UploadUtil.storeAndGetFileName(meetingImg, ctx, path);
 		MemberMeeting memberMeeting = new MemberMeeting();
+		
 		
 		memberMeeting.setMeetingNo(meetingNo);
 		memberMeeting.setMeetingAdminNo(meetingAdminNo);
@@ -80,10 +79,10 @@ public class MemberMeetingController {
 		memberMeeting.setMeetingName(meetingName);		
 		service.updataMeetingName(memberMeeting);
 		session.removeAttribute("meetingNo");
-		
-		logger.info("업데이트하는데 모임 번호가 없어  : {}", meetingNo);
+		//session.removeAttribute("meetingNo");
+		//logger.info("업데이트하는데 모임 번호가 없어  : {}", meetingNo);
 		logger.info("업데이트하는데 멤버 번호가 없어  : {}", meetingAdminNo);
-		
+		logger.info("업데이트 하는데 미팅 번호가 없어:{}", meetingNo);
 		//session.removeAttribute("meetingNo");
 		
 		return "redirect:/membermeeting/list";
