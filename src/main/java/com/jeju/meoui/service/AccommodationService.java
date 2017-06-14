@@ -100,6 +100,7 @@ public class AccommodationService {
 			if(cMemberNo!=0){
 				List<Member>cMember= memberDao.findAllMemberNo(cMemberNo);
 				map.put("member", cMember);
+				continue;
 			}
 		}
 		map.put("accommodation", accommodation);

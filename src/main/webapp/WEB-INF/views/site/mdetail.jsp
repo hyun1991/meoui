@@ -97,7 +97,10 @@ img {
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6 col-sm-12">
-				<img src="/meoui/images/${site.site.siteImg}" style="width: 500px; height: 600px;">
+				<img src="/meoui/images/${site.site.siteImg}" 
+				title="클릭하시면 원본크기로 보실 수 있습니다."
+				style="cursor: pointer;width: 500px;height: 600px;" 
+				onclick="doImgPop('/meoui/images/${site.site.siteImg}')"/>
 			</div>
 			<div>
 				<h4>대표전화</h4>${site.site.sitePhone }
@@ -222,9 +225,7 @@ img {
 				class="form-control input-lg">
 			<div class="form-group">${comment.siteCommentContent}
 			</div>
-			<c:forEach items="${site.member }" var="member">
-				<div class="btn-r">작성자: ${member.memberId }</div>
-			</c:forEach>
+				<div class="btn-r">작성자: ${comment.memberId }</div>
 			<div class="form-group">
 				작성일:
 				<fmt:formatDate value="${comment.siteCommentDate}"
@@ -247,4 +248,31 @@ img {
 		<%@include file="/footer.jsp" %>
 	</footer>
 </body>
+<script>
+	function doImgPop(img){ 
+	 img1= new Image(); 
+	 img1.src=(img); 
+	 imgControll(img); 
+	} 
+	  
+	function imgControll(img){ 
+	 if((img1.width!=0)&&(img1.height!=0)){ 
+	    viewImage(img); 
+	  } 
+	  else{ 
+	     controller="imgControll('"+img+"')"; 
+	     intervalID=setTimeout(controller,20); 
+	  } 
+	}
+	function viewImage(img){ 
+	 W=img1.width; 
+	 H=img1.height; 
+	 O="width="+W+",height="+H+",scrollbars=yes"; 
+	 imgWin=window.open("","",O); 
+	 imgWin.document.write("<html><head><title>이미지상세보기</title></head>");
+	 imgWin.document.write("<body topmargin=0 leftmargin=0>");
+	 imgWin.document.write("<img src="+img+" onclick='self.close()' style='cursor:pointer;' title ='클릭하시면 창이 닫힙니다.'>");
+	 imgWin.document.close();
+	}
+</script>
 </html>

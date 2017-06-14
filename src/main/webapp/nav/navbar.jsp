@@ -49,7 +49,7 @@ span {
 		<div class="container">
 			<div class="navbar-header">
 				<a class="navbar-brand navbar-left"
-					href="http://192.168.0.186:8087/meoui/" id="brand">
+					href="http://106.243.194.226:5001/meoui/" id="brand">
 					<img alt="알수없음" src="/meoui/images/jejulogo3.png"> </a>
 			</div>
 			<div class="row" style="margin-top: 100px;">

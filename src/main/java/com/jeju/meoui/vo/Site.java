@@ -19,6 +19,7 @@ public class Site {
 	private String siteNightOpen;
 	private String siteNightCloseTime;
 	private String detailsAddress;
+	private String memberId;
 	private String areaName;
 	private String area;
 	private int usersNo;

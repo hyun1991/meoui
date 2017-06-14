@@ -46,7 +46,8 @@
 				</tr>
 				<tr>
 				    <th scope="row">첨부파일</th>
-					<td colspan="4">${result.board.freeboardImg}</td>
+					<td colspan="4"><a href="/meoui/freeboard/download?freeboardImg=${result.board.freeboardImg}">${result.board.freeboardImg}</a>
+					</td>
 				</tr>
 			</tbody>
 		</table>
